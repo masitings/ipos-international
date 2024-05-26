@@ -1,0 +1,22 @@
+<div class="space-67"></div>
+<div class="program">
+    <h5 class="m-b-24">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h5>
+    <div class="row">
+        {% for i in pimcore_block('tnc_wrap',{'limit' : 3}).iterator %}
+            <div class="col-lg-4 col-md-6">
+                <div class="program_content">
+                    <div class="phase">{{ pimcore_input('index',{'placeholder' : 'number..'}) }}</div>
+                    <h6 class="m-b-12">{{ pimcore_input('planningTitle',{'placeholder' : 'text'}) }}</h6>
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </section>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>

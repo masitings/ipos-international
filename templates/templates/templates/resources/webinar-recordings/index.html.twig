@@ -1,0 +1,162 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="business_guides_container resources_public_container resources_public_list_master_container">
+        <div class="bg_circle"></div>
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><a href="{{ pimcore_document(25).fullpath }}" class="back_txt">Resources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if list.latest is defined %}
+            <div class="container page__title__container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="p__title">{{ pimcore_input('latestTitle',{'placeholder':'Webinar Recordings'}) }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row latest_articles_container">
+                    {% for item in list.latest %}
+                        <div class="col-md-6 col-12">
+                            <a class="tab-card-item" href="{{ item }}_{{ item.getId() }}">
+                                <div class="card-top">
+                                    <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                                    {#<img class="img-resoure" src="/static/images/10.85d491c.jpg">#}
+                                    {% if item.coverImage is not empty %}
+					<img class="img-resoure" src="{{ item.coverImage.getThumbnail('WebinarRecordingsLatest') }}" >
+                                      {#  {{ item.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-resoure'}}) | raw }}  #}
+                                    {% endif %}
+
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="time-date">{{ item.releaseDate | date('d M, Y') }}</div>
+                                    <div class="title">{{ item.title }}</div>
+                                    <span class="more-date-layout">
+                              		{#{% if item.detailVideo is not empty %}#}
+                                            <div class="date-view d-flex align-items-center">
+						{% if item.detailVideo is not empty %}
+                                                <span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>
+                                                {% if item.videoTime is not empty %}
+                                                    <span class="date-txt">{{ item.videoTime }}</span>
+                                                {% endif %}
+						{% endif %}
+                                            </div>
+                                        {#{% endif %}#}
+                            	    </span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        {% endif %}
+
+
+            <div class="container page__title__container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="p__title">{{ pimcore_input('moreTitle',{'placeholder':'More Guides'}) }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="tab-content custom-tab-content">
+                    <div class="tab-pane fade show active" id="read_list">
+                        <div id="moreWebinar" class="row">
+
+                        </div>
+                        <div class="laodmore-view">
+                            <a style="cursor: pointer;" class="load-button">Load More
+                                <div class="arrow_down"></div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        <div class="chartset-o-view d-none d-md-block">
+            <img class="img-o" src="/static/images/pc_charset_o.c08f0b8.svg">
+        </div>
+	{{ pimcore_areablock("newsletter", {
+      "allowed": ["newsletter"]
+      }) }}
+    </div>
+    
+    <style>
+    @media only screen and (min-width: 769px) {
+        .tab-card-item{
+            height: 100%;
+        }
+    }    
+    </style>
+
+    <script>
+
+        getOptions();
+
+        $(".laodmore-view").click(function () {
+            var num = $("#moreWebinar").children().length;
+            getOptions(num)
+        })
+
+        function getOptions(num = 0){
+            $.ajax({
+                url : '/api/webinar',
+                type : 'POST',
+                data : {'dataType' : 'more','num' : num},
+                success : function (result) {
+
+		    if(result.length < 6){
+           		 $(".laodmore-view").hide();
+          	    }
+                    var text = '';
+                    result.forEach(function (item) {
+                        var date = new Date(item.date).toDateString();
+			var moreImg = '';
+			var videoTime = '';
+                        if (item.video != '')
+                        {
+                            videoTime = '<div class="date-view d-flex align-items-center">' +
+                                '<span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>' +
+                                '<span class="date-txt">' + item.videoTime + '</span></div>';
+                        }
+			if(item.coverImage != '')
+			{
+				moreImg = '<img class="img-resoure" src="' + item.coverImage + '" >';
+			}
+                        text = '<div class="col-12 col-md-6">' +
+                            '<a class="public_guides_card_container" href="' + item.fullPath + '_'+ item.id + '">' +
+                            '<div class="part_1">' +
+                            '<img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">' +
+                            '<img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">' +
+                                moreImg +
+                            '</div>' +
+                        '<div class="part_2">' +
+                            '<div class="part_child_1">' +
+                                '<p class="dateTxt">' + date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3] + '</p>' +
+                                '<p class="title">' + item.title + '</p>' +
+                            '</div>' +
+                            '<div class="part_child_2">' + videoTime +
+                                '</div></div></a></div>';
+                        $("#moreWebinar").append(text);
+                    })
+
+
+
+                }
+            })
+        }
+    </script>
+{% endblock %}

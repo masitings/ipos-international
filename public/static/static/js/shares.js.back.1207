@@ -1,0 +1,11 @@
+var uri = window.location.href;
+var linkedinUrl = $(".linkedin").attr("href");
+$(".linkedin").attr("href",linkedinUrl + "?mini=true&url="+uri);
+
+var facebookUrl = $(".facebook").attr("href");
+$(".facebook").attr("href",facebookUrl + "?u="+uri);
+
+var twitterUrl = $(".twitter").attr("href");
+$(".twitter").attr("href",twitterUrl + "?text="+document.title + "&url="+uri);
+
+$(".email").attr("href","mailto:?sbject="+document.title + "&body="+uri);

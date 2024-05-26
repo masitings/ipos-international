@@ -1,0 +1,10 @@
+<h1 class="m-b-40">{{ pimcore_input('headline',{'placeholder' : 'Headline'}) }}</h1>
+
+{{ pimcore_areablock("head",{
+    'allowed' : [
+        "advisory-chat-posted",
+        "advisory-chat-img"
+    ]
+}) }}
+
+<div class="space-67"></div>

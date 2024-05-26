@@ -1,0 +1,79 @@
+{% set id = id | default("main-nav") %}
+{% set level = level | default(0) %}
+
+<ul class="main-nav__list main-nav__list--level-{{ level }} list-unstyled js-main-nav__list">
+    {% for i, page in pages %}
+        {% if portalEngine_navigation_visible(page) %}
+
+            <li class="main-nav__item main-nav__item--level-{{ level }} js-main-nav__list-item {{ page.active(true) ? 'is-active' : '' }} {{ portalEngine_navigation_hasVisiblePages(page) ? 'has-children' : 'has-no-children' }}">
+                <a href="{{ page.href }}" target="{{ page.target }}" class="main-nav__item-content main-nav__item-content--level-{{ level }} main-nav__item-content--link">
+                    {% if level == 0 %}
+                        <span class="main-nav__item__icon">
+                            <span class="main-nav__item__icon__bg"></span>
+                            <span class="main-nav__item__icon__icon d-flex align-items-center justify-content-center mx-auto">
+                                {{ portalEngine_inline_icon(page.customSetting("icon")) }}
+                            </span>
+                        </span>
+                    {% endif %}
+
+                    {{ page.label }}
+
+                    {% if page.active(true) %}
+                        <span class="sr-only">current</span>
+                    {% endif %}
+
+                    {% if portalEngine_navigation_hasVisiblePages(page) and level == 0 %}
+                        <button class="sr-only sr-only-focusable btn-no-styling js-main-nav__list-toggle" aria-expanded="false" aria-controls="collapse-second-level-{{ i }}">
+                            Toggle sub menu
+                        </button>
+                    {% endif %}
+                </a>
+
+                {% if portalEngine_navigation_hasVisiblePages(page) and level == 0%}
+
+                    {% set id = id ~ '.' ~ i  %}
+
+                    {# Toggle button for Touch Devices (eg. tablets) #}
+                    <button type="button"
+                            class="main-nav__item-content main-nav__item-content--level-0 main-nav__item-content--toggle js-main-nav__list-toggle"
+                            aria-expanded="false"
+                            aria-controls="{{ id }}">
+
+                        {% if level == 0 %}
+                            <span class="main-nav__item__icon">
+                                <span class="main-nav__item__icon__bg"></span>
+                                <span class="main-nav__item__icon__icon d-flex align-items-center justify-content-center mx-auto">
+                                    {{ portalEngine_inline_icon(page.customSetting("icon")) }}
+                                </span>
+                            </span>
+                        {% endif %}
+
+                        {{ page.label }}
+
+                        <span class="main-nav__collapse-icon icon icon-arrow-down" aria-hidden="true"></span>
+
+                        {% if page.active(true) %}
+                            <span class="sr-only">Current</span>
+                        {% endif %}
+                    </button>
+
+                    <section id="{{ id }}" class="main-nav main-nav--level-{{ level + 1 }}">
+                        <div class="main-nav__title main-nav__title--level-{{ level + 1 }}" role="heading">
+                            <a href="{{ page.href }}" class="main-nav__title-link main-nav__title-link--level-{{ level + 1 }}">
+                                {{ page.label }}
+                            </a>
+                        </div>
+
+                        {{ include("@PimcorePortalEngine/shared/navigation/main/partial.html.twig", {
+                            level: level + 1,
+                            id: id,
+                            pages: page.pages
+                        }) }}
+                    </section>
+
+                {% endif %}
+            </li>
+
+        {% endif %}
+    {% endfor %}
+</ul>

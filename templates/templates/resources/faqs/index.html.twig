@@ -1,0 +1,78 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+<div class="faq_container resources_public_container">
+  <div class="bg_circle"></div>
+  <div class="resources_public_title_nav container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+          {% include('layouts/breadcrumb-col-12.html.twig') %}
+        </nav>
+        <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><a href="{{ pimcore_document(25).fullpath }}" class="back_txt">Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container page__title__container">
+    <div class="row">
+      <div class="col-12">
+        <p class="p__title">{{ pimcore_input('questionTitle',{'placeholder':'Frequently Asked Questions'})  }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-container container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="slide-menu-container">
+          <p class="slide_title">TOPICS</p>
+          <nav class="menu-container">
+{#<a class="menu-item active" herf="part_0">Intellectual Property and Intangible Assets</a><a class="menu-item" herf="part_1">Discover Intangible Assets</a><a class="menu-item" herf="part_2">International Business Continuity Planning (BCP)</a> #}
+		{% for k,item in faqType %}
+              {% if k == 0 %}
+                  <a class="menu-item active" herf="part_{{ k }}">{{ item.value }}</a>
+                {% else %}
+                  <a class="menu-item " herf="part_{{ k }}">{{ item.value }}</a>
+              {% endif %}
+
+            {% endfor %}
+          </nav>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="slide-body-container">
+
+          {% for key,type in faqType %}
+            <div class="part part_{{ key }}">
+              <p class="p__title">{{ type.value }}</p>
+              <div class="collapse-container">
+                {% for faq in list %}
+                  {% if faq.questionType == type.value %}
+                    <div class="collapse-item">
+                      <div class="collapse-item-header">
+                        <div class="header-txt">{{ faq.question }}</div>
+                        <div class="header-icon" style="background-image:url(/static/images/icon-plus.144c2e7.svg)"></div>
+                      </div>
+                      <div class="collapse-item-content">
+                        {{ faq.answer | raw }}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+
+
+              </div>
+            </div>
+
+
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

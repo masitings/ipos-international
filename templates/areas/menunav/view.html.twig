@@ -1,0 +1,20 @@
+<div class="resources_public_title_nav container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+              <ol class="breadcrumb col-12">
+                <li class="breadcrumb-item">{{ pimcore_link('Index') }}</li>
+                <li class="breadcrumb-item">{{ pimcore_link('next') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ pimcore_input('after',{'placeholder':'navName'}) }}</li>
+              </ol>
+            </nav>
+            <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">{{ pimcore_input('after').getText() }}</span>
+            </div>
+          </div>
+</div>
+            {% if editmode %}
+            <style>
+                .breadcrumb-item{width:150px}
+                .breadcrumb-item a {color:#000}
+            </style>
+            {% endif %}

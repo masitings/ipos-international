@@ -1,0 +1,62 @@
+<div class="tool-container container">
+    <div class="row">
+        <div class="col-12 col-md-6 img-layout">
+            {% if editmode %}
+            <div>
+                {#<img class="img-tools" src="/static/images/tools-img.3f1d25e.png">#}
+                {{ pimcore_image('toolImg',{
+                    "height" : 500,
+                    imgAttributes : {class : "img-tools"},
+                    thumbnail : 'Courses'
+                }) }}
+            </div>
+            {% else %}
+            <div class="tools-img-view">
+                {#<img class="img-tools" src="/static/images/tools-img.3f1d25e.png">#}
+                {{ pimcore_image('toolImg',{
+                    "height" : 500,
+                    imgAttributes : {class : "img-tools"},
+                    thumbnail : 'Courses'
+                }) }}
+            </div>
+
+            {% endif %}
+        </div>
+        <div class="col-12 col-md-6 swiper_bg">
+            <div class="size-container">
+                <div class="resources_index_swiper_container">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% if editmode %}
+                                <div >
+                                    <div class="slide-layout">
+                                        <div class="title">{{ pimcore_input('tool-head',{'placeholder' : 'Headline'}) }}</div>
+                                        {{ pimcore_areablock("toolRight",{
+                                            "allowed" : ["tool-right"]
+                                        }) }}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="swiper-slide">
+                                    <div class="slide-layout">
+                                        <div class="title">{{ pimcore_input('tool-head',{'placeholder' : 'Headline'}) }}</div>
+                                        {{ pimcore_areablock("toolRight",{
+                                            "allowed" : ["tool-right"]
+                                        }) }}
+                                    </div>
+                                </div>
+
+                            {% endif %}
+                        </div>
+                        <!-- 如果需要滚动条 -->
+                        <div class="swiper-scrollbar">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="right-o d-none d-md-block" src="/static/images/pc_right_o.bedfceb.svg">
+</div>

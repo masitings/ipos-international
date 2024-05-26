@@ -1,0 +1,25 @@
+<h5>{{ 'portal-engine.data-pool.filter-definition'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</h5>
+{% for i in pimcore_iterate_block(pimcore_block(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\DataPoolConfig::GRID_CONFIGURATION_FILTERS'))) %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label
+                        class="form-control-label">{{ 'portal-engine.data-pool.filter-type'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                    <div>
+                        {{ pimcore_select(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\DataPoolConfig\\FilterDefinition::FILTER_TYPE'), {store:filterTypeStore, width: 200}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+                    <label
+                        class="form-control-label">{{ 'portal-engine.data-pool.filter-field'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                    <div>
+                        {{ pimcore_select(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\DataPoolConfig\\FilterDefinition::FILTER_ATTRIBUTE'), {store:filterFieldsStore, width: 400}) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}

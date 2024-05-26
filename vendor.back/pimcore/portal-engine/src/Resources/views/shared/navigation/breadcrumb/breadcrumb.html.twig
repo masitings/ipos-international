@@ -1,0 +1,13 @@
+{% set additionalBreadcrumbs = additionalBreadcrumbs|default([]) %}
+{% set breadcrumbs = portalEngine_get_breadcrumbs(document)|merge(additionalBreadcrumbs) %}
+
+<div class="container d-md-none mb-3">
+    <ol class="breadcrumb">
+        {%  for breadcrumb in breadcrumbs  %}
+            {% set uri = breadcrumb.uri|default(null) %}
+            {% set target = breadcrumb.target|default(null) %}
+            {% set label = breadcrumb.label|default(null) %}
+            <li class="breadcrumb-item{% if loop.last %} active{% endif %}"><a{% if uri %} href="{{ uri }}"{% endif %}{% if target %} target="{{ target }}"{% endif %}>{{ label}}</a></li>
+        {% endfor %}
+    </ol>
+</div>

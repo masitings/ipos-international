@@ -1,0 +1,102 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="articles_details_container resources_public_container">
+        <div class="bg_circle"></div>
+        <!--+nav(['Home','Events','News And Announcement','Singapore IP Strategy 2030'])-->
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                       {% include('layouts/breadcrumb-col-12.html.twig') %}
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt;</span>
+                        <a class="back_txt" href="/events/news&amp;announcements">News & Announcements</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title">{{ data['title'] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="posted-container">
+                        <span class="lable m-r-4">Posted on</span>
+                        <span class="value">{{ data['date'] | date('d M, Y') }}</span>
+                        <br class="d-block d-md-none">
+                        {% if data['authorIcon'] is not empty %}
+                            {{ data['authorIcon'].thumbnail('ProfilePhoto').html({imgAttributes:{class:'value-img'}}) |raw }}
+                        {% endif %}
+
+                        <span class="lable m-r-4">By</span>
+                        <span class="value">{{ data['author'] }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details_img_body_container container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content_main_img">
+
+                        {% if data['coverImage'] is not empty %}
+                            {{ data['coverImage'].thumbnail('coverImg').html({imgAttributes:{class:'content_img'}}) |raw }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row main-articles">
+                <div class="col-md-8 col-12 column-padding">
+                    {{ data['content'] | raw }}
+                    <div class="business_guides_details_container">
+                        <a class="annex" href="/advisory/ip-chat/" target="_blank">
+                            <span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span>
+                            <span class="annex-txt">Book a complimentary IA chat with us</span>
+                            <span class="pdf-down" style="background-image:url(/static/images/icon_download.c4854a7.svg)"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 d-block d-md-none">
+                    <div class="split-line"></div>
+                </div>
+                {% if data['interested'] is not empty %}
+                <div class="col-md-4 col-12">
+                    <div class="resources_public_recommend-container m-b-45">
+                        <p class="recommend-title">Others News & Announcements</p>
+                        {% for list in data['interested'] %}
+                            <a class="recommend_item" href="/News{{ list }}_{{ list.getId() }}">
+
+                                {% if list.coverImage is not empty %}
+                                    {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'recommend-img'}}) |raw }}
+                                {% endif %}
+                                <div class="recommend-txt-layout">
+                                    <p class="txt-date">{{ list.releaseDate | date('d M, Y') }}</p>
+                                    <p class="recommend-txt-title">{{ list.title }}</p>
+                                </div>
+                            </a>
+                        {% endfor %}
+
+                    </div>
+                    <div class="share-container">
+                        <!--span.share-txt SHARE-->
+                        <div class="share-layout">
+                            <a class="share-icon facebook" href="https://www.facebook.com/iposintl" target="_blank" style="background-image:url(&quot;/static/images/icon-Facebook.c78e324.svg&quot;)"></a>
+                            <a class="share-icon linkedin" href="https://www.linkedin.com/company/iposintl/" target="_blank" style="background-image:url(&quot;/static/images/icon-Linkedin.dac1a71.svg&quot;)"></a>
+                            <a class="share-icon twitter" href="https://twitter.com/iposintl" target="_blank" style="background-image:url(&quot;/static/images/icon-Twitter.6adf57e.svg&quot;)"></a>
+                            <a class="share-icon email" href="mailto:ipos_enquiry@ipos.gov.sg" target="_blank" style="background-image:url(&quot;/static/images/icon-Email.bd681cf.svg&quot;)"></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

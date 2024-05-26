@@ -1,0 +1,16 @@
+doctrine:
+    dbal:
+        types:
+            jsonfy: Pimcore\Bundle\PortalEngineBundle\Tools\Doctrine\Type\Jsonfy
+
+    orm:
+        entity_managers:
+            portal_engine:
+                connection: default
+                mappings:
+                    PimcorePortalEngineBundle:
+                        type: annotation
+                        is_bundle: true
+                        dir: "Entity"
+                        prefix: Pimcore\Bundle\PortalEngineBundle\Entity
+                        alias: PimcorePortalEngine

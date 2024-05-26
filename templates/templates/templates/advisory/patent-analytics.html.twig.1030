@@ -1,0 +1,69 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise_detail__page advisor_detail__page">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="program-bg-right"><img src="/assets/images/program-right.b275c14.svg" alt=""></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                {{ pimcore_areablock('head',{
+                    "allowed" : [
+                        "advisory-head"
+                    ]
+                }) }}
+                <div class="space-67"></div>
+
+            </div>
+        </section>
+        <section class="detail_2">
+            <div class="benefit-bg-right"><img src="/assets/images/benefir-right.f808b00.svg" alt=""></div>
+            <div class="detail_2_content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <h3>{{ pimcore_input('title',{'placeholder':'Who It Is For'}) }}</h3>
+                            <section id="marked-content">
+                                {{  pimcore_wysiwyg("specialContent", {
+                                    "height": 200,
+                                    "placeholder" : "edit content..."
+                                })
+                                }}
+                            </section>
+                        </div>
+                        <div class="col-lg-1 col-md-0"></div>
+                        <div class="col-md-4 col-12 md-mt-30">
+                            {% if list is not empty %}
+                                <div class="resources_public_recommend-container">
+                                    <p class="recommend-title">You May Be Interested In</p>
+
+                                    {% for key,interested in list %}
+                                        {% if key < 3 %}
+                                            <a class="recommend_item" href="{{ interested }}_{{ interested.getId() }}">
+                                                {#<img class="recommend-img" src="/assets/images/graphene.582717d.jpeg">#}
+                                                {{ interested.coverImage.thumbnail('coverImg').html({imgAttributes:{class : 'recommend-img'}}) |raw }}
+                                                <div class="recommend-txt-layout">
+                                                    <p class="recommend-txt-title">Graphene Technologies</p>
+                                                </div>
+                                            </a>
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{ pimcore_areablock("embedCode",{
+            'allowed' : ["textarea-embed"]
+        }) }}
+    </section>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="m-container-spacing">
+        <div class="bg_circle"></div>
+        <div class="container m-b-100">
+            <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                            <ol class="breadcrumb col-12">
+                                <li class="breadcrumb-item">
+                                    <a href="/">{{ 'Home'|trans }}</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Data Protection Policy</li>
+                            </ol>
+                        </nav>
+                        <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Home</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-b-45">
+                <div class="col-12">
+                    <h1 class="h1">{{ pimcore_input('Headlines',{'placeholder' : 'Data Protection Policy'}) }}</h1>
+                </div>
+            </div>
+            <div class="row m-b-45">
+                <div class="col-lg-9">
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

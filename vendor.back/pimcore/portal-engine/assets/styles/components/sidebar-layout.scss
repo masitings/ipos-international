@@ -1,0 +1,97 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.sidebar-layout {
+    position: relative;
+}
+.sidebar-layout:not(.is-open) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+//.sidebar-layout__content,
+//.sidebar-layout__side {
+//    @include media-breakpoint-up(md) {
+//        min-height: calc(100vh - 328px); /* todo  */
+//    }
+//
+//}
+.sidebar-layout.is-open .sidebar-layout__content {
+    padding-left: 1.5rem;
+}
+.sidebar-layout__side {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 1rem;
+    background: $gray-300;
+}
+.sidebar-layout.is-open .sidebar-layout__side {
+    position: relative;
+    width: 220/16*1rem;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: -200em;
+        background: inherit;
+    }
+}
+
+.sidebar-layout__side__content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.sidebar-layout__side__content {
+    position: relative;
+    z-index: 0;
+    height: 100%;
+    padding: 0 3/16*1rem;
+    padding-top: 18/16*1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include scrollbar();
+}
+
+.sidebar-layout__side-toggle {
+    flex: none;
+    position: sticky;
+    top: 50vh;
+    transform: translate(25%, -50%);
+    width: 20/16*1rem;
+    height: 60/16*1rem;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $dark;
+    color: $gray-600;
+    z-index: 1;
+}
+.sidebar-layout__side-toggle-icon {
+    transform: rotate(180deg);
+    transition: transform 230ms ease;
+}
+
+.sidebar-layout.is-open .sidebar-layout__side-toggle {
+    transform: translate(50%, -50%);
+}
+.sidebar-layout.is-open .sidebar-layout__side-toggle-icon {
+    transform: none;
+}

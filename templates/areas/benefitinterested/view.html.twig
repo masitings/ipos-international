@@ -1,0 +1,11 @@
+<a class="recommend_item">
+                                        {#<img class="recommend-img" src="/static/images/Building a strong brand.fe5aa61.jpg">#}
+                                        {{ pimcore_image('recommendImg',{
+                                            imgAttributes : {class : 'recommend-img'},
+                                            'thumbnail' : 'usefulSvg'
+                                        }) }}
+                                        <div class="recommend-txt-layout">
+                                            <p class="txt-date">{{ pimcore_input('date',{'placeholder' : '30 ,MAR, 2021'}) }}</p>
+                                            <p class="recommend-txt-title">{{ pimcore_input('recommend',{'placeholder':'text'}) }}</p>
+                                        </div>
+                                    </a>

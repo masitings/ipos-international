@@ -1,0 +1,29 @@
+<h1 class="m-b-50">{{ pimcore_input('Headlines',{'placeholder' : 'headlines'}) }}</h1>
+<div class="row">
+    <div class="col-lg-6 txt-large p-r-20 opacity-09">
+        <p class="txt-large p-r-20 opacity-09">
+        <section id="marked-content">
+            {{  pimcore_wysiwyg("headcontent", {
+                "height": 200,
+                "placeholder" : "edit content..."
+            })
+            }}
+        </section>
+        </p>
+        {#<p class="txt-large p-r-20 opacity-09">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor varius eget luctus sit pharetra. Viverra senectus ac elit convallis fermentum sit. Lectus montes, arcu nibh fermentum posuere placerat. Elit mollis commodo sem adipiscing dui.</p>#}
+    </div>
+    <div class="col-lg-6">
+        <div class="images">
+            {#<img class="cover" src="/static/images/about.4f29435.png" alt="">#}
+            <p class="cover">
+            <section id="marked-content">
+                {{  pimcore_wysiwyg("specialContent", {
+                    "height": 200,
+                    "placeholder" : "edit iamge,content,code..."
+                })
+                }}
+            </section>
+            </p>
+        </div>
+    </div>
+</div>

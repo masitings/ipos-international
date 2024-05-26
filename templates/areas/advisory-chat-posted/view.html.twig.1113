@@ -1,0 +1,8 @@
+<div class="posted">
+    <div class="date">Posted on<span>{{ pimcore_input('date',{'placeholder' : 'date'}) }}</span></div>
+    <div class="by">
+        <div class="ava">
+            <img src="/static/images/ipos-ava.e4817bd.svg" alt=""></div>
+        <div class="text">By<span>{{ pimcore_input('organization',{'placeholder':'organization'}) }}</span></div>
+    </div>
+</div>

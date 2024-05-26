@@ -1,0 +1,41 @@
+
+<section class="detail_2">
+            <div class="benefit-bg-right">
+                <img src="/static/images/benefir-right.f808b00.svg" alt="">
+            </div>
+            <div class="detail_2_content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <h3>{{ pimcore_input('BenefitTile',{'placeholder' : 'title..'}) }}</h3>
+                            <section id="briefIntroduction">
+                                {{  pimcore_wysiwyg("introduction", {
+                                    "height": 200,
+                                    "placeholder" : "Text ..."
+                                })
+                                }}
+                            </section>
+                        </div>
+                        <div class="col-lg-1 col-md-0"></div>
+                        <div class="col-md-4 col-12 md-mt-30">
+                            <div class="resources_public_recommend-container">
+                                <p class="recommend-title">You May Interested</p>
+
+                                {{ pimcore_areablock("names", {
+    "allowed": ["benefitinterested"]
+    }) }}
+
+
+                                <!--.share-container-->
+                                <!--    span.share-txt SHARE-->
+                                <!--    .share-layout-->
+                                <!--        a.share-icon.facebook(style='background-image:url("' + require("images/resources/icon-Facebook.svg") + '")')-->
+                                <!--        a.share-icon.linkedin(style='background-image:url("' + require("images/resources/icon-Linkedin.svg") + '")')-->
+                                <!--        a.share-icon.twitter(style='background-image:url("' + require("images/resources/icon-Twitter.svg") + '")')-->
+                                <!--        a.share-icon.email(style='background-image:url("' + require("images/resources/icon-Email.svg") + '")')-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>

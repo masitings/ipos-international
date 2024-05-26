@@ -1,0 +1,25 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<section class="academy_enterprise_detail__page advisor_ipChat__page ip-start">
+    <section class="detail">
+        <div class="bg_circle_right"></div>
+        <div class="ipchat-bg-left"><img src="/static/images/ip-chat-left.cc759cb.svg" alt=""></div>
+        <div class="ipchat-bg-right"><img src="/static/images/ip-chat-right.d0ef334.svg" alt=""></div>
+        <div class="container">
+            <div class="breadcrumb black m-b-80">
+       		{% include('layouts/breadcrumb.html.twig') %}
+            </div>
+        </div>
+        <!--.max-height-img-->
+        <!--    img.img-fluid(src=require('images/resources/landing-cover.jpg'))-->
+        {#{{ pimcore_areablock("body", {
+            "allowed": ["advisory-ip-start-above"]
+        }) }}#}
+        {{ pimcore_areablock("body", {
+            "allowed": ["advisory-ip-start-above","advisory-ip-start-above-c","ip-start-block"]
+        }) }}
+    </section>
+</section>
+
+{% endblock %}

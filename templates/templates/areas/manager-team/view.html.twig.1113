@@ -1,0 +1,162 @@
+{#<div class="split-line"></div>
+<div class="container management-container">
+    <div class="row">
+        <div class="col-12 section_title">IPOS Management Team</div>
+    </div>
+    <div class="row mobile-row">
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView">
+                    <img class="item-img" src="/static/images/A._Ming_Tan_3_LI.8c2fb8f.jpg">
+                </div>
+                <div class="item-txt-layout">
+                    <div class="title">Dr Ming Tan</div>
+                    <div class="sub-title">Managing Director</div>
+                    <div class="desc">IPOS International</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView"><img class="item-img" src="/static/images/B_Kok_Kitt-Wai_LI.99202ea.jpg"></div>
+                <div class="item-txt-layout">
+                    <div class="title">Mr Kok Kitt - Wait</div>
+                    <div class="sub-title">Director</div>
+                    <div class="desc">IP Academy and Business Development</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView"><img class="item-img" src="/static/images/C_Alfred_Yip_LI.9e5be96.jpg"></div>
+                <div class="item-txt-layout">
+                    <div class="title">Mr Alfred Yipt</div>
+                    <div class="sub-title">Director</div>
+                    <div class="desc">Patent Search, Examination &amp; Analytics</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView">
+                    <img class="item-img" src="/static/images/D_Tracey_Soon_LI.5a82ee3.jpg"></div>
+                <div class="item-txt-layout">
+                    <div class="title">Ms Tracey Soon</div>
+                    <div class="sub-title">Deputy Director</div>
+                    <div class="desc">Finance &amp; Corporate Planning</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for i in pimcore_block('management').iterator %}
+
+        <div class="row row-layout">
+            <div class="col-md-4 titlediv d-none d-md-block">{{ pimcore_input('name',{'placeholder':'name'}) }}</div>
+            <div class="col-md-4 sub-titlediv d-none d-md-block"> {{ pimcore_input('rank',{'placeholder':'rank'}) }}</div>
+            <div class="col-md-4 descdiv d-none d-md-block">{{ pimcore_input('department',{'placeholder':'department'}) }}</div>
+            <div class="itemImgView">
+                {{ pimcore_image('imageView',{
+                    imgAttributes : {class : 'item-img div d-none d-md-block'},
+                    'thumbnail' : 'ProfilePhoto'
+                }) }}
+
+
+            </div>
+        </div>
+    {% endfor %}
+<div class="row row-layout">
+          <div class="col-md-4 titlediv d-none d-md-block">Dr Ming Tan</div>
+          <div class="col-md-4 sub-titlediv d-none d-md-block">Managing Director</div>
+          <div class="col-md-4 descdiv d-none d-md-block">IPOS International</div>
+          <div class="itemImgView">
+            <img class="item-img div d-none d-md-block" src="/static/images/A._Ming_Tan_3_LI.8c2fb8f.jpg">
+          </div>
+        </div>
+        <div class="row row-layout">
+          <div class="col-md-4 titlediv d-none d-md-block">Mr Kok Kitt - Wait</div>
+          <div class="col-md-4 sub-titlediv d-none d-md-block">Director</div>
+          <div class="col-md-4 descdiv d-none d-md-block">IP Academy and Business Development</div>
+          <div class="itemImgView"><img class="item-img div d-none d-md-block" src="/static/images/B_Kok_Kitt-Wai_LI.99202ea.jpg"></div>
+        </div>
+        <div class="row row-layout">
+          <div class="col-md-4 titlediv d-none d-md-block">Mr Alfred Yipt</div>
+          <div class="col-md-4 sub-titlediv d-none d-md-block">Director</div>
+          <div class="col-md-4 descdiv d-none d-md-block">Patent Search, Examination &amp; Analytics</div>
+          <div class="itemImgView"><img class="item-img div d-none d-md-block" src="/static/images/C_Alfred_Yip_LI.9e5be96.jpg"></div>
+        </div>
+        <div class="row row-layout">
+          <div class="col-md-4 titlediv d-none d-md-block">Ms Tracey Soon</div>
+          <div class="col-md-4 sub-titlediv d-none d-md-block">Deputy Director</div>
+          <div class="col-md-4 descdiv d-none d-md-block">Finance &amp; Corporate Planning</div>
+          <div class="itemImgView"><img class="item-img div d-none d-md-block" src="/static/images/D_Tracey_Soon_LI.5a82ee3.jpg"></div>
+        </div>
+
+</div>#}
+
+<div class="split-line"></div>
+<div class="container management-container">
+    <div class="row">
+        <div class="col-12 section_title">{{ pimcore_input('title',{'placeholder':'Our Management Team'}) }}</div>
+    </div>
+    <div class="row mobile-row">
+        {#{% for i in pimcore_block('managementMobile').iterator %}
+            <div class="col-12 d-md-none d-block">
+                <div class="management-item">
+                    <div class="itemImgView">
+
+                        {{ pimcore_image('imageView-mobile',{
+                            imgAttributes : {class : 'item-img'},
+                            'thumbnail' : 'ProfilePhoto'
+                        }) }}
+                    </div>
+                    <div class="item-txt-layout">
+                        <div class="title">{{ pimcore_input('name-mobile',{'placeholder':'name'}) }}</div>
+                        <div class="sub-title">{{ pimcore_input('rank-mobile',{'placeholder':'rank'}) }}</div>
+                        <div class="desc">{{ pimcore_input('department-mobile',{'placeholder':'department'}) }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+#}
+    </div>
+
+    {% if editmode %}
+        <div class="ourClients_list_ul">
+            {% for i in pimcore_block('management').iterator %}
+                <div class="row row-layout nomar ourClients_list_li">
+                    <div class="col-md-3 titlediv d-none d-md-block">{{ pimcore_input('name',{'placeholder':'name'}) }}</div>
+                    <div class="col-md-3 sub-titlediv d-none d-md-block">{{ pimcore_input('rank',{'placeholder':'rank'}) }}</div>
+                    <div class="col-md-3 descdiv d-none d-md-block">{{ pimcore_input('department',{'placeholder':'department'}) }}</div>
+                    <div class="col-md-3 descdiv d-none d-md-block">
+                        {{ pimcore_image('imageView',{
+                            imgAttributes : {class : 'item-img div d-none d-md-block'},
+                            'thumbnail' : 'ProfilePhoto'
+                        }) }}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        {% else %}
+            <div class="ourClients_list_ul">
+                {% for i in pimcore_block('management').iterator %}
+                    <div class="row row-layout nomar ourClients_list_li">
+                        <div class="col-md-4 titlediv d-none d-md-block">{{ pimcore_input('name',{'placeholder':'name'}) }}</div>
+                        <div class="col-md-4 sub-titlediv d-none d-md-block">{{ pimcore_input('rank',{'placeholder':'rank'}) }}</div>
+                        <div class="col-md-4 descdiv d-none d-md-block">{{ pimcore_input('department',{'placeholder':'department'}) }}</div>
+                        <div class="company-logo-pic">
+                            {{ pimcore_image('imageView',{
+                                imgAttributes : {class : 'item-img div d-none d-md-block'},
+                                'thumbnail' : 'ProfilePhoto'
+                            }) }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div id="leadership-tooltip" style="position: fixed; transform: translate(912px, 397px);" class="">
+                <img src="">
+            </div>
+    {% endif %}
+
+</div>

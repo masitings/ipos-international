@@ -1,0 +1,120 @@
+{% extends template_layout_name %}
+
+{% block content %}
+
+  <div class="business_guides_details_container business_guides_details_container_not_animated resources_public_container">
+    <div class="bg_circle"></div>
+    <div class="js_public_layout"></div>
+    <div class="resources_public_title_nav container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+
+            {% include('layouts/breadcrumb-col-12.html.twig') %}
+          </nav>
+          <div class="d-block d-md-none mobile_nav">
+            <span class="back_arrow">&lt; </span>
+            <a href="{{ pimcore_document(73).fullpath }}" class="back_txt">Careers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container page__title__container">
+      <div class="row">
+        <div class="col-12">
+          {#<p class="p__title">Building A Strong Brand</p>#}
+          <p class="p__title">{{ pimcore_input('careerTitle',{'placeholder':'headline...'}) }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="details_img_body_container container">
+      <div class="row">
+        <div class="col-12">
+          <div class="content_main_img">
+{#            <iframe class="content_img" #}{#width="560" height="315"#}{# src="https://www.youtube.com/embed/{{ list.video.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+            {{ pimcore_areablock('headmedia',{
+              "allowed" : [
+                "about-career-image",
+                "about-career-video"
+
+              ]
+            }) }}
+
+            {#{{ pimcore_image("myImage", {
+              imgAttributes : {class : 'content_img'},
+              'thumbnail' : 'coverImg'
+            }) }}#}
+
+
+            {#<img class="content_img" src="https://www.boredpanda.com/blog/wp-content/uploads/2020/08/CBr78muJnaq-png__700.jpg"> #}
+            {#<section id="marked-content">
+              {{  pimcore_wysiwyg("specialContent", {
+                "height": 200,
+                "placeholder" : "Set up your pictures or YouTube videos here"
+              })
+              }}
+            </section>#}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="js_public_image"></div>
+    <div class="body_container container">
+      <div class="row">
+        <div class="col-md-8 col-12 column-padding">
+          <div class="guides-content-container">
+
+            <section id="marked-content">
+              {{  pimcore_wysiwyg("careersContent", {
+                "height": 400,
+                "placeholder" : "Set up your content here ..."
+              })
+              }}
+            </section>
+          </div>
+          <div class="left_container m-b-20"></div>
+          {#<blockquote>“We adapted our styling because we thought that Caucasians were slightly bigger, taller, wider—but then we found that 90% of our customers still bought our classic Asian fit. We realised we had a demographic that was very supportive of our product because we gave them a shirt that fitted them.”</blockquote>#}
+          <div class="detail_children_components_layout">
+
+            {{ pimcore_link('linkUrl',{
+              'noText' : true,
+              'class' : 'annex',
+              'type'  : 'button',
+              'textSuffix' : '<span class="annex-txt">Click here to view job postings</span>'
+            }) }}
+
+
+          </div>
+
+        </div>
+        <div class="col-md-4 col-12">
+
+          <div class="subscribe_window_container">
+            {{ pimcore_areablock('head',{
+              "allowed" : [
+                "careers-sub",
+                "careers-list-block"
+
+              ]
+            }) }}
+
+          </div>
+          <div class="share_container_1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+  <script src="http://vjs.zencdn.net/5.4.4/video.js"></script>
+  <script>
+    $(function () {
+      var obj = $("iframe");
+      if (obj){
+        obj.attr('class','content_img');
+      }
+
+    })
+  </script>
+{% endblock %}

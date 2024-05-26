@@ -1,0 +1,127 @@
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="resources_public_list_master_container resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="container">
+            <!--+nav(['Home','Events','News & Announcements'])-->
+            <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                            <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
+                            
+                            <li class="breadcrumb-item">News &amp; Announcements</li>
+                            
+                        </ol>
+                        </nav>
+                        <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt;</span><a class="back_txt" href="/">{{ 'Home'|trans }}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row latest_articles_container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="p_title nocut">{{ pimcore_input('headlines',{'placeholder':'title'}) }}</p>
+                    </div>
+                    {% if list is not empty %}
+                    {% for lastest in list %}
+                        <div class="col-md-6 col-12">
+                            <div class="tab-card-item">
+                                <div class="card-top">
+                                    <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                                    <a href="{{ lastest }}_{{ lastest.getId() }}">
+				    {% if lastest.coverImage is not empty %}
+					<img class="img-resoure" src="{{ lastest.coverImage.getThumbnail('NewsAnnouncementsLatest') }}" >
+                                        {#{{ lastest.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'img-resoure'}}) | raw}}#}
+                                    {% endif %}
+				    </a>
+
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="time-date">{{ lastest.releaseDate | date('d M, Y')  }}</div>
+                                    <div class="title">{{ lastest.title }}</div>
+                                    <a class="find-more" href="{{ lastest }}_{{ lastest.getId() }}">Find out more</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container more_articles_container">
+            <div class="row">
+                <div class="col-12 selcted-container">
+                    <p class="p_title nocut">{{ pimcore_input('moreTitle',{'placeholder':'moreTitle'}) }}</p>
+                </div>
+            </div>
+            <div id="more-News" class="row">
+
+
+            </div>
+            <div style="cursor: pointer;" class="laodmore-view">
+                <a class="load-button">Load More
+                    <div class="arrow_down"></div>
+                </a>
+            </div>
+        </div>
+	{{ pimcore_areablock("newsletter", {
+            "allowed": ["newsletter"]
+        }) }}
+        <!--+reportsMoreCardList("More News & Annoucements",moreValues)-->
+    </div>
+
+    <script>
+
+        getOptions();
+
+        $(".laodmore-view").click(function () {
+            var num = $("#more-News").children().length;
+            getOptions(num)
+        })
+        function getOptions(num = 0){
+            $.ajax({
+                url : '/api/news',
+                type : 'POST',
+                data : {'dataType' : 'more','num' : num},
+                success : function (result) {
+                    if(result.length < 6){
+                        $(".laodmore-view").hide();
+                    }
+                    var text = '';
+                    result.forEach(function (item) {
+                        var date = new Date(item.date).toDateString();
+			var moreImg = '';
+			if(item.coverImage != '')
+			{
+
+				moreImg = '<img class="img-resoure" src="' + item.coverImage + '" >';
+			}
+                        text = '<div class="col-md-6 col-12">' +
+                            '<div class="tab-card-item">' +
+                            '<a href="' + item.fullPath + '_'+ item.id + '">' +
+                            '<div class="card-top">' +
+                            '<img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">' +
+                            '<img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">' +
+                            moreImg +
+                            '</div>' +
+                            '<div class="card-bottom">' +
+                                '<div class="time-date"> ' + date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3] + '</div>' +
+                                '<div class="title"> ' + item.title +'</div>' +
+                            '</div>' +
+                            '</a></div></div>';
+
+                        $("#more-News").append(text);
+                    })
+
+                }
+            })
+        }
+    </script>
+{% endblock %}

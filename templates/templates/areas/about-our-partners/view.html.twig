@@ -1,0 +1,38 @@
+<div class="partners-container container">
+    <div class="row">
+        <div class="col-12 col-md-6 item">
+            <div class="chartset-o-mobile d-block d-sm-none">
+                <img src="/static/images/mobile_charset_o.e7c5fa9.svg">
+            </div>
+            <div class="chartset-o-pc d-md-block d-none">
+                <img src="/static/images/pc_charset_o.932f1e7.svg">
+            </div>
+            <div class="item-title">{{ pimcore_input('client',{'placeholder':'Our Clients'})  }}</div>
+            <div class="sub-title">{{ pimcore_input('clientsText',{'placeholder' : 'describe...'}) }}</div>
+            <div class="bottom-clients">
+                {{ pimcore_link('ourClients',{
+                    'class' : 'bottom-link',
+                    'textSuffix' : '<img class="arrow-right" src="/static/images/arrow_right.9078961.svg">'
+                }) }}
+                {#<a class="bottom-link" href="https://iposintl-fe.fixxstaging.com/ourClients" target="_blank">See who our Clients
+                <img class="arrow-right" src="/static/images/arrow_right.9078961.svg">
+              </a>#}
+            </div>
+        </div>
+        <div class="col-12 col-md-6 item">
+            <div class="chartset-i-mobile d-block d-md-none"><img src="/static/images/mobile_charset_i.625e93b.svg"></div>
+            <div class="chartset-i-pc d-md-block d-none"><img src="/static/images/pc_charset_i.eec95ca.svg"></div>
+            <div class="item-title">{{ pimcore_input('patent',{'placeholder':'Our Partners'})  }}</div>
+            <div class="sub-title">{{ pimcore_input('partnersText',{'placeholder' : 'describe...'}) }}</div>
+            <div class="bottom-clients">
+                {{ pimcore_link('OurPartners',{
+                    'class' : 'bottom-link',
+                    'textSuffix' : '<img class="arrow-right" src="/static/images/arrow_right.9078961.svg">'
+                }) }}
+                {#<a class="bottom-link" href="https://iposintl-fe.fixxstaging.com/ourPartners/" target="_blank">See who our Partners
+                <img class="arrow-right" src="/static/images/arrow_right.9078961.svg">
+              </a>#}
+            </div>
+        </div>
+    </div>
+</div>

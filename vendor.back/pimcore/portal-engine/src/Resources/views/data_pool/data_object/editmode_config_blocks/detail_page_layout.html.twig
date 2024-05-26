@@ -1,0 +1,13 @@
+
+<div class="form-group">
+    <label
+        class="form-control-label">{{ 'portal-engine.data-pool.data-objects.detail-page-layout'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+    <div>
+        {% if detailPageLayoutStore %}
+            {{ pimcore_select(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\DataObjectConfig::DETAIL_PAGE_LAYOUT'), {width:300, store: detailPageLayoutStore}) }}
+        {% else %}
+            <span
+                class="text-info">{{ 'portal-engine.data-pool.data-objects.no-custom-layouts-configured'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+        {% endif %}
+    </div>
+</div>

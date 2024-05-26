@@ -1,0 +1,27 @@
+<section class="our_partners">
+    <div class="container">
+        <div class="our_partners_left"><img src="/static/images/partners_left.767eea5.svg" alt=""></div>
+        <div class="our_partners_right"><img src="/static/images/academy/decoration/partners_right.svg" alt=""></div>
+        <h2>{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h2>
+        <div class="d-flex flex-wrap">
+            {% for i in pimcore_block('tnc_wrap').iterator %}
+            <div class="our_partners_item">
+                {#<img src="/static/images/partners1.5e36a62.png" alt="">#}
+                {{ pimcore_image('partnerImg',{
+                    'thumbnail' : 'coverImg',
+			hidetext : true
+                }) }}
+            </div>
+            {% endfor %}
+            {#<div class="our_partners_item"><img src="/static/images/partners2.188f58f.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners3.e7b6380.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners4.953bca5.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners5.737135d.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners6.2b8eb68.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners7.0cea158.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners8.03b728d.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners9.be08647.png" alt=""></div>
+            <div class="our_partners_item"><img src="/static/images/partners10.44bf05d.png" alt=""></div>#}
+        </div>
+    </div>
+</section>

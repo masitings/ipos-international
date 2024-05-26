@@ -1,0 +1,32 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.select {
+    position: relative;
+}
+.select select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.select select::-ms-expand {
+    display: none;
+}
+.select__icon {
+    color: $gray-500;
+    speak: none;
+    position: absolute;
+    pointer-events: none;
+    right: 20/16*1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}

@@ -1,0 +1,23 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.teaser-grid__item {
+    @include media-breakpoint-up(md) {
+        min-width: 239 / 16 * 1rem;
+    }
+}
+
+.teaser-grid--sm .teaser-grid__item {
+    @include media-breakpoint-up(md) {
+        min-width: 180 / 16 * 1rem;
+        max-width: 180 / 16 * 1rem;
+    }
+}

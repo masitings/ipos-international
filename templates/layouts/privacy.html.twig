@@ -1,0 +1,56 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+<div class="m-container-spacing">
+    <div class="bg_circle"></div>
+    <div class="container m-b-100">
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ document.title }}</li>
+                        </ol>
+                    </nav>
+                    {#<div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Home</span>#}
+                    {#</div>#}
+                </div>
+            </div>
+        </div>
+        <div class="row m-b-45">
+            <div class="col-12">
+                <h1 class="h1">{{ pimcore_input('Headlines',{'placeholder' : 'Privacy Statement'}) }}</h1>
+            </div>
+        </div>
+        <div class="row list-style-format m-b-30">
+            <div class="col-lg-9">
+                <section id="marked-content">
+                    {{  pimcore_wysiwyg("specialContent", {
+                        "height": 200,
+                        "placeholder" : "edit content..."
+                    })
+                    }}
+                </section>
+
+                {#<ol>
+                    <li>This is an IP Office of Singapore (IPOS) International website. Thank you for examining our privacy statement. We adopt the same principles relating to your privacy as other Government of Singapore websites.</li>
+                    <li>If you are only browsing this website, we do not capture data that allows us to identify you individually.</li>
+                    <li>The IP Office of Singapore (IPOS) International website collects personal information to formulate and administer Intellectual Property (IP) laws and policies, promote IP awareness and provide the infrastructure to facilitate the greater development of IP in Singapore. If you choose to send us an e-mail for which you provide us with personally identifiable data, we may share necessary data with other Government agencies, so as to serve you in a most efficient and effective way, unless such sharing is prohibited by law. We will NOT share your personal data with non-Government entities, except where such entities have been authorized to carry out specific Government services.</li>
+                </ol>#}
+            </div>
+        </div>
+        {#<div class="row list-style-format m-b-30">
+            <div class="col-lg-9">
+                <p class="txt-regular m-b-20">For your convenience, we may also display to you data you had previously supplied us or other Government agencies. This will speed up the transaction and save you the trouble of repeating previous submissions. Should the data be changed, please supply us the latest data. We will retain your personal data only as necessary for the effective delivery of public services to you.</p>
+                <ol>
+                    <li>To safeguard your personal data, all electronic storage and transmission of personal data are secured with appropriate security technologies.</li>
+                    <li>This site may contain links to non-Government sites whose data protection and privacy practices may differ from ours. We are not responsible for the content and privacy practices of these other websites and encourage you to consult the privacy notices of those sites.</li>
+                    <li>The IP Office of Singapore (IPOS) International works closely with the Intellectual Property Office of Singapore and its subsidiaries (the “IPOS Group”) in providing its products and services to you. A list of purposes for which the IPOS Group collects, uses and discloses your personal data is set out in the IPOS Group Data Protection Policy available at <a class="org-color" href="/data-protection-policy">Data Protection Policy</a>.</li>
+                    <li>If you have any inquiries relating to our privacy statement or enquiries about data that you have earlier supplied to us, please contact us at <a class="org-color" href="mailto:enquiry@iposinternational.com">enquiry@iposinternational.com</a> or call <b>(65) 6339 8660</b>.</li>
+                </ol>
+            </div>
+        </div>#}
+    </div>
+</div>
+{% endblock %}

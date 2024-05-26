@@ -1,0 +1,4 @@
+security:
+    providers:
+        portal_engine:
+            id: Pimcore\Bundle\PortalEngineBundle\Service\Security\Authentication\UserProvider

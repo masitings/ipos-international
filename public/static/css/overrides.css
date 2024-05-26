@@ -1,0 +1,13 @@
+table.table-with-borders tbody,
+table.table-with-borders td,
+table.table-with-borders tfoot,
+table.table-with-borders th,
+table.table-with-borders thead,
+table.table-with-borders tr {
+    border: 1px solid #333;
+    padding: 12px 15px;
+}
+
+table.table-with-borders {
+    margin-bottom: 15px;
+}

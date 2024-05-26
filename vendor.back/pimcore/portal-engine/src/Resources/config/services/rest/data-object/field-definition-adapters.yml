@@ -1,0 +1,159 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\DefaultAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "default" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\DateAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "date" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\DateTimeAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "datetime" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ImageAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "image" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\VideoAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "video" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\HotspotImageAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "hotspotimage" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ImageGalleryAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "imageGallery" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\LocalizedFieldsAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "localizedfields" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\LinkAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "link" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\QuantityValueAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "quantityValue" }
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "inputQuantityValue" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\BooleanAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "booleanSelect" }
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "newsletterActive" }
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "newsletterConfirmed" }
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "checkbox" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\SelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "select" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\MultiSelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "multiselect" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\CountryAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "country" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\LanguageAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "language" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\CountryMultiSelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "countrymultiselect" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\LanguageMultiSelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "languagemultiselect" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ManyToOneRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "manyToOneRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ManyToManyObjectRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "manyToManyObjectRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\AdvancedManyToManyRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "advancedManyToManyRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\AdvancedManyToManyObjectRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "advancedManyToManyObjectRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ManyToManyRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "manyToManyRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ReverseManyToManyObjectRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "reverseManyToManyObjectRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\BlockAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "block" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\FieldCollectionsAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "fieldcollections" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ObjectbricksAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "objectbricks" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\ClassificationStoreAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "classificationstore" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\TargetGroupAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "targetGroup" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\DataObject\FieldDefinitionAdapter\TargetGroupMultiSelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_field_definition", type: "targetGroupMultiselect" }

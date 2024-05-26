@@ -1,0 +1,75 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    #
+    # User Provider
+    #
+
+    pimcore.portal_engine.statistics_explorer.userprovider_portal_engine:
+        class: Pimcore\Bundle\PortalEngineBundle\Service\StatisticsTracker\User\PortalUserProvider
+        tags:
+            - { name: 'pimcore.statistics_explorer.user_provider_context', context: 'portal' }
+
+    #
+    # Data Sources
+    #
+
+    pimcore.portal_engine.statistics_explorer.datasources.logins:
+        class: Pimcore\Bundle\StatisticsExplorerBundle\StatisticsStorageAdapter\ElasticsearchAdapter
+        arguments:
+            $indexName: '%portal-engine.elasticsearch.index-prefix%statistics_login'
+            $label: 'Portal Logins'
+        tags:
+            - { name: 'pimcore.statistics_explorer.data_source', 'dataSourceName': 'pimcore_portal_engine_statistics_explorer_login', context: 'portal' }
+
+    pimcore.portal_engine.statistics_explorer.datasources.assets-type:
+        class: Pimcore\Bundle\StatisticsExplorerBundle\StatisticsStorageAdapter\ElasticsearchAdapter
+        arguments:
+            $indexName: '%portal-engine.elasticsearch.index-prefix%asset'
+            $label: 'Assets'
+        tags:
+            - { name: 'pimcore.statistics_explorer.data_source', 'dataSourceName': 'pimcoreportalengine_asset', context: 'portal' }
+
+    pimcore.portal_engine.statistics_explorer.datasources.class-definitions:
+        class: Pimcore\Bundle\StatisticsExplorerBundle\StatisticsStorageAdapter\ElasticsearchAdapter
+        arguments:
+            $indexName: '%portal-engine.elasticsearch.index-prefix%class_definitions'
+            $label: 'DataObject Class Definitions'
+        tags:
+            - { name: 'pimcore.statistics_explorer.data_source', 'dataSourceName': 'pimcoreportalengine_class_definitions', context: 'portal' }
+
+    pimcore.portal_engine.statistics_explorer.datasources.asset-update:
+        class: Pimcore\Bundle\StatisticsExplorerBundle\StatisticsStorageAdapter\ElasticsearchAdapter
+        arguments:
+            $indexName: '%portal-engine.elasticsearch.index-prefix%statistics_asset_update'
+            $label: 'Asset Updates'
+        tags:
+            - { name: 'pimcore.statistics_explorer.data_source', 'dataSourceName': 'pimcore_portal_engine_statistics_explorer_asset_update', context: 'portal' }
+
+    pimcore.portal_engine.statistics_explorer.datasources.download:
+        class: Pimcore\Bundle\StatisticsExplorerBundle\StatisticsStorageAdapter\ElasticsearchAdapter
+        arguments:
+            $indexName: '%portal-engine.elasticsearch.index-prefix%statistics_download'
+            $label: 'Downloads'
+        tags:
+            - { name: 'pimcore.statistics_explorer.data_source', 'dataSourceName': 'pimcore_portal_engine_statistics_explorer_download', context: 'portal' }
+
+
+    #
+    # Tracker
+    #
+
+    Pimcore\Bundle\PortalEngineBundle\Service\StatisticsTracker\Elasticsearch\PortalUserLoginTracker:
+        calls:
+            - [setIndexName, ['%portal-engine.elasticsearch.index-prefix%statistics_login']]
+
+    Pimcore\Bundle\PortalEngineBundle\Service\StatisticsTracker\Elasticsearch\AssetUpdateTracker:
+        calls:
+            - [setIndexName, ['%portal-engine.elasticsearch.index-prefix%statistics_asset_update']]
+
+    Pimcore\Bundle\PortalEngineBundle\Service\StatisticsTracker\Elasticsearch\DownloadTracker:
+        calls:
+            - [setIndexName, ['%portal-engine.elasticsearch.index-prefix%statistics_download']]

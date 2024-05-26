@@ -1,0 +1,26 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.main-footer {
+    background: $dark;
+    color: color-yiq($dark);
+    padding: 30/16*1rem 0;
+    font-size: 14/16*1rem;
+}
+.copyright-bar {
+    background: $primary;
+    color: color-yiq($primary);
+    padding: 12/16*1rem;
+    font-size: 14/16*1rem;
+}
+.main-footer__logo {
+    max-height: 74px;
+}

@@ -1,0 +1,130 @@
+
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <style>
+        .tip-link {
+            width:28px;
+            position:absolute;
+            right:20px;
+            top:50%;
+            transform:translateY(-50%);
+        }
+    </style>
+<section class="academy_enterprise_detail__page advisor_detail__page overflow-hidden">
+    <section class="detail">
+        <div class="bg_circle_right"></div>
+        <div class="program-bg-right"><img src="/assets/images/program-right.b0d0785.svg" alt=""></div>
+        <div class="container">
+            <div class="breadcrumb black m-b-80">
+                {% include('layouts/breadcrumb.html.twig') %}
+            </div>
+            {{ pimcore_areablock('smes-head',{
+                'allowed' : [
+                    "headlines"
+                ]
+            }) }}
+            <div class="row">
+                <div class="col-lg-7 col-xl-8">
+                    <h1 class="m-b-40">{{ pimcore_input('pageTitle',{'placeholder':'title '}) }}</h1>
+                    <div class="detail_left">
+                        {#<p class="txt-regular m-b-30">Stay ahead of the innovation curve with our interactive TIP tool showcasing worldwide technology trends in artificial intelligence (AI). This pilot initiative helps innovators understand patenting trends through an easy-to-navigate interface, making patent data more accessible. Leverage the power of this interactive tool to uncover hidden intelligence and keep abreast of technological advances.</p>
+
+                        <p class="txt-regular m-b-30">For more details on the key highlights and interactive charts, go to the
+                            <a class="m-l-4 m-r-4" href="https://www.iposinternational.com/en/resources/tech-insights-through-patents/tech-insights-through-patents-glossary">glossary</a>
+                            page.
+                        </p>#}
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "class" : "txt-regular m-b-30",
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+
+                        <section>
+                            {% if editmode %}
+                                <div class="rounded d-block p-r-100" style="position:relative;background-color: rgba(255, 239, 234, 1);padding: 20px" href="" target="_blank">
+                                    {{  pimcore_wysiwyg("tipContent", {
+                                        "class" : "m-b-0",
+                                        "height": 50,
+                                        "placeholder" : "edit content..."
+                                    })
+                                    }}
+                                    <div class="tip-link">
+                                        {{ pimcore_link('pageLink',{
+                                            'noText' : true,
+                                            'textSuffix' : '<img src="/static/images/icon-arrow-point.f3530e7.png" style="width:28px;position:absolute;right:20px;top:50%;transform:translateY(-50%)">'
+                                        }) }}
+                                    </div>
+
+{#                                    <img src="/static/images/icon-arrow-point.f3530e7.png" style="width:28px;position:absolute;right:20px;top:50%;transform:translateY(-50%)">#}
+                                </div>
+                            {% else %}
+                                {% set tipLink = pimcore_link('pageLink') %}
+                                <a class="rounded d-block p-r-100" style="position:relative;background-color: rgba(255, 239, 234, 1);padding: 20px" href="{{ tipLink.data.path | default('') }}" target="_blank">
+                                    {{  pimcore_wysiwyg("tipContent", {
+                                        "class" : "m-b-0",
+                                        "height": 50,
+                                        "placeholder" : "edit content..."
+                                    })
+                                    }}
+                                    <img src="/static/images/icon-arrow-point.f3530e7.png" style="width:28px;position:absolute;right:20px;top:50%;transform:translateY(-50%)">
+                                </a>
+                            {% endif %}
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+            <div class="space-67"></div>
+            <div class="program program-tip">
+                <h5 class="m-b-24">{{ pimcore_input('moduleTitle',{'placeholder':'title'}) }}</h5>
+                {% if editmode %}
+{#                <div class="row">#}
+                    {% for i in pimcore_block('infoBlock',{'class':'row','limit':6,'reload':true}).iterator %}
+                    <div class="info-item">
+                        <div class="wrap">
+                            <div class="program_content program_content-tip">
+                                <div class="single">
+                                    <h6 class="m-b-12">{{ pimcore_input('itemTitle',{'placeholder':'title'}) }}</h6>
+                                    {{ pimcore_link('pageLink',{
+                                        'class' : 'more d-flex',
+                                        'textSuffix' : '<div class="icon m-l-5"><img src="/static/images/findOut.a9fe174.svg" alt=""></div>'
+                                    }) }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+{#                </div>#}
+                {% else %}
+
+                    <div class="row">
+                        {% set itemList = pimcore_block('infoBlock') %}
+                        {% for item in itemList.iterator %}
+                            {% set link = pimcore_link('pageLink') %}
+                            <div class="col-lg-4 col-md-6 p-r-0 p-l-0">
+                                <div class="wrap">
+                                    <div class="program_content program_content-tip">
+                                        <div class="single">
+                                            <h6 class="m-b-12">{{ pimcore_input('itemTitle',{'placeholder':'title'}) }}</h6>
+                                            <a class="more d-flex" href="{{ link.data.path }}">
+                                                <div class="text color-orange">{{ link.data.text }}</div>
+                                                <div class="icon m-l-5"><img src="/static/images/findOut.a9fe174.svg" alt=""></div></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</section>
+    <script>
+        $(".info-item").parent().addClass('col-lg-4 col-md-6 p-r-0 p-l-0')
+    </script>
+{% endblock %}

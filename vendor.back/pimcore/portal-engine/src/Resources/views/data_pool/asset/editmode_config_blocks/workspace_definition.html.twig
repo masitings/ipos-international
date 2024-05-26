@@ -1,0 +1,24 @@
+{% extends '@PimcorePortalEngine/data_pool/editmode_config_blocks/workspace_definition.html.twig' %}
+
+{% block permissions %}
+    {{ parent() }}
+
+    <div class="d-inline-block mr-3">
+        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_EDIT'), {label:'portal-engine.data-pool.permission.edit'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+    </div>
+    <div class="d-inline-block mr-3">
+        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_UPDATE'), {label:'portal-engine.data-pool.permission.update'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+    </div>
+    <div class="d-inline-block mr-3">
+        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_CREATE'), {label:'portal-engine.data-pool.permission.create'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+    </div>
+    <div class="d-inline-block mr-3">
+        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_DELETE'), {label:'portal-engine.data-pool.permission.delete'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+    </div>
+    <div class="d-inline-block mr-3">
+        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_SUBFOLDER'), {label:'portal-engine.data-pool.permission.subfolder'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+    </div>
+    <div class="d-inline-block mr-3">
+        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_VIEW_OWNED_ASSETS_ONLY'), {label:'portal-engine.data-pool.permission.view-owned-assets-only'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{
+  "name": "pimcore/frontend-permission-toolkit-bundle",
+  "description": "Provides a way to configure permissions for frontend applications in data objects.",
+  "license": "GPL-3.0+",
+  "type": "pimcore-bundle",
+  "autoload": {
+    "psr-4": {
+      "FrontendPermissionToolkitBundle\\": "src/"
+    }
+  },
+  "require": {
+    "pimcore/pimcore": "^6.8 || ^10.0"
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "FrontendPermissionToolkitBundle\\FrontendPermissionToolkitBundle"
+      ]
+    }
+  }
+}

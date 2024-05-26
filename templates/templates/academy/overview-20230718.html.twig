@@ -1,0 +1,447 @@
+{% extends template_layout_name %}
+
+{% block content %}
+    <section class="academy_overview__page">
+        <section class="about">
+            <div class="about_bg_circle"></div>
+            <div class="about_bg_ipos"><img src="/static/images/IPOS.d59bcba.svg" alt=""></div>
+            <div class="container about_content">
+                <div class="breadcrumb m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                {{ pimcore_areablock("Headline", {
+                    "allowed": [
+                        "academy-headlines"
+                    ]
+                }) }}
+            </div>
+        </section>
+        {{ pimcore_areablock("HeadContents", {
+            "allowed": [
+                "academy-credential",
+                "academy-partners"
+
+            ]
+        }) }}
+
+        <section class="courses_indemand">
+            <div class="courses_bg_right"><img src="/static/images/courses_right.0c9f1fc.svg" alt=""></div>
+            <div class="container">
+                <h2>{{ pimcore_input('eventTitle',{'placeholder':'Upcoming Courses'}) }}</h2>
+                <div class="courses_indemand_content">
+                    {% if editmode %}
+                        <div class="courses_tab_content">
+                            <div class="courses_tab_content_item active" id="ipProfesionals">
+                                <div class="row">
+                                    {{ pimcore_relations('ipProfesionals',{
+                                        "title" : "IP Professionals",
+                                        "types": ["object"],
+                                        "classes" : [
+                                            "Course"
+                                        ]
+                                    }) }}
+                                </div>
+                                <div class="view_all">
+                                    {{ pimcore_link('article',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="courses_tab_content_item active" id="publicAgencies">
+
+                                <div class="row">
+                                    {{ pimcore_relations('publicAgencies',{
+                                        "title" : "Public Agencies / Officers",
+                                        "types": ["object"],
+                                        "classes" : [
+                                            "Course"
+                                        ]
+                                    }) }}
+                                </div>
+
+                                <div class="view_all">
+                                    {{ pimcore_link('officers',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="courses_tab_content_item active" id="enterprises">
+                                <div class="row">
+                                    {{ pimcore_relations('enterpris',{
+                                        "title" : "Enterprises / Individuals",
+                                        "types": ["object"],
+                                        "classes" : [
+                                            "Course"
+                                        ]
+                                    }) }}
+                                </div>
+
+                                <div class="view_all">
+                                    {{ pimcore_link('enterprises',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="courses_tab_content_item active" id="graduate">
+
+                                <div class="row">
+                                    {{ pimcore_relations('graduate',{
+                                        "title" : "Graduate Studies",
+                                        "types": ["object"],
+                                        "classes" : [
+                                            "Course"
+                                        ]
+                                    }) }}
+                                </div>
+
+                                <div class="view_all">
+                                    {{ pimcore_link('studies',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <ul class="courses_tab">
+                            <li class="tab_item active" id="ipProfesionals-tab" data-tab="ipProfesionals">IP Professionals</li>
+                            <li class="tab_item" id="agencies-tab" data-tab="publicAgencies">Public Agencies / Officers</li>
+                            <li class="tab_item" id="enterprise-tab" data-tab="enterprises">Enterprises / Individuals</li>
+                            <li class="tab_item" id="graduate-tab" data-tab="graduate">Graduate Studies</li>
+                        </ul>
+                        <div class="courses_tab_content">
+                            <div class="courses_tab_content_item active" id="ipProfesionals">
+                                <div class="row">
+                                    {% if pimcore_relations('ipProfesionals') %}
+                                        {% set ipProfesionalsList = pimcore_relations('ipProfesionals') %}
+                                        {% for key, professionals in ipProfesionalsList %}
+                                            {% if key < 3 %}
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="courses_tab_content_item_card">
+                                                    <div class="card_image">
+                                                        <a href="{{ professionals }}_{{ professionals.getId() }}">
+                                                            {% if professionals.coverImage is not empty %}
+                                                                {{ professionals.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="card_content">
+                                                        <div class="card_content_top">
+                                                            <a href="{{ professionals }}_{{ professionals.getId() }}">{{ professionals.title }}</a>
+                                                        </div>
+                                                        <div class="card_content_bottom">
+                                                            <div class="place">
+                                                                <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                                <div class="text">{{ professionals.venueText | default(professionals.venue) }}</div>
+                                                            </div>
+                                                            {% set professionalsTbc = false %}
+                                                            {% if professionals.getPlaning() is not empty %}
+                                                                <div class="date  xxprofesional">
+                                                                    {% set count = 0 %}
+                                                                    {% for courseDate in professionals.getPlaning() %}
+                                                                        {% if courseDate.startDate != '' %}
+                                                                            {% if count > 0 %}
+                                                                                ,
+                                                                            {% endif %}
+                                                                            {% if courseDate.lastDate != '' %}
+                                                                                {# {{ courseDate.startDate | date('d M Y') }} -
+                                                                                {{ courseDate.lastDate | date('d M Y') }} #}
+                                                                                {% if courseDate.startDate | date('M') == courseDate.lastDate | date('M') %}
+                                                                                        {{ courseDate.startDate | date('d')}} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }} 
+                                                                                    {% else %}
+                                                                                        {{ courseDate.startDate | date('d M Y') }} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }}
+                                                                                    {% endif %}
+                                                                            {% else %}
+                                                                                {{ courseDate.startDate | date('d M Y') }}
+                                                                            {% endif %}
+                                                                            {% set count = count +1 %}
+                                                                        {% else %}
+                                                                            {% if professionalsTbc == false %}
+                                                                                TBC
+                                                                            {% endif %}
+
+                                                                            {% set professionalsTbc = true %}
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                </div>
+                                                            {% else %}
+                                                                {% if professionalsTbc == false %}
+                                                                    <div class="date">TBC</div>
+                                                                {% endif %}
+
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="view_all">
+                                    {{ pimcore_link('article',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="courses_tab_content_item" id="publicAgencies">
+                                <div class="row">
+                                    {% if pimcore_relations('publicAgencies') %}
+                                        {% set list = pimcore_relations('publicAgencies') %}
+                                        {% for key, officers in list %}
+                                            {% if key < 3  %}
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="courses_tab_content_item_card">
+                                                        <div class="card_image">
+                                                            <a href="{{ officers }}_{{ officers.getId() }}">
+                                                                {% if officers.coverImage is not empty %}
+                                                                    {{ officers.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="card_content">
+                                                            <div class="card_content_top">
+                                                                <a href="{{ officers }}_{{ officers.getId() }}">{{ officers.title }}</a>
+                                                            </div>
+                                                            <div class="card_content_bottom">
+                                                                <div class="place">
+                                                                    <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                                    <div class="text">{{ officers.venueText|default(officers.venue) }}</div>
+                                                                </div>
+                                                                {% set officersTbc = false %}
+                                                                {% if officers.getPlaning() is not empty %}
+                                                                    <div class="date xxpublicagencies">
+                                                                        {% set count = 0 %}
+                                                                        {% for courseDate in officers.getPlaning() %}
+                                                                            {% if courseDate.startDate != '' %}
+                                                                                {% if count > 0 %}
+                                                                                    ,
+                                                                                {% endif %}
+                                                                                {% if courseDate.lastDate != '' %}
+                                                                                    {# {{ courseDate.startDate | date('d M Y') }} -
+                                                                                    {{ courseDate.lastDate | date('d M Y') }} #}
+                                                                                    {% if courseDate.startDate | date('M') == courseDate.lastDate | date('M') %}
+                                                                                        {{ courseDate.startDate | date('d')}} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }} 
+                                                                                    {% else %}
+                                                                                        {{ courseDate.startDate | date('d M Y') }} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }}
+                                                                                    {% endif %}
+                                                                                {% else %}
+                                                                                    {{ courseDate.startDate | date('d M Y') }}
+                                                                                {% endif %}
+                                                                                {% set count = count +1 %}
+                                                                            {% else %}
+                                                                                {% if officersTbc == false %}
+                                                                                    TBC
+                                                                                {% endif %}
+
+                                                                                {% set officersTbc = true %}
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% else %}
+                                                                    {% if officersTbc == false %}
+                                                                        <div class="date">TBC</div>
+                                                                    {% endif %}
+
+                                                                {% endif %}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+
+                                        {% endfor %}
+                                    {% endif %}
+
+
+                                </div>
+                                <div class="view_all">
+                                    {{ pimcore_link('officers',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="courses_tab_content_item" id="enterprises">
+                                <div class="row">
+                                    {% if pimcore_relations('enterpris') %}
+                                        {% set list = pimcore_relations('enterpris') %}
+                                        {% for key, officers in list %}
+                                            {% if key < 3 %}
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="courses_tab_content_item_card">
+                                                        <div class="card_image">
+                                                            <a href="{{ officers }}_{{ officers.getId() }}">
+                                                                {% if officers.coverImage is not empty %}
+                                                                    {{ officers.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="card_content">
+                                                            <div class="card_content_top">
+                                                                <a href="{{ officers }}_{{ officers.getId() }}">{{ officers.title }}</a>
+                                                            </div>
+                                                            <div class="card_content_bottom">
+                                                                <div class="place">
+                                                                    <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                                    <div class="text">{{ officers.venueText|default(officers.venue) }}</div>
+                                                                </div>
+                                                                {% set officersTbc = false %}
+                                                                {% if officers.getPlaning() is not empty %}
+                                                                    <div class="date  xxenterprise">
+                                                                        {% set count = 0 %}
+                                                                        {% for courseDate in officers.getPlaning() %}
+                                                                            {% if courseDate.startDate != '' %}
+                                                                                {% if count > 0 %}
+                                                                                    ,
+                                                                                {% endif %}
+                                                                                {% if courseDate.lastDate != '' %}
+                                                                                    {# {{ courseDate.startDate | date('d M Y') }} -
+                                                                                    {{ courseDate.lastDate | date('d M Y') }} #}
+                                                                                    {% if courseDate.startDate | date('M') == courseDate.lastDate | date('M') %}
+                                                                                        {{ courseDate.startDate | date('d')}} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }} 
+                                                                                    {% else %}
+                                                                                        {{ courseDate.startDate | date('d M Y') }} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }}
+                                                                                    {% endif %}
+                                                                                {% else %}
+                                                                                    {{ courseDate.startDate | date('d M Y') }}
+                                                                                {% endif %}
+                                                                                {% set count = count +1 %}
+                                                                            {% else %}
+                                                                                {% if officersTbc == false %}
+                                                                                    TBC
+                                                                                {% endif %}
+
+                                                                                {% set officersTbc = true %}
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% else %}
+                                                                    {% if officersTbc == false %}
+                                                                        <div class="date">TBC</div>
+                                                                    {% endif %}
+
+                                                                {% endif %}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+
+                                        {% endfor %}
+                                    {% endif %}
+
+
+                                </div>
+                                <div class="view_all">
+                                    {{ pimcore_link('enterprises',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="courses_tab_content_item" id="graduate">
+
+                                <div class="row">
+                                    {% if pimcore_relations('graduate') %}
+                                        {% set list =  pimcore_relations('graduate')  %}
+                                        {% for key, studies in list %}
+                                            {% if key < 3 %}
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="courses_tab_content_item_card">
+                                                        <div class="card_image">
+                                                            <a href="{{ studies }}_{{ studies.getId() }}">
+                                                                {% if studies.coverImage is not empty %}
+                                                                    {{ studies.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+                                                                {% endif %}
+                                                            </a>
+
+                                                        </div>
+                                                        <div class="card_content">
+                                                            <div class="card_content_top">
+                                                                <a href="{{ studies }}_{{ studies.getId() }}">{{ studies.title }}</a>
+                                                            </div>
+                                                            <div class="card_content_bottom">
+                                                                <div class="place">
+                                                                    <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                                    <div class="text">{{ studies.venueText | default(studies.venue) }}</div>
+                                                                </div>
+                                                                {% set tbc = false %}
+                                                                {% if studies.getPlaning() is not empty %}
+
+                                                                    <div class="date   xxgraduate">
+                                                                        {% set count = 0 %}
+                                                                        {% for courseDate in studies.getPlaning() %}
+
+                                                                            {% if courseDate.startDate is not empty %}
+
+                                                                                {% if count > 0 %}
+                                                                                    ,
+                                                                                {% endif %}
+                                                                                {% if courseDate.lastDate is not empty %}
+
+                                                                                    {# {{ courseDate.startDate | date('d M Y') }} -
+                                                                                    {{ courseDate.lastDate | date('d M Y') }} #}
+                                                                                    {% if courseDate.startDate | date('M') == courseDate.lastDate | date('M') %}
+                                                                                        {{ courseDate.startDate | date('d')}} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }} 
+                                                                                    {% else %}
+                                                                                        {{ courseDate.startDate | date('d M Y') }} -
+                                                                                        {{ courseDate.lastDate | date('d M Y') }}
+                                                                                    {% endif %}
+                                                                                {% else %}
+
+                                                                                    {{ courseDate.startDate | date('d M Y') }}
+                                                                                {% endif %}
+                                                                                {% set count = count +1 %}
+                                                                                {% set tbc = true %}
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% else %}
+                                                                    {% if tbc == false %}
+                                                                        <div class="date">TBC</div>
+                                                                    {% endif %}
+
+                                                                {% endif %}
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+                                        {% endfor %}
+                                    {% endif %}
+
+                                </div>
+                                <div class="view_all">
+                                    {{ pimcore_link('studies',{
+                                        'class' : 'view_all_content',
+                                        'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                    }) }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

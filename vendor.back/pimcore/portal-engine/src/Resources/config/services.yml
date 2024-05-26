@@ -1,0 +1,82 @@
+imports:
+    - { resource: 'services/installer.yml' }
+    - { resource: 'services/asset/services.yml' }
+    - { resource: 'services/data-object/services.yml' }
+    - { resource: 'services/data-pool/data-pool.yml' }
+    - { resource: 'services/content/services.yml' }
+    - { resource: 'services/frontend/services.yml' }
+    - { resource: 'services/element/services.yml' }
+    - { resource: 'services/rest/api.yml' }
+    - { resource: 'services/search/index.yml' }
+    - { resource: 'services/commands.yml' }
+    - { resource: 'services/maintenance.yml' }
+    - { resource: 'services/portal-config.yml' }
+    - { resource: 'services/misc.yml' }
+    - { resource: 'services/security.yml' }
+    - { resource: 'services/batch-task.yml' }
+    - { resource: 'services/messenger.yml' }
+    - { resource: 'services/download/services.yml' }
+    - { resource: 'services/download/provider.yml' }
+    - { resource: 'services/download/generator.yml' }
+    - { resource: 'services/download/estimate.yml' }
+    - { resource: 'services/collection/services.yml' }
+    - { resource: 'services/public-share/services.yml' }
+    - { resource: 'services/saved-search/services.yml' }
+    - { resource: 'services/workflow.yml' }
+    - { resource: 'services/wizard.yml' }
+    - { resource: 'services/document.yml' }
+    - { resource: 'services/form.yml' }
+    - { resource: 'services/user.yml' }
+    - { resource: 'services/statistics-explorer/services.yml' }
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+        bind:
+            Psr\Log\LoggerInterface: '@monolog.logger.portalengine'
+
+    monolog.logger.portalengine:
+        class: Psr\Log\LoggerInterface
+        tags:
+            - { name: monolog.logger, channel: portalengine }
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    Pimcore\Bundle\PortalEngineBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    #
+    # Twig Extensions
+    #
+    Pimcore\Bundle\PortalEngineBundle\Twig\:
+        resource: '../../Twig/*'
+
+    #
+    # Event Subscribers
+    #
+    Pimcore\Bundle\PortalEngineBundle\EventSubscriber\:
+        resource: '../../EventSubscriber/*'
+
+
+
+
+    #
+    # Message Handlers
+    #
+    Pimcore\Bundle\PortalEngineBundle\MessageHandler\:
+        resource: '../../MessageHandler/*'
+
+    Pimcore\Bundle\PortalEngineBundle\Installer:
+        public: true
+        arguments:
+            # fetch the bundle via expression language
+            $bundle: "@=service('kernel').getBundle('PimcorePortalEngineBundle')"

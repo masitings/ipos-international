@@ -1,0 +1,137 @@
+{% extends template_layout_name %}
+
+{% block content %}
+
+    <div class="m-b-100">
+
+        <div class="academy_enterprise_detail__page advisor_detail__page">
+            <div class="detail p-b-0">
+                <div class="bg_circle_right"></div>
+                <div class="program-bg-right">
+                    <img src="/static/images/program-right.b275c14.svg" alt="">
+                </div>
+                <div class="container">
+                    <div class="breadcrumb black m-b-80">
+                        {% include('layouts/breadcrumb.html.twig') %}
+                    </div>
+                    {{ pimcore_areablock('smes-head',{
+                        'allowed' : [
+                            "headlines"
+                        ]
+                    }) }}
+
+                </div>
+            </div>
+        </div>
+
+        {{ pimcore_areablock('smes-content',{
+            'allowed' : [
+                "smes-key-highlights",
+                "interactive-charts",
+                "textarea-embed"
+            ]
+        }) }}
+        {#<div class="academy_enterprise_detail__page advisor_detail__page">
+            <div class="detail p-b-0">
+                <div class="bg_circle_right"></div>
+                <div class="program-bg-right"><img src="/static/images/program-right.b275c14.svg" alt=""></div>
+                <div class="container">
+                    <div class="breadcrumb black m-b-80">
+                        {% include('layouts/breadcrumb.html.twig') %}
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="col-lg-8">
+                                <h1 class="m-b-40">{{ pimcore_input('headline',{'placeholder' : 'Headline...'}) }}</h1>
+                                <div class="row detail_left">
+                                    <div class="col-lg-8"></div>
+                                    <p class="txt-regular m-b-30">
+                                    <section id="headline-content">
+                                        {{  pimcore_wysiwyg("textarea", {
+                                            "height": 200,
+                                            "htmlspecialchars" : false,
+                                            "placeholder": "decribe..."
+                                        })
+                                        }}
+                                    </section>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-11">
+                            {{ pimcore_image('img_fluid',{
+                                "title": "Drag your image here",
+                                imgAttributes : {class : 'img-fluid w-100'},
+                                'thumbnail' : 'Courses'
+                            }) }}
+                            #}{#                            <img class="img-fluid w-100" src="/static/images/sme-img.4ed8eb1.png">#}{#
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about_container">
+            <div class="credential_container credential_container__transparent p-t-45">
+                <div class="container">
+                    <h4 class="h4 m-b-30">Key Highlights</h4>
+                    <div class="row">
+                        <div class="col-6 col-md-5 m-b-45">
+                            <div class="statistic_item">
+                                <div class="statistic_txt">~400K</div>
+                                <div class="statistic_des">Inventions published globally in 2011-2020.</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-5 offset-md-1 m-b-45">
+                            <div class="statistic_item">
+                                <div class="statistic_txt">29.8%</div>
+                                <div class="statistic_des">CAGR in 2011-2020, almost 5x the average growth of worldwide patent filings.</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-5 m-b-45">
+                            <div class="statistic_item">
+                                <div class="statistic_txt">35</div>
+                                <div class="statistic_des">All technology fields have registered related applications, indicating that AI has been applied in virtually all industries.</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-5 offset-md-1 m-b-45">
+                            <div class="statistic_item">
+                                <div class="statistic_txt">~30%</div>
+                                <div class="statistic_des">Inventions were contributed by universities and research institutions, implying that AI is a nascent area.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11">
+                    <h3 class="h3 m-b-20">{{ pimcore_input('Title',{'placeholder' : 'Title...'}) }}</h3>
+                    <div class="list-style-format">
+                        <ol class="list-style-number color-gray-dark">
+                            {% for i in pimcore_block('interactive').iterator %}
+                                <li class="txt-regular">
+                                    {{ pimcore_input('txt-regular',{'placeholder' : 'decribe...'}) }}
+                                </li>
+                            {% endfor %}
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <section id="embed-text">
+                {{  pimcore_textarea("textarea", {
+                    "height": 200,
+                    "htmlspecialchars" : false,
+                    "placeholder": "Embed your code here"
+                })
+                }}
+            </section>
+        </div>#}
+    </div>
+
+{% endblock %}

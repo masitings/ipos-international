@@ -1,0 +1,9 @@
+.detail table tbody,
+.detail table td,
+.detail table tfoot,
+.detail table th,
+.detail table thead,
+.detail table tr {
+    border: 1px solid #333;
+    padding: 12px 15px;
+}

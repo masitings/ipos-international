@@ -1,0 +1,38 @@
+<div class="resources_public_recommend-container">
+    <p class="recommend-title">{{ pimcore_input('alsoList',{'placeholder' : 'You May Be Interested In'}) }}</p>
+    {% if editmode %}
+        {{ pimcore_relations('objectsAll',{
+            "types": ["object"],
+            "classes" : [
+                "Career"
+            ]
+        }) }}
+    {% else %}
+        {% set list = pimcore_relations('objectsAll') %}
+        {% if list is not empty %}
+            {% for interested in list %}
+                <a class="recommend_item" href="{{ interested }}_{{ interested.getId() }}">
+                    {% if interested.coverImage is not empty %}
+
+                        <img class="recommend-img" src="{{ interested.coverImage.getThumbnail('coverImg') }}" >
+                    {% endif %}
+                    <div class="recommend-txt-layout">
+                        <p class="txt-date">{{ interested.className }}</p>
+                        <p class="recommend-txt-title">{{ interested.title }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+
+    <div class="share-container">
+        <span class="share-txt">SHARE</span>
+        <div class="share-layout">
+            <a class="share-icon facebook" style="background-image:url(&quot;/static/images/icon-Facebook.c78e324.svg&quot;)" href=""></a>
+            <a class="share-icon linkedin" style="background-image:url(&quot;/static/images/icon-Linkedin.dac1a71.svg&quot;)" href=""></a>
+            <a class="share-icon twitter" style="background-image:url(&quot;/static/images/icon-Twitter.6adf57e.svg&quot;)" href=""></a>
+            <a class="share-icon email" style="background-image:url(&quot;/static/images/icon-Email.bd681cf.svg&quot;)" href=""></a>
+        </div>
+    </div>
+</div>

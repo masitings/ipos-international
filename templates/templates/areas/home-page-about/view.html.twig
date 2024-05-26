@@ -1,0 +1,39 @@
+{% if editmode %}
+    <section id="matterJS">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h2 class="ipos-title m-b-30">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h2>
+                </div>
+                <div class="col-lg-9">
+                    <div class="about-des-wrap">
+                        <p>We <span class="animate-highlight animate-highlight-1">empower</span> enterprises, public agencies, and professionals in unlocking tangible value from their <span class="animate-highlight animate-highlight-2">intangible assets (IA)</span> and <span class="animate-highlight animate-highlight-3">intellectual property (IP)</span>, through holistic advisory and professional development programmes.</p>
+                    </div>
+                </div>
+            </div>
+            {{ pimcore_link('aboutLink',{
+                'class' : 'btn btn__hollow m-t-60',
+                'placeholder' : 'Who We Are..'
+            }) }}
+        </div>
+    </section>
+{% else %}
+    <section class="sec-what-about" id="matterJS">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="ipos-title m-b-30">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h2>
+            </div>
+            <div class="col-lg-9">
+                <div class="about-des-wrap">
+                    <p>We <span class="animate-highlight animate-highlight-1">empower</span> enterprises, public agencies, and professionals in unlocking tangible value from their <span class="animate-highlight animate-highlight-2">intangible assets (IA)</span> and <span class="animate-highlight animate-highlight-3">intellectual property (IP)</span>, through holistic advisory and professional development programmes.</p>
+                </div>
+            </div>
+        </div>
+        {{ pimcore_link('aboutLink',{
+            'class' : 'btn btn__hollow m-t-60',
+            'placeholder' : 'Who We Are..'
+        }) }}
+    </div>
+</section>
+{% endif %}

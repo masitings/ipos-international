@@ -1,0 +1,57 @@
+<div class="credential_content">
+    <div class="credential_content_left">
+        <img src="/static/images/credential_left.3f3dad0.svg" alt=""></div>
+    <div class="credential_content_right">
+        <img src="/static/images/credential_right.a13c81c.svg" alt=""></div>
+    <div class="container">
+        <h2>{{ pimcore_input('title',{'placeholder' : 'title...'}) }}</h2>
+        <div class="row">
+            {% for i in pimcore_block('tnc_wrap').iterator %}
+                <div class="col-lg-4 col-md-6 col-6">
+                    <div class="credential_content_item">
+                        <div class="credential_content_item_label">
+                            {{ pimcore_input("number",{'placeholder' : 'example 15+'}) }}
+                        </div>
+                        <p>{{ pimcore_input("text",{'placeholder' : 'describe'}) }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            {#<div class="col-lg-4 col-md-6 col-6">
+                <div class="credential_content_item">
+                    <div class="credential_content_item_label">15<span>+</span></div>
+                    <p>Years of Education and Training Experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6">
+                <div class="credential_content_item">
+                    <div class="credential_content_item_label text">Singapore's Only</div>
+                    <p>Dedicated Centre for IP Education and Training.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6">
+                <div class="credential_content_item">
+                    <div class="credential_content_item_label">4k<span>+</span></div>
+                    <p>Professionals Trained Annually.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6">
+                <div class="credential_content_item">
+                    <div class="credential_content_item_label">100<span>+</span></div>
+                    <p>Training Programmes Conducted Yearly.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6">
+                <div class="credential_content_item">
+                    <div class="credential_content_item_label">500<span>+</span></div>
+                    <p>Overseas Participants Trained Annually.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6">
+                <div class="credential_content_item">
+                    <div class="credential_content_item_label">10<span>+</span></div>
+                    <p>Overseas / Local MOU Partners.</p>
+                </div>
+            </div>#}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% do document.setTitle(list.seoTitle | default(list.title ~ ' — IPOS International')) %}
+{% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
+{% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
+{% set domain = app.request.getSchemeAndHttpHost() %}
+
+{% set img = list.coverImage.getThumbnail('coverImg') %}
+
+{% do pimcore_head_meta().setProperty("og:title", list.title | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("og:type", 'article') %}
+{% do pimcore_head_meta().setProperty("og:description", list.content | striptags | u.truncate(320)) %}
+{% do pimcore_head_meta().setProperty("og:author", list.author) %}
+{% do pimcore_head_meta().setProperty("og:image", domain ~ img) %}
+{% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}
+
+{% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
+{% do pimcore_head_meta().setProperty("twitter:type", "article") %}
+{% do pimcore_head_meta().setProperty("twitter:title", list.title | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("twitter:description", list.content | striptags | u.truncate(160)) %}
+{% do pimcore_head_meta().setProperty("twitter:image", domain ~ img) %}
+{% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %}
+
+{% block content %}
+
+    <div class="resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+
+                        <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(25).fullpath }}">Resources</a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(31).fullpath }}">Webinar Recordings </a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ list.title  }}</li>
+                        </ol>
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><a href="{{ pimcore_document(31).fullpath }}" class="back_txt">Webinar Recordings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title">{{ list.title }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="posted-container">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details_video_body_container container">
+            <div class="row">
+                
+                <div class="col-12">
+                    <div class="content_main_video" id="play_link">
+                        {% if list.video is not empty %}
+                            <iframe class="content_img" src="https://www.youtube.com/embed/{{ list.video.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% else %}
+                            <img class="content_img" src="{{ list.coverImage.getThumbnail('ArticleDetailBackground') }}" >
+                        {% endif %}
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="body_container container">
+            <div class="row">
+                <div class="col-md-8 col-12 column-padding">
+                    <div class="autoplay-content-container m-b-90">
+                        {{ list.content | raw }}
+
+                        {% if list.file is not empty %}
+                            <section class="file-load-view">
+                                <div class="load-container">
+                                    <span class="pdf-svg"></span>
+                                    <span class="down-txt">{{ list.file.text }}</span>
+                                    <a class="down-icon" href="{{ list.file.path }}" target="_blank"></a>
+                                </div>
+                            </section>
+                        {% endif %}
+
+                        {% if list.full is not empty %}
+
+                            <p class="sub-title h-sub fs-5">Want more great content?</p>
+                            <p class="desc txt-regular">Browse our <a target="_blank" href="{{ list.full.path }}" class="link__org ">{{ list.full.text }}</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                {% if list.interestedList is not empty %}
+                    <div class="col-md-4 col-12">
+                        <div class="resources_public_recommend-container">
+                            {% if list.interestedTitle is not empty %}
+                                <p class="recommend-title">{{ list.interestedTitle }}</p>
+                                {% else %}
+                                    <p class="recommend-title">Also Worth Reading/Watching</p>
+                            {% endif %}
+
+                            {% for item in list.interestedList %}
+                                <a href="{{ item }}_{{ item.getId() }}" class="recommend_item">
+                                    {% if item.coverImage is not empty %}
+					<img class="recommend-img" src="{{ item.coverImage.getThumbnail('Also_Worth_Reading_OR_Watching') }}" >
+                                        {# {{ item.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'recommend-img'}}) | raw }} #}
+                                    {% endif %}
+                                    <div class="recommend-txt-layout">
+                                        <p class="txt-date">{{ item.resourceType | default('') }}</p>
+                                        <p class="recommend-txt-title">{{ item.title }}</p>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                            {% if list.shares is not empty %}
+                                <div class="share-container">
+                                    <span class="share-txt">SHARE</span>
+                                    <div class="share-layout">
+                                        {% for share in list.shares %}
+                                            <a name="share" class="{{ share.getShare().class }}" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <div class="dialog_mask hidden" id="video_play_layout">
+        <div class="dialog_container container">
+            <div class="dialog_inner_container">
+                <div class="dialog_inner_mask"></div>
+                <div class="dialong_inner_layout">
+                    <div class="dialog_head"><a class="close_btn"></a></div>
+                    <div class="dialog_body">
+                        <video class="brower_video" id="player" controls="controls" poster="https://img1.baidu.com/it/u=395380977,272417941&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg">
+                            <source src="https://v-cdn.zjol.com.cn/280443.mp4" type="video/ogg">
+                            <source src="https://v-cdn.zjol.com.cn/280443.mp4" type="video/mp4">Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="dialog_foot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.data-table-container {
+    width: 0;
+    min-width: 100%;
+}
+.data-table {
+    max-height: 60vh;
+    font-size: 12/16*1rem;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+
+    @include scrollbar();
+}
+.data-table__settings {
+    width: 60/16*1rem;
+}
+.data-table p {
+    min-width: 250/16*1rem;
+}
+.data-table thead th {
+    background: $white;
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
+    z-index: 2;
+    box-shadow: 4/16*1rem 0 4/16*1rem 0 rgba(0,0,0,.3);
+    font-family: $font-family-bold;
+    font-weight: $font-weight-bold;
+    color: $dark;
+}
+.data-table thead th,
+.data-table tbody td,
+.data-table tbody th {
+    padding: 10/16*1rem;
+}
+.data-table__img {
+    min-width: 94/16*1rem;
+    width: 94/16*1rem;
+}

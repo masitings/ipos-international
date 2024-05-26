@@ -1,0 +1,35 @@
+<div class="sec-advisory">
+    <div class="sec-advisory-wrap">
+        <div class="sec-advisory-wrap__video">
+            <video autoplay muted loop>
+                <source src="/static/videos/istock-video.2e3346c.mp4" type="video/mp4">
+            </video>
+            <div class="sec-advisory-wrap__content">
+                <div class="outter-circle"></div>
+                <div class="content-wrap">
+                    <span class="mini-title m-b-15">{{ pimcore_input('headTitle',{'placeholder' : 'title.'}) }}</span>
+                    <h2 class="m-b-30 advisory-title">{{ pimcore_input('headText',{'placeholder':'describe'}) }}</h2>
+
+                    {{ pimcore_link('moreLink',{
+                        'class' : 'btn btn__hollow btn__hollow--white'
+                    }) }}
+                </div>
+            </div>
+            <a class="pin-book" href="/advisory/ip-chat/">
+                <div class="m-r-10">
+                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.7">
+                            <circle cx="20" cy="20.7808" r="20" fill="white"/>
+                            <circle cx="20" cy="20.7808" r="20" fill="#DACEE1"/>
+                        </g>
+                        <path d="M16.2485 13.2773V15.7784" stroke="#470A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23.7516 13.2773V15.7784" stroke="#470A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.4969 18.6961H27.5032" stroke="#470A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="12.4969" y="14.5278" width="15.0062" height="13.7557" rx="3" stroke="#470A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </div>
+                <p>Book an IA chat session with our Advisors.</p></a>
+        </div>
+    </div>
+</div>

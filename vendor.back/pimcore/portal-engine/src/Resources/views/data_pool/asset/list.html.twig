@@ -1,0 +1,48 @@
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% do portalEngine_frontendConfig().setConfig("list.tags.active", tagsActive) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.active", foldersActive) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.root.path", rootPath) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.root.name", rootName) %}
+{% do portalEngine_frontendConfig().setConfig("list.selectAllMaxSize", selectAllMaxSize) %}
+
+{% block content %}
+    {% block breadcrumb %}
+        <div class="container d-md-none mb-3">
+            {{ include('@PimcorePortalEngine/shared/navigation/breadcrumb/breadcrumb.html.twig', {
+                additionalBreadcrumbs: insideUploadFolder ? [{
+                    label: "upload.upload-folder.list-title" | trans,
+                    uri: document ~ '?uploadFolder=true'
+                }] : []
+            }) }}
+        </div>
+    {% endblock %}
+
+    {% block uploadfolder_header %}
+        {% if insideUploadFolder %}
+            <div class="container d-none d-md-block">
+                <div class="my-4">
+                    <h1 class="mb-0">{{"upload.upload-folder.list-title" | trans}}</h1>
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block react_root %}
+        <div
+            id="root"
+            class="full-height-layout"
+            data-list-url="{{ path('pimcore_portalengine_rest_api_asset_list', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q'), uploadFolder: insideUploadFolder ? 'true' : 'false'}) }}"
+            data-filters-url="{{ path('pimcore_portalengine_rest_api_asset_list_filters', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q'), uploadFolder: insideUploadFolder ? 'true' : 'false'}) }}"
+            data-folders-url="{{ path('pimcore_portalengine_rest_api_asset_list_folders', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q')}) }}"
+            data-tags-url="{{ path('pimcore_portalengine_rest_api_asset_list_tags', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q'), uploadFolder: insideUploadFolder ? 'true' : 'false'}) }}"
+            data-all-selectable-ids-url="{{ path('pimcore_portalengine_rest_api_asset_select_all_ids', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q'), uploadFolder: insideUploadFolder ? 'true' : 'false'}) }}"
+        >
+        </div>
+    {% endblock %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('asset-list', null, webpack_build()) }}
+{% endblock %}

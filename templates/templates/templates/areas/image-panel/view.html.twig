@@ -1,0 +1,24 @@
+
+    {#<img class="panel-img" src="/static/images/landing-cover.127f8f5.jpg">#}
+
+    {% if editmode %}
+        <div>
+            {{ pimcore_image("overviewImage", {
+                imgAttributes : {class : "panel-img"},
+                "title": "Drag your image here",
+                "height": 300,
+                "thumbnail": "advisoryOverview"
+            }) }}
+        </div>
+    {% else %}
+        <div class="image-panel-view">
+            {{ pimcore_image("overviewImage", {
+                imgAttributes : {class : "panel-img"},
+                "title": "Drag your image here",
+                "height": 300,
+                "thumbnail": "advisoryOverview"
+            }) }}
+        </div>
+    {% endif %}
+
+

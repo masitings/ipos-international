@@ -1,0 +1,33 @@
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% do portalEngine_frontendConfig().setConfig("list.tags.active", tagsActive) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.active", foldersActive) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.root.path", rootPath) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.root.name", rootName) %}
+{% do portalEngine_frontendConfig().setConfig("list.selectAllMaxSize", selectAllMaxSize) %}
+
+{% block content %}
+
+    {% block breadcrumb %}
+        <div class="container d-md-none mb-3">
+            {{ include('@PimcorePortalEngine/shared/navigation/breadcrumb/breadcrumb.html.twig') }}
+        </div>
+    {% endblock %}
+
+    {% block react_root %}
+        <div
+            id="root"
+            class="full-height-layout"
+            data-list-url="{{ path('pimcore_portalengine_rest_api_data_object_list', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q')}) }}"
+            data-filters-url="{{ path('pimcore_portalengine_rest_api_data_object_list_filters', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q')}) }}"
+            data-folders-url="{{ path('pimcore_portalengine_rest_api_data_object_list_folders', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q')}) }}"
+            data-tags-url="{{ path('pimcore_portalengine_rest_api_data_object_list_tags', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q')}) }}"
+            data-all-selectable-ids-url="{{ path('pimcore_portalengine_rest_api_data_object_select_all_ids', {dataPoolId:dataPoolId, searchTerms: app.request.query.get('q')}) }}"
+        >
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('data-object-list', null, webpack_build()) }}
+{% endblock %}

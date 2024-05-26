@@ -1,0 +1,84 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise_detail__page advisor_detail__page advisor_ipChat__page">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="program-bg-right"><img src="/static/images/program-right.b275c14.svg" alt=""></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                {{ pimcore_areablock('head',{
+                    "allowed" : [
+                        "advisory-head"
+                    ]
+                }) }}
+                <div class="space-67"></div>
+            </div>
+            {{ pimcore_areablock("embedCode",{
+                'allowed' : [
+                    "advisory-content"
+                ]
+            }) }}
+        </section>
+
+
+    </section>
+    <script>
+
+        $( window ).on( "load", function() {
+            var sharePosition = $(".ip_chat_content .row .col-lg-8 ").position().top;
+            if ($(window).width() > 999) {
+                $('.share').css({
+                    'margin-top': '28px' ,
+                    'margin-left': '5px',    
+                    'display': 'flex',
+                })
+            }else{
+                $('.share').css({
+                    'display': 'flex',
+                })
+            }
+        });
+
+    </script>
+
+    <style>
+        @media screen and (min-width: 769px) {
+            .advisor_detail__page{
+                overflow: hidden;
+            }
+        }
+        
+        .advisor_detail__page{
+            overflow: hidden;
+        }
+        
+        /*@media screen and (min-width: 769px) {
+            .pimcore_area_advisory-content.pimcore_area_content{
+                position: relative;
+            }
+
+            .pimcore_area_shares.pimcore_area_content {
+                position: absolute;
+            }
+
+            .pimcore_area_shares.pimcore_area_content .share{
+                position: absolute;
+                right: 0;
+                margin-top: 596px;
+                margin-right: 45px;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            .pimcore_area_advisory-content.pimcore_area_content #contentText img{
+                max-width: 100%;
+                height: inherit !important;
+            }
+        }*/
+    </style>
+
+    <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+{% endblock %}

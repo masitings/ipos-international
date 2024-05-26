@@ -1,0 +1,229 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% do document.setTitle(detail.title ~ ' — IPOS International') %}
+
+{% block content %}
+    <section class="academy_enterprise_detail__page upcoming_event_detail">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    <ol>
+                        <li><a href="/">{{ 'Home'|trans }}</a></li>
+          
+                        <li><a href="{{ pimcore_document(46).fullpath }}">Upcoming Events</a></li>
+                        <li class="active">{{ detail.title }}</li>
+                    </ol>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="tag">{{ detail['eventType'] }}</div>
+                        <h1 class="m-b-40 insert-title">{{ detail['title'] }}</h1>
+                        <div class="detail_left">
+                            {{ detail['content'] | raw }}
+                           {# <div class="divider"></div>
+                            <p class="txt-regular">This webinar is held in association with
+                                <span class="color-orange m-l-4">IP Week @ SG 2021.</span>
+                            </p>#}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <div class="detail_right">
+                            <div class="detail_right_circle">
+                                <div class="circle left"></div>
+                                <div class="circle right"></div>
+                            </div>
+                            <div class="detail_info_content">
+                                <h6 class="m-t-30">Event Info</h6>
+                                <div class="detail_right_content_date">Date</div>
+                                {% for item in detail['planning'] %}
+                                    {% if item.getStartDate() is not empty %}
+                                        {% if item.getLastDate() is not empty %}
+                                            <div class="detail_right_content_event m-b-16">{{ item.getStartDate() | date('d M, Y') }} - {{ item.getLastDate() | date('d M, Y') }} {{ item.getDatePlaning() }}</div>
+                                            {% else %}
+                                                <div class="detail_right_content_event m-b-16">{{ item.getStartDate() | date('d M, Y') }} {{ item.getDatePlaning() }}</div>
+                                        {% endif %}
+
+                                    {% else%}
+                                        <div class="detail_right_content_event m-b-16">TBC {{ item.getDatePlaning() }}</div>
+                                    {% endif %}
+
+                                {% endfor %}
+
+                                <div class="detail_right_content_date">Time</div>
+                                {% for item in detail['planning'] %}
+                                    {% for timePlaning in item.getTeachingArrangement() %}
+{#                                        {{ dump() }}#}
+                                        {% if timePlaning.startTime.getData() != "" %}
+                                            <div class="detail_right_content_event m-b-16">{{ timePlaning.startTime.getData() | date('h:i a') }} - {{ timePlaning.lastTime.getData() | date('h:i a')  }} ({{ timePlaning.timePlanning.getData() }})</div>
+                                            {% else %}
+                                                <div class="detail_right_content_event m-b-16">TBC ({{ timePlaning.timePlanning.getData() }})</div>
+                                        {% endif %}
+
+
+                                    {% endfor %}
+
+                                {% endfor %}
+
+
+                                <div class="detail_right_content_date">Venue</div>
+                                <div class="detail_right_content_event m-b-16">{{ detail['venue'] }}</div>
+                                {% if detail.email is not empty %}
+                                    <p class="txt-small color-white">For further enquiries, please email us at</p>
+                                    <a class="email" href="mailto:{{ detail.email }}">{{ detail.email }}</a>
+                                {% endif %}
+
+                                {% if detail.registerUrl is not empty %}
+                                    <a href="{{ detail.registerUrl }}" class="btn full-white mt-36" href="">Register Now</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="detail_3 panelist_info">
+            <div class="detail_3_bg_left"><img src="/static/images/panelist-left.ec6a81b.svg" alt=""></div>
+            <div class="detail_3_bg_right"><img src="/static/images/panelist-right.4b6fed0.svg" alt=""></div>
+
+            {% if detail.paneList is not empty %}
+                <div class="container">
+                    <h2>Panelist Info</h2>
+                    <div class="courses_tab_content detail_3_tab_content">
+                        <div class="courses_tab_content_item active">
+                            <div class="speaker_tab">
+                                {% for pane in detail.paneList %}
+                                    <div class="speaker_tab_item">
+                                        <div class="speaker_tab_content">
+                                            <div class="speaker_tab_content_top">
+                                                {% if pane.profilePhoto.data is not empty %}
+                                                    <div class="images">
+							<img class="cover" src="{{ pane.profilePhoto.data.getThumbnail('coverImg') }}" >
+                                                        {#{{ pane.profilePhoto.data.thumbnail('ProfilePhoto').html({imgAttributes:{class:'cover'}}) | raw }}#}
+                                                    </div>
+                                                {% endif %}
+
+                                                <div class="detail">
+                                                    <div class="from">{{ pane.institution.data }}</div>
+                                                    <h6 class="name">{{ pane.name.data }}</h6>
+                                                    <div class="position">{{ pane.position.data }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="speaker_tab_content_bottom">
+                                                {{ pane.individualResume.data | raw }}
+
+                                                {% if pane.detailUrl.data is not empty %}
+                                                    <a class="more" href="{{ pane.detailUrl.data }}">
+                                                        <div class="text">Find out more about {{ pane.name.data }}</div>
+                                                        <div class="icon"><img src="/static/images/findOut.d328d69.svg" alt=""></div>
+                                                    </a>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        </section>
+{#        {% for interested in detail['interestedList'] %}
+            {{ dump(interested.getPlaning()) }}
+        {% endfor %}#}
+        {% if detail['interestedList'] is not empty %}
+        <section class="detail_5 interested">
+
+                <div class="container">
+                 
+		    {% if detail.interestedTitle is not empty %}
+                                <p class="recommend-title">{{ detail.interestedTitle }}</p>
+                                {% else %}
+                                    <p class="recommend-title">Also Worth Reading/Watching</p>
+                            {% endif %}
+                    <div class="swiper swiper_interested">
+                        <div class="swiper-wrapper">
+                            {% for interested in detail['interestedList'] %}
+
+                                <div class="swiper-slide">
+                                    <div class="course_content_item">
+                                        <div class="course_content_item_left">
+                                            <div class="course_content_item_left_image">
+						<a href="{{ interested }}_{{ interested.getId() }}">
+                                                {% if interested.coverImage is not empty %}
+					 	    <img class="cover" src="{{ interested.coverImage.getThumbnail('coverImg') }}" >
+                                                    {#{{ interested.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'cover'}}) | raw }}#}
+                                                {% endif %}
+						</a>
+                                            </div>
+                                        </div>
+                                        <div class="course_content_item_center">
+                                            <div class="content_top">
+                                                <div class="content_tag">
+						
+                                                    <div class="content_tag_item">{{ interested.eventType }}</div>
+						
+                                                </div><a class="content_title" href="{{ interested }}_{{ interested.getId() }}">{{ interested.title }}</a>
+                                            </div>
+                                            <div class="content_bottom">
+                                                <div class="content_time">
+                                                    {% for interestPlaning in interested.getPlaning() %}
+                                                        {% for interestItem in interestPlaning.getTeachingArrangement() %}
+                                                            {% if interestItem.startTime != "" %}
+                                                                <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                                                <div class="text">{{ interestItem.startTime.getData() | date('h:i a') }} - {{ interestItem.lastTime.getData() | date('h:i a')  }}</div>
+                                                                {% else %}
+                                                                    <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                                                    <div class="text">TBC</div>
+                                                            {% endif %}
+
+                                                        {% endfor %}
+
+                                                    {% endfor %}
+
+                                                </div>
+                                                <div class="content_place">
+                                                    <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                                    <div class="text">{{ interested.venue }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="course_content_item_right">
+                                            <div class="content_date">
+
+                                                {% for itemDate in interested.getPlaning() %}
+                                                    {% if itemDate.getStartDate() is not empty %}
+                                                        {% if itemDate.getLastDate() is not empty %}
+                                                            <div class="content_date_day">{{ itemDate.getStartDate() | date('d M Y') }} - {{ itemDate.getLastDate() | date('d M Y') }}</div>
+                                                           
+                                                        {% else %}
+                                                            <div class="content_date_day">{{ itemDate.getStartDate() | date('d M Y') }}</div>
+                                                        {% endif %}
+
+                                                    {% else %}
+                                                        <div class="content_date_day">TBC</div>
+                                                    {% endif %}
+
+                                                {% endfor %}
+                                            </div>{#<a class="share" href=""><img src="/static/images/share.48c529c.svg" alt=""></a>#}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+
+        </section>
+        {% endif %}
+    </section>
+
+{% endblock %}

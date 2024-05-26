@@ -1,0 +1,13 @@
+
+<div class="ourClients_title">{{ pimcore_input('title' ,{'placeholder':'Title'}) }}</div>
+
+      <ol class="ourClients_list_ul">
+      {{ pimcore_areablock("content", {
+    "allowed": ["clientssingle"]
+    }) }}
+      </ol>
+
+      <div class="ourClients_popover hidden">
+          <img class="popover_content" src="/static/images/about_client_image.ee84b70.png"></div>
+      <div class="ourClients_line"></div>
+      <div id="leadership-tooltip" style="position: fixed;"><img src=""></div>

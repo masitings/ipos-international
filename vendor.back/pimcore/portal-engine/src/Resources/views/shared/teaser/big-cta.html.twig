@@ -1,0 +1,69 @@
+{# parameters #}
+{% set color = color | default("white") %}
+{% set mediaLeft = mediaLeft | default(false) %}
+{% set title = title | default(null) %}
+{% set description = description | default(null) %}
+{% set button = portalEngine_addClassToLnk(button, 'btn btn-lg btn-shadow btn-light') | default(null) %}
+{% set image = image | default(null) %}
+{% set imageEditable = imageEditable | default(null) %}
+{% set content = content | default(null) %}
+
+{# bootstrap #}
+{% set mediaClass = "" %}
+{% set colorClass = "bg-white" %}
+{% set mediaClass = mediaLeft ? "content-teaser--media-left" %}
+
+{% if color == "primary" %}
+    {% set colorClass = "bg-primary text-white" %}
+{% endif %}
+
+{# content #}
+<section class="content-teaser {{ mediaClass }} {{ colorClass }}">
+    <div class="row no-gutters">
+
+        <div class="col-md-6">
+            {% if image %}
+                <div class="content-teaser__img h-100">
+                    {{ image.thumbnail("portal-engine_teaser-cta").html({}, ["width", "height"]) | raw }}
+                </div>
+            {% elseif imageEditable %}
+                <div class="content-teaser__img h-100">
+                    {{ pimcore_image(imageEditable, {thumbnail: "portal-engine_teaser-cta"}).frontend | raw }}
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div class="col-md {{ not mediaLeft ? "order-md-first" }}">
+            <div class="content-teaser__content">
+                <h3 class="content-teaser__content__title">
+                    {% if button and button.href %}
+
+                        <a href="{{ button.href }}" target="{{ button.target }}" class="stretched-link">
+                            {{ title | raw }}
+                        </a>
+
+                    {% else %}
+
+                        {{ title | raw }}
+
+                    {% endif %}
+                </h3>
+
+                {{ description | raw }}
+
+                {% if button %}
+                    <div class="mt-5">
+                        {{ button|raw }}
+                    </div>
+                {% endif %}
+
+                {% if content %}
+                    <div class="mt-2">
+                        {{ content | raw }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

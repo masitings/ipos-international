@@ -1,0 +1,67 @@
+<div class="container swiper-component-container">
+    <div class="row">
+        <div class="title">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-12">
+            {% if editmode %}
+                <div class="{#swiper-container about_swiper_container#}">
+                    <div class="swiper-wrapper">
+                        {% for i in pimcore_block('members').iterator %}
+                            <div class="swiper-slide">
+                                <div class="swiper-item">
+                                    <div class="itemImgView gray">
+                                        {{ pimcore_image('profile_photo',{
+                                            'width' : 300,
+                                            'height' : 450,
+                                            imgAttributes : {class : 'item-imig'},
+                                            'thumbnail' : 'ProfilePhoto',
+					    'hidetext' : true
+                                        }) }}
+                                        {#<img class="item-img" src="/static/images/Mrs_Rena_Lee.eaab851.jpg">#}
+                                    </div>
+                                    <div class="item-txt-layout">
+                                        <div class="item-title">{{ pimcore_input('name',{'placeholder' : 'name'}) }}</div>
+                                        <div class="item-sub-title">{{ pimcore_input('position',{'placeholder' : 'position'}) }}</div>
+                                        <div class="item-desc">{{ pimcore_input('wellmadestarm',{'placeholder' : 'wellmadestarm'}) }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                {% else %}
+                    <div class="swiper-container about_swiper_container">
+                        <div class="swiper-wrapper">
+                            {% for i in pimcore_block('members').iterator %}
+                                <div class="swiper-slide">
+                                    <div class="swiper-item">
+                                        <div class="itemImgView gray">
+                                            {{ pimcore_image('profile_photo',{
+                                                'width' : 300,
+                                                'height' : 450,
+                                                imgAttributes : {class : 'item-img'},
+                                                'thumbnail' : 'ProfilePhoto'
+                                            }) }}
+                                            {#<img class="item-img" src="/static/images/Mrs_Rena_Lee.eaab851.jpg">#}
+                                        </div>
+                                        <div class="item-txt-layout">
+                                            <div class="item-title">{{ pimcore_input('name',{'placeholder' : 'name'}) }}</div>
+                                            <div class="item-sub-title">{{ pimcore_input('position',{'placeholder' : 'position'}) }}</div>
+                                            <div class="item-desc">{{ pimcore_input('wellmadestarm',{'placeholder' : 'wellmadestarm'}) }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+            {% endif %}
+
+            <div class="arrow-indicator"></div>
+        </div>
+    </div>
+</div>

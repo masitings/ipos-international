@@ -1,0 +1,131 @@
+<?php
+
+namespace App\Controller;
+
+use App\Services\AboutServices;
+use Pimcore\Model\DataObject;
+use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Response;
+
+use App\Services\CourseServices;
+
+use Pimcore\Model\Document;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
+use function Matrix\trace;
+
+class  AboutController extends BaseController
+{
+    public function overviewAction(Request $request)
+    {
+        return $this->render('about/index.html.twig');
+    }
+
+    public function careerAction(Request $request)
+    {
+        return $this->render('about/career/index.html.twig');
+    }
+
+    public function indexAction(Request $request){
+        return $this->redirect('about/overview');
+    }
+
+    public function ourPartnersAction(Request $request)
+    {
+        $type = 'Our Partners';
+
+//        $list = new AboutServices();
+//        $data = $list->getData($type);
+        $data = [];
+        return $this->render('about/ourPartners/index.html.twig',[
+            'list' => $data
+        ]);
+
+
+    }
+
+    public function ourClientsAction(Request $request)
+    {
+
+        return $this->render('about/ourClients/index.html.twig');
+    }
+
+    public function teamAction(Request $request)
+    {
+        $dataObj = new DataObject\OurTeam\Listing();
+        $dataObj->load();
+
+        $list['Faculty'] = $dataObj->filterByTeamType('Faculty')->load();
+        $list['Strategists'] = $dataObj->filterByTeamType('IP Strategists')->load();
+
+        return $this->render('about/team/index.html.twig',[
+            'list' => $list
+
+        ]);
+    }
+
+    public function contactAction(Request $request)
+    {
+	    $stateObj = new DataObject\NatureOfEnquire\Listing();
+
+	    $ob = $stateObj->getClass();
+
+	    $states = $ob->getFieldDefinition('state')->getOptions();
+
+
+        return $this->render('about/contact/contact.html.twig',[
+            'states' => $states
+        ]);
+
+        // $contents = $this->renderView('about/contact/index.html.twig', [
+        //     'states' => $states
+        // ]);
+
+        // return new Response($contents);
+    }
+
+
+
+	/**
+     * @Route("/about/careers/{articleTile}{id}" ,name="craeer-detail", defaults={"path"=""},requirements={"id"="_\d+"})
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function careerDetailAction(Request $request,$id)
+    {
+		$id = trim($id,'_');
+        $list = [];
+        $obj = DataObject\Career::getById($id);
+        if ($obj){
+            $list['title'] = $obj->getTitle();
+            $list['releaseDate'] = $obj->getReleaseDate();
+            $list['author'] = $obj->getAuthor();
+            $list['authorIcon'] = $obj->getAuthorIcon();
+            $list['coverImage'] = $obj->getCoverImage();
+            $list['content'] = $obj->getContent();
+            $list['videoTime'] = $obj->getVideoTime();
+            $list['also'] = $obj->getAlsoList();
+            $list['file'] = $obj->getFile();
+            $list['video'] = $obj->getDetailVideo();
+            $list['checkList'] = $obj->getCheckIndustry();
+            $list['fullGuide'] = $obj->getFullGuide();
+            /*$list['listType'] = $obj->getListType();*/
+            /*$list['resourceType'] = $obj->getResourceType();*/
+            $list['shares'] = $obj->getShares();
+            $list['moreContent'] = $obj->getMoreContent();
+			$list['interestedTitle'] = $obj->getInterestedTitle();
+			$list['industryTitle'] = $obj->getIndustryTitle();
+			$list['chineseGuide'] = $obj->getChineseGuide();
+            $list['guideTitle'] = $obj->getGuideTitle();
+
+        }
+ 
+        return $this->render('about/career/detail.html.twig',[
+            'list' => $list,
+            'sharePage' => $request->getUri()
+        ]);
+    }
+
+}

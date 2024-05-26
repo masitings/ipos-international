@@ -1,0 +1,42 @@
+<section class="detail_2">
+    <div class="benefit-bg-right">
+        <img src="/static/images/benefir-right.f808b00.svg" alt=""></div>
+    <div class="detail_2_image">
+       {# <img class="cover" src="/static/images/benefit-bg.4907bb2.png" alt="">#}
+        {{ pimcore_image('cover',{
+            imgAttributes : {class : 'cover'},
+            'thumbnail' : 'coverImg'
+        }) }}
+    </div>
+    <div class="detail_2_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <h3>{{ pimcore_input('title',{'placeholder' : 'Who Will Benefit'}) }}</h3>
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </section>
+                </div>
+                <div class="col-lg-1 col-md-0"></div>
+                <div class="col-lg-5 col-md-12 md-mt-30">
+                    <h3>{{ pimcore_input('rightTitle',{'placeholder' : 'Fee'}) }}</h3>
+                    <p class="txt-regular">Email us at
+{#                        <a class="color-orange m-l-4 m-r-4" href="mailto:enquiry@iposinternational.com">enquiry@iposinternational.com,</a>#}
+                        {{ pimcore_link('email',{
+                            'class' : 'color-orange m-l-4 m-r-4'
+                        }) }}
+                        or call us at
+                        {{ pimcore_link('tel',{
+                            
+                        }) }}
+                        for more information on fees and funding.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

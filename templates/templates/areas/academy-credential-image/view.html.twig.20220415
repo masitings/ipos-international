@@ -1,0 +1,8 @@
+<div class="credential_image">
+    
+    {{ pimcore_image("overviewImage", {
+        "title": "Drag your image here",
+        "height": 300,
+        "thumbnail": "advisoryOverview"
+    }) }}
+</div>

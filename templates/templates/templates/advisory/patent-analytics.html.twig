@@ -1,0 +1,31 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise_detail__page advisor_detail__page">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="program-bg-right"><img src="/static/images/program-right.b275c14.svg" alt=""></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                {{ pimcore_areablock('head',{
+                    "allowed" : [
+                        "advisory-head"
+                    ]
+                }) }}
+                <div class="space-67"></div>
+
+            </div>
+        </section>
+
+        {{ pimcore_areablock("embedCode",{
+            'allowed' : [
+                "advisory-partners-cotent",
+                "textarea-embed"
+            ]
+        }) }}
+    </section>
+
+{% endblock %}

@@ -1,0 +1,618 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% do document.setTitle(detail.title ~ ' — IPOS International') %}
+
+{% block content %}
+    <section class="academy_enterprise_detail__page">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    <ol>
+                        <li><a href="/">{{ 'Home'|trans }}</a></li>
+                        <li><a href="{{ pimcore_document(10).fullpath }}">Academy</a></li>
+                        <li><a href="{{ pimcore_document(10).fullpath }}/{{ detail.urlType }}"> {{ detail.academyType }}</a></li>
+                        <li class="active">{{ detail.title }}</li>
+                    </ol>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="tag">{{ detail['level'] }}</div>
+                        <h1 class="m-b-40">{{ detail['title'] }}</h1>
+                        <div class="detail_left">
+                            {{ detail['content']  | raw }}
+
+                            {% if detail.partner is not empty %}
+                                <div class="partner m-t-40">
+                                    {% if detail.partner | length == 1 %}
+                                        <div class="partner_title">Partner Organisation</div>
+                                    {% else %}
+                                        <div class="partner_title">Partner Organisations</div>
+                                    {% endif %}
+                                    <div class="partner_content">
+                                        {% for partner in detail.partner %}
+{#                                            {{ dump(partner) }}#}
+                                            <div class="partner_content_item">
+                                                {#<img src="/assets/images/part1.8dd7d8d.png" alt="">#}
+                                                {{ partner.image.thumbnail('ProfilePhoto').html() | raw }}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="detail_right">
+                            <div class="detail_right_circle">
+                                <div class="circle left"></div>
+                                <div class="circle right"></div>
+                            </div>
+                            <div class="detail_info_content">
+                                <h6 class="m-t-30">Programme Information</h6>
+
+                                    {% for item in detail['planning'] %}
+                                        {% if item.getStartDate() is not empty %}
+                                            <div class="detail_right_content_date">
+                                                {% if item.getLastDate() is not empty %}
+                                                    {{ item.getStartDate() | date('d M, Y') }} - {{ item.getLastDate() | date('d M, Y') }}
+                                                {% else %}
+                                                    {{ item.getStartDate() | date('d M, Y') }}
+                                                {% endif%}
+                                            </div>
+                                        {% else %}
+                                            <div class="detail_right_content_date">TBC</div>
+                                        {% endif %}
+
+                                        {% if item.getTeachingArrangement() is not empty %}
+                                            {% for timePlaning in item.getTeachingArrangement() %}
+
+                                                {% if timePlaning.startTime.getData() is not empty %}
+                                                    <div class="detail_right_content_date">{{ timePlaning.startTime.getData()| date('h:i a')}} - {{ timePlaning.lastTime.getData() | date('h:i a') }}</div>
+                                                {% else %}
+                                                    <div class="detail_right_content_date">TBC</div>
+                                                {% endif %}
+
+                                                {% set timeTitle = timePlaning.timePlanning.getData() %}
+                                                {% if timeTitle == "" %}
+                                                    <div class="detail_right_content_event m-b-16">{{ item.datePlaning | default("") }}</div>
+                                                {% else %}
+                                                    <div class="detail_right_content_event m-b-16">{{ timePlaning.timePlanning.getData() }}</div>
+                                                {% endif %}
+						
+						{% if timePlaning.venue is defined %}
+						{% set vune = timePlaning.venue.getData() %}
+                                                {% if vune != "" %}
+                                                    <div class="detail_right_content_event m-b-16">{{ vune  }}</div>
+                                                {% endif %}
+						{% endif %}
+                                            {% endfor %}
+                                            {% else %}
+                                                <div class="detail_right_content_event m-b-16">{{ item.datePlaning | default("") }}</div>
+                                        {% endif %}
+                                        
+                                    {% endfor %}
+
+
+                                <a class="d-flex" href="#information" onclick="javascript: document.getElementById('program-tab').click();">
+                                    <div class="icon"><img src="/static/images/schedule.2e15fb4.svg" alt=""></div>
+                                    <div class="text">View Program Schedule Details</div>
+                                </a>
+                               {# {{ dump(detail['manual'].path) }}#}
+                                {% if detail.manual is not empty %}
+                                    <a target="_blank" class="d-flex" href="{{ detail['manual'].path }}">
+
+                                        <div class="icon"><img src="/static/images/download.7ff508d.svg" alt=""></div>
+                                        <div class="text"> Download Brochure</div>
+                                    </a>
+                                {% endif %}
+                                
+                                <div class="m-t-35">
+                                {% if detail.register is not empty %}
+                                    {% for register in detail.register %}
+					{% if register.registerUrl.data is not empty %}
+                                        <a class="btn full-white" href="{{ register.registerUrl.data.path }}">{{ register.registerUrl.data.text }}</a>
+                                    
+					{% endif %}	
+					{% endfor %}
+
+                                {% endif %}
+
+
+                                {% if detail.viewUrl is not empty %}
+                                    <a class="btn order-purple" href="{{ detail.viewUrl  }}" href="#information" onclick="javascript: document.getElementById('course-tab').click();">View Course Fee</a>
+				{% else %}
+					<a class="btn order-purple" href="#information" href="#information" onclick="javascript: document.getElementById('course-tab').click();">View Course Fee</a>
+                                {% endif %}
+                                <ul>
+                                    {% for text in detail.pendant %}
+                                        <li>{{ text.text.data }}</li>
+                                    {% endfor %}
+
+                                </ul>
+
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail_2">
+            <div class="detail_2_image">
+               {# {{ dump(detail.backGround) }}#}
+                {% if detail.backGround is not empty %}
+                    <img class="cover" src="{{ detail.backGround.getThumbnail('academyBackgroundImage') }}" alt="">
+
+                {% else %}
+                    {% if detail.coverImage is not empty %}
+                        <img class="cover" src="{{ detail.coverImage.getThumbnail('academyBackgroundImage') }}" alt="">
+                    {% endif %}
+                {% endif %}
+
+            </div>
+            <div class="detail_2_content">
+                <div class="container">
+                    <div class="row">
+
+                        {% if detail.objects is not empty %}
+                            <div class="col-lg-6 col-md-12">
+                                <h3>Learning Objectives</h3>
+                                {% for object in detail['objects'] %}
+                                    <div class="detail_2_content_list"><img src="/static/images/check.ce74931.svg" alt="">
+                                        <div class="txt-regular">{{ object.Text.getData() }}</div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        {% endif %}
+
+                        <div class="col-lg-1 col-md-0"></div>
+                        {% if detail.crowds is not empty %}
+                            <div class="col-lg-5 col-md-12 md-mt-30">
+                                <h3>Who Should Attend</h3>
+                                {% for crowd in detail['crowds'] %}
+
+                                    <div class="detail_2_content_list"><img src="/static/images/user.b7ffe05.svg" alt="">
+                                        <div class="txt-regular">{{ crowd.Text.getData() | raw }}</div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail_3" id="information">
+            <div class="detail_3_bg_left">
+                <img src="/static/images/complication.271e4cd.svg" alt="">
+            </div>
+            <div class="container">
+                <div class="detail_3_tab">
+                    <ul class="courses_tab">
+                        <li class="tab_item active" id="detail-tab" data-tab="detail">Programme Detail</li>
+                        <li class="tab_item" id="program-tab" data-tab="program">Programme Schedule</li>
+                        <li class="tab_item" id="speaker-tab" data-tab="speaker">Speaker / Trainer</li>
+                        <li class="tab_item" id="course-tab" data-tab="course">Course Fee</li>
+                        <li class="tab_item" id="contact-tab" data-tab="contact">Contact</li>
+                    </ul>
+                </div>
+                <div class="courses_tab_content detail_3_tab_content">
+                    <div class="courses_tab_content_item active" id="detail">
+                        <div class="course_tab">
+                            {% if detail.program is not empty %}
+                                {%for fees in detail['program'] %}
+				{% if fees.title.getData() is not empty or fees.Overview.getData() is not empty %}
+                                    <div class="course_tab_item" style="width: 100%;">
+                                        <div class="course_tab_item_content">
+                                            <h6>{{ fees.title.getData() }}</h6>
+                                            {{ fees.Overview.getData() | raw }}
+                                        </div>
+                                    </div>
+				{% endif %}
+                                {% endfor %}
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                    <div class="courses_tab_content_item" id="program">
+                        <div class="program_tab">
+                            {#<div class="program_tab_left">
+                                <p class="txt-small">{{ detail['program']  | raw }}</p>
+                            </div>#}
+                            <div class="program_tab_right">
+                                {% if detail.planning is not empty %}
+                                    {% for item in detail['planning'] %}
+                                        <div class="program_tab_right_item">
+									
+                                            <div class="program_tab_right_item_left">
+                                                {% if item.getStartDate() is not empty %}
+                                                    <div class="date">{{ item.getStartDate() | date('d M') }}</div>
+                                                    <div class="month">{{ item.getStartDate() | date('Y') }}</div>
+                                                    {% if item.getLastDate() is not empty %}
+                                                        -
+                                                        <div class="date">{{ item.getLastDate() | date('d M') }}</div>
+                                                        <div class="month">{{ item.getLastDate() | date('Y') }}</div>
+                                                    {% endif %}
+
+                                                    {% else %}
+                                                        <div class="date">TBC</div>
+                                                {% endif %}
+
+                                            </div>
+                                            <div class="program_tab_right_item_right">
+
+                                                {% for timePlaning in item.getTeachingArrangement() %}
+                                                    {% set timeTitle = timePlaning.timePlanning.getData() %}
+                                                    {% if timeTitle == "" %}
+                                                        <h6>{{ item.datePlaning | default("") }}</h6>
+                                                        {% else %}
+                                                            <h6>{{ timePlaning.timePlanning.getData() }}</h6>
+                                                    {% endif %}
+
+                                                    {% if timePlaning.startTime.getData() is not empty %}
+                                                        <div class="d-flex info_item">
+                                                            <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                                            <div class="text">
+                                                                {{ timePlaning.startTime.getData()| date('h:i a')}} - {{ timePlaning.lastTime.getData() | date('h:i a') }}
+                                                            </div>
+                                                        </div>
+                                                        {% else %}
+                                                            <div class="d-flex info_item">
+                                                                <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                                                <div class="text">
+                                                                    TBC
+                                                                </div>
+                                                            </div>
+                                                    {% endif %}
+							{% if detail.venue is not empty %}
+                                                        <div class="d-flex info_item">
+                                                            <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                                            <div class="text">{{ detail.venue }}</div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {#<div class="d-flex info_item">
+                                                        <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                                        <div class="text">Online Live Streaming</div>
+                                                    </div>
+                                                    <div class="d-flex info_item">
+                                                        <div class="icon"><img src="/static/images/mic.e35976a.svg" alt=""></div>
+                                                        <div class="text">Mr Ng Chng Yuan (Faculty, IP Academy)</div>
+                                                    </div>#}
+                                                    <div class="space-24"></div>
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                    {% else %}
+                                        <div class="program_tab_right_item">
+                                            <div class="program_tab_right_item_left">
+                                                <div class="date">TBC</div>
+                                            </div>
+
+                                        </div>
+
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="courses_tab_content_item" id="speaker">
+                        <div class="speaker_tab">
+                            {% if detail.speaker is not empty  %}
+                                {% for speaker in detail.speaker %}
+
+                                    <div class="speaker_tab_item">
+                                        <div class="speaker_tab_content">
+                                            <div class="speaker_tab_content_top">
+                                                <div class="images">
+                                                    {% if speaker.profilePhoto.data is not empty %}
+                                                        {{ speaker.profilePhoto.data.thumbnail('ProfilePhoto').html({imgAttributes: {class: 'cover'}}) | raw }}
+                                                        {% else %}
+                                                            <img src="/static/images/default_profile.png" alt="" class="cover">
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class="detail">
+                                                    <div class="from">{{ speaker.job.data }}</div>
+                                                    <h6 class="name">{{ speaker.name.data }} </h6>
+                                                    <div class="position">{{ speaker.introduction.data}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="speaker_tab_content_bottom">
+                                                {{ speaker.individualResume.data | raw }}
+
+                                                {% if speaker.detailUrl.data is not empty %}
+                                                    <a class="more" href="{{ speaker.detailUrl.data }}">
+                                                        <div class="text">Find out more about {{ speaker.name.data }}</div>
+                                                        <div class="icon"><img src="/static/images/findOut.d328d69.svg" alt=""></div>
+                                                    </a>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                    <div class="courses_tab_content_item" id="course">
+                        <div class="course_tab">
+                            {% if detail.courseFee is not empty %}
+                                {%for fees in detail['courseFee'] %}
+
+                                    <div class="course_tab_item">
+                                        <div class="course_tab_item_content">
+                                            <h6>{{ fees.title.getData() }}</h6>
+                                            {{ fees.feeDetail.getData | raw }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                    <div class="courses_tab_content_item" id="contact">
+                        <div class="contact_tab">
+                            {% for contact in detail['contacts'] %}
+                                {% if contact is not empty %}
+                                    <div class="contact_tab_item">
+                                        <div class="contact_tab_item_content">
+                                            <h6>{{ contact.contactName.data }}</h6>
+                                            {% if contact.contactMobile.data is not empty %}
+                                                <div class="d-flex">
+                                                    <div class="icon"><img src="/static/images/contact-phone.d43df06.svg" alt=""></div>
+                                                    {#<div class="text">{{ contact.contactMobile.data | default("") }}</div>#}
+                                                    <a class="link__org text" href="tel:{{ contact.contactMobile.data }}">{{ contact.contactMobile.data }}</a>
+                                                </div>
+                                            {% endif %}
+
+
+                                            {% if contact.contactFax.data is not empty %}
+                                                <div class="d-flex">
+                                                    <div class="icon"><img src="/static/images/contact-fax.f427a09.svg" alt="" style="opacity: .75;"></div>
+                                                    <a class="text link__org" href="fax:{{ contact.contactFax.data }}">{{ contact.contactFax.data | default("") }}</a>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if contact.contactEmail.data is  not empty %}
+                                                <div class="d-flex">
+                                                    <div class="icon"><img src="/static/images/contact-email.29dbb07.svg" alt=""></div>
+                                                    <a class="text link__org" href="mailto:{{ contact.contactEmail.data }}">{{ contact.contactEmail.data | default("") }}</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% if detail.video is not empty %}
+            <section class="detail_videos">
+                <div class="container">
+		    {% if detail.videoTitle is not empty %}
+                    <h3>{{ detail.videoTitle }}</h3>
+		    {% endif %}
+                    {#<video src="/static/videos/istock-video.2e3346c.mp4" width="1030" higth="577" controls></video>#}
+                    <style>
+                        .embed-container {
+                            position: relative;
+                            padding-bottom: 56.25%;
+                            height: 0;
+                            overflow: hidden;
+                            max-width: 100%;
+                        }
+                        
+                        .embed-container iframe,
+                        .embed-container object,
+                        .embed-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/{{ detail['video'].data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+	{% set isComment = false %}
+        {% for comment in detail.comments %}
+            {% if comment.name.getData() != '' and comment.position.getData() != '' and comment.content.getData() != '' %}
+                {% set isComment = true %}
+            {% endif %}
+        {% endfor %}
+	{% if isComment == true %}
+        {% if detail.comments is not empty %}
+            <section class="detail_4">
+                <div class="detail_4_content">
+                    <div class="detail_4_bg"></div>
+                    <div class="detail_4_left">
+                        <div class="container">
+                            <div class="icon_quote">
+                                <img src="/static/images/icon-quote.0ac61c8.svg" alt=""></div>
+                            <h3 class="color-white">See What Other Say</h3>
+                        </div>
+                    </div>
+                    <div class="detail_4_right">
+                        <div class="swiper swiper_feedback">
+                            <div class="swiper-wrapper">
+                                {% for comment in detail['comments'] %}
+				{% if comment.name.getData() is not empty or comment.position.getData() is not empty or comment.content.getData() is not empty %}	
+                                    <div class="swiper-slide">
+                                        <div class="quote_item">
+                                            <div class="quote_item_content">
+                                                <h6>{{ comment.name.getData() }}</h6>
+                                                <div class="position">{{ comment.position.getData() }}</div>
+                                                <p>{{ comment.content.getData() }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+				{% endif %}
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <div class="swiper-button-next">
+                            <img src="/static/images/arrow-swiper-right.28b6416.svg" alt=""></div>
+                        <div class="swiper-button-prev">
+                            <img src="/static/images/arrow-swiper-left.4c7c9b3.svg" alt=""></div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+	{% endif %}
+	{% if detail.interestedRegister is not empty %}
+        <section class="detail_4_register">
+            
+            <div class="detail_4_line m-b-40"></div>
+
+                <div class="detail_4_register_content">
+                    <h4>Interested in<span class="color-purple m-l-8 m-r-8">{{ detail.title }}?</span><br>Register with us today.</h4>
+                   
+                        <a class="btn full-orange" href="{{ detail.interestedRegister.path }}">{{ detail.interestedRegister.text }}</a>
+                   
+
+                </div>
+        </section>
+	{% endif %}
+        {% if detail.interestList is not empty %}
+            <section class="detail_5 interested">
+                <div class="container">
+                    <h3>{{ detail.interestedTitle | default('Also Worth Reading/Watching') }}</h3>
+                    <div class="swiper swiper_interested">
+                        <div class="swiper-wrapper">
+                            {% for interested in detail['interestList'] %}
+
+                                <div class="swiper-slide">
+                                    <div class="course_content_item">
+                                        <div class="course_content_item_left">
+					    <a href="{{ interested }}_{{ interested.getId() }}">
+                                            <div class="course_content_item_left_image">
+                                                {% if interested.coverImage is not empty %}
+                                                    {{ interested.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'cover'}}) | raw }}
+                                                {% endif %}
+
+                                            </div>
+					    </a>
+                                        </div>
+                                        <div class="course_content_item_center">
+                                            <div class="content_top">
+                                                <div class="content_tag">
+                                                    <div class="content_tag_item">{{ interested.eventType }}</div>
+                                                </div>
+                                                <a class="content_title" href="{{ interested }}_{{ interested.getId() }}">{{ interested.title }}</a>
+                                            </div>
+                                            <div class="content_bottom">
+						{% set tbcTimeCount = false %}
+						{% set timeCount = 0 %}
+						<div class="content_time">
+                                                    <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                                {% for interestPlaning in interested.getPlaning() %}
+                                                    {% if interestPlaning.getTeachingArrangement() is not empty %}
+                                                        
+                                                                {% for interestItem in interestPlaning.getTeachingArrangement() %}
+                                                                    {% if interestItem.startTime.getData() is not empty %}
+                                                                    
+                                                                    <div class="text">
+									{% if timeCount > 0 %}
+                                                                             ,   
+                                                                            {% endif %}
+
+                                                                        {{ interestItem.startTime.getData() | date('H:i a') }} - {{ interestItem.lastTime.getData() | date('H:i a')  }}
+                                                                        {% set tbcTimeCount = true %}
+                                                                    </div>
+									{% set timeCount = timeCount + 1 %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+
+                                                        
+                                                    {% endif %}
+                                                {% endfor %}
+						{% if tbcTimeCount == false %}
+                                                        <div class="text">TBC</div>
+                                                        {% set tbcTimeCount = true %}
+                                                    {% endif %}
+						</div>
+                                                {% if tbcTimeCount == false %}
+                                                    <div class="content_time">
+                                                        <div class="icon">
+                                                            <img src="/static/images/clock.7b78504.svg" alt="">
+                                                        </div>
+                                                        <div class="text">TBC</div>
+                                                    </div>
+                                                {% endif %}
+
+
+                                                <div class="content_place">
+                                                    <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                                    <div class="text">{{ interested.venue }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="course_content_item_right">
+                                            <div class="content_date">
+
+                                                  {% set tbcDateCount = false %}
+                                                    {% for itemDate in interested.getPlaning() %}
+                                                        {% if itemDate.getStartDate() is not empty %}
+                                                            {% if itemDate.getLastDate() is not empty %}
+                                                                <div class="content_date_day">{{ itemDate.getStartDate() | date('d M, Y') }}</div>
+                                                                -
+                                                                 <div class="content_date_day">{{ itemDate.getLastDate() | date('d M, Y') }}</div>
+                                                                {% else %}
+                                                                    <div class="content_date_day">{{ itemDate.getStartDate() | date('d M, Y') }}</div>
+                                                               
+                                                            {% endif %}
+							 {% set tbcDateCount = true %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% if tbcDateCount != true  %}
+                                                    <div class="content_date_day">TBC</div>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+    </section>
+
+    <style>
+        .detail_4{
+            margin-top: 120px;
+        }
+    </style>
+
+{% endblock %}

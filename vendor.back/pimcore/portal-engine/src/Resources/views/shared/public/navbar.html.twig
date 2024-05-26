@@ -1,0 +1,15 @@
+<header class="full-height-layout__fit">
+    <nav class="main-navbar js-main-nav">
+        <div class="main-navbar__top">
+            <div class="container">
+                <div class="row no-gutters flex-nowrap align-items-center">
+                    <div class="col-3 col-md-2">
+                        <a href="{{ path('pimcore_portalengine_public_share_public_list', {publicShareHash:app.request.get('publicShareHash')}) }}">
+                            <img class="img-fluid main-navbar__logo" src="{{ portalEngine_images_logo(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\ImageThumbnails::LOGO')) }}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,18 @@
+
+        <h1 class="m-b-50">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h1>
+        <div class="row">
+            <div class="col-lg-6 txt-large">
+                <p class="txt-large p-r-20">
+                    {{ pimcore_areablock("leftContent", {
+                        "allowed": ["wysiwyg-brick"]
+                    }) }}
+                </p>
+            </div>
+            <div class="col-lg-6 txt-regular opacity-07">
+{#                <p class="txt-regular m-b-20 opacity-07">Founded in 2003, IP Academy has established itself as a center of excellence in IP/IA education and training in Singapore and the region. Showcasing a multilingual faculty from both academia and industry, our range of executive training and certification programmes aim to build skills and expertise in the fields of intellectual property law, IP/IA management and value creation</p>#}
+{#                <p class="txt-regular opacity-07">IP Academy has also built a global network of partnerships with institutes of higher learning and professional associations to augment our programmes, seminars and roundtables.  Our students and institutional clients are from all over the world, facilitating the sharing of best practices and knowledge. Whether you are a business or public agency looking to build capabilities in IP/IA management, or an individual seeking a career in this exciting area of IP/IA, we have will have a suitable programme for your specific needs.</p>#}
+                {{ pimcore_areablock("rightContent", {
+                    "allowed": ["wysiwyg-brick"]
+                }) }}
+            </div>
+        </div>

@@ -1,0 +1,30 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.data-type__value {
+    width: 75%;
+}
+.data-type__label {
+    margin-bottom: 5/16*1rem;
+    color: $gray-600;
+    font-size: 12/16*1rem;
+}
+.data-type a {
+    display: block;
+}
+
+.data-type--block__item {
+    margin-top: $grid-gutter-width;
+}
+
+.data-type--block__item:first-of-type {
+    margin-top: 0;
+}

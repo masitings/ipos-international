@@ -1,0 +1,10 @@
+{% set label = label | default(null) %}
+{% set config = config | default({}) %}
+
+<div class="form-group">
+    {% if label %}
+        <label class="form-control-label">{{ portalEngine_editmode_label(label) }}</label>
+    {% endif %}
+
+    {{ pimcore_input(id, {class: "form-control"}|merge(config)) }}
+</div>

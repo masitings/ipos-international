@@ -1,0 +1,123 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% do document.setTitle(data.seoTitle | default(data.title ~ ' — IPOS International')) %}
+{% do pimcore_head_meta().setName("description", data.seoDescription | default(data.content | striptags | u.truncate(320))) %}
+{% do pimcore_head_meta().setName("keywords", data.tags | default('')) %}
+
+{% block content %}
+    <div class="articles_details_container resources_public_container">
+        <div class="bg_circle"></div>
+        <!--+nav(['Home','Events','News And Announcement','Singapore IP Strategy 2030'])-->
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
+                        
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(24).fullpath }}">News &amp; Announcements </a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ data.title  }}</li>
+                        </ol>
+
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt;</span>
+                        <a class="back_txt" href="{{ pimcore_document(24).fullpath }}">News & Announcements</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title">{{ data['title'] }}</p>
+                </div>
+            </div>
+        </div>
+        {#{{ pimcore_url(['object' => data]) }}#}
+
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="posted-container">
+                        <span class="lable m-r-4">Posted on</span>
+                        <span class="value">{{ data['date'] | date('d M, Y') }}</span>
+                        <br class="d-block d-md-none">
+                        {% if data['authorIcon'] is not empty %}
+			    <img class="value-img" src="{{ data.authorIcon.getThumbnail('AuthorLogo') }}" >
+                            {# {{ data['authorIcon'].thumbnail('ProfilePhoto').html({imgAttributes:{class:'value-img'}}) |raw }}#}
+                        {% endif %}
+
+                        <span class="lable m-r-4">By</span>
+                        <span class="value">{{ data['author'] }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details_img_body_container container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content_main_img">
+
+                        {% if data['coverImage'] is not empty %}
+			    <img class="content_img" src="{{ data.coverImage.getThumbnail('NewsAnnouncementsDetailBackground') }}" >
+                            {# {{ data['coverImage'].thumbnail('coverImg').html({imgAttributes:{class:'content_img'}}) |raw }} #}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row main-articles">
+                <div class="col-md-8 col-12 column-padding">
+                    {{ data['content'] | raw }}
+                    {% if data.file is not empty %}
+                        <div class="business_guides_details_container">
+                            <a class="annex" href="{{ data.file.path }}" target="_blank">
+                                <span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span>
+                                <span class="annex-txt">{{ data.file.text }}</span>
+                                {# <span class="pdf-down" style="background-image:url(/static/images/icon_download.c4854a7.svg)"></span> #}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-12 d-block d-md-none">
+                    <div class="split-line"></div>
+                </div>
+                {% if data['interested'] is not empty %}
+                <div class="col-md-4 col-12">
+                    <div class="resources_public_recommend-container m-b-45">
+                        {% if data.interestedTitle is not empty %}
+                            <p class="recommend-title">{{ data.interestedTitle }}</p>
+                            {% else %}
+                                <p class="recommend-title">You May Also Be Interested In</p>
+                        {% endif %}
+                        {% for list in data['interested'] %}
+                            <a class="recommend_item" href="{{ list }}_{{ list.getId() }}">
+
+                                {% if list.coverImage is not empty %}
+				    <img class="recommend-img" src="{{ list.coverImage.getThumbnail('Also_Worth_Reading_OR_Watching') }}" >
+                                    {#{{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'recommend-img'}}) |raw }}#}
+                                {% endif %}
+                                <div class="recommend-txt-layout">
+                                    <p class="txt-date">{{ list.releaseDate | date('d M, Y') }}</p>
+                                    <p class="recommend-txt-title">{{ list.title }}</p>
+                                </div>
+                            </a>
+                        {% endfor %}
+
+                    </div>
+                    <div class="share-container">
+                        <!--span.share-txt SHARE-->
+                        <div class="share-layout">
+                            <a class="share-icon facebook" href="https://www.facebook.com/iposintl" target="_blank" style="background-image:url(&quot;/static/images/icon-Facebook.c78e324.svg&quot;)"></a>
+                            <a class="share-icon linkedin" href="https://www.linkedin.com/company/iposintl/" target="_blank" style="background-image:url(&quot;/static/images/icon-Linkedin.dac1a71.svg&quot;)"></a>
+                            <a class="share-icon twitter" href="https://twitter.com/iposintl" target="_blank" style="background-image:url(&quot;/static/images/icon-Twitter.6adf57e.svg&quot;)"></a>
+                            <a class="share-icon email" href="mailto:ipos_enquiry@ipos.gov.sg" target="_blank" style="background-image:url(&quot;/static/images/icon-Email.bd681cf.svg&quot;)"></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

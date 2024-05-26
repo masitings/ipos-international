@@ -1,0 +1,217 @@
+<section class="sec-what-new p-t-100" id="secWhatNew">
+    <div class="container">
+        <h2 class="ipos-title text-center m-b-30">{{ pimcore_input("whatsNews",{"placeholder":"What's News"}) }}</h2>
+
+        <div class="sec-what-new__row row lg-p-l-60 lg-p-r-20">
+            <div class="col-lg-7">
+                {% if editmode %}
+                    {{ pimcore_relation("objectPaths",{
+                        "types": ["object"],
+                        "classes" : [
+                            "Course",
+                            "Events",
+                            "News",
+                            "Articles",
+                            "Business",
+                            "CaseStudy",
+                            "PatentAnalytic",
+                            "WebinarRecordings"
+                        ]
+                    }) }}
+                {% else %}
+                    {% if pimcore_relation("objectPaths").getElement()  %}
+                        {% set list = pimcore_relation("objectPaths").getElement() %}
+                        <div class="new-box lg-m-r-15">
+                            <div class="new-box__upper">
+				<a href="{{ list.fullPath }}_{{ list.getId() }}">				
+                                {% if list.coverImage is not empty %}
+                                    {#{{ list.coverImage.thumbnail('UpcomingEventsList').html({imgAttributes:{class:'img-fluid'}}) | raw }}#}
+				    <img class="img-fluid" src="{{ list.coverImage.getThumbnail().getPath() }}" >
+                                {% endif %}
+				</a>
+                            </div>
+                            <div class="new-box__bottom">
+                                <div class="new-box__bottom__top">
+                                    <div class="categories-tag">
+                                        {% if list.className == 'News' %}
+                                            News & Announcements
+                                        {% elseif list.className == 'Events' %}
+                                            Upcoming Events
+                                        {% else %}
+                                            {{ list.className | upper }}
+                                        {% endif %}
+                                    </div>
+                                    <h3 class="new-box-title m-t-10">{{ list.title }}</h3>
+                                </div>
+                                <div class="new-box__bottom__bottom">
+                                    
+                                        <a href="{{ list.fullPath }}_{{ list.getId() }}">Find out more</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+
+            </div>
+            <div class="col-lg-4">
+
+                {% if editmode %}
+                    {{ pimcore_relation("objectPaths2",{
+                        "types": ["object"],
+                        "classes" : [
+                            "Course",
+                            "Events",
+                            "News",
+                            "Articles",
+                            "Business",
+                            "CaseStudy",
+                            "PatentAnalytic",
+                            "WebinarRecordings"
+                        ]
+                    }) }}
+                {% else %}
+                    {% if  pimcore_relation("objectPaths2").getElement() %}
+                        {% set list = pimcore_relation("objectPaths2").getElement() %}
+                        <div class="new-box new-box--higher lg-m-l-15 lg-m-t-180">
+                            <div class="new-box__upper">
+				<a href="{{ list.fullPath }}_{{ list.getId() }}">
+                                {% if list.coverImage is not empty %}
+                                    {#{{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-fluid'}}) | raw }}#}
+					<img class="img-fluid" src="{{ list.coverImage.getThumbnail('coverImg').getPath() }}" >
+                                {% endif %}
+				</a>
+                            </div>
+                            <div class="new-box__bottom">
+                                <div class="new-box__bottom__top">
+                                    <div class="categories-tag">
+                                        {% if list.className == 'News' %}
+                                            News & Announcements
+                                        {% elseif list.className == 'Events' %}
+                                            Upcoming Events
+                                        {% else %}
+                                            {{ list.className | upper }}
+                                        {% endif %}
+                                    </div>
+                                    <h3 class="new-box-title m-t-10">{{ list.title }}</h3>
+                                </div>
+
+                                <div class="new-box__bottom__bottom">
+                                    
+                                        <a href="{{ list.fullPath }}_{{ list.getId() }}">Find out more</a>
+                               
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                {% if editmode %}
+                    {{ pimcore_relation("objectPaths3",{
+                        "types": ["object"],
+                        "classes" : [
+                            "Course",
+                            "Events",
+                            "News",
+                            "Articles",
+                            "Business",
+                            "CaseStudy",
+                            "PatentAnalytic",
+                            "WebinarRecordings"
+                        ]
+                    }) }}
+
+                {% else %}
+                    {% if  pimcore_relation("objectPaths3").getElement() %}
+                        {% set list = pimcore_relation("objectPaths3").getElement() %}
+                        <div class="new-box new-box--empty lg-m-r-15">
+			<div class="new-box__upper">
+			<a href="{{ list.fullPath }}_{{ list.getId() }}">
+                                {% if list.coverImage is not empty %}
+                                    {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-fluid'}}) | raw }}
+                                {% endif %}
+                                </a>
+
+			</div>
+                            <div class="new-box__bottom">
+                                <div class="new-box__bottom__top">
+                                    <div class="categories-tag">
+                                        {% if list.className == 'News' %}
+                                            News & Announcements
+                                        {% elseif list.className == 'Events' %}
+                                            Upcoming Events
+                                        {% else %}
+                                            {{ list.className | upper }}
+                                        {% endif %}
+                                    </div>
+                                    <h3 class="new-box-title m-t-10">{{ list.title }}</h3>
+                                </div>
+                                <div class="new-box__bottom__bottom">
+                                   
+                                        <a href="{{ list.fullPath }}_{{ list.getId() }}">Find out more</a>
+                                
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+            <div class="col-lg-6">
+                {% if editmode %}
+                    {{ pimcore_relation("objectPaths4",{
+                        "types": ["object"],
+                        "classes" : [
+                            "Course",
+                            "Events",
+                            "News",
+                            "Articles",
+                            "Business",
+                            "CaseStudy",
+                            "PatentAnalytic",
+                            "WebinarRecordings"
+                        ]
+                    }) }}
+
+                {% else %}
+                    {% if  pimcore_relation("objectPaths4").getElement() %}
+                        {% set list = pimcore_relation("objectPaths4").getElement() %}
+                        <div class="new-box new-box--row lg-m-l-15 lg-m-t-90">
+                            <div class="new-box__upper">
+                                <a href="{{ list.fullPath }}_{{ list.getId() }}">
+				{% if list.coverImage is not empty %}
+                                {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-fluid'}}) | raw }}
+                            	{% endif %}
+				</a>
+				</div>
+                            <div class="new-box__bottom">
+                                <div class="new-box__bottom__top">
+                                    <div class="categories-tag">
+                                        {% if list.className == 'News' %}
+                                            News & Announcements
+                                        {% elseif list.className == 'Events' %}
+                                            Upcoming Events
+                                        {% else %}
+                                            {{ list.className | upper }}
+                                        {% endif %}
+                                    </div>
+                                    <h3 class="new-box-title m-t-10 m-b-30">{{ list.title }}</h3>
+                                </div>
+                                <div class="new-box__bottom__bottom">
+                                    
+                                        <a href="{{ list.fullPath }}_{{ list.getId() }}">Find out more</a>
+                           
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</section>

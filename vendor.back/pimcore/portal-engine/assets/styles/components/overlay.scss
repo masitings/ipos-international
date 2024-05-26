@@ -1,0 +1,70 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+$overlay-header-border-width: $border-width;
+$overlay-header-border-color: $gray-400;
+$overlay-head-background: $white;
+$overlay-body-background: $gray-300;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    //transform: translateX(100%);
+    transition: transform 200ms ease-in-out;
+    z-index: 100;
+    background-color: $overlay-body-background;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+}
+.overlay--enter-active,
+.overlay--enter-done {
+    transform: none;
+}
+.overlay--enter-active,
+.overlay--exit-active,
+.overlay--exit {
+    transition: transform 120ms ease-out;
+}
+.overlay__head {
+    //border-bottom: $overlay-header-border-width solid $overlay-header-border-color;
+    display: flex;
+    flex-direction: row;
+    background-color: $overlay-head-background;
+    box-shadow: $box-shadow-sm;
+    flex: none;
+}
+.overlay__head-item {
+    flex: none;
+    padding: map-get($spacers, 3);
+}
+.overlay__head-item--main {
+    flex: auto;
+    word-break: break-word;
+}
+.overlay__head-item + .overlay__head-item {
+    border-left: $overlay-header-border-width solid $overlay-header-border-color;
+}
+.overlay__body {
+    padding-top: map-get($spacers, 3);
+    padding-bottom: map-get($spacers, 3);
+
+    flex: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+.overlay__title {
+    margin-bottom: 0;
+}

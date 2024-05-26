@@ -1,0 +1,82 @@
+<section class="detail_2">
+    <div class="benefit-bg-right"><img src="/static/images/benefir-right.f808b00.svg" alt=""></div>
+    <div class="detail_2_image">
+        {#                <img class="cover" src="/static/images/patent-analytic.e755007.jpg" alt="">#}
+        {{ pimcore_image('coverImg',{
+            imgAttributes : {class : 'cover'},
+            'thumbnail' : 'background'
+        }) }}
+    </div>
+    <div class="detail_2_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <h3>{{ pimcore_input('title',{'placeholder':'Who It Is For'}) }}</h3>
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </section>
+                </div>
+                <div class="col-lg-1 col-md-0"></div>
+                {% if editmode %}
+                    <div class="col-md-4 col-12 md-mt-30">
+                        <p class="recommend-title">{{ pimcore_input('interestTitle',{'placeholder':'title'}) }}</p>
+                        {{ pimcore_relations('objectsAll',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Course",
+                                "Events",
+                                "News",
+                                "Articles",
+                                "Business",
+                                "CaseStudy",
+                                "PatentAnalytic",
+                                "WebinarRecordings"
+                            ]
+                        }) }}
+                    </div>
+                {% else %}
+                    {% set list = pimcore_relations('objectsAll') %}
+                    {% if list is not empty %}
+                        <div class="col-md-4 col-12 md-mt-30">
+                            <div class="resources_public_recommend-container">
+                                <p class="recommend-title">{{ pimcore_input('interestTitle',{'placeholder':'title'}) }}</p>
+
+                                {% for interested in list %}
+                                        <a class="recommend_item" href="{{ interested }}_{{ interested.getId() }}">
+                                            {#<img class="recommend-img" src="/static/images/graphene.582717d.jpeg">#}
+                                            {% if interested.coverImage is not empty %}
+                                                {{ interested.coverImage.thumbnail('coverImg').html({imgAttributes:{class : 'recommend-img'}}) |raw }}
+                                            {% endif %}
+
+                                            <div class="recommend-txt-layout">
+                                                <div class="content_tag m-b-10">
+                                                    {% if (interested.className == 'News') or (interested.className == 'Events') %}
+                                                        <div class="content_tag_item m-r-10">{{ interested.className }}</div>
+                                                    {% elseif interested.className == 'Course' %}
+                                                        <div class="content_tag_item m-r-10">{{ interested.eventType }}</div>
+                                                    {% else %}
+                                                        <div class="content_tag_item m-r-10">{{ interested.resourceType }}</div>
+                                                    {% endif %}
+
+
+
+                                                </div>
+                                                <p class="recommend-txt-title">{{ interested.title  }}</p>
+                                            </div>
+                                        </a>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+

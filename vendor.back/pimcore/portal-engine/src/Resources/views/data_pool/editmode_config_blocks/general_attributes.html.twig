@@ -1,0 +1,7 @@
+<div class="form-group">
+    <label
+        class="form-control-label">{{ 'portal-engine.data-pool.detail-page-general-attributes'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+    <div>
+        {{ pimcore_multiselect(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\AssetConfig::GENERAL_ATTRIBUTES'), {width:300, height: 250, store: attributes}) }}
+    </div>
+</div>

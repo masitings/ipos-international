@@ -1,0 +1,30 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise_detail__page advisor_ipChat__page">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="ipchat-bg-left"><img src="/static/images/ip-chat-left.cc759cb.svg" alt=""></div>
+            <div class="ipchat-bg-right"><img src="/static/images/ip-chat-right.d0ef334.svg" alt=""></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-md-12">
+                        {{ pimcore_areablock("content",{
+                            "allowed" : [
+                                "advisory-chat",
+                                "advisory-content"
+                            ]
+                        }) }}
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

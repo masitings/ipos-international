@@ -1,0 +1,30 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.selection-indicator {
+    display: inline-block;
+    width: 20/16 * 1rem;
+    height: 20/16 * 1rem;
+    border: 1/16 * 1rem solid $gray-500;
+    background: transparent;
+    border-radius: 50%;
+    z-index: 1;
+    padding: 0;
+}
+.selection-indicator:hover {
+    background: rgba($success, .5);
+}
+.selection-indicator.is-selected {
+    background: $success;
+}
+.selection-indicator--in-text {
+    vertical-align: -0.43em;
+}

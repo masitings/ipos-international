@@ -1,0 +1,47 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.main-nav--level-1 {
+    @include media-breakpoint-up(md) {
+        position: absolute;
+        z-index: 10;
+        top: 100%;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        padding: 15/16*1rem 25/16*1rem;
+        min-width: 280/16*1rem;
+        background-color: $white;
+        border-radius: $border-radius;
+        box-shadow: 0 40/16*1rem 40/16*1rem 0 rgba(0, 0, 0, 0.2);
+    }
+
+    @include media-breakpoint-up(xl) {
+        padding: 15/16*1rem 50/16*1rem;
+    }
+}
+@include media-breakpoint-up(md) {
+    .main-nav__item:hover > .main-nav--level-1,
+    .main-nav__item.is-open > .main-nav--level-1 {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .main-nav__item-content--level-1 {
+        padding: 5/16*1rem 0;
+        display: block;
+    }
+    .main-nav__item-content--level-1:hover,
+    .main-nav__item-content--level-1:focus,
+    .main-nav__item-content--level-1:active {
+        color: $primary;
+    }
+}

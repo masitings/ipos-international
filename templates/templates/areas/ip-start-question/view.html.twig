@@ -1,0 +1,60 @@
+
+
+<div class="m-b-30">
+    <h6 class="h6">{{ pimcore_input("answersTitle",{"placeholder":"title..."}) }}</h6>
+    <div class="ip-questions-wrap m-t-15 m-b-15">
+        {% for i in pimcore_block('questionList').iterator %}
+            {% if editmode %}
+                <div class="ip-question">
+                    <div class="ip-question__icon">
+                        {{ pimcore_image('icon',{
+                            'thumbnail' : 'coverImg',
+                            'height' : 50,
+                            'hidetext' : true
+                        })
+                        }}
+                        <p>{{ pimcore_input("question",{"placeholder":"question..."}) }}</p>
+                    </div>
+                    <div class="ip-question__features m-l-15 lg-m-l-30 list-style-general">
+                        {{  pimcore_wysiwyg("questionContent", {
+                            "height": 150,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </div>
+                </div>
+            {% else %}
+                {% set icon =  pimcore_image('icon')  %}
+
+                {% set question = pimcore_input("question") %}
+
+                <div class="ip-question">
+		    <div class="ripple-wrap"><span class="ripple"></span></div>
+                    <div class="ip-question__icon">
+                        <img src="{{ icon.image }}">
+                        <p>{{ question }}</p>
+                    </div>
+                    <div class="ip-question__features m-l-15 lg-m-l-30 list-style-general">
+
+                        {{  pimcore_wysiwyg("questionContent", {
+                            "height": 150,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+
+    </div>
+</div>
+
+<div class="m-b-30">
+	{{  pimcore_wysiwyg("contentText", {
+        	"height": 200,
+                "placeholder" : "edit content..."
+            })
+        }}
+</div>
+

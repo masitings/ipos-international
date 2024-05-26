@@ -1,0 +1,75 @@
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% block content %}
+
+    {{ include("@PimcorePortalEngine/shared/editmode/content/configure.html.twig") }}
+
+    <div class="my-4">
+        <div class="container">
+
+            <div class="card">
+                <h3 class="card-header mb-0">
+                    <span class="card-header__btn d-block">{{ 'portal-engine.data-pool.grid-configuration'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+                </h3>
+
+                <div class="card-body">
+
+                    {{ include('@PimcorePortalEngine/data_pool/asset/editmode_config_blocks/workspace_definition.html.twig', {elementTypes:["asset"]}) }}
+                    <hr/>
+                    {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/precondition_service.html.twig') }}
+                    <hr/>
+                    {{ include('@PimcorePortalEngine/data_pool/asset/editmode_config_blocks/upload_folder.html.twig') }}
+                    <hr/>
+                    {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/folders_and_tags.html.twig') }}
+                    <hr/>
+                    {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/filter_definition.html.twig') }}
+                    <hr/>
+                    {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/sort_options.html.twig') }}
+                    <hr/>
+                    {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/grid_configuration_attributes.html.twig') }}
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-header mb-0">
+                    <span class="card-header__btn d-block">{{ 'portal-engine.data-pool.detail-page-configuration'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+                </h3>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/general_attributes.html.twig') }}
+                        </div>
+
+                        <div class="col-6">
+                            {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/direct_download_shortcuts.html.twig') }}
+                        </div>
+
+                        {{ include("@PimcorePortalEngine/data_pool/editmode_config_blocks/version_history.html.twig") }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+                <h3 class="card-header mb-0">
+                    <span class="card-header__btn d-block">{{ 'portal-engine.data-pool.download-configuration'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+                </h3>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col col-sm-6">
+                            {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/available_download_thumbnails.html.twig') }}
+                        </div>
+                        <div class="col col-sm-6">
+                            {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/available_download_formats.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {{ include('@PimcorePortalEngine/data_pool/editmode_config_blocks/languages.html.twig', {showEditableLanguages: true}) }}
+        </div>
+    </div>
+{% endblock %}

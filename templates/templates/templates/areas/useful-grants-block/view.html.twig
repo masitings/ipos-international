@@ -1,0 +1,20 @@
+<div class="row tab-row">
+
+    {% for i in pimcore_block('tnc_wrap',{'limit' : 3}).iterator %}
+        <div class="tab-content-container txt col-md-4">
+            <div class="part2">
+                <p class="sub-title">{{ pimcore_input('subTitle',{'placeholder' : 'title'}) }}</p>
+                <a class="find-more" href="https://www.enterprisesg.gov.sg/financial-assistance/grants/for-local-companies/enterprise-development-grant/overview">Find out more
+                    <span class="icon-external-arrow" style="background-image:url(/assets/images/icon-external-arrow.77131c9.svg)"></span>
+                </a>
+                {{ pimcore_link('subLink',{
+                    'target' : '_blank',
+                    'class' : 'find-more',
+                    'textSuffix' : '<span class="icon-external-arrow" style="background-image:url(/assets/images/icon-external-arrow.77131c9.svg)"></span>'
+                }) }}
+            </div>
+        </div>
+    {% endfor %}
+
+
+</div>

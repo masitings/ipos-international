@@ -1,0 +1,57 @@
+<div class="table-responsive">
+
+    {% if data is empty %}
+
+        <div class="alert alert-warning" role="alert">
+            No results
+        </div>
+
+    {% else %}
+        <table class="table table-hover table-sm">
+
+
+            <thead>
+                {% for level, column in columns  %}
+
+                    <tr>
+
+                        <th scope="col" colspan="{{ rowCount }}"></th>
+
+                        {% for columnHeader in columnHeaders[level] %}
+
+                            <th scope="col" colspan="{{ columnHeader['subColumns'] }}">
+                                {{ columnHeader['value'] }}
+                            </th>
+
+                        {% endfor %}
+
+                    </tr>
+
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for rowHeader in rowHeaders  %}
+
+                    <tr>
+
+                        {% for rowHeaderElement in rowHeader['rowHeaders'] %}
+
+                            {% if rowHeaderElement['label'] is not null %}
+                                <th scope="row" rowspan="{{ rowHeaderElement['rowspan'] }}">{{ rowHeaderElement['label'] }}</th>
+                            {% endif %}
+
+                        {% endfor %}
+
+                        {% for column in lastLevelColumnHeaders  %}
+                            <td>{{ (data[rowHeader['dataKey']][column['dataKey']])|default('-')|round(6)  }}</td>
+                        {% endfor %}
+
+
+                    </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    {% endif %}
+</div>

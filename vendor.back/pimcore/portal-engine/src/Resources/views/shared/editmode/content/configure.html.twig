@@ -1,0 +1,40 @@
+{% if editmode %}
+    {{ include("@PimcorePortalEngine/shared/editmode/configuration/open_sidebar_button.html.twig", {sidebarId: "content"}) }}
+
+    {% embed "@PimcorePortalEngine/shared/editmode/configuration/sidebar.html.twig" with {sidebarId: "content"} %}
+        {% block sidebarContent %}
+
+            <div class="card">
+                <h3 class="card-header mb-0">
+                    <span class="card-header__btn d-block">{{ portalEngine_editmode_label('content.navigation')}}</span>
+                </h3>
+
+                <div class="card-body">
+
+                    {{ include("@PimcorePortalEngine/shared/editmode/select.html.twig", {
+                        label: "content.navigation-icon",
+                        id: constant("Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\ContentConfig::NAVIGATION_ICON"),
+                        config: {
+                            store: portalEngine_editmode_icon_store(),
+                            width: 50,
+                            reload: true
+                        }
+                    }) }}
+
+                    {% if pimcore_select(constant("Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\ContentConfig::NAVIGATION_ICON")).data %}
+                        <div style="width:30px">
+                            {{ portalEngine_inline_icon(pimcore_select(constant("Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\ContentConfig::NAVIGATION_ICON")).data) }}
+                        </div>
+                    {% endif %}
+
+                    <p class="my-4 text-center">{{ portalEngine_editmode_label('or') }}</p>
+
+                    {{ portalEngine_editmode_label('content.navigation-icon-asset') }}
+                    {{ pimcore_image(constant("Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\ContentConfig::NAVIGATION_ICON_ASSET")) }}
+                </div>
+            </div>
+
+        {% endblock %}
+    {% endembed %}
+
+{% endif %}

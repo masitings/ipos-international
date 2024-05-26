@@ -1,0 +1,376 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="resources_container resources_public_container">
+
+        {% if editmode %}
+            <div class="public_page_header">
+                <div class="bgView"></div>
+                <div class="left_cricle"></div>
+                {#        <div class="icon_ipos"></div>#}
+                <div class="resources_public_title_nav container dark">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                                {% include('layouts/breadcrumb-col-12.html.twig') %}
+                            </nav>
+                            <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><a href="/" class="back_txt">Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{ pimcore_areablock("Headline-block", {
+                    "allowed": [
+                        "overview-headlines"
+                    ]
+                }) }}
+
+            </div>
+
+        {% else %}
+            <div class="public_page_header">
+                <div class="bgView"></div>
+                <div class="left_cricle"></div>
+                <div class="icon_ipos"></div>
+                <div class="resources_public_title_nav container dark">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                                {% include('layouts/breadcrumb-col-12.html.twig') %}
+                            </nav>
+                            <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span>
+                                <span class="back_txt">Home</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{ pimcore_areablock("Headline-block", {
+                    "allowed": [
+                        "overview-headlines"
+                    ]
+                }) }}
+
+            </div>
+        {% endif %}
+
+        {{ pimcore_areablock("Headline-content", {
+            "allowed": [
+                "image-panel"
+            ]
+        }) }}
+
+        <div class="tab-insights">
+            <img class="left-i d-none d-md-block" src="/static/images/pc_lef_i.7173b25.svg">
+            <div class="container">
+                <div class="row">
+                    <div class="m-l-0 page-title">{{ pimcore_input('insightsTitle',{'placeholder' : 'Headlines...'}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs custom-nav justify-content-start">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#articles">Articles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#business_guides">Business Guides</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#patent_analytics_reports">Patent Analytics Reports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#case_studies">Case Studies</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content custom-tab-content container">
+                <div class="tab-pane fade show active" id="articles">
+                    <div class="row">
+                            {% for key, article in list['articles'] %}
+                                {% if key < 3 %}
+                                    <div class="col-md-4 col-12">
+
+                                        <div class="tab-card-item">
+                                            <div class="card-top">
+						<a href="{{ article }}_{{ article.getId() }}">
+                                                <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+
+                                                {% if  article.coverImage is not empty %}
+						    <img class="img-resoure" src="{{ article.coverImage.getThumbnail('coverImg') }}" >
+                                                    {#{{ article.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'img-resoure'}}) | raw }}#}
+                                                {% endif %}
+						</a>
+                                            </div>
+                                            <div class="card-bottom">
+                                                <div class="time-date">{{ article.releaseDate | date('d M, Y') }}</div>
+                                                <div class="title">{{ article.title }}</div>
+                                                <a class="find-more" href="{{ article }}_{{ article.getId() }}">
+                                                    Find out more
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                    </div>
+                    <div class="laodmore-view">
+                        <p class="line-load"></p>
+
+                        {{ pimcore_link('article',{
+                            'class' : 'load-button d-inline-flex align-items-center',
+                            'textSuffix' : '<div class="arrow_right"></div>'
+                        }) }}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="business_guides">
+                    <div class="row">
+                            {% for key, business in list['business'] %}
+                                {% if key < 3 %}
+                                    <div class="col-md-4 col-12">
+
+                                        <div class="tab-card-item">
+                                            <div class="card-top">
+						<a href="{{ business }}_{{ business.getId() }}">
+                                                <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                                                {% if  business.coverImage is not empty %}
+i							<img class="img-resoure" src="{{ business.coverImage.getThumbnail('coverImg') }}" >
+                                                    {#{{ business.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'img-resoure'}}) | raw }}#}
+                                                {% endif %}
+						</a>
+                                            </div>
+                                            <div class="card-bottom">
+                                                <div class="time-date">{{ business.releaseDate | date('d M, Y') }}</div>
+                                                <div class="title">{{ business.title }}</div>
+                                                <a class="find-more" href="{{ business }}_{{ business.getId() }}">
+                                                    Find out more
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                    </div>
+                    <div class="laodmore-view">
+                        <p class="line-load"></p>
+                        {{ pimcore_link('business',{
+                            'class' : 'load-button d-inline-flex align-items-center',
+                            'textSuffix' : '<div class="arrow_right"></div>'
+                        }) }}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="patent_analytics_reports">
+                    <div class="row">
+                            {% for key, patent in list['patent'] %}
+                                {% if key < 3 %}
+                                    <div class="col-md-4 col-12">
+                                        <div class="tab-card-item">
+                                            <div class="card-top">
+						<a href="{{ patent }}_{{ patent.getId() }}">
+                                                <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+
+                                                {% if  patent.coverImage is not empty %}
+						<img class="img-resoure" src="{{ patent.coverImage.getThumbnail('coverImg') }}" >
+                                                    {#{{ patent.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'img-resoure'}}) | raw }}#}
+                                                {% endif %}
+						</a>
+                                            </div>
+                                            <div class="card-bottom">
+                                                <div class="time-date">{{ patent.releaseDate | date('d M, Y') }}</div>
+                                                <div class="title">{{ patent.title }}</div>
+                                                <a class="find-more" href="{{ patent }}_{{ patent.getId() }}">
+                                                    Find out more
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                    </div>
+                    <div class="laodmore-view">
+                        <p class="line-load"></p>
+                        {{ pimcore_link('patent',{
+                            'class' : 'load-button d-inline-flex align-items-center',
+                            'textSuffix' : '<div class="arrow_right"></div>'
+                        }) }}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="case_studies">
+                    <div class="row">
+                            {% for key, studies in list['studies'] %}
+                                {% if key < 3 %}
+                                    <div class="col-md-4 col-12">
+                                        <div class="tab-card-item">
+                                            <div class="card-top">
+						<a href="{{ studies }}_{{ studies.getId() }}">
+                                                <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+
+                                                {% if  studies.coverImage is not empty %}
+						<img class="img-resoure" src="{{ studies.coverImage.getThumbnail('coverImg') }}" >
+                                                   {# {{ studies.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'img-resoure'}}) | raw }}#}
+                                                {% endif %}
+                                            	</a>
+					    </div>
+                                            <div class="card-bottom">
+                                                <div class="time-date">{{ studies.releaseDate | date('d M, Y') }}</div>
+                                                <div class="title">{{ studies.title }}</div>
+                                                <a class="find-more" href="{{ studies }}_{{ studies.getId() }}">
+                                                    Find out more
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                    </div>
+                    <div class="laodmore-view">
+                        <p class="line-load"></p>
+                        {{ pimcore_link('studies',{
+                            'class' : 'load-button d-inline-flex align-items-center',
+                            'textSuffix' : '<div class="arrow_right"></div>'
+                        }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#<div class="tool-container container">#}
+        {#    <div class="row">#}
+        {#        <div class="col-12 col-md-6 img-layout">#}
+        {#            <div class="tools-img-view">#}
+
+        {#                {{ pimcore_image('toolImg',{#}
+        {#                    'class' : 'img-tools',#}
+        {#                    'thumbnail' : 'background'#}
+        {#                }) }}#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="col-12 col-md-6 swiper_bg">#}
+        {#            <div class="size-container">#}
+        {#                <div class="resources_index_swiper_container">#}
+        {#                    <div class="swiper-container">#}
+        {#                        <div class="swiper-wrapper">#}
+        {#                            <div class="swiper-slide">#}
+        {#                                <div class="slide-layout">#}
+        {#                                    <div class="title">&nbsp</div>#}
+        {#                                    <div class="sub-title more2 more3">{{ pimcore_input('toolHeadline',{'placeholder' : 'headline'}) }}</div>#}
+        {#                                    <div class="desc more4">#}
+        {#                                        <section id="marked-content">#}
+        {#                                            {{  pimcore_wysiwyg("specialContent", {#}
+        {#                                                "height": 200,#}
+        {#                                                "width" : 300,#}
+        {#                                                "placeholder" : "edit content or describe..."#}
+        {#                                            })#}
+        {#                                            }}#}
+        {#                                        </section>#}
+        {#                                    </div>#}
+
+        {#                                    {{ pimcore_link('toolLink1',{#}
+        {#                                        'class' : 'more'#}
+        {#                                    }) }}#}
+        {#                                </div>#}
+        {#                            </div>#}
+
+
+        {#                        </div><!-- 如果需要滚动条 -->#}
+        {#                        <div class="swiper-scrollbar"></div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#    </div>#}
+        {#    <img class="right-o d-none d-md-block" src="/static/images/pc_right_o.bedfceb.svg">#}
+        {#</div>#}
+        {#{{ pimcore_areablock("Tool", {
+            "allowed": [
+                "tool-content"
+            ]
+        }) }}#}
+
+        <div class="tools tool-container">
+            <div class="tools_image">
+
+                {{ pimcore_image('tool-img',{
+                    imgAttributes : {class : 'cover'},
+                    'thumbnail' : 'background',
+		    'height' : '800'
+                }) }}
+            </div>
+            <div class="tools_content">
+                <div class="tools_content_container">
+                    <div class="txt-regular color-purple">&nbsp</div>
+
+                    <div class="space-32"></div>
+                    <h3>{{ pimcore_input('tool-Title',{'placeholder':'title...'})  }}</h3>
+                    <div class="txt-regular">
+                       {# <p>
+                            Intangible assets (IA) are important business assets and can be   keyIntangible assets (IA) are important business assets and can be key drivers for your companies and organisations.
+                        </p>#}
+                        <section id="marked-content">
+                            {{  pimcore_wysiwyg("specialContent", {
+                                "height": 200,
+                                "placeholder" : "edit content..."
+                            })
+                            }}
+                        </section>
+                    </div>
+
+                    <div class="space-32">
+                    </div>
+
+                    {{ pimcore_link('tool-Link',{
+                        'class' : 'color-orange'
+                    }) }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="webinar_recordings_container">
+            <img class="right-i d-none d-md-block" src="/static/images/pc_right_i.e10a53e.svg">
+            <div class="container">
+                <div class="row" style="position:relative">
+                    <p class="p_title">{{ pimcore_input('webinarTitle',{'placeholder' : 'title...'}) }}</p>
+                    {% for key, webinarItem in webinar %}
+                        {% if key < 2  %}
+                            <div class="col-md-6 col-12">
+                                <a class="tab-card-item d-block" href="{{ webinarItem }}_{{ webinarItem.getId() }}">
+                                    <div class="card-top">
+                                        <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                                        {% if webinarItem.coverImage is not empty %}
+                                            {{ webinarItem.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-resoure'}}) | raw }}
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="card-bottom">
+                                        <div class="title">{{ webinarItem.title }}</div>
+                                        <div class="time-date-view d-flex flex-row align-items-center">
+                                            <span class="time-icon"></span>
+                                            <span class="time-txt">{{ webinarItem.videoTime }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    
+                    <div class="view-all-layout">
+                        {{ pimcore_link('webinarLink',{
+                            'class' : 'view-all'
+                        }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ pimcore_areablock("exploreList",{
+            "allowed" : ["explore-also"]
+        }) }}
+    </div>
+
+{% endblock %}

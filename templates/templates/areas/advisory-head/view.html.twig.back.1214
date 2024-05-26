@@ -1,0 +1,8 @@
+
+{{ pimcore_areablock('headblock',{
+    "allowed" : ["patentanalytics"]
+}) }}
+
+{{ pimcore_areablock('Programme',{
+    "allowed" : ["discover-planning"]
+}) }}

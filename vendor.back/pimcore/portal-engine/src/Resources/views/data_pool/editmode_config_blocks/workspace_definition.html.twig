@@ -1,0 +1,21 @@
+<h5>{{ 'portal-engine.data-pool.workspace-definition'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</h5>
+{% for i in pimcore_iterate_block(pimcore_block(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\DataPoolConfig::WORKSPACE_DEFINITION'))) %}
+    <div class="card">
+        <div class="card-body">
+            <label
+                class="form-control-label">{{ 'portal-engine.data-pool.workspace-path'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+            <div class="editmode-relation-form-group">
+                {{ pimcore_relation(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::WORKSPACE_PATH'), {types:elementTypes}) }}
+            </div>
+
+            {% block permissions %}
+                <div class="mt-3 d-inline-block mr-3">
+                    {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_VIEW'), {label:'portal-engine.data-pool.permission.view'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+                </div>
+                <div class="d-inline-block mr-3">
+                    {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\WorkspaceConfig::PERMISSION_DOWNLOAD'), {label:'portal-engine.data-pool.permission.download'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endfor %}

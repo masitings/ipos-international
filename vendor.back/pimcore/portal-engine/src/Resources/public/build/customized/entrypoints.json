@@ -1,0 +1,79 @@
+{
+  "entrypoints": {
+    "collection-detail": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/collection-detail.a23a98a6.js"
+      ]
+    },
+    "asset-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/asset-list.8c8c26a2.js"
+      ]
+    },
+    "data-object": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/data-object.21ac50f9.js"
+      ]
+    },
+    "data-object-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/data-object-list.334020f5.js"
+      ]
+    },
+    "content": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/content.89135917.js"
+      ]
+    },
+    "download-cart": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/download-cart.198a1601.js"
+      ]
+    },
+    "collection-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/collection-list.a8fad607.js"
+      ]
+    },
+    "asset-detail": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/asset-detail.dde4e86a.js"
+      ]
+    },
+    "search-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/search-list.3e291f77.js"
+      ]
+    },
+    "search-detail": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/search-detail.58f4b97c.js"
+      ]
+    },
+    "public-share-overview": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/public-share-overview.e313317d.js"
+      ]
+    },
+    "public-share-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/customized/public-share-list.0a0b56d4.js"
+      ]
+    },
+    "portal-engine-style": {
+      "css": [
+        "/bundles/pimcoreportalengine/build/customized/portal-engine-style.2ae59ad1.css"
+      ]
+    },
+    "portal-engine-editmode": {
+      "css": [
+        "/bundles/pimcoreportalengine/build/customized/portal-engine-editmode.9c14a3ed.css"
+      ]
+    },
+    "portal-engine-email": {
+      "css": [
+        "/bundles/pimcoreportalengine/build/customized/portal-engine-email.4a29ba66.css"
+      ]
+    }
+  }
+}

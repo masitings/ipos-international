@@ -1,0 +1,27 @@
+<div class="about_container">
+    <div class="credential_container credential_container__transparent">
+        <div class="container">
+            <div class="row">
+                <h2 class="col-md-12 col-12 credential_title">{{ pimcore_input('headline2',{'placeholder':'Headline...'}) }}</h2>
+            </div>
+            <div class="row">
+                {% for i in pimcore_block('credentials').iterator %}
+                    <div class="col-12 col-md-4 column">
+                        <div class="statistic_item">
+                            <div class="statistic_txt">{{ pimcore_input('achievement',{'placeholder' : '100+'}) }}</div>
+                            <h6 class="m-b-10">{{ pimcore_input('descText1',{'placeholder':'title'}) }}</h6>
+                            <div class="statistic_des txt-x-small">
+                                {{  pimcore_wysiwyg("descText", {
+                                    "height": 200,
+                                    "placeholder" : "edit content..."
+                                })
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+{% extends template_layout_name %}
+
+{% block content %}
+
+  <div class="container about_ourTeam_container">
+
+    <!--+aboutTeamDetailDialog()-->
+    <div class="bg_circle"></div>
+    <!--+nav(['Home', 'About', 'Our Team'])-->
+    <div class="resources_public_title_nav container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+            {% include('layouts/breadcrumb-col-12.html.twig') %}
+          </nav>
+          <div class="d-block d-md-none mobile_nav">
+            <span class="back_arrow">&lt;</span><a class="back_txt" href="/about/overview">About</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="ourTeam_title">{{ pimcore_input('facultyTitle',{'placeholder' : 'Meet Our Team'}) }}</div>
+    <div class="ourTeam_line"></div>
+
+    {% if list.Faculty is not empty %}
+      <div class="ourTeam_hasImage">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="left_title">Faculty</div>
+          </div>
+          <div class="col-lg-9">
+            <div class="right_content">
+              {% for faculty in list.Faculty %}
+
+                <div class="right_user_image_info">
+                  <div class="right_user_image_content">
+                    <div class="ourTeam_user_image-wrap">
+
+                      {% if faculty.profilePhoto is not empty %}
+                        {{ faculty.profilePhoto.thumbnail('ProfilePhoto').html({imgAttributes:{class:'ourTeam_user_image img-fluid'}}) |raw }}
+                      {% endif %}
+			{% if faculty.link is not empty %}
+
+                        <a href="{{ faculty.link }}" target="_blank">
+                            <img src="/static/images/team-linkedin.a9c93ee.png">
+                        </a>
+			{% endif %}
+                    </div>
+                    <div class="ourTeam_user_detialInfo">
+                      <div class="ourTeam_user_name">{{ faculty.name  }}</div>
+                      <div class="ourTeam_user_desc">{{ faculty.rank }}</div>
+                      <div class="ourTeam_user_descDetial">{{ faculty.individualResume | raw }}</div>
+                      <div class="ourTeam_read_more_hasImage_0 read-more-cta color-orange btn p-l-0 p-t-0">Read more</div>
+                      <div class="about_ourTeam_dialog hidden modal-profile">
+                        <div class="dialog_team_mask"></div>
+                        <div class="dialog_team_container" id="about_ourTeam_dialog0">
+                          <div class="temp_top_line"></div>
+                          <div class="temp_left_line"></div>
+                          <div class="team_container_content">
+                            <div class="team_container_topview">
+                              {% if faculty.profilePhoto is not empty %}
+                                {{ faculty.profilePhoto.thumbnail('ProfilePhoto').html({imgAttributes:{class:'ourTeam_user_image img-fluid'}}) |raw }}
+                              {% endif %}
+                              <div class="topview_info">
+                                <div class="team_user_name">{{ faculty.name  }}</div>
+                                <div class="team_user_desc">{{ faculty.rank }}</div>
+                              </div>
+                            </div>
+                            <div class="team_container_detail">
+                              {{ faculty.individualResume | raw }}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="team_container_close"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ourTeam_line"></div>
+    {% endif %}
+
+    {% if list.Strategists is not empty %}
+      <div class="ourTeam_noHasImage">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="left_title">IP Strategists</div>
+          </div>
+          <div class="col-lg-9">
+            <div class="right_content">
+              {% for Strategists in list.Strategists %}
+
+                <div class="right_user_image_info">
+                  <div class="right_user_image_content">
+                    <div class="ourTeam_user_image-wrap">
+
+                      {% if Strategists.profilePhoto is not empty %}
+                        {{ Strategists.profilePhoto.thumbnail('ProfilePhoto').html({imgAttributes:{class:'ourTeam_user_image img-fluid'}}) |raw }}
+                      {% endif %}
+                      {% if Strategists.link is not empty %}
+
+                        <a href="{{ Strategists.link }}" target="_blank">
+                          <img src="/static/images/team-linkedin.a9c93ee.png">
+                        </a>
+                      {% endif %}
+                    </div>
+                    <div class="ourTeam_user_detialInfo">
+                      <div class="ourTeam_user_name">{{ Strategists.name  }}</div>
+                      <div class="ourTeam_user_desc">{{ Strategists.rank }}</div>
+                      <div class="ourTeam_user_descDetial">{{ Strategists.individualResume | raw }}</div>
+                      <div class="ourTeam_read_more_hasImage_0 read-more-cta color-orange btn p-l-0 p-t-0">Read more</div>
+                      <div class="about_ourTeam_dialog hidden modal-profile">
+                        <div class="dialog_team_mask"></div>
+                        <div class="dialog_team_container" id="about_ourTeam_dialog0">
+                          <div class="temp_top_line"></div>
+                          <div class="temp_left_line"></div>
+                          <div class="team_container_content">
+                            <div class="team_container_topview">
+                              {% if Strategists.profilePhoto is not empty %}
+                                {{ Strategists.profilePhoto.thumbnail('ProfilePhoto').html({imgAttributes:{class:'ourTeam_user_image img-fluid'}}) |raw }}
+                              {% endif %}
+                              <div class="topview_info">
+                                <div class="team_user_name">{{ Strategists.name  }}</div>
+                                <div class="team_user_desc">{{ Strategists.rank }}</div>
+                              </div>
+                            </div>
+                            <div class="team_container_detail">
+                              {{ Strategists.individualResume | raw }}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="team_container_close"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+{% endblock %}
+

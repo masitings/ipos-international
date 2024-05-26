@@ -1,0 +1,44 @@
+<div class="detail_2_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-9">
+                <div class="ip_chat_content">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p id="linkText" class="txt-regular m-b-22">
+                                {{ pimcore_input('regular',{
+                                    'placeholder' : 'text...'
+                                }) }}
+                            </p>
+
+                            {{ pimcore_link('conversationLink',{
+                                'class' : 'btn full-orange'
+                            }) }}
+                            {#<a class="btn full-orange" href="https://bit.ly/iachat2021">Book IA Chat Session</a>#}
+                        </div>
+                        <div class="col-lg-4 col-md-3">
+                            <div class="share" style="display:none">
+                                <div class="text">Share</div>
+                                <a class="share-item facebook" href="https://www.facebook.com/sharer/sharer.php">
+                                    <img src="/static/images/icon-fb.5385053.svg" alt="">
+                                </a>
+                                <a class="share-item linkedin" href="http://www.linkedin.com/shareArticle">
+                                    <img src="/static/images/icon-in.eea5837.svg" alt="">
+                                </a>
+                                <a class="share-item twitter" href="http://twitter.com/share">
+                                    <img src="/static/images/icon-tw.f378db6.svg" alt="">
+                                </a>
+                                <a class="share-item email" href="mailto:?subject=Title Goes Here&body=">
+                                    <img src="/static/images/icon-email.940dc0d.svg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

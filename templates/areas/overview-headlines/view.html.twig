@@ -1,0 +1,29 @@
+<div class="content container">
+    <p class="title">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</p>
+    <div class="sub-content row">
+
+        <div class="sub-title col-md-6 col-12">
+        <section id="marked-content">
+            {{  pimcore_wysiwyg("content1", {
+                "height": 200,
+                "placeholder" : "edit content..."
+            })
+            }}
+        </section>
+        </div>
+        <div class="des-content col-md-6 col-12 txt-regular opacity-07 m-t-5">
+            <section id="marked-content">
+                {{  pimcore_wysiwyg("content2", {
+                    "height": 200,
+                    "placeholder" : "edit content..."
+                })
+                }}
+            </section>
+	    {{ pimcore_areablock("cta", {
+                "allowed": [
+                    "overview-cta"
+                ]
+            }) }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="ip_chat_image">
+    {#                            <img class="cover" src="/static/images/ipchat.1870870.jpg" alt="">#}
+    {{ pimcore_image('chatImg',{
+        imgAttributes : {class : 'cover'},
+        'thumbnail' : 'background',
+        'height' : 200,
+	'hidetext' : true
+    }) }}
+</div>

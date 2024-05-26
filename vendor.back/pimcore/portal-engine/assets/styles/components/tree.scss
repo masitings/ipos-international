@@ -1,0 +1,69 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.tree {
+    padding-left: 14/16*1rem;
+    padding-top: 6/16*1rem;
+    font-size: 12/16*1rem;
+}
+.tree--level-0 {
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+.tree--level-1 {
+    font-size: 12/16*1rem;
+}
+
+//.tree--level-2 {
+//    padding-left: 14/16*1rem;
+//    padding-top: 6/16*1rem;
+//    font-size: 12/16*1rem;
+//}
+
+.tree__item {
+    min-width: 10rem;
+}
+.tree__item + .tree__item {
+    margin-top: 6/16*1rem;
+}
+.tree__node.is-selected {
+    font-family: $font-family-bold;
+    font-weight: $font-weight-bold;
+}
+.tree__item__collapse {
+    background: transparent;
+    border: 0;
+    color: currentColor;
+    padding: 0;
+    display: flex;
+    text-align: left;
+
+    &:focus {
+        outline: none;
+        color: $primary;
+    }
+}
+.tree__item__collapse__icon {
+    transition: transform 200ms ease-in-out;
+    margin-right: map_get($spacers, 2);
+    flex-shrink: 0;
+    align-self: flex-start;
+    transform: rotate(-90deg);
+}
+.tree__item__collapse.is-open > .tree__item__collapse__icon {
+    transform: rotate(0deg);
+}
+.tree__item__type {
+    flex-shrink: 0;
+    margin-right: .5rem;
+    vertical-align: -.4em;
+}

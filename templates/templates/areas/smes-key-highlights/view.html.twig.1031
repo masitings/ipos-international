@@ -1,0 +1,19 @@
+<div class="about_container">
+    <div class="credential_container credential_container__transparent p-t-45">
+        <div class="container">
+            <h4 class="h4 m-b-30">Key Highlights</h4>
+            <div class="row">
+
+                {% for i in pimcore_block('tnc_wrap').iterator %}
+                    <div class="col-6 col-md-5 m-b-45">
+                        <div class="statistic_item">
+                            <div class="statistic_txt">{{ pimcore_input('datum',{'placeholder':'datum'}) }}</div>
+                            <div class="statistic_des">{{ pimcore_input('describe',{'placeholder':'describe...'}) }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</div>

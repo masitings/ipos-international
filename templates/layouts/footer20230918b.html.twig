@@ -1,0 +1,213 @@
+
+{% if not document is defined or not document %}
+    {% set document = pimcore_document(1) %}
+{% endif %}
+
+
+{% set navStartNode = document.getProperty('navigation_root') %}
+
+
+{% if not navStartNode is instanceof('\\Pimcore\\Model\\Document') %}
+    {% set navStartNode = pimcore_document(1) %}
+{% endif %}
+
+
+
+{% set mainNavigation = pimcore_build_nav({active: document, root: navStartNode}) %}
+{% set menuRenderer = pimcore_nav_renderer('menu') %}
+<footer class="main-footer">
+    <div class="footer-side"></div>
+    <div class="container main-footer-cont">
+        <div class="container main-footer-cont-upper d-flex w-100 m-b-60">
+            <div class="main-footer-cont-upper--left">
+                <div class="m-b-20">
+	
+                   {% if editmode %}
+                        {{ pimcore_image('logo',{
+                            width : 300,
+                            height : 100,
+                            hidetext : true
+                        }) }}
+                        {% else %}
+                            {{ pimcore_image('logo',{
+                                
+                            }) }}
+                    {% endif %}
+                   
+                    
+                </div>
+                <div class="m-b-15">
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("footer-specialContent", {
+                            "placeholder" : "address",
+
+                        })
+                        }}
+                    </section>
+                </div>
+                {% if editmode %}
+                    <h1>tel and email</h1>
+                {% endif %}
+                <div class="m-b-5">
+                    <span>
+                        <img class="icon" src="{{ asset('/static/images/mobile.102b6fc.png') }}" alt="Phone">
+                    </span>
+                    <span>{{ pimcore_link('footer-tel',{'placeholder' : 'tel'}) }}</span></div>
+                {# <div class="m-b-30">
+                    <span>
+                        <img class="icon" src="{{ asset('/static/images/mail.88b1536.png') }}" alt="Mail">
+                    </span>
+                    <span>{{ pimcore_link('footer-email',{'placeholder' : 'email'}) }}</span>
+                </div> #}
+                
+                <div class="m-b-10 m-t-15">
+                    <div><span>
+                        <img class="icon" src="{{ asset('/static/images/mail.88b1536.png') }}" alt="Mail">
+                    </span>{{ pimcore_input('footer-email-title',{'placeholder' : 'email title..'}) }}</div>
+                    <span>{{ pimcore_link('footer-email',{'placeholder' : 'email'}) }}</span>
+                </div>
+                <div class="m-b-10">
+                    <div><span>
+                        <img class="icon" src="{{ asset('/static/images/mail.88b1536.png') }}" alt="Mail">
+                    </span>{{ pimcore_input('footer-email-title-b',{'placeholder' : 'email title..'}) }}</div>
+                    <span>{{ pimcore_link('footer-email-b',{'placeholder' : 'email'}) }}</span>
+                </div>
+                <div class="m-b-20">
+                    <div><span>
+                        <img class="icon" src="{{ asset('/static/images/mail.88b1536.png') }}" alt="Mail">
+                    </span>{{ pimcore_input('footer-email-title-c',{'placeholder' : 'email title..'}) }}</div>
+                    
+                    <span>{{ pimcore_link('footer-email-c',{'placeholder' : 'email'}) }}</span>
+                </div>
+
+                {% if editmode %}
+                    <h1>contact us</h1>
+                {% endif %}
+                {% if editmode  %}
+
+                    {{ pimcore_link('mailChiLink') }}
+                    {% else %}
+                        {% set mailChiLink = pimcore_link('mailChiLink') %}
+                        <a class="btn btn__newsletter" type="button" data-bs-toggle="modal" data-bs-target="#subscribeNesletterModal" data-bs-whatever="@mdo">{{ mailChiLink.data.text | default("Subscribe for Newsletter") }}</a>
+                        <div class="ipos-modal iframe-test modal fade" id="subscribeNesletterModal" tabindex="-1" aria-hidden="true">
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="height: 94vh;">
+                                    <iframe src="{{ mailChiLink.data.path | default('') }}" style="width: 100%; height: 100%;"></iframe>
+                                </div>
+                            </div>
+                            <div class="thankyou-modal">
+                                <div class="btn-close -close-tq-modal" data-bs-dismiss="modal" aria-label="Close"></div>
+                                <div class="thankyou-modal__wrap">
+                                    <img class="m-b-20" src="/static/images/mail-fly.3358c4b.png" alt="">
+                                    <p class="txt-regular m-b-25">Thank you for your message. It has been sent. We will get back to you soon.</p>
+                                    <div class="btn btn__hollow -close-tq-modal" data-bs-dismiss="modal" aria-label="Close">Continue Browsing</div>
+                                </div>
+                            </div>
+                        </div>
+                {% endif %}
+            </div>
+            {% if editmode %}
+                <h1>Anchor link</h1>
+            {% endif %}
+            <div class="main-footer-cont-upper--right row">
+                {% for page in mainNavigation %}
+                    {% if page.isVisible() and menuRenderer.accept(page) %}
+                        {% set hasChildren = page.hasPages() %}
+                        {% if hasChildren %}
+                            <div class="col-6 col-lg-2 footer-cat-column">
+                                <div class="footer-categories-title">
+                                    <div>{{ page.getLabel()|lower }}</div>
+                                    <ul>
+                                        {% for child in page.getPages() %}
+                                            {% if child.isVisible() and menuRenderer.accept(child) %}
+                                                <li><a href="{{ child.getHref() }}">{{ child.getLabel()|trans }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% if editmode %}
+            <h1>shares</h1>
+        {% endif %}
+        <div class="container main-footer-cont-bottom">
+            <div class="footer-wrap-social">
+               
+                    {{ pimcore_link('facebookLink',{
+                        'noText' : 'true',
+                        'textPrefix' : '<div class="footer-wrap-social_icon"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.68402 11.5029H14.315" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.316 7.64355H13.506C12.249 7.64355 11.229 8.66355 11.229 9.92055V10.7306V16.7336" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22.1885C17.5228 22.1885 22 17.7113 22 12.1885C22 6.66563 17.5228 2.18848 12 2.18848C6.47715 2.18848 2 6.66563 2 12.1885C2 17.7113 6.47715 22.1885 12 22.1885Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></div>',
+                        'title':'facebook'
+                    }) }}
+               
+                    {{ pimcore_link('linkedinLink',{
+                        'notText' : 'true',
+                        'textPrefix' : '<div class="footer-wrap-social_icon"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.7">
+                                <path d="M8.64899 10.7627V15.6717" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.92 15.6717V12.8077C11.92 11.6777 12.835 10.7627 13.965 10.7627V10.7627C15.095 10.7627 16.01 11.6777 16.01 12.8077V15.6717" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.64701 7.79695C8.53401 7.79695 8.44201 7.88895 8.44301 8.00195C8.44301 8.11495 8.53501 8.20695 8.64801 8.20695C8.76101 8.20695 8.85301 8.11495 8.85301 8.00195C8.85201 7.88795 8.76001 7.79695 8.64701 7.79695" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.071 5.11723C22.976 9.02223 22.976 15.3542 19.071 19.2592C15.166 23.1642 8.83399 23.1642 4.92899 19.2592C1.02399 15.3542 1.02399 9.02223 4.92899 5.11723C8.83399 1.21223 15.166 1.21223 19.071 5.11723" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg></div>',
+                        'title' : 'linkedin'
+                    }) }}
+                
+                    {{ pimcore_link('twitterLink',{
+                        'notText' : 'true',
+                        'textPrefix' : '<div class="footer-wrap-social_icon"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.7">
+                                <path d="M19.0707 5.11723C22.9757 9.02223 22.9757 15.3542 19.0707 19.2592C15.1657 23.1642 8.83375 23.1642 4.92875 19.2592C1.02375 15.3542 1.02375 9.02223 4.92875 5.11723C8.83375 1.21223 15.1657 1.21223 19.0707 5.11723" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16.1 10.8635C16.1 10.5874 15.8761 10.3635 15.6 10.3635C15.3239 10.3635 15.1 10.5874 15.1 10.8635H16.1ZM7.90377 14.1686C7.7409 13.9456 7.42809 13.8969 7.20509 14.0598C6.9821 14.2226 6.93336 14.5354 7.09623 14.7584L7.90377 14.1686ZM7.41505 13.9706C7.14292 14.0175 6.96035 14.2761 7.00727 14.5482C7.05419 14.8204 7.31283 15.0029 7.58495 14.956L7.41505 13.9706ZM8.85 14.0133L9.00886 14.4874C9.17258 14.4325 9.2964 14.2971 9.3364 14.1291C9.3764 13.9611 9.3269 13.7844 9.20548 13.6617L8.85 14.0133ZM8.4 8.61328L8.84039 8.37651C8.75864 8.22447 8.60426 8.12535 8.43199 8.11431C8.25972 8.10326 8.09394 8.18186 7.99345 8.32221L8.4 8.61328ZM11.1 10.8633L10.9819 11.3491C11.1282 11.3847 11.2826 11.3525 11.4025 11.2614C11.5223 11.1704 11.5948 11.0302 11.5997 10.8798L11.1 10.8633ZM15.15 9.51328L14.7325 9.78846C14.8251 9.92881 14.9819 10.0133 15.15 10.0133V9.51328ZM16.5 9.51328L16.916 9.79063C17.0183 9.6372 17.0278 9.43993 16.9408 9.27735C16.8538 9.11477 16.6844 9.01328 16.5 9.01328V9.51328ZM15.184 10.5859C15.0308 10.8157 15.0929 11.1261 15.3227 11.2793C15.5524 11.4325 15.8628 11.3704 16.016 11.1406L15.184 10.5859ZM15.1 10.8635C15.1 12.3465 14.6767 13.5692 13.9313 14.414C13.1928 15.251 12.0979 15.7635 10.65 15.7635V16.7635C12.3521 16.7635 13.7322 16.1511 14.6812 15.0756C15.6233 14.0079 16.1 12.5305 16.1 10.8635H15.1ZM10.65 15.7635C9.84639 15.7635 9.31839 15.5568 8.9245 15.2781C8.51533 14.9885 8.2204 14.6021 7.90377 14.1686L7.09623 14.7584C7.4081 15.1854 7.78817 15.699 8.34688 16.0944C8.92086 16.5005 9.65361 16.7635 10.65 16.7635V15.7635ZM7.58495 14.956C7.60077 14.9533 7.61301 14.9504 7.61721 14.9494C7.62295 14.948 7.62757 14.9468 7.63033 14.946C7.63584 14.9445 7.64028 14.9432 7.6425 14.9426C7.64725 14.9412 7.65144 14.9399 7.65392 14.9391C7.65931 14.9374 7.66537 14.9355 7.67116 14.9336C7.68312 14.9298 7.69929 14.9245 7.71848 14.9182C7.75713 14.9054 7.81106 14.8876 7.8748 14.8664C8.00242 14.8239 8.17102 14.7677 8.33892 14.7116C8.50688 14.6554 8.67436 14.5994 8.79984 14.5574C8.86258 14.5364 8.91483 14.5189 8.95139 14.5066C8.96968 14.5005 8.98404 14.4957 8.99383 14.4924C8.99873 14.4908 9.00248 14.4895 9.00502 14.4887C9.00628 14.4882 9.00724 14.4879 9.00789 14.4877C9.00821 14.4876 9.00845 14.4875 9.00861 14.4875C9.00869 14.4874 9.00876 14.4874 9.0088 14.4874C9.00882 14.4874 9.00883 14.4874 9.00884 14.4874C9.00885 14.4874 9.00886 14.4874 8.85 14.0133C8.69114 13.5392 8.69114 13.5392 8.69113 13.5392C8.69112 13.5392 8.6911 13.5392 8.69108 13.5392C8.69104 13.5392 8.69098 13.5392 8.6909 13.5393C8.69074 13.5393 8.6905 13.5394 8.69018 13.5395C8.68954 13.5397 8.68858 13.54 8.68732 13.5405C8.6848 13.5413 8.68105 13.5426 8.67616 13.5442C8.66639 13.5475 8.65204 13.5523 8.63378 13.5584C8.59726 13.5706 8.54506 13.5881 8.48237 13.6091C8.35698 13.6511 8.18968 13.7071 8.02195 13.7631C7.85417 13.8192 7.68617 13.8753 7.55931 13.9174C7.4958 13.9386 7.44302 13.9561 7.40586 13.9683C7.38715 13.9744 7.37314 13.979 7.36394 13.982C7.3617 13.9827 7.35992 13.9833 7.35856 13.9837C7.35788 13.9839 7.35736 13.9841 7.35697 13.9842C7.35678 13.9843 7.35663 13.9843 7.35653 13.9844C7.35642 13.9844 7.35638 13.9844 7.35638 13.9844C7.35638 13.9844 7.35646 13.9844 7.35659 13.9843C7.35673 13.9843 7.35695 13.9842 7.35726 13.9841C7.35778 13.984 7.35903 13.9836 7.36077 13.9831C7.36214 13.9827 7.36587 13.9816 7.37083 13.9803C7.37332 13.9796 7.37771 13.9784 7.38325 13.9771C7.38726 13.9761 7.39934 13.9733 7.41505 13.9706L7.58495 14.956ZM9.20548 13.6617C7.87727 12.3189 7.77845 10.3403 8.80655 8.90435L7.99345 8.32221C6.68755 10.1462 6.81673 12.6687 8.49452 14.3649L9.20548 13.6617ZM7.95961 8.85005C8.56183 9.97016 9.69713 11.0369 10.9819 11.3491L11.2181 10.3774C10.2769 10.1487 9.34517 9.3154 8.84039 8.37651L7.95961 8.85005ZM11.5997 10.8798C11.6176 10.3391 11.8078 9.90056 12.1014 9.60049C12.3924 9.30315 12.8123 9.11328 13.35 9.11328V8.11328C12.5622 8.11328 11.8786 8.39842 11.3867 8.90107C10.8975 9.401 10.6254 10.0874 10.6003 10.8468L11.5997 10.8798ZM13.35 9.11328C13.7367 9.11328 14.0107 9.18655 14.2156 9.29589C14.4194 9.40466 14.5856 9.56552 14.7325 9.78846L15.5675 9.2381C15.3479 8.90505 15.0654 8.6159 14.6864 8.41367C14.3085 8.21201 13.8658 8.11328 13.35 8.11328V9.11328ZM15.15 10.0133H16.5V9.01328H15.15V10.0133ZM16.084 9.23593L15.184 10.5859L16.016 11.1406L16.916 9.79063L16.084 9.23593Z" fill="white"/>
+                            </g>
+                        </svg></div>',
+                        'title' : 'twitter'
+                    }) }}
+                
+                
+
+                    {{ pimcore_link('emailLink',{
+                        'notText' : 'true',
+                        'textPrefix' : '<div class="footer-wrap-social_icon"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.7">
+                                <path d="M19.0707 5.11723C22.9757 9.02223 22.9757 15.3542 19.0707 19.2592C15.1657 23.1642 8.83375 23.1642 4.92875 19.2592C1.02375 15.3542 1.02375 9.02223 4.92875 5.11723C8.83375 1.21223 15.1657 1.21223 19.0707 5.11723" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.7915 9.37516C16.677 8.87316 16.338 8.47716 15.907 8.34116C15.1275 8.09766 12 8.09766 12 8.09766C12 8.09766 8.874 8.09766 8.093 8.34116C7.6635 8.47516 7.3245 8.87116 7.2085 9.37516C7 10.2862 7 12.1887 7 12.1887C7 12.1887 7 14.0912 7.2085 15.0022C7.323 15.5042 7.662 15.9002 8.093 16.0362C8.874 16.2797 12 16.2797 12 16.2797C12 16.2797 15.1275 16.2797 15.907 16.0362C16.3365 15.9022 16.6755 15.5062 16.7915 15.0022C17 14.0912 17 12.1887 17 12.1887C17 12.1887 17 10.2862 16.7915 9.37516Z" stroke="white" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.001 13.6885L13.599 12.1885L11.001 10.6885V13.6885Z" stroke="white" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg></div>',
+                        'title' : 'email'
+                    }) }}
+                </div>
+            
+
+
+            <div class="footer-copyright-row">
+                <div class="copyright-wrap">
+                    <p>© {{ "now" | date('Y') }} IPOS International.</p>
+                </div>
+
+                {% if editmode %}
+                    <h1>Custom link</h1>
+                {% endif %}
+                <div class="tnc-wrap">
+                    <ul>
+                        {% for i in pimcore_block('tnc_wrap').iterator %}
+                            <li>{{ pimcore_link('myLink') }}</li>
+                        {% endfor %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

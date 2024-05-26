@@ -1,0 +1,28 @@
+{# @var \Pimcore\Bundle\PortalEngineBundle\Entity\PublicShare publicShare #}
+{# @var bool showTermsText #}
+{# @var string termsText #}
+
+{% extends "@PimcorePortalEngine/layout/public.html.twig" %}
+
+{% do portalEngine_frontendConfig().setConfig("publicShare.id", publicShare.id) %}
+{% do portalEngine_frontendConfig().setConfig("publicShare.hash", publicShare.hash) %}
+{% do portalEngine_frontendConfig().setConfig("publicShare.showTermsText", showTermsText) %}
+{% do portalEngine_frontendConfig().setConfig("publicShare.termsText", termsText) %}
+
+{% block content %}
+
+    <div id="root"
+         class="full-height-layout"
+         data-data-object-id="{{ dataObject.id }}"
+         data-data-pool-id="{{ dataPoolId }}"
+         data-versions-enabled="{{ enableVersionHistory }}"
+         data-detail-url="{{ path('pimcore_portalengine_rest_api_public_share_data_object_detail', app.request.query.all|merge({id: dataObject.id, dataPoolId: dataPoolId, publicShareHash:publicShare.hash})) }}"
+         data-results-list-url="{{ path('pimcore_portalengine_rest_api_public_share_data_object_detail_results_list', app.request.query.all|merge({id: dataObject.id, dataPoolId: dataPoolId, publicShareHash:publicShare.hash})) }}"
+    >
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('data-object', null, webpack_build()) }}
+{% endblock %}

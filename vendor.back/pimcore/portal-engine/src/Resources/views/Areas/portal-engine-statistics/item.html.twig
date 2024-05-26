@@ -1,0 +1,48 @@
+{# @var array statisticSelectConfigurations #}
+{# @var array statisticTranslatedHeadline #}
+
+
+<div class="card">
+    <div class="card-body">
+
+        {% if editmode %}
+
+            {% block editmode %}
+                {{ include("@PimcorePortalEngine/shared/editmode/select.html.twig", {
+                    id: "size",
+                    label: "content.size",
+                    config: {
+                        store: [
+                            ["medium", "medium"],
+                            ["big", "big"],
+                        ],
+                        reload: true
+                    }
+                }) }}
+
+                {{ pimcore_select("statistic_configuration", {
+                    "store": statisticSelectConfigurations | raw,
+                    "width": 350
+                }) }}
+            {% endblock %}
+
+        {% endif %}
+
+
+        {% if not editmode %}
+            {% block frontend %}
+                {% if pimcore_select("statistic_configuration").getData() in statisticTranslatedHeadline | keys %}
+                    {% block headline %}
+                        <h4>{{ statisticTranslatedHeadline[pimcore_select("statistic_configuration").getData()] | raw }}</h4>
+                    {% endblock %}
+                {% endif %}
+                {% block statistics_container %}
+                    <div class="statistics-container" data-config-id="{{ pimcore_select("statistic_configuration").getData() | raw  }}"></div>
+                {% endblock %}
+            {% endblock %}
+        {% endif %}
+    </div>
+</div>
+
+
+

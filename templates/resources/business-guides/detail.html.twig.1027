@@ -1,0 +1,181 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="business_guides_details_container business_guides_details_container_not_animated resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="js_public_layout"></div>
+        <div class="resources_public_title_nav container">
+
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav">
+                        <span class="back_arrow">&lt; </span><span class="back_txt">Business Guides </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title">{{ list.title }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                            <div class="posted-container">
+                                <span class="lable m-r-4">Posted on</span>
+                                <span class="value">{{ list.releaseDate | date('d M, Y') }}</span>
+                                <br class="d-block d-md-none">
+                                {# <img class="value-img" src="/static/images/Logos-IPOSInt-Profile-Icon-02.3e9fb7c.jpg">#}
+                                {% if list.authorIcon is not empty %}
+                                    {{ list.authorIcon.thumbnail('ProfilePhoto').html({imgAttributes:{class:'value-img'}}) | raw }}
+                                {% endif %}
+
+                                <span class="lable m-r-4">By</span>
+                                <span class="value">{{ list.author }}</span>
+                            </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="details_img_body_container container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content_main_img">
+                        {% if list.listType == 'Watch List' %}
+                            {% if list.video is not empty %}
+                                <iframe class="content_img" {#width="560" height="315"#} src="https://www.youtube.com/embed/{{ list.video.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            {% endif %}
+
+                            {% else %}
+
+                                {% if list.coverImage is not empty %}
+                                    {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'content_img'}}) | raw }}
+                                {% endif %}
+                        {% endif %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="js_public_image"></div>
+        <div class="body_container container">
+            <div class="row">
+                <div class="col-md-8 col-12 column-padding">
+                    <div class="guides-content-container">
+                        {{ list.content | raw }}
+                    </div>
+                    <div class="left_container"></div>
+
+                    {% if list.file is not empty %}
+                    <div class="detail_children_components_layout">
+
+                        <a target="_blank" class="annex" href="{{ list.file.path }}">
+                            <span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span>
+                            <span class="annex-txt">{{ list.file.text }}</span>
+                            <span class="pdf-down" style="background-image:url(/static/images/icon_download.c4854a7.svg)"></span>
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if list.checkList is not empty %}
+                    <p class="annex-warning">Check out how local menswear label—Benjamin Barker used intangible assets and IP to make a mark in their industry.</p>
+                    {% for checkData in list.checkList %}
+                        <a class="public_guides_card_bottom_container" href="{{ checkData }}_{{ checkData.getId() }}">
+                        <div class="part_1">
+                            <img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">
+                            <img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">
+
+                            {% if checkData.coverImage is not empty %}
+                                {{ checkData.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-resoure'}}) | raw }}
+                            {% endif %}
+
+                        </div>
+                        <div class="part_2">
+                            <div class="part_child_1">
+                                <p class="dateTxt">{{ checkData.resourceType }}</p>
+                                <p class="title">{{ checkData.title }}</p>
+                            </div>
+                            <div class="part_child_2">
+                                <span class="find_more">Find out more</span>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+
+                    {% endif %}
+                    <div class="public_guides_bottom_card_container"></div>
+                    {% if list.moreContent is not empty %}
+
+                        <p class="sub-title h-sub fs-5">Want more great content?</p>
+                        <p class="desc txt-regular">Browse our <a target="_blank" href="{{ list.moreContent.path }}" class="link__org ">{{ list.moreContent.text }}</a></p>
+                    {% endif %}
+
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="subscribe_window_container">
+                        {% if list.fullGuide is not empty %}
+                            <div class="subscribe_window">
+                                {#<p class="title">{{ list.fullGuide.text }}</p>
+                                <a target="_blank" class="subscribe_now" href="{{ list.fullGuide.path }}">Subscribe Now</a>#}
+                                <p class="title">{{ list.fullGuide.text }}</p>
+                                <a class="subscribe_now" type="button" data-bs-toggle="modal" data-bs-target="#businessGuideMailChimp" data-bs-whatever="@mdo">Subscribe Now</a>
+                                <div class="ipos-modal iframe-test modal fade" id="businessGuideMailChimp" tabindex="-1" aria-hidden="true">
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal-dialog">
+                                        <div class="modal-content" style="height: 94vh;">
+                                            <iframe src="{{ list.fullGuide.path }}" style="width: 100%; height: 100%;"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="resources_public_recommend-container">
+                            {% if list.also is not empty %}
+                            <p class="recommend-title">You May Be Interested In</p>
+                            {% for also in list.also %}
+                                <a class="recommend_item" href="{{ also }}_{{ also.getId() }}">
+
+                                    {% if also.coverImage is not empty %}
+                                        {{ also.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'recommend-img'}}) | raw }}
+                                    {% endif %}
+                                    <div class="recommend-txt-layout">
+                                        <p class="txt-date">{{ also.releaseDate | date('d M, Y') }}</p>
+                                        <p class="recommend-txt-title">{{ also.title }}</p>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                            {% endif %}
+
+                            {% if list.shares is not empty %}
+
+                                <div class="share-container">
+                                    <span class="share-txt">SHARE</span>
+                                    <div class="share-layout">
+                                        {% for share in list.shares %}
+
+                                            <a class="{{ share.getShare().class }}" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+                    <div class="share_container_1"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/static/js/shares.js"></script>
+{% endblock %}

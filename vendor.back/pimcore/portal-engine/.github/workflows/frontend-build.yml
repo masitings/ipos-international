@@ -1,0 +1,52 @@
+name: "Frontend Build"
+
+on: [push, workflow_dispatch]
+
+jobs:
+    check:
+        name: "Check if there are changes in the assets folder"
+        runs-on: ubuntu-latest
+        outputs:
+            has_changed: ${{ steps.check_assets.outputs.has_changed }}
+        steps:
+            - name: "Checkout code"
+              uses: "actions/checkout@v2"      
+              with:
+                fetch-depth: 2
+          
+            - name: check modified files
+              id: check_assets
+              run: |      
+                  echo "::set-output name=has_changed::false"
+                  git diff --quiet HEAD^ HEAD -- assets || echo "::set-output name=has_changed::true"
+          
+          
+    frontend-build:
+        name: "Building frontend build for portal engine"
+        runs-on: "ubuntu-20.04"
+        needs: check
+        if: needs.check.outputs.has_changed == 'true'
+        steps:
+            - name: "Checkout code"
+              uses: "actions/checkout@v2"
+
+            - name: "Install Node"
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '10.x'
+                  registry-url: 'https://registry.npmjs.org'
+
+            - name: "Running npm install"
+              run: npm install
+
+            - name: "Running npm build"
+              run: npm run build
+
+            - name: "Pushing changes"
+              run: |
+                git config --global user.name "Github Actions"
+                git config --global user.email "actions@github.com"
+                git pull
+                git add src/Resources/public/build/*
+                git commit -m "Automatic Frontend Build" --allow-empty
+                git push

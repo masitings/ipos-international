@@ -1,0 +1,121 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+table.button {
+    width: auto;
+    margin: 0 0 16px 0;
+    Margin: 0 0 16px 0;}
+table.button table td {
+    text-align: left;
+    color: #fefefe;
+    background: $primary;
+    border: 2px solid $primary; }
+table.button table td a {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing:1px;
+    font-weight: bold;
+    color: #fefefe;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 6px 14px 6px 14px;
+    border: 0 solid $primary;
+    border-radius: 3px; }
+table.button.radius table td {
+    border-radius: 3px;
+    border: none; }
+table.button.rounded table td {
+    border-radius: 500px;
+    border: none; }
+
+table.button:hover table tr td a,
+table.button:active table tr td a,
+table.button table tr td a:visited,
+table.button.tiny:hover table tr td a,
+table.button.tiny:active table tr td a,
+table.button.tiny table tr td a:visited,
+table.button.small:hover table tr td a,
+table.button.small:active table tr td a,
+table.button.small table tr td a:visited,
+table.button.large:hover table tr td a,
+table.button.large:active table tr td a,
+table.button.large table tr td a:visited {
+    color: #fff; }
+
+table.button.tiny table td,
+table.button.tiny table a {
+    padding: 4px 8px 4px 8px; }
+
+table.button.tiny table a {
+    font-size: 10px;
+    font-weight: normal; }
+
+table.button.small table td,
+table.button.small table a {
+    padding: 5px 10px 5px 10px;
+    font-size: 12px; }
+
+table.button.large table a {
+    padding: 10px 20px 10px 20px;
+    font-size: 20px; }
+
+table.button.expand,
+table.button.expanded {
+    width: 100% !important; }
+table.button.expand table,
+table.button.expanded table {
+    width: 100%; }
+table.button.expand table a,
+table.button.expanded table a {
+    text-align: center;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0; }
+table.button.expand center,
+table.button.expanded center {
+    min-width: 0; }
+
+table.button:hover table td,
+table.button:visited table td,
+table.button:active table td {
+    background: $primary;
+    color: #fff; }
+
+table.button:hover table a,
+table.button:visited table a,
+table.button:active table a {
+    border: 0 solid $primary; }
+
+table.button.secondary table td {
+    background: $secondary;
+    color: #fff;
+    border: 0px solid $secondary; }
+
+table.button.secondary table a {
+    color: #fff;
+    border: 0 solid $secondary; }
+
+table.button.secondary:hover table td {
+    background: $secondary;
+    color: #fff; }
+
+table.button.secondary:hover table a {
+    border: 0 solid $secondary; }
+
+table.button.secondary:hover table td a {
+    color: #fff; }
+
+table.button.secondary:active table td a {
+    color: #fff; }
+
+table.button.secondary table td a:visited {
+    color: #fff; }

@@ -1,0 +1,39 @@
+<section class="detail_2">
+    <div class="benefit-bg-right"><img src="/static/images/benefir-right.f808b00.svg" alt=""></div>
+    <div class="detail_2_image">
+        {#                <img class="cover" src="/static/images/patent-analytic.e755007.jpg" alt="">#}
+        {{ pimcore_image('coverImg',{
+            imgAttributes : {class : 'cover'},
+            'thumbnail' : 'background'
+        }) }}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-12">
+                {{ pimcore_areablock("content",{
+                    "allowed" : [
+                        "advisory-chat"
+                    ]
+                }) }}
+            </div>
+
+        </div>
+    </div>
+</section>
+{#<section class="academy_enterprise_detail__page advisor_ipChat__page">
+    <section class="detail_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-12">
+                    {{ pimcore_areablock("content",{
+                        "allowed" : [
+                            "advisory-chat"
+                        ]
+                    }) }}
+                </div>
+
+            </div>
+        </div>
+    </section>
+</section>#}
+

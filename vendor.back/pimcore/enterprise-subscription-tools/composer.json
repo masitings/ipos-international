@@ -1,0 +1,26 @@
+{
+  "name": "pimcore/enterprise-subscription-tools",
+  "license": "PEL",
+  "type": "pimcore-bundle",
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "pimcore/pimcore": "^6.8 || ^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pimcore\\Bundle\\EnterpriseSubscriptionToolsBundle\\": "src/"
+    }
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "Pimcore\\Bundle\\EnterpriseSubscriptionToolsBundle\\PimcoreEnterpriseSubscriptionToolsBundle"
+      ]
+    },
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

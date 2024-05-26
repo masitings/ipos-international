@@ -1,0 +1,167 @@
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+
+{% block content %}
+    {% if editmode %}
+        <div class="my-4">
+            <div class="container">
+                <div class="card">
+                    <h3 class="card-header mb-0">
+                        <span class="card-header__btn d-block">{{ 'portal-engine.portal-config.general-settings'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+                    </h3>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-sm-8">
+                                <div class="form-group">
+                                    <label class="form-control-label">{{ 'portal-engine.portal-config.portal-name'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                    {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::PORTAL_NAME'), {class:"form-control", required:true}) }}
+                                </div>
+                                <div class="form-group editmode-relation-form-group">
+                                    <label class="form-control-label">{{ 'portal-engine.portal-config.footer-snippet'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                    {{ pimcore_relation(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::FOOTER_SNIPPET'), {types:['document'],subtypes:{document:['snippet']}}) }}
+                                </div>
+                                <div class="form-group editmode-relation-form-group">
+                                    <label class="form-control-label">{{ 'portal-engine.portal-config.public-footer-snippet'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                    {{ pimcore_relation(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::PUBLIC_FOOTER_SNIPPET'), {types:['document'],subtypes:{document:['snippet']}}) }}
+                                </div>
+                            </div>
+                            <div class="col col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label">{{ 'portal-engine.portal-config.logo'|trans([], 'admin', portalEngine_editmode_admin_language()) }}:</label>
+                                    {{ pimcore_image(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::LOGO'), {hidetext: true, disableInlineUpload: true})}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">{{ 'portal-engine.portal-config.background-image'|trans([], 'admin', portalEngine_editmode_admin_language()) }}:</label>
+                                    {{ pimcore_image(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::BACKGROUND_IMAGE'), {hidetext: true, disableInlineUpload: true})}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">{{ 'portal-engine.portal-config.email-image'|trans([], 'admin', portalEngine_editmode_admin_language()) }}:</label>
+                                    {{ pimcore_image(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::EMAIL_IMAGE'), {hidetext: true, disableInlineUpload: true})}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-header mb-0">
+                        <span class="card-header__btn d-block">{{ 'portal-engine.portal-config.style-settings'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+                    </h3>
+                    <div class="card-body">
+                        {% if pimcore_select(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::CUSTOMIZED_FRONTEND_BUILD')).empty %}
+                            <div class="row">
+                                <div class="col col-sm-8">
+
+                                    <h5>{{ 'portal-engine.portal-config.colors'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</h5>
+                                    <div class="row">
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.primary-hex-code'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::COLOR_PRIMARY'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.secondary-hex-code'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::COLOR_SECONDARY'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.dark-hex-code'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::COLOR_DARK'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.light-hex-code'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::COLOR_LIGHT'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.btn-primary-text-color'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::BTN_PRIMARY_TEXT_COLOR'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.btn-secondary-text-color'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::BTN_SECONDARY_TEXT_COLOR'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.btn-dark-text-color'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::BTN_DARK_TEXT_COLOR'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.btn-light-text-color'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::BTN_LIGHT_TEXT_COLOR'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.header-color-hex-code'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::COLOR_HEADER'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="form-control-label">{{ 'portal-engine.portal-config.header-text-color-hex-code'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</label>
+                                                {{ pimcore_input(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::HEADER_TEXT_COLOR'), {class:"form-control"}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col col-sm-4">
+                                    <h5>{{ 'portal-engine.portal-config.other'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</h5>
+                                    <div>
+                                        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::HEADER_GRADIENTS'), {label:'portal-engine.portal-config.header-gradients'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+                                    </div>
+                                    <div>
+                                        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::NAV_ICON_GRADIENTS'), {label:'portal-engine.portal-config.nav-icon-gradients'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+                                    </div>
+                                    <div>
+                                        {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::MODAL_GRADIENTS'), {label:'portal-engine.portal-config.modal-gradients'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if customizedFrontendBuilds %}
+                            <hr/>
+                            <div class="row">
+                                <div class="col col-sm-4 col-md-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" class="form-control-label"><h5>{{ 'portal-engine.portal-config.customized-frontend-build'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</h5></label>
+                                        {{ pimcore_select(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::CUSTOMIZED_FRONTEND_BUILD'), {store:customizedFrontendBuilds, reload: true}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <hr/>
+                        <div>
+                            {{ pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::ENABLE_LANGUAGE_REDIRECT'), {reload: true, label:'portal-engine.portal-config.enable-language-redirect'|trans([], 'admin', portalEngine_editmode_admin_language())}) }}
+                        </div>
+                        <span
+                            class="text-info">{{ 'portal-engine.portal-config.language-redirect-description'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if not pimcore_checkbox(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\PortalConfig::ENABLE_LANGUAGE_REDIRECT')).isChecked %}
+        <div class="container content-block">
+            {{ portalEngine_editmode_areablock("content", constant("\\Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\AreabrickPlace::PORTAL")) }}
+        </div>
+    {% endif %}
+
+{% endblock %}

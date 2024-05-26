@@ -1,0 +1,138 @@
+key;de
+portal-engine.invalid-hex-in-color-field;Ungültiger HEX Farbcode im Feld
+portal-engine.update-customized-build-not-possible;Funktion deaktiviert weil Customized Frontend Build aktiviert ist. Anpassungden des Customized Frontend Builds über die Console möglich.
+portal-engine.configuration;Konfiguration
+portal-engine.content.navigation;Navigation
+portal-engine.content.navigation-icon;Verwende vordefiniertes Icon
+portal-engine.content.color;Farbe
+portal-engine.content.media-left;Bild link
+portal-engine.content.size;Größe
+portal-engine.footer.menu-items;Menüeinträge
+portal-engine.or;oder
+portal-engine.content.navigation-icon-asset;Verwende ein beliebiges SVG Asset
+portal-engine.data-pool.no-pre-condition-service-registered;Kein Precondition Service registriert
+portal-engine.data-pool.pre-condition-service;Pre Condition Service
+portal-engine.data-pool.workspace-definition;Workspace Definition
+portal-engine.data-pool.workspace-path;Workspace Pfad
+portal-engine.data-pool.navigation-settings;Navigationseinstellungen
+portal-engine.data-pool.enable-folder-navigation;Ordnernavigation aktivieren
+portal-engine.data-pool.enable-tag-navigation;Tagnavigation aktivieren
+portal-engine.data-pool.root-tag;Roottag
+portal-engine.data-pool.filter-definition;Filterdefinition
+portal-engine.data-pool.filter-field;Filterfeld
+portal-engine.data-pool.filter-type;Filtertyp
+portal-engine.data-pool.filter-type.select;Einfachauswahl
+portal-engine.data-pool.filter-type.multiSelect;Mehrfachauswahl
+portal-engine.data-pool.sort-options;Sortieroptionen
+portal-engine.data-pool.sort-direction;Sortierreihenfolge
+portal-engine.data-pool.sort-direction.asc;Aufsteigend
+portal-engine.data-pool.sort-direction.desc;Absteigend
+portal-engine.data-pool.sort-field;Feld
+portal-engine.data-pool.grid-configuration-attributes;Gridattribute
+portal-engine.data-pool.grid-configuration-name-attribute;Grid Namensattribut
+portal-engine.data-pool.grid-configuration;Konfiguration Grid
+portal-engine.data-pool.detail-page-general-attributes;Allgemeine Attribute für Übersichtsseite
+portal-engine.data-pool.detail-page-configuration;Konfiguration Detailseite
+portal-engine.data-pool.enable-version-history;Versionen anzeigen
+portal-engine.data-pool.download-configuration;Konfiguration Downloads
+portal-engine.data-pool.available-download-thumbnails;Verfügbare Thumbnails
+portal-engine.data-pool.data-objects.class-definition;Data Object Class
+portal-engine.data-pool.data-objects.detail-page-layout;Layout Detailseite
+portal-engine.data-pool.data-objects.no-custom-layouts-configured;Derzeit sind keine Custom Layouts konfiguriert. Bitte ein im Klasseneditor ein Custom Layout hinzufügen.
+portal-engine.data-pool.data-objects.available-download-formats;Verfügbare Downloadformate
+portal-engine.data-pool.data-objects.no-download-formats-configured;Derzeit sind keine Downloadformate konfiguriert.
+portal-engine.data-pool.permission.view;Zeigen
+portal-engine.data-pool.permission.download;Download
+portal-engine.data-pool.permission.edit;Metadaten bearbeiten
+portal-engine.data-pool.permission.update;Asset bearbeiten
+portal-engine.data-pool.permission.create;Erstellen
+portal-engine.data-pool.permission.delete;Löschen
+portal-engine.data-pool.permission.subfolder;Unterordner verwalten
+portal-engine.data-pool.permission.view-owned-assets-only;Zeige nur eigene Assets
+portal-engine.data-pool.languages-configuration;Konfiguration Sprachen
+portal-engine.data-pool.visible-languages;Sichbare Sprachen
+portal-engine.data-pool.editable-languages;Bearbeitbare Sprachen
+portal-engine.data-pool.upload_folder;Uploadordner
+portal-engine.update-frontend-build;Frontend Build aktualisieren
+portal-engine.update-frontend-build-running;Frontend build wird aktualisiert...
+portal-engine.frontend-build-finished;Frontend build abgeschlossen
+portal-engine.frontend-build-finished.message;Der Frontend Build wurde abgeschlossen. Bitte neue Sylings im Frontend überprüfen.
+portal-engine.portal-config.header-gradients;Header Gradients
+portal-engine.portal-config.nav-icon-gradients;Nav Icon Gradients
+portal-engine.portal-config.modal-gradients;Modal Gradients
+portal-engine.portal-config.customized-frontend-build;Customized Frontend Build
+portal-engine.portal-config.light-hex-code;Light Hex Code
+portal-engine.portal-config.dark-hex-code;Dark Hex Code
+portal-engine.portal-config.secondary-hex-code;Secondary Hex Code
+portal-engine.portal-config.primary-hex-code;Primary Hex Code
+portal-engine.portal-config.header-color-hex-code;Header Hex Code
+portal-engine.portal-config.header-text-color-hex-code;Header Icon Color
+portal-engine.portal-config.btn-light-text-color;Button Light Text
+portal-engine.portal-config.btn-dark-text-color;Button Dark Text
+portal-engine.portal-config.btn-primary-text-color;Button Primary Text
+portal-engine.portal-config.btn-secondary-text-color;Button Secondary Text
+portal-engine.portal-config.colors;Farben
+portal-engine.portal-config.style-settings;Styleeinstellungen
+portal-engine.portal-config.logo;Logo
+portal-engine.portal-config.background-image;Hintergrundbild
+portal-engine.portal-config.email-image;Logo E-Mail
+portal-engine.portal-config.footer-snippet;Footer Snippet
+portal-engine.portal-config.public-footer-snippet;Öffentliches Footer Snippet
+portal-engine.portal-config.portal-name;Portal Name
+portal-engine.portal-config.general-settings;Allgemeine Einstellungen
+portal-engine.portal-config.other;Weitere
+portal-engine.portal-config.enable-language-redirect;Sprachweiterleitung aktivieren
+portal-engine.portal-config.language-redirect-description;Die Portalseite leitet zum ersten Unterdokument, dessen Sprache mit der Browsersprache übereinstimmt, weiter (Fallback: Erstes Unterdokument). Zusätzlich wird ein Sprachwechsler im Header angezeigt.
+portal-engine.auth.user-not-found;Benutzer nicht gefunden
+portal-engine.auth.password-not-set;Kennwort nicht angegeben
+portal-engine.auth.password-and-password-repeat-are-not-identical;Kennwort und Kennwort-Wiederholung stimmen nicht überein
+portal-engine.user.data-changed;Die Daten wurden erfolgreich angepasst.
+portal-engine.collectionlist.delete.title;Kollektion löschen
+portal-engine.collectionlist.delete.text;Auswählte Kollektion wirklich löschen?
+portal-engine.collectionlist.title;Kollektionen
+portal-engine.collectionlist.menu;Kollektionen
+portal-engine.collectionlist.owner;Besitzer
+portal-engine.collectionlist.itemCount;Anzahl
+portal-engine.collectionlist.portal;Portal
+portal-engine.collectionlist.show-all;Alle Kollektionen im System anzeigen
+portal-engine.collectionlist.add-new;Neue Kollektion hinzufügen
+portal-engine.collectionlist.share;Teilen
+portal-engine.collectionlist.sharing;Kollektion teilen
+portal-engine.collectionlist.sharing.none;Keine
+portal-engine.collectionlist.sharing.read;Lesen
+portal-engine.collectionlist.sharing.edit;Lesen & Schreiben
+portal-engine.collectionlist.sharing.user_group;Benutzer oder Gruppe auswählen
+portal-engine.collectionlist.sharing.update_error;Einstellungen konnten nicht übernommen werden.
+portal-engine.collectiontree.remove;Aus Kollektion entfernen
+portal-engine.collectiontree.failed_add_new;Neues Element konnte nicht zur Kollektion hinzugefügt werden.
+portal-engine.collectiontree.failed_remove;Element konnte nicht von Kollektion entfernt werden.
+portal-engine_collection-access;Kollektionszugriff im Backend
+portal-engine_wizard;Portal Setup Assistent
+portal-engine.data-pool.direct-download-shortcuts;Direct Download Shortcuts
+portal-engine.data-pool.available-download-thumbnails.original-as-default-if-nothing-selected;Original verfügbar wenn nichts ausgewählt
+portal-engine.wizard.menu;Portal Engine Portal Setup Assistent
+portal-engine.wizard.title;Portal Engine Portal Setup Assistent
+portal-engine.wizard.add-data-pool;Datapool hinzufügen
+portal-engine.wizard.create-portal;Portal erstellen
+portal-engine.wizard.portal-form-title;Portaleinstellungen
+portal-engine.wizard.portal-name;Portalname
+portal-engine.wizard.domain;Domain
+portal-engine.wizard.available-languages;Verfügbare Sprachen
+portal-engine.wizard.logo;Logo
+portal-engine.wizard.login-background-image;Hintergrundbild für Login
+portal-engine.wizard.data-pool.asset;Asset
+portal-engine.wizard.data-pool.data-object;Data Object
+portal-engine.wizard.data-pool-name;Navigationsname
+portal-engine.wizard.icon;Icon
+portal-engine.wizard.enable-folder-navigation;Ordneravigation aktivieren
+portal-engine.wizard.enable-tag-navigation;Tagnavigation aktivieren
+portal-engine.wizard.available-download-thumbnails;Verfügbare Download Thumbnails
+portal-engine.wizard.available-download-formats;Verfügbare Downloadformate
+portal-engine.wizard.direct-download-shortcuts;Direct Download Shortcuts
+portal-engine.wizard.visible-languages;Sichbare Sprachen (leer = alle)
+portal-engine.wizard.editable-languages;Editierbare Sprachen (leer = alle)
+portal-engine.wizard.class-definition;Klassendefinition
+portal-engine.wizard.detail-page-layout;Layout Detailseite
+portal-engine.wizard.create-portal.loading;Portal wird erstellt...
+portal-engine.wizard.create-portal.failed-message;Portal konnte nicht erstellt werden
+portal-engine.data-pool.language-variant-reference;Referenzdatapool für Sprachvariante

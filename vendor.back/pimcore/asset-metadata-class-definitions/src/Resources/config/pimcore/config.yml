@@ -1,0 +1,51 @@
+pimcore:
+    assets:
+        metadata:
+            class_definitions:
+                data:
+                    map:
+                        calculatedValue: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\CalculatedValue
+                        country: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Country
+                        datetime: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Datetime
+                        language: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Language
+                        multiselect: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Multiselect
+                        manyToManyRelation: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\ManyToManyRelation
+                        numeric: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Numeric
+                        textarea: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Textarea
+                        wysiwyg: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Wysiwyg
+                        user: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\User
+
+
+pimcore_asset_metadata_class_definitions:
+    class_definitions:
+        layout:
+            map:
+                panel: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Panel
+                accordion: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Accordion
+                button: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Button
+                iframe: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Iframe
+                fieldcontainer: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Fieldcontainer
+                fieldset: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Fieldset
+                tabpanel: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Tabpanel
+                text: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Text
+                region: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Layout\Region
+        data:
+            map:
+                asset: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Asset
+                calculatedValue: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\CalculatedValue
+                checkbox: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Checkbox
+                country: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Country
+                date: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Date
+                datetime: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Datetime
+                document: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Document
+                input: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Input
+                object: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\DataObject
+                language: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Language
+                manyToManyRelation: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\ManyToManyRelation
+                multiselect: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Multiselect
+                numeric: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Numeric
+                select: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Select
+                user: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\User
+                textarea: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Textarea
+                localizedfields: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Localizedfields
+                wysiwyg: \Pimcore\AssetMetadataClassDefinitionsBundle\Model\ClassDefinition\Data\Wysiwyg

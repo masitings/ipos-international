@@ -1,0 +1,30 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.table thead th {
+    border-top: 0;
+    font-size: 12/16*1rem;
+    color: $gray-600;
+    font-weight: $font-weight-normal;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+.table tbody tr:first-child th,
+.table tbody tr:first-child td {
+    border-top: 0;
+}
+.table-responsive {
+    @include scrollbar();
+}
+
+.table {
+    margin-bottom: 0;
+}

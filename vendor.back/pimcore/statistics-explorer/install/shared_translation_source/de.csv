@@ -1,0 +1,59 @@
+key;de
+ttl_configuration;Konfiguration
+lbl_datasource;Datenquelle für Statistik
+lbl_mode;Modus
+lbl_mode_statistic;Statistik
+lbl_mode_list;Liste
+lbl_rows;Zeilen
+lbl_columns;Spalten
+ttl_visualization;Visualisierung
+lbl_chart_type;Diagrammtyp
+lbl_chart_type_none;Ohne
+lbl_chart_type_line;Liniendiagramm
+lbl_chart_type_bar;Balkendiagramm
+lbl_chart_type_area;Flächendiagramm
+lbl_chart_type_pie;Tortendiagramm
+ttl_save;Speichern & Teilen
+lbl_name;Name
+lbl_shared_users;Geteilt mit Benutzern
+lbl_shared_roles;Geteilt mit Rollen
+btn_delete;Löschen
+btn_unshare;Freigabe löschen
+btn_save_configuration;Konfiguration speichern
+btn_save_copy;Als Kopie speichern
+ttl_load_existing;Existierende Konfiguration laden
+btn_load;Laden
+ttl_preview;Vorschau
+ttl_start_new;Zurücksetzen
+ttl_filters;Filter
+ttl_filter;Filter
+lbl_field;Feld
+lbl_operator;Operator
+lbl_filter;Filter
+lbl_show_table;Tabelle anzeigen
+lbl_show_chart;Diagramm anzeigen
+lbl_do_select;Auswählen...
+ttl_field_settings;Feldeinstellungen
+lbl_metric;Metrik
+lbl_metric_count;count
+lbl_metric_avg;avg
+lbl_metric_max;max
+lbl_metric_min;min
+lbl_metric_sum;sum
+lbl_results_order;Ergebnisreihenfolge
+lbl_max_results;Ergebnisanzahl
+lbl_interval;Intervall
+lbl_format;Format
+lbl_minimal_document_count;Minimale Ergebnisanzahl
+lbl_bounds_max;Maximalschranke
+lbl_order_key_asc;Key aufsteigend
+lbl_order_key_desc;Key absteigend
+lbl_order_count_asc;Anzahl aufsteigend
+lbl_order_count_desc;Anzahl absteigend
+lbl_order_asc;Aufsteigend
+lbl_order_desc;Absteigend
+lbl_count_order;Reihenfolge nach Anzahl
+lbl_result;ErgebnisW
+lbl_own;eigene
+lbl_global;global
+lbl_shared;geteilt

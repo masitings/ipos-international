@@ -1,0 +1,26 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.nav-pills {
+    border-radius: $nav-pills-border-radius;
+    border: 1/16*1rem solid $secondary;
+    font-family: $font-family-bold;
+    font-weight: $font-weight-bold;
+}
+.nav-pills .nav-link {
+    padding: 12/16*1rem 15/16*1rem;
+    border: 0;
+    background: inherit;
+    width: 100%;
+}
+.nav-pills .nav-link.active {
+    color: color-yiq($nav-pills-link-active-bg);
+}

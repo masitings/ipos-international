@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    {{ include("@PimcorePortalEngine/shared/layout/head.html.twig") }}
+</head>
+<body class="full-height-layout">
+
+{% include "@PimcorePortalEngine/shared/frontend_setup.html.twig" %}
+
+{% block navbar %}
+    {% include "@PimcorePortalEngine/shared/public/navbar.html.twig" %}
+{% endblock %}
+
+<div class="main-content full-height-layout">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div id="overlay-portal">
+    <!-- Portal for react overlays -->
+</div>
+
+{% block footer %}
+    {% include "@PimcorePortalEngine/shared/public/footer.html.twig" %}
+{% endblock %}
+
+{{ portalEngine_frontendConfig() | raw }}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('content', null, webpack_build()) }}
+{% endblock %}
+
+{{ pimcore_inline_script() }}
+</body>
+</html>

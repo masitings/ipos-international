@@ -1,0 +1,47 @@
+<div class="m-t-45">
+    <h5 class="h5">{{ pimcore_input('communityTitle',{'placeholder':'Join our community'}) }}</h5>
+    <p>{{ pimcore_input('overviewText',{'placeholder':'overview...'}) }}</p>
+    <div class="logos-wrapper m-t-30">
+        {% for i in pimcore_block('logoList').iterator %}
+            {% if editmode %}
+                {{ pimcore_image('logo',{
+                    'thumbnail' : 'coverImg',
+                    'height' : 100,
+                    'hidetext' : true
+                })
+                }}
+
+                {{ pimcore_link('discoverLink',{
+                    'class' : 'logo-wrap'
+                }) }}
+            {% else %}
+                {% set link = pimcore_link('discoverLink',{
+                    'class' : 'logo-wrap'
+                }) %}
+
+                {% set logoimg = pimcore_image('logo') %}
+                <a class="logo-wrap" href="{{ link.data.path }}">
+                    <img src="{{ logoimg.image }}" alt="">
+                </a>
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    {% if editmode %}
+        <p class="line-load"></p>
+        {{ pimcore_link('more',{
+            'class' : 'laodmore-view partnes-view-more m-t-50 d-flex'
+        }) }}
+        {% else %}
+            {% set morelink = pimcore_link('more') %}
+            <a class="laodmore-view partnes-view-more m-t-50 d-flex" href="{{ morelink.data.path }}">
+                <p class="line-load"></p>
+                <div class="load-button d-inline-flex align-items-center" role="button">{{ morelink.data.text }}
+                    <div class="arrow_right"></div>
+                </div>
+            </a>
+    {% endif %}
+
+</div>

@@ -1,0 +1,9 @@
+services:
+
+    FrontendPermissionToolkitBundle\Service:
+        public: true
+        autoconfigure: true
+        autowire: true
+
+    bundle.frontendpermissiontoolkit.service:
+        alias: FrontendPermissionToolkitBundle\Service

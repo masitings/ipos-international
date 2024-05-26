@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    {{ include("@PimcorePortalEngine/shared/layout/head.html.twig") }}
+</head>
+<body class="full-height-layout">
+
+
+
+{% block content %}
+{% endblock %}
+
+{{ portalEngine_frontendConfig() | raw }}
+
+
+{#{% block javascripts %}#}
+{#    {{ encore_entry_script_tags('content', null, webpack_build()) }}#}
+{#{% endblock %}#}
+
+</body>
+</html>

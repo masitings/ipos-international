@@ -1,0 +1,71 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="resources_public_container about_container">
+      {% if editmode %}
+        <div class="public_page_header">
+          <div class="bgView"></div>
+          <div class="left_cricle"></div>
+          {# <div class="icon_ipos"></div>#}
+          <div class="resources_public_title_nav container dark">
+            <div class="row">
+              <div class="col-12">
+                <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+		{% include('layouts/breadcrumb-col-12.html.twig') %}                  
+                </nav>
+                <div class="d-block d-md-none mobile_nav">
+                  <span class="back_arrow">&lt; </span>
+                  <span class="back_txt">Home</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{ pimcore_areablock("Headline", {
+            "allowed": [
+              "overview-headlines"
+            ]
+          }) }}
+        </div>
+
+      {% else %}
+        <div class="public_page_header">
+          <div class="bgView"></div>
+          <div class="left_cricle"></div>
+          <div class="icon_ipos"></div>
+          <div class="resources_public_title_nav container dark">
+            <div class="row">
+              <div class="col-12">
+                <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                  {% include('layouts/breadcrumb-col-12.html.twig')  %}
+                </nav>
+                <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Home</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{ pimcore_areablock("Headline", {
+            "allowed": [
+              "overview-headlines"
+            ]
+          }) }}
+
+        </div>
+      {% endif %}
+
+      {{ pimcore_areablock('head',{
+        "allowed" : [
+          "embed",
+          "about-mission",
+          "about-block",
+          "about-board",
+	"manager-team",          
+          "about-our-partners",
+          "about-contact"
+        ]
+      }) }}
+
+
+
+    </div>
+{% endblock %}

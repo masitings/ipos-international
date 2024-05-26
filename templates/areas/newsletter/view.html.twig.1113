@@ -1,0 +1,16 @@
+<div class="subscribe_now_container container">
+    <div class="row">
+        <div class="col-12 banner_row">
+            <div class="bg_ipos d-block d-md-none" style="background-image:url(&quot;/static/images/banner_mobile_ipos.69e95d9.svg&quot;)"></div>
+            <div class="bg_ipos d-none d-md-block" style="background-image:url(&quot;/static/images/banner_ipos.89cf6ba.svg&quot;)"></div>
+            <div class="content_container">
+                <p class="newsletter">{{ pimcore_input('newsletter',{'placeholder':'Newsletter'}) }}</p>
+                <p class="content">{{ pimcore_input('content',{'placeholder' : 'content...'}) }}</p>
+
+                {{ pimcore_link('subscribe',{
+                    'class' :'subscribe-button'
+                }) }}
+            </div>
+        </div>
+    </div>
+</div>

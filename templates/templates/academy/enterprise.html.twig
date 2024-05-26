@@ -1,0 +1,238 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise__page">
+        <div class="bg_circle_left"></div>
+        <div class="bg_rectangle_left"><img src="/static/images/enterprise_left.58e9531.svg" alt=""></div>
+        <div class="bg_rectangle_right"><img src="/static/images/enterprise_right.e8293ab.svg" alt=""></div>
+        <div class="bg_circle_right"><img src="/static/images/credential_right.a13c81c.svg" alt=""></div>
+        <div class="container">
+            <div class="breadcrumb m-b-80">
+                <ol>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Academy</a></li>
+                    <li class="active">Enterprise/Individual</li>
+                </ol>
+            </div>
+            <h1 class="m-b-40">Enterprise / Individuals Course</h1>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="filter">
+                        <div class="filter_head">
+                            <div class="filter_head_title">
+                                <div class="icon_mobile"><img src="/static/images/filter.cd48788.svg" alt=""></div>
+                                <div class="text">Filter</div>
+                            </div>
+                            <div class="filter_head_clear">Clear</div>
+                        </div>
+                        <div class="filter_body">
+                            <div class="filter_item">
+                                <select class="js-example-basic-single hide-search" id="type" name="type">
+                                    <option selected disabled>Type</option>
+                                    <option value="seminar">Seminar</option>
+                                    <option value="courses">Courses</option>
+                                </select>
+                            </div>
+                            <div class="filter_item">
+                                <select class="js-example-basic-single hide-search" id="level" name="level">
+                                    <option selected disabled>Level</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="professional">Professional</option>
+                                </select>
+                            </div>
+                            <div class="filter_item">
+                                <select class="js-example-basic-single list-flex" id="topic" name="topic">
+                                    <option selected disabled>Topic</option>
+                                    <option value="Brand">Brand</option>
+                                    <option value="Bussiness">Bussiness</option>
+                                    <option value="Certification">Certification</option>
+                                    <option value="Class">Class</option>
+                                    <option value="Copyright">Copyright</option>
+                                    <option value="Counterfeit">Counterfeit</option>
+                                    <option value="Creative">Creative</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Enterprise">Enterprise</option>
+                                    <option value="Franchising">Franchising</option>
+                                    <option value="ICT">ICT</option>
+                                </select>
+                            </div>
+                            <div class="filter_item">
+                                <div class="datepicker" id="datepicker"></div>
+                                <input type="hidden" name="date" id="my_hidden_input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter mobile hide">
+                        <div class="filter_head">
+                            <div class="filter_head_title">
+                                <div class="text">Filter</div>
+                            </div>
+                            <div class="filter_head_clear">Clear</div>
+                        </div>
+                        <div class="filter_body">
+                            <div class="filter_item">
+                                <select class="js-example-basic-single hide-search" id="type_mobile" name="type">
+                                    <option selected disabled>Type</option>
+                                    <option value="seminar">Seminar</option>
+                                    <option value="courses">Courses</option>
+                                </select>
+                            </div>
+                            <div class="filter_item">
+                                <select class="js-example-basic-single hide-search" id="level_mobile" name="level">
+                                    <option selected disabled>Level</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="professional">Professional</option>
+                                </select>
+                            </div>
+                            <div class="filter_item">
+                                <select class="js-example-basic-single list-flex" id="topic_mobile" name="topic">
+                                    <option selected disabled>Topic</option>
+                                    <option value="Brand">Brand</option>
+                                    <option value="Bussiness">Bussiness</option>
+                                    <option value="Certification">Certification</option>
+                                    <option value="Class">Class</option>
+                                    <option value="Copyright">Copyright</option>
+                                    <option value="Counterfeit">Counterfeit</option>
+                                    <option value="Creative">Creative</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Enterprise">Enterprise</option>
+                                    <option value="Franchising">Franchising</option>
+                                    <option value="ICT">ICT</option>
+                                </select>
+                            </div>
+                            <div class="filter_item">
+                                <div class="datepicker"></div>
+                            </div>
+                        </div>
+                        <div class="filter_footer">
+                            <div class="btn border_orange btn-cancel">Cancel</div>
+                            <div class="btn full_orange">Apply Filter</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="course_result">4<span>courses</span></div>
+                    <div class="course_content">
+                        <div class="course_content_item">
+                            <div class="course_content_item_left">
+                                <div class="course_content_item_left_image"><img class="cover" src="/static/images/courses1.432067e.png" alt=""></div>
+                            </div>
+                            <div class="course_content_item_center">
+                                <div class="content_top">
+                                    <div class="content_tag">
+                                        <div class="content_tag_item">courses</div>
+                                    </div><a class="content_title" href="/academy/enterprise-detail">Strategic Intellectual Property Management for Businesses</a>
+                                </div>
+                                <div class="content_bottom">
+                                    <div class="content_time">
+                                        <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                        <div class="text">9 AM - 12 PM</div>
+                                    </div>
+                                    <div class="content_place">
+                                        <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                        <div class="text">Online Live Streaming Session</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course_content_item_right">
+                                <div class="content_date">
+                                    <div class="content_date_day">24</div>
+                                    <div class="content_date_month">aug</div>
+                                </div><a class="share" href=""><img src="/static/images/share.48c529c.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="course_content_item">
+                            <div class="course_content_item_left">
+                                <div class="course_content_item_left_image"><img class="cover" src="/static/images/courses1.432067e.png" alt=""></div>
+                            </div>
+                            <div class="course_content_item_center">
+                                <div class="content_top">
+                                    <div class="content_tag">
+                                        <div class="content_tag_item">courses</div>
+                                    </div><a class="content_title" href="/academy/enterprise-detail">How to Perform Prior Art Searches</a>
+                                </div>
+                                <div class="content_bottom">
+                                    <div class="content_time">
+                                        <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                        <div class="text">9:00 PM - 1:00 PM (2 x ½ day)</div>
+                                    </div>
+                                    <div class="content_place">
+                                        <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                        <div class="text">2 x ½ day Online Live Streaming Session</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course_content_item_right">
+                                <div class="content_date">
+                                    <div class="content_date_day">28 & 29</div>
+                                    <div class="content_date_month">Jun</div>
+                                </div><a class="share" href=""><img src="/static/images/share.48c529c.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="course_content_item">
+                            <div class="course_content_item_left">
+                                <div class="course_content_item_left_image"><img class="cover" src="/static/images/courses1.432067e.png" alt=""></div>
+                            </div>
+                            <div class="course_content_item_center">
+                                <div class="content_top">
+                                    <div class="content_tag">
+                                        <div class="content_tag_item">courses</div>
+                                    </div><a class="content_title" href="/academy/enterprise-detail">Safeguarding Your Brand Overseas</a>
+                                </div>
+                                <div class="content_bottom">
+                                    <div class="content_time">
+                                        <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                        <div class="text">9.00am – 12.30pm (2 x ½ day)</div>
+                                    </div>
+                                    <div class="content_place">
+                                        <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                        <div class="text">2 x ½ day Online Live Streaming Session</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course_content_item_right">
+                                <div class="content_date">
+                                    <div class="content_date_day">29 & 30</div>
+                                    <div class="content_date_month">Jul</div>
+                                </div><a class="share" href=""><img src="/static/images/share.48c529c.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="course_content_item">
+                            <div class="course_content_item_left">
+                                <div class="course_content_item_left_image"><img class="cover" src="/static/images/courses1.432067e.png" alt=""></div>
+                            </div>
+                            <div class="course_content_item_center">
+                                <div class="content_top">
+                                    <div class="content_tag">
+                                        <div class="content_tag_item">courses</div>
+                                    </div><a class="content_title" href="/academy/enterprise-detail">SkillsFuture for Digital Workplace</a>
+                                </div>
+                                <div class="content_bottom">
+                                    <div class="content_time">
+                                        <div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>
+                                        <div class="text">9.00am – 5.00pm</div>
+                                    </div>
+                                    <div class="content_place">
+                                        <div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>
+                                        <div class="text">2 days online live streaming session</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course_content_item_right">
+                                <div class="content_date">
+                                    <div class="content_date_day"></div>
+                                    <div class="content_date_month">TBC</div>
+                                </div><a class="share" href=""><img src="/static/images/share.48c529c.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-60"></div>
+        </div>
+    </section>
+
+{% endblock %}

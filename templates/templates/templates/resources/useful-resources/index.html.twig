@@ -1,0 +1,35 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+  <div class="useful_resources_container resources_public_container">
+    <div class="bg_circle"></div>
+    <!--+nav(['Home','Resources','Useful Resources'])-->
+    <div class="resources_public_title_nav container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+            {% include('layouts/breadcrumb-col-12.html.twig') %}
+          </nav>
+          <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><a href=“{{ pimcore_document(25).fullpath }}” class="back_txt">Resources</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container page__title__container">
+      <div class="row">
+        <div class="col-12">
+          <p class="p__title">{{ pimcore_input('HeadLines',{'placeholder' : 'HeadLines'}) }}</p>
+        </div>
+      </div>
+    </div>
+
+    {{ pimcore_areablock("content",{
+      "allowed" : [
+        "useful-innovation",
+        "useful-grants"
+      ]
+    }) }}
+
+
+  </div>
+{% endblock %}

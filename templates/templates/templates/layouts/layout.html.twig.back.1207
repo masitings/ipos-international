@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#0E0E0E">
+    <meta name="theme-color" content="#0E0E0E">
+    <meta name="description" content="Index page">
+    <meta name="keywords" content="index, page">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:description" content="">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <!--link(rel='apple-touch-icon', sizes='180x180', href=require('images/favicons/apple-touch-icon.png'))-->
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/ipos-favicon.7078603.png">
+    <!--link(rel='icon', type='image/png', sizes='16x16', href=require('images/favicons/favicon-16x16.png'))-->
+    <link rel="shortcut icon" href="/static/images/ipos-favicon.7078603.png">
+    <script src="/static/static/js/jquery.min.js"></script>
+
+    {% if document.getTitle() is not empty %}
+        <title>{{ document.getTitle() | default("IPOS International") }}</title>
+    {% endif %}
+    <link href="/static/css/418.bundle.css" rel="stylesheet"><link href="/static/css/app.bundle.css" rel="stylesheet"></head>
+<body class="ipos-homepage">
+
+
+
+{% if not document is defined or not document %}
+    {% set document = pimcore_document(1) %}
+{% endif %}
+
+
+{% set navStartNode = document.getProperty('navigation_root') %}
+
+
+{% if not navStartNode is instanceof('\\Pimcore\\Model\\Document') %}
+    {% set navStartNode = pimcore_document(1) %}
+{% endif %}
+
+
+
+{% set mainNavigation = pimcore_build_nav({active: document, root: navStartNode}) %}
+
+
+{% set menuRenderer = pimcore_nav_renderer('menu') %}
+{{ pimcore_inc(document.getProperty('navigation')) }}
+
+{{ block('content') }}
+
+
+
+{{ pimcore_inc(document.getProperty('footer')) }}
+
+
+
+
+</body>
+<script defer src="/static/js/vendor.c4298a7.bundle.js"></script>
+<script defer src="/static/js/app.bundle.js"></script>
+
+
+</body>
+</html>
+</html>

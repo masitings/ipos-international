@@ -1,0 +1,27 @@
+<section class="detail_7">
+    <div class="detail_4_content">
+        <div class="container">
+            <div class="icon_quote">
+                <img src="/static/images/icon-quote.0ac61c8.svg" alt="">
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <h4 class="color-white">{{ pimcore_input('title',{'placeholder':'originator.'}) }}</h4>
+                    <h6 class="color-white">{{ pimcore_input('describe',{'placeholder':'originator describe'}) }}</h6>
+                </div>
+                <div class="col-lg-8">
+                    <p class="txt-regular color-white opacity-08">
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </section>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

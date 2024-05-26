@@ -1,0 +1,119 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+body,
+table.body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+td,
+th,
+a {
+    color: #0a0a0a;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    Margin: 0;
+    text-align: left;
+    line-height: 1.3; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: inherit;
+    word-wrap: normal;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    Margin-bottom: 10px; }
+
+h1 {
+    color:$primary;
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 24px; }
+
+h3 {
+    color:$primary;
+    font-size: 21px; }
+
+h4 {
+    font-size: 21px; }
+
+h5 {
+    color:$primary;
+    font-size: 17px; }
+
+h6 {
+    font-size: 15px; }
+
+body,
+table.body,
+p,
+td,
+th {
+    font-size: 14px;
+    line-height: 1.5; }
+
+p {
+    margin-bottom: 10px;
+    Margin-bottom: 10px; }
+p.lead {
+    font-size: 20px;
+    line-height: 1.6; }
+p.subheader {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    Margin-top: 4px;
+    Margin-bottom: 8px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: #8a8a8a; }
+.text-uppercase {
+    text-transform: uppercase;
+}
+small {
+    font-size: 80%;
+    color: #cacaca; }
+
+a {
+    color: $primary;
+    text-decoration: none; }
+a:hover {
+    color: $primary; }
+a:active {
+    color: $primary; }
+a:visited {
+    color: $primary; }
+
+h1 a,
+h1 a:visited,
+h2 a,
+h2 a:visited,
+h3 a,
+h3 a:visited,
+h4 a,
+h4 a:visited,
+h5 a,
+h5 a:visited,
+h6 a,
+h6 a:visited {
+    color: $primary; }

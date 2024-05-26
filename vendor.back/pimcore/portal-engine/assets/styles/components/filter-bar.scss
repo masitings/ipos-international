@@ -1,0 +1,38 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.filter-bar {
+    padding: 10/16*1rem 0;
+    background: $secondary;
+    position: relative;
+    z-index: 3;
+}
+.filter-bar__collapse {
+    padding: 1.25rem 0;
+}
+
+.filter-bar__dropdown .dropdown-toggle {
+    padding-bottom: 0.725rem;
+}
+
+.filter-bar__dropdown .dropdown-menu {
+    @include media-breakpoint-up(md) {
+        background: $secondary;
+        border-radius: 0;
+        border: none;
+    }
+}
+
+.filter-bar__dropdown .dropdown-item:hover {
+    @include media-breakpoint-up(md) {
+        background: transparent;
+    }
+}

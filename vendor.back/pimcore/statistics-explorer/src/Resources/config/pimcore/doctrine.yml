@@ -1,0 +1,12 @@
+doctrine:
+    orm:
+        entity_managers:
+            statistics_explorer:
+                connection: default
+                mappings:
+                    PimcoreStatisticsExplorerBundle:
+                        type: annotation
+                        is_bundle: true
+                        dir: "Entity"
+                        prefix: Pimcore\Bundle\StatisticsExplorerBundle\Entity
+                        alias: PimcoreStatisticsExplorerBundle

@@ -1,0 +1,18 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-11">
+            <h3 class="h3 m-b-20">{{ pimcore_input('Title',{'placeholder' : 'Title...'}) }}</h3>
+            <div class="list-style-format">
+                <ol class="list-style-number color-gray-dark">
+                    {% for i in pimcore_block('interactive').iterator %}
+                        <li class="txt-regular">
+                            {{ pimcore_input('txt-regular',{'placeholder' : 'decribe...'}) }}
+                        </li>
+                    {% endfor %}
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

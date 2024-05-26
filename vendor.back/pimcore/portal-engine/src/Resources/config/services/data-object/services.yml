@@ -1,0 +1,43 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\CustomLayoutService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\FieldcollectionLayoutService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\ObjectbrickLayoutService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\ClassificationStoreLayoutService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\CountryNameService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\LanguageNameService: ~
+
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\RestApiFieldDefinitionService:
+        arguments:
+            - '@pimcore.portal_engine.rest_api_field_definition_locator'
+
+    pimcore.portal_engine.rest_api_field_definition_locator:
+        class: Symfony\Component\DependencyInjection\ServiceLocator
+        tags: ['container.service_locator']
+        arguments:
+            - []
+
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\SearchIndexFieldDefinitionService:
+        arguments:
+            - '@pimcore.portal_engine.object.search_index_field_definition_locator'
+
+    pimcore.portal_engine.object.search_index_field_definition_locator:
+        class: Symfony\Component\DependencyInjection\ServiceLocator
+        tags: ['container.service_locator']
+        arguments:
+            - []
+
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\NameExtractorService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\SelectOptionsExtractor: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\MainImageExtractorService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\UrlExtractorService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\DataObject\ClassDefinitionService: ~

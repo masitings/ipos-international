@@ -1,0 +1,53 @@
+<div class="table-responsive">
+
+    {% if data is empty %}
+
+        <div class="alert alert-warning" role="alert">
+            No results
+        </div>
+
+    {% else %}
+        <table class="table table-hover table-sm">
+            <thead>
+
+                <tr>
+
+                    {% for label in labels %}
+
+                        <th scope="col">
+                            {{ label | trans }}
+                        </th>
+
+                    {% endfor %}
+
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for dataRow in data  %}
+
+                    <tr>
+
+                        <td>
+
+                            {% if dataRow['asset_url'] %}
+                                <a class="text-primary" href="{{ dataRow['asset_url'] }}" target="_blank">{{ dataRow['asset_name'] }}</a>
+                            {% else %}
+                                {{ dataRow['asset_name'] }}
+                            {% endif %}
+
+
+                        </td>
+
+                        {% for key, label in labels %}
+                            {%  if dataRow[key] is defined %}
+                                <td>{{ (dataRow[key]) | default('-')  }}</td>
+                            {% endif %}
+                        {% endfor %}
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>

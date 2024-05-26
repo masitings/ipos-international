@@ -1,0 +1,221 @@
+imports:
+    - { resource: security.yml }
+    - { resource: messenger.yml }
+
+parameters:
+    pimcore_portal_engine.elasticsearch.host: 'placeholder_value'
+    pimcore_portal_engine.elasticsearch.index_prefix: 'placeholder_value'
+    pimcore_portal_engine.firewall_settings:
+        anonymous: lazy
+        provider: portal_engine
+        request_matcher: Pimcore\Bundle\PortalEngineBundle\Service\Security\Firewall\RequestMatcher
+        logout:
+            path: pimcore_portalengine_auth_logout
+
+        remember_me:
+            secret: '%kernel.secret%'
+            lifetime: 7776000 # 90 days in seconds
+            path: /
+
+        guard:
+            authenticators:
+                - Pimcore\Bundle\PortalEngineBundle\Service\Security\Authentication\GuardAuthenticator
+                - Pimcore\Bundle\PortalEngineBundle\Service\Security\Authentication\TokenAuthenticator
+            entry_point: Pimcore\Bundle\PortalEngineBundle\Service\Security\Authentication\GuardAuthenticator
+
+pimcore_portal_engine:
+    index_service:
+        es_client_params:
+            host: '%pimcore_portal_engine.elasticsearch.host%'
+            index_prefix: '%pimcore_portal_engine.elasticsearch.index_prefix%'
+        search_settings:
+            list_page_size: 60
+            list_max_filter_options: 500
+            search_analyzer_attributes:
+                keyword:
+                    fields:
+                        analyzed_ngram:
+                            type: text
+                            analyzer: portal_engine_ngram_analyzer
+                            search_analyzer: portal_engine_whitespace_analyzer
+                        analyzed:
+                            type: text
+                            analyzer: standard
+                            search_analyzer: portal_engine_whitespace_analyzer
+
+        index_settings:
+            index:
+                mapping:
+                    nested_fields:
+                        limit: 200
+                    total_fields:
+                        limit: 100000
+            number_of_shards: 1
+            number_of_replicas: 0
+            max_ngram_diff: 30
+            analysis:
+                analyzer:
+                    portal_engine_ngram_analyzer:
+                        tokenizer: portal_engine_ngram_tokenzier
+                        filter:
+                            - lowercase
+                    portal_engine_whitespace_analyzer:
+                        tokenizer: portal_engine_whitespace_tokenzier
+                        filter:
+                            - lowercase
+                    portal_engine_path_analyzer:
+                        tokenizer: portal_engine_path_tokenizer
+
+                tokenizer:
+                    portal_engine_ngram_tokenzier:
+                        type: ngram
+                        min_gram: 3
+                        max_gram: 25
+                        token_chars: [letter, digit]
+                    portal_engine_whitespace_tokenzier:
+                        type: whitespace
+                    portal_engine_path_tokenizer:
+                        type: "path_hierarchy"
+
+    core_fields_configuration:
+        general:
+            id:
+                type: long
+                title: ID
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Numeric
+            creationDate:
+                type: date
+                title: creationdate
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Datetime
+            modificationDate:
+                type: date
+                title: modificationdate
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Datetime
+            type:
+                type: keyword
+                title: type
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Select
+                values: { options: [{ key: Variant, value: variant }, { key: Object, value: object }] }
+            key:
+                type: keyword
+                title: key
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Input
+                fields:
+                    analyzed_ngram:
+                        type: text
+                        analyzer: portal_engine_ngram_analyzer
+                        search_analyzer: portal_engine_whitespace_analyzer
+                    analyzed:
+                        type: text
+                        analyzer: standard
+                        search_analyzer: portal_engine_whitespace_analyzer
+            path:
+                type: text
+                title: path
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Input
+                analyzer: portal_engine_path_analyzer
+            fullPath:
+                type: text
+                title: fullPath
+                analyzer: portal_engine_path_analyzer
+            pathLevels:
+                type: nested
+                title: pathLevels
+                properties:
+                    level:
+                        type: integer
+                    name:
+                        type: keyword
+            tags:
+                title: tags
+                type: integer
+            thumbnail:
+                title: thumbnail
+                type: keyword
+            collections:
+                title: collections
+                type: keyword
+            publicShares:
+                title: publicShares
+                type: keyword
+            userOwner:
+                title: userOwner
+                type: integer
+        data_object:
+            published:
+                type: boolean
+                title: published
+                fieldDefinition: Pimcore\Model\DataObject\ClassDefinition\Data\Select
+                values: { options: [{ key: 'Yes', value: true }, { key: 'No', value: false }] }
+            classname:
+                title: classname
+                type: keyword
+        asset:
+            mimetype:
+                title: mimetype
+                type: keyword
+                fields:
+                    analyzed_ngram:
+                        type: text
+                        analyzer: portal_engine_ngram_analyzer
+                        search_analyzer: portal_engine_whitespace_analyzer
+                    analyzed:
+                        type: text
+                        analyzer: standard
+                        search_analyzer: portal_engine_whitespace_analyzer
+            fileSize:
+                title: fileSize
+                type: integer
+
+pimcore_statistics_explorer:
+    es_hosts:
+        - '%pimcore_portal_engine.elasticsearch.host%'
+    global_configurations:
+        all_logins_last_six_months:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Line","selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_login","label":"pimcore_portal_engine_statistics_explorer_login","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"columns":[],"filters":[],"fieldSettings":{"timestamp":{"typeGroup":"date","order":"_key||asc","interval":"week","format":"yyyy-MM-dd","min_doc_count":0,"bounds_max":"now/d"}}}'
+        assets_types:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Pie","selectedDataSource":{"value":"pimcoreportalengine_asset","label":"pimcoreportalengine_asset","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"system_fields.type","label":"system_fields.type","typeGroup":"default"}],"columns":[],"filters":[],"fieldSettings":{"system_fields.type":{"typeGroup":"default","order":"_key||asc","max":200}}}'
+        classdefintions_class_names:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Pie","selectedDataSource":{"value":"pimcoreportalengine_class_definitions","label":"pimcoreportalengine_class_definitions","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"system_fields.className.keyword","label":"system_fields.className","typeGroup":"default"}],"columns":[],"filters":[],"fieldSettings":{"system_fields.className.keyword":{"typeGroup":"default","order":"_key||asc","max":200}}}'
+        asset_storage_by_types:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Pie","selectedDataSource":{"value":"pimcoreportalengine_asset","label":"pimcoreportalengine_asset","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"system_fields.type","label":"system_fields.type","typeGroup":"default"},{"value":"system_fields.fileSize","label":"system_fields.fileSize","typeGroup":"numeric"}],"columns":[],"filters":[],"fieldSettings":{"system_fields.type":{"typeGroup":"default","order":"_key||asc","max":200},"system_fields.fileSize":{"typeGroup":"numeric","agg":"sum","order":"_key||asc","max":200}}}'
+        most_downloaded_assets:
+            context: 'portal'
+            configuration: '{"showTable":true,"showChart":false,"chartType":null,"selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"system_fields.id","label":"ID","typeGroup":"default"},{"value":"path","label":"path","typeGroup":"default"}],"columns":[],"filters":[],"fieldSettings":{"system_fields.id":{"typeGroup":"default","order":"_count||desc","max":10}}}'
+        most_downloaded_assets_of_user:
+            context: 'portal'
+            configuration: '{"showTable":true,"showChart":false,"chartType":null,"selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"system_fields.id","label":"ID","typeGroup":"default"},{"value":"path","label":"path","typeGroup":"default"}],"columns":[],"filters":[],"fieldSettings":{"system_fields.id":{"typeGroup":"default","order":"_count||desc","max":10}}}'
+        downloads_over_time_context:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Line","selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"columns":[{"value":"context","label":"context","typeGroup":"default"}],"filters":[],"fieldSettings":{"timestamp":{"typeGroup":"date","order":"_key||asc","interval":"week","format":"yyyy-MM-dd","min_doc_count":0,"bounds_max":"now/d"},"context":{"typeGroup":"default","order":"_key||asc","max":200}}}'
+        downloads_over_time_thumbnail:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Line","selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"columns":[{"value":"thumbnail","label":"thumbnail","typeGroup":"default"}],"filters":[],"fieldSettings":{"timestamp":{"typeGroup":"date","order":"_key||asc","interval":"week","format":"yyyy-MM-dd","min_doc_count":0,"bounds_max":"now/d"},"thumbnail":{"typeGroup":"default","order":"_key||asc","max":200}}}'
+        downloads_over_time:
+            context: 'portal'
+            configuration: '{"showTable":false,"showChart":true,"chartType":"Line","selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"statistic","rows":[{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"columns":[],"filters":[],"fieldSettings":{"timestamp":{"typeGroup":"date","order":"_key||asc","interval":"week","format":"yyyy-MM-dd","min_doc_count":0,"bounds_max":"now/d"}}}'
+        most_recent_downloads:
+            context: 'portal'
+            configuration: '{"showTable":true,"showChart":false,"chartType":null,"selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"list","rows":[],"columns":[{"value":"system_fields.id","label":"ID","typeGroup":"default"},{"value": "path","label":"path","typeGroup":"default"},{"value": "path","label":"path","typeGroup":"default"},{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"filters":[],"fieldSettings":{"system_fields.id":{"typeGroup":"default","max":"10","order":"","label":"Asset","hidden":false},"timestamp":{"typeGroup":"date","order":"desc","label":"Timestamp","hidden":false}}}'
+        most_recent_downloads_user:
+            context: 'portal'
+            configuration: '{"showTable":true,"showChart":false,"chartType":null,"selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_download","label":"pimcore_portal_engine_statistics_explorer_download","type":"ELASTIC_SEARCH"},"statisticMode":"list","rows":[],"columns":[{"value":"system_fields.id","label":"ID","typeGroup":"default"},{"value":"path","label":"path","typeGroup":"default"},{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"filters":[],"fieldSettings":{"system_fields.id":{"typeGroup":"default","max":"10","order":"","label":"Asset","hidden":false},"timestamp":{"typeGroup":"date","order":"desc","label":"Timestamp","hidden":false}}}'
+        most_recent_updates:
+            context: 'portal'
+            configuration: '{"showTable":true,"showChart":false,"chartType":null,"selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_asset_update","label":"pimcore_portal_engine_statistics_explorer_asset_update","type":"ELASTIC_SEARCH"},"statisticMode":"list","rows":[],"columns":[{"value":"system_fields.id","label":"ID","typeGroup":"default"},{"value":"path","label":"path","typeGroup":"default"},{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"filters":[],"fieldSettings":{"system_fields.id":{"typeGroup":"default","max":10,"order":"","label":"Asset","hidden":false},"timestamp":{"typeGroup":"date","order":"desc","label":"Timestamp","hidden":false}}}'
+        most_recent_updates_user:
+            context: 'portal'
+            configuration: '{"showTable":true,"showChart":false,"chartType":null,"selectedDataSource":{"value":"pimcore_portal_engine_statistics_explorer_asset_update","label":"pimcore_portal_engine_statistics_explorer_asset_update","type":"ELASTIC_SEARCH"},"statisticMode":"list","rows":[],"columns":[{"value":"system_fields.id","label":"ID","typeGroup":"default"},{"value":"path","label":"path","typeGroup":"default"},{"value":"timestamp","label":"timestamp","typeGroup":"date"}],"filters":[],"fieldSettings":{"system_fields.id":{"typeGroup":"default","max":10,"order":"","label":"Asset","hidden":false},"timestamp":{"typeGroup":"date","order":"desc","label":"Timestamp","hidden":false}}}'
+
+
+flysystem:
+    storages:
+        pimcore.portalEngine.download.storage:
+            adapter: 'local'
+            visibility: private
+            options:
+                directory: '%kernel.project_dir%/var/tmp/portal-engine/downloads'

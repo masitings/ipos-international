@@ -1,0 +1,60 @@
+<section class="explore courses_indemand">
+    <div class="explore_bg_left"><img src="/static/images/explore-left.38b0ea9.svg" alt=""></div>
+    <div class="explore_bg_right"><img src="/static/images/explore-right.12690ad.svg" alt=""></div>
+    <div class="container">
+        <h2>{{ pimcore_input('title',{'placeholder' : 'Explore'}) }}</h2>
+        <div class="row">
+            {% for i in pimcore_block('explore',{'limit' : 3}).iterator %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="courses_tab_content_item_card">
+                        {% if editmode %}
+                            <div class="card_image">
+                                {{ pimcore_image('coverImg',{
+                                    imgAttributes : {class : 'cover'},
+                                    'thumbnail' : 'usefulSvg',
+                                    'height' : 300
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    {{ pimcore_link('alink') }}
+                                    <p class="m-t-4">{{ pimcore_input('describe',{'placeholder' : 'describe'}) }}</p>
+                                </div>
+                                <div class="card_content_bottom">
+                                    {{ pimcore_link('morelink',{
+                                        'class' : 'more'
+                                    }) }}
+                                </div>
+                            </div>
+                            {% else %}
+                                {% set alink = pimcore_link('alink') %}
+                                <div class="card_image">
+                                    <a href="{{ alink.data.path | default("#") }}">
+                                        {{ pimcore_image('coverImg',{
+                                            imgAttributes : {class : 'cover'},
+                                            'thumbnail' : 'usefulSvg',
+                                            'height' : 300
+                                        }) }}
+                                    </a>
+
+                                </div>
+                                <div class="card_content">
+                                    <div class="card_content_top">
+                                        {{ pimcore_link('alink') }}
+                                        <p class="m-t-4">{{ pimcore_input('describe',{'placeholder' : 'describe'}) }}</p>
+                                    </div>
+                                    <div class="card_content_bottom">
+                                        {{ pimcore_link('morelink',{
+                                            'class' : 'more'
+                                        }) }}
+                                    </div>
+                                </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

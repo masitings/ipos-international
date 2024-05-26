@@ -1,0 +1,328 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise__page">
+        <div class="bg_circle_left"></div>
+        <div class="bg_rectangle_left"><img src="/static/images/enterprise_left.58e9531.svg" alt=""></div>
+        <div class="bg_rectangle_right"><img src="/static/images/enterprise_right.e8293ab.svg" alt=""></div>
+        <div class="bg_circle_right"><img src="/static/images/credential_right.a13c81c.svg" alt=""></div>
+        <div class="container">
+
+            <div class="breadcrumb m-b-80">
+                <ol>
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </ol>
+            </div>
+            <h1 id="academyType" class="m-b-40">{{ ret['academyType'] }}</h1>
+            <div class="popupcover"></div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="filter filter-menu mobile">
+                        <div class="filter-warp hide">
+                            <div class="filter_head">
+                                <div class="filter_head_title">
+                                    <div class="icon_mobile">
+                                        <img src="/static/images/filter.cd48788.svg" alt=""></div>
+                                    <div class="text">Filter</div>
+                                </div>
+                                <div class="filter_head_clear">Clear</div>
+                            </div>
+                            <div class="filter_body">
+                                <div class="filter_item">
+                                    <select onchange="getOptions()" class="js-search-basic-single hide-search" id="type" name="type">
+                                        <option selected disabled value="default">Type</option>
+                                        {% for type in ret['eventType'] %}
+                                            <option value="{{ type['value'] }}">{{ type['value'] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="filter_item">
+                                    <select onchange="getOptions()" class="js-search-basic-single hide-search" id="level" name="level">
+                                        <option selected disabled value="default">Level</option>
+                                        {% for level in ret['level'] %}
+                                            <option value="{{ level['value'] }}">{{ level['value'] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="filter_item">
+                                    <select onchange="getOptions()" class="js-example-basic-single list-flex" id="topic" name="topic">
+                                        <option selected disabled value="default">Topic</option>
+                                        {% for topic in ret['topic'] %}
+                                            <option value="{{ topic['value'] }}">{{ topic['value'] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="filter_item">
+                                    <div class="datepicker" id="datepicker"></div>
+                                    <input type="hidden" name="date" id="my_hidden_input">
+                                </div>
+                            </div>
+                            <div class="filter_footer">
+                                <div class="btn border_orange btn-cancel">Cancel</div>
+                                <div class="btn full_orange">Apply Filter</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="course_result"><span>courses</span></div>
+                    <div class="course_content">
+
+                    </div>
+                </div>
+            </div>
+            <div class="space-60"></div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="/static/static/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        var url = 'https://iposintl-dev.fixxstaging.com';
+
+
+        let selectDate;
+        viewLst(selectDate);
+
+         function timeFormat(time) {
+            timeArray = time.split(":");
+            if (timeArray[0] < 12 ){
+                return timeArray[0] + ":" + timeArray[1] + " am";
+            }
+
+            if (timeArray[0] == 12 && Number(timeArray[1]) == 0){
+
+                return timeArray[0] + ":" + timeArray[1] + " am";
+            }
+
+             if (timeArray[0] == 12 && Number(timeArray[1]) > 0 && Number(timeArray[1]) < 60 ){
+                 return timeArray[0] + ":" + timeArray[1] + " pm";
+             }
+
+            if (timeArray[0] > 12 && timeArray[0] < 24){
+                return (timeArray[0] - 12) + ":" + timeArray[1] + " pm";
+            }
+        }
+        function viewLst(filter = {},selectDate = ''){
+
+            filter.academyType = $('#academyType').text();
+            filter = JSON.stringify(filter);
+
+            $.ajax({
+                url: "/api/getCourses",
+
+                data : {'filter' : filter,'filterDate' : selectDate},
+                type:'POST',
+                success : function (result){
+
+                    $(".course_result").html(result.total+"<span>results</span>");
+                    var listItem = '';
+                    $.each(result.data,function(key,element){
+                        var coverImg = "";
+
+                        if (element.coverImage != null  ){
+                            coverImg = element.coverImage.fullpath;
+                        }
+
+                        var timeStr = '';
+                        var dateStr = '';
+
+                        if (element.planningStr != null){
+                            element.planningStr.forEach(function(planning){
+
+								if(planning.startDate != ''){
+									dateStr += '<div class="content_date_day">'+planning.startDate+'</div>'+
+										'<div class="space-20"></div>';
+								}else{
+									dateStr += '<div class="content_date_day">TBC</div>'+
+										'<div class="space-20"></div>';
+								}
+
+                                if (planning.teachingArrangement != null){
+                                    planning.teachingArrangement.forEach(function(teachingArrangement){
+
+                                        if (teachingArrangement.startTime != "" && teachingArrangement.lastTime != ""
+                                        ){
+                                            timeStr += '<div class="content_time">'+
+                                                '<div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>'+
+                                                '<div class="text">' + teachingArrangement.startTime +' - '+ teachingArrangement.lastTime +'</div>' +
+                                                '</div>';
+                                        }else{
+                                            timeStr += '<div class="content_time">'+
+                                                '<div class="icon"><img src="/static/images/clock.7b78504.svg" alt=""></div>'+
+                                                '<div class="text">TBC</div>' +
+                                                '</div>';
+                                        }
+
+                                    });
+                                }
+                            });
+                        }else {
+                            dateStr += '<div class="content_date_day">TBC</div>'+
+                                '<div class="space-20"></div>';
+                        }
+
+                        listItem += '<div class="course_content_item">'+
+                            '<div class="course_content_item_left">'+
+                            '<div class="course_content_item_left_image">'+
+                                element.coverImage+'</div></div>'+
+                            '<div class="course_content_item_center">'+
+                            '<div class="content_top">'+
+                            '<div class="content_tag">' +
+                            '<div class="content_tag_item">'+element.eventType+'</div>'+
+
+                            '</div><a class="content_title nocut" href="'+element.fullpath + '_' + element.id +' ">'+element.title +'</a></div>'+
+                            '<div class="content_bottom">' + timeStr +
+                            '<div class="content_place">'+
+                            '<div class="icon"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
+                            '<div class="text">'+ element.venue +'</div>' +
+                            '</div></div></div>'+
+                            '<div class="course_content_item_right">'+
+                            '<div class="content_date">'+
+                            dateStr+
+                            '</div>'+
+                            '</div></div>';
+
+                    });
+
+                    $('.course_content').html(listItem);
+                }
+            });
+        }
+
+        function getOptions(dateTime = ''){
+            var type = $('#type').val();
+            var topic = $('#topic').val();
+            var level = $('#level').val();
+
+
+            var filter = {};
+
+            if (type){
+                filter.eventType = type;
+            }
+            if (topic){
+                filter.topic = topic;
+            }
+
+
+            if(level){
+                filter.level = level;
+            }
+
+            this.viewLst(filter,dateTime);
+
+        }
+
+        $('.js-example-basic-single').select2();
+        $('.js-search-basic-single.hide-search').select2({
+            minimumResultsForSearch: Infinity
+        });
+
+        $('.js-example-basic-single').on('select2:select', function (e) {
+            // 做点什么
+            console.log(e.params.data)
+        });
+        $('.js-search-basic-single.hide-search').on('select2:select', function (e) {
+            // 做点什么
+            console.log(e.params.data)
+        });
+        let eventArr = [
+
+        ];
+
+        getPicker();
+
+        function getPicker() {
+            $.ajax({
+                url : '/api/getPicker',
+                type : 'POST',
+                data : {'academyType' : $('#academyType').text()},
+                success : function(result){
+                    result.forEach(function (date) {
+                        eventArr.push(new Date(date).toDateString() )
+                    })
+                },
+            });
+        };
+
+        $('#datepicker').datepicker({
+            todayHighlight: true,
+            beforeShowDay: function (date) {
+                if (eventArr.includes(date.toDateString())) {
+                    return {
+                        enabled: true,
+                        classes: 'event1',
+                        tooltip: 'We have events on these days',
+                    }
+                }
+                return true
+            },
+        });
+        $('#datepicker').on('changeDate', function () {
+            $('#my_hidden_input').val(
+                $('#datepicker').datepicker('getFormattedDate')
+            );
+            selectDate = new Date($('#my_hidden_input').val()).getTime();
+
+            getOptions(selectDate);
+        });
+
+
+
+        $('.datepicker thead .prev').text('')
+        $('.datepicker thead .next').text('')
+
+
+        $('.filter.filter-menu .filter_head').on('click', function (e) {
+            if ($(e.target).hasClass('filter_head_clear')) {
+                return
+            }
+            var windowsize = $(window).width();
+            if (windowsize <= 768) {
+                if ($('.filter.mobile .filter-warp').hasClass('hide')) {
+                    $('.filter.mobile .filter-warp').removeClass('hide')
+                    $('.filter.mobile .filter-warp').addClass('active')
+                    $('.classnames, .popupcover').addClass('active')
+
+                } else {
+                    $('.filter.mobile .filter-warp').removeClass('active').addClass('hide')
+                    $('.filter.mobile .filter_head').addClass('active')
+                    $('.classnames, .popupcover').removeClass('active')
+                }
+            }
+        })
+        $('.filter.filter-menu .btn-cancel').on('click', function (e) {
+            $('.filter.mobile .filter-warp').removeClass('active').addClass('hide')
+            $('.classnames, .popupcover').removeClass('active')
+        })
+
+        $('.filter.mobile  .filter_head .filter_head_clear').click(function () {
+
+            $('#datepicker').datepicker('clearDates')
+            $('.js-example-basic-single').val('default')
+            $('.js-search-basic-single.hide-search').val('default')
+            $('.js-example-basic-single').trigger('change');
+            $('.js-search-basic-single.hide-search').trigger('change');
+
+        })
+        $('.filter .filter_head .filter_head_clear').on('click', function () {
+            $('#datepicker').datepicker('clearDates')
+            $('.js-example-basic-single').val('default')
+            $('.js-search-basic-single.hide-search').val('default')
+            $('.js-example-basic-single').trigger('change');
+            $('.js-search-basic-single.hide-search').trigger('change');
+        })
+        $('.filter.mobile .btn-cancel').on('click', function () {
+            if (windowsize <= 768) {
+                if ($('.filter.mobile').hasClass('active')) {
+                    $('.filter.mobile').removeClass('active')
+                    $('.filter.mobile').addClass('hide')
+                }
+            }
+        })
+    </script>
+
+{% endblock %}

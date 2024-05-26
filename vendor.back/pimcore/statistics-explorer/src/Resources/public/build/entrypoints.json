@@ -1,0 +1,26 @@
+{
+  "entrypoints": {
+    "explorer": {
+      "js": [
+        "/bundles/pimcorestatisticsexplorer/build/runtime.92408089.js",
+        "/bundles/pimcorestatisticsexplorer/build/0.9b19f8ed.js",
+        "/bundles/pimcorestatisticsexplorer/build/1.2b2c60ea.js",
+        "/bundles/pimcorestatisticsexplorer/build/explorer.355db0ff.js"
+      ],
+      "css": [
+        "/bundles/pimcorestatisticsexplorer/build/1.7bfdee68.css",
+        "/bundles/pimcorestatisticsexplorer/build/explorer.ee33da39.css"
+      ]
+    },
+    "loader": {
+      "js": [
+        "/bundles/pimcorestatisticsexplorer/build/runtime.92408089.js",
+        "/bundles/pimcorestatisticsexplorer/build/0.9b19f8ed.js",
+        "/bundles/pimcorestatisticsexplorer/build/loader.24bf4719.js"
+      ],
+      "css": [
+        "/bundles/pimcorestatisticsexplorer/build/loader.ee33da39.css"
+      ]
+    }
+  }
+}

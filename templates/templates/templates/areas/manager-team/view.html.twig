@@ -1,0 +1,78 @@
+<div class="split-line"></div>
+<div class="container management-container">
+    <div class="row">
+        <div class="col-12 section_title">{{ pimcore_input('title',{'placeholder':'Our Management Team'}) }}</div>
+    </div>
+    <div class="row mobile-row d-none">
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView">
+                    <img class="item-img" src="/static/images/B_Kok_Kitt-Wai_LI.99202ea.jpg">
+                </div>
+                <div class="item-txt-layout">
+                    <div class="title">Mr Kok Kitt-Wai</div>
+                    <div class="sub-title">Managing Director</div>
+                    <div class="desc">IPOS International</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView"><img class="item-img" src="/static/images/C_Alfred_Yip_LI.9e5be96.jpg"></div>
+                <div class="item-txt-layout">
+                    <div class="title">Mr Alfred Yip</div>
+                    <div class="sub-title">Director</div>
+                    <div class="desc">Patent Search, Examination and Analytics</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-md-none d-block">
+            <div class="management-item">
+                <div class="itemImgView"><img class="item-img" src="/static/images/D_Tracey_Soon_LI.5a82ee3.jpg"></div>
+                <div class="item-txt-layout">
+                    <div class="title">Ms Tracey Soon</div>
+                    <div class="sub-title">Deputy Director</div>
+                    <div class="desc">Finance Corporate Planning and Support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ourClients_list_ul">
+        {% for i in pimcore_block('management').iterator %}
+            {% if editmode %}
+                <div class="row row-layout nomar ourClients_list_li">
+                    <div class="col-md-3 titlediv d-block">{{ pimcore_input('name',{'placeholder':'name'}) }}</div>
+                    <div class="col-md-3 sub-titlediv d-block">{{ pimcore_input('rank',{'placeholder':'rank'}) }}</div>
+                    <div class="col-md-3 descdiv d-block">{{ pimcore_input('department',{'placeholder':'department'}) }}</div>
+                    <div class="col-md-3 descdiv d-block">
+                        {{ pimcore_image('imageView',{
+                            imgAttributes : {class : 'item-img div d-block'},
+                            'thumbnail' : 'ProfilePhoto'
+                        }) }}
+                    </div>
+                </div>
+                {% else %}
+                    <div class="row row-layout nomar ourClients_list_li">
+                        <div class="col-md-4 titlediv d-block">{{ pimcore_input('name',{'placeholder':'name'}) }}</div>
+                        <div class="col-md-4 sub-titlediv d-block">{{ pimcore_input('rank',{'placeholder':'rank'}) }}</div>
+                        <div class="col-md-4 descdiv d-block">{{ pimcore_input('department',{'placeholder':'department'}) }}</div>
+                        <div class="company-logo-pic">
+                            {{ pimcore_image('imageView',{
+                                imgAttributes : {class : 'item-img div d-block'},
+                                'thumbnail' : 'ProfilePhoto'
+                            }) }}
+                        </div>
+                    </div>
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+    {% if editmode %}
+
+    {% else %}
+    <div id="leadership-tooltip" style="position: fixed;"><img src=""></div>
+    {% endif %}
+   
+</div>

@@ -1,0 +1,138 @@
+key;en
+portal-engine.invalid-hex-in-color-field;Invalid hex in color field
+portal-engine.update-customized-build-not-possible;This feature is deactivated as a customized frontend build is configured. Updating a customized frontend build is only possible via console.
+portal-engine.configuration;Configuration
+portal-engine.content.navigation;Navigation
+portal-engine.content.navigation-icon;Use a predefined icon
+portal-engine.content.color;Color
+portal-engine.content.media-left;Image Left
+portal-engine.content.size;Size
+portal-engine.footer.menu-items;Menu Items
+portal-engine.or;or
+portal-engine.content.navigation-icon-asset;use any asset svg
+portal-engine.data-pool.no-pre-condition-service-registered;No precondition service registered.
+portal-engine.data-pool.pre-condition-service;Pre Condition Service
+portal-engine.data-pool.workspace-definition;Workspace Definition
+portal-engine.data-pool.workspace-path;Workspace Path
+portal-engine.data-pool.navigation-settings;Navigation settings
+portal-engine.data-pool.enable-folder-navigation;Enable Folder Navigation
+portal-engine.data-pool.enable-tag-navigation;Enable Tag Navigation
+portal-engine.data-pool.root-tag;Root Tag
+portal-engine.data-pool.filter-definition;Filter Definition
+portal-engine.data-pool.filter-field;Filter Field
+portal-engine.data-pool.filter-type;Filter Type
+portal-engine.data-pool.filter-type.select;Select
+portal-engine.data-pool.filter-type.multiSelect;Multi Select
+portal-engine.data-pool.sort-options;Sort Options
+portal-engine.data-pool.sort-direction;Sort Direction
+portal-engine.data-pool.sort-direction.asc;Ascending
+portal-engine.data-pool.sort-direction.desc;Descendig
+portal-engine.data-pool.sort-field;Field
+portal-engine.data-pool.grid-configuration-attributes;Grid Configuration Attributes
+portal-engine.data-pool.grid-configuration-name-attribute;Grid Name Attribute
+portal-engine.data-pool.grid-configuration;Grid Configuration
+portal-engine.data-pool.detail-page-general-attributes;Detail Page General Attributes
+portal-engine.data-pool.detail-page-configuration;Detail Page Configuration
+portal-engine.data-pool.enable-version-history;Enable Version History
+portal-engine.data-pool.download-configuration;Download Configuration
+portal-engine.data-pool.available-download-thumbnails;Available Download Thumbnails
+portal-engine.data-pool.data-objects.class-definition;Data Object Class
+portal-engine.data-pool.data-objects.detail-page-layout;Detail Page Layout
+portal-engine.data-pool.data-objects.no-custom-layouts-configured;There are currently no custom layouts configured. Please add a custom layout definition in the data object class editor.
+portal-engine.data-pool.data-objects.available-download-formats;Available Download Formats
+portal-engine.data-pool.data-objects.no-download-formats-configured;There are currently no download formats configured in the system.
+portal-engine.data-pool.permission.view;View
+portal-engine.data-pool.permission.download;Download
+portal-engine.data-pool.permission.edit;Edit
+portal-engine.data-pool.permission.update;Update
+portal-engine.data-pool.permission.create;Create
+portal-engine.data-pool.permission.delete;Delete
+portal-engine.data-pool.permission.subfolder;Manage Subfolder
+portal-engine.data-pool.permission.view-owned-assets-only;View owned assets only
+portal-engine.data-pool.languages-configuration;Languages Configuration
+portal-engine.data-pool.visible-languages;Visible Languages
+portal-engine.data-pool.editable-languages;Editable Languages
+portal-engine.data-pool.upload_folder;Upload Folder
+portal-engine.update-frontend-build;Update Frontend Build
+portal-engine.update-frontend-build-running;Frontend build process running...
+portal-engine.frontend-build-finished;Frontend build finished
+portal-engine.frontend-build-finished.message;The frontend build generation has been finished. Please check the new styling of the frontend.
+portal-engine.portal-config.header-gradients;Header Gradients
+portal-engine.portal-config.nav-icon-gradients;Nav Icon Gradients
+portal-engine.portal-config.modal-gradients;Modal Gradients
+portal-engine.portal-config.customized-frontend-build;Customized Frontend Build
+portal-engine.portal-config.light-hex-code;Light Hex Code
+portal-engine.portal-config.dark-hex-code;Dark Hex Code
+portal-engine.portal-config.secondary-hex-code;Secondary Hex Code
+portal-engine.portal-config.primary-hex-code;Primary Hex Code
+portal-engine.portal-config.header-color-hex-code;Header Hex Code
+portal-engine.portal-config.header-text-color-hex-code;Header Icon Color
+portal-engine.portal-config.btn-light-text-color;Button Light Text
+portal-engine.portal-config.btn-dark-text-color;Button Dark Text
+portal-engine.portal-config.btn-primary-text-color;Button Primary Text
+portal-engine.portal-config.btn-secondary-text-color;Button Secondary Text
+portal-engine.portal-config.colors;Colors
+portal-engine.portal-config.style-settings;Style Settings
+portal-engine.portal-config.logo;Logo
+portal-engine.portal-config.background-image;Background Image
+portal-engine.portal-config.email-image;Logo E-Mail
+portal-engine.portal-config.footer-snippet;Footer Snippet
+portal-engine.portal-config.public-footer-snippet;Public Footer Snippet
+portal-engine.portal-config.portal-name;Portal Name
+portal-engine.portal-config.general-settings;General Settings
+portal-engine.portal-config.other;Other
+portal-engine.portal-config.enable-language-redirect;Enable Language Redirect
+portal-engine.portal-config.language-redirect-description;The portal page will redirect to the first child document which matches the browser locale (fallback: first child document). Additionally a language switch will be shown in the header.
+portal-engine.auth.user-not-found;User not found
+portal-engine.auth.password-not-set;Password not set
+portal-engine.auth.password-and-password-repeat-are-not-identical;Password and password-repeat are not identical
+portal-engine.user.data-changed;Your data was successfully changed.
+portal-engine.collectionlist.delete.title;Delete Collection
+portal-engine.collectionlist.delete.text;Really delete selected collection?
+portal-engine.collectionlist.title;Collections
+portal-engine.collectionlist.menu;Collections
+portal-engine.collectionlist.owner;Owner
+portal-engine.collectionlist.itemCount;Item Count
+portal-engine.collectionlist.portal;Portal
+portal-engine.collectionlist.show-all;Show All Collections in System
+portal-engine.collectionlist.add-new;Add new Collection
+portal-engine.collectionlist.share;Share
+portal-engine.collectionlist.sharing;Share Collection
+portal-engine.collectionlist.sharing.none;None
+portal-engine.collectionlist.sharing.read;Read
+portal-engine.collectionlist.sharing.edit;Read & Edit
+portal-engine.collectionlist.sharing.user_group;Select User or Group
+portal-engine.collectionlist.sharing.update_error;Failed to update sharing.
+portal-engine.collectiontree.remove;Remove from Collection
+portal-engine.collectiontree.failed_add_new;Failed to add new item to collection.
+portal-engine.collectiontree.failed_remove;Failed to remove item from collection.
+portal-engine_collection-access;Backend Collection Access
+portal-engine_wizard;Portal Setup Wizard
+portal-engine.data-pool.direct-download-shortcuts;Direct Download Shortcuts
+portal-engine.data-pool.available-download-thumbnails.original-as-default-if-nothing-selected;Original will be available, if nothing is selected
+portal-engine.wizard.menu;Portal Engine Portal Setup Wizard
+portal-engine.wizard.title;Portal Engine Portal Setup Wizard
+portal-engine.wizard.add-data-pool;Add Data Pool
+portal-engine.wizard.create-portal;Create Portal
+portal-engine.wizard.portal-form-title;Portal Settings
+portal-engine.wizard.portal-name;Portal Name
+portal-engine.wizard.domain;Domain
+portal-engine.wizard.available-languages;Available Languages
+portal-engine.wizard.logo;Logo
+portal-engine.wizard.login-background-image;Login Background Image
+portal-engine.wizard.data-pool.asset;Asset
+portal-engine.wizard.data-pool.data-object;Data Object
+portal-engine.wizard.data-pool-name;Navigation Name
+portal-engine.wizard.icon;Icon
+portal-engine.wizard.enable-folder-navigation;Enable Folder Navigation
+portal-engine.wizard.enable-tag-navigation;Enable Tag Navigation
+portal-engine.wizard.available-download-thumbnails;Available Download Thumbnails
+portal-engine.wizard.available-download-formats;Available Download Formats
+portal-engine.wizard.direct-download-shortcuts;Direct Download Shortcuts
+portal-engine.wizard.visible-languages;Visible Languages (empty = all)
+portal-engine.wizard.editable-languages;Editable Languages (empty = all)
+portal-engine.wizard.class-definition;Class Definition
+portal-engine.wizard.detail-page-layout;Detail Page Layout
+portal-engine.wizard.create-portal.loading;Portal creation running...
+portal-engine.wizard.create-portal.failed-message;Portal creation failed
+portal-engine.data-pool.language-variant-reference;Language Variant of Reference Data Pool

@@ -1,0 +1,50 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\DefaultAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "default" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\SelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "select" }
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "language" }
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "country" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\MultiSelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "multiselect" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\RelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "asset" }
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "object" }
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "document" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\RelationsAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "manyToManyRelation" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\UserAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "user" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\DateAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "date" }
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "datetime" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\Rest\Api\Asset\MetadataDefinitionAdapter\BooleanAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.rest_api_metadata_definition", type: "checkbox" }

@@ -1,0 +1,81 @@
+<section class="detail_4">
+    {% if editmode %}
+        <div class="detail_4_content">
+            <div class="detail_4_bg"></div>
+            <div class="detail_4_left">
+                <div class="container">
+                    <div class="icon_quote">
+                        <img src="/static/images/icon-quote.0ac61c8.svg" alt=""></div>
+                    <h3 class="color-white">{{ pimcore_input("footerTitle",{"placeholder":"See What Other Say"}) }}</h3>
+                </div>
+            </div>
+            <div class="detail_4_right">
+                <div class="swiper swiper_feedback">
+                    <div class="swiper-wrapper">
+                        {% for i in pimcore_block('footer_wrap').iterator %}
+                            <div class="swiper-slide" style="width: 400px">
+                                <div class="quote_item" style="width: 100%">
+                                    <div class="quote_item_content" style="">
+                                        <h6>{{ pimcore_input("discover_name",{"placeholder":"Text"}) }}</h6>
+                                        <div class="position">{{ pimcore_input("discover_position",{"placeholder":"Text"}) }}</div>
+                                        {{ pimcore_textarea("introduction", {
+                                                "nl2br" : true, 
+                                                "placeholder" : "Text ..."
+                                            })
+                                            }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="swiper-button-next">
+                    <img src="/static/images/arrow-swiper-right.28b6416.svg" alt="">
+                </div>
+                <div class="swiper-button-prev">
+                    <img src="/static/images/arrow-swiper-left.4c7c9b3.svg" alt="">
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="detail_4_content">
+                <div class="detail_4_bg"></div>
+                <div class="detail_4_left">
+                    <div class="container">
+                        <div class="icon_quote">
+                            <img src="/static/images/icon-quote.0ac61c8.svg" alt=""></div>
+                        <h3 class="color-white">{{ pimcore_input("footerTitle",{"placeholder":"See What Other Say"}) }}</h3>
+                    </div>
+                </div>
+                <div class="detail_4_right">
+                    <div class="swiper swiper_feedback">
+                        <div class="swiper-wrapper">
+                            {% for i in pimcore_block('footer_wrap').iterator %}
+                                <div class="swiper-slide">
+                                    <div class="quote_item">
+                                        <div class="quote_item_content">
+                                            <h6>{{ pimcore_input("discover_name") }}</h6>
+                                            <div class="position">{{ pimcore_input("discover_position") }}</div>
+                                            <p>{{  pimcore_textarea("introduction", {
+                                                    "nl2br" : true,
+                                                    "placeholder" : "Text ..."
+                                                })
+                                                }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="swiper-button-next">
+                        <img src="/static/images/arrow-swiper-right.28b6416.svg" alt="">
+                    </div>
+                    <div class="swiper-button-prev">
+                        <img src="/static/images/arrow-swiper-left.4c7c9b3.svg" alt="">
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+
+</section>
+

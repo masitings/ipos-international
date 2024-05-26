@@ -1,0 +1,22 @@
+<div class="content container">
+    <p class="title">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</p>
+    <div class="sub-content row">
+        <p class="sub-title col-md-6 col-12">
+            {{ pimcore_areablock("rightContent", {
+                "allowed": ["wysiwyg-brick"]
+            }) }}
+        </p>
+
+        {#<div class="des-content col-md-6 col-12">
+             <p class="desc">As the expertise and enterprise engagement arm of IPOS, our focus is on helping enterprises and industries use IP and intangible assets for business growth.</p>
+                    <p class="desc">Our ambition is to be the Global Centre of Excellence for intangible assets, anchoring Singapore as a hub for global innovation flows. We aim to use our expertise, partnerships and networks in the innovation ecosystem worldwide to bridge possibilities for intangible asset-rich enterprises and industries seeking to grow.</p>
+
+            <p class="desc">
+                {{ pimcore_areablock("rightContent", {
+                    "allowed": ["wysiwyg-brick"]
+                }) }}
+            </p>
+
+        </div>#}
+    </div>
+</div>

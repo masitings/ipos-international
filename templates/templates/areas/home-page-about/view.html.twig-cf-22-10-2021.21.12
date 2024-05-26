@@ -1,0 +1,55 @@
+{% if editmode %}
+    <section id="matterJS">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h2 class="ipos-title m-b-30">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h2>
+                </div>
+                <div class="col-lg-9">
+                    <div class="about-des-wrap">
+                        <p>
+                        <section id="marked-content">
+                            {{  pimcore_wysiwyg("specialContent", {
+                                "height": 200,
+                                "placeholder" : "edit content..."
+                            })
+                            }}
+                        </section>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{ pimcore_link('aboutLink',{
+                'class' : 'btn btn__hollow m-t-60',
+                'placeholder' : 'Who We Are..'
+            }) }}
+        </div>
+    </section>
+{% else %}
+    <section class="sec-what-about" id="matterJS">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="ipos-title m-b-30">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h2>
+            </div>
+            <div class="col-lg-9">
+                <div class="about-des-wrap">
+                    <p>
+                    <section id="marked-content">
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "height": 200,
+                            "placeholder" : "edit content..."
+                        })
+                        }}
+                    </section>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{ pimcore_link('aboutLink',{
+            'class' : 'btn btn__hollow m-t-60',
+            'placeholder' : 'Who We Are..'
+        }) }}
+    </div>
+</section>
+{% endif %}

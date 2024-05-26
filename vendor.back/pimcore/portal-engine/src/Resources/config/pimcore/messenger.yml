@@ -1,0 +1,19 @@
+#### SYMFONY OVERRIDES
+framework:
+    messenger:
+        enabled: true
+        transports:
+            portal-engine-async: 'doctrine://default'
+        routing:
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\Download\StartMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\Download\ProcessChunkMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\UpdateAssetMetadata\StartMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\UpdateAssetMetadata\ProcessChunkMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\DeleteAsset\StartMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\DeleteAsset\ProcessChunkMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\RelocateAsset\StartMessage: portal-engine-async
+            Pimcore\Bundle\PortalEngineBundle\Message\BatchTask\RelocateAsset\ProcessChunkMessage: portal-engine-async
+        buses:
+            messenger.bus.portal-engine:
+                middleware:
+                    - 'Pimcore\Bundle\PortalEngineBundle\Service\Messenger\Middleware\CollectGarbageMiddleware'

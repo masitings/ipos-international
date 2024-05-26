@@ -1,0 +1,14 @@
+<div class="sub-title more2 more3">{{ pimcore_input('toolTitle',{'placeholder' :'title'}) }}</div>
+<div>
+    <section id="marked-content">
+        {{  pimcore_wysiwyg("specialContent", {
+            "height": 200,
+            "placeholder" : "text or image"
+        })
+        }}
+    </section>
+</div>
+
+  {{ pimcore_link("toolLink",{
+      "class" : "more"
+  }) }}

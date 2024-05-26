@@ -1,0 +1,137 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="resources_public_list_master_container resources_public_container case-studies-container">
+      <div class="bg_circle"></div>
+      <div class="container">
+        <div class="resources_public_title_nav container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                {% include('layouts/breadcrumb-col-12.html.twig') %}
+              </nav>
+              <div class="d-block d-md-none mobile_nav">
+                <span class="back_arrow">&lt; </span><a href="{{ pimcore_document(25).fullpath }}" class="back_txt">Resources</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row latest_articles_container">
+          {% if list.latest is not empty %}
+            <div class="row">
+              <div class="col-12">
+                <p class="p_title">{{ pimcore_input('latestTitle',{'placeholder':'Latest Case Studies'}) }}</p>
+              </div>
+            </div>
+            {% for item in list.latest %}
+              <div class="col-md-6 col-12">
+                <a href="{{ item }}_{{ item.getId() }}" class="tab-card-item">
+                  <div class="card-top">
+                    <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                   
+		    {% if item.coverImage is not empty %}
+			<img class="img-resoure" src="{{ item.coverImage.getThumbnail('CaseStudiesLatest') }}" >
+                    {#  {{ item.coverImage.thumbnail('coverImg').html({imgAttributes: {class: 'img-resoure'}}) | raw }} #}
+                    {% endif %}
+		  
+		    {% if item.detailVideo is not empty %}
+                    <div class="date-view">
+                      <span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>
+                      <span class="date-txt">{{ item.videoTime }}</span>
+                    </div>
+		    {% endif %}
+                  </div>
+                  <div class="card-bottom">
+                    <div class="time-date">{{ item.releaseDate | date('d M, Y') }}</div>
+                    <div class="title">{{ item.title }}</div>
+
+                    <span class="find-more" >Find out more</span>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+
+
+        </div>
+      </div>
+      <div class="container more_articles_container">
+          <div class="row">
+            <div class="col-12 selcted-container">
+              <p class="p_title">{{ pimcore_input('moreTitle',{'placeholder':'More Case Studies'}) }}</p>
+            </div>
+          </div>
+          <div id="moreStudies" class="row">
+
+          </div>
+
+        <div style="cursor: pointer;" class="laodmore-view">
+			<a class="load-button">Load More
+            <div class="arrow_down"></div>
+			</a>
+		</div>
+      </div>
+      {{ pimcore_areablock("newsletter", {
+        "allowed": ["newsletter"]
+      }) }}
+    </div>
+
+  <script>
+    getOptions();
+
+    $(".laodmore-view").click(function () {
+        var num = $("#moreStudies").children().length;
+        getOptions(num)
+    })
+
+    function getOptions(num = 0){
+      $.ajax({
+        url : '/api/case-studies',
+        type : 'POST',
+        data : {'dataType' : 'more','num' : num},
+        success : function (result) {
+	  if(result.length < 6){
+            $(".laodmore-view").hide();
+          }
+          var text = '';
+          result.forEach(function (item) {
+            var date = new Date(item.date).toDateString();
+	    var moreImg = '';
+	    var videoTime = '';
+            if (item.video != ''){
+              videoTime = '<div class="date-view">' +
+                      '<span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>' +
+                      '<span class="date-txt">' + item.videoTime + '</span></div>';
+            }
+	    if(item.coverImage != '')
+	    {
+		moreImg = '<img class="img-resoure" src="' + item.coverImage + '">';	
+	    }
+            text = '<div class="load col-md-6 col-12">' +
+                    '<div class="tab-card-item">' +
+                    '<div class="card-top">' +
+                    '<a href="' + item.fullPath + '_'+ item.id + '"><img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">' +
+                    '<img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">'+
+                    moreImg +
+                    '</a></div>'+
+                    '<div class="card-bottom card-on">' + '<div>'+
+                '<div class="time-date">' +
+                    date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3] +
+                    '</div>' +
+                '<a href="' + item.fullPath + '_'+ item.id + '">' +
+                  '<div class="title">' + item.title + '</div>' +
+                '</a></div><div>'+ videoTime +
+              '</div></div></div></div>';
+            $("#moreStudies").append(text);
+          })
+
+
+
+        }
+      })
+    }
+  </script>
+{% endblock %}

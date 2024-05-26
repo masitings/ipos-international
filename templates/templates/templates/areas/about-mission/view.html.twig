@@ -1,0 +1,55 @@
+<div class="vision_mission container">
+    <div class="row vision_mission_row">
+        <div class="col-12 col-md-6 vision">
+{#            <img class="vision_eye" src="/static/images/icon_eye.8483001.svg">#}
+            {% if editmode %}
+                <style>
+                    .vision_mission{
+                        .pimcore_editable_droptarget_upload{
+                            z-index: 8;
+                        }
+                    }
+                </style>
+                {{ pimcore_image('versionImgs',{
+                    imgAttributes : {class : 'vision_eye'},
+                    'hidetext' : true
+                }) }}
+                <div class="vision_content">
+                    <div class="vision_txt">{{ pimcore_input('name1',{'placeholder' : 'cloumn name'}) }}</div>
+                    <div class="vision_desc">{{ pimcore_input('vision', {'placeholder' : 'text ...'}) }}</div>
+                </div>
+                {% else %}
+                    {{ pimcore_image('versionImgs',{
+                        imgAttributes : {class : 'vision_eye'}
+                    }) }}
+                    <div class="vision_content">
+                        <div class="vision_txt">{{ pimcore_input('name1',{'placeholder' : 'cloumn name'}) }}</div>
+                        <div class="vision_desc">{{ pimcore_input('vision', {'placeholder' : 'text ...'}) }}</div>
+                    </div>
+            {% endif %}
+
+        </div>
+        <div class="col-12 col-md-6 mission">
+{#            <img class="mission_rocket" src="/static/images/icon_rocket.800d526.svg">#}
+            {% if editmode %}
+                {{ pimcore_image('rocketImg',{
+                    imgAttributes : {class : 'mission_rocket'},
+                    'hidetext' : true
+                }) }}
+                <div class="mission_content">
+                    <div class="mission_txt">{{ pimcore_input('name2',{'placeholder' : 'cloumn name'}) }}</div>
+                    <div class="mission_desc">{{ pimcore_input('mission',{'placeholder' : 'text ...'}) }}</div>
+                </div>
+                {% else %}
+                    {{ pimcore_image('rocketImg',{
+                        imgAttributes : {class : 'mission_rocket'}
+                    }) }}
+                    <div class="mission_content">
+                        <div class="mission_txt">{{ pimcore_input('name2',{'placeholder' : 'cloumn name'}) }}</div>
+                        <div class="mission_desc">{{ pimcore_input('mission',{'placeholder' : 'text ...'}) }}</div>
+                    </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>

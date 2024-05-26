@@ -1,0 +1,143 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="articles_details_container resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Resources</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title">{{ list.title }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="posted-container">
+                        <span class="lable m-r-4">Posted on</span>
+                        <span class="value">{{ list.releaseDate | date('d M, Y') }}</span>
+                        <br class="d-block d-md-none">
+                        {% if list.authorIcon is not empty %}
+                            {{ list.authorIcon.thumbnail('ProfilePhoto').html({imgAttributes:{class:'value-img'}}) |raw }}
+                        {% endif %}
+                        <span class="lable m-r-4">By</span>
+                        <span class="value">{{ list.author }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details_img_body_container container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content_main_img">
+                        {#                        <img class="content_img" src="/assets/images/image1.404254e.png">#}
+                        {% if list.coverImage is not empty %}
+                            {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'content_img'}}) |raw }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row main-articles">
+                <div class="col-md-8 col-12 column-padding">
+                    {{ list.content | raw }}
+
+                    {% if list.bookChat is not empty %}
+                        <div class="public_book_card_container">
+                            <div class="part_1">
+                                <img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">
+                                <img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">
+{#                                <a href="https://iposintl-fe.fixxstaging.com/advisory/ip-chat">#}
+                                {% if list.bookChat.chatLogo is not empty %}
+                                    {{ list.bookChat.chatLogo.thumbnail('coverImg').html({imgAttributes:{class:'img-resoure'}}) | raw }}
+                                {% endif %}
+{#                                </a>#}
+                            </div>
+                            <div class="part_2">
+                                <p class="title">{{ list.bookChat.title }}</p>
+                                {{ list.bookChat.targetLink | raw  }}
+{#                                <a class="button" href="https://iposintl-fe.fixxstaging.com/advisory/ip-chat">Book IA Chat Session</a>#}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+                <div class="col-12 d-block d-md-none">
+                    <div class="split-line"></div>
+                </div>
+
+                <div class="col-md-4 col-12">
+                    <div class="resources_public_recommend-container">
+                        {% if list.relatedArticles is not empty %}
+                            <p class="recommend-title">Related Articles</p>
+                            {% for article in list.relatedArticles  %}
+                                <a class="recommend_item" href="{{ article }}_{{ article.getId() }}">
+
+                                    {% if  article.coverImage is not empty %}
+                                        {{ article.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'recommend-img'}}) | raw }}
+                                    {% endif %}
+                                    <div class="recommend-txt-layout">
+                                        <p class="txt-date">{{ article.releaseDate | date('d M, Y') }}</p>
+                                        <p class="recommend-txt-title">{{ article.title }}</p>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if list.shares is not empty %}
+                            <div class="share-container">
+                                <span class="share-txt">SHARE</span>
+                                <div class="share-layout">
+                                    {% for share in list.shares %}
+                                        <a name="share" class="{{ share.getShare().class }}" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}{{ sharePage }}"></a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="row main-articles d-none d-md-block">
+                <div class="col-12">
+                    <div class="split-line"></div>
+                </div>
+
+
+                {% if list.tags is not empty %}
+                    {% set count = list.tags | length %}
+                    <div class="col-12 tag-value">
+                        <span class="label">Tags: </span>
+                        <span class="value">
+                            {% for key, tag in list.tags %}
+                                {% if key < count - 1 %}
+                                    {{ tag }}
+                                    <span class="point">,</span>
+                                    {% else %}
+                                        {{ tag }}
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </span>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<div class="m-b-30">
+    <h6 class="h6">{{ pimcore_input('freeTitle',{'placeholder':'title..'}) }}</h6>
+    <div class="m-b-15 m-t-15 point-wrap">
+        <ol>
+            {% for i in pimcore_block('freeList').iterator %}
+                <li>
+                    <div class="d-flex align-items-center">
+                                <span class="m-r-20">
+                                    {{ pimcore_image('icon',{
+                                        'thumbnail' : 'coverImg',
+                                        'height' : 60,
+                                        'hidetext' : true
+                                    })
+                                    }}
+                                </span>
+                        <span>{{ pimcore_input('freeText',{'placeholder':'text...'}) }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ol>
+    </div>
+    <p>{{ pimcore_input('otherTitle',{'placeholder':'other...'}) }}</p>
+    <div class="row">
+        {% for i in pimcore_block('otherList').iterator %}
+            <div class="col-12 col-lg-6">
+                {% if editmode %}
+                    {{ pimcore_link('clicklink',{'class':'annex m-b-0'}) }}
+
+                {% else %}
+                    {% set clicklink = pimcore_link('clicklink',{'class':'annex m-b-0'})%}
+
+                    <a class="annex m-b-0" href="{{ clicklink.data.path }}">
+                        <span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span>
+                        <span class="annex-txt">{{ clicklink.data.text }}</span>
+                        <span class="pdf-down" style="background-image:url(/static/images/icon_download.c4854a7.svg)"></span>
+                    </a>
+
+                {% endif %}
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+</div>
+<hr>

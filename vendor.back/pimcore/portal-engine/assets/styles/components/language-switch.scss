@@ -1,0 +1,19 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.language-switch {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $gray-200;
+
+    .language-switch__select {
+        padding: 0.2rem;
+    }
+}

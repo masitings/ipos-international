@@ -1,0 +1,87 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.pee-hint {
+    padding: 0.25rem 0.5rem;
+    border: 0.125rem dashed rgba(255, 255, 255, 0.6);
+}
+
+.pee-floating-action {
+    z-index: 9;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.pee-absolute-action {
+    z-index: 9;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.pee-floating-action .btn, .pee-absolute-action .btn {
+    border-radius: 50%;
+    padding: 1rem;
+    line-height: 1;
+}
+
+.pee-sidebar {
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    min-width: 30rem;
+    max-width: 40rem;
+    transform: translate(100%, 0);
+    transition: all 300ms ease-out;
+    background: white;
+    box-shadow: -3px 0 20px -10px #555
+}
+
+.pee-sidebar.open {
+    transform: translate(0, 0);
+}
+
+.pee-sidebar__header {
+    background-color: #F5F4F7;
+}
+
+.pee-sidebar__body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.pee-icon svg {
+    height: 1em;
+    width: auto;
+    fill: currentColor;
+}
+
+.pee-icon__xl svg {
+    height: 1.5em;
+}
+
+.pee-overlay-image {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    z-index: 3;
+}
+
+.editmode-relation-form-group {
+    padding-right: 115px;
+}

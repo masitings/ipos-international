@@ -1,0 +1,34 @@
+{
+  "name": "pimcore/data-hub",
+  "license": "GPL-3.0+",
+  "type": "pimcore-bundle",
+  "description": "Pimcore Datahub",
+  "config": {
+    "discard-changes": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Pimcore\\Bundle\\DataHubBundle\\": "src/"
+    },
+    "exclude-from-classmap": [
+      "vendor/phpunit"
+    ]
+  },
+  "require": {
+    "pimcore/pimcore": "^6.9 || ^10.0",
+    "webonyx/graphql-php": "^14.6"
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "Pimcore\\Bundle\\DataHubBundle\\PimcoreDataHubBundle"
+      ]
+    },
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "*"
+  }
+}

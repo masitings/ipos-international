@@ -1,0 +1,18 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.plugin_pimcore_assetmetadataclassdefinitions_icon {
+    background: url(/bundles/pimcoreadmin/img/flat-white-icons/asset_metadata.svg) center center no-repeat !important;
+}
+
+.pimcore_icon_data_group_text_and_number {
+    background: url(/bundles/pimcoreadmin/img/flat-color-icons/text.svg) center center no-repeat !important;
+}

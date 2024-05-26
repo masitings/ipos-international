@@ -1,0 +1,79 @@
+{
+  "entrypoints": {
+    "collection-detail": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/collection-detail.dc1a3852.js"
+      ]
+    },
+    "asset-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/asset-list.fa696c29.js"
+      ]
+    },
+    "data-object": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/data-object.9584cac3.js"
+      ]
+    },
+    "data-object-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/data-object-list.cf81c100.js"
+      ]
+    },
+    "content": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/content.4822f2b2.js"
+      ]
+    },
+    "download-cart": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/download-cart.8578c5ae.js"
+      ]
+    },
+    "collection-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/collection-list.212be0f8.js"
+      ]
+    },
+    "asset-detail": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/asset-detail.24b7c2e1.js"
+      ]
+    },
+    "search-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/search-list.572e2f77.js"
+      ]
+    },
+    "search-detail": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/search-detail.30e40ea6.js"
+      ]
+    },
+    "public-share-overview": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/public-share-overview.04de9c78.js"
+      ]
+    },
+    "public-share-list": {
+      "js": [
+        "/bundles/pimcoreportalengine/build/bundle/public-share-list.135a0abf.js"
+      ]
+    },
+    "portal-engine-style": {
+      "css": [
+        "/bundles/pimcoreportalengine/build/bundle/portal-engine-style.f80a17fd.css"
+      ]
+    },
+    "portal-engine-editmode": {
+      "css": [
+        "/bundles/pimcoreportalengine/build/bundle/portal-engine-editmode.9c14a3ed.css"
+      ]
+    },
+    "portal-engine-email": {
+      "css": [
+        "/bundles/pimcoreportalengine/build/bundle/portal-engine-email.cd649d8c.css"
+      ]
+    }
+  }
+}

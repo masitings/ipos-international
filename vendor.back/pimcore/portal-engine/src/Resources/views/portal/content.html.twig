@@ -1,0 +1,13 @@
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% block content %}
+
+    {{ include("@PimcorePortalEngine/shared/editmode/content/configure.html.twig") }}
+
+    <div class="main-content__main">
+        <div class="container content-block">
+            {{ portalEngine_editmode_areablock("content", constant("\\Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\AreabrickPlace::PORTAL")) }}
+        </div>
+    </div>
+
+{% endblock %}

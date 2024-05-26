@@ -1,0 +1,47 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.icon-btn {
+    position: relative;
+    padding: 2/16 * 1rem;
+    width: 28/16 * 1rem;
+    height: 28/16 * 1rem;
+    font-family: $font-family-base;
+
+    @if $btns-rounded {
+        border-radius: 50%;
+    }
+}
+.icon-btn.icon-btn--lg {
+    width: 36/16*1rem;
+    height: 36/16*1rem;
+
+    @include media-breakpoint-up(md) {
+        width: 40/16*1rem;
+        height: 40/16*1rem;
+    }
+}
+.icon-btn__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 12/16*1rem;
+    height: 12/16*1rem;
+}
+.icon-btn--lg .icon-btn__icon {
+    width: auto;
+    height: 18/16*1rem;
+
+    @include media-breakpoint-up(md) {
+        height: 20/16*1rem;
+    }
+}

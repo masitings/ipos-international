@@ -1,0 +1,31 @@
+
+<svg width="639" height="595" viewBox="0 0 639 595" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b)">
+<circle cx="319" cy="298" r="150" fill="white" fill-opacity="0.12"/>
+</g>
+<g opacity="0.5">
+<mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="21" y="0" width="596" height="595">
+<rect x="21.5703" y="175" width="247.487" height="593.97" transform="rotate(-45 21.5703 175)" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0)">
+<circle cx="319.069" cy="297.171" r="226.858" stroke="white"/>
+</g>
+</g>
+<g opacity="0.5">
+<mask id="mask1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="41" width="639" height="513">
+<rect y="256.174" width="247.487" height="593.97" transform="rotate(-60 0 256.174)" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask1)">
+<circle cx="319.066" cy="297.831" r="253.257" stroke="white"/>
+</g>
+</g>
+<path d="M304.007 271.092L304.007 271.092L340.07 292.422L340.07 292.422C343.977 294.729 343.977 300.386 340.07 302.693L340.07 302.693L304.007 324.023L304.007 324.023C300.03 326.377 295 323.507 295 318.882V276.233C295 271.609 300.03 268.738 304.007 271.092Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<filter id="filter0_b" x="129" y="108" width="380" height="380" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="20"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+</filter>
+</defs>
+</svg>

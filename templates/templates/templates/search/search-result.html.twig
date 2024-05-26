@@ -1,0 +1,172 @@
+{% extends 'layouts/layout.html.twig' %}
+{% if keyword is defined %}
+    {% do document.setTitle('Search Results for \'' ~ keyword ~ '\' — IPOS International') %}
+{% else %}
+    {% do document.setTitle('Search — IPOS International') %}
+{% endif %}
+
+{% block content %}
+    <style>
+        /* 外面盒子样式---自己定义 */
+        .page_div{margin:20px 10px 20px 0;color:#666}
+        /* 页数按钮样式 */
+        .page_div button{display:inline-block;min-width:30px;height:28px;cursor:pointer;color:#666;font-size:13px;line-height:28px;background-color:#f9f9f9;border:1px solid #dce0e0;text-align:center;margin:0 4px;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+        #firstPage,#lastPage,#nextPage,#prePage{width:50px;color:#0073A9;border:1px solid #0073A9}
+        #nextPage,#prePage{width:70px}
+        .page_div .current{background-color:#0073A9;border-color:#0073A9;color:#FFF}
+        /* 页面数量 */
+        .totalPages{margin:0 10px}
+        .totalPages span,.totalSize span{color:#0073A9;margin:0 5px}
+        /*button禁用*/
+        .page_div button:disabled{opacity:.5;cursor:no-drop}
+    </style>
+
+    <div class="result_search_ip_master_container resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="container">
+            <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                            <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ keyword  }}</li>
+                        </ol>
+                        </nav>
+                        <div class="d-block d-md-none mobile_nav">
+                            <span class="back_arrow">&lt; </span>
+                            <a href="/" class="back_txt">Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% if keyword is defined %}
+                    <p id="key_words" class="p__title">Search Results for '{{ keyword }}'</p>
+                {% else %}
+                    <p id="key_words" class="p__title">Search</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group-mine">
+                        <span class="search_icon bg-icon" style="background-image:url(/static/images/icon-search.96c36fa.svg)"></span>
+                        <input onkeydown="searchPage()" type="text" id="search_input" value="" placeholder="">
+                        <span class="clear-icon bg-icon hidden" style="background-image:url(/static/images/icon-clear.d8fbba6.svg)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="result_number_view">
+                        {% if keyword is defined %}
+                            {% if total is defined %}
+                                <span class="number_laber">{{ total }}</span>
+                            {% else %}
+                                <span class="number_laber">0</span>
+                            {% endif %}
+                            <span class="number_txt"> results found</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% if data is defined %}
+                        {% for item in data %}
+                            {% if item.type != 'page' %}
+                                <div class="card-item-container">
+    
+                                    <div class="part_1">
+                                        {% if item.coverImage is not empty %}
+                                            {{ item.coverImage.thumbnail('coverImg').html() | raw }}
+                                        {#{% else %}
+                                            <img src="/Images/IPOS Logo/search_default.jpg">#}
+                                        {% endif %}
+                                    </div>
+                                    <div class="part_2">
+                                        <div class="card_title text-truncate-2">{{ item.keyName }}</div>
+                                        <a href="{{ item.fullpath }}" target="_blank" class="findMore">Find out more</a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                    <div class="card-item-container">
+    
+                                        <div class="part_1">
+                                            <img src="/Images/IPOS Logo/search_default.jpg">
+    
+                                        </div>
+                                        <div class="part_2">
+                                            <div class="card_title text-truncate-2">{{ item.keyName }}</div>
+                                            <a href="{{ item.fullpath }}" target="_blank" class="findMore">Find out more</a>
+                                        </div>
+                                    </div>
+                            {% endif %}
+    
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container">
+            <div class="row">
+                {% if totalPage is defined and totalPage > 1 %}
+                    <div id="page" class="page_div"></div>
+                {% else %}
+                    <div id="page" class="page_div" style="visibility: none; opacity: 0;"></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/static/js/pageMe.js"></script>
+
+    <script>
+
+        
+        
+        {% if keyword is not defined %}
+            {% set keyword = '' %}
+            {% set limit = 10 %}
+            {% set num = 1 %}
+            {% set nowPage = 1 %}
+            {% set totalPage = 1 %}
+        {% endif %}
+
+        function searchPage() {
+            var thenEvent = window.event || arguments.callee.caller.arguments[0];
+            var key = thenEvent.keyCode;
+            var searchField = document.getElementById('search_input');
+
+            if(key == 13) {
+                window.location.replace("/api/quicksearch?query="+searchField.value+"&limit={{ limit }}&page=1");
+            }
+        }
+
+
+        $("#page").paging({
+            pageNum: {{ nowPage }}, // 当前页面
+            totalNum: {{ totalPage }}, // 总页码
+
+            callback: function(num) { //回调函数
+                var uri = '/api/quicksearch?query={{ keyword }}&limit={{ limit }}&page='+num;
+                window.location.replace(uri)
+            }
+        });
+    </script>
+
+{% endblock %}

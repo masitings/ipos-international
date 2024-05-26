@@ -1,0 +1,216 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="business_guides_details_container business_guides_details_container_not_animated resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="js_public_layout"></div>
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Resources</a></li>
+                            <li class="breadcrumb-item"><a href="#">Business Guides </a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Building A Strong Brand</li>
+                        </ol>
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Business Guides </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title">Building A Strong Brand</p>
+                </div>
+            </div>
+        </div>
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="posted-container"><span class="lable m-r-4">Posted on</span><span class="value">7 May, 2020</span><br class="d-block d-md-none"><img class="value-img" src="/static/images/Logos-IPOSInt-Profile-Icon-02.3e9fb7c.jpg"><span class="lable m-r-4">By</span><span class="value">IPOS International</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="details_img_body_container container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content_main_img"><img class="content_img" src="https://www.boredpanda.com/blog/wp-content/uploads/2020/08/CBr78muJnaq-png__700.jpg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="js_public_image"></div>
+        <div class="body_container container">
+            <div class="row">
+                <div class="col-md-8 col-12 column-padding">
+                    <div class="guides-content-container">
+                        <p class="title-desc">Trade marks function to ensure that the origin of goods and services are known by consumers and other interested parties. Brands, on the other hand, deliver your product or service promise encompassing your personality, emotions and principles.</p>
+                        <p class="sub-title"> This guide’s focus is on how to create, use and protect a strong brand. It explores which intellectual property (IP) and other rights are involved and how they can be used together for this purpose.</p>
+                        <p class="sub-title-desc">This guide’s focus is on how to create, use and protect a strong brand. It explores which intellectual property (IP) and other rights are involved and how they can be used together for this purpose.</p>
+                        <div class="chapter">
+                            <p class="chapter-title">Chapter 1</p>
+                            <p class="chapter-desc">Explains why having a strong brand is important and why brands are valuable. It also looks at what makes a brand successful, the characteristics a strong brand typically possesses, and how branding strategy and the overall business strategy should be interlinked.</p>
+                            <p class="gradient-line"></p>
+                        </div>
+                        <div class="chapter">
+                            <p class="chapter-title">Chapter 1</p>
+                            <p class="chapter-desc">Explains why having a strong brand is important and why brands are valuable. It also looks at what makes a brand successful, the characteristics a strong brand typically possesses, and how branding strategy and the overall business strategy should be interlinked.</p>
+                            <p class="gradient-line"></p>
+                        </div>
+                        <div class="chapter">
+                            <p class="chapter-title">Chapter 1</p>
+                            <p class="chapter-desc">Explains why having a strong brand is important and why brands are valuable. It also looks at what makes a brand successful, the characteristics a strong brand typically possesses, and how branding strategy and the overall business strategy should be interlinked.</p>
+                            <p class="gradient-line"></p>
+                        </div>
+                    </div>
+                    <div class="left_container"></div>
+                    <div class="detail_children_components_layout"><a class="annex" href=""><span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span><span class="annex-txt">Continue reading this guide in this PDF.</span><span class="pdf-down" style="background-image:url(/static/images/icon_download.c4854a7.svg)"></span></a>
+                        <p class="annex-warning">Check out how local menswear label—Benjamin Barker used intangible assets and IP to make a mark in their industry.</p>
+                    </div><a class="public_guides_card_bottom_container" href="">
+                        <div class="part_1"><img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg"><img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg"><img class="img-resoure" src="/static/images/img_resources_11.e5c5f9a.png"></div>
+                        <div class="part_2">
+                            <div class="part_child_1">
+                                <p class="dateTxt">Case Studies</p>
+                                <p class="title">Benjamin Barker</p>
+                            </div>
+                            <div class="part_child_2"><span class="find_more">Find out more</span></div>
+                        </div></a>
+                    <div class="public_guides_bottom_card_container"></div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="subscribe_window_container">
+                        <div class="subscribe_window">
+                            <p class="title">Get the Full Complimentary Guide</p><a class="subscribe_now" href="">Subscribe Now</a>
+                        </div>
+                        <div class="resources_public_recommend-container">
+                            <p class="recommend-title">You May Be Interested In</p><a class="recommend_item" href=""><img class="recommend-img" src="https://www.boredpanda.com/blog/wp-content/uploads/2020/08/CBr78muJnaq-png__700.jpg">
+                                <div class="recommend-txt-layout">
+                                    <p class="txt-date">18 Mar, 2021</p>
+                                    <p class="recommend-txt-title">Four Main IP Pathways Businesses Can Prioritise</p>
+                                </div></a><a class="recommend_item" href=""><img class="recommend-img" src="https://www.boredpanda.com/blog/wp-content/uploads/2020/08/CBr78muJnaq-png__700.jpg">
+                                <div class="recommend-txt-layout">
+                                    <p class="txt-date">18 Mar, 2021</p>
+                                    <p class="recommend-txt-title">Four Main IP Pathways Businesses Can Prioritise</p>
+                                </div></a><a class="recommend_item" href=""><img class="recommend-img" src="https://www.boredpanda.com/blog/wp-content/uploads/2020/08/CBr78muJnaq-png__700.jpg">
+                                <div class="recommend-txt-layout">
+                                    <p class="txt-date">18 Mar, 2021</p>
+                                    <p class="recommend-txt-title">Four Main IP Pathways Businesses Can Prioritise</p>
+                                </div></a>
+                            <div class="share-container"><span class="share-txt">SHARE</span>
+                                <div class="share-layout"><a class="share-icon facebook" style="background-image:url(&quot;/static/images/icon-Facebook.c78e324.svg&quot;)" href=""></a><a class="share-icon linkedin" style="background-image:url(&quot;/static/images/icon-Linkedin.dac1a71.svg&quot;)" href=""></a><a class="share-icon twitter" style="background-image:url(&quot;/static/images/icon-Twitter.6adf57e.svg&quot;)" href=""></a><a class="share-icon email" style="background-image:url(&quot;/static/images/icon-Email.bd681cf.svg&quot;)" href=""></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="share_container_1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {#<script id="public_guides_bottom_card_template_script" type="text/html">
+        <div class="public_guides_bottom_card_template_script"><%if(businessCard && businessCard.url && businessCard.url.length > 0){%><a class="public_guides_card_bottom_container" href="<%:=businessCard.url%>" target="_blank">
+                <div class="part_1"><img class="img-bg d-none d-md-block" src="/assets/images/ribbon_not_arrow.793b256.svg"><img class="img-bg d-block d-md-none" src="/assets/images/ribbon.f4e9e6a.svg"><img class="img-resoure" src="/assets/images/img_resources_11.e5c5f9a.png"></div>
+                <div class="part_2">
+                    <div class="part_child_1">
+                        <p class="dateTxt">Case Studies</p>
+                        <p class="title">Benjamin Barker</p>
+                    </div>
+                    <div class="part_child_2"><span class="find_more">Find out more</span></div>
+                </div></a><%}%></div>
+    </script>
+    <script id="nav_title2" type="text/html">
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/resources/overview/">Resources</a></li>
+                            <li class="breadcrumb-item"><a href="/resources/business-guides">Business Guides</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><%= name %></li>
+                        </ol>
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Business Guides</span></div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="details_author_replace_date_template" type="text/html">
+        <div class="container author_container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="posted-container"><span class="lable m-r-4">Posted on</span><span class="value"><%:=authorInfo.dateTxt%></span><br class="d-block d-md-none"><%if(authorInfo.img){%><img class="value-img" src="<%:=authorInfo.img%>"><%}else{%><img class="value-img" src="/assets/images/Logos-IPOSInt-Profile-Icon-02.3e9fb7c.jpg"><%}%><span class="lable m-r-4">By</span><%if(authorInfo.author){%><span class="value"><%:=authorInfo.author%></span><%}else{%><span class="value">IPOS International</span><%}%></div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="title" type="text/html">
+        <div class="container page__title__container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="p__title"><%:=title%></p>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="img_content_container" type="text/html">
+        <div class="details_img_body_container container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content_main_img"><img class="content_img" src="<%:=img%>"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="detailsLeft_template_script" type="text/html">
+        <div class="guides-content-container"><%if(imgDesc && imgDesc.length){%>
+            <p class="title-desc"><%:=imgDesc%></p><%}%>
+            <%if(ask && ask.length){%>
+            <p class="sub-title"><%:=ask%></p><%}%>
+            <%if(answers && answers.length){%>
+            <p class="sub-title-desc"><%:=answers%></p><%}%>
+            <%if(chapters && chapters.length){%>
+            <%for(var i=0; i< chapters.length ; i++){ %>
+            <%var chapter = chapters[i] %>
+            <div class="chapter">
+                <p class="chapter-title"><%:=chapter.title%></p>
+                <p class="chapter-desc"><%:=chapter.desc%></p>
+                <p class="gradient-line"></p>
+            </div><%}%>
+            <%}%>
+        </div>
+    </script>
+    <script id="aiso_script" type="text/html">
+        <section class="card-video"><a class="card-container" href="<%:=url%>" target="_blank">
+                <div class="top-inner"><span class="watch-txt">Watch this also</span>
+                    <div class="middle-line"></div>
+                </div>
+                <div class="card-content-layout">
+                    <div class="left-view"><img class="left-img" src="/assets/images/image_resource.020d86e.png">
+                        <div class="play-link"><span class="play-bg" style="background-image:url(/assets/images/icon_circle_play.c719f41.svg)"></span></div>
+                    </div>
+                    <div class="right-view">
+                        <p class="action-txt">Business Guides in Action</p>
+                        <div class="title-txt"><%:=txt%></div>
+                    </div>
+                </div></a></section>
+    </script>
+    <!--+public_interest_template_script('You May Be Interested In')-->
+    <script id="subscribe_window_template_script" type="text/html">
+        <div class="container_sub"><%if(subscribeUrl && subscribeUrl.length){%>
+            <div class="subscribe_window">
+                <p class="title">Get the Full Complimentary Guide</p><a class="subscribe_now" href="<%:=subscribeUrl%>" target="_blank">Subscribe Now</a>
+            </div><%}%>
+        </div>
+    </script>
+    <script id="pdf_script" type="text/html">
+        <div><%if(pdf && pdf.length){%><a class="annex" href="<%:=pdf%>" target="_blank"><span class="pdf-svg" style="background-image:url(/assets/images/icon_pdf.d36de8b.svg)"></span><span class="annex-txt">Continue reading this guide in this PDF.</span><span class="pdf-down" style="background-image:url(/assets/images/icon_download.c4854a7.svg)"></span></a><%}%>
+            <%if(businessTxt&&businessTxt.length){%>
+            <p class="annex-warning"><%:=businessTxt%></p><%}%>
+        </div>
+    </script>#}
+{% endblock %}

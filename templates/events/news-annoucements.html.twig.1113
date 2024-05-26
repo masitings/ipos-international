@@ -1,0 +1,88 @@
+{% extends 'layouts/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="resources_public_list_master_container resources_public_container">
+        <div class="bg_circle"></div>
+        <div class="container">
+            <!--+nav(['Home','Events','News & Announcements'])-->
+            <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                            {% include('layouts/breadcrumb-col-12.html.twig') %}
+                        </nav>
+                        <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt;</span><a class="back_txt" href="">Events</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row latest_articles_container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="p_title nocut">{{ pimcore_input('headlines',{'placeholder':'title'}) }}</p>
+                    </div>
+                    {% if list['latest'] is defined %}
+                    {% for lastest in list['latest'] %}
+                        <div class="col-md-6 col-12">
+                            <div class="tab-card-item">
+                                <div class="card-top">
+                                    <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                                    <a href="{{ lastest }}_{{ lastest.getId() }}">
+				    {% if lastest.coverImage is not empty %}
+                                        {{ lastest.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'img-resoure'}}) | raw}}
+                                    {% endif %}
+				    </a>
+
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="time-date">{{ lastest.releaseDate | date('d M, Y')  }}</div>
+                                    <div class="title">{{ lastest.title }}</div>
+                                    <a class="find-more" href="{{ lastest }}_{{ lastest.getId() }}">Find out more</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container more_articles_container">
+            <div class="row">
+                <div class="col-12 selcted-container">
+                    <p class="p_title nocut">{{ pimcore_input('moreTitle',{'placeholder':'moreTitle'}) }}</p>
+                </div>
+            </div>
+            <div class="row">
+                {% if list['more'] is defined %}
+                {% for more in list['more'] %}
+                    <div class="col-md-6 col-12">
+                        <div class="tab-card-item">
+                            <a href="{{ more }}_{{ more.getId() }}">
+                                <div class="card-top">
+                                    <img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">
+                                    <img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">
+                                    <a href="{{ more }}_{{ more.getId() }}">
+                                        {% if more.coverImage is not empty %}
+                                            {{ more.coverImage.thumbnail('coverImg').html({imgAttributes:{class : 'img-resoure'}}) | raw }}
+                                        {% endif %}
+                                    </a>
+
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="time-date">{{ more.releaseDate | date('d M, Y') }}</div>
+                                    <div class="title">{{ more.title }}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+        <!--+reportsMoreCardList("More News & Annoucements",moreValues)-->
+    </div>
+{% endblock %}

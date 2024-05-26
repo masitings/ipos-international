@@ -1,0 +1,198 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="business_guides_container resources_public_container resources_public_list_master_container">
+      <div class="bg_circle"></div>
+      <!--+nav(['Home', 'Resources', 'Business Guides'], )-->
+      <div class="resources_public_title_nav container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+              {% include('layouts/breadcrumb-col-12.html.twig') %}
+            </nav>
+            <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><a href="{{ pimcore_document(33).fullpath }}" class="back_txt">About</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="container page__title__container">
+        <div class="row">
+          <div class="col-12">
+            <p class="p__title">{{ pimcore_input('latestTitle',{'placeholder' : 'Carrer'}) }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+
+        <div class="row latest_articles_container">
+
+          {% if list.latest is not empty %}
+            {% for lastest in list.latest %}
+
+{#              {{ dump(lastest.detailVideo.data) }}#}
+              {% if lastest.listType == 'Watch List' %}
+                <div class="col-md-6 col-12">
+                  <a class="tab-card-item" href="{{ lastest }}_{{ lastest.getId() }}">
+                    <div class="card-top">
+                      <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                      {#<img class="img-resoure" src="/static/images/buniess_1.080b99b.jpg">#}
+
+			{% if lastest.coverImage is not empty %}
+			<img class="img-resoure" src="{{ lastest.coverImage.getThumbnail('BusinessGuidesLatest') }}" >
+                        {#{{ lastest.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-resoure'}}) | raw }}#}
+			{% endif %}
+{#                      <iframe class="img-resoure" width="560" height="315" src="https://www.youtube.com/embed/{{ lastest.detailVideo.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+                      <div class="date-view">
+                        <span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>
+                        <span class="date-txt">{{ lastest.videoTime }}</span>
+                      </div>
+                    </div>
+                    <div class="card-bottom">
+                      <div class="time-date">{{ lastest.releaseDate | date('d M, Y') }}</div>
+                      <div class="title">{{ lastest.title }}</div>
+                      <span class="find-more">Find out more</span>
+                    </div>
+                  </a>
+                </div>
+              {% else %}
+
+                <div class="col-md-6 col-12">
+                  <a class="tab-card-item" href="{{ lastest }}_{{ lastest.getId() }}">
+                    <div class="card-top">
+                      <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+			{% if lastest.coverImage is not empty %}
+			<img class="img-resoure" src="{{ lastest.coverImage.getThumbnail('BusinessGuidesLatest') }}"  >
+			
+                       {# {{ lastest.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'img-resoure'}}) | raw }} #}
+			{% endif %}
+                    </div>
+                    <div class="card-bottom">
+                      <div class="time-date">{{ lastest.releaseDate | date('d M, Y') }}</div>
+                      <div class="title">{{ lastest.title }}</div>
+                      <span class="find-more">Find out more</span>
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+
+            {% endfor %}
+
+          {% endif %}
+
+
+
+        </div>
+      </div>
+      <div class="container page__title__container">
+        <div class="row">
+          <div class="col-12">
+            <p class="p__title">{{ pimcore_input('moreTitle',{'placeholder' : 'More Career'}) }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <ul class="nav nav-tabs custom-nav justify-content-center justify-content-md-start">
+          <li class="nav-item" ><a class="nav-link active" data-bs-toggle="tab" href="#read_list">Read List ({{ list.readCount }})</a></li>
+          <li class="nav-item" ><a class="nav-link" data-bs-toggle="tab" href="#watch_list">Watch List ({{ list.watchCount }})</a></li>
+        </ul>
+        <div class="tab-content custom-tab-content">
+          <div class="tab-pane fade show active" id="read_list">
+            <div id="readList" class="row">
+            </div>
+            <div id="load-read" style="cursor: pointer;" class="laodmore-view">
+              <a class="load-button">Load More
+                <div class="arrow_down"></div>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="watch_list">
+            <div id="watchList" class="row">
+            </div>
+            <div id="load-watch" style="cursor: pointer;" class="laodmore-view">
+              <a class="load-button">Load More
+                <div class="arrow_down"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chartset-o-view d-none d-md-block">
+        <img class="img-o" src="/static/images/pc_charset_o.c08f0b8.svg">
+      </div>
+      {{ pimcore_areablock("newsletter", {
+        "allowed": ["newsletter"]
+      }) }}
+    </div>
+
+  <script>
+
+    getOptions(0,'readList');
+    getOptions(0,'watchList');
+
+    $("#load-read").click(function () {
+      var num = $("#readList").children().length;
+      getOptions(num,'readList')
+    });
+
+    $("#load-watch").click(function () {
+      var num = $("#watchList").children().length;
+      getOptions(num,'watchList')
+    });
+
+    function getOptions(num = 0,dataType = 'readList'){
+
+      $.ajax({
+        url : '/api/careers',
+        type : 'POST',
+        data : {'dataType' : dataType,'num' : num},
+        success : function (result) {
+	  if (result.length < 6){
+            if(dataType == 'readList'){
+              $("#load-read").hide();
+            }else if(dataType == 'watchList'){
+              $("#load-watch").hide();
+            }
+          }
+          var text = '';
+          result.forEach(function (item) {
+            var date = new Date(item.date).toDateString();
+            var videoTxt = '';
+	    var moreImg = '';
+	    if(item.coverImage != '')
+	    {
+		moreImg = '<img class="img-resoure" src="' + item.coverImage + '" >';
+	    }
+            if (item.type == 'readList'){
+              videoTxt = '';
+            }else if(item.type == 'watchList'){
+
+              videoTxt = '<div class="date-view">' +
+                      '<span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>' +
+                      '<span class="date-txt">' + item.videoTime + '</span>' +
+                      '</div>';
+            }
+            text = '<div class="col-12 col-md-6">' +
+                    '<a class="public_guides_card_container" href="' + item.fullPath + '_'+ item.id + '">' +
+                    '<div class="part_1">' +
+                    '<img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">' +
+                    '<img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">' +
+                    moreImg +
+                    '</div>' +
+            '<div class="part_2">' +
+              '<div class="part_child_1">' +
+                '<p class="dateTxt">' + date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3] + '</p>' +
+                '<p class="title">' + item.title + '</p>' +
+              '</div>' +
+              '<div class="part_child_2">' +
+                    videoTxt +
+              '</div></div></a></div>';
+
+            $("#" + dataType).append(text);
+          })
+
+
+
+        }
+      })
+    }
+  </script>
+{% endblock %}

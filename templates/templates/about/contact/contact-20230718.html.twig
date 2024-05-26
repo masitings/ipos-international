@@ -1,0 +1,310 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<style>
+.hidden{
+		display: none;
+	}
+	.show{
+		display: block;
+	}
+</style>
+    <section class="bg-bigcircle">
+    
+        <div class="bg_circle_left"></div>
+        <div class="bg_rectangle_left"><img src="/static/images/enterprise_left.58e9531.svg" alt=""></div>
+        <div class="bg_rectangle_right"><img src="/static/images/enterprise_right.e8293ab.svg" alt=""></div>
+        <div class="bg_circle_right"><img src="/static/images/credential_right.a13c81c.svg" alt=""></div>
+        <div class="container">
+            <div class="breadcrumb m-b-80 m-t-40 temporary">
+                {% include('layouts/breadcrumb.html.twig') %}
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-left">
+                        <h1 class="h1 m-b-80">{{ pimcore_input('HeadLine',{'placeholder' : 'headlines...'}) }}</h1>
+                        <div class="m-b-45">
+                            <p class="mini-label m-b-15">{{ pimcore_input('title',{'placeholder' :'title...'}) }}</p>
+                            <p class="txt-large m-b-15">
+                            <section id="marked-content">
+                                {{  pimcore_wysiwyg("specialContent", {
+                                    "height": 200,
+                                    "placeholder" : "edit content..."
+                                })
+                                }}
+                            </section>
+                            </p>
+                            {#<a class="link__org" href="https://www.google.com/maps/place/IPOS+International/@1.316659,103.8905063,17z/data=!3m1!4b1!4m5!3m4!1s0x31da19a359e42709:0x3bb3e5d04f30528a!8m2!3d1.316659!4d103.892695" target="_blank">View Map
+                                <span>
+                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.47344 1.52539L1.52344 6.47539" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 1.5L6.475 1.5245L6.5 5" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </a>
+#}
+                            {{ pimcore_link('allLink',{
+                                'class' : 'link__org',
+                                'textSuffix' : '<span>
+                                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.47344 1.52539L1.52344 6.47539" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 1.5L6.475 1.5245L6.5 5" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>'
+                            }) }}
+                        </div>
+                        <div class="m-b-45">
+                            <p class="mini-label m-b-15">{{ pimcore_input('title2',{'placeholder' : 'title...'}) }}</p>
+                            <p class="txt-large">{{ pimcore_link('telLink') }}</p>
+                            <p class="txt-large">
+                                {{ pimcore_link('mailtoLink') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-right">
+                        <div class="form-cont">
+                            <div class="form-cont__head">
+                                <div>
+                                    <h6 class="h6 xsssss about-c" >Have any questions?</h6>
+                                    <p class="drop-note">Drop us a message below and we will get back to you soon.</p>
+                                </div>
+                            </div>
+                            <div class="form-cont__body"> 
+                                <form class="contact-form ipos-form row g-3 needs-validation" id="my_captcha_form" novalidate=""  data-action="/api/contact">
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label form-input-label__select">
+                                            <input value="9847h3hchc65rdytegbhcjcccc21" name="csrf_token" class="form-control contact-b "  type="hidden" required="">
+
+                                            <label class="form-label float-top" for="contactSubject">Nature of enquiry</label>
+    
+                                            <select name="state" class="form-select form-control passport" id="contactSubject">
+                                                {% for state in states %}
+                                            		<option value="{{ state['key'] }}">{{ state['value'] }}</option>
+                                        	{% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+
+
+
+                                    <div class="col-md-6 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactFirstName">First Name</label>
+                                            <input name="firstName" class="form-control" id="contactFirstName" type="text" value="" required="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactLastName">Last Name</label>
+                                            <input name="lastName" class="form-control" id="contactLastName" type="text" value="" required="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactCompany">Company</label>
+                                            <input name="company" class="form-control" id="contactCompany" type="text" value="" required="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactDesignation">Designation</label>
+                                            <input name="designation" class="form-control" id="contactDesignation" type="text" value="" required="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactPhoneNumber">Phone Number</label>
+                                            <input name="phone" class="form-control" id="contactPhoneNumber" type="number" value="" required="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactEmail">Business email</label>
+                                            <input name="email" class="form-control" id="contactEmail" type="email" value="" required="">
+                                            <div class="invalid-feedback">Please provide a valid Email.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactMessage">Message</label>
+                                            <textarea name="message" class="form-control" id="contactMessage" rows="3" required=""></textarea>
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 column " id="infoSource">
+                                        <div class="form-input-label form-input-label__select">
+                                            <label class="form-label float-top" for="contactSource" id="contactSourceLabel">How did you find out about our IA Chat session?</label>
+                                            <select name="infoSource" class="form-select form-control" id="contactSource">
+                                                <option value="Emails/EDMS">Emails/EDMS</option>
+                                                <option value="Facebook">Facebook</option>
+                                                <option value="Google">Google</option>
+                                                <option value="LinkedIn">LinkedIn</option>
+                                                <option value="IPOS International Website">IPOS International Website</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column hidden" id="infoSourceOthers">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactMessage">Others</label>
+                                            <textarea name="infoSourceOthers" class="form-control" id="contactSourceOthers" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                        <script>
+                                        $("#contactSubject").change(function(){
+                                            var response = $(this).val();
+                                            if(response.toLowerCase() == "general enquiry"){
+                                                $("#contactSourceLabel").html("How did you find out about IPOS International?");
+                                            }
+                                            else if(response.toLowerCase() == "business enquiry"){
+                                                $("#contactSourceLabel").html("How did you find out about IPOS International?");
+                                            }
+                                            else if(response.toLowerCase() == "academy programme"){
+                                                $("#contactSourceLabel").html("How did you find out about our Academy programmes?");
+                                            }
+                                            else if(response.toLowerCase() == "ia chat session"){
+                                                $("#contactSourceLabel").html("How did you find out about our IA Chat session?");
+                                            }
+                                        });
+                                        $("#contactSource").change(function(){
+                                            var response = $(this).val();
+                                            if(response == "Others"){
+                                                $("#infoSourceOthers").removeClass("hidden");
+                                                $("#infoSourceOthers").addClass("show");
+                                            }
+                                            else{
+                                                $("#contactSourceOthers").val("");
+                                                $("#infoSourceOthers").addClass("hidden");
+                                                $("#infoSourceOthers").removeClass("show");
+                                            }
+                                        });
+                                        </script>
+
+                                        
+					<div class="col-md-12 column">
+					 <div class="form-check">
+						<input class="form-check-input" id="TNC" name="tnc" type="checkbox" value="" required="">
+                        			<label class="form-label mt-0" for="TNC">By submitting this form, I agree to IPOS International’s Terms of Service.</label>
+                        			<div class="invalid-feedback">Please agree before send.</div>
+                      			</div>
+					</div>
+
+<div class="col-md-12 column">
+                      <div class="form-check">
+                        <input class="form-check-input" id="subsEmail" name="subsemail" type="checkbox" value="1">
+                        <label class="form-label mt-0" for="subsEmail">By ticking this box, I agree and consent to receive email updates on programmes, events, resources and news from IPOS International. I understand that I can change my mind at any time and unsubscribe from IPOS International marketing emails by clicking the “unsubscribe” link located at the bottom of every marketing email or by emailing &nbsp;
+						<a class="contact-tnc-email" href="mailto:enquiry@iposinternational.com">enquiry@iposinternational.com</a>.
+						</label>
+						<div class="invalid-feedback">Please agree before send.</div>
+                      </div>
+                    </div>
+
+                                    <div class="col-md-12 column">
+                                        <div class="form-input-label">
+                                            <div class="g-recaptcha" data-sitekey="6Lel4Z4UAAAAAOa8LO1Q9mqKRUiMYl_00o5mXJrR"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 column">
+                                        <div class="line"></div>
+                                        <button class="btn full-orange float-end m-t-20" type="submit">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div class="thankyou-modal">
+        <div class="btn-close -close-tq-modal"></div>
+        <div class="thankyou-modal__wrap">
+            <img class="m-b-20" src="/static/images/mail-fly.3358c4b.png" alt="">
+            <p class="txt-regular m-b-25">Thank you for your message. It has been sent. We will get back to you soon.</p>
+            <div class="btn btn__hollow -close-tq-modal">Continue Browsing</div>
+        </div>
+    </div>
+    {#<div class="ipos-modal modal fade" id="subscribeNesletterModal" tabindex="-1" aria-hidden="true">
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="h5">Subscribe to Newsletter and Business Guides</h5>
+                    <p>Get the latest IA/IP news, insights and guides delivered to your inbox monthly.</p>
+                </div>
+                <div class="modal-body">
+                    <form class="ipos-form row g-3 needs-validation" id="my_captcha_form" novalidate="">
+                        <div class="col-md-6 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subFirstName">First Name</label>
+                                <input class="form-control" id="subFirstName" type="text" value="" required="">
+                                <div class="invalid-feedback">Please fill in this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subLastName">Last Name</label>
+                                <input class="form-control" id="subLastName" type="text" value="" required="">
+                                <div class="invalid-feedback">Please fill in this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subCompany">Company</label>
+                                <input class="form-control" id="subCompany" type="text" value="" required="">
+                                <div class="invalid-feedback">Please fill in this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subDesignation">Designation</label>
+                                <input class="form-control" id="subDesignation" type="text" value="" required="">
+                                <div class="invalid-feedback">Please fill in this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subPhoneNumber">Phone Number</label>
+                                <input class="form-control" id="subPhoneNumber" type="number" value="" required="">
+                                <div class="invalid-feedback">Please fill in this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subEmail">Email</label>
+                                <input class="form-control" id="subEmail" type="email" value="" required="">
+                                <div class="invalid-feedback">Please provide a valid Email.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 column">
+                            <div class="form-input-label">
+                                <label class="form-label" for="subMessage">Message</label>
+                                <textarea class="form-control" id="subMessage" rows="3" required=""></textarea>
+                                <div class="invalid-feedback">Please fill in this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 column">
+                            <div class="form-input-label">
+                                <div class="g-recaptcha" data-sitekey="6Lel4Z4UAAAAAOa8LO1Q9mqKRUiMYl_00o5mXJrR"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="line"></div>
+                            <button class="btn full-orange w-100 m-t-20" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>#}
+
+{% endblock %}

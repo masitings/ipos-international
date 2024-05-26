@@ -1,0 +1,26 @@
+
+
+
+{% if editmode %}
+    <li class="ourClients_list_li"><a >
+            <div class="ourClients_line"></div>
+            <div class="ourClients_content">
+              <div class="ourClients_content_value">{{pimcore_input('contentVal',{'placeholder' : 'Content value'})}}</div>
+              <div class="ourClients_content_red">{{pimcore_input('contentRed',{'placeholder' : 'Url'})}}</div>
+              <div class='thumb_img' style='float:right'>
+                  {{ pimcore_image('thumb',{"width": 100,
+    "height": 100})}}
+              </div>
+            </div>
+        
+        </a></li>
+    {% else %}
+<li class="ourClients_list_li"><a class="ourClients_content_list" href="{{pimcore_input('contentRed',{'placeholder' : 'Content Red'}).getData()}}" target="_blank">
+            <div class="ourClients_line"></div>
+            <div class="ourClients_content">
+              <div class="ourClients_content_value">{{pimcore_input('contentVal',{'placeholder' : 'Content value'})}}</div>
+              <div class="ourClients_content_red">{{pimcore_input('contentRed',{'placeholder' : 'Content Red'})}}</div>
+            </div>
+            <div class="company-logo-pic"><img src='{{ pimcore_image('thumb').getImage()}}'/></div></a></li>
+
+{% endif %}

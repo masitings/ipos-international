@@ -1,0 +1,84 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.form-control-rounded {
+    border-radius: $border-radius-lg;
+}
+.form-control,
+.react-select,
+.react-select__input {
+    @include media-breakpoint-down(sm) {
+        font-size: 1rem;
+    }
+}
+
+.form-control {
+    height: auto;
+}
+
+.form-group--custom label {
+    margin-bottom: 5/16*1rem;
+    color: $gray-600;
+    font-size: 12/16*1rem;
+}
+
+/* colors */
+.form-control--dark,
+.form-control--dark:focus {
+    background: $dark;
+    border-color: $dark;
+    color: #fff;
+}
+
+.form-control {
+    border-color: $form-control-border-color;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: $form-control-disabled-background-color;
+    color: $form-control-disabled-color;
+}
+
+.form-group--custom input[type="checkbox"] {
+    position: relative;
+    top: 2px;
+}
+
+.form-control--card-header {
+    position: relative;
+    text-align: left;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: -1px;
+    padding-right: 3rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: transparent;
+
+    &:focus {
+        box-shadow: none;
+        border-color: inherit;
+    }
+}
+.form-control--card-header__collapse-icon {
+    position: absolute;
+    top: 50%;
+    right: .75rem;
+    transform: translateY(-50%);
+    transition: transform 200ms ease-in-out;
+}
+.form-control--card-header.is-open {
+    border-color: inherit;
+}
+.form-control--card-header.is-open .form-control--card-header__collapse-icon {
+    transform: translateY(-50%) rotate(180deg);
+}

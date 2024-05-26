@@ -1,0 +1,80 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\DefaultAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "wysiwyg" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\TextAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "input" }
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "textarea" }
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "calculatedValue" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\NumericAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "numeric" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\DateAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "date" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\DateTimeAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "datetime" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\BooleanAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "checkbox" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\SelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "select" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\MultiSelectAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "multiselect" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\CountryAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "country" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\LanguageAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "language" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\ManyToOneRelationAdapter:
+        shared: false
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\AssetRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "asset" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\ObjectRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "object" }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\FieldDefinitionAdapter\ManyToManyRelationAdapter:
+        shared: false
+        tags:
+            - { name: "pimcore.portal_engine.asset.search_index_field_definition", type: "manyToManyRelation" }

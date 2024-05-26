@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row m-b-50">
+        <div class="col-lg-10 col-md-12">
+            <h1>{{ pimcore_input("headline1",{'placeholder':'Headline...'}) }}</h1>
+            <h6>{{ pimcore_input("text1",{"placeholder" : "text..."}) }}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ pimcore_areablock("media", {
+                "allowed": ["ip-start-video","ip-start-img"]
+            }) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 p-r-15 lg-p-r-100">
+
+            {{ pimcore_areablock("content-body", {
+                "allowed": [
+                    "ip-start-content",
+                    "ip-start-question",
+                    "ip-start-free-content",
+                    "ip-start-partners"
+                ]
+            }) }}
+        </div>
+        <div class="col-lg-4">
+
+            {% if editmode %}
+                {{ pimcore_link('rightClick',{
+                    'class' : 'btn full-orange w-100'
+                }) }}
+            {% else %}
+                {% set clicklink = pimcore_link('rightClick',{'class':'annex m-b-0'})%}
+                <a class="btn full-orange w-100" href="/" data-bs-toggle="modal" data-bs-target="#RightModal" data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a>
+                <div class="ipos-modal iframe-test modal fade" id="RightModal" tabindex="-1" aria-hidden="true">
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: 94vh;">
+                            <iframe src="{{ clicklink.data.path | default('') }}" style="width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <div class="thankyou-modal">
+                        <div class="btn-close -close-tq-modal" data-bs-dismiss="modal" aria-label="Close"></div>
+                        <div class="thankyou-modal__wrap">
+                            <img class="m-b-20" src="/static/images/mail-fly.3358c4b.png" alt="">
+                            <p class="txt-regular m-b-25">Thank you for your message. It has been sent. We will get back to you soon.</p>
+                            <div class="btn btn__hollow -close-tq-modal" data-bs-dismiss="modal" aria-label="Close">Continue Browsing</div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+</div>

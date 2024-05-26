@@ -1,0 +1,425 @@
+<?php
+
+namespace App\Controller;
+
+use App\Services\ResourcesServices;
+use App\Website\LinkGenerator\ArticleLinkGenerator;
+use Pimcore\Model\DataObject;
+use Pimcore\Model\Document;
+use Knp\Component\Pager\PaginatorInterface;
+
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use function Matrix\trace;
+
+class ResourceController extends BaseController
+{
+
+    public function indexAction(Request $request){
+        return $this->redirect('resources/overview');
+    }
+
+    public function overviewAction(Request $request)
+    {
+        $data = [
+            'articles' => (new DataObject\Articles\Listing())
+                ->filterByCoverView(true)
+                ->setOrderKey('releaseDate')
+                ->setOrder('DESC')
+                ->load(),
+            'business' => (new DataObject\Business\Listing())
+                ->filterByCoverView(true)
+                ->setOrderKey('releaseDate')
+                ->setOrder('DESC')
+                ->load(),
+            'patent' => (new DataObject\PatentAnalytic\Listing())
+                ->filterByCoverView(true)
+                ->setOrderKey('releaseDate')
+                ->setOrder('DESC')
+                ->load(),
+            'studies' => (new DataObject\CaseStudy\Listing())
+                ->filterByCoverView(true)
+                ->setOrderKey('releaseDate')
+                ->setOrder('DESC')
+                ->load()
+
+        ];
+
+        $webinar = (new DataObject\WebinarRecordings\Listing());
+        $webinar->filterByCoverView(true);
+        $webinar->setOrderKey('releaseDate');
+        $webinar->setOrder('DESC');
+        $webinar->load();
+
+
+        return $this->render('resources/index/index.html.twig',[
+            'list' => $data,
+            'webinar' => $webinar
+        ]);
+    }
+
+
+
+    public function businessGuidesAction(Request $request)
+    {
+
+        $businessType = 'Business Guides';
+
+        $list = new DataObject\Business\Listing();
+
+        $list->setOrderKey('releaseDate');
+        $list->setOrder('DESC');
+        $list->load();
+
+
+        $ob = $list->getClass();
+        $guidesType = $ob->getFieldDefinition("listType")->getOptions();
+
+        $data['latest'] = $list->filterByLatest(true)->load();
+
+        $data['watchList'] = $list->filterByLatest(false)->filterByListType('Watch List')->load();
+        $data['readList']  = $list->filterByLatest(false)->filterByListType('Read List')->load();
+
+        $data['watchCount'] = count($data['watchList']);
+        $data['readCount'] = count($data['readList']);
+
+        $guidesTypeData = [];
+        foreach ($guidesType as $k => $v){
+            $guidesTypeData[$v['key']] = $list->filterByListType($v['value'])->getTotalCount();
+        }
+
+        return $this->render('resources/business-guides/index.html.twig',[
+            'list' => $data,
+            'guidesTypeData' => $guidesTypeData
+        ]);
+    }
+
+
+    /**
+     * @Route("/Resources/BusinessGuides/{articleTile}_{id}" ,name="guides-detail", defaults={"path"=""})
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function businessDetailAction(Request $request,$id)
+    {
+
+        $list = [];
+        $obj = DataObject\Business::getById($id);
+        if ($obj){
+            $list['title'] = $obj->getTitle();
+            $list['releaseDate'] = $obj->getReleaseDate();
+            $list['author'] = $obj->getAuthor();
+            $list['authorIcon'] = $obj->getAuthorIcon();
+            $list['coverImage'] = $obj->getCoverImage();
+            $list['content'] = $obj->getContent();
+            $list['videoTime'] = $obj->getVideoTime();
+            $list['also'] = $obj->getAlsoList();
+            $list['file'] = $obj->getFile();
+            $list['video'] = $obj->getDetailVideo();
+            $list['checkList'] = $obj->getCheckIndustry();
+            $list['fullGuide'] = $obj->getFullGuide();
+            $list['listType'] = $obj->getListType();
+            $list['resourceType'] = $obj->getResourceType();
+            $list['shares'] = $obj->getShares();
+            $list['moreContent'] = $obj->getMoreContent();
+
+        }
+
+        return $this->render('resources/business-guides/detail.html.twig',[
+            'list' => $list,
+            'sharePage' => $request->getUri()
+        ]);
+    }
+
+
+
+    public function caseStudiesAction(Request $request)
+    {
+        $resourceType = 'Case Studies';
+
+        $list = new DataObject\CaseStudy\Listing();
+
+        $list->setOrderKey('releaseDate');
+        $list->setOrder('DESC');
+        $list->load();
+
+        $data['latest'] = $list->filterByLatest(true)->load();
+        $data['more']   = $list->filterByLatest(false)->load();
+
+
+        return $this->render('resources/case-studies/index.html.twig',[
+            'list'   => $data
+        ]);
+    }
+
+    /**
+     * @Route("/Resources/CaseStudies/{guidTile}_{id}" ,name="guid-detail", defaults={"path"=""})
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function caseDetailAction(Request $request,$id)
+    {
+        $caseDetail = DataObject\CaseStudy::getById($id);
+
+        $list = [
+            'title' => $caseDetail->getTitle(),
+            'releaseDate' => $caseDetail->getReleaseDate(),
+            'author' => $caseDetail->getAuthor(),
+            'authorIcon' => $caseDetail->getAuthorIcon(),
+            'video' => $caseDetail->getDetailVideo(),
+            'videoTime' => $caseDetail->getVideoTime(),
+            'content' => $caseDetail->getContent(),
+            'interestedList' => $caseDetail->getInterestedList(),
+            'shares' => $caseDetail->getShares(),
+            'bookChat' => $caseDetail->getBookChat(),
+            'tags' => $caseDetail->getTags()
+
+        ];
+
+        return $this->render('resources/case-studies/detail.html.twig',[
+            'list' => $list,
+            'sharePage' => $request->getUri()
+        ]);
+    }
+
+    public function usefulResourcesAction(Request $request)
+    {
+        return $this->render('resources/useful-resources/index.html.twig');
+    }
+
+    /**
+     * @Route ("/api/articles")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function articlesAction(Request $request,PaginatorInterface $paginator)
+    {
+
+        $type = $request->request->get('articleType');
+        $articlesType = 'Articles';
+
+        $list = new DataObject\Articles\Listing();
+
+        $list->setOrderKey('releaseDate');
+        $list->setOrder('DESC');
+        $list->load();
+
+        if ($type){
+            if($type == 'All Topics'){
+                $articles = $list->filterByLatest(false)->load();
+            }else{
+                $articles = $list->filterByArticleType($type)->load();
+            }
+
+
+            $result = [];
+            foreach ($articles as $value){
+                $result[] = [
+                    'title' => $value->getTitle(),
+                    'date'  => $value->getReleaseDate(),
+                    'id'    => $value->getId(),
+                    'fullPath' => $value->getFullPath(),
+                    'coverImage' => $value->getCoverImage()
+                        ->getThumbnail('coverImg')
+                        ->getHtml(['imgAttributes' => ["class" => "cover"]])
+                ];
+            }
+
+            return new JsonResponse($result);
+        }
+
+
+        $ob = $list->getClass();
+        $articleType = $ob->getFieldDefinition("articleType")->getOptions();
+
+
+        $data['latest'] = $list->filterByLatest(true)->load();
+        $data['more']   = $list->filterByLatest(false)->load();
+        $data['uri'] = $request->getUri();
+
+        return $this->render('resources/articles/index.html.twig',[
+            'list' => $data,
+            'articleType'  => $articleType
+        ]);
+    }
+
+    /**
+     *
+     * @Route("/Resources/Articles/{articleTile}_{id}" ,name="article-detail", defaults={"path"=""})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function articleDetailAction(Request $request,$id)
+    {
+
+        $articles = DataObject\Articles::getById($id);
+
+        $list = [
+            'title' => $articles->getTitle(),
+            'releaseDate' => $articles->getReleaseDate(),
+            'author' => $articles->getAuthor(),
+            'authorIcon' => $articles->getAuthorIcon(),
+            'coverImage' => $articles->getCoverImage(),
+            'content' => $articles->getContent(),
+            'relatedArticles' => $articles->getRelatedArticles(),
+            'shares' => $articles->getShares(),
+            'bookChat' => $articles->getBookChat(),
+            'tags' => $articles->getTags()
+
+        ];
+        /*$list['title'] = $obj->getTitle();
+        $list['releaseDate'] = $obj->getReleaseDate();
+        $list['author'] = $obj->getAuthor();
+        $list['authorIcon'] = $obj->getAuthorIcon();
+        $list['coverImage'] = $obj->getCoverImage();
+        $list['content'] = $obj->getContent();
+        $list['videoTime'] = $obj->getVideoTime();
+        $list['also'] = $obj->getAlsoList();
+        $list['file'] = $obj->getFile();
+        $list['video'] = $obj->getDetailVideo();
+        $list['checkList'] = $obj->getCheckIndustry();
+        $list['fullGuide'] = $obj->getFullGuide();
+        $list['listType'] = $obj->getListType();
+        $list['resourceType'] = $obj->getResourceType();
+        $list['shares'] = $obj->getShares();*/
+
+        return $this->render('resources/articles/detail.html.twig',[
+            'list' => $list,
+            'sharePage' => $request->getUri()
+        ]);
+    }
+
+    public function faqsAction(Request $request)
+    {
+        $list = new DataObject\Faqs\Listing();
+
+        $ob = $list->getClass();
+        $faqType = $ob->getFieldDefinition("questionType")->getOptions();
+
+        $list->load();
+
+        return $this->render('resources/faqs/index.html.twig',[
+            'list' => $list,
+            'faqType' => $faqType
+        ]);
+    }
+
+    public function patentAnalyticReportsAction(Request $request)
+    {
+        $resourceType = 'Patent Analytic Reports';
+
+        $list = new DataObject\PatentAnalytic\Listing();
+
+        $list->setOrderKey('releaseDate');
+        $list->setOrder('DESC');
+        $list->load();
+
+        $data['latest'] = $list->filterByLatest(true)->load();
+        $data['more']   = $list->filterByLatest(false)->load();
+
+
+        return $this->render('resources/patentAnalyticReports/index.html.twig',[
+            'list'   => $data
+        ]);
+    }
+
+    /**
+     * @Route ("/Resources/PatentAnalyticsReport/{articleTile}_{id}")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function patentDetailAction(Request $request,$id)
+    {
+
+        $patent = DataObject\PatentAnalytic::getById($id);
+
+        $list = [
+            'title' => $patent->getTitle(),
+            'releaseDate' => $patent->getReleaseDate(),
+            'author' => $patent->getAuthor(),
+            'authorIcon' => $patent->getAuthorIcon(),
+            'coverImage' => $patent->getCoverImage(),
+            'content' => $patent->getContent(),
+            'interestedList' => $patent->getInterestedList(),
+            'shares' => $patent->getShares(),
+            'tags' => $patent->getTags(),
+            'file' => $patent->getFile()
+        ];
+
+
+        return $this->render('resources/patentAnalyticReports/detail.html.twig',[
+            'list' => $list,
+            'sharePage' => $request->getUri()
+        ]);
+
+
+    }
+
+    public function webinarRecordingsAction(Request $request)
+    {
+        $articlesType = 'Webinar Recordings';
+
+        $list = new DataObject\WebinarRecordings\Listing();
+        $list->setOrderKey('releaseDate');
+        $list->setOrder('DESC');
+        $list->load();
+
+        $data['more'] = $list->filterByLatest(false)->load();
+        $data['latest'] = $list->filterByLatest(true)->load();
+
+        return $this->render('resources/webinar-recordings/index.html.twig',[
+            'list' => $data,
+
+        ]);
+
+    }
+
+    /**
+     * @Route("/Resources/WebinarRecordings/{webinarTile}_{id}" ,name="patent-detail", defaults={"path"=""})
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function webinarDetailAction(Request $request,$id)
+    {
+        $webinar = DataObject\WebinarRecordings::getById($id);
+
+        $list = [
+            'title' => $webinar->getTitle(),
+            'releaseDate' => $webinar->getReleaseDate(),
+            'author' => $webinar->getAuthor(),
+            'authorIcon' => $webinar->getAuthorIcon(),
+            'content' => $webinar->getContent(),
+            'video'   => $webinar->getDetailVideo(),
+            'videoTime' => $webinar->getVideoTime(),
+            'interestedList' => $webinar->getInterestedList(),
+            'full'  => $webinar->getFullGuide(),
+            'shares' => $webinar->getShares(),
+            'tags' => $webinar->getTags(),
+            'file' => $webinar->getFile()
+        ];
+
+        return $this->render('resources/webinar-recordings/detail.html.twig',[
+            'list' => $list,
+            'sharePage' => $request->getUri()
+        ]);
+    }
+
+
+    public function smesAction(Request $request)
+    {
+        /*$resourceType = 'Search Made Easy for SMEs';
+
+        $list = (new ResourcesServices())->getResources($resourceType);*/
+
+        return $this->render('resources/search-made-easy-for-smes/index.html.twig');
+
+    }
+
+}

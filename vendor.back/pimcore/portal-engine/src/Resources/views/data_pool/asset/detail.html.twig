@@ -1,0 +1,23 @@
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% do portalEngine_frontendConfig().setConfig("list.folders.root.path", rootPath) %}
+{% do portalEngine_frontendConfig().setConfig("list.folders.root.name", rootName) %}
+{% do portalEngine_frontendConfig().setConfig("directEdit", directEdit) %}
+
+{% block content %}
+
+    <div id="root"
+         class="full-height-layout"
+         data-asset-id="{{ asset.id }}"
+         data-versions-enabled="{{ enableVersionHistory }}"
+         data-detail-url="{{ path('pimcore_portalengine_rest_api_asset_detail', app.request.query.all|merge({id: asset.id, dataPoolId: dataPoolId})) }}"
+         data-results-list-url="{{ path('pimcore_portalengine_rest_api_asset_detail_results_list', app.request.query.all|merge({id: asset.id, dataPoolId: dataPoolId})) }}"
+         data-folders-url="{{ path("pimcore_portalengine_rest_api_asset_list_folders", {dataPoolId: dataPoolId}) }}"
+    >
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('asset-detail', null, webpack_build()) }}
+{% endblock %}

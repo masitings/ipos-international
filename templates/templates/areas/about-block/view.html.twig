@@ -1,0 +1,19 @@
+<div class="credential_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12 credential_title">{{ pimcore_input('title',{'placeholder':'title'}) }}</div>
+        </div>
+        <div class="row">
+            {% for i in pimcore_block('credentials').iterator %}
+                <div class="col-6 col-md-4 column">
+                    <div class="statistic_item">
+                        <div class="statistic_txt">{{ pimcore_input('achievement',{'placeholder' : '100+'}) }}</div>
+                        <div class="statistic_des">{{ pimcore_input('descText',{'placeholder' : 'describle ...'}) }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div><img class="charset-i d-none d-md-block" src="/static/images/icon_pc_charset_i.7173b25.svg">
+    <img class="charset-p d-none d-md-block" src="/static/images/icon_pc_charset_p.bedfceb.svg">
+</div>

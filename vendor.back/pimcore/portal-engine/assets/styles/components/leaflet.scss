@@ -1,0 +1,34 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.leaflet-container {
+    position: relative;
+    z-index: 1;
+    min-height: 300px;
+}
+
+.leaflet-marker-icon {
+    background: transparent;
+    border: none;
+
+    svg {
+        height: 2rem;
+        fill: $primary;
+    }
+}
+
+path.leaflet-interactive {
+    stroke: $primary;
+}
+
+path.leaflet-interactive:not([fill="none"]) {
+    fill: $primary;
+}

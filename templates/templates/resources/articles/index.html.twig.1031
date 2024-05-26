@@ -1,0 +1,136 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="resources_public_list_master_container resources_public_container">
+      <div class="bg_circle"></div>
+      <div class="container">
+        <div class="resources_public_title_nav container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                {% include('layouts/breadcrumb-col-12.html.twig') %}
+              </nav>
+              <div class="d-block d-md-none mobile_nav">
+                <span class="back_arrow">&lt; </span><span class="back_txt">Resources</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        {% if list.latest is not empty %}
+        <div class="row latest_articles_container">
+          <div class="row">
+            <div class="col-12">
+              <p class="p_title">Latest Articles</p>
+            </div>
+          </div>
+
+          {% for lastArticle in list.latest %}
+
+            <div class="col-md-6 col-12">
+              <div class="tab-card-item">
+                <div class="card-top">
+                  <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                  {# <img class="img-resoure" src="{{ image }}">#}
+
+                  {{ lastArticle.coverImage.thumbnail('Courses').html({imgAttributes: {class: 'img-resoure'}}) | raw }}
+                </div>
+                <div class="card-bottom">
+                  <div class="time-date">{{ lastArticle.releaseDate | date('d M ,Y') }}</div>
+                  <div class="title">{{ lastArticle.title }}</div>
+                  <a class="find-more" href="{{ lastArticle }}_{{ lastArticle.getId() }}">Find out more</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% if list.more is not empty %}
+      <div class="container more_articles_container">
+        <div class="row">
+          <div class="col-12 selcted-container">
+            <p class="p_title">More Articles</p>
+            <select onchange="getOptions(this.id)" class="js-articles-single" name="state" id="more_articles_select">
+              <option value="All Topics">All Topics</option>
+
+              {% for articleOption in articleType %}
+                  <option value="{{ articleOption.value }}">{{ articleOption.value }}</option>
+              {% endfor %}
+
+            </select>
+          </div>
+        </div>
+        <div id="moreArticles" class="row">
+          {% for article in list.more %}
+            <div class="col-md-6 col-12">
+              <div class="tab-card-item">
+                <div class="card-top">
+                  <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                  {# <img class="img-resoure" src="{{ image }}">#}
+                  {% if article.coverImage is not empty %}
+
+                    {{ article.coverImage.thumbnail('Courses').html({imgAttributes: {class: 'img-resoure'}}) | raw }}
+                  {% endif %}
+
+                </div>
+                <div class="card-bottom">
+                  <div class="time-date">{{ article.releaseDate | date('d M ,Y') }}</div>
+                  <a href="{{ article }}_{{ article.getId() }}"><div class="title">
+                      {{ article.title }}
+                    </div></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+        {#<div class="laodmore-view">
+            <a href="" class="load-button">loadmore<div class="arrow_down"></div></a>
+        </div>#}
+      </div>
+
+      {% endif %}
+      {{ pimcore_areablock("newsletter", {
+      "allowed": ["newsletter"]
+      }) }}
+    </div>
+
+  <script>
+    function getOptions(id){
+      var articleType = $("#"+id).val();
+
+      $.ajax({
+        url : '/api/articles',
+        type : 'POST',
+        data : {'articleType' : articleType},
+        success : function (result) {
+          var text = '';
+          result.forEach(function (item) {
+            var date = new Date(item.date).toDateString();
+            console.log(date);
+            text += '<div class="col-md-6 col-12">'+
+                    '<div class="tab-card-item">' +
+                    '<div class="card-top">'+
+                    '<img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">' +
+                      item.coverImage +
+                    '</div>'+
+            '<div class="card-bottom">'+
+              '<div class="time-date">'+
+                    date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3]
+                    +'</div>'+
+              '<a href="'+item.fullPath + '_'+ item.id +'"><div class="title">'+
+                item.title+
+              '</div></a></div></div></div>';
+          })
+
+          $("#moreArticles").html(text);
+
+        }
+      })
+    }
+  </script>
+
+
+{% endblock %}

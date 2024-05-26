@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-lg-7 col-xl-8">
+        <h1 class="m-b-40">{{ pimcore_input('headline',{'placeholder':'headlines'}) }}</h1>
+        <div class="detail_left">
+            <section id="marked-content">
+                {{  pimcore_wysiwyg("specialContent", {
+                    "height": 200,
+                    "placeholder" : "edit content..."
+                })
+                }}
+            </section>
+        </div>
+    </div>
+    <div class="col-lg-5 col-xl-4">
+        <div class="detail_right">
+            <div class="detail_right_circle">
+                <div class="circle left"></div>
+                <div class="circle right"></div>
+            </div>
+            <div class="detail_info_content">
+                <h6 class="m-t-30">{{ pimcore_input('title',{'placeholder':'title'}) }}</h6>
+                <div class="find-out m-b-8">{{ pimcore_input('describe',{'placeholder':'describe text..'}) }}</div>
+
+                {{ pimcore_link('tel',{
+                    'class' : 'd-flex m-b-8 ctu',
+                    'textPrefix' : '<img src="/static/images/phone-purple.d4d247d.svg" alt=""> ',
+                    'title' : 'tel..'
+                }) }}
+
+                {{ pimcore_link('email',{
+                    'class' : 'd-flex ctu',
+                    'textPrefix' : '<img src="/static/images/email-purple.780328a.svg" alt=""> ',
+                    'title' : 'tel..'
+                }) }}
+
+                {{ pimcore_areablock('download',{
+                    "allowed" : ["patent-analytics-download"]
+                }) }}
+            </div>
+        </div>
+    </div>
+</div>

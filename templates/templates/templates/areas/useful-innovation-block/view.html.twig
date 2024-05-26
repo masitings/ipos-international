@@ -1,0 +1,23 @@
+ <div class="row tab-row">
+        {% for i in pimcore_block('tnc_wrap',{'limit' : 3}).iterator %}
+            <div class="tab-content-container col-md-4">
+                <div class="part1">
+                    {{ pimcore_image('image',{
+                        imgAttributes : {class:'icon'}
+                    }) }}
+                </div>
+                <div class="part2">
+                    <p class="p_title">{{ pimcore_input('title',{'placeholder' :'title..'}) }}</p>
+                    <p class="sub-title">{{ pimcore_input('describe',{'placeholder' :'describe..'}) }}</p>
+
+                    {{ pimcore_link('find-more',{
+                        'class' : 'find-more',
+                        'textSuffix' : '<span class="icon-external-arrow" style="background-image:url(/static/images/icon-external-arrow.77131c9.svg)"></span>',
+                        'target' : '_blank'
+                    }) }}
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>

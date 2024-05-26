@@ -1,0 +1,46 @@
+
+{% if editmode %}
+    <li class="ourClients_list_li">
+
+            {{ pimcore_link("partnersLink",{
+                'class' : 'ourClients_content_list'
+            }) }}
+            <div class="ourClients_line"></div>
+            <div class="ourClients_content">
+                <div class="ourClients_logo">
+                    {{ pimcore_image('thumb',{"width": 200,
+                        "height": 150,"hidetext":true })
+                    }}
+                </div>
+                </div>
+                <div class="ourClients_content_value ourClients_content_value_v2">{{ pimcore_input('contentval2',{'placeholder':'text...'}) }}</div>
+                <div class="ourClients_description">
+                    {{ pimcore_textarea("brief_introduction",{
+                        "nl2br": true,
+                        "placeholder": "brief introduction ..."
+                    }) }}
+                </div>
+	
+    </li>
+    {% else %}
+        {% set link = pimcore_link("partnersLink") %}
+	{% set imglink = pimcore_image('thumb') %}
+        <li class="ourClients_list_li">
+            <a class="ourClients_content_list" href="{{ link.data.path }}" target="_blank">
+                <div class="ourClients_line"></div>
+                <div class="ourClients_content">
+                    <div class="ourClients_logo">
+                        <img src="{{ imglink.image }}">
+                    </div>
+                    <div class="ourClients_content_value ourClients_content_value_v2">{{ pimcore_input('contentval2',{'placeholder':'text...'}) }}</div>
+                    <div class="ourClients_description">
+                        {{ pimcore_textarea("brief_introduction",{
+                            "nl2br": true,
+                            "placeholder": "brief introduction ..."
+                        }) }}
+                    </div>
+                </div>
+            </a>
+        </li>
+
+{% endif %}

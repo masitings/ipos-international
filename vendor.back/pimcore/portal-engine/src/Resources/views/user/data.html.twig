@@ -1,0 +1,106 @@
+{# @var \Pimcore\Bundle\PortalEngineBundle\Model\View\Notification|null notification #}
+
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% block content %}
+
+    <div class="my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ "portal-engine.auth.user-data.headline"|trans }}</h1>
+                    {% if(notification) %}
+                        <div class=" my-4 alert alert-{{ notification.htmlClass }}">{{ notification.message }}</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6 my-4">
+                    <h5 class="mb-4">{{ "portal-engine.auth.change-user-data.headline"|trans }}</h5>
+                    {{ form_start(changeUserDataForm, {attr:{class:'', action: path('pimcore_portalengine_user_data')}}) }}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                {{ form_row(changeUserDataForm.email, {attr: {class: "form-control"}}) }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form_row(changeUserDataForm.firstname, {attr: {class: "form-control"}}) }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                {{ form_row(changeUserDataForm.lastname, {attr: {class: "form-control"}}) }}
+                            </div>
+                        </div>
+                        {% if displayPreferredLanguages %}
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form_row(changeUserDataForm.preferredLanguage, {attr: {class: "form-control"}}) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                {{ form_row(changeUserDataForm.submit, {'attr': {'class': 'btn mb-n2 btn-block btn-primary text-uppercase'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_end(changeUserDataForm) }}
+                </div>
+                {% if displayChangePassword %}
+                    <div class="col-md-6 my-4">
+                        <h5 class="mb-4">{{ "portal-engine.auth.change-password.headline"|trans }}</h5>
+                        {{ form_start(changePasswordForm, {attr:{class:'', action: path('pimcore_portalengine_user_data')}}) }}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    {{ form_row(changePasswordForm.password, {attr: {class: "form-control"}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    {{ form_row(changePasswordForm.passwordRepeat, {attr: {class: "form-control"}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6"></div>
+                            <div class="col-lg-6">
+                                <div class="form-group mt-2">
+                                    {{ form_row(changePasswordForm.submit, {'attr': {'class': 'btn mb-n2 btn-block btn-primary text-uppercase'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(changePasswordForm) }}
+                    </div>
+                {% endif %}
+            </div>
+
+            {% block avatar %}
+                <hr/>
+
+                {{ form_start(uploadAvatarForm, {attr: {id: 'avatar', action: path('pimcore_portalengine_user_data') ~ '#avatar'}}) }}
+                    <div class="form-group">
+                        <div class="form-group">
+                            <h5>{{ "portal-engine.user-data.avatar"|trans }}</h5>
+                            {% if hasAvatar %}
+                                <img src="{{ portalEngine_images_user() }}" width="46" height="46" alt="" class="mb-4 mr-2 border-dark img-fluid rounded-circle img-thumbnail">
+                                <a href="{{ path('pimcore_portalengine_user_delete_avatar') }}" class="btn btn-outline-secondary btn-sm mb-4">{{ "portal-engine.user-data.delete_avatar_button"|trans }}</a>
+                            {% endif %}
+                            {%- if uploadAvatarForm.avatar.vars.errors|length > 0 -%}
+                                <ul class="text-danger list-unstyled">
+                                    {%- for error in uploadAvatarForm.avatar.vars.errors -%}
+                                        <li>{{ error.message }}</li>
+                                    {%- endfor -%}
+                                </ul>
+                            {%- endif -%}
+                            {{ form_widget(uploadAvatarForm.avatar, {'attr': {'class': 'form-control-file'}}) }}
+                        </div>
+                        {{ form_row(uploadAvatarForm.submit, {'attr': {'class': 'btn mb-2 btn-primary text-uppercase'}}) }}
+
+                    </div>
+                {{ form_end(uploadAvatarForm) }}
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

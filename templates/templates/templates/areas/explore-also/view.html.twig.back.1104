@@ -1,0 +1,59 @@
+<div class="explore_also_container container">
+    <div class="row">
+        <div class="col-12 row_title">
+            {{ pimcore_input('exploreTitle' , {'placeholder' : 'Headlines...' }) }}
+        </div>
+    </div>
+    <div class="row">
+        {% for i in pimcore_block('explore').iterator %}
+            <div class="col-md-6 col-12">
+                <div class="tab-card-item d-block">
+                    {% if editmode %}
+                        <div>
+                            <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                            {#                        <img class="img-resoure" src="/static/images/explore-useful-resources.5bf9dd3.jpg">#}
+                            {{ pimcore_image('exploreImg',{
+                                imgAttributes : {class : 'img-resoure'},
+                                'class' : 'img-resoure',
+                                thumbnail : "coverImg",
+                                'placeholder' : 'your coverImage'
+                            }) }}
+                        </div>
+                        <div class="card-bottom">
+                            <p class="p_title">{{ pimcore_input('p_title',{'placeholder' :'title...'}) }}</p>
+                            <p>
+                                {{ pimcore_input('p_text',{'placeholder' :'text..'}) }}
+                            </p>
+
+                            {{ pimcore_link('exploreLink',{
+                                'class' : 'find-more'
+                            }) }}
+                        </div>
+                    {% else %}
+			{% set exploreLink = pimcore_link('exploreLink',{'class':'find-more'}) %}
+                        <div class="card-top">
+                            <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                            {#                        <img class="img-resoure" src="/static/images/explore-useful-resources.5bf9dd3.jpg">#}
+                            {{ pimcore_image('exploreImg',{
+                                imgAttributes : {class : 'img-resoure'},
+                                thumbnail : "coverImg",
+                                'placeholder' : 'your coverImage'
+                            }) }}
+                        </div>
+                        <div class="card-bottom">
+                            <p class="p_title">{{ pimcore_input('p_title',{'placeholder' :'title...'}) }}</p>
+                            <p class="p_sub_title">
+                                {{ pimcore_input('p_text',{'placeholder' :'text..'}) }}
+                            </p>
+
+                            {{ pimcore_link('exploreLink',{
+                                'class' : 'find-more'
+                            }) }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>

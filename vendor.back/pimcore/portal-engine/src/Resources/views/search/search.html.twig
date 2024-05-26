@@ -1,0 +1,99 @@
+{# @var string[] searchTerms #}
+{# @var string searchTermsAsString #}
+{# @var \Pimcore\Bundle\PortalEngineBundle\Model\Rest\Api\SearchGroup[] searchGroups #}
+{# @var string activeDataPoolType #}
+{# @var int activeDataPoolId #}
+
+{% extends "@PimcorePortalEngine/layout/default.html.twig" %}
+
+{% do portalEngine_frontendConfig().setConfig("selection.disablePersistency", true) %}
+{% do portalEngine_frontendConfig().setConfig("list.selectAllMaxSize", selectAllMaxSize) %}
+
+{% block content %}
+
+    {% if searchTerms is empty %}
+
+        <div class="container">
+            <div class="main-content__main">
+                <div class="alert alert-warning">
+                    {{ 'portal-engine.search.no-search-terms'|trans() }}
+                </div>
+            </div>
+        </div>
+
+    {% elseif searchGroups is empty %}
+
+        <div class="container">
+            <div class="main-content__main">
+                <div class="alert alert-warning">
+                    {{ 'portal-engine.search.no-result'|trans() }}
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="container">
+            <div class="mt-4">
+                <div class="row">
+                    <div class="col-8">
+                        <h3>{{ 'portal-engine.search.result-title'|trans() }} {{ searchTermsAsString }}</h3>
+                    </div>
+                    <div class="col-auto ml-auto">
+                        <div id="search-actions"></div>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs nav-tabs--dark nav-tabs--bar-sm mt-3">
+                    {% for searchGroup in searchGroups %}
+                        <li class="nav-item">
+                            <a class="nav-link {{ searchGroup.dataPoolConfigId == activeDataPoolId ? 'active' : '' }}" href="{{ path('pimcore_portalengine_search', {activeDataPoolId: searchGroup.dataPoolConfigId, q: searchTerms}) }}">{{ portalEngine_translate(searchGroup.name, constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\DataPool\\TranslatorDomain::DOMAIN_SEARCH_TAB_LABEL')) }} ({{ searchGroup.totalItemCount }})</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% if activeDataPoolType == constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\ElementType::DATA_OBJECT') %}
+
+            <div
+                id="root"
+                class="full-height-layout"
+                data-list-type="data-object"
+                data-list-url="{{ path('pimcore_portalengine_rest_api_data_object_list', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-filters-url="{{ path('pimcore_portalengine_rest_api_data_object_list_filters', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-folders-url="{{ path('pimcore_portalengine_rest_api_data_object_list_folders', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-tags-url="{{ path('pimcore_portalengine_rest_api_data_object_list_tags', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-all-selectable-ids-url="{{ path('pimcore_portalengine_rest_api_data_object_select_all_ids', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+            >
+            </div>
+
+        {% endif %}
+
+        {% if activeDataPoolType == constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\ElementType::ASSET') %}
+
+            <div
+                id="root"
+                class="full-height-layout"
+                data-list-type="asset"
+                data-list-url="{{ path('pimcore_portalengine_rest_api_asset_list', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-filters-url="{{ path('pimcore_portalengine_rest_api_asset_list_filters', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-folders-url="{{ path('pimcore_portalengine_rest_api_asset_list_folders', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-tags-url="{{ path('pimcore_portalengine_rest_api_asset_list_tags', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+                data-all-selectable-ids-url="{{ path('pimcore_portalengine_rest_api_asset_select_all_ids', {dataPoolId:activeDataPoolId, searchTerms:searchTerms, searchResult:1}) }}"
+            >
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('search-list', null, webpack_build()) }}
+
+    {% if not activeDataPoolType and searchTerms is not empty and searchGroups is not empty%}
+        {{ encore_entry_script_tags('content', null, webpack_build()) }}
+    {% endif %}
+{% endblock %}

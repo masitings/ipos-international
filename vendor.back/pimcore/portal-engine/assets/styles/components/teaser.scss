@@ -1,0 +1,90 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+.teaser {
+    position: relative;
+    border-radius: $border-radius;
+    font-size: 14 / 16 * 1rem;
+    background-color: $white;
+    box-shadow: $box-shadow-lg;
+    height: 100%;
+}
+.teaser--shadow-sm {
+    box-shadow: $box-shadow-sm;
+}
+
+.teaser.is-active {
+    box-shadow: 0 0.125rem 0.25rem rgba($black, .3);
+}
+
+.teaser__img {
+    overflow: hidden;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+}
+
+.teaser__options {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($gray-900, .8);
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    color: $white;
+    padding: 20 / 16 *1rem;
+}
+.teaser:hover .teaser__options {
+    opacity: 1;
+}
+@media (hover: none) and (pointer:coarse) {
+    .teaser:hover .teaser__options {
+        opacity: 0;
+    }
+    .teaser__options.is-open {
+        opacity: 1;
+    }
+}
+.teaser .action-bar {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+.teaser:hover .action-bar {
+    opacity: 1;
+}
+.teaser__select {
+    position: absolute;
+    top: 10/16 * 1rem;
+    left: 10/16 * 1rem;
+    border-color: $gray-300;
+}
+.teaser__body {
+    padding: 20/16 * 1rem 10/16 * 1rem 15/16 * 1rem;
+    word-break: break-word;
+}
+.teaser__title {
+    font-size: 10/16 * 1rem;
+    font-family: $font-family-bold;
+    font-weight: $font-weight-bold;
+    color: $gray-500;
+}
+.teaser__badge {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    opacity: .7;
+
+    @media (hover: none) and (pointer:coarse) {
+        top: auto;
+        bottom: .5rem;
+    }
+}

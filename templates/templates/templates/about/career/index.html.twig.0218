@@ -1,0 +1,344 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+  {#<div class="resources_public_list_master_container resources_public_container case-studies-container">
+      <div class="bg_circle"></div>
+      <div class="container">
+        <div class="resources_public_title_nav container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                {% include('layouts/breadcrumb-col-12.html.twig') %}
+              </nav>
+              <div class="d-block d-md-none mobile_nav">
+                <span class="back_arrow">&lt; </span><a href="{{ pimcore_document(33).fullpath }}" class="back_txt">Careers</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row latest_articles_container">
+	<div class="row">
+              <div class="col-12">
+                <p class="p_title">{{ pimcore_input('latestTitle',{'placeholder':'Career'}) }}</p>
+              </div>
+            </div>
+
+
+          {% if list.latest is not empty %}
+  #}{#    <div class="row">
+              <div class="col-12">
+                <p class="p_title">{{ pimcore_input('latestTitle',{'placeholder':'Career'}) }}</p>
+              </div>
+            </div> #}{#
+{% for item in list.latest %}
+  <div class="col-md-6 col-12">
+    <a href="{{ item }}_{{ item.getId() }}" class="tab-card-item">
+      <div class="card-top">
+        <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+
+{% if item.coverImage is not empty %}
+<img class="img-resoure" src="{{ item.coverImage.getThumbnail('coverImg') }}" >
+#}{#  {{ item.coverImage.thumbnail('coverImg').html({imgAttributes: {class: 'img-resoure'}}) | raw }} #}{#
+{% endif %}
+
+{% if item.detailVideo is not empty %}
+<div class="date-view">
+  <span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>
+  <span class="date-txt">{{ item.videoTime }}</span>
+</div>
+{% endif %}
+</div>
+<div class="card-bottom">
+<div class="time-date">{{ item.releaseDate | date('d M, Y') }}</div>
+<div class="title">{{ item.title }}</div>
+
+<span class="find-more" >Find out more</span>
+</div>
+</a>
+</div>
+{% endfor %}
+{% endif %}
+
+
+
+</div>
+</div>
+<div class="container more_articles_container">
+<div class="row">
+<div class="col-12 selcted-container">
+<p class="p_title">{{ pimcore_input('moreTitle',{'placeholder':'More Career'}) }}</p>
+</div>
+</div>
+<div id="moreStudies" class="row">
+
+</div>
+
+<div style="cursor: pointer;" class="laodmore-view">
+<a class="load-button">Load More
+<div class="arrow_down"></div>
+</a>
+</div>
+</div>
+{{ pimcore_areablock("newsletter", {
+"allowed": ["newsletter"]
+}) }}
+</div>
+
+<script>
+getOptions();
+
+$(".laodmore-view").click(function () {
+var num = $("#moreStudies").children().length;
+getOptions(num)
+})
+
+function getOptions(num = 0){
+$.ajax({
+url : '/api/careers',
+type : 'POST',
+data : {'dataType' : 'more','num' : num},
+success : function (result) {
+if(result.length < 6){
+$(".laodmore-view").hide();
+}
+var text = '';
+result.forEach(function (item) {
+var date = new Date(item.date).toDateString();
+var moreImg = '';
+var videoTime = '';
+if (item.video != ''){
+videoTime = '<div class="date-view">' +
+  '<span class="date-icon" style="background-image:url(&quot;/static/images/time_date.dd241a9.svg&quot;)"></span>' +
+  '<span class="date-txt">' + item.videoTime + '</span></div>';
+}
+if(item.coverImage != '')
+{
+moreImg = '<img class="img-resoure" src="' + item.coverImage + '">';
+}
+text = '<div class="load col-md-6 col-12">' +
+'<div class="tab-card-item">' +
+'<div class="card-top">' +
+'<a href="' + item.fullPath + '_'+ item.id + '"><img class="img-bg d-block d-md-none" src="/static/images/ribbon.f4e9e6a.svg">' +
+'<img class="img-bg d-none d-md-block" src="/static/images/ribbon_not_arrow.793b256.svg">'+
+moreImg +
+'</a></div>'+
+'<div class="card-bottom card-on">' + '<div>'+
+'<div class="time-date">' +
+date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3] +
+'</div>' +
+'<a href="' + item.fullPath + '_'+ item.id + '">' +
+'<div class="title">' + item.title + '</div>' +
+'</a></div><div>'+ videoTime +
+'</div></div></div></div>';
+$("#moreStudies").append(text);
+})
+
+
+
+}
+})
+}
+</script>#}
+  <div class="business_guides_details_container business_guides_details_container_not_animated resources_public_container">
+    <div class="bg_circle"></div>
+    <div class="js_public_layout"></div>
+    <div class="resources_public_title_nav container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+            {#<ol class="breadcrumb col-12">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Resources</a></li>
+              <li class="breadcrumb-item"><a href="#">Business Guides </a></li>
+              <li class="breadcrumb-item active" aria-current="page">Building A Strong Brand</li>
+            </ol>#}
+            {% include('layouts/breadcrumb-col-12.html.twig') %}
+          </nav>
+          <div class="d-block d-md-none mobile_nav">
+            <span class="back_arrow">&lt; </span>
+            <a href="{{ pimcore_document(73).fullpath }}" class="back_txt">Careers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container page__title__container">
+      <div class="row">
+        <div class="col-12">
+          {#<p class="p__title">Building A Strong Brand</p>#}
+          <p class="p__title">{{ pimcore_input('careerTitle',{'placeholder':'headline...'}) }}</p>
+        </div>
+      </div>
+    </div>
+    {#<div class="container author_container">
+      <div class="row">
+        <div class="col-12">
+          <div class="posted-container">
+            <span class="lable m-r-4">Posted on</span>
+            <span class="value">7 May, 2020</span>
+            <br class="d-block d-md-none">
+            <img class="value-img" src="/assets/images/Logos-IPOSInt-Profile-Icon-02.3e9fb7c.jpg">
+            <span class="lable m-r-4">By</span>
+            <span class="value">IPOS International</span>
+          </div>
+        </div>
+      </div>
+    </div>#}
+    <div class="about_container">
+        <div class="middle-img-layout"><img class="middle-bg" src="/Images/About/Corporate_Video_Image.png"><a class="play" href="https://youtu.be/B93NIp8TUMA" target="_blank" style="background-image:url(/Images/icon_play.e786e89.svg)"></a>
+        </div>
+    </div>
+    
+    <div class="details_img_body_container container">
+      <div class="row">
+        <div class="col-12">
+          <div class="content_main_img">
+            {#<img class="content_img" src="https://www.boredpanda.com/blog/wp-content/uploads/2020/08/CBr78muJnaq-png__700.jpg">
+            #}
+            <section id="marked-content">
+              {{  pimcore_wysiwyg("specialContent", {
+                "height": 200,
+                "placeholder" : "Set up your pictures or YouTube videos here"
+              })
+              }}
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="js_public_image"></div>
+    <div class="body_container container">
+      <div class="row">
+        <div class="col-md-8 col-12 column-padding">
+          <div class="guides-content-container">
+            {#<p class="title-desc">Trade marks function to ensure that the origin of goods and services are known by consumers and other interested parties. Brands, on the other hand, deliver your product or service promise encompassing your personality, emotions and principles.</p>
+            <p class="sub-title"> This guide’s focus is on how to create, use and protect a strong brand. It explores which intellectual property (IP) and other rights are involved and how they can be used together for this purpose.</p>
+            <p class="sub-title-desc">This guide’s focus is on how to create, use and protect a strong brand. It explores which intellectual property (IP) and other rights are involved and how they can be used together for this purpose.</p>
+            <div class="chapter">
+              <p class="chapter-title">Chapter 1</p>
+              <p class="chapter-desc">Explains why having a strong brand is important and why brands are valuable. It also looks at what makes a brand successful, the characteristics a strong brand typically possesses, and how branding strategy and the overall business strategy should be interlinked.</p>
+              <p class="gradient-line"></p>
+            </div>
+            <div class="chapter">
+              <p class="chapter-title">Chapter 1</p>
+              <p class="chapter-desc">Explains why having a strong brand is important and why brands are valuable. It also looks at what makes a brand successful, the characteristics a strong brand typically possesses, and how branding strategy and the overall business strategy should be interlinked.</p>
+              <p class="gradient-line"></p>
+            </div>
+            <div class="chapter">
+              <p class="chapter-title">Chapter 1</p>
+              <p class="chapter-desc">Explains why having a strong brand is important and why brands are valuable. It also looks at what makes a brand successful, the characteristics a strong brand typically possesses, and how branding strategy and the overall business strategy should be interlinked.</p>
+              <p class="gradient-line"></p>
+            </div>#}
+            <section id="marked-content">
+              {{  pimcore_wysiwyg("careersContent", {
+                "height": 400,
+                "placeholder" : "Set up your content here ..."
+              })
+              }}
+            </section>
+          </div>
+          <div class="left_container m-b-20"></div>
+          {#<blockquote>“We adapted our styling because we thought that Caucasians were slightly bigger, taller, wider—but then we found that 90% of our customers still bought our classic Asian fit. We realised we had a demographic that was very supportive of our product because we gave them a shirt that fitted them.”</blockquote>#}
+          <div class="detail_children_components_layout">
+
+            {{ pimcore_link('linkUrl',{
+              'class' : 'annex',
+              'type'  : 'button'
+            }) }}
+
+            {#<a class="annex" type="button" >
+            #}{#<span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span>#}{#
+            <span class="annex-txt">Continue reading this guide in this PDF.</span>
+
+            #}{#<span class="pdf-down" style="background-image:url(/static/images/icon_download.c4854a7.svg)"></span>#}{#
+            </a>#}
+            {#<p class="annex-warning">Check out how local menswear label—Benjamin Barker used intangible assets and IP to make a mark in their industry.</p>#}
+          </div>
+          {#<a class="public_guides_card_bottom_container" href="">
+            <div class="part_1">
+              <img class="img-bg d-none d-md-block" src="/assets/images/ribbon_not_arrow.793b256.svg">
+              <img class="img-bg d-block d-md-none" src="/assets/images/ribbon.f4e9e6a.svg">
+              <img class="img-resoure" src="/assets/images/img_resources_11.e5c5f9a.png">
+            </div>
+            <div class="part_2">
+              <div class="part_child_1">
+                <p class="dateTxt">Case Studies</p>
+                <p class="title">Benjamin Barker</p>
+              </div>
+              <div class="part_child_2"><span class="find_more">Find out more</span></div>
+            </div>
+          </a>
+          <div class="public_guides_bottom_card_container"></div>#}
+        </div>
+        <div class="col-md-4 col-12">
+
+          <div class="subscribe_window_container">
+            {{ pimcore_areablock('head',{
+              "allowed" : [
+                "careers-sub",
+                "careers-list-block"
+
+              ]
+            }) }}
+            {#<div class="subscribe_window">
+              <p class="title">{{ pimcore_input('guid',{'placeholder' : 'Get the Full Complimentary Guide'}) }}</p>
+              <a class="subscribe_now" href="">Subscribe Now</a>
+              {{ pimcore_link('english',{
+                'class' : 'subscribe_now'
+              }) }}
+
+              {{ pimcore_link('chinese',{
+                'class' : 'subscribe_now'
+              }) }}
+              <a class="subscribe_now" href="">Subscribe Now</a>
+            </div>
+            <div class="resources_public_recommend-container">
+              <p class="recommend-title">{{ pimcore_input('alsoList',{'placeholder' : 'You May Be Interested In'}) }}</p>
+
+              {% if editmode %}
+                {{ pimcore_relations('objectsAll',{
+                  "types": ["object"],
+                  "classes" : [
+                    "Career"
+                  ]
+                }) }}
+              {% else %}
+                {% set list = pimcore_relations('objectsAll') %}
+                {% if list is not empty %}
+                  {% for interested in list %}
+                    <a class="recommend_item" href="{{ interested }}_{{ interested.getId() }}">
+                      {% if interested.coverImage is not empty %}
+
+                        <img class="recommend-img" src="{{ interested.coverImage.getThumbnail('coverImg') }}" >
+                      {% endif %}
+                      <div class="recommend-txt-layout">
+                        <p class="txt-date">{{ interested.releaseDate }}</p>
+                        <p class="recommend-txt-title">{{ interested.title }}</p>
+                      </div>
+                    </a>
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+
+
+              <div class="share-container">
+                <span class="share-txt">SHARE</span>
+                <div class="share-layout">
+                  <a class="share-icon facebook" style="background-image:url(&quot;/static/images/icon-Facebook.c78e324.svg&quot;)" href=""></a>
+                  <a class="share-icon linkedin" style="background-image:url(&quot;/static/images/icon-Linkedin.dac1a71.svg&quot;)" href=""></a>
+                  <a class="share-icon twitter" style="background-image:url(&quot;/static/images/icon-Twitter.6adf57e.svg&quot;)" href=""></a>
+                  <a class="share-icon email" style="background-image:url(&quot;/static/images/icon-Email.bd681cf.svg&quot;)" href=""></a>
+                </div>
+              </div>
+            </div>#}
+          </div>
+          <div class="share_container_1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+<div class="ip_chat_image">
+    {#                            <img class="cover" src="/static/images/ipchat.1870870.jpg" alt="">#}
+    {{ pimcore_image('chatImg',{
+        imgAttributes : {class : 'cover'},
+        'thumbnail' : 'background',
+        'height' : 200,
+	'hidetext' : true
+    }) }}
+
+
+{% set chatImg = pimcore_image('chatImg',{
+        imgAttributes : {class : 'cover'},
+        'thumbnail' : 'background',
+        'height' : 200,
+        'hidetext' : true
+    })  %}
+
+
+{% set domain = app.request.getSchemeAndHttpHost() %}
+
+{% set img = chatImg.getThumbnail('coverImg') %}
+
+{% do pimcore_head_meta().setProperty("og:title", "Intangible Assets (IA) Chat Session (Complimentary)") %}
+{% do pimcore_head_meta().setProperty("og:type", 'article') %}
+{% do pimcore_head_meta().setProperty("og:description", "") %}
+{% do pimcore_head_meta().setProperty("og:image", domain ~ img) %}
+{% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}
+
+{% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
+{% do pimcore_head_meta().setProperty("twitter:type", "article") %}
+{% do pimcore_head_meta().setProperty("twitter:title", "Intangible Assets (IA) Chat Session (Complimentary)") %}
+{% do pimcore_head_meta().setProperty("twitter:description","")  %}
+{% do pimcore_head_meta().setProperty("twitter:image", domain ~ img) %}
+{% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %}
+
+</div>

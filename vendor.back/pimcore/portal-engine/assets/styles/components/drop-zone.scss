@@ -1,0 +1,87 @@
+/**
+ * Pimcore
+ *
+ * This source file is available under following license:
+ * - Pimcore Commercial License (PCL)
+ *
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     PCL
+ */
+
+
+$drop-zone-padding: map_get($spacers, 5);
+$drop-zone-border-width: 2px;
+
+.drop-zone {
+    border: #{$drop-zone-border-width} dashed $primary;
+    border-radius: $border-radius;
+    padding: $drop-zone-padding;
+    background: white;
+}
+.drop-zone:focus,
+.drop-zone:active,
+.drop-zone--drag-active {
+    border-style: solid;
+    outline: none;
+}
+.drop-zone__selection {
+    margin-bottom: map_get($spacers, 3);
+    text-align: center;
+}
+.drop-zone__selection-list {
+    margin-bottom: 0;
+}
+.drop-zone__label {
+    color: $text-muted;
+    margin-bottom: 0;
+    text-align: center;
+}
+.drop-zone--drag-active .drop-zone__label {
+    color: $body-color;
+}
+
+/* drop-zone--disabled */
+//.drop-zone--disabled {
+//    background: $gray-300;
+//}
+
+/* drop-zone--invisible */
+$drop-zone-invisible-padding: map_get($spacers, 2);
+
+.drop-zone--invisible {
+    position: relative;
+    border-color: transparent;
+    padding: $drop-zone-invisible-padding;
+    margin: calc(#{$drop-zone-invisible-padding * -1} - #{$drop-zone-border-width});
+}
+.drop-zone--invisible.drop-zone--drag-active {
+    border: #{$drop-zone-border-width} dashed $primary;
+}
+.drop-zone--invisible.drop-zone--drag-active.drop-zone--disabled {
+    border: #{$drop-zone-border-width} dashed $gray-500;
+}
+.drop-zone--invisible .drop-zone__label {
+    position: sticky;
+    top: 40%;
+    margin: auto;
+    pointer-events: none;
+    color: $body-color;
+    font-family: $font-family-bold;
+    z-index: 1;
+    font-size: 1.25rem;
+    max-width: 50%;
+    display: none;
+    height: 0;
+}
+//.drop-zone--invisible.drop-zone--disabled .drop-zone__label {
+//    color: $text-muted;
+//}
+.drop-zone--invisible.drop-zone--drag-active .drop-zone__label {
+    display: block;
+}
+.drop-zone--invisible.drop-zone--drag-active .drop-zone__children {
+    opacity: .3;
+}
+//.drop-zone--invisible.drop-zone--drag-active.drop-zone--disabled .drop-zone__children {
+//    opacity: .6;
+//}

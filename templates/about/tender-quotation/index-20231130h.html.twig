@@ -1,0 +1,456 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<style>
+{# @media screen and (min-width: 100px) { #}
+  .slide-container {
+    margin-bottom: 120px;
+  }
+  .slide-container .slide-menu-container {
+    background-color: #f6f3f7;
+  }
+  .slide-container .slide-menu-container .slide_title {
+    background: #470a68;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    line-height: 14px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+  }
+  .slide-container .slide-menu-container .menu-container .menu-item {
+    color: #555;
+    cursor: pointer;
+    display: block;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 12px 20px 12px 36px;
+    position: relative;
+  }
+  .slide-container .slide-menu-container .menu-container .menu-item.active {
+    color: #470a68;
+  }
+  .slide-container
+    .slide-menu-container
+    .menu-container
+    .menu-item.active:after {
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #470a68;
+    border-top: 5px solid transparent;
+    content: "";
+    height: 0;
+    left: 24px;
+    position: absolute;
+    top: 18px;
+    width: 0;
+  }
+  .slide-container
+    .slide-menu-container
+    .menu-container
+    .menu-item:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+  }
+  .slide-container .slide-body-container .p__title {
+    color: #000;
+    font-family: Rubik;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 47px;
+    margin-bottom: 22px;
+  }
+  .slide-container .slide-body-container .part {
+    margin-bottom: 120px;
+  }
+  @-webkit-keyframes rotate-animate {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(45deg);
+    }
+  }
+  @keyframes rotate-animate {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(45deg);
+    }
+  }
+  .slide-container .slide-body-container .collapse-container a {
+    color: #e34a21;
+  }
+  .slide-container .slide-body-container .collapse-container .collapse-item {
+    border-bottom: 1px solid #ddd;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-header {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    align-items: center;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowarp;
+    flex-wrap: nowarp;
+    justify-content: flex-start;
+    padding: 12px 0;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-header
+    .header-txt {
+    -webkit-box-flex: 1;
+    color: #000;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-header
+    .header-icon {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    height: 16px;
+    margin-left: 15px;
+    width: 16px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 20px;
+    -webkit-transition: max-height 0.2s ease-out;
+    transition: max-height 0.2s ease-out;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .content-part-title {
+    color: #000;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 31px;
+    margin-bottom: 12px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .content-part-title
+    a {
+    color: #e34a21;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .content-part-txt {
+    color: #333;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    margin-bottom: 30px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .content-part-txt
+    .content-orange {
+    color: #e34a21;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .list-ul {
+    color: #333;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .list-ul
+    .p-item {
+    list-style: disc;
+    margin-bottom: 10px;
+    margin-left: 23px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    p {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    .h5,
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    h5 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    ul {
+    margin-bottom: 30px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item
+    .collapse-item-content
+    ul
+    li {
+    color: #333;
+    font-size: 18px;
+    list-style: disc;
+    margin-bottom: 10px;
+    margin-left: 23px;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item.active
+    .collapse-item-header
+    .header-icon {
+    -webkit-animation: rotate-animate 0.2s linear 1 forwards;
+    animation: rotate-animate 0.2s linear 1 forwards;
+  }
+  .slide-container
+    .slide-body-container
+    .collapse-container
+    .collapse-item.active
+    .collapse-item-content {
+    max-height: 100000px;
+  }
+{# } #}
+</style>
+    <div class="resources_public_container about_container">
+      {% if editmode %}
+        <div class="public_page_header">
+          <div class="bgView"></div>
+          <div class="left_cricle"></div>
+          {# <div class="icon_ipos"></div>#}
+          <div class="resources_public_title_nav container dark">
+            <div class="row">
+              <div class="col-12">
+                <nav class="d-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+		            {% include('layouts/breadcrumb-col-12.html.twig') %}
+                </nav>
+                {#<div class="d-block d-md-none mobile_nav">#}
+                {#  <span class="back_arrow">&lt; </span>#}
+                {#  <span class="back_txt">Home</span>#}
+                {#</div>#}
+              </div>
+            </div>
+          </div>
+          <div class="pimcore_area_overview-headlines pimcore_area_content ">
+          <div class="content container">
+            <p class="title">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</p>
+            <div class="sub-content row">
+                <div class="sub-title col-md-12 col-12">
+                  <section id="marked-content">
+                      {{  pimcore_wysiwyg("content1", {
+                          "height": 200,
+                          "placeholder" : "edit content..."
+                      })
+                      }}
+                  </section>
+                </div>
+
+                <div class="m-b-45">
+                            <p class="mini-label m-b-15">{{ pimcore_input('title2',{'placeholder' : 'title...'}) }}</p>
+                            <p class="txt-large">{{ pimcore_link('telLink') }}</p>
+                            <p>
+                                {{ pimcore_link('mailtoLink') }}
+                            </p>
+                        </div>
+            </div>
+          </div>
+
+
+          {# {{ pimcore_areablock("Headline", {
+            "allowed": [
+              "overview-headlines"
+            ]
+          }) }} #}
+        </div>
+      {% else %}
+        <div class="public_page_header">
+          <div class="bgView"></div>
+          <div class="left_cricle"></div>
+          <div class="icon_ipos" style="z-index:-1"></div>
+          <div class="resources_public_title_nav container dark">
+            <div class="row">
+              <div class="col-12">
+                <nav class="d-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                  {% include('layouts/breadcrumb-col-12.html.twig')  %}
+                </nav>
+                {#<div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt; </span><span class="back_txt">Home</span>#}
+                {#</div>#}
+              </div>
+            </div>
+          </div>
+<div class="pimcore_area_overview-headlines pimcore_area_content ">
+          <div class="content container">
+            <p class="title">{{ pimcore_input('title',{'placeholder' : 'title'}) }}</p>
+            <div class="sub-content row">
+                <div class="sub-title col-md-12 col-12">
+                  <section id="marked-content">
+                      {{  pimcore_wysiwyg("content1", {
+                          "height": 200,
+                          "placeholder" : "edit content..."
+                      })
+                      }}
+                  </section>
+                </div>
+                <div class="m-b-45 mt-5">
+                            <p class="txt-large text-white">{{ pimcore_input('title2',{'placeholder' : 'title...'}) }}</p>
+                            <p>
+                                <span> <img class="icon" src="/static/images/mail.88b1536.png" alt="Mail"></span> {{ pimcore_link('mailtoLink') }}
+                            </p>
+                        </div>
+                        
+            </div>
+          </div>
+          </div>
+
+
+          {# {{ pimcore_areablock("Headline", {
+            "allowed": [
+              "overview-headlines"
+            ]
+          }) }} #}
+        </div>
+      {% endif %}
+    </div>
+
+<div class="faq_container resources_public_container">
+  <div class="bg_circle"></div>
+  
+  <div class="container page__title__container">
+    <div class="row mt-5">
+      <div class="col-12">
+        <p class="p__title">{{ pimcore_input('questionTitle',{'placeholder':'Frequently Asked Questions'})  }}</p>
+        <p class="mb-4">{{ pimcore_input('questionSubTitle',{'placeholder':'Sub Title'})  }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-container container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="slide-menu-container">
+          <p class="slide_title">TOPICS</p>
+          <nav class="menu-container">
+{#<a class="menu-item active" herf="part_0">Intellectual Property and Intangible Assets</a><a class="menu-item" herf="part_1">Discover Intangible Assets</a><a class="menu-item" herf="part_2">International Business Continuity Planning (BCP)</a> #}
+		{% for k,item in faqType %}
+              {% if k == 0 %}
+                  <a class="menu-item active" herf="part_{{ k }}">{{ item.value }}</a>
+                {% else %}
+                  <a class="menu-item " herf="part_{{ k }}">{{ item.value }}</a>
+              {% endif %}
+
+            {% endfor %}
+          </nav>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="slide-body-container">
+
+          {% for key,type in faqType %}
+            <div class="part part_{{ key }}">
+              <p class="p__title">{{ type.value }}</p>
+              <div class="collapse-container">
+                {% for faq in list %}
+                  {% if faq.questionType == type.value %}
+                    <div class="collapse-item">
+                      <div class="collapse-item-header">
+                        <div class="header-txt">{{ faq.question }}</div>
+                        <div class="header-icon" style="background-image:url(/static/images/icon-plus.144c2e7.svg)"></div>
+                      </div>
+                      <div class="collapse-item-content">
+                        {{ faq.answer | raw }}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+
+
+              </div>
+            </div>
+
+
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

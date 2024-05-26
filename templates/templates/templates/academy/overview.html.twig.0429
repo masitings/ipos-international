@@ -1,0 +1,329 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <section class="academy_overview__page">
+	<section class="about">
+            <div class="about_bg_circle"></div>
+            <div class="about_bg_ipos"><img src="/static/images/IPOS.d59bcba.svg" alt=""></div>
+            <div class="container about_content">
+                <div class="breadcrumb m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                {{ pimcore_areablock("Headline", {
+                    "allowed": [
+                        "academy-headlines"
+                    ]
+                }) }}
+            </div>
+        </section>
+        {{ pimcore_areablock("HeadContents", {
+            "allowed": [
+                "academy-credential",
+                "academy-partners"
+
+            ]
+        }) }}
+
+        <section class="courses_indemand">
+            <div class="courses_bg_right"><img src="/static/images/courses_right.0c9f1fc.svg" alt=""></div>
+            <div class="container">
+                <h2>{{ pimcore_input('eventTitle',{'placeholder':'Upcoming Courses'}) }}</h2>
+                <div class="courses_indemand_content">
+                    <ul class="courses_tab">
+                        <li class="tab_item active" id="ipProfesionals-tab" data-tab="ipProfesionals">IP Professionals</li>
+                        <li class="tab_item" id="agencies-tab" data-tab="publicAgencies">Public Agencies / Officers</li>
+                        <li class="tab_item" id="enterprise-tab" data-tab="enterprises">Enterprises / Individuals</li>
+                        <li class="tab_item" id="graduate-tab" data-tab="graduate">Graduate Studies</li>
+                    </ul>
+                    <div class="courses_tab_content">
+                        <div class="courses_tab_content_item active" id="ipProfesionals">
+                            <div class="row">
+                                {% if  list['professionals'] is not empty %}
+                                    {% for professionals in list['professionals'] %}
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="courses_tab_content_item_card">
+                                                <div class="card_image">
+						    <a href="{{ professionals }}_{{ professionals.getId() }}">
+                                                    {% if professionals.coverImage is not empty %}
+                                                        {{ professionals.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+
+                                                    {% endif %}
+						    </a>	
+{#                                                    <img class="cover" src="/static/images/courses1.432067e.png" alt="">#}
+                                                </div>
+                                                <div class="card_content">
+                                                    <div class="card_content_top">
+                                                        <a href="{{ professionals }}_{{ professionals.getId() }}">{{ professionals.title }}</a>
+                                                    </div>
+                                                    <div class="card_content_bottom">
+                                                        <div class="place">
+                                                            <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                            <div class="text">{{ professionals.venue }}</div>
+                                                        </div>
+							{% set professionalsTbc = false %}
+                                                        {% if professionals.getPlaning() is not empty %}
+                                                            <div class="date">
+                                                                {% set count = 0 %}
+                                                                {% for courseDate in professionals.getPlaning() %}
+                                                                    {% if courseDate.startDate != '' %}
+                                                                        {% if count > 0 %}
+                                                                            ,
+                                                                        {% endif %}
+                                                                        {% if courseDate.lastDate != '' %}
+                                                                            {{ courseDate.startDate | date('d M Y') }} -
+                                                                            {{ courseDate.lastDate | date('d M Y') }}
+                                                                        {% else %}
+                                                                            {{ courseDate.startDate | date('d M Y') }}
+                                                                        {% endif %}
+                                                                        {% set count = count +1 %}
+                                                                    {% else %}
+                                                                        {% if professionalsTbc == false %}
+                                                                            TBC
+                                                                        {% endif %}
+
+                                                                        {% set professionalsTbc = true %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {% if professionalsTbc == false %}
+                                                                <div class="date">TBC</div>
+                                                            {% endif %}
+
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="view_all">
+                                {#<a class="view_all_content" href="/academy/ip-professionals/">
+                                    <div class="text">View All IP Professional Courses</div>
+                                    <img src="/static/images/arrow-right.422b4d8.svg" alt="">
+                                </a>#}
+                                {{ pimcore_link('article',{
+                                    'class' : 'view_all_content',
+                                    'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="courses_tab_content_item" id="publicAgencies">
+                            <div class="row">
+                                {% if  list['officers'] is not empty %}
+                                    {% for officers in list['officers'] %}
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="courses_tab_content_item_card">
+                                                <div class="card_image">
+						    <a href="{{ officers }}_{{ officers.getId() }}">
+                                                    {% if officers.coverImage is not empty %}
+                                                        {{ officers.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+                                                    {% endif %}
+						    </a>
+                                                    {#                                                    <img class="cover" src="/static/images/courses1.432067e.png" alt="">#}
+                                                </div>
+                                                <div class="card_content">
+                                                    <div class="card_content_top">
+                                                        <a href="{{ officers }}_{{ officers.getId() }}">{{ officers.title }}</a>
+                                                    </div>
+                                                    <div class="card_content_bottom">
+                                                        <div class="place">
+                                                            <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                            <div class="text">{{ officers.venue }}</div>
+                                                        </div>
+							{% set officersTbc = false %}
+                                                        {% if officers.getPlaning() is not empty %}
+                                                            <div class="date">
+                                                                {% set count = 0 %}
+                                                                {% for courseDate in officers.getPlaning() %}
+                                                                    {% if courseDate.startDate != '' %}
+                                                                        {% if count > 0 %}
+                                                                            ,
+                                                                        {% endif %}
+                                                                        {% if courseDate.lastDate != '' %}
+                                                                            {{ courseDate.startDate | date('d M Y') }} -
+                                                                            {{ courseDate.lastDate | date('d M Y') }}
+                                                                        {% else %}
+                                                                            {{ courseDate.startDate | date('d M Y') }}
+                                                                        {% endif %}
+                                                                        {% set count = count +1 %}
+                                                                    {% else %}
+                                                                        {% if officersTbc == false %}
+                                                                            TBC
+                                                                        {% endif %}
+
+                                                                        {% set officersTbc = true %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {% if officersTbc == false %}
+                                                                <div class="date">TBC</div>
+                                                            {% endif %}
+
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="view_all">
+                                {{ pimcore_link('officers',{
+                                    'class' : 'view_all_content',
+                                    'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="courses_tab_content_item" id="enterprises">
+                            <div class="row">
+                                {% if  list['enterprises'] is not empty %}
+                                    {% for enterprises in list['enterprises'] %}
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="courses_tab_content_item_card">
+                                                <div class="card_image">
+						    <a href="{{ enterprises }}_{{ enterprises.getId() }}">
+                                                    {% if enterprises.coverImage is not empty %}
+                                                        {{ enterprises.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+                                                    {% endif %}
+						    </a>
+                                                    {#                                                    <img class="cover" src="/static/images/courses1.432067e.png" alt="">#}
+                                                </div>
+                                                <div class="card_content">
+                                                    <div class="card_content_top">
+                                                        <a href="{{ enterprises }}_{{ enterprises.getId() }}">{{ enterprises.title }}</a>
+                                                    </div>
+                                                    <div class="card_content_bottom">
+                                                        <div class="place">
+                                                            <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                            <div class="text">{{ enterprises.venue }}</div>
+                                                        </div>
+							{% set enterprisesTbc = false %}
+                                                        {% if enterprises.getPlaning() is not empty %}
+                                                            <div class="date">
+                                                                {% set count = 0 %}
+                                                                {% for courseDate in enterprises.getPlaning() %}
+                                                                    {% if courseDate.startDate != '' %}
+                                                                        {% if count > 0 %}
+                                                                            ,
+                                                                        {% endif %}
+                                                                        {% if courseDate.lastDate != '' %}
+                                                                            {{ courseDate.startDate | date('d M Y') }} -
+                                                                            {{ courseDate.lastDate | date('d M Y') }}
+                                                                        {% else %}
+                                                                            {{ courseDate.startDate | date('d M Y') }}
+                                                                        {% endif %}
+                                                                        {% set count = count +1 %}
+                                                                    {% else %}
+                                                                        {% if enterprisesTbc == false %}
+                                                                            TBC
+                                                                        {% endif %}
+
+                                                                    {% set enterprisesTbc = true %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            {% if enterprisesTbc == false %}
+                                                                <div class="date">TBC</div>
+                                                            {% endif %}
+
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="view_all">
+                                {{ pimcore_link('enterprises',{
+                                    'class' : 'view_all_content',
+                                    'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="courses_tab_content_item" id="graduate">
+                            {% if  list['studies'] is not empty %}
+                            <div class="row">
+                                {% for studies in list['studies'] %}
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="courses_tab_content_item_card">
+                                            <div class="card_image">
+						<a href="{{ studies }}_{{ studies.getId() }}">
+                                                {% if studies.coverImage is not empty %}
+                                                    {{ studies.coverImage.thumbnail('coverImg').html({imgAttributes : {class : 'cover'}}) | raw }}
+                                                {% endif %}
+						</a>
+                                                {#                                                    <img class="cover" src="/static/images/courses1.432067e.png" alt="">#}
+                                            </div>
+                                            <div class="card_content">
+                                                <div class="card_content_top">
+                                                    <a href="{{ studies }}_{{ studies.getId() }}">{{ studies.title }}</a>
+                                                </div>
+                                                <div class="card_content_bottom">
+                                                    <div class="place">
+                                                        <img class="icon" src="/static/images/place.21274f4.svg" alt="">
+                                                        <div class="text">{{ studies.venue }}</div>
+                                                    </div>
+                                                    {% set tbc = false %}
+                                                    {% if studies.getPlaning() is not empty %}
+							
+                                                        <div class="date">
+                                                        {% set count = 0 %}
+                                                        {% for courseDate in studies.getPlaning() %}
+							
+                                                            {% if courseDate.startDate is not empty %}
+									
+                                                                {% if count > 0 %}
+                                                                    ,
+                                                                {% endif %}
+                                                                {% if courseDate.lastDate is not empty %}
+							
+                                                                    {{ courseDate.startDate | date('d M Y') }} -
+                                                                    {{ courseDate.lastDate | date('d M Y') }}
+                                                                    {% else %}
+								
+                                                                        {{ courseDate.startDate | date('d M Y') }}
+                                                                {% endif %}
+                                                                {% set count = count +1 %}
+                                                                {% set tbc = true %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        </div>
+							                        {% else %}
+                                                        {% if tbc == false %}
+                                                            <div class="date">TBC</div>
+                                                        {% endif %}
+
+                                                    {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <div class="view_all">
+                                {{ pimcore_link('studies',{
+                                    'class' : 'view_all_content',
+                                    'textSuffix' : '<img src="/static/images/arrow-right.422b4d8.svg" alt="">'
+                                }) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

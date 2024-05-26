@@ -1,0 +1,168 @@
+{% extends template_layout_name %}
+
+{% block content %}
+    <div class="resources_public_list_master_container resources_public_container">
+      <div class="bg_circle"></div>
+      <div class="container">
+        <div class="resources_public_title_nav container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                {% include('layouts/breadcrumb-col-12.html.twig') %}
+              </nav>
+              <div class="d-block d-md-none mobile_nav">
+                <span class="back_arrow">&lt; </span><a href="{{ pimcore_document(25).fullpath }}" class="back_txt">Resources</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        {% if list.latest is not empty %}
+        <div class="row latest_articles_container">
+          <div class="row">
+            <div class="col-12">
+              <p class="p_title">{{ pimcore_input('latestTitle' , {'placeholder' : 'Latest Articles'}) }}</p>
+            </div>
+          </div>
+
+          {% for lastArticle in list.latest %}
+
+            <div class="col-md-6 col-12">
+              <div class="tab-card-item">
+                <a class="card-top" style="display:block;" href="{{ lastArticle }}_{{ lastArticle.getId() }}">
+                  <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+		  {% if lastArticle.coverImage is not empty %}
+                  <img class="img-resoure" src="{{ lastArticle.coverImage.getThumbnail('ArtilesLatest') }}">
+
+                  {# {{ lastArticle.coverImage.thumbnail('Courses').html({imgAttributes: {class: 'img-resoure'}}) | raw }} #}
+		  {% endif %}
+                </a>
+                <div class="card-bottom">
+                  <div class="time-date">{{ lastArticle.releaseDate | date('d M ,Y') }}</div>
+                  <div class="title">{{ lastArticle.title }}</div>
+                  <a class="find-more" href="{{ lastArticle }}_{{ lastArticle.getId() }}">Find out more</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="container more_articles_container">
+        <div class="row">
+          <div class="col-12 selcted-container">
+            <p class="p_title">{{ pimcore_input('moreTitle',{'placeholder' : 'More Articles'}) }}</p>
+            <select onchange="changeSelect()" class="js-articles-single" name="state" id="more_articles_select">
+              <option value="All Topics">All Topics</option>
+
+              {% for articleOption in articleType %}
+                  <option value="{{ articleOption.value }}">{{ articleOption.value }}</option>
+              {% endfor %}
+
+            </select>
+          </div>
+        </div>
+        <div id="moreArticles" class="row">
+          {#{% for article in list.more %}
+            <div class="col-md-6 col-12">
+              <div class="tab-card-item">
+                <div class="card-top">
+                  <img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">
+                  #}{# <img class="img-resoure" src="{{ image }}">#}{#
+                  {% if article.coverImage is not empty %}
+
+                    {{ article.coverImage.thumbnail('Courses').html({imgAttributes: {class: 'img-resoure'}}) | raw }}
+                  {% endif %}
+
+                </div>
+                <div class="card-bottom">
+                  <div class="time-date">{{ article.releaseDate | date('d M ,Y') }}</div>
+                  <a href="{{ article }}_{{ article.getId() }}"><div class="title">
+                      {{ article.title }}
+                    </div></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}#}
+
+        </div>
+        <div style="cursor: pointer;" class="laodmore-view">
+            <a id="loadMore" class="load-button">Load more<div class="arrow_down"></div></a>
+        </div>
+      </div>
+
+      {{ pimcore_areablock("newsletter", {
+      "allowed": ["newsletter"]
+      }) }}
+      <style> 
+        .banner_row div{
+            color: #fff;
+        }
+      </style>
+    </div>
+
+  <script>
+
+
+    getOptions();
+    function changeSelect(){
+      $(".laodmore-view").show();
+      getOptions();
+    }
+    $("#loadMore").click(function () {
+        var num = $('.load').length;
+        getOptions(num);
+    })
+
+    function getOptions(num = 0){
+      var articleType = $("#more_articles_select").val();
+
+      if (num == 0){
+        $("#moreArticles").empty();
+      }
+
+      $.ajax({
+        url : '/api/ask-our-experts',
+        type : 'POST',
+        data : {'articleType' : articleType,'num' : num},
+        success : function (result) {
+	  if(result.length < 6){
+            $(".laodmore-view").hide();
+          }
+          var text = '';
+	  
+          result.forEach(function (item) {
+            var date = new Date(item.date).toDateString();
+	    var moreImg = '';
+          if(item.coverImage != '')
+          {
+            moreImg = '<img class="cover" src="' + item.coverImage +'">';
+          }
+
+            text = '<div class="load col-md-6 col-12">'+
+                    '<div class="tab-card-item">' +
+                    '<a class="card-top" href="'+item.fullPath + '_'+ item.id +'">'+
+                    '<img class="img-bg" src="/static/images/ribbon.f4e9e6a.svg">' +
+                      moreImg +
+                    '</a>'+
+            '<div class="card-bottom">'+
+              '<div class="time-date">'+
+                    date.split(" ")[2] + ' ' + date.split(" ")[1] +' ,'+ date.split(" ")[3]
+                    +'</div>'+
+              '<a href="'+item.fullPath + '_'+ item.id +'"><div class="title">'+
+                item.title+
+              '</div></a></div></div></div>';
+            $("#moreArticles").append(text);
+          })
+
+
+
+        }
+      })
+    }
+  </script>
+
+
+{% endblock %}

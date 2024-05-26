@@ -1,0 +1,60 @@
+imports:
+    - { resource: 'services/search/data-object/field-definition-adapters.yml' }
+    - { resource: 'services/search/asset/field-definition-adapters.yml' }
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    pimcore.portal_engine.es_client:
+        class: Elasticsearch\Client
+        factory: ['Pimcore\Bundle\PortalEngineBundle\Tools\EsClientFactory', getESClient]
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\ElasticSearchConfigService:
+        public: true
+        calls:
+            - [setLogger, ['@logger']]
+        tags:
+            - { name: monolog.logger, channel: portalengine.es }
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\IndexUpdateService:
+        public: true
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\DataObject\SearchService:
+        arguments:
+            $workspaceService: '@Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\DataObject\Search\WorkspaceService'
+        calls:
+            - [setEsClient, ['@pimcore.portal_engine.es_client' ]]
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\SearchService:
+        arguments:
+            $workspaceService: '@Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\Search\WorkspaceService'
+        calls:
+            - [setEsClient, ['@pimcore.portal_engine.es_client' ]]
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\Search\WorkspaceService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\DataObject\Search\WorkspaceService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Search\PublishedService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Search\FolderService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Search\TagService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Search\PreConditionService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Search\SortService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Search\FilterService: ~
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\IndexQueueService: ~
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\DataObject\IndexService:
+        calls:
+            - [setEsClient, ['@pimcore.portal_engine.es_client' ]]
+            - [setCoreFieldsConfig, ['%pimcore_portal_engine.core_fields_configuration%']]
+
+    Pimcore\Bundle\PortalEngineBundle\Service\SearchIndex\Asset\IndexService:
+        calls:
+            - [setEsClient, ['@pimcore.portal_engine.es_client' ]]
+            - [setCoreFieldsConfig, ['%pimcore_portal_engine.core_fields_configuration%']]

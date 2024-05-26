@@ -1,0 +1,75 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="academy_enterprise_detail__page advisor_ipChat__page">
+        <section class="detail">
+            <div class="bg_circle_right"></div>
+            <div class="ipchat-bg-left"><img src="/static/images/ip-chat-left.cc759cb.svg" alt=""></div>
+            <div class="ipchat-bg-right"><img src="/static/images/ip-chat-right.d0ef334.svg" alt=""></div>
+            <div class="container">
+                <div class="breadcrumb black m-b-80">
+                    {% include('layouts/breadcrumb.html.twig') %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-md-12">
+                        {{ pimcore_areablock("content",{
+                            "allowed" : [
+                                "advisory-chat",
+                                "advisory-content"
+                            ]
+                        }) }}
+
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+    
+    <script>
+        
+        $( window ).on( "load", function() {
+            var sharePosition = $(".ip_chat_content #contentText h5 span:last-child").position().top;
+            if ($(window).width() > 999) {
+                $('.share').css({
+                    'margin-top': sharePosition ,
+                    'display': 'flex',
+                })
+            }else{
+                $('.share').css({
+                    'display': 'flex',
+                })
+            }
+        });
+    
+    </script>
+
+    <style>
+        /*@media screen and (min-width: 769px) {
+            .pimcore_area_advisory-content.pimcore_area_content{
+                position: relative;
+            }
+
+            .pimcore_area_shares.pimcore_area_content {
+                position: absolute;
+            }
+
+            .pimcore_area_shares.pimcore_area_content .share{
+                position: absolute;
+                right: 0;
+                margin-top: 596px;
+                margin-right: 45px;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            .pimcore_area_advisory-content.pimcore_area_content #contentText img{
+                max-width: 100%;
+                height: inherit !important;
+            }
+        }*/
+    </style>
+
+    <script src="/static/static/js/shares.js?v=1.0.0"></script>
+{% endblock %}

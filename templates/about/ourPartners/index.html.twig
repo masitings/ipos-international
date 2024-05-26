@@ -1,0 +1,24 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+    <div class="about_ourClients_container container">
+      <div class="bg_circle"></div>
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav">
+                        <span class="back_arrow">&lt;</span>
+                        <a class="back_txt" href="/about/overview">About</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      {{ pimcore_areablock("content", {
+    "allowed": ["clients"]
+    }) }}
+    </div>
+
+{% endblock %}
