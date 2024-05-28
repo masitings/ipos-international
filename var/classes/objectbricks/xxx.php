@@ -1,9 +1,8 @@
 <?php
 
 /**
-Fields Summary:
-*/
-
+ * Fields Summary:
+ */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'classDefinitions' => 
@@ -31,7 +30,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'bodyStyle' => NULL,
      'datatype' => 'layout',
      'permissions' => NULL,
-     'childs' => 
+     'children' => 
     array (
     ),
      'locked' => false,

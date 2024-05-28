@@ -1,9 +1,8 @@
 <?php
 
 /**
-Fields Summary:
-*/
-
+ * Fields Summary:
+ */
 
 return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'dao' => NULL,

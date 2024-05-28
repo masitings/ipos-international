@@ -1,9 +1,8 @@
 <?php
 
 /**
-Fields Summary:
-*/
-
+ * Fields Summary:
+ */
 
 return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'dao' => NULL,
@@ -28,7 +27,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'bodyStyle' => NULL,
      'datatype' => 'layout',
      'permissions' => NULL,
-     'childs' => 
+     'children' => 
     array (
     ),
      'locked' => false,
