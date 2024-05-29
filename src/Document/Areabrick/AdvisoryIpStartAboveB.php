@@ -4,7 +4,8 @@ namespace App\Document\Areabrick;
 
 class AdvisoryIpStartAboveB extends AbstractAreabrick
 {
-    public function getName(){
+    public function getName(): string
+    {
         return "Advisory Ip Start Above B";
     }
 }

@@ -8,21 +8,21 @@ use Pimcore\Model\Document\Editable\Area\Info;
 
 class ClientsSingle extends AbstractTemplateAreabrick
 {
-    public function getName()
+    public function getName(): string
     {
         return 'ClientsSingle';
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return 'Clients Single';
     }
 
-    public function getTemplateLocation()
+    public function getTemplateLocation(): string
     {
         return static::TEMPLATE_LOCATION_GLOBAL;
     }
-    
+
     public function needsReload(): bool
     {
         // optional
@@ -33,7 +33,7 @@ class ClientsSingle extends AbstractTemplateAreabrick
     /**
      * {@inheritdoc}
      */
-    public function getHtmlTagOpen(Info $info)
+    public function getHtmlTagOpen(Info $info): string
     {
         return '';
     }
@@ -41,7 +41,7 @@ class ClientsSingle extends AbstractTemplateAreabrick
     /**
      * {@inheritdoc}
      */
-    public function getHtmlTagClose(Info $info)
+    public function getHtmlTagClose(Info $info): string
     {
         return '';
     }

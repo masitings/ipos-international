@@ -8,21 +8,21 @@ use Pimcore\Model\Document\Editable\Area\Info;
 
 class MenuNav extends AbstractTemplateAreabrick
 {
-    public function getName()
+    public function getName(): string
     {
         return 'Menu';
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return 'Menus';
     }
 
-    public function getTemplateLocation()
+    public function getTemplateLocation(): string
     {
         return static::TEMPLATE_LOCATION_GLOBAL;
     }
-    
+
     public function needsReload(): bool
     {
         // optional
@@ -30,11 +30,11 @@ class MenuNav extends AbstractTemplateAreabrick
         // in the editing interface, this could be necessary in some cases. default=false
         return false;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function getHtmlTagOpen(Info $info)
+    public function getHtmlTagOpen(Info $info): string
     {
         return '';
     }
@@ -42,10 +42,8 @@ class MenuNav extends AbstractTemplateAreabrick
     /**
      * {@inheritdoc}
      */
-    public function getHtmlTagClose(Info $info)
+    public function getHtmlTagClose(Info $info): string
     {
         return '';
     }
-    
-    
 }

@@ -8,21 +8,21 @@ use Pimcore\Model\Document\Editable\Area\Info;
 
 class WhoWillBenefit extends AbstractTemplateAreabrick
 {
-    public function getName()
+    public function getName(): string
     {
         return 'WhoWillBenefit';
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return 'Who Will Benefit';
     }
 
-    public function getTemplateLocation()
+    public function getTemplateLocation(): string
     {
         return static::TEMPLATE_LOCATION_GLOBAL;
     }
-    
+
     public function needsReload(): bool
     {
         // optional
