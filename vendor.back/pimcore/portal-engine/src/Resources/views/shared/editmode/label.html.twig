@@ -1,8 +1,0 @@
-{% set trans = trans is defined ? trans : true %}
-{% set hint = hint | default(null) %}
-
-{% if editmode %}
-    <div class="pee-hint__label">
-        {{ portalEngine_editmode_label(hint, {}, trans) }}
-    </div>
-{% endif %}

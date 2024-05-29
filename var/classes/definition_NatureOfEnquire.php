@@ -8,12 +8,14 @@
  * - state [select]
  */
 
-return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+   'dao' => NULL,
    'id' => '22',
    'name' => 'NatureOfEnquire',
+   'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1716911154,
+   'modificationDate' => 1716993271,
    'userOwner' => 59,
    'userModification' => 60,
    'parentClass' => '',
@@ -28,14 +30,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowInherit' => false,
    'allowVariants' => false,
    'showVariants' => false,
-   'fieldDefinitions' => 
-  array (
-  ),
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -46,14 +42,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
-      Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
+      \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
          'name' => 'BaseData',
          'type' => NULL,
          'region' => NULL,
@@ -64,12 +56,27 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-             'fieldtype' => 'select',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'state',
+             'title' => 'state',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'options' => 
             array (
               0 => 
@@ -93,36 +100,23 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'value' => 'General enquiry',
               ),
             ),
-             'width' => '',
              'defaultValue' => '',
-             'optionsProviderClass' => '',
-             'optionsProviderData' => '',
              'columnLength' => 190,
              'dynamicOptions' => false,
-             'name' => 'state',
-             'title' => 'state',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'defaultValueGenerator' => '',
+             'width' => '',
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -132,12 +126,14 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
    'icon' => '',
-   'previewUrl' => '',
    'group' => 'About',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
@@ -145,7 +141,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'compositeIndices' => 
   array (
   ),
-   'generateTypeDeclarations' => true,
    'showFieldLookup' => false,
    'propertyVisibility' => 
   array (
@@ -172,8 +167,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'deletedDataComponents' => 
   array (
   ),
-   'dao' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'fieldDefinitionsCache' => 
   array (
   ),
    'activeDispatchingEvents' => 

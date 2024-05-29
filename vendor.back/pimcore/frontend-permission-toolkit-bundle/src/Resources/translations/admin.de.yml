@@ -1,6 +1,0 @@
-permissionResource: Permission Resource
-dynamicPermissionResource: Dynamic Permission Resource
-permissionManyToManyRelation: Permission Objects
-permissionToolkit: Permission Toolkit
-permissionManyToOneRelation: Permission ManyToOne
-permissionResourceProvider: Permission Resource Provider Service

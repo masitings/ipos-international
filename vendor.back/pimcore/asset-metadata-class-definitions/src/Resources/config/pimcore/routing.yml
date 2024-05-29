@@ -1,5 +1,0 @@
-pimcore_translations_provider_interface:
-    resource: "@PimcoreAssetMetadataClassDefinitionsBundle/Controller/"
-    type:     annotation
-    prefix:   /admin/asset-metadata-classdefinitions-bundle
-

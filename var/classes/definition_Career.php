@@ -27,12 +27,14 @@
  * - tags [multiselect]
  */
 
-return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+   'dao' => NULL,
    'id' => '23',
    'name' => 'Career',
+   'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1716911154,
+   'modificationDate' => 1716993270,
    'userOwner' => 59,
    'userModification' => 59,
    'parentClass' => '',
@@ -47,14 +49,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowInherit' => false,
    'allowVariants' => false,
    'showVariants' => false,
-   'fieldDefinitions' => 
-  array (
-  ),
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -65,14 +61,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
-      Pimcore\Model\DataObject\ClassDefinition\Layout\Tabpanel::__set_state(array(
-         'fieldtype' => 'tabpanel',
-         'border' => false,
-         'tabPosition' => NULL,
+      \Pimcore\Model\DataObject\ClassDefinition\Layout\Tabpanel::__set_state(array(
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -83,14 +75,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'BaseData',
              'type' => NULL,
              'region' => NULL,
@@ -101,26 +89,31 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
-                 'fieldtype' => 'localizedfields',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
+                 'name' => 'localizedfields',
+                 'title' => '',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => true,
+                 'visibleSearch' => true,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'children' => 
                 array (
                   0 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                     'fieldtype' => 'input',
-                     'width' => 600,
-                     'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => false,
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'title',
                      'title' => 'Title',
                      'tooltip' => '',
@@ -130,7 +123,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -138,12 +131,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'blockedVarsForExport' => 
                     array (
                     ),
-                     'defaultValueGenerator' => '',
-                  )),
-                  1 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                     'fieldtype' => 'input',
-                     'width' => 400,
                      'defaultValue' => NULL,
                      'columnLength' => 190,
                      'regex' => '',
@@ -152,6 +139,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     ),
                      'unique' => false,
                      'showCharCount' => false,
+                     'width' => 600,
+                     'defaultValueGenerator' => '',
+                  )),
+                  1 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'author',
                      'title' => 'Author',
                      'tooltip' => '',
@@ -161,7 +153,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -169,52 +161,38 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'width' => 400,
                      'defaultValueGenerator' => '',
                   )),
                 ),
-                 'name' => 'localizedfields',
                  'region' => NULL,
                  'layout' => NULL,
-                 'title' => '',
-                 'width' => 1200,
-                 'height' => '',
                  'maxTabs' => NULL,
                  'border' => false,
                  'provideSplitView' => false,
-                 'tabPosition' => NULL,
+                 'tabPosition' => 'top',
                  'hideLabelsWhenTabsReached' => NULL,
                  'referencedFields' => 
                 array (
                 ),
-                 'fieldDefinitionsCache' => NULL,
                  'permissionView' => NULL,
                  'permissionEdit' => NULL,
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => true,
-                 'visibleSearch' => true,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'labelWidth' => 0,
                  'labelAlign' => 'left',
+                 'width' => 1200,
+                 'height' => '',
+                 'fieldDefinitionsCache' => NULL,
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
-                 'fieldtype' => 'wysiwyg',
-                 'width' => '',
-                 'height' => '',
-                 'toolbarConfig' => '',
-                 'excludeFromSearchIndex' => false,
-                 'maxCharacters' => '',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
                  'name' => 'content',
                  'title' => 'Content',
                  'tooltip' => '',
@@ -224,7 +202,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -232,14 +210,14 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
+                 'maxCharacters' => '',
+                 'height' => '',
+                 'width' => '',
               )),
               2 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
-                 'fieldtype' => 'datetime',
-                 'queryColumnType' => 'bigint(20)',
-                 'columnType' => 'bigint(20)',
-                 'defaultValue' => NULL,
-                 'useCurrentDate' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
                  'name' => 'releaseDate',
                  'title' => 'Published Date',
                  'tooltip' => '',
@@ -249,7 +227,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -257,6 +235,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValue' => NULL,
+                 'useCurrentDate' => false,
+                 'columnType' => 'bigint(20)',
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -264,15 +245,15 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 150,
              'labelAlign' => 'left',
           )),
           1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Media',
              'type' => NULL,
              'region' => NULL,
@@ -283,25 +264,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Hotspotimage::__set_state(array(
-                 'fieldtype' => 'hotspotimage',
-                 'queryColumnType' => 
-                array (
-                  'image' => 'int(11)',
-                  'hotspots' => 'text',
-                ),
-                 'columnType' => 
-                array (
-                  'image' => 'int(11)',
-                  'hotspots' => 'text',
-                ),
-                 'ratioX' => NULL,
-                 'ratioY' => NULL,
-                 'predefinedDataTemplates' => '',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Hotspotimage::__set_state(array(
                  'name' => 'coverImage',
                  'title' => 'Cover',
                  'tooltip' => '',
@@ -311,7 +277,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -319,26 +285,13 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'predefinedDataTemplates' => '',
+                 'uploadPath' => '',
                  'width' => 600,
                  'height' => '',
-                 'uploadPath' => '',
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Hotspotimage::__set_state(array(
-                 'fieldtype' => 'hotspotimage',
-                 'queryColumnType' => 
-                array (
-                  'image' => 'int(11)',
-                  'hotspots' => 'text',
-                ),
-                 'columnType' => 
-                array (
-                  'image' => 'int(11)',
-                  'hotspots' => 'text',
-                ),
-                 'ratioX' => NULL,
-                 'ratioY' => NULL,
-                 'predefinedDataTemplates' => '',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Hotspotimage::__set_state(array(
                  'name' => 'authorIcon',
                  'title' => 'Author',
                  'tooltip' => '',
@@ -348,7 +301,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -356,24 +309,25 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'predefinedDataTemplates' => '',
+                 'uploadPath' => '',
                  'width' => 600,
                  'height' => '',
-                 'uploadPath' => '',
               )),
             ),
              'locked' => false,
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 200,
              'labelAlign' => 'left',
           )),
           2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Video',
              'type' => NULL,
              'region' => NULL,
@@ -384,21 +338,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'fieldtype' => 'input',
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'videoTime',
                  'title' => 'Duration',
                  'tooltip' => 'Manually key in the video duration to display at the bottom right of the video.
@@ -410,7 +353,7 @@ Format: 00h 00m 00s',
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -418,21 +361,19 @@ Format: 00h 00m 00s',
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => '',
                  'defaultValueGenerator' => '',
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
-                 'fieldtype' => 'video',
-                 'width' => 800,
-                 'height' => 600,
-                 'allowedTypes' => NULL,
-                 'supportedTypes' => 
-                array (
-                  0 => 'asset',
-                  1 => 'youtube',
-                  2 => 'vimeo',
-                  3 => 'dailymotion',
-                ),
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
                  'name' => 'detailVideo',
                  'title' => 'URL',
                  'tooltip' => '',
@@ -442,7 +383,7 @@ Format: 00h 00m 00s',
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -450,21 +391,32 @@ Format: 00h 00m 00s',
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'uploadPath' => '',
+                 'allowedTypes' => NULL,
+                 'supportedTypes' => 
+                array (
+                  0 => 'asset',
+                  1 => 'youtube',
+                  2 => 'vimeo',
+                  3 => 'dailymotion',
+                ),
+                 'height' => 600,
+                 'width' => 800,
               )),
             ),
              'locked' => false,
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 200,
              'labelAlign' => 'left',
           )),
           3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Resources',
              'type' => NULL,
              'region' => NULL,
@@ -475,12 +427,10 @@ Format: 00h 00m 00s',
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
-                 'fieldtype' => 'link',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
                  'name' => 'moreContent',
                  'title' => 'Want More Great Content',
                  'tooltip' => '',
@@ -490,7 +440,7 @@ Format: 00h 00m 00s',
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -498,10 +448,12 @@ Format: 00h 00m 00s',
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'allowedTypes' => NULL,
+                 'allowedTargets' => NULL,
+                 'disabledFields' => NULL,
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
-                 'fieldtype' => 'link',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
                  'name' => 'file',
                  'title' => 'Preview of the Guide',
                  'tooltip' => '',
@@ -511,7 +463,7 @@ Format: 00h 00m 00s',
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -519,12 +471,12 @@ Format: 00h 00m 00s',
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'allowedTypes' => NULL,
+                 'allowedTargets' => NULL,
+                 'disabledFields' => NULL,
               )),
               2 => 
-              Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-                 'fieldtype' => 'panel',
-                 'layout' => NULL,
-                 'border' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
                  'name' => 'guideData',
                  'type' => NULL,
                  'region' => NULL,
@@ -535,21 +487,10 @@ Format: 00h 00m 00s',
                  'collapsed' => false,
                  'bodyStyle' => '',
                  'datatype' => 'layout',
-                 'permissions' => NULL,
                  'children' => 
                 array (
                   0 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                     'fieldtype' => 'input',
-                     'width' => '',
-                     'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => false,
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'guideTitle',
                      'title' => 'Title',
                      'tooltip' => '',
@@ -559,7 +500,7 @@ Format: 00h 00m 00s',
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -567,11 +508,19 @@ Format: 00h 00m 00s',
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'width' => '',
                      'defaultValueGenerator' => '',
                   )),
                   1 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
-                     'fieldtype' => 'link',
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
                      'name' => 'fullGuide',
                      'title' => 'English Version',
                      'tooltip' => 'For the orange top CTA
@@ -584,7 +533,7 @@ Format: 00h 00m 00s',
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -592,10 +541,12 @@ Format: 00h 00m 00s',
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'allowedTypes' => NULL,
+                     'allowedTargets' => NULL,
+                     'disabledFields' => NULL,
                   )),
                   2 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
-                     'fieldtype' => 'link',
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
                      'name' => 'chineseGuide',
                      'title' => 'Chinese Version',
                      'tooltip' => '',
@@ -605,7 +556,7 @@ Format: 00h 00m 00s',
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -613,12 +564,18 @@ Format: 00h 00m 00s',
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'allowedTypes' => NULL,
+                     'allowedTargets' => NULL,
+                     'disabledFields' => NULL,
                   )),
                 ),
                  'locked' => false,
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'fieldtype' => 'panel',
+                 'layout' => NULL,
+                 'border' => false,
                  'icon' => '',
                  'labelWidth' => 200,
                  'labelAlign' => 'left',
@@ -628,15 +585,15 @@ Format: 00h 00m 00s',
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 200,
              'labelAlign' => 'left',
           )),
           4 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'AlsoWorthWatching',
              'type' => NULL,
              'region' => NULL,
@@ -647,14 +604,10 @@ Format: 00h 00m 00s',
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-                 'fieldtype' => 'panel',
-                 'layout' => NULL,
-                 'border' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
                  'name' => 'interestedData',
                  'type' => NULL,
                  'region' => NULL,
@@ -665,21 +618,10 @@ Format: 00h 00m 00s',
                  'collapsed' => false,
                  'bodyStyle' => '',
                  'datatype' => 'layout',
-                 'permissions' => NULL,
                  'children' => 
                 array (
                   0 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                     'fieldtype' => 'input',
-                     'width' => 400,
-                     'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => false,
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'interestedTitle',
                      'title' => 'Title',
                      'tooltip' => '',
@@ -689,7 +631,7 @@ Format: 00h 00m 00s',
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -697,30 +639,19 @@ Format: 00h 00m 00s',
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'width' => 400,
                      'defaultValueGenerator' => '',
                   )),
                   1 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
-                     'fieldtype' => 'manyToManyObjectRelation',
-                     'width' => '',
-                     'height' => '',
-                     'maxItems' => NULL,
-                     'relationType' => true,
-                     'visibleFields' => 'id,title,classname',
-                     'allowToCreateNewObject' => false,
-                     'optimizedAdminLoading' => false,
-                     'enableTextSelection' => false,
-                     'visibleFieldDefinitions' => 
-                    array (
-                    ),
-                     'classes' => 
-                    array (
-                      0 => 
-                      array (
-                        'classes' => 'Career',
-                      ),
-                    ),
-                     'pathFormatterClass' => '',
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
                      'name' => 'alsoList',
                      'title' => 'Content',
                      'tooltip' => 'To select objects to be displayed at the right component "Also Worth Watching/Reading":
@@ -733,28 +664,49 @@ Format: 00h 00m 00s',
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
+                     'relationType' => true,
                      'invisible' => false,
                      'visibleGridView' => false,
                      'visibleSearch' => true,
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'classes' => 
+                    array (
+                      0 => 
+                      array (
+                        'classes' => 'Career',
+                      ),
+                    ),
+                     'displayMode' => NULL,
+                     'pathFormatterClass' => '',
+                     'maxItems' => NULL,
+                     'visibleFields' => 'id,title,classname',
+                     'allowToCreateNewObject' => false,
+                     'allowToClearRelation' => true,
+                     'optimizedAdminLoading' => false,
+                     'enableTextSelection' => false,
+                     'visibleFieldDefinitions' => 
+                    array (
+                    ),
+                     'width' => '',
+                     'height' => '',
                   )),
                 ),
                  'locked' => false,
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'fieldtype' => 'panel',
+                 'layout' => NULL,
+                 'border' => false,
                  'icon' => '',
                  'labelWidth' => 200,
                  'labelAlign' => 'left',
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-                 'fieldtype' => 'panel',
-                 'layout' => '',
-                 'border' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
                  'name' => 'IndustryData',
                  'type' => NULL,
                  'region' => NULL,
@@ -765,21 +717,10 @@ Format: 00h 00m 00s',
                  'collapsed' => false,
                  'bodyStyle' => '',
                  'datatype' => 'layout',
-                 'permissions' => NULL,
                  'children' => 
                 array (
                   0 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                     'fieldtype' => 'input',
-                     'width' => 800,
-                     'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => true,
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'IndustryTitle',
                      'title' => 'Description',
                      'tooltip' => 'To insert short description / summary of the page to feature in the Find Out More CTA.',
@@ -789,7 +730,7 @@ Format: 00h 00m 00s',
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
-                     'datatype' => 'data',
+                     'fieldtype' => '',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -797,20 +738,34 @@ Format: 00h 00m 00s',
                      'blockedVarsForExport' => 
                     array (
                     ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => true,
+                     'width' => 800,
                      'defaultValueGenerator' => '',
                   )),
                   1 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
-                     'fieldtype' => 'manyToManyObjectRelation',
-                     'width' => '',
-                     'height' => '',
-                     'maxItems' => NULL,
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
+                     'name' => 'checkIndustry',
+                     'title' => 'Content',
+                     'tooltip' => 'Page to feature in the Find Out More CTA.',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
                      'relationType' => true,
-                     'visibleFields' => 'id,title,fullpath,classname',
-                     'allowToCreateNewObject' => false,
-                     'optimizedAdminLoading' => false,
-                     'enableTextSelection' => false,
-                     'visibleFieldDefinitions' => 
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => true,
+                     'blockedVarsForExport' => 
                     array (
                     ),
                      'classes' => 
@@ -852,57 +807,34 @@ Format: 00h 00m 00s',
                         'classes' => 'Career',
                       ),
                     ),
+                     'displayMode' => NULL,
                      'pathFormatterClass' => '',
-                     'name' => 'checkIndustry',
-                     'title' => 'Content',
-                     'tooltip' => 'Page to feature in the Find Out More CTA.',
-                     'mandatory' => false,
-                     'noteditable' => false,
-                     'index' => false,
-                     'locked' => false,
-                     'style' => '',
-                     'permissions' => NULL,
-                     'datatype' => 'data',
-                     'invisible' => false,
-                     'visibleGridView' => false,
-                     'visibleSearch' => true,
-                     'blockedVarsForExport' => 
+                     'maxItems' => NULL,
+                     'visibleFields' => 'id,title,fullpath,classname',
+                     'allowToCreateNewObject' => false,
+                     'allowToClearRelation' => true,
+                     'optimizedAdminLoading' => false,
+                     'enableTextSelection' => false,
+                     'visibleFieldDefinitions' => 
                     array (
                     ),
+                     'width' => '',
+                     'height' => '',
                   )),
                 ),
                  'locked' => false,
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'fieldtype' => 'panel',
+                 'layout' => '',
+                 'border' => false,
                  'icon' => '',
                  'labelWidth' => 200,
                  'labelAlign' => 'left',
               )),
               2 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
-                 'fieldtype' => 'manyToManyObjectRelation',
-                 'width' => 1200,
-                 'height' => '',
-                 'maxItems' => NULL,
-                 'relationType' => true,
-                 'visibleFields' => 
-                array (
-                ),
-                 'allowToCreateNewObject' => false,
-                 'optimizedAdminLoading' => false,
-                 'enableTextSelection' => false,
-                 'visibleFieldDefinitions' => 
-                array (
-                ),
-                 'classes' => 
-                array (
-                  0 => 
-                  array (
-                    'classes' => 'Shares',
-                  ),
-                ),
-                 'pathFormatterClass' => '',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
                  'name' => 'shares',
                  'title' => 'Social Share',
                  'tooltip' => 'To display social share buttons on the page:
@@ -914,28 +846,51 @@ Go to Data Objects > CTABookmark > SocialShareButtons and drag all four objects 
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
+                 'relationType' => true,
                  'invisible' => false,
                  'visibleGridView' => false,
                  'visibleSearch' => false,
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'classes' => 
+                array (
+                  0 => 
+                  array (
+                    'classes' => 'Shares',
+                  ),
+                ),
+                 'displayMode' => NULL,
+                 'pathFormatterClass' => '',
+                 'maxItems' => NULL,
+                 'visibleFields' => 
+                array (
+                ),
+                 'allowToCreateNewObject' => false,
+                 'allowToClearRelation' => true,
+                 'optimizedAdminLoading' => false,
+                 'enableTextSelection' => false,
+                 'visibleFieldDefinitions' => 
+                array (
+                ),
+                 'width' => 1200,
+                 'height' => '',
               )),
             ),
              'locked' => false,
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 200,
              'labelAlign' => 'left',
           )),
           5 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'TagList',
              'type' => NULL,
              'region' => NULL,
@@ -946,12 +901,27 @@ Go to Data Objects > CTABookmark > SocialShareButtons and drag all four objects 
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
-                 'fieldtype' => 'multiselect',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
+                 'name' => 'tags',
+                 'title' => 'Keywords',
+                 'tooltip' => 'Select one or more keywords from the drop-down list.',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => true,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'options' => 
                 array (
                   0 => 
@@ -1130,36 +1100,25 @@ Go to Data Objects > CTABookmark > SocialShareButtons and drag all four objects 
                     'value' => 'Making Best Use Of All Your Valuable Assets',
                   ),
                 ),
-                 'width' => 1000,
-                 'height' => 200,
                  'maxItems' => NULL,
                  'renderType' => 'tags',
+                 'dynamicOptions' => false,
+                 'defaultValue' => NULL,
+                 'height' => 200,
+                 'width' => 1000,
+                 'defaultValueGenerator' => '',
+                 'optionsProviderType' => NULL,
                  'optionsProviderClass' => '',
                  'optionsProviderData' => '',
-                 'dynamicOptions' => false,
-                 'name' => 'tags',
-                 'title' => 'Keywords',
-                 'tooltip' => 'Select one or more keywords from the drop-down list.',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => true,
-                 'blockedVarsForExport' => 
-                array (
-                ),
               )),
             ),
              'locked' => false,
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 100,
              'labelAlign' => 'left',
@@ -1169,18 +1128,23 @@ Go to Data Objects > CTABookmark > SocialShareButtons and drag all four objects 
          'blockedVarsForExport' => 
         array (
         ),
+         'fieldtype' => 'tabpanel',
+         'border' => false,
+         'tabPosition' => 'top',
       )),
     ),
      'locked' => false,
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
    'icon' => '',
-   'previewUrl' => '',
    'group' => 'About',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
@@ -1188,7 +1152,6 @@ Go to Data Objects > CTABookmark > SocialShareButtons and drag all four objects 
    'compositeIndices' => 
   array (
   ),
-   'generateTypeDeclarations' => true,
    'showFieldLookup' => false,
    'propertyVisibility' => 
   array (
@@ -1215,8 +1178,10 @@ Go to Data Objects > CTABookmark > SocialShareButtons and drag all four objects 
    'deletedDataComponents' => 
   array (
   ),
-   'dao' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'fieldDefinitionsCache' => 
   array (
   ),
    'activeDispatchingEvents' => 

@@ -1,8 +1,0 @@
-{% if portalEngine_dataPoolConfig() %}
-    {% do portalEngine_frontendConfig().setConfig("currentDataPool.id", portalEngine_dataPoolConfig().languageVariantDataPoolId) %}
-    {% do portalEngine_frontendConfig().setConfig("currentDataPool.name", portalEngine_dataPoolConfig().dataPoolName) %}
-{% endif %}
-
-{% do portalEngine_frontendConfig().setConfig("documentId", document.id) %}
-{% do portalEngine_frontendConfig().setConfig("endpoints.tasks_list", url("pimcore_portalengine_rest_api_batch_task_list")) %}
-{% do portalEngine_frontendConfig().setConfig("searchUrl", path('pimcore_portalengine_search')) %}

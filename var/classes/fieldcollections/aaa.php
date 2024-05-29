@@ -4,7 +4,7 @@
  * Fields Summary:
  */
 
-return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
+return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'dao' => NULL,
    'key' => 'aaa',
    'parentClass' => '',
@@ -12,10 +12,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'title' => '',
    'group' => '<img src=x onerror=alert(document.domain)> ',
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -26,7 +23,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
     ),
@@ -34,11 +30,14 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

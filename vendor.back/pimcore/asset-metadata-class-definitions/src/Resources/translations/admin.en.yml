@@ -1,6 +1,0 @@
-asset_metadata_class_definitions_bundle-toolbar_menu: 'Asset Metadata Class Definitions'
-asset_metadata_class_definitions_bundle-configurationpanel_title: 'Asset Metadata Class Definitions'
-asset_metadata_class_definitions_bundle-standardgrid: 'Standard Grid'
-asset_metadata_class_definitions_bundle-add_set: 'Add metadata set'
-asset_metadata_class_definitions_bundle-calculatedValue_explanation: "Implement the Pimcore\\AssetMetadataClassDefinitionsBundle\\Model\\ClassDefinition\\CalculatorClassInterface interface"
-text_and_number: "Text & Number"

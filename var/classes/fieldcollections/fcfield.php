@@ -9,7 +9,7 @@
  * -- lastTime [time]
  */
 
-return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
+return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'dao' => NULL,
    'key' => 'fcfield',
    'parentClass' => '',
@@ -17,10 +17,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'title' => '',
    'group' => '',
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -31,14 +28,10 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
-      Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
+      \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -49,16 +42,10 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
-             'fieldtype' => 'date',
-             'queryColumnType' => 'bigint(20)',
-             'columnType' => 'bigint(20)',
-             'defaultValue' => NULL,
-             'useCurrentDate' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
              'name' => 'startDate',
              'title' => 'Start Date',
              'tooltip' => '',
@@ -68,7 +55,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -76,15 +63,13 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'columnType' => 'bigint(20)',
              'defaultValueGenerator' => '',
           )),
           1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
-             'fieldtype' => 'date',
-             'queryColumnType' => 'bigint(20)',
-             'columnType' => 'bigint(20)',
-             'defaultValue' => NULL,
-             'useCurrentDate' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Date::__set_state(array(
              'name' => 'lastDate',
              'title' => 'End Date',
              'tooltip' => '',
@@ -94,7 +79,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -102,11 +87,30 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'columnType' => 'bigint(20)',
              'defaultValueGenerator' => '',
           )),
           2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
-             'fieldtype' => 'block',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
+             'name' => 'Time',
+             'title' => 'Time',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'lazyLoading' => false,
              'disallowAddRemove' => false,
              'disallowReorder' => false,
@@ -117,20 +121,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Time::__set_state(array(
-                 'fieldtype' => 'time',
-                 'columnLength' => 5,
-                 'minValue' => NULL,
-                 'maxValue' => NULL,
-                 'increment' => 15,
-                 'width' => 0,
-                 'defaultValue' => NULL,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Time::__set_state(array(
                  'name' => 'startTime',
                  'title' => 'Start Time',
                  'tooltip' => '',
@@ -140,7 +131,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -148,23 +139,22 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Time::__set_state(array(
-                 'fieldtype' => 'time',
-                 'columnLength' => 5,
-                 'minValue' => NULL,
-                 'maxValue' => NULL,
-                 'increment' => 15,
-                 'width' => 0,
                  'defaultValue' => NULL,
+                 'columnLength' => 5,
                  'regex' => '',
                  'regexFlags' => 
                 array (
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'width' => 0,
+                 'defaultValueGenerator' => '',
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'increment' => 15,
+              )),
+              1 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Time::__set_state(array(
                  'name' => 'lastTime',
                  'title' => 'End Time',
                  'tooltip' => '',
@@ -174,7 +164,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -182,7 +172,19 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 5,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => 0,
                  'defaultValueGenerator' => '',
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'increment' => 15,
               )),
             ),
              'layout' => NULL,
@@ -190,29 +192,15 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             array (
             ),
              'fieldDefinitionsCache' => NULL,
-             'name' => 'Time',
-             'title' => 'Time',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -222,11 +210,14 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

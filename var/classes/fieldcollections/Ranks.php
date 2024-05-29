@@ -5,7 +5,7 @@
  * - selectRank [select]
  */
 
-return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
+return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'dao' => NULL,
    'key' => 'Ranks',
    'parentClass' => '',
@@ -13,10 +13,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'title' => '',
    'group' => '',
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -27,12 +24,27 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
-      Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-         'fieldtype' => 'select',
+      \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+         'name' => 'selectRank',
+         'title' => 'Position / Title',
+         'tooltip' => '',
+         'mandatory' => false,
+         'noteditable' => false,
+         'index' => false,
+         'locked' => false,
+         'style' => '',
+         'permissions' => NULL,
+         'fieldtype' => '',
+         'relationType' => false,
+         'invisible' => false,
+         'visibleGridView' => false,
+         'visibleSearch' => false,
+         'blockedVarsForExport' => 
+        array (
+        ),
          'options' => 
         array (
           0 => 
@@ -76,41 +88,28 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             'value' => '',
           ),
         ),
-         'width' => '',
          'defaultValue' => '',
-         'optionsProviderClass' => '',
-         'optionsProviderData' => '',
          'columnLength' => 190,
          'dynamicOptions' => false,
-         'name' => 'selectRank',
-         'title' => 'Position / Title',
-         'tooltip' => '',
-         'mandatory' => false,
-         'noteditable' => false,
-         'index' => false,
-         'locked' => false,
-         'style' => '',
-         'permissions' => NULL,
-         'datatype' => 'data',
-         'relationType' => false,
-         'invisible' => false,
-         'visibleGridView' => false,
-         'visibleSearch' => false,
-         'blockedVarsForExport' => 
-        array (
-        ),
          'defaultValueGenerator' => '',
+         'width' => '',
+         'optionsProviderType' => NULL,
+         'optionsProviderClass' => '',
+         'optionsProviderData' => '',
       )),
     ),
      'locked' => false,
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

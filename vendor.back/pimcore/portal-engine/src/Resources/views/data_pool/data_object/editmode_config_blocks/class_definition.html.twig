@@ -1,8 +1,0 @@
-<div class="card">
-    <h3 class="card-header mb-0">
-        <span class="card-header__btn d-block">{{ 'portal-engine.data-pool.data-objects.class-definition'|trans([], 'admin', portalEngine_editmode_admin_language()) }}</span>
-    </h3>
-    <div class="card-body">
-        {{ pimcore_select(constant('Pimcore\\Bundle\\PortalEngineBundle\\Enum\\Document\\Editables\\DataPool\\DataObjectConfig::DATA_OBJECT_CLASS'), {width: 300, required:true, store: dataObjectClassStore, reload:true}) }}
-    </div>
-</div>

@@ -1,3 +1,0 @@
-pimcore_license_checker_homepage:
-    resource: "@PimcoreEnterpriseSubscriptionToolsBundle/Controller/"
-    type:     annotation

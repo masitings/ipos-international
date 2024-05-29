@@ -1,9 +1,0 @@
-{% set sidebarId = sidebarId | default(null) %}
-{% set inline = inline | default(false) %}
-{% set label = label | default(null) %}
-
-<div class="{{ not inline ? "pee-floating-action" }}">
-    <a href="#" data-href="pee-sidebar-{{ sidebarId }}" class="btn btn-light js-pe-open-sidebar">
-        <span class="pee-icon">{{ portalEngine_inline_icon('ellipsis-h') }}</span>
-    </a>
-</div>

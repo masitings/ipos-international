@@ -11,12 +11,14 @@
  * - logImage [image]
  */
 
-return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+   'dao' => NULL,
    'id' => '5',
    'name' => 'ClientsAndPartners',
+   'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1716911154,
+   'modificationDate' => 1716993270,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -31,14 +33,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowInherit' => false,
    'allowVariants' => false,
    'showVariants' => false,
-   'fieldDefinitions' => 
-  array (
-  ),
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -49,14 +45,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
-      Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
+      \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
          'name' => 'BaseData',
          'type' => NULL,
          'region' => NULL,
@@ -67,21 +59,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'fieldtype' => 'input',
-             'width' => '',
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
              'name' => 'name',
              'title' => 'Name',
              'tooltip' => '',
@@ -91,7 +72,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -99,12 +80,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'defaultValueGenerator' => '',
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'fieldtype' => 'input',
-             'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
              'regex' => '',
@@ -113,6 +88,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'width' => '',
+             'defaultValueGenerator' => '',
+          )),
+          1 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
              'name' => 'websiteUrl',
              'title' => 'URL',
              'tooltip' => '',
@@ -122,7 +102,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -130,11 +110,38 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'width' => '',
              'defaultValueGenerator' => '',
           )),
           2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-             'fieldtype' => 'select',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'DataType',
+             'title' => 'Page Selection',
+             'tooltip' => 'To select which page under "About" category to be listed :
+- Our Clients
+- Our Partners',
+             'mandatory' => true,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => true,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'options' => 
             array (
               0 => 
@@ -148,36 +155,17 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'value' => 'Our Partners',
               ),
             ),
-             'width' => '',
              'defaultValue' => '',
-             'optionsProviderClass' => '',
-             'optionsProviderData' => '',
              'columnLength' => 190,
              'dynamicOptions' => false,
-             'name' => 'DataType',
-             'title' => 'Page Selection',
-             'tooltip' => 'To select which page under "About" category to be listed :
-- Our Clients
-- Our Partners',
-             'mandatory' => true,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => true,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'defaultValueGenerator' => '',
+             'width' => '',
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
           )),
           3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
-             'fieldtype' => 'image',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'name' => 'logImage',
              'title' => 'Logo Image',
              'tooltip' => '',
@@ -187,7 +175,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -195,15 +183,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'uploadPath' => '',
              'width' => 400,
              'height' => '',
-             'uploadPath' => '',
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'icon' => '',
          'labelWidth' => 200,
          'labelAlign' => 'left',
@@ -213,12 +204,14 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
    'icon' => '',
-   'previewUrl' => '',
    'group' => 'About',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
@@ -226,7 +219,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'compositeIndices' => 
   array (
   ),
-   'generateTypeDeclarations' => true,
    'showFieldLookup' => false,
    'propertyVisibility' => 
   array (
@@ -253,8 +245,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'deletedDataComponents' => 
   array (
   ),
-   'dao' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'fieldDefinitionsCache' => 
   array (
   ),
    'activeDispatchingEvents' => 

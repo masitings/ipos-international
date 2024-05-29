@@ -4,7 +4,7 @@
  * Fields Summary:
  */
 
-return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
+return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'dao' => NULL,
    'key' => 'SpeakerOrTrainer',
    'parentClass' => NULL,
@@ -12,7 +12,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'title' => NULL,
    'group' => NULL,
    'layoutDefinitions' => NULL,
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

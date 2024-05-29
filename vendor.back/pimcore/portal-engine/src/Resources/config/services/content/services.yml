@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: false
-
-    Pimcore\Bundle\PortalEngineBundle\Service\Content\HeadTitleService: ~
-    Pimcore\Bundle\PortalEngineBundle\Service\Content\NavigationService: ~
-    Pimcore\Bundle\PortalEngineBundle\Service\Content\PageConfigService: ~

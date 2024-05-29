@@ -1,8 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: false
-
-    Pimcore\Bundle\PortalEngineBundle\Service\Collection\CollectionService: ~
-    Pimcore\Bundle\PortalEngineBundle\Service\Collection\AdminCollectionService: ~

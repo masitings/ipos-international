@@ -12,12 +12,14 @@
  * - detailVideo [video]
  */
 
-return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+   'dao' => NULL,
    'id' => '3',
    'name' => 'faqs',
+   'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1716911154,
+   'modificationDate' => 1716993271,
    'userOwner' => 2,
    'userModification' => 59,
    'parentClass' => '',
@@ -32,14 +34,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowInherit' => false,
    'allowVariants' => false,
    'showVariants' => false,
-   'fieldDefinitions' => 
-  array (
-  ),
    'layoutDefinitions' => 
-  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
+  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -50,14 +46,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
-      Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
+      \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -68,14 +60,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Layout',
              'type' => NULL,
              'region' => 'center',
@@ -86,21 +74,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'fieldtype' => 'input',
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'question',
                  'title' => 'Question',
                  'tooltip' => '',
@@ -110,7 +87,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -118,11 +95,36 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => '',
                  'defaultValueGenerator' => '',
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-                 'fieldtype' => 'select',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'name' => 'questionType',
+                 'title' => 'Topics',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => true,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'options' => 
                 array (
                   0 => 
@@ -136,39 +138,17 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     'value' => 'Tender/Quotation Notices',
                   ),
                 ),
-                 'width' => '',
                  'defaultValue' => '',
-                 'optionsProviderClass' => '',
-                 'optionsProviderData' => '',
                  'columnLength' => 190,
                  'dynamicOptions' => false,
-                 'name' => 'questionType',
-                 'title' => 'Topics',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => true,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'defaultValueGenerator' => '',
+                 'width' => '',
+                 'optionsProviderType' => NULL,
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
               )),
               2 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
-                 'fieldtype' => 'wysiwyg',
-                 'width' => '',
-                 'height' => '',
-                 'toolbarConfig' => '',
-                 'excludeFromSearchIndex' => false,
-                 'maxCharacters' => '',
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
                  'name' => 'answer',
                  'title' => 'Answer',
                  'tooltip' => '',
@@ -178,7 +158,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -186,21 +166,26 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
+                 'maxCharacters' => '',
+                 'height' => '',
+                 'width' => '',
               )),
             ),
              'locked' => false,
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 100,
              'labelAlign' => 'left',
           )),
           1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-             'fieldtype' => 'panel',
-             'layout' => NULL,
-             'border' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Video',
              'type' => NULL,
              'region' => NULL,
@@ -211,21 +196,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'collapsed' => false,
              'bodyStyle' => '',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'fieldtype' => 'input',
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                  'name' => 'videoTime',
                  'title' => 'Duration',
                  'tooltip' => 'Manually key in the video duration to display at the bottom right of the video.
@@ -237,7 +211,7 @@ Format: 00h 00m 00s',
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -245,21 +219,19 @@ Format: 00h 00m 00s',
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => '',
                  'defaultValueGenerator' => '',
               )),
               1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
-                 'fieldtype' => 'video',
-                 'width' => 800,
-                 'height' => 600,
-                 'allowedTypes' => NULL,
-                 'supportedTypes' => 
-                array (
-                  0 => 'asset',
-                  1 => 'youtube',
-                  2 => 'vimeo',
-                  3 => 'dailymotion',
-                ),
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
                  'name' => 'detailVideo',
                  'title' => 'URL',
                  'tooltip' => '',
@@ -269,7 +241,7 @@ Format: 00h 00m 00s',
                  'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
-                 'datatype' => 'data',
+                 'fieldtype' => '',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -277,12 +249,26 @@ Format: 00h 00m 00s',
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'uploadPath' => '',
+                 'allowedTypes' => NULL,
+                 'supportedTypes' => 
+                array (
+                  0 => 'asset',
+                  1 => 'youtube',
+                  2 => 'vimeo',
+                  3 => 'dailymotion',
+                ),
+                 'height' => 600,
+                 'width' => 800,
               )),
             ),
              'locked' => false,
              'blockedVarsForExport' => 
             array (
             ),
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
              'icon' => '',
              'labelWidth' => 200,
              'labelAlign' => 'left',
@@ -292,6 +278,9 @@ Format: 00h 00m 00s',
          'blockedVarsForExport' => 
         array (
         ),
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -301,12 +290,14 @@ Format: 00h 00m 00s',
      'blockedVarsForExport' => 
     array (
     ),
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
    'icon' => '',
-   'previewUrl' => '',
    'group' => 'Resources',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
@@ -314,7 +305,6 @@ Format: 00h 00m 00s',
    'compositeIndices' => 
   array (
   ),
-   'generateTypeDeclarations' => true,
    'showFieldLookup' => false,
    'propertyVisibility' => 
   array (
@@ -341,8 +331,10 @@ Format: 00h 00m 00s',
    'deletedDataComponents' => 
   array (
   ),
-   'dao' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'fieldDefinitionsCache' => 
   array (
   ),
    'activeDispatchingEvents' => 
