@@ -9,9 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends FrontendController
 {
-    /**
-     * @required
-     */
 
     public function defaultAction()
     {

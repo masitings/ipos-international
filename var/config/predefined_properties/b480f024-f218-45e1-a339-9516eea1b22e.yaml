@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                b480f024-f218-45e1-a339-9516eea1b22e:
+                    name: navigation
+                    description: ''
+                    key: navigation
+                    type: document
+                    data: '/en/footer and sitemap/navigation'
+                    config: ''
+                    ctype: document
+                    inheritable: false
+                    creationDate: 1717770598
+                    modificationDate: 1717770615
