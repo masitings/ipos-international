@@ -101,7 +101,7 @@
                                     <ul>
                                         {% for child in page.getPages() %}
                                             {% if child.isVisible() and menuRenderer.accept(child) %}
-                                                <li><a href="{{ child.getHref() }}">{{ child.getLabel()|lower }}</a></li>
+                                                <li><a href="{{ child.getHref() }}">{{ child.getLabel()|trans }}</a></li>
                                             {% endif %}
                                         {% endfor %}
                                     </ul>
