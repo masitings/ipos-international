@@ -10,21 +10,21 @@
 {% else %}
 {% set img = "" %}
 {% endif %}
-
+{# 
 {% do pimcore_head_meta().setProperty("og:title", list.title | u.truncate(100)) %}
-{% do pimcore_head_meta().setProperty("og:type", 'website') %}
+{% do pimcore_head_meta().setProperty("og:type", 'website') %} #}
 {#{% do pimcore_head_meta().setProperty("og:description", list.content | striptags | u.truncate(320)) %}#}
 {#{% do pimcore_head_meta().setProperty("og:author", list.author) %}#}
-{% do pimcore_head_meta().setProperty("og:image", domain ~ img) %}
+{# {% do pimcore_head_meta().setProperty("og:image", domain ~ img) %} #}
 
 {#{% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}#}
 
-{% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
+{# {% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
 {% do pimcore_head_meta().setProperty("twitter:type", "article") %}
 {% do pimcore_head_meta().setProperty("twitter:title", list.title | u.truncate(100)) %}
 {% do pimcore_head_meta().setProperty("twitter:description", list.content | striptags | u.truncate(160)) %}
 {% do pimcore_head_meta().setProperty("twitter:image", domain ~ img) %}
-{% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %}
+{% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %} #}
 
 
 {% block content %}
