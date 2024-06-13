@@ -56,7 +56,7 @@ class EventsController extends BaseController
             $filter = ',filter : '.$filter;
         }else{
             $filter = '';
-        }	
+        }
 
 
         $url = parent::GRAPHQL_URL.'/pimcore-graphql-webservices/events?apikey=af857163a5b2a05be63753beda3813a4';
@@ -189,7 +189,7 @@ class EventsController extends BaseController
 	    if(empty($planningArr)){
 		    continue;
 	    }
-	
+
             $eventsData[$event->getId()] = [
                 'id'    => $event->getId(),
                 'title' => $event->getTitle(),
@@ -248,7 +248,7 @@ class EventsController extends BaseController
 
                                 array_push($filterDateIds,$id);
                             }
-                       
+
 
                     }
                 }
@@ -299,7 +299,7 @@ class EventsController extends BaseController
             return $this->redirect('/en/error-page/404');
         }
 	$title = $request->attributes->get('event');
-        $objTitle = $event->get('o_key');
+        $objTitle = $event->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
@@ -345,7 +345,7 @@ class EventsController extends BaseController
             return $this->redirect('/en/error-page/404');
         }
 	$title = $request->attributes->get('event');
-        $objTitle = $newData->get('o_key');
+        $objTitle = $newData->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');

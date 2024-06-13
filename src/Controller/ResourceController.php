@@ -159,7 +159,7 @@ class ResourceController extends BaseController
         ]);
     }
 
-    
+
 
     /**
      * @Route("/resources/business-guides/{articleTile}{id}" ,name="guides-detail", defaults={"path"=""},requirements={"id"="_\d+"})
@@ -178,7 +178,7 @@ class ResourceController extends BaseController
             return $this->redirect('/en/error-page/404');
         }
 	$title = $request->attributes->get('articleTile');
-        $objTitle = $obj->get('o_key');
+        $objTitle = $obj->get('key');
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
         }
@@ -274,7 +274,7 @@ class ResourceController extends BaseController
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
     }
-    
+
 
     /**
      * @Route("/resources/case-studies/{guidTile}{id}" ,name="guid-detail", defaults={"path"=""},requirements={"id"="_\d+"})
@@ -290,9 +290,9 @@ class ResourceController extends BaseController
 	if(!$caseDetail->getPublished()){
             return $this->redirect('/en/error-page/404');
         }
-	
+
 	$title = $request->attributes->get('guidTile');
-        $objTitle = $caseDetail->get('o_key');
+        $objTitle = $caseDetail->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
@@ -401,7 +401,7 @@ class ResourceController extends BaseController
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
     }
-    
+
 
     /**
      * @Route ("/api/ask-our-experts")
@@ -483,7 +483,7 @@ class ResourceController extends BaseController
 	}
 
 	$title = $request->attributes->get('articleTile');
-        $objTitle = $articles->get('o_key');
+        $objTitle = $articles->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
@@ -548,16 +548,16 @@ class ResourceController extends BaseController
 		if(!$articles->getPublished()){
 			return $this->redirect('/en/error-page/404');
 		}
-	
+
 	$title = $request->attributes->get('articleTile');
-        $objTitle = $articles->get('o_key');
+        $objTitle = $articles->get('key');
 	/*var_dump($objTitle);
 	var_dump($title);
 	exit();*/
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
         }
-	
+
         $list = [
             'title' => $articles->getTitle(),
             'releaseDate' => $articles->getReleaseDate(),
@@ -574,7 +574,7 @@ class ResourceController extends BaseController
 	    'interestedTitle' => $articles->getInterestedTitle(),
         'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
         ];
-		
+
         // return $this->render('resources/ask-our-experts/detail.html.twig',[
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
@@ -638,7 +638,7 @@ class ResourceController extends BaseController
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-		
+
                     'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('coverImg')
                         ->getPath() : ''
@@ -670,7 +670,7 @@ class ResourceController extends BaseController
             return $this->redirect('/en/error-page/404');
         }
 	$title = $request->attributes->get('articleTile');
-        $objTitle = $patent->get('o_key');
+        $objTitle = $patent->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
@@ -775,7 +775,7 @@ class ResourceController extends BaseController
             return $this->redirect('/en/error-page/404');
         }
 	$title = $request->attributes->get('webinarTile');
-        $objTitle = $webinar->get('o_key');
+        $objTitle = $webinar->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');

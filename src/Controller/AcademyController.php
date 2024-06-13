@@ -198,7 +198,7 @@ class AcademyController extends BaseController
             return $this->redirect('/en/error-page/404');
         }
         $title = $request->attributes->get('course');
-        $objTitle = $event->get('o_key');
+        $objTitle = $event->get('key');
 
         if($title != $objTitle){
             return $this->redirect('/en/error-page/404');
@@ -237,7 +237,7 @@ class AcademyController extends BaseController
             'interestedRegister' => $event->getInterestedRegister(),
             'urlType'    => $menuType,
             'otherInfo'    => $event->getotherInfo(),
-            
+
             /*'paneList' => $event->get(),
             'interestedList' => $event->getInterestedList(),*/
         ];
@@ -254,7 +254,7 @@ class AcademyController extends BaseController
         // return $this->render('academy/detail.html.twig',[
         //     'detail' => $data,
         //     /* 'bread'  => $bread*/
-        // ]); 
+        // ]);
         return $this->render('academy/detail-20230918.html.twig',[
             'detail' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -341,11 +341,11 @@ class AcademyController extends BaseController
     public function getDatePickerAction(Request $request){
 
         $filter = $request->request->get('filter');
-        
+
         $filter = json_encode($filter,256);
         $url = parent::GRAPHQL_URL.'/pimcore-graphql-webservices/academy?apikey=079eb73af99d72172ab6f349bbad36bb';
         $str = '{  getCourseListing(defaultLanguage: "en", filter: '.$filter.') {    edges {      node {        id planing {          ... on fieldcollection_ProgramPlanning {            startDate            lastDate          }        }      }    }  }}';
-	
+
         $ar = [
             'query' => $str
         ];
@@ -403,7 +403,7 @@ class AcademyController extends BaseController
         //     'ret' => $result
         // ]);
         return $this->render('academy/courses-20231213.html.twig',[
-            
+
             'ret' => $result,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
