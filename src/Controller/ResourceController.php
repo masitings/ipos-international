@@ -153,6 +153,7 @@ class ResourceController extends BaseController
         // return $this->render('resources/business-guides/index.html.twig',[
         //     'list' => $data
         // ]);
+        return $data;
         return $this->render('resources/business-guides/index-20230718.html.twig', [
             'list' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -168,23 +169,23 @@ class ResourceController extends BaseController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function businessDetailAction(Request $request,$id)
+    public function businessDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $list = [];
-	$obj = DataObject\Business::getById($id);
+        $obj = DataObject\Business::getById($id);
 
-	if(!$obj->getPublished()){
+        if (!$obj->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
-	$title = $request->attributes->get('articleTile');
+        $title = $request->attributes->get('articleTile');
         $objTitle = $obj->get('key');
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
 
-        if ($obj){
+        if ($obj) {
             $list['title'] = $obj->getTitle();
             $list['releaseDate'] = $obj->getReleaseDate();
             $list['author'] = $obj->getAuthor();
@@ -201,20 +202,20 @@ class ResourceController extends BaseController
             $list['resourceType'] = $obj->getResourceType();
             $list['shares'] = $obj->getShares();
             $list['moreContent'] = $obj->getMoreContent();
-	    $list['interestedTitle'] = $obj->getInterestedTitle();
-	    $list['industryTitle'] = $obj->getIndustryTitle();
-	    $list['chineseGuide'] = $obj->getChineseGuide();
+            $list['interestedTitle'] = $obj->getInterestedTitle();
+            $list['industryTitle'] = $obj->getIndustryTitle();
+            $list['chineseGuide'] = $obj->getChineseGuide();
             $list['guideTitle'] = $obj->getGuideTitle();
-	    $list['seoTitle'] = $obj->getSeoTitle();
+            $list['seoTitle'] = $obj->getSeoTitle();
             $list['seoDescription'] = $obj->getSeoDescription();
-            $list['tags'] = $obj->getTags() ? implode(',',$obj->getTags()) : '';
+            $list['tags'] = $obj->getTags() ? implode(',', $obj->getTags()) : '';
         }
 
         // return $this->render('resources/business-guides/detail.html.twig',[
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/business-guides/detail-20230731.html.twig',[
+        return $this->render('resources/business-guides/detail-20230731.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -240,19 +241,19 @@ class ResourceController extends BaseController
         /*$list->load();*/
         $data['latest'] = $list->filterByLatest(true)->load();
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
             $list->setOffset($num);
             $list->setLimit(6);
             $studies   = $list->filterByLatest(false)->load();
 
             $result = [];
-            foreach ($studies as $value){
+            foreach ($studies as $value) {
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-		    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '' ,
+                    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '',
                     'videoTime' => $value->getVideoTime(),
                     'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('CaseStudiesMore')->getPath() : ''
@@ -260,7 +261,6 @@ class ResourceController extends BaseController
             }
 
             return new JsonResponse($result);
-
         }
 
 
@@ -269,7 +269,7 @@ class ResourceController extends BaseController
         // return $this->render('resources/case-studies/index.html.twig',[
         //     'list'   => $data
         // ]);
-        return $this->render('resources/case-studies/index-20230718.html.twig',[
+        return $this->render('resources/case-studies/index-20230718.html.twig', [
             'list'   => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -283,18 +283,18 @@ class ResourceController extends BaseController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function caseDetailAction(Request $request,$id)
+    public function caseDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $caseDetail = DataObject\CaseStudy::getById($id);
-	if(!$caseDetail->getPublished()){
+        if (!$caseDetail->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
 
-	$title = $request->attributes->get('guidTile');
+        $title = $request->attributes->get('guidTile');
         $objTitle = $caseDetail->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -305,14 +305,14 @@ class ResourceController extends BaseController
             'authorIcon' => $caseDetail->getAuthorIcon(),
             'video' => $caseDetail->getDetailVideo(),
             'videoTime' => $caseDetail->getVideoTime(),
-	    'coverImage' => $caseDetail->getCoverImage(),
+            'coverImage' => $caseDetail->getCoverImage(),
             'content' => $caseDetail->getContent(),
             'interestedList' => $caseDetail->getInterestedList(),
             'shares' => $caseDetail->getShares(),
             'bookChat' => $caseDetail->getBookChat(),
             'tags' => $caseDetail->getTags(),
-	    'interestedTitle' => $caseDetail->getInterestedTitle(),
-	    'seoTitle' => $caseDetail->getSeoTitle(),
+            'interestedTitle' => $caseDetail->getInterestedTitle(),
+            'seoTitle' => $caseDetail->getSeoTitle(),
             'seoDescription' => $caseDetail->getSeoDescription(),
 
 
@@ -322,7 +322,7 @@ class ResourceController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/case-studies/detail-20230718.html.twig',[
+        return $this->render('resources/case-studies/detail-20230718.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -332,7 +332,7 @@ class ResourceController extends BaseController
     public function usefulResourcesAction(Request $request)
     {
         // return $this->render('resources/useful-resources/index.html.twig');
-        return $this->render('resources/useful-resources/index-20230718.html.twig',[
+        return $this->render('resources/useful-resources/index-20230718.html.twig', [
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
     }
@@ -342,7 +342,7 @@ class ResourceController extends BaseController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function articlesAction(Request $request,PaginatorInterface $paginator)
+    public function articlesAction(Request $request, PaginatorInterface $paginator)
     {
 
         $type = $request->request->get('articleType');
@@ -355,25 +355,25 @@ class ResourceController extends BaseController
         $list->setOrder('DESC');
         //$list->load();
 
-        if ($type){
-            if($type == 'All Topics'){
+        if ($type) {
+            if ($type == 'All Topics') {
                 $list->filterByLatest(false);
-            }else{
+            } else {
                 $list->filterByArticleType($type);
-	    }
-	    $list->filterByResourceType('Articles')->load();
+            }
+            $list->filterByResourceType('Articles')->load();
             $list->setOffset($num);
             $articles = $list->setLimit(6)->filterByLatest(false)->load();
 
 
             $result = [];
-            foreach ($articles as $value){
+            foreach ($articles as $value) {
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-                    'coverImage' => $value->getCoverImage() ?$value->getCoverImage()
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('ArticlesMore')
                         ->getPath() : ''
                 ];
@@ -395,7 +395,7 @@ class ResourceController extends BaseController
         //     'list' => $data,
         //     'articleType'  => $articleType
         // ]);
-        return $this->render('resources/articles/index-20230718.html.twig',[
+        return $this->render('resources/articles/index-20230718.html.twig', [
             'list' => $data,
             'articleType'  => $articleType,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -408,7 +408,7 @@ class ResourceController extends BaseController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function askAction(Request $request,PaginatorInterface $paginator)
+    public function askAction(Request $request, PaginatorInterface $paginator)
     {
 
         $type = $request->request->get('articleType');
@@ -421,25 +421,25 @@ class ResourceController extends BaseController
         $list->setOrder('DESC');
         //$list->load();
 
-        if ($type){
-            if($type == 'All Topics'){
+        if ($type) {
+            if ($type == 'All Topics') {
                 $list->filterByLatest(false);
-            }else{
+            } else {
                 $list->filterByArticleType($type);
             }
-			$list->filterByResourceType('Ask-Our-Experts');
+            $list->filterByResourceType('Ask-Our-Experts');
             $list->setOffset($num);
             $articles = $list->setLimit(6)->filterByLatest(false)->load();
 
 
             $result = [];
-            foreach ($articles as $value){
+            foreach ($articles as $value) {
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-                    'coverImage' => $value->getCoverImage() ?$value->getCoverImage()
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('ArticlesMore')
                         ->getPath() : ''
                 ];
@@ -461,7 +461,7 @@ class ResourceController extends BaseController
         //     'list' => $data,
         //     'articleType'  => $articleType
         // ]);
-        return $this->render('resources/ask-our-experts/index-20230718.html.twig',[
+        return $this->render('resources/ask-our-experts/index-20230718.html.twig', [
             'list' => $data,
             'articleType'  => $articleType,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -474,18 +474,18 @@ class ResourceController extends BaseController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function articleDetailAction(Request $request,$id)
+    public function articleDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $articles = DataObject\Articles::getById($id);
-	if(!$articles->getPublished()){
+        if (!$articles->getPublished()) {
             return $this->redirect('/en/error-page/404');
-	}
+        }
 
-	$title = $request->attributes->get('articleTile');
+        $title = $request->attributes->get('articleTile');
         $objTitle = $articles->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -500,11 +500,11 @@ class ResourceController extends BaseController
             'relatedArticles' => $articles->getRelatedArticles(),
             'shares' => $articles->getShares(),
             'bookChat' => $articles->getBookChat(),
-            'tags' => $articles->getTags() ? implode(',',$articles->getTags()) : "",
+            'tags' => $articles->getTags() ? implode(',', $articles->getTags()) : "",
             'seoTitle' => $articles->getSeoTitle(),
             'seoDescription' => $articles->getSeoDescription(),
-	    'interestedTitle' => $articles->getInterestedTitle(),
-        'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
+            'interestedTitle' => $articles->getInterestedTitle(),
+            'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
 
         ];
         /*$list['title'] = $obj->getTitle();
@@ -527,7 +527,7 @@ class ResourceController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/articles/detail-20230731.html.twig',[
+        return $this->render('resources/articles/detail-20230731.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -535,26 +535,26 @@ class ResourceController extends BaseController
     }
 
 
-    	/**
+    /**
      *
      * @Route("/resources/ask-our-experts/{articleTile}{id}" ,name="ask-detail", defaults={"path"=""},requirements={"id"="_\d+"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function askDetailAction(Request $request,$id)
+    public function askDetailAction(Request $request, $id)
     {
-		$id = trim($id,'_');
-		$articles = DataObject\Articles::getById($id);
-		if(!$articles->getPublished()){
-			return $this->redirect('/en/error-page/404');
-		}
+        $id = trim($id, '_');
+        $articles = DataObject\Articles::getById($id);
+        if (!$articles->getPublished()) {
+            return $this->redirect('/en/error-page/404');
+        }
 
-	$title = $request->attributes->get('articleTile');
+        $title = $request->attributes->get('articleTile');
         $objTitle = $articles->get('key');
-	/*var_dump($objTitle);
+        /*var_dump($objTitle);
 	var_dump($title);
 	exit();*/
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -568,18 +568,18 @@ class ResourceController extends BaseController
             'relatedArticles' => $articles->getRelatedArticles(),
             'shares' => $articles->getShares(),
             'bookChat' => $articles->getBookChat(),
-	    'tags' => $articles->getTags() ? implode(',',$articles->getTags()) : "",
+            'tags' => $articles->getTags() ? implode(',', $articles->getTags()) : "",
             'seoTitle' => $articles->getSeoTitle(),
             'seoDescription' => $articles->getSeoDescription(),
-	    'interestedTitle' => $articles->getInterestedTitle(),
-        'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
+            'interestedTitle' => $articles->getInterestedTitle(),
+            'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
         ];
 
         // return $this->render('resources/ask-our-experts/detail.html.twig',[
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/ask-our-experts/detail-20230731.html.twig',[
+        return $this->render('resources/ask-our-experts/detail-20230731.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -599,7 +599,7 @@ class ResourceController extends BaseController
         //     'list' => $list,
         //     'faqType' => $faqType
         // ]);
-        return $this->render('resources/faqs/index-20231130a.html.twig',[
+        return $this->render('resources/faqs/index-20231130a.html.twig', [
             'list' => $list,
             'faqType' => $faqType,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -625,13 +625,13 @@ class ResourceController extends BaseController
 
         $data['latest'] = $list->filterByLatest(true)->load();
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
             $list->setOffset($num);
             $list->setLimit(6);
             $patents = $list->filterByLatest(false)->load();
 
             $result = [];
-            foreach ($patents as $value){
+            foreach ($patents as $value) {
 
                 $result[] = [
                     'title' => $value->getTitle(),
@@ -651,7 +651,7 @@ class ResourceController extends BaseController
         // return $this->render('resources/patentAnalyticReports/index.html.twig',[
         //     'list'   => $data
         // ]);
-        return $this->render('resources/patentAnalyticReports/index-20230718.html.twig',[
+        return $this->render('resources/patentAnalyticReports/index-20230718.html.twig', [
             'list'   => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -662,17 +662,17 @@ class ResourceController extends BaseController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function patentDetailAction(Request $request,$id)
+    public function patentDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $patent = DataObject\PatentAnalytic::getById($id);
-	if(!$patent->getPublished()){
+        if (!$patent->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
-	$title = $request->attributes->get('articleTile');
+        $title = $request->attributes->get('articleTile');
         $objTitle = $patent->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -685,12 +685,12 @@ class ResourceController extends BaseController
             'content' => $patent->getContent(),
             'interestedList' => $patent->getInterestedList(),
             'shares' => $patent->getShares(),
-            'tags' => $patent->getTags() ? implode(',',$patent->getTags()) : '',
+            'tags' => $patent->getTags() ? implode(',', $patent->getTags()) : '',
             'seoTitle' => $patent->getSeoTitle(),
             'seoDescription' => $patent->getSeoDescription(),
             'file' => $patent->getFile(),
-	    'interestedTitle' => $patent->getInterestedTitle(),
-        'video' => $patent->getDetailVideo() ? $patent->getDetailVideo() : '',
+            'interestedTitle' => $patent->getInterestedTitle(),
+            'video' => $patent->getDetailVideo() ? $patent->getDetailVideo() : '',
         ];
 
 
@@ -698,13 +698,11 @@ class ResourceController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/patentAnalyticReports/detail-20230731.html.twig',[
+        return $this->render('resources/patentAnalyticReports/detail-20230731.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
-
     }
 
     /**
@@ -725,21 +723,21 @@ class ResourceController extends BaseController
 
         $data['latest'] = $list->filterByLatest(true)->load();
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
 
             $list->setOffset($num);
             $list->setLimit(6);
             $webinar = $list->filterByLatest(false)->load();
 
             $result = [];
-            foreach ($webinar as $value){
+            foreach ($webinar as $value) {
 
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'videoTime' => $value->getVideoTime(),
-		    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '',
+                    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '',
                     'fullPath' => $value->getFullPath(),
                     'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('WebinarRecordingsMore')->getPath() : ''
@@ -753,11 +751,10 @@ class ResourceController extends BaseController
         //     'list' => $data,
 
         // ]);
-        return $this->render('resources/webinar-recordings/index-20230718.html.twig',[
+        return $this->render('resources/webinar-recordings/index-20230718.html.twig', [
             'list' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
 
     /**
@@ -767,17 +764,17 @@ class ResourceController extends BaseController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function webinarDetailAction(Request $request,$id)
+    public function webinarDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $webinar = DataObject\WebinarRecordings::getById($id);
-	if(!$webinar->getPublished()){
+        if (!$webinar->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
-	$title = $request->attributes->get('webinarTile');
+        $title = $request->attributes->get('webinarTile');
         $objTitle = $webinar->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -787,24 +784,24 @@ class ResourceController extends BaseController
             'author' => $webinar->getAuthor(),
             'authorIcon' => $webinar->getAuthorIcon(),
             'content' => $webinar->getContent(),
-	    'coverImage' => $webinar->getCoverImage(),
+            'coverImage' => $webinar->getCoverImage(),
             'video'   => $webinar->getDetailVideo(),
             'videoTime' => $webinar->getVideoTime(),
             'interestedList' => $webinar->getInterestedList(),
             'full'  => $webinar->getFullGuide(),
             'shares' => $webinar->getShares(),
-            'tags' => $webinar->getTags() ? implode(',',$webinar->getTags()) : '',
+            'tags' => $webinar->getTags() ? implode(',', $webinar->getTags()) : '',
             'seoTitle' => $webinar->getSeoTitle(),
             'seoDescription' => $webinar->getSeoDescription(),
             'file' => $webinar->getFile(),
-	    'interestedTitle' => $webinar->getInterestedTitle(),
+            'interestedTitle' => $webinar->getInterestedTitle(),
         ];
 
         // return $this->render('resources/webinar-recordings/detail.html.twig',[
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/webinar-recordings/detail-20230718.html.twig',[
+        return $this->render('resources/webinar-recordings/detail-20230718.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -819,16 +816,15 @@ class ResourceController extends BaseController
         $list = (new ResourcesServices())->getResources($resourceType);*/
 
         // return $this->render('resources/search-made-easy-for-smes/index.html.twig');
-        return $this->render('resources/search-made-easy-for-smes/index-20230718.html.twig',[
+        return $this->render('resources/search-made-easy-for-smes/index-20230718.html.twig', [
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
 
     public function techAction(Request $request)
     {
-	    return $this->render('resources/tech-insights-through-patents/index.html.twig',[
-		    'template_layout_name' => 'layouts/layout-20230718.html.twig'
-	    ]);
+        return $this->render('resources/tech-insights-through-patents/index.html.twig', [
+            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        ]);
     }
 }
