@@ -206,7 +206,7 @@ class ResourceController extends BaseController
             $list['chineseGuide'] = $obj->getChineseGuide();
             $list['guideTitle'] = $obj->getGuideTitle();
             $list['seoTitle'] = $obj->getSeoTitle();
-            $list['seoDescription'] = $obj->getSeoDescription();
+            $list['seoDescription'] = $obj->getSeoDescription() ?? substr(strip_tags($obj->getContent()), 0, 200);
             $list['tags'] = $obj->getTags() ? implode(',', $obj->getTags()) : '';
         }
 
