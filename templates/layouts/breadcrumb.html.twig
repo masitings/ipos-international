@@ -1,10 +1,6 @@
 {% set breadcrumbStr = pimcore_render_nav(mainNavigation, 'breadcrumbs')  %}
-
-            {% set breadcrumb = breadcrumbStr | split('&gt;') %}
-            {% set breadcrumbCount = breadcrumb | length %}
-
-
-{{ dump(breadcrumbStr.render()) }}
+{% set breadcrumb = breadcrumbStr | split('&gt;') %}
+{% set breadcrumbCount = breadcrumb | length %}
 
 <ol>
 
