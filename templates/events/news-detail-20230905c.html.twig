@@ -1,8 +1,10 @@
 {% extends template_layout_name %}
-{# 
+
 {% do document.setTitle(data.seoTitle | default(data.title ~ ' — IPOS International')) %}
-{% do pimcore_head_meta().setName("description", data.seoDescription | default(data.content | striptags | u.truncate(320))) %}
+
+{# {% do pimcore_head_meta().setName("description", data.seoDescription | default(data.content | striptags | u.truncate(320))) %}
 {% do pimcore_head_meta().setName("keywords", data.tags | default('')) %} #}
+
 {% block content %}
     <div class="articles_details_container resources_public_container">
         <div class="bg_circle"></div>
