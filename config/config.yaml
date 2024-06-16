@@ -68,8 +68,8 @@ pimcore:
 
 #### SYSTEM SETTINGS
 
-   general:
-       timezone: Asia/Singapore
+#    general:
+#        timezone: Europe/Berlin
 #        path_variable: ''
 #        instance_identifier: ''
 #    services:
