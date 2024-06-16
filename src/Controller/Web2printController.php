@@ -78,5 +78,4 @@ class Web2printController extends FrontendController
 
         return $this->render('web2print/container.html.twig', $paramsBag);
     }
-
 }
