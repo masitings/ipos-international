@@ -1,8 +1,8 @@
 {% extends template_layout_name %}
 
 {% do document.setTitle(list.seoTitle | default(list.title ~ ' — IPOS International')) %}
-{# {% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
-{% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
+{% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
+{# {% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
 
 {% set domain = app.request.getSchemeAndHttpHost() %}
 
