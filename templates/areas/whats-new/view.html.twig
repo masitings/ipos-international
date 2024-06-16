@@ -37,7 +37,7 @@
                                             News & Announcements
                                         {% elseif list.className == 'Events' %}
                                             Upcoming Events
-					{% elseif list.className == 'PatentAnalytic' %}
+					                    {% elseif list.className == 'PatentAnalytic' %}
                                             Patent Analytics
                                         {% else %}
                                             {{ list.className | upper }}
@@ -46,9 +46,7 @@
                                     <h3 class="new-box-title m-t-10">{{ list.title }}</h3>
                                 </div>
                                 <div class="new-box__bottom__bottom">
-                                    
-                                        <a href="{{ list.fullPath }}_{{ list.getId() }}">Find out more</a>
-                                    
+                                    <a href="{{ list.fullPath }}_{{ list.getId() }}">Find out more</a>
                                 </div>
                             </div>
                         </div>
