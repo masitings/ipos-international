@@ -1,6 +1,6 @@
 {% extends template_layout_name %}
 
-{# {% do document.setTitle(detail.seoTitle | default(detail.title ~ ' ? IPOS International')) %} #}
+{% do document.setTitle(detail.seoTitle | default(detail.title ~ ' ? IPOS International')) %}
 {# {% do pimcore_head_meta().setName("description", detail.seoDescription | default(detail.content | striptags | u.truncate(320))) %} #}
 {# {% do pimcore_head_meta().setName("keywords", detail.tags | default('')) %} #}
 
