@@ -1,7 +1,7 @@
 {% extends template_layout_name %}
 
 {% do document.setTitle(list.seoTitle | default(list.title ~ ' — IPOS International')) %}
-{% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
+{# {% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
 {% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
 
 {% set domain = app.request.getSchemeAndHttpHost() %}
@@ -20,7 +20,7 @@
 {% do pimcore_head_meta().setProperty("twitter:title",list.title) %}
 {% do pimcore_head_meta().setProperty("twitter:description",list.content | striptags | u.truncate(160)) %}
 {% do pimcore_head_meta().setProperty("twitter:image",domain ~ img) %}
-{% do pimcore_head_meta().setProperty("twitter:image:src",domain ~ img) %}
+{% do pimcore_head_meta().setProperty("twitter:image:src",domain ~ img) %} #}
 
 {% block content %}
 
