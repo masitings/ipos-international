@@ -4,7 +4,7 @@
             {% set breadcrumbCount = breadcrumb | length %}
 
 
-{{ dump(breadcrumbStr) }}
+{{ dump(breadcrumbStr.render()) }}
 
 <ol>
 
@@ -16,7 +16,7 @@
             </li>
         {% else %}
             <li class="testing">
-                {{ linkNode | raw }}
+                {{ linkNode.getPage() | raw }}
             </li>
         {% endif %}
 
