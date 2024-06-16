@@ -154,10 +154,10 @@ class ResourceController extends BaseController
         //     'list' => $data
         // ]);
         return $data;
-        return $this->render('resources/business-guides/index-20230718.html.twig', [
-            'list' => $data,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        ]);
+        // return $this->render('resources/business-guides/index-20230718.html.twig', [
+        //     'list' => $data,
+        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // ]);
     }
 
 
