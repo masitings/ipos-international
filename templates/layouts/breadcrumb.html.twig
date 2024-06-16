@@ -4,13 +4,12 @@
             {% set breadcrumbCount = breadcrumb | length %}
 
 
-
+{{ dump(mainNavigation) }}
 
 <ol>
 
     <li><a href="/">{{ 'Home'|trans }}</a> </li>
     {% for key, linkNode in breadcrumb %}
-        {{ dump(linkNode) }}
         {% if key == (breadcrumbCount - 1) %}
             <li class="active">
                 {{ linkNode | raw }}
