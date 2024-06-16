@@ -165,6 +165,7 @@ class ResourceController extends BaseController
      * @Route("/resources/business-guides/{articleTile}{id}" ,name="guides-detail", defaults={"path"=""},requirements={"id"="_\d+"})
      * @param Request $request
      * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
     public function businessDetailAction(Request $request, $id)
@@ -213,12 +214,11 @@ class ResourceController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $list;
-        // return $this->render('resources/business-guides/detail-20230731.html.twig', [
-        //     'list' => $list,
-        //     'sharePage' => $request->getUri(),
-        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        // ]);
+        return $this->render('resources/business-guides/detail-20230731.html.twig', [
+            'list' => $list,
+            'sharePage' => $request->getUri(),
+            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        ]);
     }
 
 
