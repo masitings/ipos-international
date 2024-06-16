@@ -13,11 +13,11 @@
 
         {% if key == (breadcrumbCount - 1) %}
             <li class="active">
-                {{ linkNode | trans }}
+                {{ linkNode | raw }}
             </li>
         {% else %}
             <li>
-                {{ linkNode | trans }}
+                {{ linkNode | raw }}
             </li>
         {% endif %}
 
