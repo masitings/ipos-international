@@ -1,8 +1,6 @@
 {% set breadcrumbStr = pimcore_render_nav(mainNavigation, 'breadcrumbs')  %}
-{% set brc = pimcore_nav_renderer('breadcrumbs').render(mainNavigation)  %}
 {% set breadcrumb = breadcrumbStr | split('&gt;') %}
 {% set breadcrumbCount = breadcrumb | length %}
-{{ dump(brc) }}
 <ol>
 
     <li><a href="/">{{ 'Home'|trans }}</a> </li>
