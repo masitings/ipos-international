@@ -165,7 +165,6 @@ class ResourceController extends BaseController
      * @Route("/resources/business-guides/{articleTile}{id}" ,name="guides-detail", defaults={"path"=""},requirements={"id"="_\d+"})
      * @param Request $request
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
     public function businessDetailAction(Request $request, $id)
