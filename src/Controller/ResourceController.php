@@ -153,11 +153,10 @@ class ResourceController extends BaseController
         // return $this->render('resources/business-guides/index.html.twig',[
         //     'list' => $data
         // ]);
-        return $data;
-        // return $this->render('resources/business-guides/index-20230718.html.twig', [
-        //     'list' => $data,
-        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        // ]);
+        return $this->render('resources/business-guides/index-20230718.html.twig', [
+            'list' => $data,
+            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        ]);
     }
 
 
@@ -215,11 +214,12 @@ class ResourceController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/business-guides/detail-20230731.html.twig', [
-            'list' => $list,
-            'sharePage' => $request->getUri(),
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        ]);
+        return $list;
+        // return $this->render('resources/business-guides/detail-20230731.html.twig', [
+        //     'list' => $list,
+        //     'sharePage' => $request->getUri(),
+        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // ]);
     }
 
 
