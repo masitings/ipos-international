@@ -311,10 +311,8 @@ class ResourceController extends BaseController
             'bookChat' => $caseDetail->getBookChat(),
             'tags' => $caseDetail->getTags(),
             'interestedTitle' => $caseDetail->getInterestedTitle(),
-            'seoTitle' => $caseDetail->getSeoTitle(),
-            'seoDescription' => $caseDetail->getSeoDescription(),
-
-
+            'seoTitle' => !empty($caseDetail->getSeoTitle()) ? $caseDetail->getSeoTitle() : $caseDetail->getTitle(),
+            'seoDescription' => $caseDetail->getSeoDescription() ?? substr(strip_tags($caseDetail->getContent()), 0, 200),
         ];
 
         // return $this->render('resources/case-studies/detail.html.twig',[
@@ -501,8 +499,8 @@ class ResourceController extends BaseController
             'shares' => $articles->getShares(),
             'bookChat' => $articles->getBookChat(),
             'tags' => $articles->getTags() ? implode(',', $articles->getTags()) : "",
-            'seoTitle' => $articles->getSeoTitle(),
-            'seoDescription' => $articles->getSeoDescription(),
+            'seoTitle' => !empty($articles->getSeoTitle()) ? $articles->getSeoTitle() : $articles->getTitle(),
+            'seoDescription' => $articles->getSeoDescription() ?? substr(strip_tags($articles->getContent()), 0, 200),
             'interestedTitle' => $articles->getInterestedTitle(),
             'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
 
@@ -569,8 +567,8 @@ class ResourceController extends BaseController
             'shares' => $articles->getShares(),
             'bookChat' => $articles->getBookChat(),
             'tags' => $articles->getTags() ? implode(',', $articles->getTags()) : "",
-            'seoTitle' => $articles->getSeoTitle(),
-            'seoDescription' => $articles->getSeoDescription(),
+            'seoTitle' => !empty($articles->getSeoTitle()) ? $articles->getSeoTitle() : $articles->getTitle(),
+            'seoDescription' => $articles->getSeoDescription() ?? substr(strip_tags($articles->getContent()), 0, 200),
             'interestedTitle' => $articles->getInterestedTitle(),
             'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
         ];
@@ -686,8 +684,8 @@ class ResourceController extends BaseController
             'interestedList' => $patent->getInterestedList(),
             'shares' => $patent->getShares(),
             'tags' => $patent->getTags() ? implode(',', $patent->getTags()) : '',
-            'seoTitle' => $patent->getSeoTitle(),
-            'seoDescription' => $patent->getSeoDescription(),
+            'seoTitle' => !empty($patent->getSeoTitle()) ? $patent->getSeoTitle() : $patent->getTitle(),
+            'seoDescription' => $patent->getSeoDescription() ?? substr(strip_tags($patent->getContent()), 0, 200),
             'file' => $patent->getFile(),
             'interestedTitle' => $patent->getInterestedTitle(),
             'video' => $patent->getDetailVideo() ? $patent->getDetailVideo() : '',
@@ -791,8 +789,8 @@ class ResourceController extends BaseController
             'full'  => $webinar->getFullGuide(),
             'shares' => $webinar->getShares(),
             'tags' => $webinar->getTags() ? implode(',', $webinar->getTags()) : '',
-            'seoTitle' => $webinar->getSeoTitle(),
-            'seoDescription' => $webinar->getSeoDescription(),
+            'seoTitle' => !empty($webinar->getSeoTitle()) ? $webinar->getSeoTitle() : $webinar->getTitle(),
+            'seoDescription' => $webinar->getSeoDescription() ?? substr(strip_tags($webinar->getContent()), 0, 200),
             'file' => $webinar->getFile(),
             'interestedTitle' => $webinar->getInterestedTitle(),
         ];
