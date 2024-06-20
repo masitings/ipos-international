@@ -375,7 +375,8 @@ class ResourceController extends BaseController
                         'fullPath' => $value->getFullPath(),
                         'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                             ->getThumbnail('ArticlesMore')
-                            ->getPath() : ''
+                            ->getPath() : '',
+                        'test' => true,
                     ];
                 }
             }
