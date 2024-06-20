@@ -381,7 +381,7 @@ class ResourceController extends BaseController
                 }
             }
 
-            return new JsonResponse($result);
+            return new JsonResponse([]);
         }
 
 
