@@ -8,17 +8,17 @@
 
 {% set img = list.coverImage.getThumbnail('coverImg') %}
 
-{% do pimcore_head_meta().setProperty("og:title", list.title) %}
+{% do pimcore_head_meta().setProperty("og:title", list.seoTitle) %}
 {% do pimcore_head_meta().setProperty("og:type", "article") %}
-{% do pimcore_head_meta().setProperty("og:description", list.content | striptags | u.truncate(320)) %}
+{% do pimcore_head_meta().setProperty("og:description", list.seoDescription) %}
 {% do pimcore_head_meta().setProperty("og:image", domain ~ img) %}
 {% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}
 
 {% do pimcore_head_meta().setProperty("twitter:card","summary") %}
 {% do pimcore_head_meta().setProperty("twitter:url",app.request.uri) %}
 {% do pimcore_head_meta().setProperty("twitter:type","article") %}
-{% do pimcore_head_meta().setProperty("twitter:title",list.title) %}
-{% do pimcore_head_meta().setProperty("twitter:description",list.content | striptags | u.truncate(160)) %}
+{% do pimcore_head_meta().setProperty("twitter:title",list.seoTitle) %}
+{% do pimcore_head_meta().setProperty("twitter:description",list.seoDescription) %}
 {% do pimcore_head_meta().setProperty("twitter:image",domain ~ img) %}
 {% do pimcore_head_meta().setProperty("twitter:image:src",domain ~ img) %}
 
