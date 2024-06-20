@@ -367,21 +367,19 @@ class ResourceController extends BaseController
 
             $result = [];
             foreach ($articles as $value) {
-                if (str_contains($value->getFullPath(), 'resources/articles')) {
-                    $result[] = [
-                        'title' => $value->getTitle(),
-                        'date'  => $value->getReleaseDate(),
-                        'id'    => $value->getId(),
-                        'fullPath' => $value->getFullPath(),
-                        'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
-                            ->getThumbnail('ArticlesMore')
-                            ->getPath() : '',
-                        'test' => true,
-                    ];
-                }
+                $result[] = [
+                    'title' => $value->getTitle(),
+                    'date'  => $value->getReleaseDate(),
+                    'id'    => $value->getId(),
+                    'fullPath' => $value->getFullPath(),
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
+                        ->getThumbnail('ArticlesMore')
+                        ->getPath() : '',
+                    'test' => true,
+                ];
             }
 
-            return new JsonResponse([]);
+            return new JsonResponse($result);
         }
 
 
