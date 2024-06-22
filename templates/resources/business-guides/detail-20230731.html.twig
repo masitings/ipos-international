@@ -211,19 +211,19 @@
                                     <span class="share-txt">SHARE</span>
                                     <div class="share-layout">
                                         {% for share in list.shares %}
-                                            {% if share.getShare().class is same as('facebook') %}
+                                            {% if share.getShare().class == 'facebook' %}
                                                 <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Facebook.c78e324.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
                                             {% endif %}
 
-                                            {% if share.getShare().class is same as('linkedin') %}
+                                            {% if share.getShare().class == 'linkedin' %}
                                                 <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Linkedin.dac1a71.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
                                             {% endif %}
                                             
-                                            {% if share.getShare().class is same as('twitter') %}
+                                            {% if share.getShare().class == 'twitter' %}
                                                 <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Twitter.6adf57e.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
                                             {% endif %}
-                                            
-                                            {% if share.getShare().class is same as('email') %}
+
+                                            {% if share.getShare().class == 'email' %}
                                                 <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Email.bd681cf.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
                                             {% endif %}
                                         {% endfor %}
