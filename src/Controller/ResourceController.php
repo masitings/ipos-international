@@ -503,28 +503,8 @@ class ResourceController extends BaseController
             'seoDescription' => $articles->getSeoDescription() ?? substr(strip_tags($articles->getContent()), 0, 200),
             'interestedTitle' => $articles->getInterestedTitle(),
             'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
-
         ];
-        /*$list['title'] = $obj->getTitle();
-        $list['releaseDate'] = $obj->getReleaseDate();
-        $list['author'] = $obj->getAuthor();
-        $list['authorIcon'] = $obj->getAuthorIcon();
-        $list['coverImage'] = $obj->getCoverImage();
-        $list['content'] = $obj->getContent();
-        $list['videoTime'] = $obj->getVideoTime();
-        $list['also'] = $obj->getAlsoList();
-        $list['file'] = $obj->getFile();
-        $list['video'] = $obj->getDetailVideo();
-        $list['checkList'] = $obj->getCheckIndustry();
-        $list['fullGuide'] = $obj->getFullGuide();
-        $list['listType'] = $obj->getListType();
-        $list['resourceType'] = $obj->getResourceType();
-        $list['shares'] = $obj->getShares();*/
-
-        // return $this->render('resources/articles/detail.html.twig',[
-        //     'list' => $list,
-        //     'sharePage' => $request->getUri()
-        // ]);
+        
         return $this->render('resources/articles/detail-20230731.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
