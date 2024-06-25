@@ -1,6 +1,6 @@
 {% extends template_layout_name %}
 
-{% do document.setTitle(list.seoTitle | default(list.seoTitle ~ ' — IPOS International')) %}
+{% do document.setTitle(list.seoTitle) %}
 {% do pimcore_head_meta().setName("description", list.seoDescription) %}
 {% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
 
