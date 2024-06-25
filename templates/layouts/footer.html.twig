@@ -29,7 +29,9 @@
                             hidetext : true
                         }) }}
                         {% else %}
-                            {{ pimcore_image('logo') }}
+                            {{ pimcore_image('logo',{
+                                thumbnail: 'usefulSvg'
+                            }) }}
                     {% endif %}
                    
                     
