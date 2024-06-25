@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                4481b1c1-5b38-4527-bc39-ae5971ac9e32:
+                    name: navigation_root
+                    description: ''
+                    key: navigation_root
+                    type: document
+                    data: /en
+                    config: ''
+                    ctype: document
+                    inheritable: true
+                    creationDate: 1718094929
+                    modificationDate: 1718094961

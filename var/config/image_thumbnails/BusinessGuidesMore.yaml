@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    BusinessGuidesMore:
+                        items: {  }
+                        medias: {  }
+                        name: BusinessGuidesMore
+                        description: ''
+                        group: Resources
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1718293107
+                        creationDate: 1718293103
+                        preserveAnimation: false

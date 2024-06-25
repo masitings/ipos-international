@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    Also_Worth_Reading_OR_Watching:
+                        items: {  }
+                        medias: {  }
+                        name: Also_Worth_Reading_OR_Watching
+                        description: ''
+                        group: Public
+                        format: PNG
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1719326666
+                        creationDate: 1718292867
+                        preserveAnimation: false
