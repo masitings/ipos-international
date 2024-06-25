@@ -1,0 +1,15 @@
+pimcore:
+    assets:
+        video:
+            thumbnails:
+                definitions:
+                    youtube:
+                        items: {  }
+                        medias: {  }
+                        name: youtube
+                        description: ''
+                        group: '&lt;img src=x onerror=alert(document.domain)&gt; '
+                        videoBitrate: 600
+                        audioBitrate: 128
+                        modificationDate: 1718526010
+                        creationDate: 1718294577

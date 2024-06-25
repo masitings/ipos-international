@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    WebinarRecordingsLatest:
+                        items: {  }
+                        medias: {  }
+                        name: WebinarRecordingsLatest
+                        description: ''
+                        group: Resources
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1718293190
+                        creationDate: 1718293185
+                        preserveAnimation: false

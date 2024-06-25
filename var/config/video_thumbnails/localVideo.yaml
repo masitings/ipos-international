@@ -1,0 +1,15 @@
+pimcore:
+    assets:
+        video:
+            thumbnails:
+                definitions:
+                    localVideo:
+                        items: {  }
+                        medias: {  }
+                        name: localVideo
+                        description: ''
+                        group: ''
+                        videoBitrate: 0
+                        audioBitrate: 0
+                        modificationDate: 1718525349
+                        creationDate: 1718294561
