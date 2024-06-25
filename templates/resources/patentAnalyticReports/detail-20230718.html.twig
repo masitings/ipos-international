@@ -1,24 +1,24 @@
 {% extends template_layout_name %}
 
-{% do document.setTitle(list.seoTitle | default(list.title ~ ' — IPOS International')) %}
-{% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
+{% do document.setTitle(list.seoTitle | default(list.seoTitle ~ ' — IPOS International')) %}
+{% do pimcore_head_meta().setName("description", list.seoDescription) %}
 {% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
 
 {% set domain = app.request.getSchemeAndHttpHost() %}
 
 {% set img = list.coverImage.getThumbnail('coverImg') %}
 
-{% do pimcore_head_meta().setProperty("og:title", list.title | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("og:title", list.seoTitle | u.truncate(100)) %}
 {% do pimcore_head_meta().setProperty("og:type", 'article') %}
-{% do pimcore_head_meta().setProperty("og:description", list.content | striptags | u.truncate(320)) %}
+{% do pimcore_head_meta().setProperty("og:description", list.seoDescription | striptags | u.truncate(320)) %}
 {% do pimcore_head_meta().setProperty("og:author", list.author) %}
 {% do pimcore_head_meta().setProperty("og:image", domain ~ img) %}
 {% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}
 
 {% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
 {% do pimcore_head_meta().setProperty("twitter:type", "article") %}
-{% do pimcore_head_meta().setProperty("twitter:title", list.title | u.truncate(100)) %}
-{% do pimcore_head_meta().setProperty("twitter:description", list.content | striptags | u.truncate(160)) %}
+{% do pimcore_head_meta().setProperty("twitter:title", list.seoTitle | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("twitter:description", list.seoDescription | striptags | u.truncate(160)) %}
 {% do pimcore_head_meta().setProperty("twitter:image", domain ~ img) %}
 {% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %}
 
