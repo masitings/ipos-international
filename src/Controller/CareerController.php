@@ -474,6 +474,8 @@ class CareerController extends BaseController
             'tags' => $patent->getTags(),
             'file' => $patent->getFile(),
             'interestedTitle' => $patent->getInterestedTitle(),
+            'seoTitle' => $patent->getTitle(),
+            'seoDescription' => substr(strip_tags($patent->getContent()), 0, 200)
         ];
 
 
