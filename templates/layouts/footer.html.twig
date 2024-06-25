@@ -30,9 +30,9 @@
                         }) }}
                         {% else %}
                             {{ pimcore_image('logo',{
-                                width : 300,
-                                height : 100,
-                                hidetext : true
+                                'thumbnail': {
+                                    'format': 'png'
+                                }
                             }) }}
                     {% endif %}
                    
