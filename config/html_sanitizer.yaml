@@ -16,4 +16,4 @@ framework:
                     td: 'class'
                     ul: ['class', 'style']
                     li: ['class', 'style']
-                    ol: ['class', 'style']
+                    ol: ['class', 'style']  
