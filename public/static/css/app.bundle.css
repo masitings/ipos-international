@@ -34808,12 +34808,15 @@ a.contact-tnc-email:hover {
 
 .ourClients_content_list:hover .company-logo-pic {
     opacity: 1;
-
+    text-align: right;
+    z-index: 1;
 }
 
 .ourClients_content_list:hover .company-logo-pic img {
     width: auto;
     height: 200px;
+    background: white;
+    border: 1px solid #ddd;
 }
 
 .about_ourClients_container .ourClients_content_list {
