@@ -34807,6 +34807,16 @@ a.contact-tnc-email:hover {
     display: block
 }
 
+.ourClients_content_list:hover .company-logo-pic {
+    opacity: 1;
+
+}
+
+.ourClients_content_list:hover .company-logo-pic img {
+    width: auto;
+    height: 200px;
+}
+
 .about_ourClients_container .ourClients_content_list {
     height: 97px
 }
