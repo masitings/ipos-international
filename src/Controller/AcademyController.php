@@ -332,7 +332,7 @@ class AcademyController extends BaseController
 
     /**
      * @route ("/api/getPicker")
-     * @return JsonResponse
+     * @return mixed
      */
     public function getDatePickerAction(Request $request)
     {
