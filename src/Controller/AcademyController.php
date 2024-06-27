@@ -352,6 +352,9 @@ class AcademyController extends BaseController
         $nowDate = date('Y-m-d');
         $result = [];
 
+        return $data;
+        die();
+
         foreach ($data['data']['getCourseListing']['edges'] as $k => $v) {
             $id = $v['node']['id'];
             if (isset($v['node']['planing']) && !empty($v['node']['planing'])) {
