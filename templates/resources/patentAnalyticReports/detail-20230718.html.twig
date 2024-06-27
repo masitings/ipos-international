@@ -2,7 +2,7 @@
 
 {% do document.setTitle(list.seoTitle) %}
 {% do pimcore_head_meta().setName("description", list.seoDescription) %}
-{% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
+{# {% do pimcore_head_meta().setName("keywords", list.tags | default('')) %} #}
 
 {% set domain = app.request.getSchemeAndHttpHost() %}
 
