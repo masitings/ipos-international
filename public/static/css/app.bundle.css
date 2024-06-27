@@ -21845,7 +21845,8 @@ table.table-with-borders tbody,table.table-with-borders td,table.table-with-bord
     font-size: 16px;
     max-height: 0;
     -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out
+    transition: all .4s ease-in-out;
+    overflow: hidden;
 }
 
 @media (max-width: 991.98px) {
@@ -21860,7 +21861,8 @@ table.table-with-borders tbody,table.table-with-borders td,table.table-with-bord
     margin-top: 15px;
     max-height: 0;
     -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out
+    transition: all .4s ease-in-out;
+    overflow: hidden;
 }
 
 @media (max-width: 991.98px) {
