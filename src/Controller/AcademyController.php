@@ -340,7 +340,7 @@ class AcademyController extends BaseController
         $filter = $request->request->get('filter');
 
         $filter = json_encode($filter, 256);
-        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/academy?apikey=079eb73af99d72172ab6f349bbad36bb';
+        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/academy?apikey=5a89ba4bda8d412501814dee4e6cbaf5';
         $str = '{  getCourseListing(defaultLanguage: "en", filter: ' . $filter . ') {    edges {      node {        id planing {          ... on fieldcollection_ProgramPlanning {            startDate            lastDate          }        }      }    }  }}';
 
         $ar = [
