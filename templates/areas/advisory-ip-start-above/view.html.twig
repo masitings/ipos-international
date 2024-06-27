@@ -34,7 +34,7 @@
                 {% set clicklink = pimcore_link('rightClick',{'class':'annex m-b-0'})%}
                 {# <a class="btn full-orange w-100 xx" href="/" data-bs-toggle="modal" data-bs-target="#RightModal" data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a> #}
                 
-                {% if clicklink.data.text is not null or clicklink.data.text is not empty %}
+                {% if clicklink.data is not null or clicklink.data is not empty %}
                     {% if clicklink.data.target == "_blank" %}
                         <a target="_blank" class="btn full-orange w-100" href="{{ clicklink.data.path | default('') }}"  data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a>
                     {% else %}
