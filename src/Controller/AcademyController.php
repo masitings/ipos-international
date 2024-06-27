@@ -332,7 +332,7 @@ class AcademyController extends BaseController
 
     /**
      * @route ("/api/getPicker")
-     * @return mixed
+     * @return JsonResponse
      */
     public function getDatePickerAction(Request $request)
     {
@@ -340,7 +340,7 @@ class AcademyController extends BaseController
         $filter = $request->request->get('filter');
 
         $filter = json_encode($filter, 256);
-        $url = 'https://stage-v2.iposinternational.com/pimcore-graphql-webservices/academy?apikey=5a89ba4bda8d412501814dee4e6cbaf5';
+        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/academy?apikey=5a89ba4bda8d412501814dee4e6cbaf5';
         $str = '{  getCourseListing(defaultLanguage: "en", filter: ' . $filter . ') {    edges {      node {        id planing {          ... on fieldcollection_ProgramPlanning {            startDate            lastDate          }        }      }    }  }}';
 
         $ar = [
@@ -352,8 +352,7 @@ class AcademyController extends BaseController
         $nowDate = date('Y-m-d');
         $result = [];
 
-        return $data;
-        die();
+        return new JsonResponse($data);
 
         foreach ($data['data']['getCourseListing']['edges'] as $k => $v) {
             $id = $v['node']['id'];
