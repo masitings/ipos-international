@@ -475,6 +475,7 @@ class ResourceController extends BaseController
     public function articleDetailAction(Request $request, $id)
     {
         $id = trim($id, '_');
+        die($id);
         $articles = DataObject\Articles::getById($id);
         if (!$articles->getPublished()) {
             return $this->redirect('/en/error-page/404');
