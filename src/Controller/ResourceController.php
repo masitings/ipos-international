@@ -476,9 +476,9 @@ class ResourceController extends BaseController
     {
         $id = trim($id, '_');
         $articles = DataObject\Articles::getById($id);
-        if (!$articles->getPublished()) {
-            return $this->redirect('/en/error-page/404');
-        }
+        // if (!$articles->getPublished()) {
+        //     return $this->redirect('/en/error-page/404');
+        // }
 
         $title = $request->attributes->get('articleTile');
         $objTitle = $articles->get('key');
@@ -504,7 +504,7 @@ class ResourceController extends BaseController
             'interestedTitle' => $articles->getInterestedTitle(),
             'video' => $articles->getDetailVideo() ? $articles->getDetailVideo() : '',
         ];
-        
+
         return $this->render('resources/articles/detail-20230731.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
