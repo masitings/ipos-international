@@ -476,9 +476,9 @@ class ResourceController extends BaseController
     {
         $id = trim($id, '_');
         $articles = DataObject\Articles::getById($id);
-        // if (!$articles->getPublished()) {
-        //     return $this->redirect('/en/error-page/404');
-        // }
+        if (!$articles->getPublished()) {
+            return $this->redirect('/en/error-page/404');
+        }
 
         $title = $request->attributes->get('articleTile');
         $objTitle = $articles->get('key');
