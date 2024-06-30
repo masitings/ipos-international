@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    PatentAnalyticsReportsLatest:
+                        items: {  }
+                        medias: {  }
+                        name: PatentAnalyticsReportsLatest
+                        description: ''
+                        group: Resources
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1718293165
+                        creationDate: 1718293160
+                        preserveAnimation: false

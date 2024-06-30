@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Model\DataObject;
 
-class ContactController extends BaseController{
+class ContactController extends BaseController
+{
 
     private static $SMTP_ARRAY = [
         'smtp_mail_name',
@@ -18,7 +19,8 @@ class ContactController extends BaseController{
         'smtp_mail_service'
     ];
 
-    protected function encrypt($str){
+    protected function encrypt($str)
+    {
         $rsa_prikey = file_get_contents('/usr/share/nginx/rsa_private.key');
         $crypted = "";
         openssl_private_encrypt($str, $crypted, $rsa_prikey);
@@ -43,7 +45,7 @@ class ContactController extends BaseController{
     {
 
         /** CSRF Security */
-        if($request->get('csrf_token') == "" OR $request->get('csrf_token') != "9847h3hchc65rdytegbhcjcccc21"){
+        if ($request->get('csrf_token') == "" or $request->get('csrf_token') != "9847h3hchc65rdytegbhcjcccc21") {
             return "";
         }
 
@@ -53,26 +55,25 @@ class ContactController extends BaseController{
         $sendMail = 'enquiry@iposinternational.com';
         $sendMails = [];
 
-        foreach ($emailObj as $email)
-        {
+        foreach ($emailObj as $email) {
             $sendMails[] = $email->getEmail();
         }
 
         $list = new WebsiteSetting\Listing();
-        
+
         $list->setCondition('`name` LIKE ' . $list->quote('%smtp_mail%'));
         $list = $list->load();
         $mailConfig = [];
-        foreach ($list as $item){
-            if (in_array($item->getName(),self::$SMTP_ARRAY)){
+        foreach ($list as $item) {
+            if (in_array($item->getName(), self::$SMTP_ARRAY)) {
                 $mailConfig[$item->getName()] = $item->getData();
             }
         }
-	
+
 
         $mailConfig['smtp_mail_password'] = $this->decrypt($mailConfig['smtp_mail_password']);
-	
-	
+
+
         //$mailConfig = require '../config/mail.php';
 
         $state = $request->get('state');
@@ -85,13 +86,13 @@ class ContactController extends BaseController{
 
         $designation = $request->get('designation');
 
-		$source = str_replace("/", "", $request->get('infoSource'));
+        $source = str_replace("/", "", $request->get('infoSource'));
         $infoSourceOthers = "";
         $sourceRecordToDb = $source;
-		if($source == "Others"){
-			$infoSourceOthers = $request->get('infoSourceOthers');
+        if ($source == "Others") {
+            $infoSourceOthers = $request->get('infoSourceOthers');
             $sourceRecordToDb = "Other - " . $infoSourceOthers;
-		}
+        }
 
         $message = $request->get('message');
         $phone = $request->get('phone');
@@ -101,7 +102,7 @@ class ContactController extends BaseController{
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
         $mail = new PHPMailer(true);
 
-        $mail->CharSet ="UTF-8";                     //设定邮件编码
+        $mail->CharSet = "UTF-8";                     //设定邮件编码
 
         $mail->SMTPDebug = 0;                        // 调试模式输出
 
@@ -123,11 +124,11 @@ class ContactController extends BaseController{
 
         $mail->setFrom($mailConfig['smtp_mail_name'], '');  //发件人
 
-        if($sendMails){
-            foreach ($sendMails as $email){
+        if ($sendMails) {
+            foreach ($sendMails as $email) {
                 $mail->addAddress($email);
             }
-        }else{
+        } else {
             $mail->addAddress($sendMail);
         }
 
@@ -139,45 +140,42 @@ class ContactController extends BaseController{
 
         $mail->Subject = $state;
 
-        $mail->Body    = 'FirstName : '.$firstName. "\r\n";
-        $mail->Body .= 'LastName : '.$lastName. "\r\n";
+        $mail->Body    = 'FirstName : ' . $firstName . "\r\n";
+        $mail->Body .= 'LastName : ' . $lastName . "\r\n";
 
 
-        $mail->Body .= 'Company : '.$company."\r\n";
+        $mail->Body .= 'Company : ' . $company . "\r\n";
 
-        $mail->Body .= 'Designation : '.$designation."\r\n";
-        $mail->Body .= 'Phone : '.$phone."\r\n";
-        $mail->Body .= 'Email : '.$c_email."\r\n";
+        $mail->Body .= 'Designation : ' . $designation . "\r\n";
+        $mail->Body .= 'Phone : ' . $phone . "\r\n";
+        $mail->Body .= 'Email : ' . $c_email . "\r\n";
 
-        $mail->Body .= 'ReceiveMarketingEmail :'.$subemail."\r\n";
+        $mail->Body .= 'ReceiveMarketingEmail :' . $subemail . "\r\n";
 
-        if($infoSourceOthers != ""){
-            $mail->Body .= 'InfoSource : '.$source."\r\n";
-            $mail->Body .= 'InfoSourceOthers : '.$infoSourceOthers."\r\n";
-        }else{
-            $mail->Body .= 'InfoSource : '.$source."\r\n";
-            $mail->Body .= 'InfoSourceOthers : '.$infoSourceOthers."\r\n";
+        if ($infoSourceOthers != "") {
+            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
+            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
+        } else {
+            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
+            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
         }
 
-        $mail->Body .= 'Message : '."\r\n".$message;
+        $mail->Body .= 'Message : ' . "\r\n" . $message;
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
-        try{
+        try {
 
             $mail->send();
-            $date = date('Y-m-d H:i:s',time());
+            $date = date('Y-m-d H:i:s', time());
             $conn = $this->getDoctrine()->getConnection();
 
             $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
-		            email,sendTime,source) values('".$firstName."','".$lastName."','".$company."','".$designation."','".$subemail."','".$message."','".$phone."','".$c_email."','".$date."','".$sourceRecordToDb."')");
+		            email,sendTime,source) values('" . $firstName . "','" . $lastName . "','" . $company . "','" . $designation . "','" . $subemail . "','" . $message . "','" . $phone . "','" . $c_email . "','" . $date . "','" . $sourceRecordToDb . "')");
             // $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
-		    //         email,sendTime) values('".$firstName."','".$lastName."','".$company."','".$designation."','".$subemail."','".$message."','".$phone."','".$c_email."','".$date."')");
-        }catch(\Exception $e){
-
+            //         email,sendTime) values('".$firstName."','".$lastName."','".$company."','".$designation."','".$subemail."','".$message."','".$phone."','".$c_email."','".$date."')");
+        } catch (\Exception $e) {
         }
 
-        return new JsonResponse([
-
-        ]);
+        return new JsonResponse([]);
     }
 }

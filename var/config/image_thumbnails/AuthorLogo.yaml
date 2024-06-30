@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    AuthorLogo:
+                        items: {  }
+                        medias: {  }
+                        name: AuthorLogo
+                        description: ''
+                        group: '<img src=x onerror=alert(document.domain)>'
+                        format: ORIGINAL
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1719326646
+                        creationDate: 1718292883
+                        preserveAnimation: false

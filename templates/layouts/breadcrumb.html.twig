@@ -1,22 +1,16 @@
-{% set breadcrumbStr = pimcore_render_nav(mainNavigation,'breadcrumbs')  %}
-
-            {% set breadcrumb = breadcrumbStr | split('&gt;') %}
-            {% set breadcrumbCount = breadcrumb | length %}
-
-
-
-
+{% set breadcrumbStr = pimcore_render_nav(mainNavigation, 'breadcrumbs')  %}
+{% set breadcrumb = breadcrumbStr | split('&gt;') %}
+{% set breadcrumbCount = breadcrumb | length %}
 <ol>
 
     <li><a href="/">{{ 'Home'|trans }}</a> </li>
     {% for key, linkNode in breadcrumb %}
-
         {% if key == (breadcrumbCount - 1) %}
             <li class="active">
                 {{ linkNode | raw }}
             </li>
         {% else %}
-            <li>
+            <li class="testing">
                 {{ linkNode | raw }}
             </li>
         {% endif %}

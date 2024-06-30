@@ -3,7 +3,12 @@
             <div class="tab-content-container col-md-4">
                 <div class="part1">
                     {{ pimcore_image('image',{
-                        imgAttributes : {class:'icon'}
+                        imgAttributes : {
+                            class:'icon'
+                        },
+                        thumbnail: {
+                            format: 'png'
+                        }
                     }) }}
                 </div>
                 <div class="part2">

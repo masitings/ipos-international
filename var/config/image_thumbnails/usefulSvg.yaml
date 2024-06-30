@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    usefulSvg:
+                        items: {  }
+                        medias: {  }
+                        name: usefulSvg
+                        description: ''
+                        group: Public
+                        format: ORIGINAL
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1719328926
+                        creationDate: 1718292731
+                        preserveAnimation: false

@@ -34,11 +34,14 @@
                 {% set clicklink = pimcore_link('rightClick',{'class':'annex m-b-0'})%}
                 {# <a class="btn full-orange w-100 xx" href="/" data-bs-toggle="modal" data-bs-target="#RightModal" data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a> #}
                 
-                {% if clicklink.data.target == "_blank" %}
-                <a target="_blank" class="btn full-orange w-100" href="{{ clicklink.data.path | default('') }}"  data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a>
-                {% else %}
-                <a class="btn full-orange w-100 xx" href="/" data-bs-toggle="modal" data-bs-target="#RightModal" data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a>
+                {% if clicklink.data.path|length %}
+                    {% if clicklink.data.target == "_blank" %}
+                        <a target="_blank" class="btn full-orange w-100" href="{{ clicklink.data.path | default('') }}"  data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a>
+                    {% else %}
+                        <a class="btn full-orange w-100 xx" href="/" data-bs-toggle="modal" data-bs-target="#RightModal" data-bs-whatever="@mdo">{{ clicklink.data.text |default('') }}</a>
+                    {% endif %}
                 {% endif %}
+
                 <div class="ipos-modal iframe-test modal fade" id="RightModal" tabindex="-1" aria-hidden="true">
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="modal-dialog">

@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 class BaseController extends FrontendController
 {
 
-    const GRAPHQL_URL = "https://localhost";
+    const GRAPHQL_URL = "https://stage-v2.iposinternational.com";
 
     /**
      * @param Request $request
@@ -50,6 +50,4 @@ class BaseController extends FrontendController
     {
         return array_merge($request->request->all(), $request->query->all());
     }
-
-
 }

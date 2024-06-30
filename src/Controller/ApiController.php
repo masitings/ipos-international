@@ -14,7 +14,7 @@ class ApiController extends AbstractController
      * @Route("/api/show")
      * @return string
      */
-    public function show() : Response
+    public function show(): Response
     {
 
         $list = (new ResourcesServices())->getResources();
@@ -22,6 +22,5 @@ class ApiController extends AbstractController
 
 
         return new Response('jkj');
-
     }
 }

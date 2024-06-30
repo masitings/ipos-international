@@ -323,12 +323,14 @@
             </div>
 
             {% else %}
+                {% set list = pimcore_relations('objectsAll') %}
+                {% if list|length > 0 %}
                 <div class="sec-upcoming-events p-b-100">
                     <div class="container d-flex flex-column">
                         <h2 class="h2 m-b-30 text-center">Upcoming Events</h2>
                         <div class="scroll-wrap">
                             <div class="sec-upcoming-events-wrap">
-                                {% set list = pimcore_relations('objectsAll') %}
+                                
 
                                 {% for upcoming in list %}
 
@@ -410,6 +412,7 @@
                         }) }}
                     </div>
                 </div>
+                {% endif %}
         {% endif %}
 
     </div>

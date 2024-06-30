@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    NewsAnnouncementsMore:
+                        items: {  }
+                        medias: {  }
+                        name: NewsAnnouncementsMore
+                        description: ''
+                        group: Events
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1718293013
+                        creationDate: 1718293006
+                        preserveAnimation: false

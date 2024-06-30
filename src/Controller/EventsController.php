@@ -14,7 +14,8 @@ class EventsController extends BaseController
 {
 
 
-    public function indexAction(Request $request){
+    public function indexAction(Request $request)
+    {
 
         return $this->redirect('news/news-announcements');
     }
@@ -28,14 +29,14 @@ class EventsController extends BaseController
         $ret['cost'] = $ob->getFieldDefinition("cost")->getOptions();
         $ret['venue'] = $ob->getFieldDefinition("venue")->getOptions();
         $ret['eventType'] = $ob->getFieldDefinition("eventType")->getOptions();
-	$ret['audience'] = $ob->getFieldDefinition("audience")->getOptions();
+        $ret['audience'] = $ob->getFieldDefinition("audience")->getOptions();
         $ret['proficiency'] = $ob->getFieldDefinition("proficiency")->getOptions();
         $list->load();
 
         // return $this->render('events/upcoming.html.twig',[
         //     'ret' => $ret
         // ]);
-        return $this->render('events/upcoming-20230718.html.twig',[
+        return $this->render('events/upcoming-20230718.html.twig', [
             'ret' => $ret,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -46,24 +47,25 @@ class EventsController extends BaseController
      * @route ("/api/getEventsPicker")
      * @return JsonResponse
      */
-    public function getDatePickerAction(Request $request){
+    public function getDatePickerAction(Request $request)
+    {
 
-	$filter = $request->request->get('filter');
-        $filterData = json_decode($filter,true);
+        $filter = $request->request->get('filter');
+        $filterData = json_decode($filter, true);
 
-        if($filterData){
-            $filter = json_encode($filter,256);
-            $filter = ',filter : '.$filter;
-        }else{
+        if ($filterData) {
+            $filter = json_encode($filter, 256);
+            $filter = ',filter : ' . $filter;
+        } else {
             $filter = '';
-        }	
+        }
 
 
-        $url = parent::GRAPHQL_URL.'/pimcore-graphql-webservices/events?apikey=af857163a5b2a05be63753beda3813a4';
+        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/events?apikey=af857163a5b2a05be63753beda3813a4';
 
         $ar = [
             'query' => '{
-  getEventsListing(defaultLanguage : "en"'.$filter.'){
+  getEventsListing(defaultLanguage : "en"' . $filter . '){
     edges{
       node{
         id
@@ -83,61 +85,59 @@ class EventsController extends BaseController
 
 
         $curl = new CurlServices();
-        $data = $curl->posturl($url,$ar);
+        $data = $curl->posturl($url, $ar);
 
         $result = [];
-	$nowDay = date('Y-m-d');
-        foreach ($data['data']['getEventsListing']['edges'] as $k => $v){
+        $nowDay = date('Y-m-d');
+        foreach ($data['data']['getEventsListing']['edges'] as $k => $v) {
             $id = $v['node']['id'];
-	    foreach ($v['node']['planing'] as $value){
-		if ($value['startDate'] && date('Y-m-d',strtotime($value['startDate'])) > $nowDay){
-                $result[] = [
-                    'id' => $id,
-                    'start' => $value['startDate'],
-                    'last'  => $value['lastDate']
-		];
-		}
+            foreach ($v['node']['planing'] as $value) {
+                if ($value['startDate'] && date('Y-m-d', strtotime($value['startDate'])) > $nowDay) {
+                    $result[] = [
+                        'id' => $id,
+                        'start' => $value['startDate'],
+                        'last'  => $value['lastDate']
+                    ];
+                }
             }
         }
 
-        $ret = array_unique(array_column($result,'start'));
+        $ret = array_unique(array_column($result, 'start'));
 
         return new JsonResponse($ret);
     }
 
-    public function planning($obj){
+    public function planning($obj)
+    {
 
         $result = [];
-	$nowDay = date('Y-m-d');
-        foreach ($obj as $value){
+        $nowDay = date('Y-m-d');
+        foreach ($obj as $value) {
 
-	    $planning = [];
-	    if($value->getStartDate()){
-		    if ($nowDay >= date('Y-m-d',strtotime($value->getStartDate()))){
-			    continue;
-		    }
-	    }
+            $planning = [];
+            if ($value->getStartDate()) {
+                if ($nowDay >= date('Y-m-d', strtotime($value->getStartDate()))) {
+                    continue;
+                }
+            }
 
 
             $planning = [
-                'startDate' => $value->getStartDate() ? date('d M, Y',strtotime($value->getStartDate())) : '',
-                'lastDate' => $value->getLastDate() ? date('d M, Y',strtotime($value->getLastDate())) : '',
+                'startDate' => $value->getStartDate() ? date('d M, Y', strtotime($value->getStartDate())) : '',
+                'lastDate' => $value->getLastDate() ? date('d M, Y', strtotime($value->getLastDate())) : '',
                 'datePlanning' => $value->getDatePlaning() ?? "",
             ];
 
             $timePlanningArr = [];
-            if ($value->getTeachingArrangement()){
-                foreach ($value->getTeachingArrangement() as $timePlanning){
+            if ($value->getTeachingArrangement()) {
+                foreach ($value->getTeachingArrangement() as $timePlanning) {
 
                     $timePlanningArr[] = [
-                        'startTime' => $timePlanning['startTime']->getData() ? date('h:i a',strtotime($timePlanning['startTime']->getData())) : '',
-                        'lastTime' => $timePlanning['lastTime']->getData() ? date('h:i a',strtotime($timePlanning['lastTime']->getData())) : '',
+                        'startTime' => $timePlanning['startTime']->getData() ? date('h:i a', strtotime($timePlanning['startTime']->getData())) : '',
+                        'lastTime' => $timePlanning['lastTime']->getData() ? date('h:i a', strtotime($timePlanning['lastTime']->getData())) : '',
                         'timePlanning' => $timePlanning['timePlanning'] ?  $timePlanning['timePlanning']->getData() : '',
                     ];
-
-
                 }
-
             }
 
             $planning['teachingArrangement'] = $timePlanningArr;
@@ -146,7 +146,6 @@ class EventsController extends BaseController
         }
 
         return $result;
-
     }
 
     /**
@@ -154,42 +153,43 @@ class EventsController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function getEventsAction(Request $request){
+    public function getEventsAction(Request $request)
+    {
 
         $filter = $request->request->get('filter');
         $filterDate = $request->request->get('filterDate');
 
-        $filter = json_decode($filter,true);
+        $filter = json_decode($filter, true);
 
         $eventsObj = new DataObject\Events\Listing();
 
-        if(isset($filter['eventType'])){
+        if (isset($filter['eventType'])) {
             $eventsObj->filterByEventType($filter['eventType']);
         }
-        if(isset($filter['topic'])){
+        if (isset($filter['topic'])) {
             $eventsObj->filterByTopic($filter['topic']);
         }
-        if(isset($filter['venue'])){
+        if (isset($filter['venue'])) {
             $eventsObj->filterByVenue($filter['venue']);
         }
-        if(isset($filter['cost'])){
+        if (isset($filter['cost'])) {
             $eventsObj->filterByCost($filter['cost']);
         }
-	if(isset($filter['audience'])){
+        if (isset($filter['audience'])) {
             $eventsObj->filterByAudience($filter['audience']);
         }
-        if(isset($filter['proficiency'])){
+        if (isset($filter['proficiency'])) {
             $eventsObj->filterByProficiency($filter['proficiency']);
         }
         $eventsObj->load();
 
         $eventsData = [];
-	foreach ($eventsObj as $event){
-	    $planningArr = $this->planning($event->getPlaning());
-	    if(empty($planningArr)){
-		    continue;
-	    }
-	
+        foreach ($eventsObj as $event) {
+            $planningArr = $this->planning($event->getPlaning());
+            if (empty($planningArr)) {
+                continue;
+            }
+
             $eventsData[$event->getId()] = [
                 'id'    => $event->getId(),
                 'title' => $event->getTitle(),
@@ -197,81 +197,74 @@ class EventsController extends BaseController
                 'planning' => $event->getPlaning(),
                 'eventType' => $event->getEventType(),
                 'fullpath'  => $event->getFullPath(),
-		'venue' => $event->getVenue(),
-		'venueText' => $event->getVenueText(),
+                'venue' => $event->getVenue(),
+                'venueText' => $event->getVenueText(),
                 'coverImage' => $event->getCoverImage() ? $event->getCoverImage()->getThumbnail('UpcomingEventsList')->getPath() : '',
             ];
 
-        /*    dump($event->getCoverImage()->getThumbnail('coverImg')
+            /*    dump($event->getCoverImage()->getThumbnail('coverImg')
                 ->getHtml(['imgAttributes' => ["class" => "cover"]]));
             exit();*/
         }
-	$nowDate = date('Y-m-d');
+        $nowDate = date('Y-m-d');
         $conditions = [];
-        foreach ($eventsData as $k => $v){
+        foreach ($eventsData as $k => $v) {
             $id = $v['id'];
-            if (isset($v['planning']) && !empty($v['planning']))
-            {
-                foreach ($v['planning'] as $value){
-			if ($value->getStartDate()){
+            if (isset($v['planning']) && !empty($v['planning'])) {
+                foreach ($v['planning'] as $value) {
+                    if ($value->getStartDate()) {
 
-			if($nowDate >= date('Y-m-d',strtotime($value->getStartDate()))){
-				continue;
-			}
+                        if ($nowDate >= date('Y-m-d', strtotime($value->getStartDate()))) {
+                            continue;
+                        }
 
 
-                        array_push($conditions,[
+                        array_push($conditions, [
                             'id' => $id,
                             'date' => strtotime($value->getStartDate())
                         ]);
                     }
-
                 }
             }
         }
 
-        $last_names = array_column($conditions,'date');
-        array_multisort($last_names,SORT_ASC,$conditions);
-        $ids = array_unique(array_column($conditions,'id'));
+        $last_names = array_column($conditions, 'date');
+        array_multisort($last_names, SORT_ASC, $conditions);
+        $ids = array_unique(array_column($conditions, 'id'));
 
 
         $filterDateIds = [];
-        if ($filterDate){
-            $filterDate = $filterDate/1000;
-            foreach ($eventsData as $k => $v){
+        if ($filterDate) {
+            $filterDate = $filterDate / 1000;
+            foreach ($eventsData as $k => $v) {
                 $id = $v['id'];
-                if (isset($v['planning']) && !empty($v['planning']))
-                {
-                    foreach ($v['planning'] as $value){
+                if (isset($v['planning']) && !empty($v['planning'])) {
+                    foreach ($v['planning'] as $value) {
 
-                            if (strtotime($value->getStartDate()) == $filterDate){
+                        if (strtotime($value->getStartDate()) == $filterDate) {
 
-                                array_push($filterDateIds,$id);
-                            }
-                       
-
+                            array_push($filterDateIds, $id);
+                        }
                     }
                 }
             }
-
         }
 
         $result = [];
-        if ($filterDate){
-            foreach ($ids as $id){
-                if (in_array($id,$filterDateIds)){
+        if ($filterDate) {
+            foreach ($ids as $id) {
+                if (in_array($id, $filterDateIds)) {
                     $result[] = $eventsData[$id];
                 }
             }
-
-        }else{
-            foreach ($ids as $id){
-                if (isset($eventsData[$id])){
+        } else {
+            foreach ($ids as $id) {
+                if (isset($eventsData[$id])) {
                     $result[] = $eventsData[$id];
                     unset($eventsData[$id]);
                 }
             }
-            $result = array_merge($result,$eventsData);
+            $result = array_merge($result, $eventsData);
         }
 
 
@@ -291,17 +284,17 @@ class EventsController extends BaseController
      * @Route("/events/upcoming-events/{event}{id}",requirements={"id"="_\d+"} )
      * @param Request $request
      */
-     public function detailAction(Request $request,$id)
+    public function detailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $event = DataObject\Events::getById($id);
-	if(!$event->getPublished()){
+        if (!$event->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
-	$title = $request->attributes->get('event');
-        $objTitle = $event->get('o_key');
+        $title = $request->attributes->get('event');
+        $objTitle = $event->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -309,27 +302,25 @@ class EventsController extends BaseController
             'title' => $event->getTitle(),
             'content' => $event->getContent(),
             'planning' => $event->getPlaning(),
-	    'venue' => $event->getVenue(),
-	    'venueText' => $event->getVenueText(),
+            'venue' => $event->getVenue(),
+            'venueText' => $event->getVenueText(),
             'eventType' => $event->getEventType(),
             'paneList' => $event->getGuestsData(),
             'interestedList' => $event->getInterestedList(),
             'email' => $event->getEmail(),
             'registerUrl' => $event->getRegsiterUrl(),
-	    'seoTitle' => $event->getSeoTitle(),
-            'seoDescription' => $event->getSeoDescription(),
+            'seoTitle' => !empty($event->getSeoTitle()) ? $event->getSeoTitle() : $event->getTitle(),
+            'seoDescription' => $event->getSeoDescription() ?? substr(strip_tags($event->getContent()), 0, 200),
             'tags' => $event->getTags(),
-	    'interestedTitle' => $event->getInterestedTitle()
+            'interestedTitle' => $event->getInterestedTitle()
         ];
-
         // return $this->render('events/detail.html.twig',[
         //     'detail' => $data
         // ]);
-        return $this->render('events/detail-20230718.html.twig',[
+        return $this->render('events/detail-20230718.html.twig', [
             'detail' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
 
     /**
@@ -337,17 +328,17 @@ class EventsController extends BaseController
      * @Route("/news/news-announcements/{event}{id}",requirements={"id"="_\d+"} )
      * @param Request $request
      */
-    public function newsDetailAction(Request $request,$id)
+    public function newsDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $newData = DataObject\News::getById($id);
-	if(!$newData->getPublished()){
+        if (!$newData->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
-	$title = $request->attributes->get('event');
-        $objTitle = $newData->get('o_key');
+        $title = $request->attributes->get('event');
+        $objTitle = $newData->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -358,19 +349,19 @@ class EventsController extends BaseController
             'authorIcon' => $newData->getAuthorImage(),
             'coverImage' => $newData->getCoverImage(),
             'interested' => $newData->getInterestedList(),
-	    'file'       => $newData->getFile(),
-	    'date'       => $newData->getReleaseDate(),
-	    'seoTitle' => $newData->getSeoTitle(),
+            'file'       => $newData->getFile(),
+            'date'       => $newData->getReleaseDate(),
+            'seoTitle' => $newData->getSeoTitle(),
             'seoDescription' => $newData->getSeoDescription(),
             'tags' => $newData->getTags(),
-	    'interestedTitle' => $newData->getInterestedTitle(),
-        'video' => $newData->getDetailVideo() ? $newData->getDetailVideo() : '',
+            'interestedTitle' => $newData->getInterestedTitle(),
+            'video' => $newData->getDetailVideo() ? $newData->getDetailVideo() : '',
         ];
 
         // return $this->render('events/news-detail.html.twig',[
         //     'data' => $data
         // ]);
-        return $this->render('events/news-detail-20230905c.html.twig',[
+        return $this->render('events/news-detail-20230905c.html.twig', [
             'data' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -387,29 +378,28 @@ class EventsController extends BaseController
         $num = $request->request->get('num');
 
         $news = new DataObject\News\Listing();
-	    $news->setOrderKey('releaseDate');
+        $news->setOrderKey('releaseDate');
         $news->setOrder('DESC');
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
             $news->setOffset($num);
             $news->setLimit(6);
             $newsData   = $news->filterByCoverView(false)->load();
 
             $result = [];
-            foreach ($newsData as $value){
+            foreach ($newsData as $value) {
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-                    'coverImage' => $value->getCoverImage() ?$value->getCoverImage()
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('NewsAnnouncementsMore')
                         ->getPath() : ''
                 ];
             }
 
             return new JsonResponse($result);
-
         }
 
         $news->filterByCoverView(true)->load();
@@ -417,7 +407,7 @@ class EventsController extends BaseController
         // return $this->render('events/news-annoucements.html.twig',[
         //     'list' => $news
         // ]);
-        return $this->render('events/news-annoucements-20230718.html.twig',[
+        return $this->render('events/news-annoucements-20230718.html.twig', [
             'list' => $news,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);

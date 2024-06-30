@@ -16,11 +16,12 @@ use function Matrix\trace;
 class CareerController extends BaseController
 {
 
-    public function indexAction(Request $request){
+    public function indexAction(Request $request)
+    {
         return $this->redirect('resources/overview');
     }
 
-    
+
     /**
      * @Route ("/api/business")
      * @param Request $request
@@ -42,13 +43,13 @@ class CareerController extends BaseController
         $ob = $list->getClass();
         $guidesType = $ob->getFieldDefinition("listType")->getOptions();
         $data['latest'] = $list->filterByLatest(true)->load();
-        
+
 
         $data['watchCount'] = $list->filterByLatest(false)->filterByListType('Watch List')->getTotalCount();
         $data['readCount'] = $list->filterByLatest(false)->filterByListType('Read List')->getTotalCount();
 
 
-        if ($dataType == 'watchList'){
+        if ($dataType == 'watchList') {
 
             $list->filterByLatest(false)->filterByListType('Watch List');
             $list->setOffset($num);
@@ -56,7 +57,7 @@ class CareerController extends BaseController
             $watch   = $list->load();
 
             $result = [];
-            foreach ($watch as $value){
+            foreach ($watch as $value) {
                 $result[] = [
                     'type' => 'watchList',
                     'title' => $value->getTitle(),
@@ -64,22 +65,21 @@ class CareerController extends BaseController
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
                     'videoTime' => $value->getVideoTime(),
-                    'coverImage' => $value->getCoverImage() ?$value->getCoverImage()
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('BusinessGuidesMore')
                         ->getPath() : ''
                 ];
             }
 
             return new JsonResponse($result);
-
-        }elseif ($dataType == 'readList'){
+        } elseif ($dataType == 'readList') {
             $list->filterByLatest(false)->filterByListType('Read List');
             $list->setOffset($num);
             $list->setLimit(6);
             $read   = $list->load();
 
             $result = [];
-            foreach ($read as $value){
+            foreach ($read as $value) {
                 $result[] = [
                     'type' => 'readList',
                     'title' => $value->getTitle(),
@@ -87,7 +87,7 @@ class CareerController extends BaseController
                     'id'    => $value->getId(),
                     'videoTime' => $value->getVideoTime(),
                     'fullPath' => $value->getFullPath(),
-                    'coverImage' => $value->getCoverImage() ?$value->getCoverImage()
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('BusinessGuidesMore')
                         ->getPath() : ''
                 ];
@@ -104,14 +104,14 @@ class CareerController extends BaseController
 
 
         $guidesTypeData = [];
-        foreach ($guidesType as $k => $v){
+        foreach ($guidesType as $k => $v) {
             $guidesTypeData[$v['key']] = $list->filterByListType($v['value'])->getTotalCount();
         }
 
         // return $this->render('resources/business-guides/index.html.twig',[
         //     'list' => $data
         // ]);
-        return $this->render('resources/business-guides/index-20230718.html.twig',[
+        return $this->render('resources/business-guides/index-20230718.html.twig', [
             'list' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -125,12 +125,12 @@ class CareerController extends BaseController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function businessDetailAction(Request $request,$id)
+    public function businessDetailAction(Request $request, $id)
     {
-$id = trim($id,'_');
+        $id = trim($id, '_');
         $list = [];
         $obj = DataObject\Business::getById($id);
-        if ($obj){
+        if ($obj) {
             $list['title'] = $obj->getTitle();
             $list['releaseDate'] = $obj->getReleaseDate();
             $list['author'] = $obj->getAuthor();
@@ -147,18 +147,17 @@ $id = trim($id,'_');
             $list['resourceType'] = $obj->getResourceType();
             $list['shares'] = $obj->getShares();
             $list['moreContent'] = $obj->getMoreContent();
-	    $list['interestedTitle'] = $obj->getInterestedTitle();
-	    $list['industryTitle'] = $obj->getIndustryTitle();
-	    $list['chineseGuide'] = $obj->getChineseGuide();
+            $list['interestedTitle'] = $obj->getInterestedTitle();
+            $list['industryTitle'] = $obj->getIndustryTitle();
+            $list['chineseGuide'] = $obj->getChineseGuide();
             $list['guideTitle'] = $obj->getGuideTitle();
-
         }
 
         // return $this->render('resources/business-guides/detail.html.twig',[
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/business-guides/detail-20230718.html.twig',[
+        return $this->render('resources/business-guides/detail-20230718.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -184,19 +183,19 @@ $id = trim($id,'_');
         /*$list->load();*/
         $data['latest'] = $list->filterByLatest(true)->load();
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
             $list->setOffset($num);
             $list->setLimit(6);
             $studies   = $list->filterByLatest(false)->load();
 
             $result = [];
-            foreach ($studies as $value){
+            foreach ($studies as $value) {
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-		    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '' ,
+                    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '',
                     'videoTime' => $value->getVideoTime(),
                     'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('CaseStudiesMore')->getPath() : ''
@@ -204,7 +203,6 @@ $id = trim($id,'_');
             }
 
             return new JsonResponse($result);
-
         }
 
 
@@ -213,7 +211,7 @@ $id = trim($id,'_');
         // return $this->render('resources/case-studies/index.html.twig',[
         //     'list'   => $data
         // ]);
-        return $this->render('resources/case-studies/index-20230718.html.twig',[
+        return $this->render('resources/case-studies/index-20230718.html.twig', [
             'list'   => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -226,9 +224,9 @@ $id = trim($id,'_');
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function caseDetailAction(Request $request,$id)
+    public function caseDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $caseDetail = DataObject\CaseStudy::getById($id);
 
         $list = [
@@ -238,13 +236,13 @@ $id = trim($id,'_');
             'authorIcon' => $caseDetail->getAuthorIcon(),
             'video' => $caseDetail->getDetailVideo(),
             'videoTime' => $caseDetail->getVideoTime(),
-	    'coverImage' => $caseDetail->getCoverImage(),
+            'coverImage' => $caseDetail->getCoverImage(),
             'content' => $caseDetail->getContent(),
             'interestedList' => $caseDetail->getInterestedList(),
             'shares' => $caseDetail->getShares(),
             'bookChat' => $caseDetail->getBookChat(),
             'tags' => $caseDetail->getTags(),
-	    'interestedTitle' => $caseDetail->getInterestedTitle(),
+            'interestedTitle' => $caseDetail->getInterestedTitle(),
 
         ];
 
@@ -252,7 +250,7 @@ $id = trim($id,'_');
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/case-studies/detail.html.twig',[
+        return $this->render('resources/case-studies/detail.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -262,7 +260,7 @@ $id = trim($id,'_');
     public function usefulResourcesAction(Request $request)
     {
         // return $this->render('resources/useful-resources/index.html.twig');
-        return $this->render('resources/useful-resources/index-20230718.html.twig',[
+        return $this->render('resources/useful-resources/index-20230718.html.twig', [
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
     }
@@ -272,7 +270,7 @@ $id = trim($id,'_');
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function articlesAction(Request $request,PaginatorInterface $paginator)
+    public function articlesAction(Request $request, PaginatorInterface $paginator)
     {
 
         $type = $request->request->get('articleType');
@@ -285,10 +283,10 @@ $id = trim($id,'_');
         $list->setOrder('DESC');
         //$list->load();
 
-        if ($type){
-            if($type == 'All Topics'){
+        if ($type) {
+            if ($type == 'All Topics') {
                 $list->filterByLatest(false);
-            }else{
+            } else {
                 $list->filterByArticleType($type);
             }
             $list->setOffset($num);
@@ -296,13 +294,13 @@ $id = trim($id,'_');
 
 
             $result = [];
-            foreach ($articles as $value){
+            foreach ($articles as $value) {
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-                    'coverImage' => $value->getCoverImage() ?$value->getCoverImage()
+                    'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('ArticlesMore')
                         ->getPath() : ''
                 ];
@@ -324,7 +322,7 @@ $id = trim($id,'_');
         //     'list' => $data,
         //     'articleType'  => $articleType
         // ]);
-        return $this->render('resources/articles/index-20230718.html.twig',[
+        return $this->render('resources/articles/index-20230718.html.twig', [
             'list' => $data,
             'articleType'  => $articleType,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -337,9 +335,9 @@ $id = trim($id,'_');
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function articleDetailAction(Request $request,$id)
+    public function articleDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $articles = DataObject\Articles::getById($id);
 
         $list = [
@@ -353,7 +351,7 @@ $id = trim($id,'_');
             'shares' => $articles->getShares(),
             'bookChat' => $articles->getBookChat(),
             'tags' => $articles->getTags(),
-	    'interestedTitle' => $articles->getInterestedTitle(),
+            'interestedTitle' => $articles->getInterestedTitle(),
 
         ];
         /*$list['title'] = $obj->getTitle();
@@ -376,7 +374,7 @@ $id = trim($id,'_');
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/articles/detail-20230718.html.twig',[
+        return $this->render('resources/articles/detail-20230718.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -396,7 +394,7 @@ $id = trim($id,'_');
         //     'list' => $list,
         //     'faqType' => $faqType
         // ]);
-        return $this->render('resources/faqs/index-20230718.html.twig',[
+        return $this->render('resources/faqs/index-20230718.html.twig', [
             'list' => $list,
             'faqType' => $faqType,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -422,20 +420,20 @@ $id = trim($id,'_');
 
         $data['latest'] = $list->filterByLatest(true)->load();
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
             $list->setOffset($num);
             $list->setLimit(6);
             $patents = $list->filterByLatest(false)->load();
 
             $result = [];
-            foreach ($patents as $value){
+            foreach ($patents as $value) {
 
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'fullPath' => $value->getFullPath(),
-		
+
                     'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('coverImg')
                         ->getPath() : ''
@@ -448,7 +446,7 @@ $id = trim($id,'_');
         // return $this->render('resources/patentAnalyticReports/index.html.twig',[
         //     'list'   => $data
         // ]);
-        return $this->render('resources/patentAnalyticReports/index-20230718.html.twig',[
+        return $this->render('resources/patentAnalyticReports/index-20230718.html.twig', [
             'list'   => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -459,9 +457,9 @@ $id = trim($id,'_');
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function patentDetailAction(Request $request,$id)
+    public function patentDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $patent = DataObject\PatentAnalytic::getById($id);
 
         $list = [
@@ -475,7 +473,9 @@ $id = trim($id,'_');
             'shares' => $patent->getShares(),
             'tags' => $patent->getTags(),
             'file' => $patent->getFile(),
-	    'interestedTitle' => $patent->getInterestedTitle(),
+            'interestedTitle' => $patent->getInterestedTitle(),
+            'seoTitle' => $patent->getTitle(),
+            'seoDescription' => substr(strip_tags($patent->getContent()), 0, 200)
         ];
 
 
@@ -483,13 +483,11 @@ $id = trim($id,'_');
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/patentAnalyticReports/detail-20230718.html.twig',[
+        return $this->render('resources/patentAnalyticReports/detail-20230718.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
-
     }
 
     /**
@@ -510,21 +508,21 @@ $id = trim($id,'_');
 
         $data['latest'] = $list->filterByLatest(true)->load();
 
-        if ($dataType == 'more'){
+        if ($dataType == 'more') {
 
             $list->setOffset($num);
             $list->setLimit(6);
             $webinar = $list->filterByLatest(false)->load();
 
             $result = [];
-            foreach ($webinar as $value){
+            foreach ($webinar as $value) {
 
                 $result[] = [
                     'title' => $value->getTitle(),
                     'date'  => $value->getReleaseDate(),
                     'id'    => $value->getId(),
                     'videoTime' => $value->getVideoTime(),
-		    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '',
+                    'video' => $value->getDetailVideo() ? $value->getDetailVideo()->getData() : '',
                     'fullPath' => $value->getFullPath(),
                     'coverImage' => $value->getCoverImage() ? $value->getCoverImage()
                         ->getThumbnail('WebinarRecordingsMore')->getPath() : ''
@@ -538,11 +536,10 @@ $id = trim($id,'_');
         //     'list' => $data,
 
         // ]);
-        return $this->render('resources/webinar-recordings/index-20230718.html.twig',[
+        return $this->render('resources/webinar-recordings/index-20230718.html.twig', [
             'list' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
 
     /**
@@ -552,9 +549,9 @@ $id = trim($id,'_');
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function webinarDetailAction(Request $request,$id)
+    public function webinarDetailAction(Request $request, $id)
     {
-	$id = trim($id,'_');
+        $id = trim($id, '_');
         $webinar = DataObject\WebinarRecordings::getById($id);
 
         $list = [
@@ -563,7 +560,7 @@ $id = trim($id,'_');
             'author' => $webinar->getAuthor(),
             'authorIcon' => $webinar->getAuthorIcon(),
             'content' => $webinar->getContent(),
-	    'coverImage' => $webinar->getCoverImage(),
+            'coverImage' => $webinar->getCoverImage(),
             'video'   => $webinar->getDetailVideo(),
             'videoTime' => $webinar->getVideoTime(),
             'interestedList' => $webinar->getInterestedList(),
@@ -571,14 +568,14 @@ $id = trim($id,'_');
             'shares' => $webinar->getShares(),
             'tags' => $webinar->getTags(),
             'file' => $webinar->getFile(),
-	    'interestedTitle' => $webinar->getInterestedTitle(),
+            'interestedTitle' => $webinar->getInterestedTitle(),
         ];
 
         // return $this->render('resources/webinar-recordings/detail.html.twig',[
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('resources/webinar-recordings/detail-20230718.html.twig',[
+        return $this->render('resources/webinar-recordings/detail-20230718.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
@@ -593,10 +590,8 @@ $id = trim($id,'_');
         $list = (new ResourcesServices())->getResources($resourceType);*/
 
         // return $this->render('resources/search-made-easy-for-smes/index.html.twig');
-        return $this->render('resources/search-made-easy-for-smes/index-20230718.html.twig',[
+        return $this->render('resources/search-made-easy-for-smes/index-20230718.html.twig', [
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
-
 }

@@ -1,8 +1,10 @@
 {% extends template_layout_name %}
 
 {% do document.setTitle(data.seoTitle | default(data.title ~ ' — IPOS International')) %}
-{% do pimcore_head_meta().setName("description", data.seoDescription | default(data.content | striptags | u.truncate(320))) %}
-{% do pimcore_head_meta().setName("keywords", data.tags | default('')) %}
+
+{# {% do pimcore_head_meta().setName("description", data.seoDescription | default(data.content | striptags | u.truncate(320))) %}
+{% do pimcore_head_meta().setName("keywords", data.tags | default('')) %} #}
+
 {% block content %}
     <div class="articles_details_container resources_public_container">
         <div class="bg_circle"></div>
@@ -14,13 +16,13 @@
                         <ol class="breadcrumb col-12">
                             <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
                         
-                            <li class="breadcrumb-item"><a href="{{ pimcore_document(24).fullpath }}">News &amp; Announcements </a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(30).fullpath }}">News &amp; Announcements </a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ data.title  }}</li>
                         </ol>
 
                     </nav>
                     <div class="d-block d-md-none mobile_nav"><span class="back_arrow">&lt;</span>
-                        <a class="back_txt" href="{{ pimcore_document(24).fullpath }}">News & Announcements</a></div>
+                        <a class="back_txt" href="{{ pimcore_document(30).fullpath }}">News & Announcements</a></div>
                 </div>
             </div>
         </div>

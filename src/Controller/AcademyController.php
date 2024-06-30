@@ -178,10 +178,10 @@ class AcademyController extends BaseController
             'data' => $result
         ]);
     }
-    public function indexAction(Request $request){
+    public function indexAction(Request $request)
+    {
 
         return $this->redirect('academy/overview');
-
     }
 
     /**
@@ -189,18 +189,18 @@ class AcademyController extends BaseController
      * @Route("/academy/{menuType}/{course}{id}",requirements={"id"="_\d+"} )
      * @param Request $request
      */
-    public function couserDetailAction(Request $request,$menuType,$id)
+    public function couserDetailAction(Request $request, $menuType, $id)
     {
-        $id = trim($id,'_');
+        $id = trim($id, '_');
         //dump(Document::getById(1)->getFullPath());
         $event = DataObject\Course::getById($id);
-        if(!$event->getPublished()){
+        if (!$event->getPublished()) {
             return $this->redirect('/en/error-page/404');
         }
         $title = $request->attributes->get('course');
-        $objTitle = $event->get('o_key');
+        $objTitle = $event->get('key');
 
-        if($title != $objTitle){
+        if ($title != $objTitle) {
             return $this->redirect('/en/error-page/404');
         }
 
@@ -227,22 +227,21 @@ class AcademyController extends BaseController
             'pendant'  => $event->getTextData(),
             'viewUrl'  => $event->getViewUrl(),
             'coverImage' => $event->getCoverImage(),/* ? $event->getCoverImage()->getThumbnail(),*/
-            'backGround' => $event->getBackground() ,/* ? $event->getBackground()->getThumbnail(),*/
+            'backGround' => $event->getBackground(),/* ? $event->getBackground()->getThumbnail(),*/
             'academyType' => $event->getAcademyType(),
             'partner'    => $event->getLogos(),
             'interestedTitle' => $event->getInterestedTitle(),
-            'seoTitle' => $event->getSeoTitle(),
-            'seoDescription' => $event->getSeoDescription(),
-            'tags'  => $event->getTags() ?  implode(',',$event->getTags()) : '',
+            'seoTitle' => !empty($event->getSeoTitle()) ? $event->getSeoTitle() : $event->getTitle(),
+            'seoDescription' => $event->getSeoDescription() ?? substr(strip_tags($event->getContent()), 0, 200),
+            'tags'  => $event->getTags() ?  implode(',', $event->getTags()) : '',
             'interestedRegister' => $event->getInterestedRegister(),
             'urlType'    => $menuType,
             'otherInfo'    => $event->getotherInfo(),
-            
             /*'paneList' => $event->get(),
             'interestedList' => $event->getInterestedList(),*/
         ];
 
-        if(isset($_GET['debg'])){
+        if (isset($_GET['debg'])) {
             // var_dump($data);
             echo "<pre>";
             // print_r($data);
@@ -254,12 +253,11 @@ class AcademyController extends BaseController
         // return $this->render('academy/detail.html.twig',[
         //     'detail' => $data,
         //     /* 'bread'  => $bread*/
-        // ]); 
-        return $this->render('academy/detail-20230918.html.twig',[
+        // ]);
+        return $this->render('academy/detail-20230918.html.twig', [
             'detail' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
 
     /**
@@ -278,39 +276,37 @@ class AcademyController extends BaseController
             'enterprises' => [],
             'studies' => [],
         ];
-        foreach ($courseDemand as $item){
+        foreach ($courseDemand as $item) {
 
-            if (count($data['professionals']) < 3){
-                if( $item->getAcademyType() == 'IP Professionals'){
+            if (count($data['professionals']) < 3) {
+                if ($item->getAcademyType() == 'IP Professionals') {
                     $data['professionals'][] = $item;
                 }
             }
 
-            if(count($data['officers']) < 3){
-                if($item->getAcademyType() == 'Public Agencies / Officers'){
+            if (count($data['officers']) < 3) {
+                if ($item->getAcademyType() == 'Public Agencies / Officers') {
                     $data['officers'][] = $item;
                 }
             }
 
-            if(count($data['enterprises']) < 3){
-                if($item->getAcademyType() == 'Enterprises / Individuals'){
+            if (count($data['enterprises']) < 3) {
+                if ($item->getAcademyType() == 'Enterprises / Individuals') {
                     $data['enterprises'][] = $item;
                 }
             }
 
-            if(count($data['studies']) < 3){
-                if($item->getAcademyType() == 'Graduate Studies'){
+            if (count($data['studies']) < 3) {
+                if ($item->getAcademyType() == 'Graduate Studies') {
                     $data['studies'][] = $item;
                 }
             }
-
-
         }
 
         // return $this->render('academy/overview.html.twig',[
         //     'list' => $data
         // ]);
-        return $this->render('academy/overview-20230731b.html.twig',[
+        return $this->render('academy/overview-20230731b.html.twig', [
             'list' => $data,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -327,7 +323,7 @@ class AcademyController extends BaseController
         // return $this->render('academy/courses.html.twig',[
         //     'ret' => $result
         // ]);
-        return $this->render('academy/courses-20231213.html.twig',[
+        return $this->render('academy/courses-20231213.html.twig', [
             'ret' => $result,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -338,29 +334,30 @@ class AcademyController extends BaseController
      * @route ("/api/getPicker")
      * @return JsonResponse
      */
-    public function getDatePickerAction(Request $request){
+    public function getDatePickerAction(Request $request)
+    {
 
         $filter = $request->request->get('filter');
-        
-        $filter = json_encode($filter,256);
-        $url = parent::GRAPHQL_URL.'/pimcore-graphql-webservices/academy?apikey=079eb73af99d72172ab6f349bbad36bb';
-        $str = '{  getCourseListing(defaultLanguage: "en", filter: '.$filter.') {    edges {      node {        id planing {          ... on fieldcollection_ProgramPlanning {            startDate            lastDate          }        }      }    }  }}';
-	
+
+        $filter = json_encode($filter, 256);
+        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/academy?apikey=5a89ba4bda8d412501814dee4e6cbaf5';
+        $str = '{  getCourseListing(defaultLanguage: "en", filter: ' . $filter . ') {    edges {      node {        id planing {          ... on fieldcollection_ProgramPlanning {            startDate            lastDate          }        }      }    }  }}';
+
         $ar = [
             'query' => $str
         ];
         $curl = new CurlServices();
-        $data = $curl->posturl($url,$ar);
+        $data = $curl->posturl($url, $ar);
 
         $nowDate = date('Y-m-d');
         $result = [];
 
-        foreach ($data['data']['getCourseListing']['edges'] as $k => $v){
+        foreach ($data['data']['getCourseListing']['edges'] as $k => $v) {
             $id = $v['node']['id'];
-            if (isset($v['node']['planing']) && !empty($v['node']['planing'])){
-                foreach ($v['node']['planing'] as $value){
-                    if ($value['startDate']){
-                        if($nowDate < date('Y-m-d',strtotime($value['startDate']))){
+            if (isset($v['node']['planing']) && !empty($v['node']['planing'])) {
+                foreach ($v['node']['planing'] as $value) {
+                    if ($value['startDate']) {
+                        if ($nowDate < date('Y-m-d', strtotime($value['startDate']))) {
                             $result[] = [
                                 'id' => $id,
                                 'start' => $value['startDate'],
@@ -372,7 +369,7 @@ class AcademyController extends BaseController
             }
         }
 
-        $ret = array_unique(array_column($result,'start'));
+        $ret = array_unique(array_column($result, 'start'));
         return new JsonResponse($ret);
     }
 
@@ -386,11 +383,10 @@ class AcademyController extends BaseController
         // return $this->render('academy/courses.html.twig',[
         //     'ret' => $result
         // ]);
-        return $this->render('academy/courses-20231213.html.twig',[
+        return $this->render('academy/courses-20231213.html.twig', [
             'ret' => $result,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
-
     }
 
     public function publicAgenciesAction(Request $request)
@@ -402,8 +398,8 @@ class AcademyController extends BaseController
         // return $this->render('academy/courses.html.twig',[
         //     'ret' => $result
         // ]);
-        return $this->render('academy/courses-20231213.html.twig',[
-            
+        return $this->render('academy/courses-20231213.html.twig', [
+
             'ret' => $result,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
@@ -419,11 +415,9 @@ class AcademyController extends BaseController
         // return $this->render('academy/courses.html.twig',[
         //     'ret' => $result
         // ]);
-        return $this->render('academy/courses-20231213.html.twig',[
+        return $this->render('academy/courses-20231213.html.twig', [
             'ret' => $result,
             'template_layout_name' => 'layouts/layout-20230718.html.twig'
         ]);
     }
-
-
 }

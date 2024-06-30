@@ -1,24 +1,24 @@
 {% extends template_layout_name %}
 
-{% do document.setTitle(list.seoTitle | default(list.title ~ ' — IPOS International')) %}
-{% do pimcore_head_meta().setName("description", list.seoDescription | default(list.content | striptags | u.truncate(320))) %}
-{% do pimcore_head_meta().setName("keywords", list.tags | default('')) %}
+{% do document.setTitle(list.seoTitle) %}
+{% do pimcore_head_meta().setName("description", list.seoDescription) %}
+{# {% do pimcore_head_meta().setName("keywords", list.tags | default('')) %} #}
 
 {% set domain = app.request.getSchemeAndHttpHost() %}
 
 {% set img = list.coverImage.getThumbnail('coverImg') %}
 
-{% do pimcore_head_meta().setProperty("og:title", list.title | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("og:title", list.seoTitle) %}
 {% do pimcore_head_meta().setProperty("og:type", 'article') %}
-{% do pimcore_head_meta().setProperty("og:description", list.content | striptags | u.truncate(320)) %}
+{% do pimcore_head_meta().setProperty("og:description", list.seoDescription) %}
 {% do pimcore_head_meta().setProperty("og:author", list.author) %}
 {% do pimcore_head_meta().setProperty("og:image", domain ~ img) %}
 {% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}
 
 {% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
 {% do pimcore_head_meta().setProperty("twitter:type", "article") %}
-{% do pimcore_head_meta().setProperty("twitter:title", list.title | u.truncate(100)) %}
-{% do pimcore_head_meta().setProperty("twitter:description", list.content | striptags | u.truncate(160)) %}
+{% do pimcore_head_meta().setProperty("twitter:title", list.seoTitle) %}
+{% do pimcore_head_meta().setProperty("twitter:description", list.seoDescription) %}
 {% do pimcore_head_meta().setProperty("twitter:image", domain ~ img) %}
 {% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %}
 
@@ -33,7 +33,7 @@
                     <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
                         <ol class="breadcrumb col-12">
                             <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ pimcore_document(25).fullpath }}">Resources</a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(32).fullpath }}">Resources</a></li>
                             <li class="breadcrumb-item"><a href="{{ pimcore_document(32).fullpath }}">Patent Analytics Reports</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ list.title  }}</li>
                         </ol>
@@ -123,7 +123,21 @@
                                 <span class="share-txt">SHARE</span>
                                 <div class="share-layout">
                                     {% for share in list.shares %}
-                                        <a name="share" class="{{ share.getShare().class }}" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% if share.getShare().class == 'share-icon facebook' %}
+                                            <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Facebook.c78e324.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% endif %}
+
+                                        {% if share.getShare().class == 'share-icon linkedin' %}
+                                            <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Linkedin.dac1a71.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% endif %}
+                                        
+                                        {% if share.getShare().class == 'share-icon twitter' %}
+                                            <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Twitter.6adf57e.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% endif %}
+
+                                        {% if share.getShare().class == 'share-icon email' %}
+                                            <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Email.bd681cf.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>

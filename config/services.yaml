@@ -18,10 +18,10 @@ parameters:
     #pimcore_executable_advpng: /opt/tools/advpng
     #pimcore_executable_cjpeg: /opt/tools/cjpeg
     #pimcore_executable_jpegoptim: /opt/tools/jpegoptim
-    pimcore_executable_php: /opt/remi/php80/root/usr/bin/php
+    #pimcore_executable_php: /opt/remi/php80/root/usr/bin/php
     #pimcore_executable_nice: /opt/tools/nice
     #pimcore_executable_nohup: /opt/tools/nohup
-    pimcore_executable_ffmpeg: /usr/local/ffmpeg/bin/ffmpeg
+    #pimcore_executable_ffmpeg: /usr/bin/ffmpeg
     #pimcore_executable_exiftool: /opt/tools/exiftool
     #pimcore_executable_wkhtmltoimage: /usr/local/bin/wkhtmltoimage
     #pimcore_executable_timeout: /usr/bin/timeout

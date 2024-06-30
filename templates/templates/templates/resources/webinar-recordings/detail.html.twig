@@ -32,7 +32,7 @@
 
                         <ol class="breadcrumb col-12">
                             <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ pimcore_document(25).fullpath }}">Resources</a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(32).fullpath }}">Resources</a></li>
                             <li class="breadcrumb-item"><a href="{{ pimcore_document(31).fullpath }}">Webinar Recordings </a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ list.title  }}</li>
                         </ol>
@@ -124,7 +124,21 @@
                                     <span class="share-txt">SHARE</span>
                                     <div class="share-layout">
                                         {% for share in list.shares %}
-                                            <a name="share" class="{{ share.getShare().class }}" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                            {% if share.getShare().class == 'share-icon facebook' %}
+                                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Facebook.c78e324.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                            {% endif %}
+
+                                            {% if share.getShare().class == 'share-icon linkedin' %}
+                                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Linkedin.dac1a71.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                            {% endif %}
+                                            
+                                            {% if share.getShare().class == 'share-icon twitter' %}
+                                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Twitter.6adf57e.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                            {% endif %}
+
+                                            {% if share.getShare().class == 'share-icon email' %}
+                                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Email.bd681cf.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                            {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>

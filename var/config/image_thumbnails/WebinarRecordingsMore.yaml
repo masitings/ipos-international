@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    WebinarRecordingsMore:
+                        items: {  }
+                        medias: {  }
+                        name: WebinarRecordingsMore
+                        description: ''
+                        group: Resources
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1718293201
+                        creationDate: 1718293196
+                        preserveAnimation: false
