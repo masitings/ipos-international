@@ -44,7 +44,7 @@ class ContactController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function contactAction(Request $request)
+    public function contactAction(Request $request, PersistenceManagerRegistry $doctrine)
     {
 
         /** CSRF Security */
@@ -169,7 +169,7 @@ class ContactController extends BaseController
         try {
             // $mail->send();
             $date = date('Y-m-d H:i:s', time());
-            $conn = (new PersistenceManagerRegistry())->getConnection();
+            $conn = $doctrine->getConnection();
 
             $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
 		            email,sendTime,source) values('" . $firstName . "','" . $lastName . "','" . $company . "','" . $designation . "','" . $subemail . "','" . $message . "','" . $phone . "','" . $c_email . "','" . $date . "','" . $sourceRecordToDb . "')");
