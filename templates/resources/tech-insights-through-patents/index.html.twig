@@ -62,15 +62,17 @@
                                 </div>
                             {% else %}
                                 {% set tipLink = pimcore_link('pageLink') %}
-                                <a class="rounded d-block p-r-100" style="position:relative;background-color: rgba(255, 239, 234, 1);padding: 20px" href="{{ tipLink.data.path | default('') }}" target="_blank">
-                                    {{  pimcore_wysiwyg("tipContent", {
-                                        "class" : "m-b-0",
-                                        "height": 50,
-                                        "placeholder" : "edit content..."
-                                    })
-                                    }}
-                                    <img src="/static/images/icon-arrow-point.f3530e7.png" style="width:28px;position:absolute;right:20px;top:50%;transform:translateY(-50%)">
-                                </a>
+                                {% if tipLink.data.path|length %}
+                                    <a class="rounded d-block p-r-100" style="position:relative;background-color: rgba(255, 239, 234, 1);padding: 20px" href="{{ tipLink.data.path | default('') }}" target="_blank">
+                                        {{  pimcore_wysiwyg("tipContent", {
+                                            "class" : "m-b-0",
+                                            "height": 50,
+                                            "placeholder" : "edit content..."
+                                        })
+                                        }}
+                                        <img src="/static/images/icon-arrow-point.f3530e7.png" style="width:28px;position:absolute;right:20px;top:50%;transform:translateY(-50%)">
+                                    </a>
+                                {% endif %}
                             {% endif %}
                         </section>
 
