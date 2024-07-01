@@ -71,7 +71,7 @@ class ContactController extends BaseController
         }
 
 
-        $mailConfig['smtp_mail_password'] = $this->decrypt($mailConfig['smtp_mail_password']);
+        // $mailConfig['smtp_mail_password'] = $this->decrypt($mailConfig['smtp_mail_password']);
 
 
         //$mailConfig = require '../config/mail.php';
