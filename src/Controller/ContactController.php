@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Model\DataObject;
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+
+
 
 class ContactController extends BaseController
 {
@@ -165,9 +168,10 @@ class ContactController extends BaseController
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
 
+            $doctrine = new PersistenceManagerRegistry();
             // $mail->send();
             $date = date('Y-m-d H:i:s', time());
-            $conn = $this->getDoctrine()->getConnection();
+            $conn = (new PersistenceManagerRegistry())->getConnection();
 
             $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
 		            email,sendTime,source) values('" . $firstName . "','" . $lastName . "','" . $company . "','" . $designation . "','" . $subemail . "','" . $message . "','" . $phone . "','" . $c_email . "','" . $date . "','" . $sourceRecordToDb . "')");
