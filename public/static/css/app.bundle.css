@@ -23583,7 +23583,7 @@ table.table-with-borders tbody,table.table-with-borders td,table.table-with-bord
     .about_container .management-container .ourClients_list_ul .ourClients_list_li .company-logo-pic {
         grid-row-end: 4;
         grid-row-start: 1;
-        opacity: 1;
+        opacity: 0;
         width: 100px
     }
 
@@ -23591,6 +23591,7 @@ table.table-with-borders tbody,table.table-with-borders td,table.table-with-bord
         height: auto;
         width: 100%
     }
+    
 
     .about_container .partners-container {
         padding: 0
@@ -34756,6 +34757,17 @@ a.contact-tnc-email:hover {
     position: relative
 }
 
+.about_container .management-container .ourClients_list_ul .ourClients_list_li:hover .company-logo-pic {
+    opacity: 1;
+}
+
+.about_container .management-container .ourClients_list_ul .ourClients_list_li:hover .company-logo-pic img {
+    width: auto;
+    height: 200px;
+    background: white;
+    border: 1px solid #ddd;
+}
+
 .about_ourClients_container .ourClients_list_li:before {
     color: red;
     color: #777;
@@ -34809,9 +34821,11 @@ a.contact-tnc-email:hover {
 }
 
 .ourClients_content_list:hover .company-logo-pic {
-    opacity: 1;
-    text-align: right;
-    z-index: 1;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 11px;
+    width: 200px;
 }
 
 .ourClients_content_list:hover .company-logo-pic img {
