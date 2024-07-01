@@ -9,4 +9,5 @@ return [
     PimcoreTinymceBundle::class => ['all' => true],
     PimcoreDataHubBundle::class => ['all' => true],
     PimcoreCustomReportsBundle::class => ['all' => true],
+    Extendmate\Pimcore\LoginTracker\ExtendmateLoginTrackerBundle::class => ['all' => true],
 ];

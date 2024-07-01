@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0af0b54f9cfeb983f971e2dcaeaef5c5",
+    "content-hash": "898a0cd39823da98c4baa3a377a84dbc",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1687,6 +1687,66 @@
                 }
             ],
             "time": "2023-09-29T14:03:20+00:00"
+        },
+        {
+            "name": "extendmate/pimcore-bundle-login-tracker",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/extendmategit/pimcore-bundle-login-tracker.git",
+                "reference": "7715c24a54dc67f02b7c2ca2e2112f51d56a3dcb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/extendmategit/pimcore-bundle-login-tracker/zipball/7715c24a54dc67f02b7c2ca2e2112f51d56a3dcb",
+                "reference": "7715c24a54dc67f02b7c2ca2e2112f51d56a3dcb",
+                "shasum": ""
+            },
+            "require": {
+                "pimcore/pimcore": "^11.0.0"
+            },
+            "type": "pimcore-bundle",
+            "extra": {
+                "pimcore": {
+                    "bundles": [
+                        "Extendmate\\Pimcore\\LoginTracker\\ExtendmateLoginTrackerBundle"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Extendmate\\Pimcore\\LoginTracker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Faiyaz Alam",
+                    "homepage": "https://www.linkedin.com/in/erfaiyazalam/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tracks login activities of pimcore users.",
+            "homepage": "https://extendmate.com",
+            "keywords": [
+                "login attempt detector",
+                "login history",
+                "login insights",
+                "login log",
+                "login monitor",
+                "login tracker",
+                "security audit trail",
+                "user login history"
+            ],
+            "support": {
+                "donate": "https://www.paypal.com/paypalme/erfaiyazalam/",
+                "issues": "https://github.com/extendmategit/pimcore-bundle-login-tracker/issues",
+                "source": "https://github.com/extendmategit/pimcore-bundle-login-tracker/tree/v1.0.0"
+            },
+            "time": "2024-02-04T10:59:25+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
