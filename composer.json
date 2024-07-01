@@ -12,7 +12,6 @@
   },
   "prefer-stable": true,
   "require": {
-    "corepim/user-login-history": "^1.0",
     "extendmate/pimcore-bundle-login-tracker": "^1.0",
     "pimcore/admin-ui-classic-bundle": "^1.0",
     "pimcore/data-hub": "^1.7",
