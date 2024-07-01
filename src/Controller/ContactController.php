@@ -167,8 +167,6 @@ class ContactController extends BaseController
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
-
-            $doctrine = new PersistenceManagerRegistry();
             // $mail->send();
             $date = date('Y-m-d H:i:s', time());
             $conn = (new PersistenceManagerRegistry())->getConnection();
