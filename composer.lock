@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1c747a03114f0812f3e594569eede5d",
+    "content-hash": "0af0b54f9cfeb983f971e2dcaeaef5c5",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -259,6 +259,49 @@
                 }
             ],
             "time": "2024-03-15T14:00:32+00:00"
+        },
+        {
+            "name": "corepim/user-login-history",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/extendmategit/pimcore-bundle-user-login-history.git",
+                "reference": "fe0f69d6ce5a84b74c21c9f348f7efbb6153a07e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/extendmategit/pimcore-bundle-user-login-history/zipball/fe0f69d6ce5a84b74c21c9f348f7efbb6153a07e",
+                "reference": "fe0f69d6ce5a84b74c21c9f348f7efbb6153a07e",
+                "shasum": ""
+            },
+            "type": "pimcore-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Corepim\\UserLoginHistoryBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Er Faiyaz Alam",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Pimcore 5.x Bundle which helps you to track the login details of backend users.",
+            "homepage": "https://github.com/corepim/",
+            "keywords": [
+                "pimcore",
+                "user"
+            ],
+            "support": {
+                "issues": "https://github.com/extendmategit/pimcore-bundle-user-login-history/issues",
+                "source": "https://github.com/extendmategit/pimcore-bundle-user-login-history/tree/v1.0.2"
+            },
+            "abandoned": true,
+            "time": "2020-08-03T15:30:57+00:00"
         },
         {
             "name": "dasprid/enum",

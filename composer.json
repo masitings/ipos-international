@@ -12,6 +12,7 @@
   },
   "prefer-stable": true,
   "require": {
+    "corepim/user-login-history": "^1.0",
     "pimcore/admin-ui-classic-bundle": "^1.0",
     "pimcore/data-hub": "^1.7",
     "pimcore/pimcore": "^11.0.4",
