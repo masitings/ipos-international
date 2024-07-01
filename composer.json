@@ -15,7 +15,7 @@
     "extendmate/pimcore-bundle-login-tracker": "^1.0",
     "pimcore/admin-ui-classic-bundle": "^1.0",
     "pimcore/data-hub": "^1.7",
-    "pimcore/pimcore": "^11.0.4",
+    "pimcore/pimcore": "^11.1",
     "symfony/dotenv": "^7.0",
     "symfony/runtime": "^6.2"
   },
