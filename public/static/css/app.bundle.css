@@ -23583,7 +23583,7 @@ table.table-with-borders tbody,table.table-with-borders td,table.table-with-bord
     .about_container .management-container .ourClients_list_ul .ourClients_list_li .company-logo-pic {
         grid-row-end: 4;
         grid-row-start: 1;
-        opacity: 0;
+        opacity: 1;
         width: 100px
     }
 
@@ -34759,6 +34759,14 @@ a.contact-tnc-email:hover {
 
 .about_container .management-container .ourClients_list_ul .ourClients_list_li:hover .company-logo-pic {
     opacity: 1;
+   z-index: 1;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    right: 0;
+    left: 0;
+    margin: 0% 16% auto;
 }
 
 .about_container .management-container .ourClients_list_ul .ourClients_list_li:hover .company-logo-pic img {
