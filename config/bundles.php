@@ -12,7 +12,5 @@ return [
     PimcoreDataHubBundle::class => ['all' => true],
     PimcoreCustomReportsBundle::class => ['all' => true],
     Extendmate\Pimcore\LoginTracker\ExtendmateLoginTrackerBundle::class => ['all' => true],
-    AdvancedObjectSearchBundle\AdvancedObjectSearchBundle::class => ['all' => true],
-    PimcoreOpenSearchClientBundle::class => ['all' => true],
     PimcoreSeoBundle::class => ['all' => true]
 ];

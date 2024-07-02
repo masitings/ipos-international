@@ -5,6 +5,5 @@ return [
     'mail_name' => 'noreply@iposinternational.com',
     'mail_passwd' => 'IPOSintl@2022;!#',
     'mail_port' => 587,
-
 ];
 
