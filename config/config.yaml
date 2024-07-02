@@ -135,10 +135,10 @@ framework:
 #        handler_id: null
 
 #### SYMFONY MAILER TRANSPORTS
-   mailer:
-       transports:
-           main: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
-           pimcore_newsletter: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
+    mailer:
+        transports:
+            main: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
+            pimcore_newsletter: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
 
 twig:
     paths:
