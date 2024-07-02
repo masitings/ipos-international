@@ -55,7 +55,8 @@ class ContactController extends BaseController
         $emailObj = new DataObject\Emails\Listing();
 
         $emailObj->load();
-        $sendMail = 'enquiry@iposinternational.com';
+        // $sendMail = 'enquiry@iposinternational.com';
+        $sendMail = 'zhikai.yap@aikendigital.co';
         $sendMails = [];
 
         foreach ($emailObj as $email) {
