@@ -67,7 +67,12 @@ class ContactController extends BaseController
         $list->setCondition('`name` LIKE ' . $list->quote('%smtp_mail%'));
         $list = $list->load();
 
-        $mailConfig = require '../config/mail.php';
+        $mailConfig = [
+            'mail_host' => 'smtp.office365.com',
+            'mail_name' => 'noreply@iposinternational.com',
+            'mail_passwd' => 'zDb#v&1kAK2dzZ',
+            'mail_port' => 587,
+        ];
 
         $state = $request->get('state');
 
@@ -102,7 +107,7 @@ class ContactController extends BaseController
 
         $mail->isSMTP();                             // 使用SMTP
 
-        $mail->Host = $mailConfig['mail_service'];                // SMTP服务器
+        $mail->Host = $mailConfig['mail_host'];                // SMTP服务器
 
         $mail->SMTPAuth = true;                      // 允许 SMTP 认证
 
