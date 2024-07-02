@@ -70,7 +70,7 @@ class ContactController extends BaseController
         $mailConfig = [
             'mail_host' => 'smtp.office365.com',
             'mail_name' => 'noreply@iposinternational.com',
-            '' => 'zDb#v&1kAK2dzZ',
+            'mail_passwd' => 'zDb#v&1kAK2dzZ',
             'mail_port' => 587,
         ];
 
