@@ -68,10 +68,12 @@ class ContactController extends BaseController
         $list = $list->load();
 
         $mailConfig = [
-            'mail_host' => 'smtp.office365.com',
-            'mail_name' => 'noreply@iposinternational.com',
-            'mail_passwd' => 'zDb#v&1kAK2dzZ',
+            'mail_host' => 'sandbox.smtp.mailtrap.io',
+            'mail_name' => 'IPOS International',
+            'mail_username' => '75e2c61a07422c',
+            'mail_passwd' => '4803c373d27ce6',
             'mail_port' => 587,
+            'reply_to' => 'noreply@iposinternational.com'
         ];
 
         $state = $request->get('state');
@@ -111,7 +113,7 @@ class ContactController extends BaseController
 
         $mail->SMTPAuth = true;                      // 允许 SMTP 认证
 
-        $mail->Username = $mailConfig['mail_name'];                // SMTP 用户名  即邮箱的用户名
+        $mail->Username = $mailConfig['mail_username'];                // SMTP 用户名  即邮箱的用户名
 
         $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
 
@@ -133,7 +135,7 @@ class ContactController extends BaseController
 
 
         // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        $mail->addReplyTo($mailConfig['mail_name'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
+        $mail->addReplyTo($mailConfig['reply_to'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
 
         $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
 
