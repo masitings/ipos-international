@@ -19465,7 +19465,7 @@ a {
 .main-nav ul li .search-container-label:after {
     background-color: #ddd;
     content: "";
-    display: block;
+    display: none;
     height: 26px;
     margin: auto 10px auto 18px;
     position: relative;
@@ -19474,7 +19474,8 @@ a {
 
 .main-nav ul li .search-container button {
     background-color: transparent;
-    border-width: 0
+    border-width: 0;
+    display: none;
 }
 
 .main-nav ul li .search-container .search-input {
@@ -19482,13 +19483,15 @@ a {
     border-width: 0;
     -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
-    width: 0
+    width: 0;
+    display: none;
 }
 
 .main-nav ul li .search-container .search-input.expanded {
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
-    width: 300px
+    width: 300px;
+    display: none;
 }
 
 .main-nav ul li .search-container-p2 {
