@@ -70,7 +70,7 @@ class ContactController extends BaseController
         $mailConfig = [
             'mail_host' => 'smtp.office365.com',
             'mail_name' => 'noreply@iposinternational.com',
-            'mail_passwd' => 'zDb#v&1kAK2dzZ',
+            '' => 'zDb#v&1kAK2dzZ',
             'mail_port' => 587,
         ];
 
@@ -113,7 +113,7 @@ class ContactController extends BaseController
 
         $mail->Username = $mailConfig['mail_name'];                // SMTP 用户名  即邮箱的用户名
 
-        $mail->Password = $mailConfig['mail_password'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
+        $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
 
         $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
 
