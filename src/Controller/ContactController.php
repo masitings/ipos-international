@@ -55,8 +55,7 @@ class ContactController extends BaseController
         $emailObj = new DataObject\Emails\Listing();
 
         $emailObj->load();
-        // $sendMail = 'enquiry@iposinternational.com';
-        $sendMail = 'zhikai.yap@aikendigital.co';
+        $sendMail = 'enquiry@iposinternational.com';
         $sendMails = [];
 
         foreach ($emailObj as $email) {
@@ -78,7 +77,7 @@ class ContactController extends BaseController
         // $mailConfig['smtp_mail_password'] = $this->decrypt($mailConfig['smtp_mail_password']);
 
 
-        // $mailConfig = require '../config/mail.php';
+        //$mailConfig = require '../config/mail.php';
 
         $state = $request->get('state');
 
@@ -104,72 +103,71 @@ class ContactController extends BaseController
         $c_email = $request->get('email');
 
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
+        // $mail = new PHPMailer(true);
 
-        $mail = new PHPMailer(true);
+        // $mail->CharSet = "UTF-8";                     //设定邮件编码
 
-        $mail->CharSet = "UTF-8";                     //设定邮件编码
+        // $mail->SMTPDebug = 0;                        // 调试模式输出
 
-        $mail->SMTPDebug = 0;                        // 调试模式输出
+        // $mail->isSMTP();                             // 使用SMTP
 
-        $mail->isSMTP();                             // 使用SMTP
+        // $mail->Host = $mailConfig['smtp_mail_service'];                // SMTP服务器
 
-        $mail->Host = 'smtp.office365.com';                // SMTP服务器
+        // $mail->SMTPAuth = true;                      // 允许 SMTP 认证
 
-        $mail->SMTPAuth = true;                      // 允许 SMTP 认证
+        // $mail->Username = $mailConfig['smtp_mail_name'];                // SMTP 用户名  即邮箱的用户名
 
-        $mail->Username = 'noreply@iposinternational.com';                // SMTP 用户名  即邮箱的用户名
+        // $mail->Password = $mailConfig['smtp_mail_password'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
 
-        $mail->Password = 'zDb#v&1kAK2dzZ';             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
+        // $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
 
-        $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
-
-        $mail->Port = '587';                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
-
+        // $mail->Port = $mailConfig['smtp_mail_port'];                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
 
 
-        $mail->setFrom('noreply@iposinternational.com', '');  //发件人
 
-        if ($sendMails) {
-            foreach ($sendMails as $email) {
-                $mail->addAddress($email);
-            }
-        } else {
-            $mail->addAddress($sendMail);
-        }
+        // $mail->setFrom($mailConfig['smtp_mail_name'], '');  //发件人
 
-
-        //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        $mail->addReplyTo('noreply@iposinternational.com', 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
-
-        $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
-
-        $mail->Subject = $state;
-
-        $mail->Body    = 'FirstName : ' . $firstName . "\r\n";
-        $mail->Body .= 'LastName : ' . $lastName . "\r\n";
+        // if ($sendMails) {
+        //     foreach ($sendMails as $email) {
+        //         $mail->addAddress($email);
+        //     }
+        // } else {
+        //     $mail->addAddress($sendMail);
+        // }
 
 
-        $mail->Body .= 'Company : ' . $company . "\r\n";
+        // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
+        // $mail->addReplyTo($mailConfig['smtp_mail_name'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
 
-        $mail->Body .= 'Designation : ' . $designation . "\r\n";
-        $mail->Body .= 'Phone : ' . $phone . "\r\n";
-        $mail->Body .= 'Email : ' . $c_email . "\r\n";
+        // $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
 
-        $mail->Body .= 'ReceiveMarketingEmail :' . $subemail . "\r\n";
+        // $mail->Subject = $state;
 
-        if ($infoSourceOthers != "") {
-            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
-        } else {
-            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
-        }
+        // $mail->Body    = 'FirstName : ' . $firstName . "\r\n";
+        // $mail->Body .= 'LastName : ' . $lastName . "\r\n";
 
-        $mail->Body .= 'Message : ' . "\r\n" . $message;
+
+        // $mail->Body .= 'Company : ' . $company . "\r\n";
+
+        // $mail->Body .= 'Designation : ' . $designation . "\r\n";
+        // $mail->Body .= 'Phone : ' . $phone . "\r\n";
+        // $mail->Body .= 'Email : ' . $c_email . "\r\n";
+
+        // $mail->Body .= 'ReceiveMarketingEmail :' . $subemail . "\r\n";
+
+        // if ($infoSourceOthers != "") {
+        //     $mail->Body .= 'InfoSource : ' . $source . "\r\n";
+        //     $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
+        // } else {
+        //     $mail->Body .= 'InfoSource : ' . $source . "\r\n";
+        //     $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
+        // }
+
+        // $mail->Body .= 'Message : ' . "\r\n" . $message;
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
-            $mail->send();
+            // $mail->send();
             $date = date('Y-m-d H:i:s', time());
             $conn = $doctrine->getConnection();
 
