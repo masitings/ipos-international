@@ -89,10 +89,10 @@ pimcore:
 #        proxy_port: ''
 #        proxy_user: ''
 #        proxy_pass: ''
-#    email:
-#        sender:
-#            name: 'Pimcore Demo'
-#            email: demo@pimcore.com
+   email:
+       sender:
+           name: 'IPOS International'
+           email: noreply@iposinternational.com
 #        return:
 #            name: ''
 #            email: ''
@@ -135,10 +135,10 @@ framework:
 #        handler_id: null
 
 #### SYMFONY MAILER TRANSPORTS
-#    mailer:
-#        transports:
-#            main: smtp://user:pass@smtp.example.com:port
-#            pimcore_newsletter: smtp://user:pass@smtp.example.com:port
+   mailer:
+       transports:
+           main: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
+           pimcore_newsletter: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
 
 twig:
     paths:
