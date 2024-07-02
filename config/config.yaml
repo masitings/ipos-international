@@ -93,9 +93,9 @@ pimcore:
        sender:
            name: 'IPOS International'
            email: noreply@iposinternational.com
-#        return:
-#            name: ''
-#            email: ''
+       return:
+           name: ''
+           email: ''
 #    newsletter:
 #        use_specific: false # set true to use the following options for newsletter delivery
 #        sender:
