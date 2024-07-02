@@ -73,7 +73,7 @@ class ContactController extends BaseController
             'mail_username' => '75e2c61a07422c',
             'mail_passwd' => '4803c373d27ce6',
             'mail_port' => 587,
-            'reply_to' => 'noreply@iposinternational.com'
+            'mail_from' => 'noreply@iposinternational.com'
         ];
 
         $state = $request->get('state');
@@ -123,7 +123,7 @@ class ContactController extends BaseController
 
 
 
-        $mail->setFrom($mailConfig['mail_name'], '');  //发件人
+        $mail->setFrom($mailConfig['mail_from'], '');  //发件人
 
         if ($sendMails) {
             foreach ($sendMails as $email) {
@@ -135,7 +135,7 @@ class ContactController extends BaseController
 
 
         // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        $mail->addReplyTo($mailConfig['reply_to'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
+        $mail->addReplyTo($mailConfig['mail_from'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
 
         $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
 
