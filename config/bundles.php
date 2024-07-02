@@ -3,6 +3,7 @@
 use Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle;
 use Pimcore\Bundle\DataHubBundle\PimcoreDataHubBundle;
 use Pimcore\Bundle\OpenSearchClientBundle\PimcoreOpenSearchClientBundle;
+use Pimcore\Bundle\SeoBundle\PimcoreSeoBundle;
 use Pimcore\Bundle\TinymceBundle\PimcoreTinymceBundle;
 
 return [
@@ -13,4 +14,5 @@ return [
     Extendmate\Pimcore\LoginTracker\ExtendmateLoginTrackerBundle::class => ['all' => true],
     AdvancedObjectSearchBundle\AdvancedObjectSearchBundle::class => ['all' => true],
     PimcoreOpenSearchClientBundle::class => ['all' => true],
+    PimcoreSeoBundle::class => ['all' => true]
 ];
