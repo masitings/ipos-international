@@ -68,10 +68,10 @@ class ContactController extends BaseController
         $list = $list->load();
 
         $mailConfig = [
-            'mail_host' => 'sandbox.smtp.mailtrap.io',
+            'mail_host' => 'smtp.office365.com',
             'mail_name' => 'IPOS International',
-            'mail_username' => '75e2c61a07422c',
-            'mail_passwd' => '4803c373d27ce6',
+            'mail_username' => 'noreply@iposinternational.com',
+            'mail_passwd' => '&!qmf*V7@4rxXz',
             'mail_port' => 587,
             'mail_from' => 'noreply@iposinternational.com'
         ];
