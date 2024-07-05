@@ -1,16 +1,10 @@
 <?php
 
-use Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle;
-use Pimcore\Bundle\DataHubBundle\PimcoreDataHubBundle;
-use Pimcore\Bundle\OpenSearchClientBundle\PimcoreOpenSearchClientBundle;
-use Pimcore\Bundle\SeoBundle\PimcoreSeoBundle;
-use Pimcore\Bundle\TinymceBundle\PimcoreTinymceBundle;
-
 return [
-    //Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
-    PimcoreTinymceBundle::class => ['all' => true],
-    PimcoreDataHubBundle::class => ['all' => true],
-    PimcoreCustomReportsBundle::class => ['all' => true],
+    Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle::class => ['all' => true],
+    Pimcore\Bundle\SeoBundle\PimcoreSeoBundle::class => ['all' => true],
+    Pimcore\Bundle\SimpleBackendSearchBundle\PimcoreSimpleBackendSearchBundle::class => ['all' => true],
+    Pimcore\Bundle\TinymceBundle\PimcoreTinymceBundle::class => ['all' => true],
+    Pimcore\Bundle\DataHubBundle\PimcoreDataHubBundle::class => ['all' => true],
     Extendmate\Pimcore\LoginTracker\ExtendmateLoginTrackerBundle::class => ['all' => true],
-    PimcoreSeoBundle::class => ['all' => true]
 ];
