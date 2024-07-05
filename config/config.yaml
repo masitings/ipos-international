@@ -135,8 +135,8 @@ framework:
 #        handler_id: null
 
 #### SYMFONY MAILER TRANSPORTS
-    mailer:
-        dsn: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
+    # mailer:
+    #     dsn: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
 
 twig:
     paths:

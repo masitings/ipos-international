@@ -1,3 +1,3 @@
 framework:
     mailer:
-        dsn: smtp://noreply@iposinternational.com:&!qmf*V7@4rxXz@smtp.office365.com:587
+        dsn: '%env(MAILER_DSN)%'
