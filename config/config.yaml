@@ -139,7 +139,7 @@ framework:
         transports:
             main: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
             pimcore_newsletter: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
-        dsn: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
+            dsn: smtp://noreply@iposinternational.com:zDb#v&1kAK2dzZ@smtp.office365.com:587
 
 twig:
     paths:
