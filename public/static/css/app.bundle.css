@@ -538,7 +538,8 @@ th {
 }
 
 tbody,td,tfoot,th,thead,tr {
-    border-color: inherit
+    border-color: inherit;
+    padding: 10px;
 }
 
 label {
