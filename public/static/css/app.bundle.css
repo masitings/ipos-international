@@ -525,6 +525,21 @@ table {
     caption-side: bottom
 }
 
+table.template-15 th,
+table.template-15 td {
+    padding: 15px;
+}
+
+table.template-20 th,
+table.template-20 td {
+    padding: 20px;
+}
+
+table.template-25 th,
+table.template-25 td {
+    padding: 25px;
+}
+
 caption {
     color: var(--bs-secondary-color);
     padding-bottom: .5rem;
@@ -37410,3 +37425,6 @@ a.contact-tnc-email:hover {
     object-fit: cover;
     width: 100%
 }
+
+
+
