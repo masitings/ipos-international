@@ -7,14 +7,19 @@
     "sort-packages": true,
     "process-timeout": 0,
     "allow-plugins": {
-      "symfony/runtime": true
+      "symfony/runtime": true,
+      "php-http/discovery": true
     }
   },
   "prefer-stable": true,
   "require": {
+    "extendmate/pimcore-bundle-login-tracker": "^1.0",
+    "phpmailer/phpmailer": "^6.9",
     "pimcore/admin-ui-classic-bundle": "^1.0",
+    "pimcore/advanced-object-search": "^6.0",
     "pimcore/data-hub": "^1.7",
-    "pimcore/pimcore": "^11.0.4",
+    "pimcore/opensearch-client": "^1.0",
+    "pimcore/pimcore": "^11.1",
     "symfony/dotenv": "^7.0",
     "symfony/runtime": "^6.2"
   },

@@ -78,24 +78,24 @@ pimcore:
 #            email: 73893596983@developer.gserviceaccount.com
 #            simple_api_key: AIzaSyCo9Wj49hYJWW2WgOju4iMYNTvdcBxmyQ8
 #            browser_api_key: AIzaSyBJX16kWAmUVEz1c1amzp2iKqAfumbcoQQ
-#    full_page_cache:
-#        enabled:false
-#        lifetime: 60
-#        exclude_cookie: ''
-#        exclude_patterns: ''
+   full_page_cache:
+       enabled: false
+       lifetime: 60
+       exclude_cookie: ''
+       exclude_patterns: ''
 #    httpclient:
 #        adapter: Socket # use 'Proxy' for custom proxy configuration
 #        proxy_host: ''
 #        proxy_port: ''
 #        proxy_user: ''
 #        proxy_pass: ''
-#    email:
-#        sender:
-#            name: 'Pimcore Demo'
-#            email: demo@pimcore.com
-#        return:
-#            name: ''
-#            email: ''
+   email:
+       sender:
+           name: 'IPOS International'
+           email: noreply@iposinternational.com
+       return:
+           name: ''
+           email: ''
 #    newsletter:
 #        use_specific: false # set true to use the following options for newsletter delivery
 #        sender:
@@ -135,10 +135,10 @@ framework:
 #        handler_id: null
 
 #### SYMFONY MAILER TRANSPORTS
-#    mailer:
-#        transports:
-#            main: smtp://user:pass@smtp.example.com:port
-#            pimcore_newsletter: smtp://user:pass@smtp.example.com:port
+    mailer:
+        transports:
+            main: 'smtp://noreply@iposinternational.com:&!qmf*V7@4rxXz@smtp.office365.com:587'
+            pimcore_newsletter: 'smtp://noreply@iposinternational.com:&!qmf*V7@4rxXz@smtp.office365.com:587'
 
 twig:
     paths:
