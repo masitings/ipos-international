@@ -19,7 +19,8 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
-
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use Exception;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
@@ -27,53 +28,45 @@ class SerachController extends BaseController
 {
     use AdminStyleTrait;
 
-
     /**
      * @Route("/api/quicksearch")
      *
      * @param Request $request
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param Config $config
+     * @param PersistenceManagerRegistry $doctrine
      *
      * @return JsonResponse
      */
-    public function quicksearchAction(Request $request, PaginatorInterface $paginator, EventDispatcherInterface $eventDispatcher, Config $config)
+    public function searchAction(Request $request)
     {
         try {
-
-            $query = $keyWord = addslashes($request->get('query'));
-            if (!$query) {
-                // return  $this->render('search/search-result.html.twig',[]);
+            $query = addslashes($request->get('query'));
+            if (empty($query)) {
                 return $this->render('search/search-result-20230719.html.twig', [
                     'template_layout_name' => 'layouts/layout-20230718.html.twig'
                 ]);
             }
+
             $limit = is_numeric($request->get('limit')) ? intval($request->get('limit')) : 10;
             $page = is_numeric($request->get('page')) ? intval($request->get('page')) : 1;
             $offset = ($page - 1) * $limit;
 
-
             $filter = "COUNT(id) AS total";
 
             $querySql = "SELECT $filter FROM search_backend_data WHERE data LIKE '%{$query}%'
-AND (type = 'object' OR type = 'page') AND  subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND subtype != 'Shares' AND subtype != 'IposContact' AND published =1
-ORDER BY creationDate DESC";
-
-            $conn = $this->getDoctrine()->getConnection();
-
-            $total = $conn->fetchAll($querySql)[0]['total'];
-
-            /* dump($total);
-             exit();*/
-
+                        AND (type = 'object' OR type = 'page') AND  subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND subtype != 'Shares' AND subtype != 'IposContact' AND published =1
+                        ORDER BY creationDate DESC";
+                        
+            $db = \Pimcore\Db::get();
+            $total = $db->fetchAllAssociative($querySql)[0]['total'];
 
             $querySql = "SELECT * FROM search_backend_data WHERE data LIKE '%{$query}%'
-AND (type = 'object' OR type = 'page') AND subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND  subtype !='IposContact' AND subtype != 'Shares' AND published =1
-ORDER BY creationDate DESC";
+                        AND (type = 'object' OR type = 'page') AND subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND  subtype !='IposContact' AND subtype != 'Shares' AND published =1
+                        ORDER BY creationDate DESC";
 
-            $resultData = $conn->fetchAll($querySql . " LIMIT " . $limit . "
+            $resultData = $db->fetchAllAssociative($querySql . " LIMIT " . $limit . "
                     OFFSET " . $offset);
             $result = [];
+
             foreach ($resultData as  $key => $item) {
 
                 $maintype = $item['maintype'];
@@ -122,17 +115,8 @@ ORDER BY creationDate DESC";
                     }
                 }
             }
-
             $totalPage  = intval(ceil($total / $limit));
 
-            // return  $this->render('search/search-result.html.twig',[
-            //     'total' => $total,
-            //     'limit' => $limit,
-            //     'totalPage' => $totalPage,
-            //     'nowPage' => $page,
-            //     'keyword' => $query,
-            //     'data' => $result
-            // ]);
             return $this->render('search/search-result-20230719.html.twig', [
                 'total' => $total,
                 'limit' => $limit,
@@ -142,15 +126,7 @@ ORDER BY creationDate DESC";
                 'data' => $result,
                 'template_layout_name' => 'layouts/layout-20230718.html.twig'
             ]);
-        } catch (\Throwable $exception) {
-            // return  $this->render('search/search-result.html.twig',[
-            //     'total' => 0,
-            //     'limit' => $limit,
-            //     'totalPage' => 0,
-            //     'nowPage' => $page,
-            //     'keyword' => $query,
-            //     'data' => []
-            // ]);
+        } catch (Exception $e) {
             return $this->render('search/search-result-20230719.html.twig', [
                 'total' => 0,
                 'limit' => $limit,
@@ -160,6 +136,65 @@ ORDER BY creationDate DESC";
                 'data' => [],
                 'template_layout_name' => 'layouts/layout-20230718.html.twig'
             ]);
+        }
+    }
+
+    public function quicksearchAction(Request $request, PaginatorInterface $paginator, EventDispatcherInterface $eventDispatcher, Config $config)
+    {
+        try {
+
+            $query = $keyWord = addslashes($request->get('query'));
+            if (!$query) {
+                // return  $this->render('search/search-result.html.twig',[]);
+
+            }
+            $limit = is_numeric($request->get('limit')) ? intval($request->get('limit')) : 10;
+            $page = is_numeric($request->get('page')) ? intval($request->get('page')) : 1;
+            $offset = ($page - 1) * $limit;
+
+
+            $filter = "COUNT(id) AS total";
+
+            $querySql = "SELECT $filter FROM search_backend_data WHERE data LIKE '%{$query}%'
+AND (type = 'object' OR type = 'page') AND  subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND subtype != 'Shares' AND subtype != 'IposContact' AND published =1
+ORDER BY creationDate DESC";
+
+            $conn = $this->getDoctrine()->getConnection();
+
+            $total = $conn->fetchAll($querySql)[0]['total'];
+
+            /* dump($total);
+             exit();*/
+
+
+            $querySql = "SELECT * FROM search_backend_data WHERE data LIKE '%{$query}%'
+AND (type = 'object' OR type = 'page') AND subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND  subtype !='IposContact' AND subtype != 'Shares' AND published =1
+ORDER BY creationDate DESC";
+
+            $resultData = $conn->fetchAll($querySql . " LIMIT " . $limit . "
+                    OFFSET " . $offset);
+
+
+
+            // return  $this->render('search/search-result.html.twig',[
+            //     'total' => $total,
+            //     'limit' => $limit,
+            //     'totalPage' => $totalPage,
+            //     'nowPage' => $page,
+            //     'keyword' => $query,
+            //     'data' => $result
+            // ]);
+
+        } catch (\Throwable $exception) {
+            // return  $this->render('search/search-result.html.twig',[
+            //     'total' => 0,
+            //     'limit' => $limit,
+            //     'totalPage' => 0,
+            //     'nowPage' => $page,
+            //     'keyword' => $query,
+            //     'data' => []
+            // ]);
+
         }
     }
 }

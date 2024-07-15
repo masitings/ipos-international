@@ -525,6 +525,21 @@ table {
     caption-side: bottom
 }
 
+table.template-15 th,
+table.template-15 td {
+    padding: 15px;
+}
+
+table.template-20 th,
+table.template-20 td {
+    padding: 20px;
+}
+
+table.template-25 th,
+table.template-25 td {
+    padding: 25px;
+}
+
 caption {
     color: var(--bs-secondary-color);
     padding-bottom: .5rem;
@@ -538,7 +553,8 @@ th {
 }
 
 tbody,td,tfoot,th,thead,tr {
-    border-color: inherit
+    border-color: inherit;
+    padding: 10px;
 }
 
 label {
@@ -19236,7 +19252,7 @@ a,body,div,html,p,span {
 }
 
 a {
-    color: #fff
+    color: #E34A21
 }
 
 .btn {
@@ -19474,7 +19490,7 @@ a {
 
 .main-nav ul li .search-container button {
     background-color: transparent;
-    border-width: 0
+    border-width: 0;
 }
 
 .main-nav ul li .search-container .search-input {
@@ -19482,13 +19498,13 @@ a {
     border-width: 0;
     -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
-    width: 0
+    width: 0;
 }
 
 .main-nav ul li .search-container .search-input.expanded {
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
-    width: 300px
+    width: 300px;
 }
 
 .main-nav ul li .search-container-p2 {
@@ -23591,6 +23607,7 @@ table.table-with-borders tbody,table.table-with-borders td,table.table-with-bord
         height: auto;
         width: 100%
     }
+    
 
     .about_container .partners-container {
         padding: 0
@@ -34756,6 +34773,25 @@ a.contact-tnc-email:hover {
     position: relative
 }
 
+.about_container .management-container .ourClients_list_ul .ourClients_list_li:hover .company-logo-pic {
+    opacity: 1;
+   z-index: 1;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    right: 0;
+    left: 0;
+    margin: 0% 16% auto;
+}
+
+.about_container .management-container .ourClients_list_ul .ourClients_list_li:hover .company-logo-pic img {
+    width: auto;
+    height: 200px;
+    background: white;
+    border: 1px solid #ddd;
+}
+
 .about_ourClients_container .ourClients_list_li:before {
     color: red;
     color: #777;
@@ -34809,9 +34845,11 @@ a.contact-tnc-email:hover {
 }
 
 .ourClients_content_list:hover .company-logo-pic {
-    opacity: 1;
-    text-align: right;
-    z-index: 1;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 11px;
+    width: 200px;
 }
 
 .ourClients_content_list:hover .company-logo-pic img {
@@ -37387,3 +37425,6 @@ a.contact-tnc-email:hover {
     object-fit: cover;
     width: 100%
 }
+
+
+
