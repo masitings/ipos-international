@@ -24,8 +24,6 @@ use Symfony\Component\HttpFoundation\Request;
 class BaseController extends FrontendController
 {
 
-    const GRAPHQL_URL = "https://stage-v2.iposinternational.com";
-
     /**
      * @param Request $request
      * @param DataObject $object
