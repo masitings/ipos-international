@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
+
 class AcademyController extends BaseController
 {
 
@@ -340,7 +342,8 @@ class AcademyController extends BaseController
         $filter = $request->request->get('filter');
 
         $filter = json_encode($filter, 256);
-        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/academy?apikey=5a89ba4bda8d412501814dee4e6cbaf5';
+
+        $url = $_ENV['APP_URL'] . '/pimcore-graphql-webservices/academy?apikey=5a89ba4bda8d412501814dee4e6cbaf5';
         $str = '{  getCourseListing(defaultLanguage: "en", filter: ' . $filter . ') {    edges {      node {        id planing {          ... on fieldcollection_ProgramPlanning {            startDate            lastDate          }        }      }    }  }}';
 
         $ar = [

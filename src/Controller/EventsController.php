@@ -61,7 +61,7 @@ class EventsController extends BaseController
         }
 
 
-        $url = parent::GRAPHQL_URL . '/pimcore-graphql-webservices/events?apikey=af857163a5b2a05be63753beda3813a4';
+        $url = $_ENV['APP_URL'] . '/pimcore-graphql-webservices/events?apikey=af857163a5b2a05be63753beda3813a4';
 
         $ar = [
             'query' => '{

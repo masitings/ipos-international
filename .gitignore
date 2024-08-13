@@ -12,6 +12,7 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+/.env
 !/config/local
 /config/local/*
 !config/local/.gitkeep
