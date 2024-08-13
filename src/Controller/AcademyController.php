@@ -142,15 +142,12 @@ class AcademyController extends BaseController
         $filterDateIds = [];
         if ($filterDate) {
             $filterDate = $filterDate / 1000;
+            $arr = [];
             foreach ($coursesData as $k => $v) {
                 $id = $v['id'];
                 if (isset($v['planning']) && !empty($v['planning'])) {
                     foreach ($v['planning'] as $value) {
-
-
-
-                        if (strtotime($value->getStartDate()) == $filterDate) {
-
+                        if (date('Y-m-d', strtotime($value->getStartDate())) == date('Y-m-d', $filterDate)) {
                             array_push($filterDateIds, $id);
                         }
                     }
