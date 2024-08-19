@@ -2,6 +2,7 @@ framework:
     html_sanitizer:
         sanitizers:
             pimcore.wysiwyg_sanitizer:
+                max_input_length: -1
                 allow_elements:
                     p: ['class', 'style']
                     strong: 'class'
