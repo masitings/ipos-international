@@ -1,6 +1,7 @@
 imports:
     - { resource: services.yaml }
     - { resource: 'local/' }
+    - { resource: html_sanitizer.yaml }
 
 
 pimcore:
