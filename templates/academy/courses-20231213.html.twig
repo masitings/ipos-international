@@ -159,7 +159,7 @@
                                             teachingArrangement.lastTime != ""
                                         ) {
                                             if (timeStr != "") {
-                                                timeStr += " , ";
+                                                timeStr += " ";
                                             }
                                             timeStr += '<div class="time-row">';
                                             timeStr += '<div class="time">';
@@ -194,68 +194,157 @@
                                     var startDate = new Date(planning.startDate);
                                     if (planning.lastDate != "") {
                                         var lastDate = new Date(planning.lastDate);
+                                        
                                         if (startDate.getMonth() == lastDate.getMonth()) {
-                                            dateStr +=
-                                                '<div class="content_date_day-com">' +
-                                                '<div class="date">' +
-                                                startDate.getDate() +
-                                                "-" +
-                                                lastDate.getDate() +
-                                                "</div>" +
-                                                '<div class="month-year">' +
-                                                startDate.toLocaleString("en-US", { month: "short" }) +
-                                                " " +
-                                                startDate.getFullYear() +
-                                                "</div>" +
-                                                timeStr +
-                                                "</div>";
-                                            contentLeft +=
-                                                '<div class="content_place" style="flex-direction:column;margin-bottom:15px">' +
-                                                '<div class="icon" style="position: absolute"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
-                                                '<div class="text" style="margin-left: 15px; font-weight: 500">' +
-                                                startDate.getDate() +
-                                                "-" +
-                                                lastDate.getDate() +
-                                                " " +
-                                                startDate.toLocaleString("en-US", { month: "short" }) +
-                                                "</div>" +
-                                                '<div class="text" style="margin-left: 15px">' +
-                                                venueStr +
-                                                "</div>" +
-                                                "</div>";
+                                            if (startDate.getFullYear() == lastDate.getFullYear()) {
+                                                dateStr +=
+                                                    '<div class="content_date_day-com">' +
+                                                    '<div class="date">' +
+                                                    startDate.getDate() +
+                                                    "-" +
+                                                    lastDate.getDate() +
+                                                    "</div>" +
+                                                    '<div class="month-year">' +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    startDate.getFullYear() +
+                                                    "</div>" +
+                                                    timeStr +
+                                                    "</div>";
+                                                contentLeft +=
+                                                    '<div class="content_place" style="flex-direction:column;margin-bottom:15px">' +
+                                                    '<div class="icon" style="position: absolute"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
+                                                    '<div class="text" style="margin-left: 15px; font-weight: 500">' +
+                                                    startDate.getDate() +
+                                                    "-" +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    "</div>" +
+                                                    '<div class="text" style="margin-left: 15px">' +
+                                                    venueStr +
+                                                    "</div>" +
+                                                    "</div>";
+                                            } else {
+                                                dateStr +=
+                                                    '<div class="content_date_day-com">' +
+                                                    '<div class="date" style="line-height: 24px; margin-bottom: 12px;">' +
+                                                    startDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    startDate.getFullYear() +
+                                                    " - <br/>" +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    lastDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    lastDate.getFullYear() +
+                                                    "</div>" +
+                                                    timeStr +
+                                                    "</div>";
+                                                contentLeft +=
+                                                    '<div class="content_place" style="flex-direction:column;margin-bottom:15px">' +
+                                                    '<div class="icon" style="position: absolute"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
+                                                    '<div class="text" style="margin-left: 15px; font-weight: 500">' +
+                                                    startDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    startDate.getFullYear() +
+                                                    " - " +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    lastDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    lastDate.getFullYear() +
+                                                    "</div>" +
+                                                    '<div class="text" style="margin-left: 15px">' +
+                                                    venueStr +
+                                                    "</div>" +
+                                                    "</div>";
+                                            }
+
+                                            
                                         } else {
-                                            dateStr +=
-                                                '<div class="content_date_day-com">' +
-                                                '<div class="date">' +
-                                                startDate.getDate() +
-                                                " " +
-                                                startDate.toLocaleString("en-US", { month: "short" }) +
-                                                " - " +
-                                                lastDate.getDate() +
-                                                " " +
-                                                lastDate.toLocaleString("en-US", { month: "short" }) +
-                                                "</div>" +
-                                                '<div class="month-year">' +
-                                                startDate.getFullYear() +
-                                                "</div>" +
-                                                timeStr +
-                                                "</div>";
-                                            contentLeft +=
-                                                '<div class="content_place" style="flex-direction:column;margin-bottom:15px">' +
-                                                '<div class="icon" style="position: absolute"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
-                                                '<div class="text" style="margin-left: 15px; font-weight: 500">' +
-                                                startDate.getDate() +
-                                                " " +
-                                                startDate.toLocaleString("en-US", { month: "short" }) +
-                                                " - " +
-                                                lastDate.getDate() +
-                                                " " +
-                                                lastDate.toLocaleString("en-US", { month: "short" }) +
-                                                "</div>" +
-                                                '<div class="text" style="margin-left: 15px">' +
-                                                venueStr +
-                                                "</div>" +
-                                                "</div>";
+                                            if (startDate.getFullYear() == lastDate.getFullYear()) {
+                                                dateStr +=
+                                                    '<div class="content_date_day-com">' +
+                                                    '<div class="date">' +
+                                                    startDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " - " +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    lastDate.toLocaleString("en-US", { month: "short" }) +
+                                                    "</div>" +
+                                                    '<div class="month-year">' +
+                                                    startDate.getFullYear() +
+                                                    "</div>" +
+                                                    timeStr +
+                                                    "</div>";
+                                                contentLeft +=
+                                                    '<div class="content_place" style="flex-direction:column;margin-bottom:15px">' +
+                                                    '<div class="icon" style="position: absolute"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
+                                                    '<div class="text" style="margin-left: 15px; font-weight: 500">' +
+                                                    startDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    startDate.getFullYear() +
+                                                    " - " +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    lastDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    lastDate.getFullYear() +
+                                                    "</div>" +
+                                                    '<div class="text" style="margin-left: 15px">' +
+                                                    venueStr +
+                                                    "</div>" +
+                                                    "</div>";
+                                            } else {
+                                                dateStr +=
+                                                    '<div class="content_date_day-com">' +
+                                                    '<div class="date" style="line-height: 24px; margin-bottom: 12px;">' +
+                                                    startDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    startDate.getFullYear() +
+                                                    " - <br/>" +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    lastDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    lastDate.getFullYear() +
+                                                    "</div>" +
+                                                    timeStr +
+                                                    "</div>";
+                                                contentLeft +=
+                                                    '<div class="content_place" style="flex-direction:column;margin-bottom:15px">' +
+                                                    '<div class="icon" style="position: absolute"><img src="/static/images/place.21274f4.svg" alt=""></div>' +
+                                                    '<div class="text" style="margin-left: 15px; font-weight: 500">' +
+                                                    startDate.getDate() +
+                                                    " " +
+                                                    startDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    startDate.getFullYear() +
+                                                    " - " +
+                                                    lastDate.getDate() +
+                                                    " " +
+                                                    lastDate.toLocaleString("en-US", { month: "short" }) +
+                                                    " " +
+                                                    lastDate.getFullYear() +
+                                                    "</div>" +
+                                                    '<div class="text" style="margin-left: 15px">' +
+                                                    venueStr +
+                                                    "</div>" +
+                                                    "</div>";
+                                            }
+                                            
+                                            
                                         }
                                     } else {
                                         dateStr +=
