@@ -24,9 +24,9 @@
                     <div class="contact-left">
                         <h1 class="h1 m-b-80">{{ pimcore_input('HeadLine',{'placeholder' : 'headlines...'}) }}</h1>
                         <div class="m-b-45">
-                            <p class="mini-label m-b-15">{{ pimcore_input('title',{'placeholder' :'title...'}) }}</p>
+                            <p class="mini-label m-b-15" style="font-size: 15px">{{ pimcore_input('title',{'placeholder' :'title...'}) }}</p>
                             <p class="txt-large m-b-15">
-                            <section id="marked-content">
+                            <section id="marked-content" style="font-size: 20px">
                                 {{  pimcore_wysiwyg("specialContent", {
                                     "height": 200,
                                     "placeholder" : "edit content..."
@@ -44,29 +44,29 @@
                             }) }}
                         </div>
                         <div class="m-b-45">
-                            <p class="mini-label m-b-15">{{ pimcore_input('title2',{'placeholder' : 'title...'}) }}</p>
+                            <p class="mini-label m-b-15" style="font-size: 15px">{{ pimcore_input('title2',{'placeholder' : 'title...'}) }}</p>
                             <p class="txt-large m-b-30">{{ pimcore_link('telLink') }}</p>
                            
 
-                             <p class="txt-large">
+                             <p class="txt-large" style="font-size: 20px">
                                 {{ pimcore_input('mailtoLinktitle',{'placeholder' : 'email title..'}) }}
                             </p>
-                            <p class="txt-large m-b-30">
+                            <p class="txt-large m-b-30" style="font-size: 20px">
                                 {{ pimcore_link('mailtoLink') }}
                             </p>
 
-                            <p class="txt-large">
+                            <p class="txt-large" style="font-size: 20px">
                                 {{ pimcore_input('mailtoLink2title',{'placeholder' : 'email title..'}) }}
                             </p>
-                            <p class="txt-large m-b-30">
+                            <p class="txt-large m-b-30" style="font-size: 20px">
                                 {{ pimcore_link('mailtoLink2') }}
                             </p>
                             </p>
  
-                            <p class="txt-large">
+                            <p class="txt-large" style="font-size: 20px">
                                 {{ pimcore_input('mailtoLink3title',{'placeholder' : 'email title..'}) }}
                             </p>
-                            <p class="txt-large m-b-30">
+                            <p class="txt-large m-b-30" style="font-size: 20px">
                                 {{ pimcore_link('mailtoLink3') }}
                             </p>
 
@@ -93,7 +93,7 @@
                                             <select name="state" class="form-select form-control validity passport" id="contactSubject">
                                                 {% for state in states %}
                                             		<option value="{{ state['key'] }}">{{ state['value'] }}</option>
-                                        	{% endfor %}
+                                        	    {% endfor %}
                                             </select>
                                         </div>
                                     </div>
@@ -115,6 +115,20 @@
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactEmail">Business email</label>
+                                            <input name="email" class="form-control validity" id="contactEmail" type="email" value="" required="">
+                                            <div class="invalid-feedback">Please provide a valid Email.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 column">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="contactPhoneNumber">Phone Number</label>
+                                            <input name="phone" class="form-control validity" id="contactPhoneNumber" type="number" value="" required="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 column">
                                         <div class="form-input-label">
                                             <label class="form-label" for="contactCompany">Company</label>
@@ -127,20 +141,6 @@
                                             <label class="form-label" for="contactDesignation">Designation</label>
                                             <input name="designation" class="form-control validity" id="contactDesignation" type="text" value="" required="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 column">
-                                        <div class="form-input-label">
-                                            <label class="form-label" for="contactPhoneNumber">Phone Number</label>
-                                            <input name="phone" class="form-control validity" id="contactPhoneNumber" type="number" value="" required="">
-                                            <div class="invalid-feedback">Please fill in this field.</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 column">
-                                        <div class="form-input-label">
-                                            <label class="form-label" for="contactEmail">Business email</label>
-                                            <input name="email" class="form-control validity" id="contactEmail" type="email" value="" required="">
-                                            <div class="invalid-feedback">Please provide a valid Email.</div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 column">
