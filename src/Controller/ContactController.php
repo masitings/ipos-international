@@ -86,6 +86,15 @@ class ContactController extends BaseController
 
         $designation = $request->get('designation');
 
+        // $industry = $request->get('industry');
+        $industry = str_replace("/", "", $request->get('industry'));
+        $industryOthers = "";
+        $industryRecordToDb = $industry;
+        if ($industry == "Others") {
+            $industryOthers = $request->get('industryOptionOthers');
+            $industryRecordToDb = "Other - " . $industryOthers;
+        }
+
         $source = str_replace("/", "", $request->get('infoSource'));
         $infoSourceOthers = "";
         $sourceRecordToDb = $source;
@@ -95,6 +104,15 @@ class ContactController extends BaseController
         }
 
         $message = $request->get('message');
+
+        $companyOverview = $request->get('companyOverview');
+
+        $existingIP = $request->get('existingIP');
+
+        $overseasExpansion = $request->get('overseasExpansion');
+
+        $proprietaryTechnology = $request->get('proprietaryTechnology');
+
         $phone = $request->get('phone');
 
         $c_email = $request->get('email');
@@ -147,12 +165,20 @@ class ContactController extends BaseController
 
         $mail->Body .= 'Company : ' . $company . "\r\n";
 
-        $mail->Body .= 'Designation : ' . $designation . "\r\n";
         $mail->Body .= 'Phone : ' . $phone . "\r\n";
         $mail->Body .= 'Email : ' . $c_email . "\r\n";
+        
+        $mail->Body .= 'Designation : ' . $designation . "\r\n";
+        if ($industryOthers !== "") {
+            $mail->Body .= 'Industry : ' . $industry . "\r\n";
+        } else {
+            $mail->Body .= 'Industry : ' . $source . "\r\n";
+            $mail->Body .= 'IndustryOthers : ' . $infoSourceOthers . "\r\n";
+        }
 
         $mail->Body .= 'ReceiveMarketingEmail :' . $subemail . "\r\n";
 
+        
         if ($infoSourceOthers != "") {
             $mail->Body .= 'InfoSource : ' . $source . "\r\n";
             $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
@@ -162,6 +188,12 @@ class ContactController extends BaseController
         }
 
         $mail->Body .= 'Message : ' . "\r\n" . $message;
+
+        $mail->Body .= 'Company Overview : ' . "\r\n" . $companyOverview;
+        $mail->Body .= 'Existing IP Portfolio : ' . "\r\n" . $existingIP;
+        $mail->Body .= 'Overseas Expansion : ' . "\r\n" . $overseasExpansion;
+        $mail->Body .= 'Proprietary Technology : ' . "\r\n" . $proprietaryTechnology;
+
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
