@@ -33,7 +33,7 @@
                                 })
                                 }}
                             </section>
-                            <div id="map" style="height: 400px; width: 100%;"></div>
+                            <div id="googleMap" style="height: 200px; width: 400px;"></div>
                             </p>
                         </div>
                         <div class="m-b-45">
@@ -260,8 +260,15 @@
                                         <script>
                                             function initMap() {
                                                 var map = new google.maps.Map(document.getElementById('map'), {
-                                                    center: { lat: -34.397, lng: 150.644 },
-                                                    zoom: 8
+                                                    center: { lat: -7.2655229568481445, lng: 112.66653442382812 },
+                                                    zoom: 14
+                                                });
+
+                                                // Add a marker at the specified location
+                                                var marker = new google.maps.Marker({
+                                                    position: { lat: -7.2655229568481445, lng: 112.66653442382812 },
+                                                    map: map,
+                                                    title: "My location" // Tooltip text when hovering over the marker
                                                 });
                                             }
                                         </script>
