@@ -295,6 +295,7 @@
                                         <script>
                                         $("#contactSubject").change(function(){
                                             var response = $(this).val();
+                                            console.log("THE SUBJECT", response);
                                             if(response.toLowerCase() == "general enquiry"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
                                             }
