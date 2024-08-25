@@ -295,7 +295,6 @@
                                         <script>
                                         $("#contactSubject").change(function(){
                                             var response = $(this).val();
-                                            console.log("THE SUBJECT", response);
                                             if(response.toLowerCase() == "general enquiry"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
                                             }
@@ -305,7 +304,7 @@
                                             else if(response.toLowerCase() == "academy programme"){
                                                 $("#contactSourceLabel").html("How did you find out about our Academy programmes?");
                                             }
-                                            else if(response.toLowerCase() == "ia chat session"){
+                                            else if(response.toLowerCase() == "ia chat/ip ready chat session"){
                                                 $("#contactSourceLabel").html("How did you find out about our IA Chat session?");
                                             }
                                         });
