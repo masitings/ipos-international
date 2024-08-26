@@ -83,7 +83,7 @@
 
                                             <label class="form-label float-top" for="contactSubject">Nature of enquiry</label>
     
-                                            <select name="state" class="form-select form-control validity passport" id="contactSubject">
+                                            <select name="state" class="form-select form-select2 form-control validity passport" id="contactSubject" required="">
                                                 <option value="" disabled selected>Please choose an option</option>
                                                 {% for state in states %}
                                             		<option value="{{ state['key'] }}">{{ state['value'] }}</option>
@@ -138,9 +138,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 column " id="industry">
-                                        <div class="form-input-label form-input-label__select">
+                                        <div class="form-input-label form-input-label__soption>elect">
                                             <label class="form-label float-top" for="industryOption" id="industryOptionLabel">Industry</label>
-                                            <select name="industry" class="form-select form-control validity" id="industryOption" required="">
+                                            <select name="industry" class="form-select form-select2 form-control validity" id="industryOption" required="">
                                                 <option value="" disabled selected>Please choose an option</option>
                                                 <option value="Manufacturing – Precision Engineering">Manufacturing – Precision Engineering</option>
                                                 <option value="Manufacturing – Energy and Chemicals">Manufacturing – Energy and Chemicals</option>
@@ -170,6 +170,7 @@
                                                 <option value="Non Profit Organisation">Non Profit Organisation</option>
                                                 <option value="Others">Others</option>
                                             </select>
+                                            <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 column hidden" id="industryOther">
