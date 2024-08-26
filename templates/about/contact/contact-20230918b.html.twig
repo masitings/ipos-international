@@ -89,6 +89,7 @@
                                             		<option value="{{ state['key'] }}">{{ state['value'] }}</option>
                                         	    {% endfor %}
                                             </select>
+                                            <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
                                     
@@ -245,7 +246,7 @@
                                     <div class="col-md-12 column " id="infoSource">
                                         <div class="form-input-label form-input-label__select">
                                             <label class="form-label float-top" for="contactSource" id="contactSourceLabel">How did you find out about our IA Chat session?</label>
-                                            <select name="infoSource" class="form-select form-control validity" id="contactSource">
+                                            <select name="infoSource" class="form-select form-select2 form-control validity" id="contactSource" required="">
                                                 <option value="" disabled selected>Please choose an option</option>
                                                 <option value="Emails/EDMS">Emails/EDMS</option>
                                                 <option value="Facebook">Facebook</option>
