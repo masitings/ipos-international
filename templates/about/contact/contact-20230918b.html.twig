@@ -140,7 +140,7 @@
                                     <div class="col-md-6 column " id="industry">
                                         <div class="form-input-label form-input-label__select">
                                             <label class="form-label float-top" for="industryOption" id="industryOptionLabel">Industry</label>
-                                            <select name="industry" class="form-select form-control validity" id="industryOption">
+                                            <select name="industry" class="form-select form-control validity" id="industryOption" required="">
                                                 <option value="" disabled selected>Please choose an option</option>
                                                 <option value="Manufacturing – Precision Engineering">Manufacturing – Precision Engineering</option>
                                                 <option value="Manufacturing – Energy and Chemicals">Manufacturing – Energy and Chemicals</option>
@@ -193,7 +193,7 @@
                                     <div class="col-md-12 column" style="margin-top: 10px">
                                         <div class="form-input-label">
                                             {# <label class="form-label" for="contactCompanyOverview"></label> #}
-                                            <textarea placeholder="Please share details about your company's background, industry, and core activities" name="companyOverview" class="form-control validity" id="contactCompanyOverview" rows="3"></textarea>
+                                            <textarea placeholder="Please share details about your company's background, industry, and core activities" name="companyOverview" class="form-control validity" id="contactCompanyOverview" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                                     </div>
                                     <div class="col-md-12 column" style="margin-top: 10px">
                                         <div class="form-input-label">
-                                            <textarea placeholder="If your company already has an intellectual property portfolio, kindly provide some information about it, such as the types of intellectual property you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3"></textarea>
+                                            <textarea placeholder="If your company already has an intellectual property portfolio, kindly provide some information about it, such as the types of intellectual property you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -346,7 +346,7 @@
 
 <div class="col-md-12 column">
                       <div class="form-check">
-                        <input class="form-check-input validity" id="subsEmail" name="subsemail" type="checkbox" value="">
+                        <input class="form-check-input validity" id="subsEmail" name="subsemail" type="checkbox" value="" required="">
                         <label class="form-label mt-0" for="subsEmail">
                         By ticking this box, I agree and consent to receive email updates on programmes, events, resources and news from IPOS International. I understand that I can change my mind at any time and unsubscribe from IPOS International marketing emails by clicking the “unsubscribe” link located at the bottom of every marketing email or by emailing&nbsp;<a class="contact-tnc-email" href="mailto:enquiry@iposinternational.com">enquiry@iposinternational.com</a>.
                         Please refer to our <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/data-protection-policy">Data Protection Policy For more information</a>
