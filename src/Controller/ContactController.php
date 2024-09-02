@@ -116,6 +116,7 @@ class ContactController extends BaseController
         $phone = $request->get('phone');
 
         $c_email = $request->get('email');
+        $c_website = $request->get('companyWebsite');
 
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
 
@@ -166,34 +167,35 @@ class ContactController extends BaseController
         $mail->Body .= 'Company : ' . $company . "\r\n";
 
         $mail->Body .= 'Phone : ' . $phone . "\r\n";
-        $mail->Body .= 'Email : ' . $c_email . "\r\n";
+        $mail->Body .= 'Email : ' . $c_email . "\n";
         
-        $mail->Body .= 'Designation : ' . $designation . "\r\n";
+        $mail->Body .= 'Designation : ' . $designation . "\n";
         if ($industryOthers !== "") {
-            $mail->Body .= 'Industry : ' . $industry . "\r\n";
+            $mail->Body .= 'Industry : ' . $industry . "\n";
         } else {
-            $mail->Body .= 'Industry : ' . $source . "\r\n";
-            $mail->Body .= 'IndustryOthers : ' . $infoSourceOthers . "\r\n";
+            // $mail->Body .= 'Industry : ' . $industry . "\n";
+            $mail->Body .= 'Industry : Others - ' . $industryOthers . "\n";
         }
 
-        $mail->Body .= 'ReceiveMarketingEmail :' . $subemail . "\r\n";
+        $mail->Body .= 'Company Website : ' . $c_website . "\n";
+
+        $mail->Body .= 'Message : ' . "\n" . $message;
+
+        $mail->Body .= 'Company Overview : ' . "\n" . $companyOverview;
+        $mail->Body .= 'Existing IP Portfolio : ' . "\n" . $existingIP;
+        $mail->Body .= 'Overseas Expansion : ' . "\n" . $overseasExpansion;
+        $mail->Body .= 'Proprietary Technology : ' . "\n" . $proprietaryTechnology;
+
+        $mail->Body .= 'Consent Marketing Email :' . $subemail . "\n";
 
         
         if ($infoSourceOthers != "") {
-            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
+            $mail->Body .= 'InfoSource : ' . $source . "\n";
+            // $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n\n";
         } else {
-            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
+            $mail->Body .= 'InfoSource : ' . $source . "\n";
+            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\n";
         }
-
-        $mail->Body .= 'Message : ' . "\r\n" . $message;
-
-        $mail->Body .= 'Company Overview : ' . "\r\n" . $companyOverview;
-        $mail->Body .= 'Existing IP Portfolio : ' . "\r\n" . $existingIP;
-        $mail->Body .= 'Overseas Expansion : ' . "\r\n" . $overseasExpansion;
-        $mail->Body .= 'Proprietary Technology : ' . "\r\n" . $proprietaryTechnology;
-
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
