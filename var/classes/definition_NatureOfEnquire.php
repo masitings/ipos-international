@@ -91,13 +91,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               ),
               2 => 
               array (
-                'key' => 'Business enquiry',
-                'value' => 'Business enquiry',
+                'key' => 'Business',
+                'value' => 'Business',
               ),
               3 => 
               array (
-                'key' => 'General enquiry',
-                'value' => 'General enquiry',
+                'key' => 'General',
+                'value' => 'General',
               ),
             ),
              'defaultValue' => '',

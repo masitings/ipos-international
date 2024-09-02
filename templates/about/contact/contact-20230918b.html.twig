@@ -187,52 +187,52 @@
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column ip-ready">
                                         <p class="mini-label" style="font-size: 14px; margin-left: 5px">
                                         Company Overview
                                         </p>
                                     </div>
-                                    <div class="col-md-12 column" style="margin-top: 10px">
+                                    <div class="col-md-12 column ip-ready" style="margin-top: 10px">
                                         <div class="form-input-label">
                                             {# <label class="form-label" for="contactCompanyOverview"></label> #}
                                             <textarea placeholder="Please share details about your company's background, industry, and core activities" name="companyOverview" class="form-control validity" id="contactCompanyOverview" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column ip-ready">
                                         <p class="mini-label" style="font-size: 14px; margin-left: 5px">
                                         Existing IP Portfolio
                                         </p>
                                     </div>
-                                    <div class="col-md-12 column" style="margin-top: 10px">
+                                    <div class="col-md-12 column ip-ready" style="margin-top: 10px">
                                         <div class="form-input-label">
                                             <textarea placeholder="If your company already has an intellectual property portfolio, kindly provide some information about it, such as the types of intellectual property you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column ip-ready">
                                         <p class="mini-label" style="font-size: 14px; margin-left: 5px">
                                         Overseas Expansion
                                         </p>
                                     </div>
-                                    <div class="col-md-12 column" style="margin-top: 10px">
+                                    <div class="col-md-12 column ip-ready" style="margin-top: 10px">
                                         <div class="form-input-label">
                                             <textarea name="overseasExpansion" placeholder="If you have any plans or interests in expanding your business overseas, please let us know. This information can help tailor our discussion to your global IP needs" class="form-control validity" id="contactOverseasExpansion" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column ip-ready">
                                         <p class="mini-label" style="font-size: 14px; margin-left: 5px">
                                         Proprietary Technology
                                         </p>
                                     </div>
-                                    <div class="col-md-12 column" style="margin-top: 10px">
+                                    <div class="col-md-12 column ip-ready" style="margin-top: 10px">
                                         <div class="form-input-label">
                                             <textarea placeholder="If your company possesses proprietary technology or innovations, it would be valuable to understand more about these assets." name="proprietaryTechnology" class="form-control validity" id="contactProprietaryTechnology" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 column" style="margin-top: 10px">
+                                    <div class="col-md-12 column ip-ready" style="margin-top: 10px">
                                         <p class="mini-label"  style="
                                             font-size: 14px;
                                             margin-left: 5px;
@@ -299,14 +299,22 @@
                                             var response = $(this).val();
                                             if(response.toLowerCase() == "general enquiry"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
+                                                $('.ip-ready').addClass('hidden');
+                                                $('.ip-ready').removeClass('show');
                                             }
                                             else if(response.toLowerCase() == "business enquiry"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
+                                                $('.ip-ready').addClass('hidden');
+                                                $('.ip-ready').removeClass('show');
                                             }
                                             else if(response.toLowerCase() == "academy programme"){
                                                 $("#contactSourceLabel").html("How did you find out about our Academy programmes?");
+                                                $('.ip-ready').addClass('hidden');
+                                                $('.ip-ready').removeClass('show');
                                             }
                                             else if(response.toLowerCase() == "ia chat/ip ready chat session"){
+                                                $('.ip-ready').addClass('show');
+                                                $('.ip-ready').removeClass('hidden');
                                                 $("#contactSourceLabel").html("How did you find out about our IA Chat session?");
                                             }
                                         });
@@ -341,7 +349,7 @@
 					<div class="col-md-12 column">
 					 <div class="form-check">
 						<input class="form-check-input validity" id="TNC" name="tnc" type="checkbox" value="" required="">
-                        			<label class="form-label mt-0" for="TNC">By submitting this form, I agree to <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/terms-of-use">IPOS International’s Terms of Service.</a></label>
+                        			<label class="form-label mt-0" for="TNC">By submitting this form, I agree to <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/terms-of-use">IPOS International’s Terms of Use.</a></label>
                         			<div class="invalid-feedback">Please agree before sending your enquiry.</div>
                       			</div>
 					</div>
