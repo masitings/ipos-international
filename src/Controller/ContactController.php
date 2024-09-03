@@ -142,7 +142,7 @@ class ContactController extends BaseController
 
 
 
-        $mail->setFrom($mailConfig['mail_from'], '');  //发件人
+        $mail->setFrom($mailConfig['mail_from'], $mailConfig['mail_from']);  //发件人
 
         if ($sendMails) {
             foreach ($sendMails as $email) {
@@ -170,32 +170,32 @@ class ContactController extends BaseController
         $mail->Body .= 'Email : ' . $c_email . "\n";
         
         $mail->Body .= 'Designation : ' . $designation . "\n";
+        
         if ($industryOthers !== "") {
-            $mail->Body .= 'Industry : ' . $industry . "\n";
+            $mail->Body .= 'Industry : ' . $industry . "\r\n";
         } else {
-            // $mail->Body .= 'Industry : ' . $industry . "\n";
-            $mail->Body .= 'Industry : Others - ' . $industryOthers . "\n";
+            $mail->Body .= 'Industry : ' . $industry . "\r\n";
+            $mail->Body .= 'Industry : Others - ' . $industryOthers . "\r\n";
         }
 
         $mail->Body .= 'Company Website : ' . $c_website . "\n";
 
-        $mail->Body .= 'Message : ' . "\n" . $message;
+        $mail->Body .= 'Message : ' . $message . "\n";
 
-        $mail->Body .= 'Company Overview : ' . "\n" . $companyOverview;
-        $mail->Body .= 'Existing IP Portfolio : ' . "\n" . $existingIP;
-        $mail->Body .= 'Overseas Expansion : ' . "\n" . $overseasExpansion;
-        $mail->Body .= 'Proprietary Technology : ' . "\n" . $proprietaryTechnology;
-
-        $mail->Body .= 'Consent Marketing Email :' . $subemail . "\n";
+        $mail->Body .= 'Company Overview : ' . $companyOverview . "\n";
+        $mail->Body .= 'Existing IP Portfolio : ' . $existingIP . "\n";
+        $mail->Body .= 'Overseas Expansion : ' . $overseasExpansion . "\n";
+        $mail->Body .= 'Proprietary Technology : ' . $proprietaryTechnology . "\n";
 
         
         if ($infoSourceOthers != "") {
-            $mail->Body .= 'InfoSource : ' . $source . "\n";
-            // $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n\n";
+            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
+            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
         } else {
-            $mail->Body .= 'InfoSource : ' . $source . "\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\n";
+            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
+            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
         }
+        $mail->Body .= 'Consent Marketing Email : ' . $subemail . "\r\n";
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
