@@ -76,7 +76,8 @@
                                 </div>
                             </div>
                             <div class="form-cont__body"> 
-                                <form class="contact-form ipos-form row g-3 needs-validation" id="my_captcha_form" novalidate=""  data-action="/api/contact">
+                            {# CHECK HERE #}
+                                <form class="contact-form ipos-form row g-3 needs-validation" id="my_captcha_form" novalidate=""  action="/api/contact">
                                     <div class="col-md-12 column">
                                         <div class="form-input-label">
                                             <input value="9847h3hchc65rdytegbhcjcccc21" name="csrf_token" class="form-control validity contact-b "  type="hidden" required="">
@@ -182,7 +183,7 @@
                                     </div>
                                     <div class="col-md-12 column">
                                         <div class="form-input-label">
-                                            <label class="form-label" for="companyWebsite">Company Website</label>
+                                            <label class="form-label" for="companyWebsite">Company Website URL</label>
                                             <input name="companyWebsite" class="form-control validity" id="companyWebsite" type="text" value="" required="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
@@ -208,12 +209,12 @@
                                     </div>
                                     <div class="col-md-12 column ip-ready hidden">
                                         <p class="mini-label" style="font-size: 14px; margin-left: 5px">
-                                        Existing IP Portfolio
+                                        Existing IA/IP Portfolio
                                         </p>
                                     </div>
                                     <div class="col-md-12 column ip-ready hidden" style="margin-top: 10px">
                                         <div class="form-input-label">
-                                            <textarea placeholder="If your company already has an intellectual property portfolio, kindly provide some information about it, such as the types of intellectual property you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3" required=""></textarea>
+                                            <textarea placeholder="If your company already has an intangible assets (IA) and/or intellectual property (IP) portfolio, kindly provide some information about it, such as the types of IA/IP you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3" required=""></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -256,9 +257,9 @@
                                             <select name="infoSource" class="form-select form-select2 form-control validity" id="contactSource" required="">
                                                 <option value="" disabled selected>Please choose an option</option>
                                                 <option value="Emails/EDMS">Emails/EDMS</option>
-                                                <option value="Facebook">Facebook</option>
+                                                <option value="Events/Talks/Workshops">Events/Talks/Workshops</option>
                                                 <option value="Google">Google</option>
-                                                <option value="LinkedIn">LinkedIn</option>
+                                                <option value="Social Media (eg Facebook, LinkedIn, etc)">Social Media (eg Facebook, LinkedIn, etc)</option>
                                                 <option value="IPOS International Website">IPOS International Website</option>
                                                 <option value="Others">Others</option>
                                             </select>
@@ -353,24 +354,24 @@
                                         </script>
 
                                         
-					<div class="col-md-12 column">
-					 <div class="form-check">
-						<input class="form-check-input validity" id="TNC" name="tnc" type="checkbox" value="" required="">
-                        			<label class="form-label mt-0" for="TNC">By submitting this form, I agree to <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/terms-of-use">IPOS International’s Terms of Use.</a></label>
-                        			<div class="invalid-feedback">Please agree before sending your enquiry.</div>
-                      			</div>
-					</div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-check">
+                                        <input class="form-check-input validity" id="TNC" name="tnc" type="checkbox" value="" required="">
+                                            <label class="form-label mt-0" for="TNC">By submitting this form, I agree to <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/terms-of-use">IPOS International’s Terms of Use.</a></label>
+                                            <div class="invalid-feedback">Please agree before sending your enquiry.</div>
+                                        </div>
+                                    </div>
 
-<div class="col-md-12 column">
-                      <div class="form-check">
-                        <input class="form-check-input validity" id="subsEmail" name="subsemail" type="checkbox" value="" required="">
-                        <label class="form-label mt-0" for="subsEmail">
-                        By ticking this box, I agree and consent to receive email updates on programmes, events, resources and news from IPOS International. I understand that I can change my mind at any time and unsubscribe from IPOS International marketing emails by clicking the “unsubscribe” link located at the bottom of every marketing email or by emailing&nbsp;<a class="contact-tnc-email" href="mailto:enquiry@iposinternational.com">enquiry@iposinternational.com</a>.
-                        Please refer to our <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/data-protection-policy">Data Protection Policy For more information</a>
-						</label>
-						<div class="invalid-feedback">Please agree before sending your enquiry.</div>
-                      </div>
-                    </div>
+                                    <div class="col-md-12 column">
+                                        <div class="form-check">
+                                            <input class="form-check-input validity" id="subsEmail" name="subsemail" type="checkbox" value="" required="">
+                                            <label class="form-label mt-0" for="subsEmail">
+                                            By ticking this box, I agree and consent to receive email updates on programmes, events, resources and news from IPOS International. I understand that I can change my mind at any time and unsubscribe from IPOS International marketing emails by clicking the “unsubscribe” link located at the bottom of every marketing email or by emailing&nbsp;<a class="contact-tnc-email" href="mailto:enquiry@iposinternational.com">enquiry@iposinternational.com</a>.
+                                            Please refer to our <a class="contact-tnc-email" href="https://iposinternational.com/en/website%20policies/data-protection-policy">Data Protection Policy For more information</a>
+                                            </label>
+                                            <div class="invalid-feedback">Please agree before sending your enquiry.</div>
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-12 column">
                                         <div class="form-input-label">
