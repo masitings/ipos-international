@@ -203,7 +203,7 @@
                                     <div class="col-md-12 column ip-ready hidden" style="margin-top: 10px">
                                         <div class="form-input-label">
                                             {# <label class="form-label" for="contactCompanyOverview"></label> #}
-                                            <textarea placeholder="Please share details about your company's background, industry, and core activities" name="companyOverview" class="form-control validity" id="contactCompanyOverview" rows="3" required=""></textarea>
+                                            <textarea placeholder="Please share details about your company's background, industry, and core activities" name="companyOverview" class="form-control validity" id="contactCompanyOverview" rows="3"></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="col-md-12 column ip-ready hidden" style="margin-top: 10px">
                                         <div class="form-input-label">
-                                            <textarea placeholder="If your company already has an intangible assets (IA) and/or intellectual property (IP) portfolio, kindly provide some information about it, such as the types of IA/IP you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3" required=""></textarea>
+                                            <textarea placeholder="If your company already has an intangible assets (IA) and/or intellectual property (IP) portfolio, kindly provide some information about it, such as the types of IA/IP you currently hold." name="existingIP" class="form-control validity" id="contactExistingIP" rows="3"></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
                                     </div>
                                     <div class="col-md-12 column ip-ready hidden" style="margin-top: 10px">
                                         <div class="form-input-label">
-                                            <textarea name="overseasExpansion" placeholder="If you have any plans or interests in expanding your business overseas, please let us know. This information can help tailor our discussion to your global IP needs" class="form-control validity" id="contactOverseasExpansion" rows="3" required=""></textarea>
+                                            <textarea name="overseasExpansion" placeholder="If you have any plans or interests in expanding your business overseas, please let us know. This information can help tailor our discussion to your global IP needs" class="form-control validity" id="contactOverseasExpansion" rows="3"></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -236,7 +236,7 @@
                                     </div>
                                     <div class="col-md-12 column ip-ready hidden" style="margin-top: 10px">
                                         <div class="form-input-label">
-                                            <textarea placeholder="If your company possesses proprietary technology or innovations, it would be valuable to understand more about these assets." name="proprietaryTechnology" class="form-control validity" id="contactProprietaryTechnology" rows="3" required=""></textarea>
+                                            <textarea placeholder="If your company possesses proprietary technology or innovations, it would be valuable to understand more about these assets." name="proprietaryTechnology" class="form-control validity" id="contactProprietaryTechnology" rows="3"></textarea>
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -309,20 +309,37 @@
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
                                                 $('.ip-ready').addClass('hidden');
                                                 $('.ip-ready').removeClass('show');
+                                                $("#contactProprietaryTechnology").removeAttr("required");
+                                                $('#contactOverseasExpansion').removeAttr("required");
+                                                $('#contactExistingIP').removeAttr("required");
+                                                $('#contactCompanyOverview').removeAttr("required");
                                             }
                                             else if(response.toLowerCase() == "business"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
                                                 $('.ip-ready').addClass('hidden');
                                                 $('.ip-ready').removeClass('show');
+                                                $("#contactProprietaryTechnology").removeAttr("required");
+                                                $('#contactOverseasExpansion').removeAttr("required");
+                                                $('#contactExistingIP').removeAttr("required");
+                                                $('#contactCompanyOverview').removeAttr("required");
                                             }
                                             else if(response.toLowerCase() == "academy programme"){
                                                 $("#contactSourceLabel").html("How did you find out about our Academy programmes?");
                                                 $('.ip-ready').addClass('hidden');
                                                 $('.ip-ready').removeClass('show');
+                                                $("#contactProprietaryTechnology").removeAttr("required");
+                                                $('#contactOverseasExpansion').removeAttr("required");
+                                                $('#contactExistingIP').removeAttr("required");
+                                                $('#contactCompanyOverview').removeAttr("required");
                                             }
                                             else if(response.toLowerCase() == "ia chat/ip ready chat session"){
                                                 $('.ip-ready').addClass('show');
                                                 $('.ip-ready').removeClass('hidden');
+                                                $("#contactProprietaryTechnology").attr("required", true);
+                                                $('#contactOverseasExpansion').attr("required", true);
+                                                $('#contactExistingIP').attr("required", true);
+                                                $('#contactCompanyOverview').attr("required", true);
+                                                // contactCompanyOverview
                                                 $("#contactSourceLabel").html("How did you find out about our IA Chat session?");
                                             }
                                         });
