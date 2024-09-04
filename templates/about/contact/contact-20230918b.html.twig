@@ -426,9 +426,12 @@
             var isValid = true;
             $('.validity').each(function (e) {
                 var input = $(this);
-                console.log('Name : '+input.attr('name')+' | Value : '+input.val());
-                if (input.val() === '') {
-                    isValid = false;
+                let name = input.attr('name');
+                console.log('Name : '+ name +' | Value : '+input.val());
+                if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology'].includes(name)) {
+                    if (input.val() === '') {
+                        isValid = false;
+                    }
                 }
             });
             if (isValid) {
