@@ -149,10 +149,15 @@ class ContactController extends BaseController
                 $mail->addAddress($email);
             }
         } else {
-            // $mail->addAddress($sendMail);
+            if (array_key_exists('ENV_STAGE', $_ENV)) {
+                if ($_ENV['ENV_STAGE'] == 'staging' || $_ENV['ENV_STAGE'] == 'dev') {
+                    $mail->addAddress("arigiwiratama@gmail.com");
+                    $mail->addAddress("zhikai.yap@aikendigital.co");
+                }
+            } else {
+                $mail->addAddress($sendMail);
+            }
         }
-        $mail->addAddress("arigiwiratama@gmail.com");
-        $mail->addAddress("zhikai.yap@aikendigital.co");
 
 
         // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
