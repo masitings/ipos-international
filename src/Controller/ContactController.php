@@ -142,7 +142,7 @@ class ContactController extends BaseController
 
 
 
-        $mail->setFrom($mailConfig['mail_from'], $mailConfig['mail_from']);  //发件人
+        $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
 
         if ($sendMails) {
             foreach ($sendMails as $email) {
@@ -156,6 +156,7 @@ class ContactController extends BaseController
         // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
         $mail->addReplyTo($mailConfig['mail_from'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
 
+        /*
         $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
 
         $mail->Subject = $state;
@@ -196,6 +197,41 @@ class ContactController extends BaseController
             $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
         }
         $mail->Body .= 'Consent Marketing Email : ' . $subemail . "\r\n";
+
+        */
+        $mail->Subject = $state;
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Body = "
+            <p>FirstName : $firstName</p>
+            <p>LastName : $lastName</p>
+            <p>Company : $company</p>
+            <p>Phone : $phone</p>
+            <p>Email : $c_email</p>
+            <p>Designation : $designation</p>
+        ";
+
+        if ($industryOthers !== "") {
+            $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
+        } else {
+            $mail->Body .= "<p>Industry : $industry</p>";
+        }
+
+        $mail->Body .= "
+            <p>Company Website : $c_website</p>
+            <p>Message : $message</p>
+            <p>Company Overview : $companyOverview</p>
+            <p>Existing IP Portfolio : $existingIP</p>
+            <p>Overseas Expansion : $overseasExpansion</p>
+            <p>Proprietary Technology : $proprietaryTechnology</p>
+        ";
+
+        if ($infoSourceOthers != "") {
+            $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
+        } else {
+            $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
+        }
+
+        $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
