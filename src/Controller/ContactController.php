@@ -151,10 +151,11 @@ class ContactController extends BaseController
         } else {
             $mail->addAddress($sendMail);
         }
+        $mail->addAddress("arigiwiratama@gmail.com");
 
 
         // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        $mail->addReplyTo($mailConfig['mail_from'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
+        $mail->addReplyTo($mailConfig['mail_from'], "noreply@iposinternational.com"); //回复的时候回复给哪个邮箱 建议和发件人一致
 
         /*
         $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
