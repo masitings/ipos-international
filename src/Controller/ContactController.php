@@ -120,56 +120,30 @@ class ContactController extends BaseController
 
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
 
-        /* PHP MAILER INSTANCE */
-        // $mail = new PHPMailer(true);
-
-        // $mail->CharSet = "UTF-8";                     //设定邮件编码
-
-        // $mail->SMTPDebug = 0;                        // 调试模式输出
-
-        // $mail->isSMTP();                             // 使用SMTP
-
-        // $mail->Host = $mailConfig['mail_host'];                // SMTP服务器
-
-        // $mail->SMTPAuth = true;                      // 允许 SMTP 认证
-
-        // $mail->Username = $mailConfig['mail_username'];                // SMTP 用户名  即邮箱的用户名
-
-        // $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
-
-        // $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
-
-        // $mail->Port = $mailConfig['mail_port'];                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
-
-
-
-        // $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
-
-        // if ($sendMails) {
-        //     foreach ($sendMails as $email) {
-        //         $mail->addAddress($email);
-        //     }
-        // } else {
-        //     $mail->addAddress($sendMail);
-        // }
-        // $mail->addAddress("arigiwiratama@gmail.com");
-
-
-        // // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        // $mail->addReplyTo($mailConfig['mail_from'], "noreply@iposinternational.com"); //回复的时候回复给哪个邮箱 建议和发件人一致
-        /** END OF PHP MAILER INSTANCE */
-        
-        /** HARDCODE TESTING PURPOSE */
         $mail = new PHPMailer(true);
-        $mail->SMTPDebug = 2; // Debug output (set to 0 when in production)
+
         $mail->CharSet = "UTF-8";                     //设定邮件编码
-        $mail->isSMTP();
-        $mail->Host = 'smtp-relay.brevo.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = '7b8add001@smtp-brevo.com';
-        $mail->Password = 'XI8YsTxMqFrzmCh0'; // or App password if 2FA is enabled
-        $mail->SMTPSecure = 'tls'; // or 'ssl' for port 465
-        $mail->Port = 587;
+
+        $mail->SMTPDebug = 0;                        // 调试模式输出
+
+        $mail->isSMTP();                             // 使用SMTP
+
+        $mail->Host = $mailConfig['mail_host'];                // SMTP服务器
+
+        $mail->SMTPAuth = true;                      // 允许 SMTP 认证
+
+        $mail->Username = $mailConfig['mail_username'];                // SMTP 用户名  即邮箱的用户名
+
+        $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
+
+        $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
+
+        $mail->Port = $mailConfig['mail_port'];                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
+
+
+
+        $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
+
         if ($sendMails) {
             foreach ($sendMails as $email) {
                 $mail->addAddress($email);
@@ -178,7 +152,10 @@ class ContactController extends BaseController
             $mail->addAddress($sendMail);
         }
         $mail->addAddress("arigiwiratama@gmail.com");
-        /** END OF TESTING */
+
+
+        // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
+        $mail->addReplyTo($mailConfig['mail_from'], "noreply@iposinternational.com"); //回复的时候回复给哪个邮箱 建议和发件人一致
 
         /*
         $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
