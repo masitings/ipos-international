@@ -142,7 +142,7 @@ class ContactController extends BaseController
 
 
 
-        $mail->setFrom($mailConfig['mail_from'], implode(" @ ", explode("@", $c_email)));  //发件人
+        $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
         // $mail->setFrom();  //发件人
 
         if ($sendMails) {
