@@ -86,6 +86,15 @@ class ContactController extends BaseController
 
         $designation = $request->get('designation');
 
+        // $industry = $request->get('industry');
+        $industry = str_replace("/", "", $request->get('industry'));
+        $industryOthers = "";
+        $industryRecordToDb = $industry;
+        if ($industry == "Others") {
+            $industryOthers = $request->get('industryOptionOthers');
+            $industryRecordToDb = "Other - " . $industryOthers;
+        }
+
         $source = str_replace("/", "", $request->get('infoSource'));
         $infoSourceOthers = "";
         $sourceRecordToDb = $source;
@@ -95,9 +104,19 @@ class ContactController extends BaseController
         }
 
         $message = $request->get('message');
+
+        $companyOverview = $request->get('companyOverview');
+
+        $existingIP = $request->get('existingIP');
+
+        $overseasExpansion = $request->get('overseasExpansion');
+
+        $proprietaryTechnology = $request->get('proprietaryTechnology');
+
         $phone = $request->get('phone');
 
         $c_email = $request->get('email');
+        $c_website = $request->get('companyWebsite');
 
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
 
@@ -123,20 +142,29 @@ class ContactController extends BaseController
 
 
 
-        $mail->setFrom($mailConfig['mail_from'], '');  //发件人
+        $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
+        // $mail->setFrom();  //发件人
 
         if ($sendMails) {
             foreach ($sendMails as $email) {
                 $mail->addAddress($email);
             }
         } else {
-            $mail->addAddress($sendMail);
+            if (array_key_exists('ENV_STAGE', $_ENV)) {
+                if ($_ENV['ENV_STAGE'] == 'staging' || $_ENV['ENV_STAGE'] == 'dev') {
+                    $mail->addAddress("arigiwiratama@gmail.com");
+                    $mail->addAddress("zhikai.yap@aikendigital.co");
+                }
+            } else {
+                $mail->addAddress($sendMail);
+            }
         }
 
 
         // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        $mail->addReplyTo($mailConfig['mail_from'], 'info'); //回复的时候回复给哪个邮箱 建议和发件人一致
+        $mail->addReplyTo($mailConfig['mail_from'], "noreply@iposinternational.com"); //回复的时候回复给哪个邮箱 建议和发件人一致
 
+        /*
         $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
 
         $mail->Subject = $state;
@@ -147,12 +175,28 @@ class ContactController extends BaseController
 
         $mail->Body .= 'Company : ' . $company . "\r\n";
 
-        $mail->Body .= 'Designation : ' . $designation . "\r\n";
         $mail->Body .= 'Phone : ' . $phone . "\r\n";
-        $mail->Body .= 'Email : ' . $c_email . "\r\n";
+        $mail->Body .= 'Email : ' . $c_email . "\n";
+        
+        $mail->Body .= 'Designation : ' . $designation . "\n";
+        
+        if ($industryOthers !== "") {
+            $mail->Body .= 'Industry : ' . $industry . "\r\n";
+        } else {
+            $mail->Body .= 'Industry : ' . $industry . "\r\n";
+            $mail->Body .= 'Industry : Others - ' . $industryOthers . "\r\n";
+        }
 
-        $mail->Body .= 'ReceiveMarketingEmail :' . $subemail . "\r\n";
+        $mail->Body .= 'Company Website : ' . $c_website . "\n";
 
+        $mail->Body .= 'Message : ' . $message . "\n";
+
+        $mail->Body .= 'Company Overview : ' . $companyOverview . "\n";
+        $mail->Body .= 'Existing IP Portfolio : ' . $existingIP . "\n";
+        $mail->Body .= 'Overseas Expansion : ' . $overseasExpansion . "\n";
+        $mail->Body .= 'Proprietary Technology : ' . $proprietaryTechnology . "\n";
+
+        
         if ($infoSourceOthers != "") {
             $mail->Body .= 'InfoSource : ' . $source . "\r\n";
             $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
@@ -160,8 +204,42 @@ class ContactController extends BaseController
             $mail->Body .= 'InfoSource : ' . $source . "\r\n";
             $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
         }
+        $mail->Body .= 'Consent Marketing Email : ' . $subemail . "\r\n";
 
-        $mail->Body .= 'Message : ' . "\r\n" . $message;
+        */
+        $mail->Subject = $state;
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Body = "
+            <p>FirstName : $firstName</p>
+            <p>LastName : $lastName</p>
+            <p>Company : $company</p>
+            <p>Phone : $phone</p>
+            <p>Email : $c_email</p>
+            <p>Designation : $designation</p>
+        ";
+
+        if ($industryOthers !== "") {
+            $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
+        } else {
+            $mail->Body .= "<p>Industry : $industry</p>";
+        }
+
+        $mail->Body .= "
+            <p>Company Website : $c_website</p>
+            <p>Message : $message</p>
+            <p>Company Overview : $companyOverview</p>
+            <p>Existing IP Portfolio : $existingIP</p>
+            <p>Overseas Expansion : $overseasExpansion</p>
+            <p>Proprietary Technology : $proprietaryTechnology</p>
+        ";
+
+        if ($infoSourceOthers != "") {
+            $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
+        } else {
+            $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
+        }
+
+        $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";
 
         /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
         try {
