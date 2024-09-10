@@ -227,16 +227,21 @@ class ContactController extends BaseController
         $mail->Body .= "
             <p>Company Website : $c_website</p>
             <p>Message : $message</p>
-            <p>Company Overview : $companyOverview</p>
-            <p>Existing IP Portfolio : $existingIP</p>
-            <p>Overseas Expansion : $overseasExpansion</p>
-            <p>Proprietary Technology : $proprietaryTechnology</p>
-        ";
+            ";
+
+        if (!in_array($state, ["Academy programme", "General", "Business"])) {
+            $mail->Body .= "
+                <p>Company Overview : $companyOverview</p>
+                <p>Existing IP Portfolio : $existingIP</p>
+                <p>Overseas Expansion : $overseasExpansion</p>
+                <p>Proprietary Technology : $proprietaryTechnology</p>
+            ";
+        }
 
         if ($infoSourceOthers != "") {
             $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
         } else {
-            $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
+            $mail->Body .= "<p>InfoSource : $source</p>";
         }
 
         $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";
