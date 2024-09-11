@@ -4,11 +4,11 @@ framework:
             pimcore.wysiwyg_sanitizer:
                 max_input_length: -1
                 allow_elements:
-                    p: ['class', 'style']
+                    p: ['class', 'style', 'id']
                     strong: 'class'
                     em: 'class'
                     h1: 'class'
-                    a: ['class', 'href', 'target', 'title', 'rel']
+                    a: ['class', 'href', 'target', 'title', 'rel', 'id']
                     table: ['class', 'style', 'cellspacing', 'cellpadding', 'border', 'width', 'height']
                     colgroup: 'class'
                     col: ['class', 'style']
