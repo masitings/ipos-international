@@ -484,7 +484,7 @@
             $('.validity').each(function (e) {
                 var input = $(this);
                 let name = input.attr('name');
-                if (state.toLowerCase() == "academy programme" || state().toLowerCase() == 'general') {
+                if (state.toLowerCase() == "academy programme" || state.toLowerCase() == 'general') {
                     if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite', 'industry'].includes(name)) {
                         console.log('Name : '+ name +' | Value : '+input.val());
                         if (input.val() === '') {
