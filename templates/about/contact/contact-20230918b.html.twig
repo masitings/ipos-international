@@ -313,7 +313,8 @@
                                                 $('#contactOverseasExpansion').removeAttr("required");
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
-                                                $('#companyWebsite').attr('required', true);
+                                                $('#companyWebsite').removeAttr('required');
+
                                                 $('#companyWebsiteWrapper').addClass('hidden')
                                                 $('#companyWebsiteWrapper').removeClass('show')
                                                 $('#industry').addClass('hidden')
@@ -349,11 +350,13 @@
                                                 $('#contactOverseasExpansion').removeAttr("required");
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
-                                                $('#companyWebsite').attr('required', true);
+                                                $('#companyWebsite').removeAttr('required');
+
                                                 $('#industry').addClass('hidden')
                                                 $('#industry').removeClass('show')
                                                 $('#companyWebsiteWrapper').addClass('hidden')
                                                 $('#companyWebsiteWrapper').removeClass('show')
+                                                
                                                 $('#designationForm').removeClass('col-md-6');
                                                 $('#designationForm').addClass('col-md-12');
                                             }
@@ -478,15 +481,16 @@
             $('.validity').each(function (e) {
                 var input = $(this);
                 let name = input.attr('name');
-                console.log('Name : '+ name +' | Value : '+input.val());
                 if (state.toLowerCase() == "academy programme" || state().toLowerCase() == 'general') {
                     if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite', 'industry'].includes(name)) {
+                        console.log('Name : '+ name +' | Value : '+input.val());
                         if (input.val() === '') {
                             isValid = false;
                         }
                     }
                 } else {
                     if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite'].includes(name)) {
+                        console.log('Name : '+ name +' | Value : '+input.val());
                         if (input.val() === '') {
                             isValid = false;
                         }
