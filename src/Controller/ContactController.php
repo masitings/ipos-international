@@ -218,16 +218,18 @@ class ContactController extends BaseController
             <p>Designation : $designation</p>
         ";
 
-        if ($industryOthers !== "") {
-            $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
-        } else {
-            $mail->Body .= "<p>Industry : $industry</p>";
+        if ($industry) {
+            if ($industryOthers !== "") {
+                $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
+            } else {
+                $mail->Body .= "<p>Industry : $industry</p>";
+            }
+        }
+        if ($c_website) {
+            $mail->Body .= "<p>Company Website : $industry</p>";
         }
 
-        $mail->Body .= "
-            <p>Company Website : $c_website</p>
-            <p>Message : $message</p>
-            ";
+        $mail->Body .= "<p>Message : $message</p>";
 
         if (!in_array($state, ["Academy programme", "General", "Business"])) {
             $mail->Body .= "
