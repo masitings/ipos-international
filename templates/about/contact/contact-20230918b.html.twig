@@ -471,16 +471,27 @@
         
         $('#my_captcha_form').on('submit', function(event) {
             var isValid = true;
+            const state = $('#contactSubject').val();
+
             $('.validity').each(function (e) {
                 var input = $(this);
                 let name = input.attr('name');
                 console.log('Name : '+ name +' | Value : '+input.val());
-                if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite'].includes(name)) {
-                    if (input.val() === '') {
-                        isValid = false;
+                if (state.toLowerCase() == "academy programme" || state().toLowerCase() == 'general') {
+                    if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite', 'industry'].includes(name)) {
+                        if (input.val() === '') {
+                            isValid = false;
+                        }
+                    }
+                } else {
+                    if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite'].includes(name)) {
+                        if (input.val() === '') {
+                            isValid = false;
+                        }
                     }
                 }
             });
+            
             if (isValid) {
                 $('#submitContact').attr('disabled', true);
                 $('#submitContact').text('Loading...');
