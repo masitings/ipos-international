@@ -97,10 +97,15 @@ class ContactController extends BaseController
 
         $source = str_replace("/", "", $request->get('infoSource'));
         $infoSourceOthers = "";
+        $eventSource = "";
         $sourceRecordToDb = $source;
         if ($source == "Others") {
             $infoSourceOthers = $request->get('infoSourceOthers');
             $sourceRecordToDb = "Other - " . $infoSourceOthers;
+        }
+        if ($source == "Events/Talks/Workshops") {
+            $eventSource = $request->get('eventSource');
+            $sourceRecordToDb = "Event/Talks/Workshop - " . $eventSource;
         }
 
         $message = $request->get('message');
@@ -240,10 +245,15 @@ class ContactController extends BaseController
             ";
         }
 
+
         if ($infoSourceOthers != "") {
             $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
         } else {
-            $mail->Body .= "<p>InfoSource : $source</p>";
+            if ($source == 'Events/Talks/Workshops') {
+                $mail->Body .= "<p>InfoSource : $source - $eventSource</p>";
+            } else {
+                $mail->Body .= "<p>InfoSource : $source</p>";
+            }
         }
 
         $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";

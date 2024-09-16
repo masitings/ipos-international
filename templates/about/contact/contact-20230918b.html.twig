@@ -269,6 +269,13 @@
                                         <div class="form-input-label">
                                             <label class="form-label" for="contactMessage">Others</label>
                                             <textarea name="infoSourceOthers" class="form-control" id="contactSourceOthers" rows="3"></textarea>
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 column hidden" id="eventSource">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="eventSource">Event Title</label>
+                                            <textarea name="eventSource" class="form-control" id="talkEventSource" rows="3"></textarea>
                                         </div>
                                     </div>
                                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp6kt0PXm7airQ4WjQfFdpLsjrqSRkuH8&callback=initMap" async defer></script>
@@ -387,10 +394,20 @@
                                                 $("#infoSourceOthers").removeClass("hidden");
                                                 $("#infoSourceOthers").addClass("show");
                                             }
-                                            else{
+                                            else if (response == "Events/Talks/Workshops") {
+                                                $("#eventSource").removeClass("hidden");
+                                                $("#eventSource").addClass("show");
+                                                $("#talkEventSource").addClass("validity");
+                                                $('#talkEventSource').attr('required', true)
+                                            }
+                                            else {
                                                 $("#contactSourceOthers").val("");
                                                 $("#infoSourceOthers").addClass("hidden");
                                                 $("#infoSourceOthers").removeClass("show");
+                                                $("#eventSource").addClass("hidden");
+                                                $("#eventSource").removeClass("show");
+                                                $('#talkEventSource').removeAttr('required')
+                                                $('#talkEventSource').removeClass('validity')
                                             }
                                         });
 
