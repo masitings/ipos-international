@@ -132,7 +132,7 @@
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 column">
+                                    <div class="col-md-6 column" id="designationForm">
                                         <div class="form-input-label">
                                             <label class="form-label" for="contactDesignation">Designation</label>
                                             <input name="designation" class="form-control validity" id="contactDesignation" type="text" value="" required="">
@@ -184,7 +184,7 @@
                                     <div class="col-md-12 column hidden" id="companyWebsiteWrapper">
                                         <div class="form-input-label">
                                             <label class="form-label" for="companyWebsite">Company Website URL</label>
-                                            <input name="companyWebsite" class="form-control validity" id="companyWebsite" type="text" value="">
+                                            <input name="companyWebsite" class="form-control" id="companyWebsite" type="text" value="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -314,10 +314,10 @@
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
                                                 $('#companyWebsite').attr('required', true);
-                                                $('#industry').addClass('show')
-                                                $('#industry').removeClass('hidden')
                                                 $('#companyWebsiteWrapper').addClass('hidden')
                                                 $('#companyWebsiteWrapper').removeClass('show')
+                                                $('#designationForm').removeClass('md-col-6');
+                                                $('#designationForm').addClass('md-col-12');
                                             }
                                             else if(response.toLowerCase() == "business"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
@@ -327,9 +327,15 @@
                                                 $('#contactOverseasExpansion').removeAttr("required");
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
-
+                                                
+                                                $('.ip-ready').addClass('hidden');
+                                                $('.ip-ready').removeClass('show');
+                                                
+                                                $('#designationForm').removeClass('md-col-6');
+                                                $('#designationForm').addClass('md-col-12');
                                                 $('#industry').addClass('show')
                                                 $('#industry').removeClass('hidden')
+                                                
                                                 $('#companyWebsiteWrapper').addClass('show')
                                                 $('#companyWebsiteWrapper').removeClass('hidden')
                                             }
@@ -346,6 +352,8 @@
                                                 $('#industry').removeClass('show')
                                                 $('#companyWebsiteWrapper').addClass('hidden')
                                                 $('#companyWebsiteWrapper').removeClass('show')
+                                                $('#designationForm').removeClass('md-col-6');
+                                                $('#designationForm').addClass('md-col-12');
                                             }
                                             else if(response.toLowerCase() == "ia chat session"){
                                                 $('.ip-ready').addClass('show');
@@ -359,6 +367,8 @@
                                                 $('#companyWebsite').removeAttr('required');
                                                 $('#industry').addClass('show')
                                                 $('#industry').removeClass('hidden')
+                                                $('#designationForm').addClass('md-col-6');
+                                                $('#designationForm').removeClass('md-col-12');
                                                 $('#companyWebsiteWrapper').addClass('show')
                                                 $('#companyWebsiteWrapper').removeClass('hidden')
                                             }
