@@ -231,7 +231,7 @@ class ContactController extends BaseController
             }
         }
         if ($c_website) {
-            $mail->Body .= "<p>Company Website : $industry</p>";
+            $mail->Body .= "<p>Company Website : $c_website</p>";
         }
 
         $mail->Body .= "<p>Message : $message</p>";
