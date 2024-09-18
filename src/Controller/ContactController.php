@@ -103,7 +103,7 @@ class ContactController extends BaseController
             $infoSourceOthers = $request->get('infoSourceOthers');
             $sourceRecordToDb = "Other - " . $infoSourceOthers;
         }
-        if ($source == "Events/Talks/Workshops") {
+        if ($source == "EventsTalksWorkshops") {
             $eventSource = $request->get('eventSource');
             $sourceRecordToDb = "Event/Talks/Workshop - " . $eventSource;
         }
@@ -249,7 +249,7 @@ class ContactController extends BaseController
         if ($infoSourceOthers != "") {
             $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
         } else {
-            if ($source == 'Events/Talks/Workshops') {
+            if ($source == 'EventsTalksWorkshops') {
                 $mail->Body .= "<p>InfoSource : $source - $eventSource</p>";
             } else {
                 $mail->Body .= "<p>InfoSource : $source</p>";
