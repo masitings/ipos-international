@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="col-md-6 column" id="designationForm">
                                         <div class="form-input-label">
-                                            <label class="form-label" for="contactDesignation">Designation</label>
+                                            <label class="form-label" id="contactDesignationLabel" for="contactDesignation">Designation</label>
                                             <input name="designation" class="form-control validity" id="contactDesignation" type="text" value="" required="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
@@ -328,6 +328,8 @@
                                                 $('#industry').removeClass('show')
                                                 $('#contactCompany').removeClass('validity');
                                                 $('#contactCompany').removeAttr('required');
+                                                $('#contactDesignation').removeClass('validity');
+                                                $('#contactDesignation').removeAttr('required');
 
                                                 $('#designationForm').removeClass('col-md-6');
                                                 $('#designationForm').addClass('col-md-12');
@@ -370,6 +372,8 @@
 
                                                 $('#contactCompany').removeClass('validity');
                                                 $('#contactCompany').removeAttr('required');
+                                                $('#contactDesignation').removeClass('validity');
+                                                $('#contactDesignation').removeAttr('required');
                                                 
                                                 $('#designationForm').removeClass('col-md-6');
                                                 $('#designationForm').addClass('col-md-12');
@@ -393,6 +397,8 @@
 
                                                 $('#contactCompany').addClass('validity');
                                                 $('#contactCompany').attr('required', true);
+                                                $('#contactDesignation').addClass('validity');
+                                                $('#contactDesignation').attr('required', true);
 
                                                 $('#companyWebsiteWrapper').addClass('show')
                                                 $('#companyWebsiteWrapper').removeClass('hidden')
@@ -511,6 +517,7 @@
             if (state.toLowerCase() == "academy programme" || state.toLowerCase() == 'general') {
                 // adding valid on company label
                 $('#contactCompanyLabel').addClass('valid');
+                $('#contactDesignationLabel').addClass('valid');
             }
 
             $('.validity').each(function (e) {

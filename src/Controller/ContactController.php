@@ -226,8 +226,11 @@ class ContactController extends BaseController
         $mail->Body .= "
             <p>Phone : $phone</p>
             <p>Email : $c_email</p>
-            <p>Designation : $designation</p>
         ";
+
+        if ($designation) {
+            $mail->Body .= "<p>Designation : $designation</p>";
+        }
 
         if ($industry) {
             if ($industryOthers !== "") {
