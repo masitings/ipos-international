@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="col-md-12 column">
                                         <div class="form-input-label">
-                                            <label class="form-label" for="contactCompany">Company</label>
+                                            <label class="form-label" id="contactCompanyLabel" for="contactCompany">Company</label>
                                             <input name="company" class="form-control validity" id="contactCompany" type="text" value="" required="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
@@ -507,6 +507,11 @@
         $('#my_captcha_form').on('submit', function(event) {
             var isValid = true;
             const state = $('#contactSubject').val();
+
+            if (state.toLowerCase() == "academy programme" || state.toLowerCase() == 'general') {
+                // adding valid on company label
+                $('#contactCompanyLabel').addClass('valid');
+            }
 
             $('.validity').each(function (e) {
                 var input = $(this);
