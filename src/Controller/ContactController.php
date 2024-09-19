@@ -217,7 +217,13 @@ class ContactController extends BaseController
         $mail->Body = "
             <p>FirstName : $firstName</p>
             <p>LastName : $lastName</p>
-            <p>Company : $company</p>
+        ";
+
+        if ($company) {
+            $mail->Body .= "<p>Company : $company</p>";
+        }
+
+        $mail->Body .= "
             <p>Phone : $phone</p>
             <p>Email : $c_email</p>
             <p>Designation : $designation</p>
