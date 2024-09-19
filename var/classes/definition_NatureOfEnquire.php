@@ -81,20 +81,20 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               array (
-                'key' => 'IA Chat/IP Ready Chat session',
-                'value' => 'IA Chat/IP Ready Chat session',
+                'key' => 'IA Chat session',
+                'value' => 'IA Chat session',
               ),
               1 => 
               array (
                 'key' => 'Academy programme',
                 'value' => 'Academy programme',
               ),
+              // 2 => 
+              // array (
+              //   'key' => 'Business',
+              //   'value' => 'Business',
+              // ),
               2 => 
-              array (
-                'key' => 'Business',
-                'value' => 'Business',
-              ),
-              3 => 
               array (
                 'key' => 'General',
                 'value' => 'General',

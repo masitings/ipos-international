@@ -127,19 +127,19 @@
                                     </div>
                                     <div class="col-md-12 column">
                                         <div class="form-input-label">
-                                            <label class="form-label" for="contactCompany">Company</label>
+                                            <label class="form-label" id="contactCompanyLabel" for="contactCompany">Company</label>
                                             <input name="company" class="form-control validity" id="contactCompany" type="text" value="" required="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 column">
+                                    <div class="col-md-6 column" id="designationForm">
                                         <div class="form-input-label">
-                                            <label class="form-label" for="contactDesignation">Designation</label>
+                                            <label class="form-label" id="contactDesignationLabel" for="contactDesignation">Designation</label>
                                             <input name="designation" class="form-control validity" id="contactDesignation" type="text" value="" required="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 column " id="industry">
+                                    <div class="col-md-6 column show" id="industry">
                                         <div class="form-input-label">
                                             <label class="form-label float-top" for="industryOption" id="industryOptionLabel">Industry</label>
                                             <select name="industry" class="form-select form-select2 form-control validity" id="industryOption" required="">
@@ -181,10 +181,10 @@
                                             <textarea name="industryOther" class="form-control" id="industryOptionOthers" rows="3"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column hidden" id="companyWebsiteWrapper">
                                         <div class="form-input-label">
                                             <label class="form-label" for="companyWebsite">Company Website URL</label>
-                                            <input name="companyWebsite" class="form-control validity" id="companyWebsite" type="text" value="" required="">
+                                            <input name="companyWebsite" class="form-control" id="companyWebsite" type="text" value="">
                                             <div class="invalid-feedback">Please fill in this field.</div>
                                         </div>
                                     </div>
@@ -271,6 +271,13 @@
                                             <textarea name="infoSourceOthers" class="form-control" id="contactSourceOthers" rows="3"></textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-12 column hidden" id="eventSource">
+                                        <div class="form-input-label">
+                                            <label class="form-label" for="eventSource">Event Title</label>
+                                            <input name="eventSource" class="form-control" id="talkEventSource" type="text" value="">
+                                            <div class="invalid-feedback">Please fill in this field.</div>
+                                        </div>
+                                    </div>
                                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp6kt0PXm7airQ4WjQfFdpLsjrqSRkuH8&callback=initMap" async defer></script>
                                         <script>
                                             function initMap() {
@@ -313,6 +320,19 @@
                                                 $('#contactOverseasExpansion').removeAttr("required");
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
+                                                $('#companyWebsite').removeAttr('required');
+                                                $('#industryOption').removeAttr('required');
+                                                $('#companyWebsiteWrapper').addClass('hidden')
+                                                $('#companyWebsiteWrapper').removeClass('show')
+                                                $('#industry').addClass('hidden')
+                                                $('#industry').removeClass('show')
+                                                $('#contactCompany').removeClass('validity');
+                                                $('#contactCompany').removeAttr('required');
+                                                $('#contactDesignation').removeClass('validity');
+                                                $('#contactDesignation').removeAttr('required');
+
+                                                $('#designationForm').removeClass('col-md-6');
+                                                $('#designationForm').addClass('col-md-12');
                                             }
                                             else if(response.toLowerCase() == "business"){
                                                 $("#contactSourceLabel").html("How did you find out about IPOS International?");
@@ -322,6 +342,17 @@
                                                 $('#contactOverseasExpansion').removeAttr("required");
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
+                                                
+                                                $('.ip-ready').addClass('hidden');
+                                                $('.ip-ready').removeClass('show');
+                                                
+                                                $('#designationForm').removeClass('col-md-6');
+                                                $('#designationForm').addClass('col-md-12');
+                                                $('#industry').addClass('show')
+                                                $('#industry').removeClass('hidden')
+                                                
+                                                $('#companyWebsiteWrapper').addClass('show')
+                                                $('#companyWebsiteWrapper').removeClass('hidden')
                                             }
                                             else if(response.toLowerCase() == "academy programme"){
                                                 $("#contactSourceLabel").html("How did you find out about our Academy programmes?");
@@ -331,16 +362,46 @@
                                                 $('#contactOverseasExpansion').removeAttr("required");
                                                 $('#contactExistingIP').removeAttr("required");
                                                 $('#contactCompanyOverview').removeAttr("required");
+                                                $('#companyWebsite').removeAttr('required');
+                                                $('#industryOption').removeAttr('required');
+
+                                                $('#industry').addClass('hidden')
+                                                $('#industry').removeClass('show')
+                                                $('#companyWebsiteWrapper').addClass('hidden')
+                                                $('#companyWebsiteWrapper').removeClass('show')
+
+                                                $('#contactCompany').removeClass('validity');
+                                                $('#contactCompany').removeAttr('required');
+                                                $('#contactDesignation').removeClass('validity');
+                                                $('#contactDesignation').removeAttr('required');
+                                                
+                                                $('#designationForm').removeClass('col-md-6');
+                                                $('#designationForm').addClass('col-md-12');
                                             }
-                                            else if(response.toLowerCase() == "ia chat/ip ready chat session"){
+                                            else if(response.toLowerCase() == "ia chat session"){
                                                 $('.ip-ready').addClass('show');
                                                 $('.ip-ready').removeClass('hidden');
                                                 $("#contactProprietaryTechnology").attr("required", true);
                                                 $('#contactOverseasExpansion').attr("required", true);
                                                 $('#contactExistingIP').attr("required", true);
                                                 $('#contactCompanyOverview').attr("required", true);
+                                                $('#industryOption').attr('required', true);
+
                                                 // contactCompanyOverview
                                                 $("#contactSourceLabel").html("How did you find out about our IA Chat session?");
+                                                $('#companyWebsite').removeAttr('required');
+                                                $('#industry').addClass('show')
+                                                $('#industry').removeClass('hidden')
+                                                $('#designationForm').addClass('col-md-6');
+                                                $('#designationForm').removeClass('col-md-12');
+
+                                                $('#contactCompany').addClass('validity');
+                                                $('#contactCompany').attr('required', true);
+                                                $('#contactDesignation').addClass('validity');
+                                                $('#contactDesignation').attr('required', true);
+
+                                                $('#companyWebsiteWrapper').addClass('show')
+                                                $('#companyWebsiteWrapper').removeClass('hidden')
                                             }
                                         });
                                         $("#contactSource").change(function(){
@@ -349,10 +410,20 @@
                                                 $("#infoSourceOthers").removeClass("hidden");
                                                 $("#infoSourceOthers").addClass("show");
                                             }
-                                            else{
+                                            else if (response == "Events/Talks/Workshops") {
+                                                $("#eventSource").removeClass("hidden");
+                                                $("#eventSource").addClass("show");
+                                                $("#talkEventSource").addClass("validity");
+                                                $('#talkEventSource').attr('required', true)
+                                            }
+                                            else {
                                                 $("#contactSourceOthers").val("");
                                                 $("#infoSourceOthers").addClass("hidden");
                                                 $("#infoSourceOthers").removeClass("show");
+                                                $("#eventSource").addClass("hidden");
+                                                $("#eventSource").removeClass("show");
+                                                $('#talkEventSource').removeAttr('required')
+                                                $('#talkEventSource').removeClass('validity')
                                             }
                                         });
 
@@ -441,16 +512,34 @@
         
         $('#my_captcha_form').on('submit', function(event) {
             var isValid = true;
+            const state = $('#contactSubject').val();
+
+            if (state.toLowerCase() == "academy programme" || state.toLowerCase() == 'general') {
+                // adding valid on company label
+                $('#contactCompanyLabel').addClass('valid');
+                $('#contactDesignationLabel').addClass('valid');
+            }
+
             $('.validity').each(function (e) {
                 var input = $(this);
                 let name = input.attr('name');
-                console.log('Name : '+ name +' | Value : '+input.val());
-                if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology'].includes(name)) {
-                    if (input.val() === '') {
-                        isValid = false;
+                if (state.toLowerCase() == "academy programme" || state.toLowerCase() == 'general') {
+                    if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite', 'industry'].includes(name)) {
+                        console.log('Name : '+ name +' | Value : '+input.val());
+                        if (input.val() === '') {
+                            isValid = false;
+                        }
+                    }
+                } else {
+                    if (!['companyOverview', 'existingIP', 'overseasExpansion', 'proprietaryTechnology', 'companyWebsite'].includes(name)) {
+                        console.log('Name : '+ name +' | Value : '+input.val());
+                        if (input.val() === '') {
+                            isValid = false;
+                        }
                     }
                 }
             });
+            
             if (isValid) {
                 $('#submitContact').attr('disabled', true);
                 $('#submitContact').text('Loading...');

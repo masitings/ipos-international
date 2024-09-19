@@ -97,10 +97,15 @@ class ContactController extends BaseController
 
         $source = str_replace("/", "", $request->get('infoSource'));
         $infoSourceOthers = "";
+        $eventSource = "";
         $sourceRecordToDb = $source;
         if ($source == "Others") {
             $infoSourceOthers = $request->get('infoSourceOthers');
             $sourceRecordToDb = "Other - " . $infoSourceOthers;
+        }
+        if ($source == "EventsTalksWorkshops") {
+            $eventSource = $request->get('eventSource');
+            $sourceRecordToDb = "Event/Talks/Workshop - " . $eventSource;
         }
 
         $message = $request->get('message');
@@ -212,22 +217,33 @@ class ContactController extends BaseController
         $mail->Body = "
             <p>FirstName : $firstName</p>
             <p>LastName : $lastName</p>
-            <p>Company : $company</p>
-            <p>Phone : $phone</p>
-            <p>Email : $c_email</p>
-            <p>Designation : $designation</p>
         ";
 
-        if ($industryOthers !== "") {
-            $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
-        } else {
-            $mail->Body .= "<p>Industry : $industry</p>";
+        if ($company) {
+            $mail->Body .= "<p>Company : $company</p>";
         }
 
         $mail->Body .= "
-            <p>Company Website : $c_website</p>
-            <p>Message : $message</p>
-            ";
+            <p>Phone : $phone</p>
+            <p>Email : $c_email</p>
+        ";
+
+        if ($designation) {
+            $mail->Body .= "<p>Designation : $designation</p>";
+        }
+
+        if ($industry) {
+            if ($industryOthers !== "") {
+                $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
+            } else {
+                $mail->Body .= "<p>Industry : $industry</p>";
+            }
+        }
+        if ($c_website) {
+            $mail->Body .= "<p>Company Website : $c_website</p>";
+        }
+
+        $mail->Body .= "<p>Message : $message</p>";
 
         if (!in_array($state, ["Academy programme", "General", "Business"])) {
             $mail->Body .= "
@@ -238,10 +254,15 @@ class ContactController extends BaseController
             ";
         }
 
+
         if ($infoSourceOthers != "") {
             $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
         } else {
-            $mail->Body .= "<p>InfoSource : $source</p>";
+            if ($source == 'EventsTalksWorkshops') {
+                $mail->Body .= "<p>InfoSource : $source - $eventSource</p>";
+            } else {
+                $mail->Body .= "<p>InfoSource : $source</p>";
+            }
         }
 
         $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";
