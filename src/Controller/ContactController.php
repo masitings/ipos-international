@@ -273,7 +273,8 @@ class ContactController extends BaseController
             $conn = $doctrine->getConnection();
 
             $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
-		            email,sendTime,source) values('" . $firstName . "','" . $lastName . "','" . $company . "','" . $designation . "','" . $subemail . "','" . $message . "','" . $phone . "','" . $c_email . "','" . $date . "','" . $sourceRecordToDb . "')");
+		            email,sendTime,source,companyUrl,industryText,companyOverviewText,existingIaIpProfileText,overseasExpansionText,proprietaryTechnologyText) 
+                    values('" . $firstName . "','" . $lastName . "','" . $company . "','" . $designation . "','" . $subemail . "','" . $message . "','" . $phone . "','" . $c_email . "','" . $date . "','" . $sourceRecordToDb . "','".$c_website."','".$industryRecordToDb."','".$companyOverview."','". $existingIP ."','". $overseasExpansion ."','". $proprietaryTechnology ."')");
             $mail->send();
             return new JsonResponse([]);
             // $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
