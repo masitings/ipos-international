@@ -80,7 +80,7 @@ return [
         "sql" => "",
         "dataSourceConfig" => [
             [
-                "sql" => "firstName AS FirstName,lastName AS LastName,companyName AS Company,designationText AS Designation,phoneNumber AS Phone,email AS Email,receiveEmail AS ReceiveMarketingEmail,messageText AS Message,source,sendTime FROM contact_history ORDER BY sendTime DESC",
+                "sql" => "firstName AS FirstName,lastName AS LastName,companyName AS Company,designationText AS Designation,companyUrl AS CompanyURL, industryText as Industry, phoneNumber AS Phone,email AS Email,receiveEmail AS ReceiveMarketingEmail,messageText AS Message,companyOverviewText as CompanyOverview, existingIaIpProfileText as ExistingIP, overseasExpansionText as OverseasExpansion, proprietaryTechnologyText as ProprietaryTechnology, source,sendTime FROM contact_history ORDER BY sendTime DESC",
                 "from" => "",
                 "where" => "",
                 "groupby" => "",
