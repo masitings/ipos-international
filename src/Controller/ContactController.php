@@ -71,7 +71,7 @@ class ContactController extends BaseController
             'mail_host' => 'smtp.office365.com',
             'mail_name' => 'IPOS International',
             'mail_username' => 'noreply@iposinternational.com',
-            'mail_passwd' => '&!qmf*V7@4rxXz',
+            'mail_passwd' => $_ENV('MAIL_PASSWORD'),
             'mail_port' => 587,
             'mail_from' => 'noreply@iposinternational.com'
         ];
