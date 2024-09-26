@@ -126,28 +126,24 @@ class ContactController extends BaseController
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
 
         $mail = new PHPMailer(true);
-
         $mail->CharSet = "UTF-8";                     //设定邮件编码
-
         $mail->SMTPDebug = 0;                        // 调试模式输出
-
         $mail->isSMTP();                             // 使用SMTP
-
-        $mail->Host = $mailConfig['mail_host'];                // SMTP服务器
-
         $mail->SMTPAuth = true;                      // 允许 SMTP 认证
-
-        $mail->Username = $mailConfig['mail_username'];                // SMTP 用户名  即邮箱的用户名
-
-        $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
-
         $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
 
+        // $mail->Username = $mailConfig['mail_username'];                // SMTP 用户名  即邮箱的用户名
+        // $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
+        // $mail->Host = $mailConfig['mail_host'];                // SMTP服务器
+        
         $mail->Port = $mailConfig['mail_port'];                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
+        $mail->Host = 'smtp-relay.brevo.com';
+        $mail->Username = '7b8add001@smtp-brevo.com';
+        $mail->Password = 'XI8YsTxMqFrzmCh0'; // or App password if 2FA is enabled
+        $mail->setFrom("arigiwiratama@gmail.com", "Arigi");
 
 
-
-        $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
+        // $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
         // $mail->setFrom();  //发件人
 
         if ($sendMails) {
