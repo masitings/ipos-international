@@ -223,6 +223,7 @@
             <div class="container">
                 <h3 style="color: #000; margin-bottom: 20px;">{{ pimcore_input('bottomBannerTitle',{'placeholder' : 'Stay connected with us'}) }}</h3>
                 <div class="social-icons">
+                    {{ pimcore_link('alink') }}
                     {% set alink = pimcore_link('alink') %}
                     <a href="{{ alink.data.path | default("#") }}">
                         {{ pimcore_image('socialIcon1') }}
