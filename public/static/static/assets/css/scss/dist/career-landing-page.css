@@ -61,6 +61,11 @@
 .career-landing-page .discover-section .discover-content .discover-image:hover img {
   transform: scale(1.1);
 }
+
+.career-landing-page .discover-section .discover-content .discover-image:hover picture img {
+    transform: scale(1.1);
+}
+
 .career-landing-page .discover-section .discover-content .discover-image img {
   transition: transform 0.5s ease;
   width: 100%;
