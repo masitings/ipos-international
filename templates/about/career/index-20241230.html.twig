@@ -222,16 +222,15 @@
         <section class="social-media-section">
             <div class="container">
                 <h3 style="color: #000; margin-bottom: 20px;">{{ pimcore_input('bottomBannerTitle',{'placeholder' : 'Stay connected with us'}) }}</h3>
+                {% set socialLink1 = pimcore_link('socialLink1', {
+                    'noText' : true
+                }) %}
                 <div class="social-icons">
-                    {% set socialLink1 = pimcore_link('socialLink1', {
-                        'noText' : true,
-                        'target' : '_blank'
-                    }) %}
                     {% set socialImage1 = pimcore_image('socialImage1') %}
 
                     {% if socialImage1 %}
                         {% if socialLink1 %}
-                            <a href="{{ socialLink1.href }}" target="{{ socialLink1.target }}" title="{{ socialLink1.text }}">
+                            <a href="{{ socialLink1.href }}" target="_blank">
                                 {{ socialImage1|raw }}
                             </a>
                         {% else %}
