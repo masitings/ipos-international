@@ -7,22 +7,15 @@
             <div class="about_bg_ipos"><img src="/static/static/assets/images/IPOS.d59bcba.svg" alt=""></div>
             <div class="container about_content">
                 <div class="resources_public_title_nav container dark">
-                <div class="row">
-                    <div class="col-12">
                     <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
 
                         {% include('layouts/breadcrumb-col-12.html.twig') %}
                     </nav>
-                    <div class="d-block d-md-none mobile_nav">
-                        <span class="back_arrow">&lt; </span>
-                        <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
-                    </div>
-                    </div>
                 </div>
                 </div>
                 {{ pimcore_areablock("headlines", {
                     "allowed": [
-                    "advisory-headlines"
+                        "careers-overview-headlines"
                     ]
                 }) }}
                 {# <div class="row"> #}
