@@ -21,34 +21,11 @@
             </div>
         </section>
         <!-- Discover Section -->
-        <section class="discover-section">
-            <div style="margin: auto;">
-                <div class="discover-content">
-                    <!-- Image Section -->
-                    <div class="discover-image">
-                        {{ pimcore_image("overviewTool", {
-                            "class" : "cover",
-                            "thumbnail": "overviewTool"
-                        }) }}
-                        {# <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Discover Career" /> #}
-                    </div>
-                    <!-- Text Section -->
-                    <div class="discover-text">
-                        <div class="discover-text-wrapper">
-                            <h2>
-                                {{ pimcore_input('title',{'placeholder' : 'title'}) }}
-                            </h2>
-                            <p>
-                                 {{  pimcore_wysiwyg("specialContent", {
-                                        "placeholder" : "edit content..."
-                                    })
-                                }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        {{ pimcore_areablock("toold", {
+            "allowed": [
+                "advisory-tools","advisory-explore","careers-overview-headlines", "careers-discover-tools"
+            ]
+        }) }}
         <!-- Gain and Achieve Section -->
         <section class="gain-achieve-section">
             <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt=""></div>
