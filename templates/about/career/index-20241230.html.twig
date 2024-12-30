@@ -32,77 +32,126 @@
             <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt=""></div>
             <div class="container">
                 <h2>
-                    What You Will Gain and Achieve
+                    {{ pimcore_input('title',{'placeholder' : 'title'}) }}
                 </h2>
                 <div class="gain-achieve-grid">
                     <!-- Global Exposure -->
                     <div class="gain-item">
-                        <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" />
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool", {
+                                "class" : "cover",
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
                         <div>
-                            <h3>Global Exposure</h3>
+                            <h3>{{ pimcore_input('title',{'placeholder' : 'item 1'}) }}</h3>
                             <p>
-                                Work on international intellectual property projects, gaining insights into global
-                                trends and practices.
+                                {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
                     <!-- Career Growth -->
                     <div class="gain-item">
-                        <img src="/static/static/assets/images/career/gain-4.svg" alt="Career Growth" />
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool", {
+                                "class" : "cover",
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
                         <div>
-                            <h3>Career Growth</h3>
+                            <h3>{{ pimcore_input('title',{'placeholder' : 'item 1'}) }}</h3>
                             <p>
-                                Unlock opportunities for continuous learning and professional development tailored
-                                to
-                                your ambitions.
+                                {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
                     <!-- Diverse Career Paths -->
                     <div class="gain-item">
-                        <img src="/static/static/assets/images/career/gain-2.svg" alt="Diverse Career Paths" />
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool", {
+                                "class" : "cover",
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
                         <div>
-                            <h3>Diverse Career Paths
-                            </h3>
+                            <h3>{{ pimcore_input('title',{'placeholder' : 'item 1'}) }}</h3>
                             <p>
-                                Explore various roles in IP strategy, management, and innovation consulting,
-                                tailoring
-                                your career to your strengths and interests.
+                                {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
                     <!-- Impactful Work -->
                     <div class="gain-item">
-                        <img src="/static/static/assets/images/career/gain-5.svg" alt="Impactful Work" />
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool", {
+                                "class" : "cover",
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
                         <div>
-                            <h3>Impactful Work</h3>
+                            <h3>{{ pimcore_input('title',{'placeholder' : 'item 1'}) }}</h3>
                             <p>
-                                Contribute to shaping IP policies and strategies that drive innovation and economic
-                                growth worldwide.
+                                {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
                     <!-- Innovative Workspace -->
                     <div class="gain-item">
-                        <img src="/static/static/assets/images/career/gain-3.svg" alt="Innovative Workspace" />
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool", {
+                                "class" : "cover",
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
                         <div>
-                            <h3>Innovative Workspace
-                            </h3>
+                            <h3>{{ pimcore_input('title',{'placeholder' : 'item 1'}) }}</h3>
                             <p>
-                                Thrive in a supportive, inclusive, and forward-thinking culture that values
-                                collaboration and creativity.
+                                {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
                     <!-- Attractive Rewards -->
                     <div class="gain-item">
-                        <img src="/static/static/assets/images/career/gain-6.svg" alt="Attractive Rewards" />
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool", {
+                                "class" : "cover",
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
                         <div>
-                            <h3>Attractive Rewards</h3>
+                            <h3>{{ pimcore_input('title',{'placeholder' : 'item 1'}) }}</h3>
                             <p>
-                                Enjoy a competitive compensation package, benefits, and incentives that recognise
-                                and
-                                reward your contributions.
+                                {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
