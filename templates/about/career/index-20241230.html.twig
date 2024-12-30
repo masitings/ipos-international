@@ -226,25 +226,53 @@
                     {{ pimcore_link('alink') }}
                     {% set alink = pimcore_link('alink') %}
                     <a href="{{ alink.data.path | default("#") }}">
-                        {{ pimcore_image('socialIcon1') }}
+                        {{ pimcore_image('socialIcon1', {
+                            width: '50',
+                            height: '50'
+                        }) }}
                     </a>
                     {# <a href="https://www.facebook.com" target="_blank" style="text-decoration: none;">
                         <img src="/static/static/assets/images/common/fb.svg" alt="Facebook" width="50" height="50" />
                     </a> #}
-                    <a href="https://www.linkedin.com" target="_blank" style="text-decoration: none;">
-                        <img src="/static/static/assets/images/common/in.svg" alt="LinkedIn" width="50" height="50" />
+                    {{ pimcore_link('socialLink2') }}
+                    {% set socialLink2 = pimcore_link('socialLink2') %}
+                    <a href="{{ socialLink2.data.path | default("#") }}">
+                        {{ pimcore_image('socialIcon2', {
+                            width: '50',
+                            height: '50'
+                        }) }}
                     </a>
-                    <a href="https://twitter.com" target="_blank" style="text-decoration: none;">
-                        <img src="/static/static/assets/images/common/twitter.svg" alt="Twitter" width="50" height="50" />
+                    {{ pimcore_link('socialLink3') }}
+                    {% set socialLink3 = pimcore_link('socialLink3') %}
+                    <a href="{{ socialLink3.data.path | default("#") }}">
+                        {{ pimcore_image('socialIcon3', {
+                            width: '50',
+                            height: '50'
+                        }) }}
                     </a>
-                    <a href="https://www.instagram.com" target="_blank" style="text-decoration: none;">
-                        <img src="/static/static/assets/images/common/ig.svg" alt="Instagram" width="50" height="50" />
+                    {{ pimcore_link('socialLink4') }}
+                    {% set socialLink4 = pimcore_link('socialLink4') %}
+                    <a href="{{ socialLink4.data.path | default("#") }}">
+                        {{ pimcore_image('socialIcon4', {
+                            width: '50',
+                            height: '50'
+                        }) }}
                     </a>
-                    <a href="https://www.youtube.com" target="_blank" style="text-decoration: none;">
-                        <img src="/static/static/assets/images/common/yt.svg" alt="YouTube" width="50" height="50" />
+                    {{ pimcore_link('socialLink5') }}
+                    {% set socialLink5 = pimcore_link('socialLink5') %}
+                    <a href="{{ socialLink5.data.path | default("#") }}">
+                        {{ pimcore_image('socialIcon5', {
+                            width: '50',
+                            height: '50'
+                        }) }}
                     </a>
-                    <a href="https://www.tiktok.com" target="_blank" style="text-decoration: none;">
-                        <img src="/static/static/assets/images/common/tiktok.svg" alt="TikTok" width="50" height="50" />
+                    {{ pimcore_link('socialLink6') }}
+                    {% set socialLink6 = pimcore_link('socialLink6') %}
+                    <a href="{{ socialLink6.data.path | default("#") }}">
+                        {{ pimcore_image('socialIcon6', {
+                            width: '50',
+                            height: '50'
+                        }) }}
                     </a>
                 </div>
             </div>
