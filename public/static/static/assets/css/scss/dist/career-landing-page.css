@@ -198,6 +198,21 @@
   gap: 15px;
   margin-bottom: 40px;
 }
+.career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item picture img {
+    min-width: 118px;
+    width: 118px;
+    height: 118px;
+    margin-right: 36px;
+}
+@media screen and (max-width: 768px) {
+    .career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item picture img {
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        margin-right: 24px;
+    }
+}
+
 .career-landing-page .gain-achieve-section .gain-achieve-grid img {
   min-width: 118px;
   width: 118px;
