@@ -418,6 +418,11 @@
   justify-content: center;
   gap: 20px;
 }
+
+.career-landing-page .social-media-section .social-icons a picture img {
+    width: 50px;
+}
+
 .career-landing-page .social-media-section h3 {
   font-family: Rubik;
   font-size: 28px;
