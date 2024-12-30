@@ -6,7 +6,7 @@
             <div class="about_bg_circle"></div>
             <div class="about_bg_ipos"><img src="/static/static/assets/images/IPOS.d59bcba.svg" alt=""></div>
             <div class="container about_content">
-                <div class="resources_public_title_nav container">
+                <div class="resources_public_title_nav container dark">
                 <div class="row">
                     <div class="col-12">
                     <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
@@ -21,11 +21,16 @@
                 </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <p class="txt-large p-r-20">At IPOS International, we're shaping the future of innovation
+                    <div class="col-lg-6 txt-large p-r-20">
+                    {{  pimcore_wysiwyg("careersOverView", {
+                            "height": 400,
+                            "placeholder" : "Set up your content here ..."
+                        })
+                    }}
+                        {# <p class="txt-large p-r-20">At IPOS International, we're shaping the future of innovation
                             through intellectual property. Join a team of passionate experts dedicated to empowering
                             businesses, supporting creators, and fostering a culture of growth. Explore opportunities
-                            with us and be a part of a dynamic environment where your skills make a difference.</p>
+                            with us and be a part of a dynamic environment where your skills make a difference.</p> #}
                     </div>
                     <div class="col-lg-6 main-image">
                         <img class="col-lg-12" height="387" src="/static/static/assets/images/credential_banner.457068b.png"
