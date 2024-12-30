@@ -1,0 +1,239 @@
+{% extends template_layout_name %}
+
+{% block content %}
+  <section class="academy_overview__page career-landing-page">
+        <section class="about">
+            <div class="about_bg_circle"></div>
+            <div class="about_bg_ipos"><img src="/static/static/assets/images/IPOS.d59bcba.svg" alt=""></div>
+            <div class="container about_content">
+                <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                    <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                    </nav>
+                    <div class="d-block d-md-none mobile_nav">
+                        <span class="back_arrow">&lt; </span>
+                        <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="txt-large p-r-20">At IPOS International, we're shaping the future of innovation
+                            through intellectual property. Join a team of passionate experts dedicated to empowering
+                            businesses, supporting creators, and fostering a culture of growth. Explore opportunities
+                            with us and be a part of a dynamic environment where your skills make a difference.</p>
+                    </div>
+                    <div class="col-lg-6 main-image">
+                        <img class="col-lg-12" height="387" src="/static/static/assets/images/credential_banner.457068b.png"
+                            alt="" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Discover Section -->
+        <section class="discover-section">
+            <div style="margin: auto;">
+                <div class="discover-content">
+                    <!-- Image Section -->
+                    <div class="discover-image">
+                        <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Discover Career" />
+                    </div>
+                    <!-- Text Section -->
+                    <div class="discover-text">
+                        <div class="discover-text-wrapper">
+                            <h2>
+                                Discover What Makes IPOS International Unique for Your Career
+                            </h2>
+                            <p>
+                                Joining IPOS International means being part of a forward-thinking team that values
+                                innovation,
+                                collaboration, and professional growth. With a commitment to excellence and a supportive
+                                culture, we offer
+                                career opportunities that empower you to make an impact in the ever-evolving world of
+                                intellectual
+                                property. Together, we’re driving innovation forward.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Gain and Achieve Section -->
+        <section class="gain-achieve-section">
+            <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt=""></div>
+            <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt=""></div>
+            <div class="container">
+                <h2>
+                    What You Will Gain and Achieve
+                </h2>
+                <div class="gain-achieve-grid">
+                    <!-- Global Exposure -->
+                    <div class="gain-item">
+                        <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" />
+                        <div>
+                            <h3>Global Exposure</h3>
+                            <p>
+                                Work on international intellectual property projects, gaining insights into global
+                                trends and practices.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Career Growth -->
+                    <div class="gain-item">
+                        <img src="/static/static/assets/images/career/gain-4.svg" alt="Career Growth" />
+                        <div>
+                            <h3>Career Growth</h3>
+                            <p>
+                                Unlock opportunities for continuous learning and professional development tailored
+                                to
+                                your ambitions.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Diverse Career Paths -->
+                    <div class="gain-item">
+                        <img src="/static/static/assets/images/career/gain-2.svg" alt="Diverse Career Paths" />
+                        <div>
+                            <h3>Diverse Career Paths
+                            </h3>
+                            <p>
+                                Explore various roles in IP strategy, management, and innovation consulting,
+                                tailoring
+                                your career to your strengths and interests.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Impactful Work -->
+                    <div class="gain-item">
+                        <img src="/static/static/assets/images/career/gain-5.svg" alt="Impactful Work" />
+                        <div>
+                            <h3>Impactful Work</h3>
+                            <p>
+                                Contribute to shaping IP policies and strategies that drive innovation and economic
+                                growth worldwide.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Innovative Workspace -->
+                    <div class="gain-item">
+                        <img src="/static/static/assets/images/career/gain-3.svg" alt="Innovative Workspace" />
+                        <div>
+                            <h3>Innovative Workspace
+                            </h3>
+                            <p>
+                                Thrive in a supportive, inclusive, and forward-thinking culture that values
+                                collaboration and creativity.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Attractive Rewards -->
+                    <div class="gain-item">
+                        <img src="/static/static/assets/images/career/gain-6.svg" alt="Attractive Rewards" />
+                        <div>
+                            <h3>Attractive Rewards</h3>
+                            <p>
+                                Enjoy a competitive compensation package, benefits, and incentives that recognise
+                                and
+                                reward your contributions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="proudly">
+                    <img src="/static/static/assets/images/career/prodly.svg" alt="Progressive Wage Mark" />
+                    <p>
+                        IPOS International proudly holds the Progressive Wage Mark.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Explore Section -->
+        <section class="explore-section">
+            <div class="container courses_tab_content_item active">
+                <h2>Explore</h2>
+                <div class="explore-cards row">
+                    <!-- Card 1: Our People & Culture -->
+                    <div class="courses_tab_content_item_card col-lg-6">
+                        <div class="card_image">
+                            <img class="cover" src="/static/static/assets/images/credential_banner.457068b.png" width="2093"
+                                height="1570" alt="">
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">Our People &
+                                    Culture</div>
+                                <div class="description">
+                                    At IPOS International, our diverse team thrives on collaboration, innovation, and
+                                    mutual respect. We foster a culture that values growth, inclusion, and continuous
+                                    learning.
+                                </div>
+                            </div>
+                            <a href="" class="find-out">
+                                Find out more</a>
+                        </div>
+                    </div>
+                    <div class="courses_tab_content_item_card col-lg-6">
+                        <div class="card_image">
+                            <img class="cover" src="/static/static/assets/images/credential_banner.457068b.png" width="2093"
+                                height="1570" alt="" />
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">Job
+                                    Openings</div>
+                                <div class="description">
+                                    Explore exciting career opportunities at IPOS International and join a dynamic team
+                                    dedicated to shaping the future of intellectual property.
+                                </div>
+                            </div>
+                            <a href="" class="find-out">
+                                Find out more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-media-section">
+            <div class="container">
+                <h3 style="color: #000; margin-bottom: 20px;">Stay Connected with Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/fb.svg" alt="Facebook" width="50" height="50" />
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/in.svg" alt="LinkedIn" width="50" height="50" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/twitter.svg" alt="Twitter" width="50" height="50" />
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/ig.svg" alt="Instagram" width="50" height="50" />
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/yt.svg" alt="YouTube" width="50" height="50" />
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/tiktok.svg" alt="TikTok" width="50" height="50" />
+                    </a>
+                </div>
+            </div>
+        </section>
+    </section>
+  <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+  <script src="http://vjs.zencdn.net/5.4.4/video.js"></script>
+  <script>
+    $(function () {
+      var obj = $("iframe");
+      if (obj){
+        obj.attr('class','content_img');
+      }
+
+    })
+  </script>
+{% endblock %}

@@ -1,0 +1,366 @@
+.articles_details_container.career-job-detail {
+    @media screen and (max-width: 768px) {
+        padding: 0 25px;
+
+        .nav-view {
+            margin-bottom: 40px;
+        }
+    }
+
+    .container {
+        position: relative;
+
+        .apply-now-section {
+            .left {
+                display: none;
+            }
+
+            &.active {
+                position: fixed;
+                max-width: 858px;
+                width: 100%;
+                top: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px;
+                border-bottom: 1px solid #000000;
+                box-shadow: 0px 4px 20px 0px #0000001A;
+                background-color: white;
+                transition: ease-in-out all;
+
+                @media screen and (max-width: 768px) {
+                    bottom: 0;
+                    left: 0;
+                    max-width: 100%;
+                    top: auto;
+                    padding: 16px 37px;
+                }
+
+                .left {
+                    display: block;
+
+                    @media screen and (max-width: 768px) {
+                        display: none;
+                    }
+
+                    .title {
+                        font-family: Poppins;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 27px;
+                    }
+
+                    .sub-title {
+                        font-family: Poppins;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 21px;
+
+                    }
+                }
+
+                .apply-now-button {
+                    @media screen and (max-width: 768px) {
+                        width: 100%;
+                    }
+
+                }
+            }
+
+            .apply-now-button {
+                font-family: Poppins;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 14px;
+                color: white;
+                padding: 16px 16px;
+                text-align: center;
+                background: #E34A21;
+                border: 2px solid #E34A21;
+                width: 200px;
+                display: block;
+
+                &:hover {
+                    background: white;
+                    color: #E34A21;
+                }
+            }
+
+        }
+    }
+
+    .header-part {
+        margin-bottom: 50px;
+
+        h1 {
+            font-family: Rubik;
+            font-size: 64px;
+            font-weight: 300;
+            line-height: 70.4px;
+            margin-bottom: 12px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 42px;
+                font-weight: 300;
+                line-height: 50.4px;
+            }
+
+        }
+
+        .sub-title {
+            font-family: Rubik;
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 36.4px;
+            color: #000000;
+            margin-bottom: 12px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 22px;
+                font-weight: 300;
+                line-height: 28px;
+            }
+
+        }
+
+        .date {
+            font-family: Poppins;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            color: #777777;
+
+            span {
+                color: #000000;
+            }
+        }
+
+    }
+
+    .career-job-detail-content {
+        margin-top: 50px;
+
+        h3 {
+            font-family: Rubik;
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 36.4px;
+            color: #000000;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 22px;
+                font-weight: 300;
+                line-height: 28px;
+            }
+
+        }
+
+        p {
+            font-family: Poppins;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+        }
+
+        h4 {
+            font-family: Poppins;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 27px;
+            color: #333333;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+
+            li {
+                font-family: Poppins;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 27px;
+                color: #000000;
+                list-style: disc;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .download-section {
+            background: #ede7f0;
+
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 50px;
+
+            .download-section-left {
+                display: flex;
+                align-items: center;
+                @media screen and (max-width: 768px) {
+                    align-items: start;
+                }
+
+                span {
+                    font-family: Poppins;
+                    font-size: 18px;
+                    font-weight: 400;
+                    color: #000000;
+                    margin-left: 4px;
+
+                    @media screen and (max-width: 768px) {
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+
+        .divider-content {
+            background: #ddd;
+            height: 1px;
+            margin: 50px 0;
+            width: 100%;
+        }
+
+        .video-section {
+            margin-top: 20px;
+
+            .video-container {
+
+                iframe,
+                img {
+                    width: 100%;
+                    height: 431px;
+                    object-fit: cover;
+                    border-radius: 24px;
+
+                    @media screen and (max-width: 768px) {
+                        height: 176px;
+                    }
+                }
+            }
+
+            p {
+                font-family: Poppins;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 27px;
+                color: #333333;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+
+
+    .interest-wrapper {
+
+        @media screen and (max-width: 768px) {
+            margin-bottom: 50px;
+        }
+
+        &.active {
+            position: fixed;
+            top: 27%;
+            max-width: 318px;
+        }
+
+        h5 {
+            font-family: Rubik;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 25.2px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #DDDDDD;
+
+            @media screen and (max-width: 768px) {
+                font-size: 22px;
+                font-weight: 300;
+                line-height: 28px;
+
+            }
+        }
+
+        .job-item {
+            display: block;
+            padding: 20px 0;
+            color: #000000;
+            border-bottom: 1px solid #DDDDDD;
+
+            .job-date {
+                color: #777777;
+                font-family: Poppins;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 14px;
+                letter-spacing: 0.12em;
+            }
+
+            .job-title {
+                font-family: Poppins;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 22.4px;
+            }
+
+            .job-description {
+                font-family: Poppins;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 21px;
+                color: #333333;
+            }
+        }
+
+        .share-section {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+
+            .share {
+                font-family: Poppins;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 14px;
+                letter-spacing: 0.12em;
+                color: #777777;
+                margin-right: 12px;
+            }
+        }
+    }
+}
+
+
+.padding-right-90 {
+    padding-right: 90px;
+}
+
+@media screen and (max-width: 768px) {
+    .padding-right-90 {
+        padding-right: inherit;
+    }
+}

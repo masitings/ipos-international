@@ -1,0 +1,298 @@
+.articles_details_container.career-our-people-and-culture {
+    @media screen and (max-width: 768px) {
+        padding: 0 25px;
+    }
+
+    .nav-view {
+        @media screen and (max-width: 768px) {
+            margin-bottom: 30px;
+        }
+    }
+
+
+    .m-p-0 {
+        @media screen and (max-width: 768px) {
+            padding: 0;
+        }
+    }
+
+    .job-opening-container {
+        border: 1px solid #000;
+        padding: 24px;
+        max-width: 400px;
+        background-color: transparent;
+        max-width: 262px;
+        position: static;
+
+        @media screen and (max-width: 768px) {
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+
+
+        h2 {
+            font-family: Rubik;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 31.2px;
+            margin-bottom: 17px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 20px;
+                font-weight: 300;
+                line-height: 28px;
+            }
+
+        }
+
+        p {
+            font-family: Poppins;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            margin-bottom: 16px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+            }
+
+        }
+
+        a {
+            background: #E34A21;
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 14px;
+            text-align: center;
+            color: white;
+            padding: 16px 0px;
+            display: block;
+        }
+    }
+
+    .p__title {
+        margin-bottom: 50px;
+    }
+
+    .content_main_img {
+
+        img {
+            height: 774px;
+            border-radius: 24px;
+            overflow: hidden;
+            object-fit: cover;
+
+            @media screen and (max-width: 768px) {
+                width: 340px;
+                height: 211.92px;
+            }
+        }
+    }
+
+    .main-articles {
+        position: relative;
+        // padding-bottom: 68px;
+        border-bottom: 1px solid #A5ABB3;
+
+        &.section-2 {
+            padding-top: 50px;
+            padding-bottom: 96px;
+        }
+
+        .the-articles {
+            padding-left: 0;
+        }
+
+        h3 {
+            font-family: Rubik;
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 36.4px;
+            margin-bottom: 30px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 22px;
+                font-weight: 300;
+                line-height: 28px;
+
+            }
+        }
+
+        .p_desc {
+            font-family: Poppins;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+
+            @media screen and (max-width: 768px) {
+                font-family: Poppins;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+            }
+
+        }
+
+        .section-image {
+            padding-bottom: 64px;
+
+            @media screen and (max-width: 768px) {
+                padding-bottom: 30px;
+            }
+
+            img {
+                height: 521px;
+                border-radius: 24px;
+                object-fit: cover !important;
+            }
+        }
+    }
+
+    .bottom-video-section {
+        padding: 0;
+
+        .padding-left-24 {
+            padding-left: 24px;
+        }
+
+        .video-section {
+            display: flex;
+            max-width: 1200px;
+            margin-bottom: 20px;
+            gap: 30px;
+        }
+
+        .video-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+
+            iframe,
+            img {
+                height: 431px;
+                object-fit: cover;
+                border-radius: 24px;
+                width: 100%;
+
+                @media screen and (max-width: 768px) {
+                    width: 100%;
+                    height: 212.5px;
+                }
+
+            }
+        }
+
+        .video-container .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .text-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-top: 3px solid #470A68;
+
+            @media screen and (max-width: 768px) {
+                margin-top: 30px;
+            }
+
+            h2 {
+                font-family: Rubik;
+                font-size: 24px;
+                font-weight: 300;
+                line-height: 31.2px;
+                margin-bottom: 10px;
+                margin-top: 24px;
+                ;
+            }
+
+            p {
+                font-family: Poppins;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+                color: #333333;
+            }
+        }
+
+
+        .thumbnail-carousel-container {
+            position: relative;
+
+            .arrow-right {
+                position: absolute;
+                right: 0;
+                top: 20px;
+            }
+
+            .arrow-left {
+                position: absolute;
+                left: 0;
+                transform: rotate(180deg);
+                top: 20px;
+            }
+
+            .arrow-left.inactive,
+            .arrow-right.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+
+        .thumbnail-carousel {
+            display: flex;
+            gap: 12px;
+            overflow: hidden;
+            position: relative;
+
+            .img-slider-container {
+                border: 2px solid transparent;
+                border-radius: 8px;
+
+                img {
+                    object-fit: cover;
+                    width: 120px;
+                    height: 67px;
+                    cursor: pointer;
+                    border-radius: 8px;
+                    opacity: 0.5;
+                    transition: transform 0.3s, border-color 0.3s;
+                }
+
+                &.active {
+                    border-color: purple;
+
+                    img {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.padding-right-90 {
+    padding-right: 90px;
+
+    @media screen and (max-width: 768px) {
+        padding-right: inherit;
+    }
+}
+
+.padding-left-0 {
+    padding-left: 0;
+
+    @media screen and (max-width: 768px) {
+        padding-left: inherit;
+    }
+}

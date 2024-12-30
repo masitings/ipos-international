@@ -1,0 +1,412 @@
+@media screen and (max-width: 768px) {
+  .career-landing-page .about {
+    padding: 25px;
+  }
+}
+.career-landing-page .about .about_content h1 {
+  margin-bottom: 50px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .about .about_content h1 {
+    margin-bottom: 25px;
+  }
+}
+.career-landing-page .main-image {
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+}
+.career-landing-page .main-image:hover img {
+  transform: scale(1.1);
+}
+.career-landing-page .main-image img {
+  transition: transform 0.5s ease;
+  object-fit: cover;
+  border-radius: 12px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .main-image img {
+    width: 100%;
+    height: 212px;
+  }
+}
+.career-landing-page .discover-section {
+  background: #F6F3F7;
+}
+.career-landing-page .discover-section .discover-content {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: stretch;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .discover-section .discover-content {
+    gap: unset;
+    display: block;
+  }
+}
+.career-landing-page .discover-section .discover-content .discover-image {
+  flex: 1;
+  width: 50%;
+  overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .discover-section .discover-content .discover-image {
+    min-width: 100%;
+    width: 100%;
+    height: 414px;
+  }
+}
+.career-landing-page .discover-section .discover-content .discover-image:hover img {
+  transform: scale(1.1);
+}
+.career-landing-page .discover-section .discover-content .discover-image img {
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 800px;
+  object-fit: cover;
+}
+.career-landing-page .discover-section .discover-content .discover-text {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 37px;
+  padding-right: 112px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  height: 800px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .discover-section .discover-content .discover-text {
+    min-width: 100%;
+    width: 100%;
+    padding-right: 37px;
+    height: auto;
+  }
+}
+.career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper {
+  padding-left: 37px;
+  border-left: 1px solid #ddd;
+  height: 100%;
+  position: relative;
+}
+.career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper::before {
+  content: "";
+  height: 80px;
+  position: absolute;
+  left: 0;
+  border: 3px solid #470A68;
+}
+.career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper h2 {
+  font-size: 48px;
+  font-weight: 300;
+  color: #000;
+  margin-bottom: 12px;
+  line-height: 52px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper h2 {
+    font-family: Rubik;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 33.8px;
+  }
+}
+.career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper p {
+  font-size: 18px;
+  color: #555;
+  line-height: 27px;
+  font-weight: 400;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper p {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.career-landing-page .gain-achieve-section {
+  position: relative;
+  padding: 120px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #A5ABB3;
+}
+.career-landing-page .gain-achieve-section .credential_content_left {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .credential_content_left {
+    left: -150px;
+    position: absolute;
+    top: -218px;
+  }
+}
+.career-landing-page .gain-achieve-section .credential_content_right {
+  right: 0;
+  position: absolute;
+  bottom: 0;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .credential_content_right {
+    display: none;
+  }
+}
+.career-landing-page .gain-achieve-section .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.career-landing-page .gain-achieve-section h2 {
+  font-family: Rubik;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 64.4px;
+  margin-bottom: 36px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section h2 {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 35.2px;
+  }
+}
+.career-landing-page .gain-achieve-section .gain-achieve-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 129px;
+  row-gap: 0;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .gain-achieve-grid {
+    display: block;
+    column-gap: normal;
+  }
+}
+.career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+.career-landing-page .gain-achieve-section .gain-achieve-grid img {
+  min-width: 118px;
+  width: 118px;
+  height: 118px;
+  margin-right: 36px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .gain-achieve-grid img {
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    margin-right: 24px;
+  }
+}
+.career-landing-page .gain-achieve-section .gain-achieve-grid h3 {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 39.6px;
+  color: #000000;
+  margin-bottom: 4px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .gain-achieve-grid h3 {
+    font-family: Rubik;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 31.2px;
+  }
+}
+.career-landing-page .gain-achieve-section .gain-achieve-grid p {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .gain-achieve-grid p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.career-landing-page .gain-achieve-section .proudly {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 92px;
+}
+.career-landing-page .gain-achieve-section .proudly img {
+  width: 80px;
+  height: 68.28px;
+}
+.career-landing-page .gain-achieve-section .proudly p {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .gain-achieve-section .proudly p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.career-landing-page .explore-section {
+  padding: 120px 0;
+  background-color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section {
+    padding: 60px 40px;
+  }
+}
+.career-landing-page .explore-section h2 {
+  text-align: left;
+  margin-bottom: 30px;
+  font-family: Rubik;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section h2 {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 35.2px;
+  }
+}
+.career-landing-page .explore-section .explore-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .explore-cards {
+    display: block;
+    gap: unset;
+  }
+}
+.career-landing-page .explore-section .courses_tab_content_item_card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 12px 24px 12px 0;
+  position: relative;
+  flex: 1 1 calc(50% - 15px);
+  box-sizing: border-box;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .courses_tab_content_item_card {
+    margin-bottom: 20px;
+  }
+}
+.career-landing-page .explore-section .courses_tab_content_item_card::after {
+  background: #470a68;
+  content: "";
+  height: 440px;
+  left: 24px;
+  position: absolute;
+  top: -145px;
+  -webkit-transform: matrix(0.87, 0.5, -0.5, 0.87, 0, 0);
+  transform: matrix(0.87, 0.5, -0.5, 0.87, 0, 0);
+  width: 90px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .courses_tab_content_item_card::after {
+    left: 0;
+  }
+}
+.career-landing-page .explore-section .courses_tab_content_item_card .card_image {
+  height: 364px;
+  overflow: hidden;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .courses_tab_content_item_card .card_image {
+    height: 196px;
+  }
+}
+.career-landing-page .explore-section .courses_tab_content_item_card .card_image img {
+  transition: transform 0.5s ease;
+}
+.career-landing-page .explore-section .courses_tab_content_item_card:hover .card_image img {
+  transform: scale(1.1);
+}
+.career-landing-page .explore-section .courses_tab_content_item_card .card_content {
+  padding: 20px 24px;
+}
+.career-landing-page .explore-section .courses_tab_content_item_card .card_content .title {
+  font-family: Rubik;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 31.2px;
+  margin-bottom: 4px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .courses_tab_content_item_card .card_content .title {
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 28px;
+  }
+}
+.career-landing-page .explore-section .courses_tab_content_item_card .card_content .description {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .courses_tab_content_item_card .card_content .description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+  }
+}
+.career-landing-page .explore-section .courses_tab_content_item_card .card_content .find-out {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  color: #E34A21;
+  margin-top: 42px;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .explore-section .courses_tab_content_item_card .card_content .find-out {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.career-landing-page .social-media-section {
+  background: #F6F3F7;
+  padding: 30px 0;
+  text-align: center;
+  margin-bottom: 120px;
+}
+.career-landing-page .social-media-section .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.career-landing-page .social-media-section h3 {
+  font-family: Rubik;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 36.4px;
+  color: #000000;
+}
+@media screen and (max-width: 768px) {
+  .career-landing-page .social-media-section h3 {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 28px;
+    text-align: center;
+  }
+}
