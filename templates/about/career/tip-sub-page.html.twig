@@ -1,0 +1,206 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block content %}
+
+<section class="academy_enterprise_detail__page advisor_detail__page overflow-hidden">
+    <section class="detail">
+        <div class="bg_circle_right"></div>
+        <div class="program-bg-right"><img src="/assets/images/program-right.b0d0785.svg" alt=""></div>
+        <div class="container">
+            <div class="breadcrumb black m-b-80">
+                {% include('layouts/breadcrumb.html.twig') %}
+            </div>
+            {{ pimcore_areablock('smes-head',{
+                'allowed' : [
+                    "headlines"
+                ]
+            }) }}
+            <div class="row">
+                <div class="col-lg-7 col-xl-8">
+                    <h1 class="m-b-40">{{ pimcore_input('pageTitle',{'placeholder':'title'}) }}</h1>
+                    <div class="detail_left">
+{#                        <p class="txt-regular m-b-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>#}
+                        {{  pimcore_wysiwyg("specialContent", {
+                            "class" : "txt-regular m-b-30",
+                            "height": 200,
+                            "placeholder" : "edit content...",
+                            "toolbar1": "a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template tinycomments tinydrive tinymcespellchecker typography visualblocks visualchars wordcount h1 h2 h3 p"
+                        })
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div class="space-60"></div>
+            <div class="ipos-tab-container" {#style="margin-bottom: 100px;"#}>
+                {% if editmode %}
+                    <div class="tab-nav">
+                        <div class="tab is-desktop">
+                            <div class="row gx-0">
+                                {% for i,item in pimcore_block('infoBlock',{'limit':8,'class':'row gx-0','reload':true}).iterator %}
+                                <div class="item-style">
+                                    <div class="single-tab-wrap">
+                                        {% if i == 0 %}
+                                        <button class="tablinks" id="defaultOpen" data-tab="tab{{ i+1 }}">
+                                            {{ pimcore_input('itemText') }}
+                                        </button>
+                                        {% else %}
+                                            <button class="tablinks" data-tab="tab{{ i+1 }}">
+                                                {{ pimcore_input('itemText') }}
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                {% else %}
+                    <div class="tab-nav">
+                        {% set itemList = pimcore_block('infoBlock') %}
+                        <div class="tab is-desktop">
+                            <div class="row gx-0">
+                                {% for i,item in itemList.iterator %}
+                                <div class="col-lg-3 tab-col">
+                                    <div class="single-tab-wrap">
+                                        {% if i == 0 %}
+                                            <button class="tablinks" id="defaultOpen" data-tab="tab{{ i+1 }}">
+                                                {{ pimcore_input('itemText') }}
+                                            </button>
+                                        {% else %}
+                                            <button class="tablinks" data-tab="tab{{ i+1 }}">
+                                                {{ pimcore_input('itemText') }}
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <div class="select">
+                            <select class="is-mobile">
+                                {% for i,item in itemList.iterator %}
+                                    {% if i == 0 %}
+                                        <option value="tab{{ i+1 }}">{{ pimcore_input('itemText') }}</option>
+                                    {% else %}
+                                        <option value="tab{{ i+1 }}">{{ pimcore_input('itemText') }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="tabcontent-wrap">
+                    <div class="tabcontent" id="tab1">
+                        {{  pimcore_textarea("textarea", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab2">
+                        {#<div class="tableauPlaceholder" id="viz1713286516931" style="position: relative">
+                            <noscript><a href="#"><img src="https://public.tableau.com/static/images/Cl/ClimateResilience/Dashboard1/1_rss.png" alt="Dashboard 1 " style="border: none"></a></noscript>
+                            <object class="tableauViz" style="display:none;">
+                                <param name="host_url" value="https://public.tableau.com/">
+                                <param name="embed_code_version" value="3">
+                                <param name="site_root" value="">
+                                <param name="name" value="ClimateResilience/Dashboard1">
+                                <param name="tabs" value="no">
+                                <param name="toolbar" value="yes">
+                                <param name="static_image" value="https://public.tableau.com/static/images/Cl/ClimateResilience/Dashboard1/1.png">
+                                <param name="animate_transition" value="yes">
+                                <param name="display_static_image" value="yes">
+                                <param name="display_spinner" value="yes">
+                                <param name="display_overlay" value="yes">
+                                <param name="display_count" value="yes">
+                                <param name="language" value="en-US">
+                                <param name="filter" value="publish=yes">
+                            </object>
+                        </div>
+                        <script>
+                            var divElement = document.getElementById('viz1713286516931');
+                            var vizElement = divElement.getElementsByTagName('object')[0];
+                            if (divElement.offsetWidth > 800) {
+                                vizElement.style.width = '1600px';
+                                vizElement.style.height = '927px';
+                            } else if (divElement.offsetWidth > 500) {
+                                vizElement.style.width = '100%';
+                                vizElement.style.height = '1395px';
+                            } else {
+                                vizElement.style.width = '100%';
+                                vizElement.style.height = '1200px';
+                            }
+                            var scriptElement = document.createElement('script');
+                            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+                        </script>#}
+                        {{  pimcore_textarea("textarea2", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab3">
+                        {{  pimcore_textarea("textarea3", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab4">
+                        {{  pimcore_textarea("textarea4", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab5">
+                        {{  pimcore_textarea("textarea5", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab6">
+                        {{  pimcore_textarea("textarea6", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab7">
+                        {{  pimcore_textarea("textarea7", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                    <div class="tabcontent" id="tab8">
+                        {{  pimcore_textarea("textarea8", {
+                            "height": 200,
+                            "htmlspecialchars" : false,
+                            "placeholder": "Embed your code here"
+                        })
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+    <script>
+        $(".item-style").parent().addClass('col-lg-3 tab-col')
+    </script>
+{% endblock %}
