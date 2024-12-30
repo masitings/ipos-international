@@ -161,44 +161,57 @@
         <!-- Explore Section -->
         <section class="explore-section">
             <div class="container courses_tab_content_item active">
-                <h2>Explore</h2>
+                <h2>{{ pimcore_input('cardWrapperTitle',{'placeholder' : 'card wrapper title'}) }}</h2>
                 <div class="explore-cards row">
                     <!-- Card 1: Our People & Culture -->
                     <div class="courses_tab_content_item_card col-lg-6">
-                        <div class="card_image">
-                            <img class="cover" src="/static/static/assets/images/credential_banner.457068b.png" width="2093"
-                                height="1570" alt="">
+                        <div class="tools_image card_image">
+                            {{ pimcore_image("cardImg1", {
+                                "height": 1570,
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
                         </div>
                         <div class="card_content">
                             <div class="card_content_top">
-                                <div class="title">Our People &
-                                    Culture</div>
+                                <div class="title">{{ pimcore_input('cardTitle1',{'placeholder' : 'card title 1'}) }}</div>
                                 <div class="description">
-                                    At IPOS International, our diverse team thrives on collaboration, innovation, and
-                                    mutual respect. We foster a culture that values growth, inclusion, and continuous
-                                    learning.
+                                    {{  pimcore_wysiwyg("cardDescription1", {
+                                        "placeholder" : "edit content 1..."
+                                        })
+                                    }}
                                 </div>
                             </div>
-                            <a href="" class="find-out">
-                                Find out more</a>
+                            {{ pimcore_link('linkUrl1',{
+                                'noText' : true,
+                                'class' : 'find-out',
+                                'textSuffix' : '<span class="find-out">Find out more</span>'
+                            }) }}
                         </div>
                     </div>
                     <div class="courses_tab_content_item_card col-lg-6">
-                        <div class="card_image">
-                            <img class="cover" src="/static/static/assets/images/credential_banner.457068b.png" width="2093"
-                                height="1570" alt="" />
+                        <div class="tools_image card_image">
+                            {{ pimcore_image("cardImg2", {
+                                "height": 1570,
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
                         </div>
                         <div class="card_content">
                             <div class="card_content_top">
-                                <div class="title">Job
-                                    Openings</div>
+                                <div class="title">{{ pimcore_input('cardTitle2',{'placeholder' : 'card title 2'}) }}</div>
                                 <div class="description">
-                                    Explore exciting career opportunities at IPOS International and join a dynamic team
-                                    dedicated to shaping the future of intellectual property.
+                                    {{  pimcore_wysiwyg("cardDescription2", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
                                 </div>
                             </div>
-                            <a href="" class="find-out">
-                                Find out more</a>
+                            {{ pimcore_link('linkUrl2',{
+                                'noText' : true,
+                                'class' : 'find-out',
+                                'textSuffix' : '<span class="find-out">Find out more</span>'
+                            }) }}
                         </div>
                     </div>
                 </div>
