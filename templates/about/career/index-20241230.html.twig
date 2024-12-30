@@ -221,11 +221,26 @@
         <!-- Social Media Section -->
         <section class="social-media-section">
             <div class="container">
-                <h3 style="color: #000; margin-bottom: 20px;">Stay Connected with Us</h3>
+                <h3 style="color: #000; margin-bottom: 20px;">{{ pimcore_input('bottomBannerTitle',{'placeholder' : 'Stay connected with us'}) }}</h3>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com" target="_blank" style="text-decoration: none;">
+                    {% set socialLink1 = pimcore_link('socialLink1', {
+                        'noText' : true,
+                        'target' : '_blank'
+                    }) %}
+                    {% set socialImage1 = pimcore_image('socialImage1') %}
+
+                    {% if socialImage1 %}
+                        {% if socialLink1 %}
+                            <a href="{{ socialLink1.href }}" target="{{ socialLink1.target }}" title="{{ socialLink1.text }}">
+                                {{ socialImage1|raw }}
+                            </a>
+                        {% else %}
+                            {{ socialImage1|raw }}
+                        {% endif %}
+                    {% endif %}
+                    {# <a href="https://www.facebook.com" target="_blank" style="text-decoration: none;">
                         <img src="/static/static/assets/images/common/fb.svg" alt="Facebook" width="50" height="50" />
-                    </a>
+                    </a> #}
                     <a href="https://www.linkedin.com" target="_blank" style="text-decoration: none;">
                         <img src="/static/static/assets/images/common/in.svg" alt="LinkedIn" width="50" height="50" />
                     </a>

@@ -345,6 +345,8 @@
   height: 364px;
   overflow: hidden;
   width: 100%;
+  z-index: 3;
+  position: relative;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .explore-section .courses_tab_content_item_card .card_image {
