@@ -26,22 +26,22 @@
                 <div class="discover-content">
                     <!-- Image Section -->
                     <div class="discover-image">
-                        <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Discover Career" />
+                        {{ pimcore_image("discoverImg", {
+                            "thumbnail": "discoverImage"
+                        }) }}
+                        {# <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Discover Career" /> #}
                     </div>
                     <!-- Text Section -->
                     <div class="discover-text">
                         <div class="discover-text-wrapper">
                             <h2>
-                                Discover What Makes IPOS International Unique for Your Career
+                                {{ pimcore_input('title',{'placeholder' : 'title'}) }}
                             </h2>
                             <p>
-                                Joining IPOS International means being part of a forward-thinking team that values
-                                innovation,
-                                collaboration, and professional growth. With a commitment to excellence and a supportive
-                                culture, we offer
-                                career opportunities that empower you to make an impact in the ever-evolving world of
-                                intellectual
-                                property. Together, we’re driving innovation forward.
+                                 {{  pimcore_wysiwyg("specialContent", {
+                                        "placeholder" : "edit content..."
+                                    })
+                                }}
                             </p>
                         </div>
                     </div>
