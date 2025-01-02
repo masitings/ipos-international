@@ -51,6 +51,13 @@ class  AboutController extends BaseController
         // ]);
     }
 
+    public function jobOpeningAction(Request $request)
+    {
+        return $this->render('about/career/job-openings.html.twig', [
+            'template_layout_name' => 'layouts/layout-20250101.html.twig'
+        ]);
+    }
+
     public function indexAction(Request $request)
     {
         return $this->redirect('about/overview');
