@@ -1,4 +1,4 @@
-{% extends 'layouts/layout.html.twig' %}
+{% extends 'layouts/layout-20241231.html.twig' %}
 
 {% block content %}
 
@@ -226,7 +226,132 @@
                 </div>
     </section>
 </section>
-    <script>
-        $(".item-style").parent().addClass('col-lg-3 tab-col')
-    </script>
+<script>
+    $(".item-style").parent().addClass('col-lg-3 tab-col')
+</script>
+<script>
+    $(document).ready(function () {
+      const isMobile = $(window).width() <= 768;
+
+      if (!isMobile) {
+        const jobContainer = $('.job-opening-container');
+        const articles = $('.the-articles');
+        let jobContainerHeight = jobContainer.outerHeight();
+        let articlesBottom = articles.offset().top + articles.outerHeight();
+
+        // Function to update positions and recalculate dynamic values
+        function updatePositions() {
+          jobContainerHeight = jobContainer.outerHeight();
+          articlesBottom = articles.offset().top + articles.outerHeight();
+        }
+
+        // Function to handle scroll and positioning logic
+        function handleScroll() {
+          const scrollTop = $(window).scrollTop();
+          const articlesOffset = articles.offset().top;
+
+          if (scrollTop > articlesOffset && scrollTop + jobContainerHeight < articlesBottom) {
+            // Fix the position when scrolling inside `.the-articles`
+            jobContainer.css({
+              position: 'fixed',
+              top: '10px',
+            });
+          } else if (scrollTop + jobContainerHeight >= articlesBottom) {
+            // Stop the container at the bottom of `.the-articles`
+            jobContainer.css({
+              position: 'absolute',
+              top: articlesBottom - articlesOffset - jobContainerHeight + 'px',
+            });
+          } else {
+            // Reset to default position
+            jobContainer.css({
+              position: 'static',
+            });
+          }
+        }
+
+        // Initial calculation on document ready
+        updatePositions();
+        handleScroll();
+
+        // Attach scroll and resize event listeners
+        $(window).on('scroll resize', function () {
+          updatePositions();
+          handleScroll();
+        });
+      }
+    });
+
+
+    $(document).ready(function () {
+      const videoContainer = $(".video-container");
+      const thumbnails = $(".img-slider-container");
+      const thumbnailCarousel = $(".thumbnail-carousel");
+      const arrowLeft = $(".arrow-left");
+      const arrowRight = $(".arrow-right");
+      const thumbnailWidth = thumbnails.outerWidth(true); // Width of a single thumbnail including margin
+      const visibleThumbnails = 7; // Number of thumbnails visible at once
+      let currentSlide = 0; // Tracks the current slide position
+
+      // Function to update video content
+      function updateVideoContent(thumbnail) {
+        const iframe = thumbnail.find("iframe");
+        const img = thumbnail.find("img");
+        videoContainer.empty(); // Clear the video container
+
+        if (iframe.length) {
+          // If an iframe exists, display it
+          videoContainer.append(iframe.clone().removeClass("d-none"));
+        } else if (img.length) {
+          // If only an image exists, display it
+          videoContainer.append(img.clone());
+        }
+      }
+
+      // Function to update arrow states
+      function updateArrowState() {
+        arrowLeft.toggleClass("inactive", currentSlide === 0);
+        arrowRight.toggleClass(
+          "inactive",
+          currentSlide >= thumbnails.length - visibleThumbnails
+        );
+      }
+
+      // Thumbnail click handler
+      thumbnails.click(function () {
+        const clickedThumbnail = $(this);
+        thumbnails.removeClass("active");
+        clickedThumbnail.addClass("active");
+        updateVideoContent(clickedThumbnail);
+      });
+
+      // Slide carousel to the left
+      arrowLeft.click(function () {
+        if (currentSlide > 0) {
+          currentSlide--;
+          thumbnailCarousel.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState();
+        }
+      });
+
+      // Slide carousel to the right
+      arrowRight.click(function () {
+        if (currentSlide < thumbnails.length - visibleThumbnails) {
+          currentSlide++;
+          thumbnailCarousel.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState();
+        }
+      });
+
+      // Initialize first content
+      thumbnails.first().click(); // Load the first thumbnail content
+      updateArrowState(); // Update arrow states
+    });
+  </script>
 {% endblock %}
