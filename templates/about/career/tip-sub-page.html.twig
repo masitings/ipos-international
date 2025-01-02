@@ -5,7 +5,9 @@
 <section class="academy_enterprise_detail__page advisor_detail__page overflow-hidden">
     <section class="detail articles_details_container career-our-people-and-culture">
         <div class="bg_circle_right"></div>
-        <div class="program-bg-right"><img src="/static/static/assets/images/program-right.b0d0785.svg" alt=""></div>
+        <div class="program-bg-right">
+            <img src="/static/static/assets/images/program-right.b0d0785.svg" alt="">
+        </div>
         <div class="container">
             <div class="breadcrumb black m-b-80">
                 {% include('layouts/breadcrumb.html.twig') %}
@@ -13,114 +15,107 @@
             <div class="container page__title__container">
                 <div class="row">
                     <div class="col-12">
-                    <p class="p__title">Our People & Culture</p>
+                        <p class="p__title">
+                            {{ pimcore_input('pageMainTitle',{'placeholder':'Title'}) }}
+                        </p>
                     </div>
                 </div>
                 </div>
                 <div class="details_img_body_container container">
                 <div class="row">
                     <div class="col-12">
-                    <div class="content_main_img"><img class="content_img" src="/static/static/assets/images/credential_banner.457068b.png">
-                    </div>
+                        <div class="content_main_img">
+                            {{ pimcore_image('socialIcon6', {
+                                "class": "content_img"
+                            }) }}
+                            {# <img class="content_img" src="/static/static/assets/images/credential_banner.457068b.png"> #}
+                        </div>
                     </div>
                 </div>
                 </div>
                 <div class="container">
                 <div class="row main-articles">
                     <div class="col-md-9 col-12 padding-right-90 the-articles">
-                    <h3>Where Innovation Meets Collaboration</h3>
-                    <p class="p_desc">At IPOS International, our people are at the heart of everything we do. We believe that
-                        innovation thrives in a supportive, inclusive, and collaborative environment. That’s why we’ve built a
-                        culture where everyone is empowered to contribute, grow, and make an impact.
-                    </p>
+                    <h3>{{ pimcore_input('contentTitle',{'placeholder':'Content Title'}) }}</h3>
                     <p class="p_desc">
-                        Diversity and teamwork are the cornerstones of our success. From IP strategists to policy experts, our teams
-                        bring together a wide range of expertise and perspectives. This dynamic mix enables us to tackle challenges
-                        creatively and deliver meaningful solutions for our clients and communities.
-                    </p>
-                    <p class="p_desc">
-                        We’re more than just a workplace—we’re a community driven by shared purpose and passion. Whether it’s
-                        through our professional development programs, team-building activities, or commitment to work-life balance,
-                        we invest in creating a positive environment where our people can excel.
+                    {{  pimcore_wysiwyg("content", {
+                            "placeholder" : "edit content..."
+                        })
+                    }}
                     </p>
                     <div class="section-image">
                         <div class="bottom-video-section row">
-                        <div class="video-section">
-                            <div class="video-container">
-                            <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Video Thumbnail">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <div class="video-section">
+                                <div class="video-container">
+                                </div>
                             </div>
-                        </div>
-                        <div class="thumbnail-carousel-container">
-                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 1">
-                                <iframe class="d-none" width="560" height="315"
-                                src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV" title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/tools.40b83c3.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 1">
-                                <iframe class="d-none" width="560" height="315"
-                                src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV" title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            <div class="img-slider-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                            </div>
-                            </div>
+                            <div class="thumbnail-carousel-container">
+                                <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 1">
+                                    <iframe class="d-none" width="560" height="315"
+                                    src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/tools.40b83c3.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 1">
+                                    <iframe class="d-none" width="560" height="315"
+                                    src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                <div class="img-slider-container">
+                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
+                                </div>
+                                </div>
 
-                            <div class="arrow-right">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
-                                <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
-                                <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
-                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
-                            </svg>
+                                <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                    stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                                </div>
+                                <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                    stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                                </div>
                             </div>
-                            <div class="arrow-left">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
-                                <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
-                                <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
-                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
-                            </svg>
-                            </div>
-                        </div>
                         </div>
                     </div>
                     </div>
