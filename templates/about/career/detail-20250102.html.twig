@@ -103,13 +103,18 @@
                 ideas and creations for now and for the future. We leverage our deep technical, legal and business
                 expertise to help innovative enterprises grow, through their intangible assets, including IP, from
                 Singapore, through Singapore. We catalyse the ideas of today, into the assets of tomorrow.</p>
-              <div class="video-container m-b-40">
-                <!-- <img src="../assets/images/credential_banner.457068b.png" alt="Video Thumbnail"> -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/lCEesy6yJsQ?si=Q8lPWNahzIQfgoFD"
-                  title="YouTube video player" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-              </div>
+                {% if list.video is not empty %}
+                    <div class="video-container m-b-40">
+                        <iframe width="560" height="315" class="content_img" src="https://www.youtube.com/embed/{{ list.video.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                {% else %}
+                    {% if list.coverImage is not empty %}
+                        <div class="video-container m-b-40">
+                            <img class="content_img" src="{{ list.coverImage.getThumbnail('BusinessGuidesDetailBackground') }}" >
+                        </div>
+                        {# {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'content_img'}}) | raw }} #}
+                    {% endif %}
+                {% endif %}
             </div>
           </div>
         </div>
