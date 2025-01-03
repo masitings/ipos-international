@@ -52,7 +52,7 @@
         <div class="col-md-9 col-12 padding-right-90">
           <div class="header-part">
             <h1>{{ list.title  }}</h1>
-            <p class="sub-title">Patent Search, Examination and Analytics</p>
+            <p class="sub-title">{{ list.industriyTitle }}</p>
             <div class="date">Posted on <span>{{ list.releaseDate|date("j M Y")}}</span></div>
           </div>
 
@@ -142,7 +142,6 @@
                     <span class="share-txt">SHARE</span>
                     <div class="share-layout">
                         {% for share in list.shares %}
-                            <p>The class: {{share.getTarget()}}</p>
                             {% if share.getShare().class == 'share-icon facebook' %}
                                 <a href="#" title="Share on Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
@@ -155,15 +154,39 @@
                             {% endif %}
 
                             {% if share.getShare().class == 'share-icon linkedin' %}
-                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Linkedin.dac1a71.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                <a href="#" title="Share on LinkedIn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                    </svg>
+                                </a>
                             {% endif %}
                             
                             {% if share.getShare().class == 'share-icon twitter' %}
-                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Twitter.6adf57e.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                <a href="#" title="Share on X">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                        <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                        d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                                    </svg>
+                                </a>
                             {% endif %}
 
                             {% if share.getShare().class == 'share-icon email' %}
-                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Email.bd681cf.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                                <a href="#" title="Share via Email">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                        clip-rule="evenodd" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                                    </svg>
+                                </a>
                             {% endif %}
                         {% endfor %}
                     </div>

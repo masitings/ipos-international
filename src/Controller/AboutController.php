@@ -168,6 +168,7 @@ class  AboutController extends BaseController
         }
         if ($obj) {
             $list['title'] = $obj->getTitle();
+            $list['industriyTitle'] = $obj->getIndustryTitle();
             $list['releaseDate'] = $obj->getReleaseDate();
             $list['author'] = $obj->getAuthor();
             $list['authorIcon'] = $obj->getAuthorIcon();
@@ -187,7 +188,6 @@ class  AboutController extends BaseController
             $list['industryTitle'] = $obj->getIndustryTitle();
             $list['chineseGuide'] = $obj->getChineseGuide();
             $list['guideTitle'] = $obj->getGuideTitle();
-            $list['releaseDate'] = $obj->getReleaseDate();
         }
 
         // return $this->render('about/career/detail.html.twig',[
