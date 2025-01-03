@@ -27,7 +27,6 @@
             {% else %}
                 <div class="col-lg-8 col-md-12">
                     {% set list = pimcore_relations('objectsAll') %}
-                    <pre>{{ list}}</pre>
                     <div class="course_result">
                         <div>
                         <span>{{ list|length }}</span>
@@ -52,11 +51,12 @@
                     <div class="course_content job-opening-content">
                     {% if list is not empty %}
                         {% for interested in list %}
+                            <pre>{{ intereseted }}</pre>
                             <a href="{{ interested }}_{{ interested.getId() }}" class="course_content_item">
                                 <div class="course_content_item_center">
                                     <div class="content_top">
                                     <div class="content_title">{{ interested.title }}</div>
-                                    <div class="content-description">{{ interested.content }}</div>
+                                    <div class="content-description">{{ interested.content|raw }}</div>
                                     </div>
                                     <div class="time">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9" fill="none">
