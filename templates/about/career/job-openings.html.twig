@@ -15,7 +15,7 @@
             </div>
         </div>
         {# CONTENT #}
-        <h1>Job Openings</h1>
+        <h1>{{pimcore_input('pageTitle', {'placeholder': 'Job Openings'})}}</h1>
         <div class="row spare-column">
             {% if editmode %}
                 {{ pimcore_relations('objectsAll',{
@@ -63,7 +63,7 @@
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                         d="m6.38 5.88-1.51-.94V2.41" />
                                     </svg> 
-                                    <span>Posted on {{ interested.releaseDate }}</span>
+                                    <span>Posted on {{ interested.releaseDate|date("j M Y") }}</span>
                                     </div>
                                 </div>
                                 <div class="job-opening-right">
@@ -80,10 +80,12 @@
             {% endif %}
             <div class="col-lg-4 col-md-0 cv-container">
             <div class="cv-container-wrapper">
-                <h2>Can't Find the Right Role? Send Us Your CV!</h2>
-                <p>If you don’t see the perfect fit in our job listings, don’t worry! We’re always looking for talented
-                individuals to join our team. Send us your CV, and we’ll keep you in mind for future opportunities.</p>
-                <a>Send Us Your CV</a>
+                <h2>
+                    {{ pimcore_input('cardTitle',{'placeholder':"Can't find the right role?"}) }}
+                </h2>
+                <p>{{ pimcore_input('cardDescription', {'placeholder': "If you don’t see the perfect fit in our job listings, don’t worry! We’re always looking for talented
+                individuals to join our team. Send us your CV, and we’ll keep you in mind for future opportunities."})}}</p>
+                {{ pimcore_link('cardLink')}}
             </div>
             </div>
         </div>
