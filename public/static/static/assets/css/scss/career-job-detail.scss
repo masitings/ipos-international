@@ -93,6 +93,10 @@
     .header-part {
         margin-bottom: 50px;
 
+        @media screen and (max-width: 768px) {
+            margin-bottom: 40px;
+        }
+
         h1 {
             font-family: Rubik;
             font-size: 64px;
@@ -140,6 +144,10 @@
 
     .career-job-detail-content {
         margin-top: 50px;
+
+        @media screen and (max-width: 768px) {
+            margin-top: 40px;
+        }
 
         h3 {
             font-family: Rubik;
@@ -217,6 +225,7 @@
             .download-section-left {
                 display: flex;
                 align-items: center;
+
                 @media screen and (max-width: 768px) {
                     align-items: start;
                 }
@@ -278,6 +287,8 @@
 
 
     .interest-wrapper {
+        position: relative;
+        top: 22px;
 
         @media screen and (max-width: 768px) {
             margin-bottom: 50px;

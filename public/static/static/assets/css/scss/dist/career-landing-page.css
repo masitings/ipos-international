@@ -1,6 +1,7 @@
 @media screen and (max-width: 768px) {
   .career-landing-page .about {
     padding: 25px;
+    padding-bottom: 68px;
   }
 }
 .career-landing-page .about .about_content h1 {
@@ -88,8 +89,8 @@
   .career-landing-page .discover-section .discover-content .discover-text {
     min-width: 100%;
     width: 100%;
-    padding-right: 37px;
     height: auto;
+    padding: 36px;
   }
 }
 .career-landing-page .discover-section .discover-content .discover-text .discover-text-wrapper {
@@ -319,6 +320,7 @@
   position: relative;
   flex: 1 1 calc(50% - 15px);
   box-sizing: border-box;
+  display: block;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .explore-section .courses_tab_content_item_card {
@@ -356,8 +358,17 @@
 .career-landing-page .explore-section .courses_tab_content_item_card .card_image img {
   transition: transform 0.5s ease;
 }
+.career-landing-page .explore-section .courses_tab_content_item_card:hover {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 20px 0 #ddd;
+  transition: ease-in-out 0.1s all;
+}
 .career-landing-page .explore-section .courses_tab_content_item_card:hover .card_image img {
   transform: scale(1.1);
+}
+.career-landing-page .explore-section .courses_tab_content_item_card:hover .card_content .find-out {
+  color: blue;
+  transition: ease-in-out 0.1s all;
 }
 .career-landing-page .explore-section .courses_tab_content_item_card .card_content {
   padding: 20px 24px;
@@ -368,6 +379,7 @@
   font-weight: 300;
   line-height: 31.2px;
   margin-bottom: 4px;
+  color: #000000;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .explore-section .courses_tab_content_item_card .card_content .title {
@@ -382,6 +394,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
+  color: #333333;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .explore-section .courses_tab_content_item_card .card_content .description {
@@ -418,11 +431,28 @@
   justify-content: center;
   gap: 20px;
 }
-
+@media screen and (max-width: 768px) {
+  .career-landing-page .social-media-section .social-icons {
+    gap: 40px;
+  }
+}
 .career-landing-page .social-media-section .social-icons a picture img {
     width: 50px;
+    height: 50px;
 }
 
+.career-landing-page .social-media-section .social-icons svg {
+  width: 50px;
+  height: 50px;
+}
+.career-landing-page .social-media-section .social-icons a:hover svg path {
+  fill: white;
+  stroke: white;
+}
+.career-landing-page .social-media-section .social-icons a:hover svg rect {
+  fill: #470a68;
+  transition: all ease-in-out 0.3s;
+}
 .career-landing-page .social-media-section h3 {
   font-family: Rubik;
   font-size: 28px;

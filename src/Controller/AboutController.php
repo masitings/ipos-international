@@ -193,10 +193,16 @@ class  AboutController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('about/career/detail-20230730.html.twig', [
+
+        return $this->render('about/career/detail-20250102.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+            'template_layout_name' => 'layouts/layout-20250102.html.twig'
         ]);
+        // return $this->render('about/career/detail-20230730.html.twig', [
+        //     'list' => $list,
+        //     'sharePage' => $request->getUri(),
+        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // ]);
     }
 }
