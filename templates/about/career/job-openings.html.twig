@@ -27,7 +27,7 @@
             {% else %}
                 <div class="col-lg-8 col-md-12">
                     {% set list = pimcore_relations('objectsAll') %}
-                    <pre>{{ dump(list) }}</pre>
+                    <pre>{{ list}}</pre>
                     <div class="course_result">
                         <div>
                         <span>{{ list|length }}</span>
