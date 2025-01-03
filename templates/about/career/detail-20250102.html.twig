@@ -142,7 +142,7 @@
                     <span class="share-txt">SHARE</span>
                     <div class="share-layout">
                         {% for share in list.shares %}
-                            <p>The class: {{share.getShare()}}</p>
+                            <p>The class: {{share.getTarget()}}</p>
                             {% if share.getShare().class == 'share-icon facebook' %}
                                 <a href="#" title="Share on Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
