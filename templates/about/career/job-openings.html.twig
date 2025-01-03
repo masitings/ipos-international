@@ -16,6 +16,15 @@
         </div>
         {# CONTENT #}
         <h1>Job Openings</h1>
+        <div>
+            {{ pimcore_areablock('head',{
+                "allowed" : [
+                    "careers-sub",
+                    "careers-list-block"
+
+                ]
+            }) }}
+        </div>
         <div class="row spare-column">
             {% if editmode %}
                 {{ pimcore_relations('objectsAll',{
