@@ -110,7 +110,6 @@
 
                     {% if list.file is not empty %}
                     <div class="detail_children_components_layout">
-
                         <a target="_blank" class="annex" href="{{ list.file.path }}">
                             <span class="pdf-svg" style="background-image:url(/static/images/icon_pdf.d36de8b.svg)"></span>
                             <span class="annex-txt">{{ list.file.text }}</span>
@@ -188,24 +187,22 @@
 			{% endif %}
                         <div class="resources_public_recommend-container">
                             {% if list.also is not empty %}
-                            {% if list.interestedTitle is not empty %}
+                                {% if list.interestedTitle is not empty %}
                                     <p class="recommend-title">{{ list.interestedTitle }}</p>
                                     {% else %}
                                         <p class="recommend-title">Also Worth Reading/Watching</p>
                                 {% endif %}
-                            {% for also in list.also %}
-                                <a class="recommend_item" href="{{ also }}_{{ also.getId() }}">
-
-                                    {% if also.coverImage is not empty %}
-					<img class="recommend-img" src="{{ also.coverImage.getThumbnail('Also_Worth_Reading_OR_Watching') }}" >
-                                        {#{{ also.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'recommend-img'}}) | raw }}#}
-                                    {% endif %}
-                                    <div class="recommend-txt-layout">
-                                        <p class="txt-date">{{ also.className | default('') }}</p>
-                                        <p class="recommend-txt-title">{{ also.title }}</p>
-                                    </div>
-                                </a>
-                            {% endfor %}
+                                {% for also in list.also %}
+                                    <a class="recommend_item" href="{{ also }}_{{ also.getId() }}">
+                                        {% if also.coverImage is not empty %}
+					                        <img class="recommend-img" src="{{ also.coverImage.getThumbnail('Also_Worth_Reading_OR_Watching') }}" >
+                                        {% endif %}
+                                        <div class="recommend-txt-layout">
+                                            <p class="txt-date">{{ also.className | default('') }}</p>
+                                            <p class="recommend-txt-title">{{ also.title }}</p>
+                                        </div>
+                                    </a>
+                                {% endfor %}
                             {% endif %}
 
                             {% if list.shares is not empty %}

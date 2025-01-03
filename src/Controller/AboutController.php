@@ -187,6 +187,7 @@ class  AboutController extends BaseController
             $list['industryTitle'] = $obj->getIndustryTitle();
             $list['chineseGuide'] = $obj->getChineseGuide();
             $list['guideTitle'] = $obj->getGuideTitle();
+            $list['releaseDate'] = $obj->getReleaseDate();
         }
 
         // return $this->render('about/career/detail.html.twig',[

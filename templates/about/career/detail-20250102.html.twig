@@ -51,83 +51,46 @@
       <div class="row main-articles">
         <div class="col-md-9 col-12 padding-right-90">
           <div class="header-part">
-            <h1>Senior Assistant Director (System Lead)</h1>
+            <h1>{{ list.title  }}</h1>
             <p class="sub-title">Patent Search, Examination and Analytics</p>
-            <div class="date">Posted on <span>2 Nov, 2024</span></div>
+            <div class="date">Posted on <span>{{ list.releaseDate|date("j M Y")}}</span></div>
           </div>
 
           <div class="apply-now-section">
             <div class="left">
-              <div class="title">Senior Assistant Director (System Lead)</div>
+              <div class="title">{{ list.title }}</div>
               <div class="sub-title">Patent Search, Examination and Analytics</div>
             </div>
-            <a href="" class="apply-now-button">Apply Now</a>
+            <a href="https://google.com" class="apply-now-button">Apply Now</a>
           </div>
 
           <div class="content-container career-job-detail-content">
             <h3>Job Responsibilities</h3>
-            <p>
-              Reporting to the Deputy Director, Operations, Planning & System, the candidate will be responsible for the
-              business system of the Patent Search, Examination & Analytics (SEA) Unit.
-            </p>
-            <h4>You will:</h4>
-            <ul>
-              <li>Ensure critical operational system is aligned with business needs to ensure business continuity and
-                operational efficiency of internal and contracted processes</li>
-              <li>Plan and drive IT system upgrades through regular maintenance and system renewal</li>
-              <li>Provide solutions to address process and system issues when they arise</li>
-              <li>Analyse existing systems, business needs and user feedback, identify bottlenecks and implement system
-                changes to improve system performance, user experience and optimise processes</li>
-              <li>Evaluate system data policy and implement system archival process</li>
-              <li>Ensure optimal utilisation of resources and be the go-to person on how data and technology can be used
-                for enhanced performance tracking and transformed processes with automation</li>
-              <li>Review whether internal controls are sufficient and effective to mitigate risks. Lead system studies
-                and innovation projects for adopting emerging technologies for efficiency gains using automation and AI,
-                and improving user experience for various functions within the unit</li>
-              <li>Support the Deputy Director in the unit’s planning for budget, capacity projection and performance
-                metrics</li>
-              <li>Undertake ad hoc unit projects assigned</li>
-            </ul>
-
-            <div class="divider-content"></div>
-
-            <h4>Are you the one? Please write to us if you have/are</h4>
-            <ul>
-              <li>A degree, preferably in systems engineering or computing, with 5 to 8 years of relevant working
-                experience, preferably in system project and dashboard development. Background in patents, experience in
-                data analysis, SQL and knowledge in VBA/Python, basic coding/programming knowledge is a plus</li>
-              <li>Organised, customer-oriented, meticulous, proactive, able to multi-task and meet tight deadlines</li>
-              <li>Analytical, resourceful, able to work independently and in a team involving multiple groups of users
-                and technical teams</li>
-              <li>Able to drive system-related process improvements using an evidence-based/data-driven approach</li>
-              <li>Proven track record of successfully launching new systems including change management</li>
-              <li>Experience in agile, design thinking and user experience improvements</li>
-              <li>Excellent communication and collaboration skills</li>
-              <li>Proficient with Microsoft Office applications and in particular Microsoft Excel and PowerPoint</li>
-            </ul>
-
-            <a href="#" class="download-section">
-              <div class="download-section-left">
+            {{ list.content | raw }}
+            {% if list.file is not empty %}
+            <a target="_blank" class="download-section" href="{{ list.file.path }}">
+                <div class="download-section-left">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
-                  <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
                     d="m21.48 7.48-3.3-3.3a2.33 2.33 0 0 0-1.65-.68H8.17a2.33 2.33 0 0 0-2.34 2.33v16.34a2.33 2.33 0 0 0 2.34 2.33h11.66a2.33 2.33 0 0 0 2.34-2.33V9.13c0-.62-.25-1.21-.69-1.65v0Z"
                     clip-rule="evenodd" />
-                  <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
                     d="M22.17 9.33H17.5c-.64 0-1.17-.52-1.17-1.16V3.5M12.06 19.3h3.88" />
-                  <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
                     d="M12.64 14.88V13.5c0-.37.3-.68.68-.68h1.36c.38 0 .68.3.68.68v1.37c0 .37-.3.68-.68.68h-1.36a.68.68 0 0 1-.68-.68ZM9.33 20.32v-1.36c0-.38.3-.68.68-.68h1.37c.37 0 .68.3.68.68v1.36c0 .38-.3.68-.68.68H10a.68.68 0 0 1-.68-.68ZM15.94 20.32v-1.36c0-.38.3-.68.69-.68h1.36c.37 0 .68.3.68.68v1.36c0 .38-.3.68-.68.68h-1.37a.68.68 0 0 1-.68-.68h0Z"
                     clip-rule="evenodd" />
-                  <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
                     d="m16.61 18.28-1.76-2.75M11.39 18.28l1.76-2.75" />
                 </svg>
-                <span>Download the Job Description</span>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
+                <span>{{ list.file.text }}</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
                 <rect width="28" height="28" fill="#fff" fill-opacity=".7" rx="14" />
                 <path stroke="#E34A21" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
-                  d="M14 19.83V8.17M9.83 15.67 14 19.83M18.17 15.67 14 19.83" />
-              </svg>
+                d="M14 19.83V8.17M9.83 15.67 14 19.83M18.17 15.67 14 19.83" />
+            </svg>
             </a>
+            {% endif %}
 
             <div class="divider-content"></div>
 
@@ -154,60 +117,50 @@
         </div>
         <div class="col-md-3 col-12">
           <div class="interest-wrapper">
-            <h5>You May Be Interested In</h5>
-
-            <a href="#" class="job-item">
-              <div class="job-date">10 NOV, 2014</div>
-              <div class="job-title">Associate Patent Examiner</div>
-              <div class="job-description">Patent Search, Examination and Analytics</div>
-            </a>
-
-            <a href="#" class="job-item">
+            {% if list.also is not empty %}
+                {% if list.interestedTitle is not empty %}
+                    <h5>{{ list.interestedTitle }}</h5>
+                    {% else %}
+                    <h5>You May Be Interested In</h5>
+                {% endif %}
+                {% for also in list.also %}
+                    <a href="{{ also }}_{{ also.getId() }}" class="job-item">
+                    <div class="job-date">{{also.releaseDate|date("j M Y")}}</div>
+                    <div class="job-title">{{also.title}}</div>
+                    <div class="job-description">Patent Search, Examination and Analytics</div>
+                    </a>
+                {% endfor %}
+            {% endif %}
+            {# <a href="#" class="job-item">
               <div class="job-date">10 NOV, 2014</div>
               <div class="job-title">Assistant Director, IT Business Analyst</div>
               <div class="job-description">Patent Search, Examination and Analytics</div>
-            </a>
+            </a> #}
 
-            <div class="share-section">
-              <div class="share">SHARE</div>
-              <div class="share-icons">
-                <a href="#" title="Share on Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z" clip-rule="evenodd" />
-                  </svg>
-                </a>
-                <a href="#" title="Share on LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
-                  </svg>
-                </a>
-                <a href="#" title="Share on X">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
-                    <path fill="#470A68" stroke="#470A68" stroke-width=".5"
-                      d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
-                  </svg>
-                </a>
-                <a href="#" title="Share via Email">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
-                      clip-rule="evenodd" />
-                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+            {% if list.shares is not empty %}
+                <div class="share-container">
+                    <span class="share-txt">SHARE</span>
+                    <div class="share-layout">
+                        {% for share in list.shares %}
+                            {% if share.getShare().class == 'share-icon facebook' %}
+                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Facebook.c78e324.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                            {% endif %}
+
+                            {% if share.getShare().class == 'share-icon linkedin' %}
+                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Linkedin.dac1a71.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                            {% endif %}
+                            
+                            {% if share.getShare().class == 'share-icon twitter' %}
+                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Twitter.6adf57e.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                            {% endif %}
+
+                            {% if share.getShare().class == 'share-icon email' %}
+                                <a class="{{ share.getShare().class }}" style="background-image:url('/static/images/icon-Email.bd681cf.svg')" {{ share.getShare().attributes | raw }} href="{{ share.getShare().direct }}"></a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
           </div>
         </div>
       </div>
