@@ -16,15 +16,6 @@
         </div>
         {# CONTENT #}
         <h1>Job Openings</h1>
-        <div>
-            {{ pimcore_areablock('head',{
-                "allowed" : [
-                    "careers-sub",
-                    "careers-list-block"
-
-                ]
-            }) }}
-        </div>
         <div class="row spare-column">
             {% if editmode %}
                 {{ pimcore_relations('objectsAll',{
@@ -38,7 +29,7 @@
                     {% set list = pimcore_relations('objectsAll') %}
                     <div class="course_result">
                         <div>
-                        5<span>jobs</span>
+                        <span>{{ count(list) }}</span>
                         </div>
                         <div class="sortBy">
                             <span>Sort by</span>
@@ -64,7 +55,7 @@
                                 <div class="course_content_item_center">
                                     <div class="content_top">
                                     <div class="content_title">{{ interested.title }}</div>
-                                    <div class="content-description">{{ interested }}</div>
+                                    <div class="content-description">{{ interested.content }}</div>
                                     </div>
                                     <div class="time">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9" fill="none">
@@ -72,7 +63,7 @@
                                         d="M5 8.5a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                         d="m6.38 5.88-1.51-.94V2.41" />
-                                    </svg> <span>Posted on 12 Nov 2024</span>
+                                    </svg> <span>Posted on {{ interested.publishedDate }}</span>
                                     </div>
                                 </div>
                                 <div class="job-opening-right">
