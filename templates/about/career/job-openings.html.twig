@@ -30,7 +30,7 @@
                 }) }}
             {% else %}
                 <div class="col-lg-8 col-md-12">
-                    {% set list = pimcore_relations('objectsAll') %}
+                    {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                     <div class="course_result">
                         <div>
                         <span>{{ list|length }} Job(s)</span>
@@ -55,8 +55,7 @@
                     <div class="course_content job-opening-content">
                     {% if list is not empty %}
                         {% for interested in list %}
-                            <a href="{{ interested }}_{{ interested.getId() }}" class="course_content_item" data-title="{{ interested.title }}" 
-   data-date="{{ interested.releaseDate|date('Y-m-d') }}">
+                            <a href="{{ interested }}_{{ interested.getId() }}" class="course_content_item" data-title="{{ interested.title }}" data-date="{{ interested.releaseDate|date('Y-m-d') }}">
                                 <div class="course_content_item_center">
                                     <div class="content_top">
                                     <div class="content_title">{{ interested.title }}</div>
