@@ -44,6 +44,10 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ list.title  }}</li>
                         </ol>
                     </nav>
+                    <div class="d-block d-md-none mobile_nav">
+                        <span class="back_arrow">&lt; </span>
+                        <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,7 +147,7 @@
             </a> #}
 
             {% if list.shares is not empty %}
-                <div class="share-container">
+                <div class="share-section">
                     <span class="share">SHARE</span>
                     <div class="share-icons">
                         {% for share in list.shares %}
@@ -271,6 +275,7 @@
             $interestWrapper.css({
               position: 'fixed',
               top: '80px',
+              width: '25%'
             });
           } else {
             // Before reaching the content section
@@ -278,6 +283,7 @@
               position: '',
               top: '',
               right: '',
+              width: ''
             });
           }
         }

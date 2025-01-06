@@ -11,6 +11,10 @@
                         <nav class="d-none d-md-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
                             {% include('layouts/breadcrumb-col-12.html.twig') %}
                         </nav>
+                        <div class="d-block d-md-none mobile_nav">
+                            <span class="back_arrow">&lt; </span>
+                            <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
+                        </div>
                     </div>
                 </div>
                 {{ pimcore_areablock("headlines", {
