@@ -9,7 +9,7 @@
             <img src="/static/static/assets/images/program-right.b0d0785.svg" alt="">
         </div>
         <div class="container">
-            <div class="breadcrumb black m-b-80">
+            <div class="d-none d-md-block breadcrumb black m-b-80">
                 {% include('layouts/breadcrumb.html.twig') %}
             </div>
             <div class="d-block d-md-none mobile_nav">
@@ -125,9 +125,13 @@
                     </div>
                     <div class="col-md-3 col-12 m-p-0">
                     <div class="job-opening-container">
-                        <h2>Join Us and Shape Innovation!</h2>
-                        <p>Take the next step in your career. Join IPOS International and drive innovation!</p>
-                        <a>Explore Our Job Openings</a>
+                        <h2>
+                            {{ pimcore_input('cardTitle',{'placeholder':'Join Us and Shape Innovation!'}) }}
+                        </h2>
+                        <p>
+                            {{ pimcore_input('cardDesc',{'placeholder':'Take the next step in your career. Join IPOS International and drive innovation!'}) }}
+                        </p>
+                        {{ pimcore_link('cardLink') }}
                     </div>
                     </div>
                 </div>
