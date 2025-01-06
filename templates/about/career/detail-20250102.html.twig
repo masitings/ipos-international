@@ -61,7 +61,7 @@
               <div class="title">{{ list.title }}</div>
               <div class="sub-title">Patent Search, Examination and Analytics</div>
             </div>
-            <a href="https://google.com" class="apply-now-button">Apply Now</a>
+            <a href="mailto:careers@iposinternational.com" class="apply-now-button">Apply Now</a>
           </div>
 
           <div class="content-container career-job-detail-content">
@@ -144,8 +144,8 @@
 
             {% if list.shares is not empty %}
                 <div class="share-container">
-                    <span class="share-txt">SHARE</span>
-                    <div class="share-layout">
+                    <span class="share">SHARE</span>
+                    <div class="share-icons">
                         {% for share in list.shares %}
                             {% if share.getShare().class == 'share-icon facebook' %}
                                 <a href="#" title="Share on Facebook">

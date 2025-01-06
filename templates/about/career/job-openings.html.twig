@@ -29,7 +29,7 @@
                     {% set list = pimcore_relations('objectsAll') %}
                     <div class="course_result">
                         <div>
-                        <span>{{ list|length }}</span>
+                        <span>{{ list|length }} Jobs</span>
                         </div>
                         <div class="sortBy">
                             <span>Sort by</span>
@@ -108,5 +108,40 @@
       }
 
     })
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dropdownContainer = document.querySelector(".dropdown-container");
+      const dropdownHeader = document.querySelector(".dropdown-header");
+      const dropdownList = document.querySelector(".dropdown-list");
+      const dropdownItems = document.querySelectorAll(".dropdown-list li");
+      const dropdownTitle = document.querySelector(".dropdown-header .title");
+
+      dropdownHeader.addEventListener("click", () => {
+        dropdownContainer.classList.toggle("open");
+      });
+
+      dropdownItems.forEach(item => {
+        item.addEventListener("click", (event) => {
+          // Remove "active" class from all items
+          dropdownItems.forEach(item => item.classList.remove("active"));
+
+          // Add "active" class to the clicked item
+          event.target.classList.add("active");
+
+          // Update the dropdown header title
+          dropdownTitle.textContent = event.target.textContent;
+
+          // Close the dropdown
+          dropdownContainer.classList.remove("open");
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!dropdownContainer.contains(event.target)) {
+          dropdownContainer.classList.remove("open");
+        }
+      });
+    });
   </script>
 {% endblock %}
