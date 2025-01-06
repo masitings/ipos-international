@@ -115,29 +115,53 @@
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const dropdownContainer = document.querySelector(".dropdown-container");
-      const dropdownHeader = document.querySelector(".dropdown-header");
-      const dropdownList = document.querySelector(".dropdown-list");
-      const dropdownItems = document.querySelectorAll(".dropdown-list li");
-      const dropdownTitle = document.querySelector(".dropdown-header .title");
+        const dropdownContainer = document.querySelector(".dropdown-container");
+        const dropdownHeader = document.querySelector(".dropdown-header");
+        const dropdownList = document.querySelector(".dropdown-list");
+        const dropdownItems = document.querySelectorAll(".dropdown-list li");
+        const dropdownTitle = document.querySelector(".dropdown-header .title");
+        const jobListContainer = document.querySelector(".job-opening-content");
+        const jobItems = Array.from(document.querySelectorAll(".course_content_item"));
 
-      dropdownHeader.addEventListener("click", () => {
-        dropdownContainer.classList.toggle("open");
-      });
+        function sortJobs(criteria) {
+            let sortedJobs = [];
+
+            if (criteria === "az") {
+                sortedJobs = jobItems.sort((a, b) => {
+                    return a.dataset.title.localeCompare(b.dataset.title);
+                });
+            } else if (criteria === "newest") {
+                sortedJobs = jobItems.sort((a, b) => {
+                    return new Date(b.dataset.date) - new Date(a.dataset.date);
+                });
+            }
+
+            // Re-append sorted items to the container
+            jobListContainer.innerHTML = "";
+            sortedJobs.forEach(item => {
+                jobListContainer.appendChild(item);
+            });
+        }
+
+        dropdownHeader.addEventListener("click", () => {
+            dropdownContainer.classList.toggle("open");
+        });
 
       dropdownItems.forEach(item => {
         item.addEventListener("click", (event) => {
-          // Remove "active" class from all items
-          dropdownItems.forEach(item => item.classList.remove("active"));
+            // Remove "active" class from all items
+            dropdownItems.forEach(item => item.classList.remove("active"));
 
-          // Add "active" class to the clicked item
-          event.target.classList.add("active");
+            // Add "active" class to the clicked item
+            event.target.classList.add("active");
 
-          // Update the dropdown header title
-          dropdownTitle.textContent = event.target.textContent;
+            // Update the dropdown header title
+            dropdownTitle.textContent = event.target.textContent;
 
-          // Close the dropdown
-          dropdownContainer.classList.remove("open");
+            // Close the dropdown
+            dropdownContainer.classList.remove("open");
+            const sortValue = event.target.getAttribute("data-value");
+            sortJobs(sortValue);
         });
       });
 
