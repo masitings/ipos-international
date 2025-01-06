@@ -216,6 +216,9 @@
       const $careerJobDetail = $('.career-job-detail');
       const $contentContainer = $('.career-job-detail-content'); // Content container to check when scrolling ends
       const isMobile = $(window).width() <= 768;
+      const careerJobDetailOffsetTop = $careerJobDetail.offset().top;
+      const interestWrapperWidth = $interestWrapper.outerWidth();
+
 
       let isSticky = false;
       let isAtBottom = false;
@@ -273,9 +276,9 @@
           } else if (scrollTop > $careerJobDetail.offset().top) {
             // While scrolling within the content bounds
             $interestWrapper.css({
-              position: 'fixed',
-              top: '80px',
-              width: '20%'
+                position: 'fixed',
+                top: '80px',
+                width: `${interestWrapperWidth}px`
             });
           } else {
             // Before reaching the content section
