@@ -55,7 +55,8 @@
                     <div class="course_content job-opening-content">
                     {% if list is not empty %}
                         {% for interested in list %}
-                            <a href="{{ interested }}_{{ interested.getId() }}" class="course_content_item">
+                            <a href="{{ interested }}_{{ interested.getId() }}" class="course_content_item" data-title="{{ interested.title }}" 
+   data-date="{{ interested.releaseDate|date('Y-m-d') }}">>
                                 <div class="course_content_item_center">
                                     <div class="content_top">
                                     <div class="content_title">{{ interested.title }}</div>
