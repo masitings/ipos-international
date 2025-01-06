@@ -152,7 +152,7 @@
                     <div class="share-icons">
                         {% for share in list.shares %}
                             {% if share.getShare().class == 'share-icon facebook' %}
-                                <a href="#" title="Share on Facebook">
+                                <a href="{{ share.getShare().direct }}" title="Share on Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                     <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
@@ -163,7 +163,7 @@
                             {% endif %}
 
                             {% if share.getShare().class == 'share-icon linkedin' %}
-                                <a href="#" title="Share on LinkedIn">
+                                <a href="{{ share.getShare().direct }}" title="Share on LinkedIn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
@@ -174,7 +174,7 @@
                             {% endif %}
                             
                             {% if share.getShare().class == 'share-icon twitter' %}
-                                <a href="#" title="Share on X">
+                                <a href="{{ share.getShare().direct }}" title="Share on X">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -185,7 +185,7 @@
                             {% endif %}
 
                             {% if share.getShare().class == 'share-icon email' %}
-                                <a href="#" title="Share via Email">
+                                <a href="{{ share.getShare().direct }}" title="Share via Email">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />

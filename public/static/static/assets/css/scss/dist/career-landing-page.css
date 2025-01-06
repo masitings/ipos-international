@@ -59,6 +59,10 @@
     height: 414px;
     padding: 0;
   }
+  .nav-view {
+    margin-bottom: 40px;
+    margin-top: 0;
+  }
 }
 .career-landing-page .discover-section .discover-content .discover-image:hover img {
   transform: scale(1.1);
