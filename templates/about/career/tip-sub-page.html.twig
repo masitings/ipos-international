@@ -384,7 +384,7 @@
 
       // Slide carousel to the left
       arrowLeft2.click(function () {
-        console.log("TRIGGERED CLICK RIGHT 2", currentSlide, visibleThumbnails);
+        console.log("TRIGGERED CLICK RIGHT 2", currentSlide, visibleThumbnails, thumbnails2.length);
         console.log("TRIGGERED CLICK LEFT 2", currentSlide);
         if (currentSlide > 0) {
           currentSlide--;
@@ -398,7 +398,7 @@
 
       // Slide carousel to the right
       arrowRight2.click(function () {
-        console.log("TRIGGERED CLICK RIGHT 2", currentSlide, visibleThumbnails);
+        console.log("TRIGGERED CLICK RIGHT 2", currentSlide, visibleThumbnails, thumbnails2.length);
         if (currentSlide < thumbnails2.length - visibleThumbnails) {
           currentSlide++;
           thumbnailCarousel2.animate(
