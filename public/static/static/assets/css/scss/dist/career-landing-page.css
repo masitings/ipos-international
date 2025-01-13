@@ -24,7 +24,6 @@
   transition: transform 0.5s ease;
   object-fit: cover;
   border-radius: 12px;
-  height: 387px;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .main-image img {
@@ -57,21 +56,11 @@
     min-width: 100%;
     width: 100%;
     height: 414px;
-    padding: 0;
-  }
-  .nav-view {
-    margin-bottom: 40px;
-    margin-top: 0;
   }
 }
 .career-landing-page .discover-section .discover-content .discover-image:hover img {
   transform: scale(1.1);
 }
-
-.career-landing-page .discover-section .discover-content .discover-image:hover picture img {
-    transform: scale(1.1);
-}
-
 .career-landing-page .discover-section .discover-content .discover-image img {
   transition: transform 0.5s ease;
   width: 100%;
@@ -204,21 +193,6 @@
   gap: 15px;
   margin-bottom: 40px;
 }
-.career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item picture img {
-    min-width: 118px;
-    width: 118px;
-    height: 118px;
-    margin-right: 36px;
-}
-@media screen and (max-width: 768px) {
-    .career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item picture img {
-        width: 100px;
-        min-width: 100px;
-        height: 100px;
-        margin-right: 24px;
-    }
-}
-
 .career-landing-page .gain-achieve-section .gain-achieve-grid img {
   min-width: 118px;
   width: 118px;
@@ -352,8 +326,6 @@
   height: 364px;
   overflow: hidden;
   width: 100%;
-  z-index: 3;
-  position: relative;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .explore-section .courses_tab_content_item_card .card_image {
@@ -372,7 +344,7 @@
   transform: scale(1.1);
 }
 .career-landing-page .explore-section .courses_tab_content_item_card:hover .card_content .find-out {
-  color: blue;
+  color: #a201d8;
   transition: ease-in-out 0.1s all;
 }
 .career-landing-page .explore-section .courses_tab_content_item_card .card_content {
@@ -441,11 +413,6 @@
     gap: 40px;
   }
 }
-.career-landing-page .social-media-section .social-icons a picture img {
-    width: 50px;
-    height: 50px;
-}
-
 .career-landing-page .social-media-section .social-icons svg {
   width: 50px;
   height: 50px;

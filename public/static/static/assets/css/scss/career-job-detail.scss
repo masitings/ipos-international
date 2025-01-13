@@ -11,6 +11,8 @@
         position: relative;
 
         .apply-now-section {
+            transition: all ease-in-out .5s;
+
             .left {
                 display: none;
             }
@@ -28,6 +30,7 @@
                 box-shadow: 0px 4px 20px 0px #0000001A;
                 background-color: white;
                 transition: ease-in-out all;
+                z-index: 10;
 
                 @media screen and (max-width: 768px) {
                     bottom: 0;
@@ -289,6 +292,7 @@
     .interest-wrapper {
         position: relative;
         top: 22px;
+        transition: all ease-in-out .5s;
 
         @media screen and (max-width: 768px) {
             margin-bottom: 50px;
