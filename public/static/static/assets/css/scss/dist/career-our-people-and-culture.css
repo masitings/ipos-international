@@ -137,6 +137,36 @@
   margin-bottom: 20px;
   gap: 30px;
 }
+
+.articles_details_container.career-our-people-and-culture .bottom-video-section .video-container-2 {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .articles_details_container.career-our-people-and-culture .bottom-video-section .video-container-2 iframe,
+  .articles_details_container.career-our-people-and-culture .bottom-video-section .video-container-2 img {
+    height: 431px;
+    object-fit: cover;
+    border-radius: 24px;
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .articles_details_container.career-our-people-and-culture .bottom-video-section .video-container-2 iframe,
+    .articles_details_container.career-our-people-and-culture .bottom-video-section .video-container-2 img {
+      width: 100%;
+      height: 212.5px;
+    }
+  }
+  .articles_details_container.career-our-people-and-culture .bottom-video-section .video-container-2 .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
 .articles_details_container.career-our-people-and-culture .bottom-video-section .video-container {
   flex: 1;
   position: relative;
@@ -234,6 +264,51 @@
   border-color: purple;
 }
 .articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel .img-slider-container.active img {
+  opacity: 1;
+}
+
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-container {
+  position: relative;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-container .arrow-right-2 {
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-container .arrow-left-2 {
+  position: absolute;
+  left: 0;
+  transform: rotate(180deg);
+  top: 20px;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-container .arrow-left-2.inactive,
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-container .arrow-right-2.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-2 {
+  display: flex;
+  gap: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-2 .img-slider-container-2 {
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-2 .img-slider-container-2 img {
+  object-fit: cover;
+  width: 120px;
+  height: 67px;
+  cursor: pointer;
+  border-radius: 8px;
+  opacity: 0.5;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-2 .img-slider-container-2.active {
+  border-color: purple;
+}
+.articles_details_container.career-our-people-and-culture .bottom-video-section .thumbnail-carousel-2 .img-slider-container-2.active img {
   opacity: 1;
 }
 

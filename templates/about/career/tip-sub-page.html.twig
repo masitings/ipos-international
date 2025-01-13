@@ -64,11 +64,11 @@
                                         </div>
                                     </div>
                                     <div class="thumbnail-carousel-container">
-                                        <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                        <div class="thumbnail-carousel-2" style="overflow: hidden; white-space: nowrap;">
                                             {% if listImage is not empty %}
                                                 {% for carouselItem in listImage %}
                                                 {% set image = carouselItem.getImage() %}
-                                                <div class="img-slider-container">
+                                                <div class="img-slider-container-2">
                                                     {% if image %}
                                                         <img src="{{ image }}">
                                                     {% endif %}
@@ -77,7 +77,7 @@
                                             {% endif %}
                                         </div>
 
-                                        <div class="arrow-right">
+                                        <div class="arrow-right-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
                                             <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
                                             <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
@@ -85,7 +85,7 @@
                                             stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
                                         </svg>
                                         </div>
-                                        <div class="arrow-left">
+                                        <div class="arrow-left-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
                                             <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
                                             <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
@@ -314,6 +314,77 @@
 
       // Initialize first content
       thumbnails.first().click(); // Load the first thumbnail content
+      updateArrowState(); // Update arrow states
+    });
+
+    $(document).ready(function () {
+      const videoContainer2 = $(".video-container-2");
+      const thumbnails2 = $(".img-slider-container-2");
+      const thumbnailCarousel2 = $(".thumbnail-carousel-2");
+      const arrowLeft2 = $(".arrow-left-2");
+      const arrowRight2 = $(".arrow-right-2");
+      const thumbnailWidth = thumbnails2.outerWidth(true); // Width of a single thumbnail including margin
+      const visibleThumbnails = 7; // Number of thumbnails visible at once
+      let currentSlide = 0; // Tracks the current slide position
+
+      // Function to update video content
+      function updateVideoContent2(thumbnail) {
+        const iframe = thumbnail.find("iframe");
+        const img = thumbnail.find("img");
+        videoContainer2.empty(); // Clear the video container
+
+        if (iframe.length) {
+          // If an iframe exists, display it
+          videoContainer2.append(iframe.clone().removeClass("d-none"));
+        } else if (img.length) {
+          // If only an image exists, display it
+          videoContainer2.append(img.clone());
+        }
+      }
+
+      // Function to update arrow states
+      function updateArrowState() {
+        arrowLeft2.toggleClass("inactive", currentSlide === 0);
+        arrowRight2.toggleClass(
+          "inactive",
+          currentSlide >= thumbnails2.length - visibleThumbnails
+        );
+      }
+
+      // Thumbnail click handler
+      thumbnails2.click(function () {
+        const clickedThumbnail = $(this);
+        thumbnails2.removeClass("active");
+        clickedThumbnail.addClass("active");
+        updateVideoContent2(clickedThumbnail);
+      });
+
+      // Slide carousel to the left
+      arrowLeft2.click(function () {
+        if (currentSlide > 0) {
+          currentSlide--;
+          thumbnailCarousel2.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState();
+        }
+      });
+
+      // Slide carousel to the right
+      arrowRight2.click(function () {
+        if (currentSlide < thumbnails2.length - visibleThumbnails) {
+          currentSlide++;
+          thumbnailCarousel2.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState();
+        }
+      });
+
+      // Initialize first content
+      thumbnails2.first().click(); // Load the first thumbnail content
       updateArrowState(); // Update arrow states
     });
   </script>
