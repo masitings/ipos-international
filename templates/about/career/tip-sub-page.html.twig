@@ -310,6 +310,7 @@
 
       // Slide carousel to the left
       arrowLeft.click(function () {
+        console.log("TRIGGERED CLICK LEFT 2");
         if (currentSlide > 0) {
           currentSlide--;
           thumbnailCarousel.animate(
@@ -322,6 +323,7 @@
 
       // Slide carousel to the right
       arrowRight.click(function () {
+        console.log("TRIGGERED CLICK RIGHT");
         if (currentSlide < thumbnails.length - visibleThumbnails) {
           currentSlide++;
           thumbnailCarousel.animate(
@@ -381,6 +383,7 @@
 
       // Slide carousel to the left
       arrowLeft2.click(function () {
+        console.log("TRIGGERED CLICK LEFT 2", currentSlide);
         if (currentSlide > 0) {
           currentSlide--;
           thumbnailCarousel2.animate(
@@ -393,6 +396,7 @@
 
       // Slide carousel to the right
       arrowRight2.click(function () {
+        console.log("TRIGGERED CLICK RIGHT 2", currentSlide);
         if (currentSlide < thumbnails2.length - visibleThumbnails) {
           currentSlide++;
           thumbnailCarousel2.animate(
