@@ -9,22 +9,23 @@
             <img src="/static/static/assets/images/program-right.b0d0785.svg" alt="">
         </div>
         {# <div class="container"> #}
-        <div class="resources_public_title_nav container">
-            <div class="row">
-                <div class="col-12">
-                <nav class="nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
-                    {% include('layouts/breadcrumb.html.twig') %}
-                </nav>
+            <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="nav-view d-none d-md-block" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                            {% include('layouts/breadcrumb-20250113.html.twig') %}
+                        </nav>
+                        <nav class="nav-view d-block d-md-none" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                            {% include('layouts/breadcrumb-20250113.html.twig') %}
+                            <ol class="breadcrumb col-12">
+                                <li>
+                                    <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-            {# <div class="d-none d-md-block breadcrumb black m-b-80">
-                {% include('layouts/breadcrumb.html.twig') %}
-            </div> #}
-            {# <div class="d-block d-md-none mobile_nav">
-                <span class="back_arrow">&lt; </span>
-                <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
-            </div> #}
             <div class="container page__title__container">
                 <div class="row">
                     <div class="col-12">
