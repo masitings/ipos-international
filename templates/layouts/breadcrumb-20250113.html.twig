@@ -1,7 +1,7 @@
 {% set breadcrumbStr = pimcore_render_nav(mainNavigation, 'breadcrumbs')  %}
 {% set breadcrumb = breadcrumbStr | split('&gt;') %}
 {% set breadcrumbCount = breadcrumb | length %}
-<ol class="breadcrumb col-12 d-none d-md-block">
+{# <ol class="breadcrumb col-12 d-none d-md-block"> #}
     <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a> </li>
     {% for key, linkNode in breadcrumb %}
         {% if key == (breadcrumbCount - 1) %}
@@ -14,4 +14,4 @@
             </li>
         {% endif %}
     {% endfor %}
-</ol>
+{# </ol> #}
