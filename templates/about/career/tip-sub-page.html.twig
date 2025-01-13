@@ -292,7 +292,7 @@
 
       // Function to update arrow states
       function updateArrowState1() {
-        console.log("TRIGGERED")
+        console.log("TRIGGERED INIT")
         arrowLeft.toggleClass("inactive", currentSlide === 0);
         arrowRight.toggleClass(
           "inactive",
@@ -336,7 +336,8 @@
 
       // Initialize first content
       thumbnails.first().click(); // Load the first thumbnail content
-      updateArrowState1(); // Update arrow states
+      setTimeout(updateArrowState1, 3000)
+      //updateArrowState1(); // Update arrow states
     });
 
     $(document).ready(function () {
@@ -409,7 +410,8 @@
 
       // Initialize first content
       thumbnails2.first().click(); // Load the first thumbnail content
-      updateArrowState2(); // Update arrow states
+      setTimeout(updateArrowState2, 3000)
+      //updateArrowState2(); // Update arrow states
     });
   </script>
 {% endblock %}
