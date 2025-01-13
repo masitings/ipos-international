@@ -5,32 +5,10 @@
  * Variants: no
  *
  * Fields Summary:
- * - localizedfields [localizedfields]
- * -- title [input]
- * -- author [input]
- * - content [wysiwyg]
- * - releaseDate [datetime]
- * - coverView [checkbox]
- * - latest [checkbox]
- * - listType [select]
- * - resourceType [select]
- * - coverImage [hotspotimage]
- * - authorIcon [hotspotimage]
- * - videoTime [input]
- * - detailVideo [video]
- * - moreContent [link]
- * - file [link]
- * - guideTitle [input]
- * - fullGuide [link]
- * - chineseGuide [link]
- * - interestedTitle [input]
- * - alsoList [manyToManyObjectRelation]
- * - IndustryTitle [input]
- * - checkIndustry [manyToManyObjectRelation]
- * - shares [manyToManyObjectRelation]
- * - seoTitle [input]
- * - seoDescription [textarea]
- * - tags [multiselect]
+ * - videoTitle [input]
+ * - videoDescription [textarea]
+ * - videoThumbnail [image]
+ * - video [video]
  */
 
 namespace Pimcore\Model\DataObject;
@@ -39,193 +17,181 @@ use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 
 /**
-* @method static \Pimcore\Model\DataObject\Business\Listing getList(array $config = [])
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByLocalizedfields(string $field, mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByTitle(mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByAuthor(mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByContent(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByReleaseDate(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByCoverView(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByLatest(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByListType(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByResourceType(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByVideoTime(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByGuideTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByInterestedTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByAlsoList(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByIndustryTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByCheckIndustry(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByShares(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getBySeoTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getBySeoDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\Business\Listing|\Pimcore\Model\DataObject\Business|null getByTags(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+ @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing getList(array $config = [])
+* @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing|\Pimcore\Model\DataObject\PeopleAndCultureMediaVideo|null getByVideoTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing|\Pimcore\Model\DataObject\PeopleAndCultureMediaVideo|null getByVideoDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing|\Pimcore\Model\DataObject\PeopleAndCultureMediaVideo|null getByVideoThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 */
 
 class PeopleAndCultureMediaVideo extends Concrete
 {
-    public const FIELD_TITLE = 'videoTitle';
-    public const FIELD_DESCRIPTION = 'videoDescription';
-    public const FIELD_THUMBNAIL = 'videoThumbnail';
-    public const FIELD_VIDEO = 'video';
-    protected $classId = "26";
-    protected $className = "PeopleAndCultureMediaVideo";
-    protected $videoTitle;
-    protected $video;
-    protected $thumbnail;
-    protected $description;
-    /**
-    * @param array $values
-    * @return static
-    */
-    public static function create(array $values = []): static
-    {
-        $object = new static();
-        $object->setValues($values);
-        return $object;
-    }
+public const FIELD_VIDEO_TITLE = 'videoTitle';
+public const FIELD_VIDEO_DESCRIPTION = 'videoDescription';
+public const FIELD_VIDEO_THUMBNAIL = 'videoThumbnail';
+public const FIELD_VIDEO = 'video';
 
-    /**
-    * Get Title - Title
-    * @return string|null
-    */
-    public function getTitle(): ?string
-    {
-        if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-            $preValue = $this->preGetValue("videoTitle");
-            if ($preValue !== null) {
-                return $preValue;
-            }
-        }
+protected $classId = "26";
+protected $className = "PeopleAndCultureMediaVideo";
+protected $videoTitle;
+protected $videoDescription;
+protected $videoThumbnail;
+protected $video;
 
-        $data = $this->getClass()->getFieldDefinition("videoTitle")->preGetData($this);
 
-        if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-            return $data->getPlain();
-        }
+/**
+* @param array $values
+* @return static
+*/
+public static function create(array $values = []): static
+{
+	$object = new static();
+	$object->setValues($values);
+	return $object;
+}
 
-        return $data;
-    }
+/**
+* Get videoTitle - Video Title
+* @return string|null
+*/
+public function getVideoTitle(): ?string
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("videoTitle");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
 
-    /**
-    * Set Title - Title
-    * @param string|null $title
-    * @return $this
-    */
-    public function setTitle(?string $title): static
-    {
-        $this->markFieldDirty("videoTitle", true);
+	$data = $this->videoTitle;
 
-        $this->videoTitle = $title;
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
 
-        return $this;
-    }
+	return $data;
+}
 
-    /**
-    * Get detailVideo - URL
-    * @return \Pimcore\Model\DataObject\Data\Video|null
-    */
-    public function getVideo(): ?\Pimcore\Model\DataObject\Data\Video
-    {
-        if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-            $preValue = $this->preGetValue("video");
-            if ($preValue !== null) {
-                return $preValue;
-            }
-        }
+/**
+* Set videoTitle - Video Title
+* @param string|null $videoTitle
+* @return $this
+*/
+public function setVideoTitle(?string $videoTitle): static
+{
+	$this->markFieldDirty("videoTitle", true);
 
-        $data = $this->video;
+	$this->videoTitle = $videoTitle;
 
-        if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-            return $data->getPlain();
-        }
+	return $this;
+}
 
-        return $data;
-    }
+/**
+* Get videoDescription - Video Description
+* @return string|null
+*/
+public function getVideoDescription(): ?string
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("videoDescription");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
 
-    /**
-    * Set detailVideo - URL
-    * @param \Pimcore\Model\DataObject\Data\Video|null $detailVideo
-    * @return $this
-    */
-    public function setVideo(?\Pimcore\Model\DataObject\Data\Video $detailVideo): static
-    {
-        $this->markFieldDirty("video", true);
+	$data = $this->videoDescription;
 
-        $this->video = $detailVideo;
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
 
-        return $this;
-    }
+	return $data;
+}
 
-    /**
-    * Get Title - Title
-    * @return string|null
-    */
-    public function getDescription(): ?string
-    {
-        if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-            $preValue = $this->preGetValue("videoDescription");
-            if ($preValue !== null) {
-                return $preValue;
-            }
-        }
+/**
+* Set videoDescription - Video Description
+* @param string|null $videoDescription
+* @return $this
+*/
+public function setVideoDescription(?string $videoDescription): static
+{
+	$this->markFieldDirty("videoDescription", true);
 
-        $data = $this->getClass()->getFieldDefinition("videoDescription")->preGetData($this);
+	$this->videoDescription = $videoDescription;
 
-        if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-            return $data->getPlain();
-        }
+	return $this;
+}
 
-        return $data;
-    }
+/**
+* Get videoThumbnail - Video Thumbnail
+* @return \Pimcore\Model\Asset\Image|null
+*/
+public function getVideoThumbnail(): ?\Pimcore\Model\Asset\Image
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("videoThumbnail");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
 
-    /**
-    * Set Title - Title
-    * @param string|null $title
-    * @return $this
-    */
-    public function setDescription(?string $desc): static
-    {
-        $this->markFieldDirty("videoDescription", true);
+	$data = $this->videoThumbnail;
 
-        $this->description = $desc;
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
 
-        return $this;
-    }
+	return $data;
+}
 
-    /**
-    * Get coverImage - Cover
-    * @return \Pimcore\Model\DataObject\Data\Hotspotimage|null
-    */
-    public function getThumbnail(): ?\Pimcore\Model\DataObject\Data\Hotspotimage
-    {
-        if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-            $preValue = $this->preGetValue("videoThumbnail");
-            if ($preValue !== null) {
-                return $preValue;
-            }
-        }
+/**
+* Set videoThumbnail - Video Thumbnail
+* @param \Pimcore\Model\Asset\Image|null $videoThumbnail
+* @return $this
+*/
+public function setVideoThumbnail(?\Pimcore\Model\Asset\Image $videoThumbnail): static
+{
+	$this->markFieldDirty("videoThumbnail", true);
 
-        $data = $this->thumbnail;
+	$this->videoThumbnail = $videoThumbnail;
 
-        if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-            return $data->getPlain();
-        }
+	return $this;
+}
 
-        return $data;
-    }
+/**
+* Get video - Video
+* @return \Pimcore\Model\DataObject\Data\Video|null
+*/
+public function getVideo(): ?\Pimcore\Model\DataObject\Data\Video
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("video");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
 
-    /**
-    * Set coverImage - Cover
-    * @param \Pimcore\Model\DataObject\Data\Hotspotimage|null $coverImage
-    * @return $this
-    */
-    public function setThumbnail(?\Pimcore\Model\DataObject\Data\Hotspotimage $coverImage): static
-    {
-        $this->markFieldDirty("coverImage", true);
+	$data = $this->video;
 
-        $this->thumbnail = $coverImage;
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
 
-        return $this;
-    }
+	return $data;
+}
+
+/**
+* Set video - Video
+* @param \Pimcore\Model\DataObject\Data\Video|null $video
+* @return $this
+*/
+public function setVideo(?\Pimcore\Model\DataObject\Data\Video $video): static
+{
+	$this->markFieldDirty("video", true);
+
+	$this->video = $video;
+
+	return $this;
+}
 
 }
+
