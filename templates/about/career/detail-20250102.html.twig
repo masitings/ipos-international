@@ -69,7 +69,6 @@
           </div>
 
           <div class="content-container career-job-detail-content">
-            <h3>Job Responsibilities</h3>
             {{ list.content | raw }}
             {% if list.file is not empty %}
             <a target="_blank" class="download-section" href="{{ list.file.path }}">
@@ -99,14 +98,22 @@
             <div class="divider-content"></div>
 
             <div class="video-section">
-              <h3>Transforming Ideas into Tomorrow’s Assets</h3>
-              <p>Great ideas do not discriminate, and anyone can have them. Given the right protection and support, a
+                <h3>
+                {{
+                    pimcore_input('videoTitle', {'placeholder': 'Transforming Ideas into Tomorrow’s Assets'})
+                }}
+                </h3>
+                {{  pimcore_wysiwyg("videoContent", {
+                        "placeholder" : "edit content..."
+                    })
+                }}
+              {# <p>Great ideas do not discriminate, and anyone can have them. Given the right protection and support, a
                 great idea can become a powerful brand, a transformative technology, an innovative process or design, or
                 even a song or story that moves one’s soul. Housing Singapore’s largest community of intellectual
                 property (IP) experts, IPOS International understands better than anyone how important it is to protect
                 ideas and creations for now and for the future. We leverage our deep technical, legal and business
                 expertise to help innovative enterprises grow, through their intangible assets, including IP, from
-                Singapore, through Singapore. We catalyse the ideas of today, into the assets of tomorrow.</p>
+                Singapore, through Singapore. We catalyse the ideas of today, into the assets of tomorrow.</p> #}
                 {% if list.video is not empty %}
                     <div class="video-container m-b-40">
                         <iframe width="560" height="315" class="content_img" src="https://www.youtube.com/embed/{{ list.video.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
