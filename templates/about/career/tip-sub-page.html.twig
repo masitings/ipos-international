@@ -66,7 +66,7 @@
                         {% else %}
                             <div class="section-image">
                                 {% set listImage = pimcore_relations('imageObjects', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                                <div class="bottom-video-section row">
+                                <div class="bottom-video-section row" style="padding-right: 3px; padding-left: 3px">
                                     <div class="video-section">
                                         <div class="video-container-2">
                                         </div>
@@ -134,7 +134,7 @@
                 {% else %}
                     <div class="main-articles section-2">
                         {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                        <div class="bottom-video-section row">
+                        <div class="bottom-video-section row" style="padding-right: 3px; padding-left: 3px">
                             <div class="col-md-9 col-12 padding-right-90 padding-left-0">
                                 <div class="video-section">
                                     <div class="video-container">
@@ -291,7 +291,8 @@
       }
 
       // Function to update arrow states
-      function updateArrowState() {
+      function updateArrowState1() {
+        console.log("TRIGGERED")
         arrowLeft.toggleClass("inactive", currentSlide === 0);
         arrowRight.toggleClass(
           "inactive",
@@ -315,7 +316,7 @@
             { scrollLeft: currentSlide * thumbnailWidth },
             300
           );
-          updateArrowState();
+          updateArrowState1();
         }
       });
 
@@ -327,13 +328,13 @@
             { scrollLeft: currentSlide * thumbnailWidth },
             300
           );
-          updateArrowState();
+          updateArrowState1();
         }
       });
 
       // Initialize first content
       thumbnails.first().click(); // Load the first thumbnail content
-      updateArrowState(); // Update arrow states
+      updateArrowState1(); // Update arrow states
     });
 
     $(document).ready(function () {
@@ -362,7 +363,7 @@
       }
 
       // Function to update arrow states
-      function updateArrowState() {
+      function updateArrowState2() {
         arrowLeft2.toggleClass("inactive", currentSlide === 0);
         arrowRight2.toggleClass(
           "inactive",
@@ -386,7 +387,7 @@
             { scrollLeft: currentSlide * thumbnailWidth },
             300
           );
-          updateArrowState();
+          updateArrowState2();
         }
       });
 
@@ -398,13 +399,13 @@
             { scrollLeft: currentSlide * thumbnailWidth },
             300
           );
-          updateArrowState();
+          updateArrowState2();
         }
       });
 
       // Initialize first content
       thumbnails2.first().click(); // Load the first thumbnail content
-      updateArrowState(); // Update arrow states
+      updateArrowState2(); // Update arrow states
     });
   </script>
 {% endblock %}
