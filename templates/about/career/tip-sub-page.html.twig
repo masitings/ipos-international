@@ -216,17 +216,17 @@
 <script>
     $(document).ready(function () {
       const isMobile = $(window).width() <= 768;
-
       if (!isMobile) {
         const jobContainer = $('.job-opening-container');
         const articles = $('.the-articles');
         let jobContainerHeight = jobContainer.outerHeight();
         let articlesBottom = articles.offset().top + articles.outerHeight();
+        let previousScrollTop = 0;
 
         // Function to update positions and recalculate dynamic values
         function updatePositions() {
           jobContainerHeight = jobContainer.outerHeight();
-          articlesBottom = articles.offset().top + articles.outerHeight();
+          articlesBottom = articles.offset().top + articles.outerHeight() - 64;
         }
 
         // Function to handle scroll and positioning logic
@@ -236,10 +236,19 @@
 
           if (scrollTop > articlesOffset && scrollTop + jobContainerHeight < articlesBottom) {
             // Fix the position when scrolling inside `.the-articles`
-            jobContainer.css({
-              position: 'fixed',
-              top: '10px',
-            });
+            if (scrollTop < previousScrollTop) {
+              // Scrolling up
+              jobContainer.css({
+                position: 'fixed',
+                top: '80px', // Set to 80px when scrolling up
+              });
+            } else {
+              // Scrolling down
+              jobContainer.css({
+                position: 'fixed',
+                top: '10px', // Set to 10px when scrolling down
+              });
+            }
           } else if (scrollTop + jobContainerHeight >= articlesBottom) {
             // Stop the container at the bottom of `.the-articles`
             jobContainer.css({
@@ -252,6 +261,7 @@
               position: 'static',
             });
           }
+          previousScrollTop = scrollTop;
         }
 
         // Initial calculation on document ready
