@@ -7,9 +7,19 @@
 .career-landing-page .about .about_content h1 {
   margin-bottom: 50px;
 }
+
+.resources_public_container .resources_public_title_nav {
+    padding-left: 0 !important;
+}
+
+.resources_public_container .resources_public_title_nav nav {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
 @media screen and (max-width: 768px) {
   .career-landing-page .about .about_content h1 {
-    margin-bottom: 25px;
+    margin-bottom: 25px !important;
   }
 }
 .career-landing-page .main-image {
@@ -24,6 +34,7 @@
   transition: transform 0.5s ease;
   object-fit: cover;
   border-radius: 12px;
+  height: 387px;
 }
 @media screen and (max-width: 768px) {
   .career-landing-page .main-image img {
@@ -56,10 +67,20 @@
     min-width: 100%;
     width: 100%;
     height: 414px;
+    padding: 0;
   }
+
+  .nav-view {
+    margin-bottom: 40px;
+    margin-top: 0;
+  }  
 }
 .career-landing-page .discover-section .discover-content .discover-image:hover img {
   transform: scale(1.1);
+}
+
+.career-landing-page .discover-section .discover-content .discover-image:hover picture img {
+    transform: scale(1.1);
 }
 .career-landing-page .discover-section .discover-content .discover-image img {
   transition: transform 0.5s ease;
@@ -193,6 +214,22 @@
   gap: 15px;
   margin-bottom: 40px;
 }
+
+.career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item picture img {
+    min-width: 118px;
+    width: 118px;
+    height: 118px;
+    margin-right: 36px;
+}
+@media screen and (max-width: 768px) {
+    .career-landing-page .gain-achieve-section .gain-achieve-grid .gain-item picture img {
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        margin-right: 24px;
+    }
+}
+
 .career-landing-page .gain-achieve-section .gain-achieve-grid img {
   min-width: 118px;
   width: 118px;
@@ -208,7 +245,7 @@
   }
 }
 .career-landing-page .gain-achieve-section .gain-achieve-grid h3 {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 300;
   line-height: 39.6px;
   color: #000000;
@@ -240,7 +277,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 92px;
+  margin-top: 30px;
 }
 .career-landing-page .gain-achieve-section .proudly img {
   width: 80px;
@@ -326,7 +363,10 @@
   height: 364px;
   overflow: hidden;
   width: 100%;
+  z-index: 3;
+  position: relative;
 }
+
 @media screen and (max-width: 768px) {
   .career-landing-page .explore-section .courses_tab_content_item_card .card_image {
     height: 196px;
@@ -416,6 +456,10 @@
 .career-landing-page .social-media-section .social-icons svg {
   width: 50px;
   height: 50px;
+}
+.career-landing-page .social-media-section .social-icons a picture img {
+    width: 50px;
+    height: 50px;
 }
 .career-landing-page .social-media-section .social-icons a:hover svg path {
   fill: white;
