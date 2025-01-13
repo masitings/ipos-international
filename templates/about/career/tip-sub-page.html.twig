@@ -121,8 +121,8 @@
                                     <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
                                     {% if list is not empty %}
                                         {% for carouselItem in list %}
-                                        {% set videoTitle = carouselItem.getTitle() %}
-                                        {% set videoThumbnail = carouselItem.getThumbnail() %}
+                                        {% set videoTitle = carouselItem.getVideoTitle() %}
+                                        {% set videoThumbnail = carouselItem.getVideoThumbnail() %}
                                         {% set videoUrl = carouselItem.getVideo() %}
                                         <div class="img-slider-container">
                                             {% if videoThumbnail %}
