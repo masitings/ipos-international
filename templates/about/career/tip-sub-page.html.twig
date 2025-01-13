@@ -126,10 +126,11 @@
                                         {% set videoUrl = carouselItem.getVideo() %}
                                         <div class="img-slider-container">
                                             {% if videoThumbnail %}
-                                                <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
-                                            {% else %}
+                                            <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                            {% endif %}
+                                            {% if videoUrl.getType() == 'youtube' %}
                                             <iframe class="d-none" width="560" height="315"
-                                                src="{{ videoUrl.getFullPath() }}" title="{{ videoTitle }}"
+                                                src="{{ videoUrl.getData() }}" title="{{ videoTitle }}"
                                                 frameborder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                 allowfullscreen></iframe>
