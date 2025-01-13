@@ -126,7 +126,7 @@
                                         {% set videoUrl = carouselItem.getVideo() %}
                                         <div class="img-slider-container">
                                             {% if videoThumbnail %}
-                                                <img src="{{ videoThumbnail | image }}" alt="{{ videoTitle }}">
+                                                <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
                                             {% else %}
                                             <iframe class="d-none" width="560" height="315"
                                                 src="{{ videoUrl.getFullPath() }}" title="{{ videoTitle }}"
