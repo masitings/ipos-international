@@ -2,14 +2,14 @@
 {% set breadcrumb = breadcrumbStr | split('&gt;') %}
 {% set breadcrumbCount = breadcrumb | length %}
 <ol class="breadcrumb col-12 d-none d-md-block">
-    <li><a href="/">{{ 'Home'|trans }}</a> </li>
+    <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a> </li>
     {% for key, linkNode in breadcrumb %}
         {% if key == (breadcrumbCount - 1) %}
-            <li class="active">
+            <li class="active breadcrumb-item">
                 {{ linkNode | raw }}
             </li>
         {% else %}
-            <li class="testing">
+            <li class="testing breadcrumb-item">
                 {{ linkNode | raw }}
             </li>
         {% endif %}
