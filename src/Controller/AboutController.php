@@ -168,6 +168,7 @@ class  AboutController extends BaseController
         }
         if ($obj) {
             $list['title'] = $obj->getTitle();
+            $list['subtitle'] = $obj->getSubtitle();
             $list['industriyTitle'] = $obj->getIndustryTitle();
             $list['releaseDate'] = $obj->getReleaseDate();
             $list['author'] = $obj->getAuthor();
