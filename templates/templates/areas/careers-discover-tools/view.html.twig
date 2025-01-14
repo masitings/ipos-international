@@ -1,30 +1,31 @@
-<section class="tools b">
-    <div class="tools_image">
-        {{ pimcore_image("overviewTool", {
-            "class" : "cover",
-            "thumbnail": "advisoryOverview"
-        }) }}
-        {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
-    </div>
-    <div class="tools_content">
-        <div class="tools_content_container">
-            <div class="txt-regular color-purple">&nbsp</div>
-
-            <div class="space-32"></div>
-            <h3>{{ pimcore_input('title',{'placeholder' : 'title'}) }}</h3>
-            <section id="marked-content">
-                {{  pimcore_wysiwyg("specialContent", {
-                    "height": 200,
-                    "placeholder" : "edit content..."
-                })
-                }}
-            </section>
-            <div class="space-32">
+<section class="discover-section">
+    <div style="margin: auto;">
+        <div class="discover-content tools ">
+            <!-- Image Section -->
+                <div class="tools_image discover-image">
+                    {{ pimcore_image("overviewTool", {
+                        "class" : "cover",
+                        "thumbnail": "advisoryOverview"
+                    }) }}
+                    {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                </div>
+            <!-- Text Section -->
+            <div class="discover-text">
+                <div class="discover-text-wrapper">
+                    <h2>
+                        {{ pimcore_input('title',{'placeholder' : 'title'}) }}
+                    </h2>
+                    <p>
+                        {{  pimcore_wysiwyg("specialContent", {
+                                "placeholder" : "edit content..."
+                            })
+                        }}
+                    </p>
+                    {{ pimcore_link('dicoverLink',{
+                        "class" : "discover-text-button"
+                    }) }}
+                </div>
             </div>
-
-            {{ pimcore_link('findLink',{
-                'class' : 'color-orange'
-            }) }}
         </div>
     </div>
 </section>
