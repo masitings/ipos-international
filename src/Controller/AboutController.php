@@ -174,6 +174,7 @@ class  AboutController extends BaseController
             $list['authorIcon'] = $obj->getAuthorIcon();
             $list['coverImage'] = $obj->getCoverImage();
             $list['content'] = $obj->getContent();
+            $list['subContent'] = $obj->getSubContent();
             $list['videoTime'] = $obj->getVideoTime();
             $list['also'] = $obj->getAlsoList();
             $list['file'] = $obj->getFile();
