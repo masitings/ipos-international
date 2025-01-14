@@ -19649,10 +19649,10 @@ a {
 
 @media screen and (min-width: 769px) and (max-width: 991.98px) {
     .menu.active {
-        height: 140vh
+        height: 140vh;
     }
     .menu_inner__left .menu-categories-listing ul li span {
-        font-size:32px
+        font-size:32px !important;
     }
 }
 
