@@ -421,6 +421,11 @@
 .career-landing-page .explore-section .courses_tab_content_item_card:hover .card_image img {
   transform: scale(1.1);
 }
+
+.career-landing-page .explore-section .courses_tab_content_item_card .card_image picture img {
+    width: 100% !important;
+}
+
 .career-landing-page .explore-section .courses_tab_content_item_card:hover .card_content .find-out {
   color: #a201d8;
   transition: ease-in-out 0.1s all;
