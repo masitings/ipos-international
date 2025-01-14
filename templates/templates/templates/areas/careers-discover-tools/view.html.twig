@@ -15,15 +15,17 @@
                     <h2>
                         {{ pimcore_input('title',{'placeholder' : 'title'}) }}
                     </h2>
+                    {{ pimcore_link('dicoverLink') }}
+                    {% set alink = pimcore_link('dicoverLink') %}
                     <p>
                         {{  pimcore_wysiwyg("specialContent", {
                                 "placeholder" : "edit content..."
                             })
                         }}
                     </p>
-                    {{ pimcore_link('dicoverLink',{
-                        "class" : "discover-text-button"
-                    }) }}
+                    <a href="{{ alink.data.path | default("#") }}" target="{{alink.data.target}}" class="dicoverLink">
+                        {{alink.data.text}}
+                    </a>
                 </div>
             </div>
         </div>
