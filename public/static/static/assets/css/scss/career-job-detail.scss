@@ -225,6 +225,10 @@
 
             margin-top: 50px;
 
+            svg {
+                min-width: 28px;
+            }
+
             .download-section-left {
                 display: flex;
                 align-items: center;
@@ -376,6 +380,6 @@
 
 @media screen and (max-width: 768px) {
     .padding-right-90 {
-        padding-right: inherit;
+        padding-right: 12px;
     }
 }

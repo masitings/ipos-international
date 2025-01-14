@@ -204,6 +204,9 @@
   align-items: center;
   margin-top: 50px;
 }
+.articles_details_container.career-job-detail .career-job-detail-content .download-section svg {
+  min-width: 28px;
+}
 .articles_details_container.career-job-detail .career-job-detail-content .download-section .download-section-left {
   display: flex;
   align-items: center;
@@ -339,6 +342,6 @@
 
 @media screen and (max-width: 768px) {
   .padding-right-90 {
-    padding-right: inherit;
+    padding-right: 12px;
   }
 }
