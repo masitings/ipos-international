@@ -19456,6 +19456,8 @@ a {
     font-weight: 300
 }
 
+/* MENU BTN */
+/* @media (max-width: 991.98px) { */
 @media (max-width: 991.98px) {
     .main-nav ul li .menu-btn>span {
         display:none
@@ -19638,10 +19640,20 @@ a {
 }
 
 .menu.active {
+    width: 100%;
     -webkit-transform: translateY(0);
     transform: translateY(0);
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out
+}
+
+@media screen and (min-width: 769px) and (max-width: 991.98px) {
+    .menu.active {
+        height: 140vh
+    }
+    .menu_inner__left .menu-categories-listing ul li span {
+        font-size:32px
+    }
 }
 
 .menu_inner,.menu_layer {
