@@ -2,6 +2,11 @@
   .career-job-opening {
     padding: 20px 25px;
   }
+
+  .nav-view {
+    margin-bottom: 40px !important;
+  }
+
 }
 .career-job-opening h1 {
   margin-bottom: 40px;
