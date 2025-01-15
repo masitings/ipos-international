@@ -217,6 +217,14 @@
         flex: 1;
         min-width: 356px;
 
+        @media screen and (min-width: 1024px) and (max-width: 1084px) {
+            min-width: auto;
+        }
+
+        @media screen and (max-width: 1024px) {
+            min-width: 100%;
+        }
+
         @media screen and (max-width: 768px) {
             min-width: 100%;
         }

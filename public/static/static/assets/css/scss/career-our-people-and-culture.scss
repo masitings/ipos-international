@@ -17,7 +17,7 @@
         width: 100%;
         position: static;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1024px) {
             max-width: 100%;
             margin-bottom: 30px;
         }
@@ -71,12 +71,15 @@
     }
 
     .content_main_img {
-
         img {
             height: 774px;
             border-radius: 24px;
             overflow: hidden;
             object-fit: cover;
+
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+               height: 500px;
+            }
 
             @media screen and (max-width: 768px) {
                 width: 340px;
@@ -85,10 +88,11 @@
         }
     }
 
-    .divide{
+    .divide {
         width: 100%;
         border-bottom: 1px solid #A5ABB3;
     }
+
     .main-articles {
         position: relative;
 
@@ -275,7 +279,7 @@
 .padding-right-90 {
     padding-right: 90px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1084px) {
         padding-right: 12px;
     }
 }

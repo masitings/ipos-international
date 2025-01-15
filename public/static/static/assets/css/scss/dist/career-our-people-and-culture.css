@@ -21,7 +21,7 @@
   width: 100%;
   position: static;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .articles_details_container.career-our-people-and-culture .job-opening-container {
     max-width: 100%;
     margin-bottom: 30px;
@@ -74,6 +74,11 @@
   border-radius: 24px;
   overflow: hidden;
   object-fit: cover;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .articles_details_container.career-our-people-and-culture .content_main_img img {
+    height: 500px;
+  }
 }
 @media screen and (max-width: 768px) {
   .articles_details_container.career-our-people-and-culture .content_main_img img {
@@ -317,7 +322,7 @@
 .padding-right-90 {
   padding-right: 90px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1084px) {
   .padding-right-90 {
     padding-right: 12px;
   }

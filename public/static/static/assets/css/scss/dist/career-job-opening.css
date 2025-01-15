@@ -2,11 +2,9 @@
   .career-job-opening {
     padding: 20px 25px;
   }
-
   .nav-view {
     margin-bottom: 40px !important;
   }
-
 }
 .career-job-opening h1 {
   margin-bottom: 40px;
@@ -187,6 +185,16 @@
   max-width: 400px;
   flex: 1;
   min-width: 356px;
+}
+@media screen and (min-width: 1024px) and (max-width: 1084px) {
+  .career-job-opening .cv-container {
+    min-width: auto;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .career-job-opening .cv-container {
+    min-width: 100%;
+  }
 }
 @media screen and (max-width: 768px) {
   .career-job-opening .cv-container {
