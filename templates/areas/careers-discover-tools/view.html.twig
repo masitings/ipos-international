@@ -15,7 +15,9 @@
                     <h2>
                         {{ pimcore_input('title',{'placeholder' : 'title'}) }}
                     </h2>
+                    {% if editmode %}
                     {{ pimcore_link('dicoverLink') }}
+                    {% endif %}
                     {% set alink = pimcore_link('dicoverLink') %}
                     
                     <p>
