@@ -22,7 +22,7 @@
 }
 @media screen and (min-width: 769px) and (max-width: 991.98px) {
     .career-landing-page .about .about_content .about-content-button {
-        margin-bottom: 30px;
+        margin-bottom: 30px !important; 
     }
 }
 .career-landing-page .about .about_content .about-content-button {

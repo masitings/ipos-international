@@ -148,9 +148,10 @@
                                         {% set videoTitle = carouselItem.getVideoTitle() %}
                                         {% set videoThumbnail = carouselItem.getVideoThumbnail() %}
                                         {% set videoUrl = carouselItem.getVideo() %}
+                                        {% set videoDescription = carouselItem.getVideoDescription() %}
                                         <div class="img-slider-container">
                                             {% if videoThumbnail %}
-                                            <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                            <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}">
                                             {% endif %}
                                             {% if videoUrl.getType() == 'youtube' %}
                                             <iframe class="d-none" width="560" height="315"
@@ -183,10 +184,6 @@
                         </div>
                         <div class="col-md-3 col-12">
                             <div class="text-container">
-                                <h2>Video 1 Title Copy Here</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur. Egestas condimentum neque facilisis leo. Euismod feugiat
-                                    rutrum
-                                    quam hendrerit eu. Diam dictumst mauris aliquam scelerisque in justo. Purus eleifend ultricessr.</p>
                             </div>
                         </div>
                     </div>
