@@ -19406,7 +19406,7 @@ a {
 }
 
 @media screen and (min-width: 769px) and (max-width: 991.98px) {
-    body {
+    html {
         overflow-x: hidden !important;
     }
     .main-nav {
