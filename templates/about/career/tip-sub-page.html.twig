@@ -44,7 +44,7 @@
                 </div>
                 <div class="container">
                 <div class="row main-articles">
-                    <div class="col-md-9 col-12 padding-right-90 the-articles">
+                    <div class="col-lg-9 col-12 padding-right-90 the-articles">
                         <h3>{{ pimcore_input('contentTitle',{'placeholder':'Content Title'}) }}</h3>
                         <div class="p_desc">
                         {{  pimcore_wysiwyg("content", {
@@ -103,7 +103,7 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-md-3 col-12 m-p-0">
+                    <div class="col-lg-3 col-12 m-p-0">
                         <div class="job-opening-container">
                             <h2>
                                 {{ pimcore_input('cardTitle',{'placeholder':'Join Us and Shape Innovation!'}) }}
@@ -181,6 +181,8 @@
                         </div>
                         <div class="col-md-3 col-12">
                             <div class="text-container">
+                                <h2>&nbsp;</h2>
+                                <p>&nbsp;</p>
                             </div>
                         </div>
                     </div>
@@ -197,7 +199,6 @@
     $(document).ready(function () {
       const isMobile = $(window).width() <= 999;
       if (!isMobile) {
-        console.log("NOT MOBILE!")
         const jobContainer = $('.job-opening-container');
         const articles = $('.the-articles');
         let jobContainerHeight = jobContainer.outerHeight();
@@ -261,7 +262,7 @@
     $(document).ready(function () {
       const videoContainer = $(".video-container");
       const thumbnails = $(".img-slider-container");
-        const textContainer = $(".text-container");
+     const textContainer = $(".text-container");
       const thumbnailCarousel = $(".thumbnail-carousel");
       const arrowLeft = $(".arrow-left");
       const arrowRight = $(".arrow-right");
