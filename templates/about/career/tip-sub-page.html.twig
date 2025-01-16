@@ -146,9 +146,9 @@
                                         {% set videoThumbnail = carouselItem.getVideoThumbnail() %}
                                         {% set videoUrl = carouselItem.getVideo() %}
                                         {% set videoDescription = carouselItem.getVideoDescription() %}
-                                        <div class="img-slider-container">
+                                        <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}">
                                             {% if videoThumbnail %}
-                                            <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}">
+                                            <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
                                             {% endif %}
                                             {% if videoUrl.getType() == 'youtube' %}
                                             <iframe class="d-none" width="560" height="315"
