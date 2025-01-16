@@ -272,6 +272,7 @@
 
       // Function to update video content
       function updateVideoContent(thumbnail) {
+        console.log("HTUMBNAIL", thumbnail);
         const iframe = thumbnail.find("iframe");
         const img = thumbnail.find("img");
         videoContainer.empty(); // Clear the video container
