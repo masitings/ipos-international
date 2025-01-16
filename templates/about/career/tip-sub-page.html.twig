@@ -195,8 +195,9 @@
 </script>
 <script>
     $(document).ready(function () {
-      const isMobile = $(window).width() <= 991;
+      const isMobile = $(window).width() <= 999;
       if (!isMobile) {
+        console.log("NOT MOBILE!")
         const jobContainer = $('.job-opening-container');
         const articles = $('.the-articles');
         let jobContainerHeight = jobContainer.outerHeight();
