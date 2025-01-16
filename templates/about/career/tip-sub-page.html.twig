@@ -195,7 +195,7 @@
 </script>
 <script>
     $(document).ready(function () {
-      const isMobile = $(window).width() <= 768;
+      const isMobile = $(window).width() <= 991;
       if (!isMobile) {
         const jobContainer = $('.job-opening-container');
         const articles = $('.the-articles');
@@ -260,6 +260,7 @@
     $(document).ready(function () {
       const videoContainer = $(".video-container");
       const thumbnails = $(".img-slider-container");
+        const textContainer = $(".text-container");
       const thumbnailCarousel = $(".thumbnail-carousel");
       const arrowLeft = $(".arrow-left");
       const arrowRight = $(".arrow-right");
@@ -280,6 +281,12 @@
           // If only an image exists, display it
           videoContainer.append(img.clone());
         }
+
+        // Update the text-container content
+          const title = thumbnail.data("title") || "Default Title";
+          const description = thumbnail.data("description") || "Default Description";
+          textContainer.find("h2").text(title);
+          textContainer.find("p").text(description);
       }
 
       // Function to update arrow states
