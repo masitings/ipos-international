@@ -42,8 +42,19 @@ class  AboutController extends BaseController
     public function careerAction(Request $request)
     {
         // return $this->render('about/career/index.html.twig');
-        return $this->render('about/career/index-20230718.html.twig', [
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+
+        return $this->render('about/career/index-20241230.html.twig', [
+            'template_layout_name' => 'layouts/layout-20241230.html.twig'
+        ]);
+        // return $this->render('about/career/index-20230718.html.twig', [
+        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // ]);
+    }
+
+    public function jobOpeningAction(Request $request)
+    {
+        return $this->render('about/career/job-openings.html.twig', [
+            'template_layout_name' => 'layouts/layout-20250101.html.twig'
         ]);
     }
 
@@ -157,11 +168,14 @@ class  AboutController extends BaseController
         }
         if ($obj) {
             $list['title'] = $obj->getTitle();
+            $list['subtitle'] = $obj->getSubtitle();
+            $list['industriyTitle'] = $obj->getIndustryTitle();
             $list['releaseDate'] = $obj->getReleaseDate();
             $list['author'] = $obj->getAuthor();
             $list['authorIcon'] = $obj->getAuthorIcon();
             $list['coverImage'] = $obj->getCoverImage();
             $list['content'] = $obj->getContent();
+            $list['subContent'] = $obj->getSubContent();
             $list['videoTime'] = $obj->getVideoTime();
             $list['also'] = $obj->getAlsoList();
             $list['file'] = $obj->getFile();
@@ -182,10 +196,16 @@ class  AboutController extends BaseController
         //     'list' => $list,
         //     'sharePage' => $request->getUri()
         // ]);
-        return $this->render('about/career/detail-20230730.html.twig', [
+
+        return $this->render('about/career/detail-20250102.html.twig', [
             'list' => $list,
             'sharePage' => $request->getUri(),
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+            'template_layout_name' => 'layouts/layout-20250102.html.twig'
         ]);
+        // return $this->render('about/career/detail-20230730.html.twig', [
+        //     'list' => $list,
+        //     'sharePage' => $request->getUri(),
+        //     'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // ]);
     }
 }

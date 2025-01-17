@@ -43,6 +43,18 @@ public function filterByAuthor ($data, $operator = '='): static
 }
 
 /**
+* Filter by subtitle (Subtitle)
+* @param string|int|float|array|Model\Element\ElementInterface $data  comparison data, can be scalar or array (if operator is e.g. "IN (?)")
+* @param string $operator  SQL comparison operator, e.g. =, <, >= etc. You can use "?" as placeholder, e.g. "IN (?)"
+* @return $this
+*/
+public function filterBySubtitle ($data, $operator = '='): static
+{
+	$this->getClass()->getFieldDefinition("subtitle")->addListingFilter($this, $data, $operator);
+	return $this;
+}
+
+/**
 * Filter by content (Content)
 * @param string|int|float|array|Model\Element\ElementInterface $data  comparison data, can be scalar or array (if operator is e.g. "IN (?)")
 * @param string $operator  SQL comparison operator, e.g. =, <, >= etc. You can use "?" as placeholder, e.g. "IN (?)"
@@ -51,6 +63,18 @@ public function filterByAuthor ($data, $operator = '='): static
 public function filterByContent ($data, $operator = '='): static
 {
 	$this->getClass()->getFieldDefinition("content")->addListingFilter($this, $data, $operator);
+	return $this;
+}
+
+/**
+* Filter by subContent (Sub Content)
+* @param string|int|float|array|Model\Element\ElementInterface $data  comparison data, can be scalar or array (if operator is e.g. "IN (?)")
+* @param string $operator  SQL comparison operator, e.g. =, <, >= etc. You can use "?" as placeholder, e.g. "IN (?)"
+* @return $this
+*/
+public function filterBySubContent ($data, $operator = '='): static
+{
+	$this->getClass()->getFieldDefinition("subContent")->addListingFilter($this, $data, $operator);
 	return $this;
 }
 
