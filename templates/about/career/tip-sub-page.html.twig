@@ -1,0 +1,420 @@
+{% extends 'layouts/layout-20241231.html.twig' %}
+
+{% block content %}
+
+<section class="articles_details_container career-our-people-and-culture">
+        <div class="bg_circle_right"></div>
+        {# <div class="program-bg-right">
+            <img src="/static/static/assets/images/program-right.b0d0785.svg" alt="">
+        </div> #}
+        {# <div class="container"> #}
+            <div class="resources_public_title_nav container">
+                <div class="row">
+                    <div class="col-12">
+                    <nav class="nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        <ol class="breadcrumb col-12">
+                            {% include('layouts/breadcrumb-20250113.html.twig') %}
+                        </ol>
+                        {# <ol class="breadcrumb col-12 d-block d-md-none">
+                            <li>
+                                <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
+                            </li>
+                        </ol> #}
+                    </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="container page__title__container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="p__title">
+                            {{ pimcore_input('pageMainTitle',{'placeholder':'Title'}) }}
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <div class="details_img_body_container container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content_main_img" id="play_link">
+                            {{ pimcore_video('peopleCultureVideo' , { "class": "content_img" })}}
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="container">
+                <div class="row main-articles">
+                    <div class="col-lg-9 col-12 padding-right-90 the-articles">
+                        <h3>{{ pimcore_input('contentTitle',{'placeholder':'Content Title'}) }}</h3>
+                        <div class="p_desc">
+                        {{  pimcore_wysiwyg("content", {
+                                "placeholder" : "edit content..."
+                            })
+                        }}
+                        </div>
+                        {# IMAGE #}
+                        {% if editmode %}
+                            {{ pimcore_relations('imageObjects',{
+                                "types": ["object"],
+                                "classes" : [
+                                    "PeopleAndCultureMediaImage"
+                                ]
+                            }) }}
+                        {% else %}
+                            <div class="section-image">
+                                {% set listImage = pimcore_relations('imageObjects', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                <div class="bottom-video-section row" style="padding-right: 3px; padding-left: 3px">
+                                    <div class="video-section">
+                                        <div class="video-container-2">
+                                        </div>
+                                    </div>
+                                    <div class="thumbnail-carousel-container">
+                                        <div class="thumbnail-carousel-2" style="overflow: hidden; white-space: nowrap;">
+                                            {% if listImage is not empty %}
+                                                {% for carouselItem in listImage %}
+                                                {% set image = carouselItem.getImage() %}
+                                                <div class="img-slider-container-2">
+                                                    {% if image %}
+                                                        <img src="{{ image }}">
+                                                    {% endif %}
+                                                </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="arrow-right-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                            <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                            <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                            stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                        </svg>
+                                        </div>
+                                        <div class="arrow-left-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                            <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                            <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                            stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                        </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-3 col-12 m-p-0">
+                        <div class="job-opening-container">
+                            <h2>
+                                {{ pimcore_input('cardTitle',{'placeholder':'Join Us and Shape Innovation!'}) }}
+                            </h2>
+                            <p>
+                                {{ pimcore_input('cardDesc',{'placeholder':'Take the next step in your career. Join IPOS International and drive innovation!'}) }}
+                            </p>
+                            {{ pimcore_link('cardLink') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="divide"></div>
+                    </div>
+                </div>
+                {# Video  #}
+                {% if editmode %}
+                    {{ pimcore_relations('objectsAll',{
+                        "types": ["object"],
+                        "classes" : [
+                            "PeopleAndCultureMediaVideo"
+                        ]
+                    }) }}
+                {% else %}
+                <div class="main-articles section-2">
+                    {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                    <div class="bottom-video-section row">
+                        <div class="col-md-9 col-12 padding-right-90">
+                            <div class="video-section">
+                                <div class="video-container">
+                                </div>
+                            </div>
+
+                            <div class="thumbnail-carousel-container">
+                                <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                    {% if list is not empty %}
+                                        {% for carouselItem in list %}
+                                        {% set videoTitle = carouselItem.getVideoTitle() %}
+                                        {% set videoThumbnail = carouselItem.getVideoThumbnail() %}
+                                        {% set videoUrl = carouselItem.getVideo() %}
+                                        {% set videoDescription = carouselItem.getVideoDescription() %}
+                                        <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}">
+                                            {% if videoThumbnail %}
+                                            <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                            {% endif %}
+                                            {% if videoUrl.getType() == 'youtube' %}
+                                            <iframe class="d-none" width="560" height="315"
+                                                src="https://www.youtube.com/embed/{{ videoUrl.getData() }}" title="{{ videoTitle }}"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen></iframe>
+                                            {% endif %}
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="arrow-right">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                    </svg>
+                                </div>
+                                <div class="arrow-left">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <div class="text-container">
+                                <h2>&nbsp;</h2>
+                                <p>&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# </div> #}
+                {% endif %}
+            </div>
+        {# </div> #}
+</section>
+<script>
+    $(".item-style").parent().addClass('col-lg-3 tab-col')
+</script>
+<script>
+    $(document).ready(function () {
+      const isMobile = $(window).width() <= 999;
+      if (!isMobile) {
+        const jobContainer = $('.job-opening-container');
+        const articles = $('.the-articles');
+        let jobContainerHeight = jobContainer.outerHeight();
+        let articlesBottom = articles.offset().top + articles.outerHeight();
+        let previousScrollTop = 0;
+
+        // Function to update positions and recalculate dynamic values
+        function updatePositions() {
+          jobContainerHeight = jobContainer.outerHeight();
+          articlesBottom = articles.offset().top + articles.outerHeight() - 64;
+        }
+
+        // Function to handle scroll and positioning logic
+        function handleScroll() {
+          const scrollTop = $(window).scrollTop();
+          const articlesOffset = articles.offset().top;
+
+          if (scrollTop > articlesOffset && scrollTop + jobContainerHeight < articlesBottom) {
+            // Fix the position when scrolling inside `.the-articles`
+            if (scrollTop < previousScrollTop) {
+              // Scrolling up
+              jobContainer.css({
+                position: 'fixed',
+                top: '80px', // Set to 80px when scrolling up
+              });
+            } else {
+              // Scrolling down
+              jobContainer.css({
+                position: 'fixed',
+                top: '10px', // Set to 10px when scrolling down
+              });
+            }
+          } else if (scrollTop + jobContainerHeight >= articlesBottom) {
+            // Stop the container at the bottom of `.the-articles`
+            jobContainer.css({
+              position: 'absolute',
+              top: articlesBottom - articlesOffset - jobContainerHeight + 'px',
+            });
+          } else {
+            // Reset to default position
+            jobContainer.css({
+              position: 'static',
+            });
+          }
+          previousScrollTop = scrollTop;
+        }
+
+        // Initial calculation on document ready
+        updatePositions();
+        handleScroll();
+
+        // Attach scroll and resize event listeners
+        $(window).on('scroll resize', function () {
+          updatePositions();
+          handleScroll();
+        });
+      }
+    });
+
+
+    $(document).ready(function () {
+      const videoContainer = $(".video-container");
+      const thumbnails = $(".img-slider-container");
+     const textContainer = $(".text-container");
+      const thumbnailCarousel = $(".thumbnail-carousel");
+      const arrowLeft = $(".arrow-left");
+      const arrowRight = $(".arrow-right");
+      const thumbnailWidth = thumbnails.outerWidth(true); // Width of a single thumbnail including margin
+      const visibleThumbnails = 3; // Number of thumbnails visible at once
+      let currentSlide = 0; // Tracks the current slide position
+
+      // Function to update video content
+      function updateVideoContent(thumbnail) {
+        console.log("HTUMBNAIL", thumbnail);
+        const iframe = thumbnail.find("iframe");
+        const img = thumbnail.find("img");
+        videoContainer.empty(); // Clear the video container
+
+        if (iframe.length) {
+          // If an iframe exists, display it
+          videoContainer.append(iframe.clone().removeClass("d-none"));
+        } else if (img.length) {
+          // If only an image exists, display it
+          videoContainer.append(img.clone());
+        }
+
+        // Update the text-container content
+          const title = thumbnail.data("title") || "Default Title";
+          const description = thumbnail.data("description") || "Default Description";
+          textContainer.find("h2").text(title);
+          textContainer.find("p").text(description);
+      }
+
+      // Function to update arrow states
+      function updateArrowState1() {
+        console.log("TRIGGERED INIT")
+        arrowLeft.toggleClass("inactive", currentSlide === 0);
+        arrowRight.toggleClass(
+          "inactive",
+          currentSlide >= thumbnails.length - visibleThumbnails
+        );
+      }
+
+      // Thumbnail click handler
+      thumbnails.click(function () {
+        const clickedThumbnail = $(this);
+        thumbnails.removeClass("active");
+        clickedThumbnail.addClass("active");
+        updateVideoContent(clickedThumbnail);
+      });
+
+      // Slide carousel to the left
+      arrowLeft.click(function () {
+        console.log("TRIGGERED CLICK LEFT 2");
+        if (currentSlide > 0) {
+          currentSlide--;
+          thumbnailCarousel.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState1();
+        }
+      });
+
+      // Slide carousel to the right
+      arrowRight.click(function () {
+        console.log("TRIGGERED CLICK RIGHT");
+        if (currentSlide < thumbnails.length - visibleThumbnails) {
+          currentSlide++;
+          thumbnailCarousel.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState1();
+        }
+      });
+
+      // Initialize first content
+      thumbnails.first().click(); // Load the first thumbnail content
+      // setTimeout(updateArrowState1, 3000)
+      //updateArrowState1(); // Update arrow states
+    });
+
+    $(document).ready(function () {
+      const videoContainer2 = $(".video-container-2");
+      const thumbnails2 = $(".img-slider-container-2");
+      const thumbnailCarousel2 = $(".thumbnail-carousel-2");
+      const arrowLeft2 = $(".arrow-left-2");
+      const arrowRight2 = $(".arrow-right-2");
+      const thumbnailWidth = thumbnails2.outerWidth(true); // Width of a single thumbnail including margin
+      const visibleThumbnails = 3; // Number of thumbnails visible at once
+      let currentSlide = 0; // Tracks the current slide position
+
+      // Function to update video content
+      function updateVideoContent2(thumbnail) {
+        const iframe = thumbnail.find("iframe");
+        const img = thumbnail.find("img");
+        videoContainer2.empty(); // Clear the video container
+
+        if (iframe.length) {
+          // If an iframe exists, display it
+          videoContainer2.append(iframe.clone().removeClass("d-none"));
+        } else if (img.length) {
+          // If only an image exists, display it
+          videoContainer2.append(img.clone());
+        }
+      }
+
+      // Function to update arrow states
+      function updateArrowState2() {
+        arrowLeft2.toggleClass("inactive", currentSlide === 0);
+        arrowRight2.toggleClass(
+          "inactive",
+          currentSlide >= thumbnails2.length - visibleThumbnails
+        );
+      }
+
+      // Thumbnail click handler
+      thumbnails2.click(function () {
+        const clickedThumbnail = $(this);
+        thumbnails2.removeClass("active");
+        clickedThumbnail.addClass("active");
+        updateVideoContent2(clickedThumbnail);
+      });
+
+      // Slide carousel to the left
+      arrowLeft2.click(function () {
+        console.log("TRIGGERED CLICK RIGHT 2", currentSlide, visibleThumbnails, thumbnails2.length);
+        console.log("TRIGGERED CLICK LEFT 2", currentSlide);
+        if (currentSlide > 0) {
+          currentSlide--;
+          thumbnailCarousel2.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState2();
+        }
+      });
+
+      // Slide carousel to the right
+      arrowRight2.click(function () {
+        console.log("TRIGGERED CLICK RIGHT 2", currentSlide, visibleThumbnails, thumbnails2.length);
+        if (currentSlide < thumbnails2.length - visibleThumbnails) {
+          currentSlide++;
+          thumbnailCarousel2.animate(
+            { scrollLeft: currentSlide * thumbnailWidth },
+            300
+          );
+          updateArrowState2();
+        }
+      });
+
+      // Initialize first content
+      thumbnails2.first().click(); // Load the first thumbnail content
+      //setTimeout(updateArrowState2, 3000)
+      //updateArrowState2(); // Update arrow states
+    });
+  </script>
+{% endblock %}

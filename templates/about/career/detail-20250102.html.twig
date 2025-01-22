@@ -1,0 +1,301 @@
+{% extends template_layout_name %}
+
+{% do document.setTitle(list.title ~ ' — IPOS International') %}
+
+{% set domain = app.request.getSchemeAndHttpHost() %}
+
+{% if list.coverImage is not empty %}
+{% set img = list.coverImage.getThumbnail('coverImg') %}
+
+{% else %}
+{% set img = "" %}
+{% endif %}
+{# 
+{% do pimcore_head_meta().setProperty("og:title", list.title | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("og:type", 'website') %} #}
+{#{% do pimcore_head_meta().setProperty("og:description", list.content | striptags | u.truncate(320)) %}#}
+{#{% do pimcore_head_meta().setProperty("og:author", list.author) %}#}
+{# {% do pimcore_head_meta().setProperty("og:image", domain ~ img) %} #}
+
+{#{% do pimcore_head_meta().setProperty("og:url", app.request.uri) %}#}
+
+{# {% do pimcore_head_meta().setProperty("twitter:card", "summary") %}
+{% do pimcore_head_meta().setProperty("twitter:type", "article") %}
+{% do pimcore_head_meta().setProperty("twitter:title", list.title | u.truncate(100)) %}
+{% do pimcore_head_meta().setProperty("twitter:description", list.content | striptags | u.truncate(160)) %}
+{% do pimcore_head_meta().setProperty("twitter:image", domain ~ img) %}
+{% do pimcore_head_meta().setProperty("twitter:image:src", domain ~ img) %} #}
+
+
+{% block content %}
+
+    <div class="articles_details_container resources_public_container career-job-detail">
+        <div class="bg_circle"></div>
+        <div class="js_public_layout"></div>
+        <div class="resources_public_title_nav container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        <ol class="breadcrumb col-12">
+                            <li class="breadcrumb-item"><a href="/">{{ 'Home'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(7).fullpath }}">About</a></li> 
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(12).fullpath }}">Careers</a></li>
+                            <li class="breadcrumb-item"><a href="{{ pimcore_document(58).fullpath}}">Job Openings</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ list.title  }}</li>
+                        </ol>
+                    </nav>
+                    {# <div class="d-block d-md-none mobile_nav">
+                        <span class="back_arrow">&lt; </span>
+                        <a href="{{ pimcore_document(12).fullpath }}" class="back_txt">Careers</a>
+                    </div> #}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+      <div class="row main-articles">
+        <div class="col-md-9 col-12 padding-right-90">
+          <div class="header-part">
+            <h1>{{ list.title  }}</h1>
+            <p class="sub-title">{{ list.subtitle }}</p>
+            <div class="date">Posted on <span>{{ list.releaseDate|date("j M Y")}}</span></div>
+          </div>
+
+          <div class="apply-now-section">
+            <div class="left">
+              <div class="title">{{ list.title }}</div>
+              <div class="sub-title">{{ list.subtitle }}</div>
+            </div>
+            <a href="mailto:careers@iposinternational.com" class="apply-now-button">Apply Now</a>
+          </div>
+
+          <div class="content-container career-job-detail-content">
+            {{ list.content | raw }}
+            {% if list.file is not empty %}
+            <a target="_blank" class="download-section" href="{{ list.file.path }}">
+                <div class="download-section-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                    d="m21.48 7.48-3.3-3.3a2.33 2.33 0 0 0-1.65-.68H8.17a2.33 2.33 0 0 0-2.34 2.33v16.34a2.33 2.33 0 0 0 2.34 2.33h11.66a2.33 2.33 0 0 0 2.34-2.33V9.13c0-.62-.25-1.21-.69-1.65v0Z"
+                    clip-rule="evenodd" />
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                    d="M22.17 9.33H17.5c-.64 0-1.17-.52-1.17-1.16V3.5M12.06 19.3h3.88" />
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                    d="M12.64 14.88V13.5c0-.37.3-.68.68-.68h1.36c.38 0 .68.3.68.68v1.37c0 .37-.3.68-.68.68h-1.36a.68.68 0 0 1-.68-.68ZM9.33 20.32v-1.36c0-.38.3-.68.68-.68h1.37c.37 0 .68.3.68.68v1.36c0 .38-.3.68-.68.68H10a.68.68 0 0 1-.68-.68ZM15.94 20.32v-1.36c0-.38.3-.68.69-.68h1.36c.37 0 .68.3.68.68v1.36c0 .38-.3.68-.68.68h-1.37a.68.68 0 0 1-.68-.68h0Z"
+                    clip-rule="evenodd" />
+                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                    d="m16.61 18.28-1.76-2.75M11.39 18.28l1.76-2.75" />
+                </svg>
+                <span>{{ list.file.text }}</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
+                <rect width="28" height="28" fill="#fff" fill-opacity=".7" rx="14" />
+                <path stroke="#E34A21" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"
+                d="M14 19.83V8.17M9.83 15.67 14 19.83M18.17 15.67 14 19.83" />
+            </svg>
+            </a>
+            {% endif %}
+
+            <div class="divider-content"></div>
+
+            <div class="video-section">
+                {% if list.subContent is not empty %}
+                {{ list.subContent | raw }}
+                {% else %}
+                <h3>
+                Transforming Ideas into Tomorrow’s Assets
+                </h3>
+                <p>Great ideas do not discriminate, and anyone can have them. Given the right protection and support, a
+                    great idea can become a powerful brand, a transformative technology, an innovative process or design, or
+                    even a song or story that moves one’s soul. Housing Singapore’s largest community of intellectual
+                    property (IP) experts, IPOS International understands better than anyone how important it is to protect
+                    ideas and creations for now and for the future. We leverage our deep technical, legal and business
+                    expertise to help innovative enterprises grow, through their intangible assets, including IP, from
+                    Singapore, through Singapore. We catalyse the ideas of today, into the assets of tomorrow.</p>
+                {% endif %}
+                {% if list.video is not empty %}
+                    <div class="video-container m-b-40">
+                        <iframe width="560" height="315" class="content_img" src="https://www.youtube.com/embed/{{ list.video.data }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                {% else %}
+                    {% if list.coverImage is not empty %}
+                        <div class="video-container m-b-40">
+                            <img class="content_img" src="{{ list.coverImage.getThumbnail('BusinessGuidesDetailBackground') }}" >
+                        </div>
+                        {# {{ list.coverImage.thumbnail('coverImg').html({imgAttributes:{class:'content_img'}}) | raw }} #}
+                    {% endif %}
+                {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 d-block d-md-none">
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="interest-wrapper">
+            {% if list.also is not empty %}
+                {% if list.interestedTitle is not empty %}
+                    <h5>{{ list.interestedTitle }}</h5>
+                    {% else %}
+                    <h5>You May Be Interested In</h5>
+                {% endif %}
+                {% for also in list.also %}
+                    <a href="{{ also }}_{{ also.getId() }}" class="job-item">
+                    <div class="job-date">{{also.releaseDate|date("j M Y")}}</div>
+                    <div class="job-title">{{also.title}}</div>
+                    <div class="job-description"></div>
+                    </a>
+                {% endfor %}
+            {% endif %}
+            {# <a href="#" class="job-item">
+              <div class="job-date">10 NOV, 2014</div>
+              <div class="job-title">Assistant Director, IT Business Analyst</div>
+              <div class="job-description">Patent Search, Examination and Analytics</div>
+            </a> #}
+
+            {% if list.shares is not empty %}
+                <div class="share-section">
+                    <span class="share">SHARE</span>
+                    <div class="share-icons">
+                        {% for share in list.shares %}
+                            {% if share.getShare().class == 'share-icon facebook' %}
+                                <a href="{{ share.getShare().direct }}" title="Share on Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z" clip-rule="evenodd" />
+                                </svg>
+                                </a>
+                            {% endif %}
+
+                            {% if share.getShare().class == 'share-icon linkedin' %}
+                                <a href="{{ share.getShare().direct }}" title="Share on LinkedIn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                    </svg>
+                                </a>
+                            {% endif %}
+                            
+                            {% if share.getShare().class == 'share-icon twitter' %}
+                                <a href="{{ share.getShare().direct }}" title="Share on X">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                        <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                        d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                                    </svg>
+                                </a>
+                            {% endif %}
+
+                            {% if share.getShare().class == 'share-icon email' %}
+                                <a href="{{ share.getShare().direct }}" title="Share via Email">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                        clip-rule="evenodd" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                                    </svg>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+    <script>
+
+    $(document).ready(function () {
+      const $applyNowSection = $('.apply-now-section');
+      const $interestWrapper = $('.interest-wrapper');
+      const $careerJobDetail = $('.career-job-detail');
+      const $contentContainer = $('.career-job-detail-content'); // Content container to check when scrolling ends
+      const isMobile = $(window).width() <= 768;
+      const careerJobDetailOffsetTop = $careerJobDetail.offset().top;
+      const interestWrapperWidth = $interestWrapper.outerWidth();
+
+
+      let isSticky = false;
+      let isAtBottom = false;
+      let isApplyNowActive = false;
+      let previousScrollTop = 0;
+
+      $(window).on('scroll', function () {
+        const scrollTop = $(this).scrollTop();
+        const applyNowOffsetTop = $applyNowSection.offset().top;
+        const contentContainerBottom =
+          $contentContainer.offset().top + $contentContainer.outerHeight();
+        const interestWrapperOffsetTop = $interestWrapper.offset().top;
+        const interestWrapperHeight = $interestWrapper.outerHeight();
+        const windowHeight = $(window).height();
+        const documentHeight = $(document).height();
+
+        // Handle Apply Now section
+        if (!isMobile) {
+          if (scrollTop < previousScrollTop) {
+            $applyNowSection.css('top', '80px');
+          } else {
+            $applyNowSection.css('top', '0');
+          }
+        }
+        previousScrollTop = scrollTop;
+
+        if (scrollTop < 200) {
+          if (isApplyNowActive) {
+            $applyNowSection.removeClass('active');
+            isApplyNowActive = false;
+          }
+        } else if (
+          scrollTop > applyNowOffsetTop &&
+          scrollTop + windowHeight < contentContainerBottom
+        ) {
+          if (!isApplyNowActive) {
+            $applyNowSection.addClass('active');
+            isApplyNowActive = true;
+          }
+        } else {
+          if (isApplyNowActive && scrollTop + windowHeight >= contentContainerBottom) {
+            $applyNowSection.removeClass('active');
+            isApplyNowActive = false;
+          }
+        }
+
+        if (!isMobile) {
+          if (scrollTop + interestWrapperHeight + 20 >= contentContainerBottom) {
+            // When reaching the bottom of the content
+            $interestWrapper.css({
+              position: 'absolute',
+              top: `${contentContainerBottom - interestWrapperHeight - careerJobDetailOffsetTop}px`,
+              right: '',
+            });
+          } else if (scrollTop > $careerJobDetail.offset().top) {
+            // While scrolling within the content bounds
+            $interestWrapper.css({
+                position: 'fixed',
+                top: '80px',
+                width: `${interestWrapperWidth}px`
+            });
+          } else {
+            // Before reaching the content section
+            $interestWrapper.css({
+              position: '',
+              top: '',
+              right: '',
+              width: ''
+            });
+          }
+        }
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,297 @@
+{% extends template_layout_name %}
+
+{% block content %}
+  <section class="academy_overview__page career-landing-page">
+        <section class="about ">
+            <div class="about_bg_circle"></div>
+            <div class="about_bg_ipos"><img src="/static/static/assets/images/IPOS.d59bcba.svg" alt=""></div>
+            <div class="container about_content">
+                <div class="resources_public_container">
+                    <div class="resources_public_title_nav container dark">
+                        <nav class="nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;'; margin-top: 0">
+                            {% include('layouts/breadcrumb-col-12.html.twig') %}
+                        </nav>
+                    </div>
+                </div>
+                {{ pimcore_areablock("headlines", {
+                    "allowed": [
+                        "advisory-tools","advisory-explore","careers-overview-headlines"
+                    ]
+                }) }}
+            </div>
+        </section>
+        <!-- Discover Section -->
+        {{ pimcore_areablock("toold", {
+            "allowed": [
+                "advisory-tools","advisory-explore","careers-overview-headlines", "careers-discover-tools"
+            ]
+        }) }}
+        <!-- Gain and Achieve Section -->
+        <section class="gain-achieve-section">
+            <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt=""></div>
+            <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt=""></div>
+            <div class="container">
+                <h2>
+                    {{ pimcore_input('title',{'placeholder' : 'title'}) }}
+                </h2>
+                <div class="gain-achieve-grid">
+                    <!-- Global Exposure -->
+                    <div class="gain-item">
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool1", {
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('titleItem1',{'placeholder' : 'item 1'}) }}</h3>
+                            <p>
+                                {{  pimcore_wysiwyg("specialContent1", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Career Growth -->
+                    <div class="gain-item">
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool2", {
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('titleItem2',{'placeholder' : 'item 1'}) }}</h3>
+                            <p>
+                                {{  pimcore_wysiwyg("specialContent2", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Diverse Career Paths -->
+                    <div class="gain-item">
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool3", {
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('titleItem3',{'placeholder' : 'item 1'}) }}</h3>
+                            <p>
+                                {{  pimcore_wysiwyg("specialContent3", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                            </p>
+                            {{ pimcore_link('dicoverLink',{
+                                "class" : "discover-text-button"
+                            }) }}
+                        </div>
+                    </div>
+                    <!-- Impactful Work -->
+                    <div class="gain-item">
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool4", {
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('titleItem4',{'placeholder' : 'item 1'}) }}</h3>
+                            <p>
+                                {{  pimcore_wysiwyg("specialContent4", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Innovative Workspace -->
+                    <div class="gain-item">
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool5", {
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('titleItem5',{'placeholder' : 'item 1'}) }}</h3>
+                            <p>
+                                {{  pimcore_wysiwyg("specialContent5", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Attractive Rewards -->
+                    <div class="gain-item">
+                        <div class="tools_image">
+                            {{ pimcore_image("overviewTool6", {
+                                "thumbnail": "advisoryOverview"
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        {# <img src="/static/static/assets/images/career/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('titleItem6',{'placeholder' : 'item 1'}) }}</h3>
+                            <p>
+                                {{  pimcore_wysiwyg("specialContent6", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="proudly">
+                    <img src="/static/static/assets/images/wage.png" alt="Progressive Wage Mark" />
+                    <p>
+                        IPOS International is accredited with the Progressive Wage Mark Plus
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Explore Section -->
+        <section class="explore-section">
+            <div class="container courses_tab_content_item active">
+                <h2>{{ pimcore_input('cardWrapperTitle',{'placeholder' : 'card wrapper title'}) }}</h2>
+                <div class="explore-cards row">
+                    <!-- Card 1: Our People & Culture -->
+                    <div class="courses_tab_content_item_card col-lg-6">
+                        <div class="card_image">
+                            {{ pimcore_image("cardImg1", {
+                                "height": 1570,
+                                "width": 2093
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">{{ pimcore_input('cardTitle1',{'placeholder' : 'card title 1'}) }}</div>
+                                <div class="description">
+                                    {{  pimcore_wysiwyg("cardDescription1", {
+                                        "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                            {{ pimcore_link('linkUrl1',{
+                                'noText' : true,
+                                'class' : 'find-out',
+                                'textSuffix' : '<span class="find-out">Find out more</span>'
+                            }) }}
+                        </div>
+                    </div>
+                    <div class="courses_tab_content_item_card col-lg-6">
+                        <div class="card_image">
+                            {{ pimcore_image("cardImg2", {
+                                "height": 1570,
+                                "width": 2093
+                            }) }}
+                            {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">{{ pimcore_input('cardTitle2',{'placeholder' : 'card title 2'}) }}</div>
+                                <div class="description">
+                                    {{  pimcore_wysiwyg("cardDescription2", {
+                                        "placeholder" : "edit content 1..."
+                                    })
+                                }}
+                                </div>
+                            </div>
+                            {{ pimcore_link('linkUrl2',{
+                                'noText' : true,
+                                'class' : 'find-out',
+                                'textSuffix' : '<span class="find-out">Find out more</span>'
+                            }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-media-section">
+            <div class="container">
+                <h3 style="color: #000; margin-bottom: 20px;">{{ pimcore_input('bottomBannerTitle',{'placeholder' : 'Stay connected with us'}) }}</h3>
+                <div class="social-icons">
+                    {{ pimcore_link('alink') }}
+                    {% set alink = pimcore_link('alink') %}
+                    <a href="{{ alink.data.path | default("#") }}" target="_blank">
+                        {{ pimcore_image('socialIcon1', {
+                            "width": 50,
+                            "height": 50
+                        }) }}
+                    </a>
+                    {# <a href="https://www.facebook.com" target="_blank" style="text-decoration: none;">
+                        <img src="/static/static/assets/images/common/fb.svg" alt="Facebook" "width"="50" "height"="50" />
+                    </a> #}
+                    {{ pimcore_link('socialLink2') }}
+                    {% set socialLink2 = pimcore_link('socialLink2') %}
+                    <a href="{{ socialLink2.data.path | default("#") }}" target="_blank">
+                        {{ pimcore_image('socialIcon2', {
+                            "width": 50,
+                            "height": 50
+                        }) }}
+                    </a>
+                    {{ pimcore_link('socialLink3') }}
+                    {% set socialLink3 = pimcore_link('socialLink3') %}
+                    <a href="{{ socialLink3.data.path | default("#") }}" target="_blank">
+                        {{ pimcore_image('socialIcon3', {
+                            "width": 50,
+                            "height": 50
+                        }) }}
+                    </a>
+                    {{ pimcore_link('socialLink4') }}
+                    {% set socialLink4 = pimcore_link('socialLink4') %}
+                    <a href="{{ socialLink4.data.path | default("#") }}" target="_blank">
+                        {{ pimcore_image('socialIcon4', {
+                            "width": 50,
+                            "height": 50
+                        }) }}
+                    </a>
+                    {{ pimcore_link('socialLink5') }}
+                    {% set socialLink5 = pimcore_link('socialLink5') %}
+                    <a href="{{ socialLink5.data.path | default("#") }}" target="_blank">
+                        {{ pimcore_image('socialIcon5', {
+                            "width": 50,
+                            "height": 50
+                        }) }}
+                    </a>
+                    {{ pimcore_link('socialLink6') }}
+                    {% set socialLink6 = pimcore_link('socialLink6') %}
+                    <a href="{{ socialLink6.data.path | default("#") }}" target="_blank">
+                        {{ pimcore_image('socialIcon6', {
+                            "width": 50,
+                            "height": 50
+                        }) }}
+                    </a>
+                </div>
+            </div>
+        </section>
+    </section>
+  <script src="/static/static/js/shares.js?v={{ random() }}"></script>
+  <script src="http://vjs.zencdn.net/5.4.4/video.js"></script>
+  <script>
+    $('.pimcore_iframe_mask').remove();
+    $('.social-icons a[linktype="direct"]').remove();
+    $(function () {
+      var obj = $("iframe");
+      if (obj){
+        obj.attr('class','content_img');
+      }
+
+    })
+  </script>
+{% endblock %}

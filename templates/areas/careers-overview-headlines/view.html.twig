@@ -1,0 +1,29 @@
+<h1 class="m-b-50">{{ pimcore_input('Headlines',{'placeholder' : 'headlines'}) }}</h1>
+<div class="row">
+    <div class="col-lg-6">
+        <p class="txt-large p-r-20">
+            <section id="marked-content">
+                {{  pimcore_wysiwyg("headcontent", {
+                        "height": 200,
+                        "placeholder" : "edit content..."
+                    })
+                }}
+            </section>
+        </p>
+        {{ pimcore_link('overViewLink',{
+            "class" : "about-content-button"
+        }) }}
+        {# {{ pimcore_link('overviewLink') }}
+        {% set overviewLink = pimcore_link('overviewLink') %}
+        <a class="about-content-button" href="{{ overviewLink.data.path | default("#") }}">Explore Our Job Openings</a> #}
+    </div>
+    <div class="col-lg-6 main-image">
+        <section id="marked-content">
+            {{  pimcore_wysiwyg("specialContent", {
+                    "height": 200,
+                    "placeholder" : "edit iamge,content,code..."
+                })
+            }}
+        </section>
+    </div>
+</div>

@@ -13,7 +13,6 @@
             {% for interested in list %}
                 <a class="recommend_item" href="{{ interested }}_{{ interested.getId() }}">
                     {% if interested.coverImage is not empty %}
-
                         <img class="recommend-img" src="{{ interested.coverImage.getThumbnail('coverImg') }}" >
                     {% endif %}
                     <div class="recommend-txt-layout">

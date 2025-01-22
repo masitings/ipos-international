@@ -8,7 +8,9 @@
  * - localizedfields [localizedfields]
  * -- title [input]
  * -- author [input]
+ * -- subtitle [input]
  * - content [wysiwyg]
+ * - subContent [wysiwyg]
  * - releaseDate [datetime]
  * - coverImage [hotspotimage]
  * - authorIcon [hotspotimage]
@@ -34,9 +36,9 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1716993270,
+   'modificationDate' => 1736767881,
    'userOwner' => 59,
-   'userModification' => 59,
+   'userModification' => 31,
    'parentClass' => '',
    'implementsInterfaces' => '',
    'listingParentClass' => '',
@@ -172,6 +174,36 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'width' => 400,
                      'defaultValueGenerator' => '',
                   )),
+                  2 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                     'name' => 'subtitle',
+                     'title' => 'Subtitle',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'width' => '',
+                     'defaultValueGenerator' => '',
+                  )),
                 ),
                  'region' => NULL,
                  'layout' => NULL,
@@ -217,6 +249,31 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'width' => '',
               )),
               2 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+                 'name' => 'subContent',
+                 'title' => 'Sub Content',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => true,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
+                 'maxCharacters' => '',
+                 'height' => '',
+                 'width' => '',
+              )),
+              3 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
                  'name' => 'releaseDate',
                  'title' => 'Published Date',
@@ -237,6 +294,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 ),
                  'defaultValue' => NULL,
                  'useCurrentDate' => false,
+                 'respectTimezone' => true,
                  'columnType' => 'bigint(20)',
                  'defaultValueGenerator' => '',
               )),

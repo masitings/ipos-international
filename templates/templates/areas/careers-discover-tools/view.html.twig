@@ -1,0 +1,33 @@
+<section class="discover-section">
+    <div style="margin: auto;">
+        <div class="discover-content tools ">
+            <!-- Image Section -->
+                <div class="tools_image discover-image">
+                    {{ pimcore_image("overviewTool", {
+                        "class" : "cover",
+                        "thumbnail": "advisoryOverview"
+                    }) }}
+                    {#<img class="cover" src="/static/images/tools.40b83c3.png" alt="">#}
+                </div>
+            <!-- Text Section -->
+            <div class="discover-text">
+                <div class="discover-text-wrapper">
+                    <h2>
+                        {{ pimcore_input('title',{'placeholder' : 'title'}) }}
+                    </h2>
+                    {{ pimcore_link('dicoverLink') }}
+                    {% set alink = pimcore_link('dicoverLink') %}
+                    <p>
+                        {{  pimcore_wysiwyg("specialContent", {
+                                "placeholder" : "edit content..."
+                            })
+                        }}
+                    </p>
+                    <a href="{{ alink.data.path | default("#") }}" target="{{alink.data.target}}" class="discover-text-button">
+                        {{alink.data.text}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

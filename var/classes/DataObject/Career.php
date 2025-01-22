@@ -8,7 +8,9 @@
  * - localizedfields [localizedfields]
  * -- title [input]
  * -- author [input]
+ * -- subtitle [input]
  * - content [wysiwyg]
+ * - subContent [wysiwyg]
  * - releaseDate [datetime]
  * - coverImage [hotspotimage]
  * - authorIcon [hotspotimage]
@@ -37,7 +39,9 @@ use Pimcore\Model\DataObject\PreGetValueHookInterface;
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByLocalizedfields(string $field, mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByTitle(mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByAuthor(mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getBySubtitle(mixed $value, ?string $locale = null, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByContent(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getBySubContent(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByReleaseDate(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByVideoTime(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Career\Listing|\Pimcore\Model\DataObject\Career|null getByGuideTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
@@ -53,7 +57,9 @@ class Career extends Concrete
 {
 public const FIELD_TITLE = 'title';
 public const FIELD_AUTHOR = 'author';
+public const FIELD_SUBTITLE = 'subtitle';
 public const FIELD_CONTENT = 'content';
+public const FIELD_SUB_CONTENT = 'subContent';
 public const FIELD_RELEASE_DATE = 'releaseDate';
 public const FIELD_COVER_IMAGE = 'coverImage';
 public const FIELD_AUTHOR_ICON = 'authorIcon';
@@ -75,6 +81,7 @@ protected $classId = "23";
 protected $className = "Career";
 protected $localizedfields;
 protected $content;
+protected $subContent;
 protected $releaseDate;
 protected $coverImage;
 protected $authorIcon;
@@ -169,6 +176,27 @@ public function getAuthor(?string $language = null): ?string
 }
 
 /**
+* Get subtitle - Subtitle
+* @return string|null
+*/
+public function getSubtitle(?string $language = null): ?string
+{
+	$data = $this->getLocalizedfields()->getLocalizedValue("subtitle", $language);
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("subtitle");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
 * Set localizedfields - 
 * @param \Pimcore\Model\DataObject\Localizedfield|null $localizedfields
 * @return $this
@@ -214,6 +242,19 @@ public function setAuthor (?string $author, ?string $language = null): static
 }
 
 /**
+* Set subtitle - Subtitle
+* @param string|null $subtitle
+* @return $this
+*/
+public function setSubtitle (?string $subtitle, ?string $language = null): static
+{
+	$isEqual = false;
+	$this->getLocalizedfields()->setLocalizedValue("subtitle", $subtitle, $language, !$isEqual);
+
+	return $this;
+}
+
+/**
 * Get content - Content
 * @return string|null
 */
@@ -245,6 +286,42 @@ public function setContent(?string $content): static
 	$this->markFieldDirty("content", true);
 
 	$this->content = $content;
+
+	return $this;
+}
+
+/**
+* Get subContent - Sub Content
+* @return string|null
+*/
+public function getSubContent(): ?string
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("subContent");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->getClass()->getFieldDefinition("subContent")->preGetData($this);
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set subContent - Sub Content
+* @param string|null $subContent
+* @return $this
+*/
+public function setSubContent(?string $subContent): static
+{
+	$this->markFieldDirty("subContent", true);
+
+	$this->subContent = $subContent;
 
 	return $this;
 }
