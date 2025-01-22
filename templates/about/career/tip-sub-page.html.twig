@@ -260,14 +260,15 @@
 
 
     $(document).ready(function () {
+        // VIDEO
       const videoContainer = $(".video-container");
       const thumbnails = $(".img-slider-container");
-     const textContainer = $(".text-container");
+      const textContainer = $(".text-container");
       const thumbnailCarousel = $(".thumbnail-carousel");
       const arrowLeft = $(".arrow-left");
       const arrowRight = $(".arrow-right");
       const thumbnailWidth = thumbnails.outerWidth(true); // Width of a single thumbnail including margin
-      const visibleThumbnails = 3; // Number of thumbnails visible at once
+      const visibleThumbnails = 2; // Number of thumbnails visible at once
       let currentSlide = 0; // Tracks the current slide position
 
       // Function to update video content
