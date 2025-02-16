@@ -108,10 +108,15 @@ class SerachController extends BaseController
                             $result[$key]['fullpath'] = '/en/resources/faqs';
                         }
                     } elseif ($className == 'OurTeam') {
-                        $result[$key]['coverImage'] = $element->getProfilePhoto();
+                        $result[$key]['coverImage'] = $element?->getProfilePhoto();
                         $result[$key]['fullpath'] = '/en/about/our-team';
                     } else {
-                        $result[$key]['coverImage'] = $element->getCoverImage();
+			    if (method_exists($element, 'getCoverImage')) {
+
+				    $result[$key]['coverImage'] = $element?->getCoverImage();
+			   } else {
+			   	$result[$key]['coverImage'] = '';
+			   }
                     }
                 }
             }
