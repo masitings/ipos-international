@@ -67,13 +67,24 @@ class ContactController extends BaseController
         $list->setCondition('`name` LIKE ' . $list->quote('%smtp_mail%'));
         $list = $list->load();
 
+        // PREV CONFIG
+        // $mailConfig = [
+        //     'mail_host' => 'smtp.office365.com',
+        //     'mail_name' => 'IPOS International',
+        //     'mail_username' => 'noreply@iposinternational.com',
+        //     'mail_passwd' => $_ENV['MAIL_PASSWORD'],
+        //     'mail_port' => 587,
+        //     'mail_from' => 'noreply@iposinternational.com'
+        // ];
+
+        // NEW CONFIG
         $mailConfig = [
             'mail_host' => 'smtp.office365.com',
             'mail_name' => 'IPOS International',
-            'mail_username' => 'noreply@iposinternational.com',
-            'mail_passwd' => $_ENV['MAIL_PASSWORD'],
+            'mail_username' => 'zhikai2505@gmail.com',
+            'mail_passwd' => 'ssfsprsujomdeipp',
             'mail_port' => 587,
-            'mail_from' => 'noreply@iposinternational.com'
+            'mail_from' => 'zhikai2505@gmail.com'
         ];
 
         $state = $request->get('state');
