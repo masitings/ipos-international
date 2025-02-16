@@ -53,15 +53,37 @@ class SerachController extends BaseController
             $filter = "COUNT(id) AS total";
 
             $querySql = "SELECT $filter FROM search_backend_data WHERE data LIKE '%{$query}%'
-                        AND (type = 'object' OR type = 'page') AND  subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND subtype != 'Shares' AND subtype != 'IposContact' AND published =1
+                        AND (type = 'object' OR type = 'page') AND subtype NOT IN (
+                            'PeopleAndCultureMediaVideo',
+                            'PeopleAndCultureMediaImage',
+                            'HomePage'
+                            'Emails'
+                            'BookChar'
+                            'IposContact'
+                            'Shares'
+                        ) AND published =1
                         ORDER BY creationDate DESC";
-                        
+
             $db = \Pimcore\Db::get();
             $total = $db->fetchAllAssociative($querySql)[0]['total'];
 
-            $querySql = "SELECT * FROM search_backend_data WHERE data LIKE '%{$query}%'
-                        AND (type = 'object' OR type = 'page') AND subtype != 'HomePage' AND subtype != 'Emails' AND subtype != 'BookChar' AND  subtype !='IposContact' AND subtype != 'Shares' AND published =1
-                        ORDER BY creationDate DESC";
+            $querySql = "SELECT * FROM search_backend_data WHERE
+                    data LIKE '%{$query}%'
+                    AND (
+                        type = 'object'
+                        OR type = 'page'
+                    )
+                    AND subtype NOT IN (
+                        'PeopleAndCultureMediaVideo',
+                        'PeopleAndCultureMediaImage',
+                        'HomePage'
+                        'Emails'
+                        'BookChar'
+                        'IposContact'
+                        'Shares'
+                    )
+                    AND published = 1
+                    ORDER BY creationDate DESC";
 
             $resultData = $db->fetchAllAssociative($querySql . " LIMIT " . $limit . "
                     OFFSET " . $offset);
@@ -111,12 +133,11 @@ class SerachController extends BaseController
                         $result[$key]['coverImage'] = $element?->getProfilePhoto();
                         $result[$key]['fullpath'] = '/en/about/our-team';
                     } else {
-			    if (method_exists($element, 'getCoverImage')) {
-
-				    $result[$key]['coverImage'] = $element?->getCoverImage();
-			   } else {
-			   	$result[$key]['coverImage'] = '';
-			   }
+                        if (method_exists($element, 'getCoverImage')) {
+                            $result[$key]['coverImage'] = $element?->getCoverImage();
+                        } else {
+                            $result[$key]['coverImage'] = '';
+                        }
                     }
                 }
             }
