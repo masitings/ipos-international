@@ -17,7 +17,7 @@ use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 
 /**
- @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing getList(array $config = [])
+* @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing getList(array $config = [])
 * @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing|\Pimcore\Model\DataObject\PeopleAndCultureMediaVideo|null getByVideoTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing|\Pimcore\Model\DataObject\PeopleAndCultureMediaVideo|null getByVideoDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\PeopleAndCultureMediaVideo\Listing|\Pimcore\Model\DataObject\PeopleAndCultureMediaVideo|null getByVideoThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)

@@ -168,7 +168,6 @@ class SerachController extends BaseController
     public function quicksearchAction(Request $request, PaginatorInterface $paginator, EventDispatcherInterface $eventDispatcher, Config $config)
     {
         try {
-
             $query = $keyWord = addslashes($request->get('query'));
             if (!$query) {
                 // return  $this->render('search/search-result.html.twig',[]);
