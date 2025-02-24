@@ -16,39 +16,16 @@
         <div class="row main-articles">
             <div class="col-lg-8 col-12 padding-right-90">
                 <div class="header-part">
-                    <h1>Free Consultation</h1>
+                    <h1>
+                        {{ pimcore_input('freeCons',{'placeholder': 'Free Constulation'}) }}
+                    </h1>
                 </div>
 
                 <div class="content-container ic-content">
-                    <h3>Free Consultation cover a wide spectrum, from IP such as patents, trade marks and registered
-                        designs (that can be registered officially), to copyright, trade secrets, know-how and data
-                        (which are typically non-registrable).</h3>
-                    <p>
-                        These IA are often the building blocks of your business’ competitive advantages that enable
-                        you to grow and win market share.
-                    </p>
-                    <p>
-                        Getting your IA and IP management right is an important part of a successful business
-                        strategy, and our complimentary IA chats are here to help you identify your key IA and
-                        suggest ways to manage them well. Many of the businesses we meet with are often considering
-                        questions such as:
-                    </p>
-                    <ul>
-                        <li>How do I know if my company has any valuable IA?</li>
-                        <li>What are the possible risks if my company does not take care of its IA?</li>
-                        <li>What is the most effective way to protect my innovations?</li>
-                        <li>What should I look out for when my company is planning to expand overseas?</li>
-                        <li>What are the key things to take note of in a joint-venture agreement?</li>
-                        <li>How can better IA management help to increase the value of my company?</li>
-                        <li>I am keen to develop an IA strategy but how should I start?</li>
-                    </ul>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content_main_img">
-                                <img class="content_img" src="/static/static/assets/images/credential_banner.457068b.png">
-                            </div>
-                        </div>
-                    </div>
+                    {{  pimcore_wysiwyg("freeConsDesc", {
+                            "placeholder" : "edit content 1..."
+                        })
+                    }}
                 </div>
             </div>
             <div class="col-12 d-block d-md-none">
@@ -61,12 +38,16 @@
                             <div class="circle right"></div>
                         </div>
                         <div class="detail_info_content">
-                            <h6 class="m-t-30">Contact Us</h6>
-                            <div class="find-out m-b-16">For more information on how we can help your organisation:
+                            <h6 class="m-t-30">
+                                {{ pimcore_input('contact',{'placeholder': 'Contact Now'}) }}
+                            </h6>
+                            <div class="find-out m-b-16">
+                                {{ pimcore_input('contactDesc',{'placeholder': 'What do you need'}) }}
                             </div>
+                            {% set book = pimcore_link('BookLink1') %}
                             <a class="btn full-white mt-36"
-                                href="/pdf/-Brochure - Discover Your Intangible Assets.pdf" download>
-                                Book Free Consultation
+                                href="{{book.data.path}}" download>
+                                {{ book.data.text }}
                             </a>
                         </div>
                     </div>
@@ -127,7 +108,9 @@
         </div>
         <div class="divider-content"></div>
         <div class="slider-container">
-            <h3>Meet our IP Strategists</h3>
+            <h3>
+                {{ pimcore_input('meet',{'placeholder': 'Meet our Developers'}) }}
+            </h3>
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 <div class="bottom-video-section row">
                     <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
