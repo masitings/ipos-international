@@ -17,59 +17,44 @@
         <div class="row main-articles">
             <div class="col-lg-8 col-12 padding-right-90">
                 <div class="header-part">
-                    <h1>Welcome to IP Start</h1>
+                    <h1>{{ pimcore_input('IPStartTitle',{'placeholder':'Welcome to IP Start'}) }}</h1>
                     <h3 style="
                         font-family: Rubik;
                         font-weight: 300;
                         font-size: 28px;
                         line-height: 36.4px;
-                    ">Kick-start your start-up's IP journey!</h3>
+                    ">{{ pimcore_input('IPStartSubTitle',{'placeholder':'Kick-start your start-up\'s IP journey!'}) }}</h3>
                 </div>
 
                 <div class="content-container ic-content">
-                    <h3>Join our IP Start programme for start-ups</h3>
+                    <h3>{{ pimcore_input('IPStartContentTitle',{'placeholder':'Join our IP Start programme for start-ups'}) }}</h3>
                     <div>
-                        <p>
-                            Most start-ups are aware that <a href="/">intellectual property (IP)</a>, and more
-                            broadly, <a href="/">intangible
-                                assets (IA)</a>, are key to its value. However, amongst competing demands of R&D,
-                            fundraising,
-                            business model validation, etc., start-ups often do not have the time to look into what
-                            appears to be a particularly technical and legalistic topic. We are here to help.
-                        </p>
-                        <p>
-                            Our IP Start programme helps start-ups like you take charge of your IA and IP with curated
-                            resources, practical advice, and hands-on guidance.
-                        </p>
+                        {{  pimcore_wysiwyg("IPStartContent1", {
+                                "placeholder" : "edit content 1..."
+                            })
+                        }}
                     </div>
                     <div class="gap-30"></div>
-                    <h3>Get answers to the top 3 IA/IP questions startups ask:</h3>
+                    <h3>{{ pimcore_input('IPStartContentTitle2',{'placeholder':'Get answers to the top 3 IA/IP questions startups ask:'}) }}</h3>
                     <div>
-                        <p>Your innovations fuel your business growth. Harness your innovations fully by managing your
-                            intangible assets (“IA”) and intellectual property (“IP”):</p>
+                        <p>{{ pimcore_input('IPStartContent2',{'placeholder':'Your innovations fuel your business growth. Harness your innovations fully by managing your
+                            intangible assets (“IA”) and intellectual property (“IP”):'}) }}</p>
                     </div>
                     <div class="ipos-timeline ip-questions-wrap">
                         <div class="timeline-item">
                             <div class="icon expand">
                                 <div class="ripple-wrap"><span class="ripple"></span></div>
                                 <div class="icon-inner">
-                                    <img src="/static/static/assets/images/strategy-management/reason-4.svg">
+                                    {{ pimcore_image("imgRipple1") }}
                                 </div>
                             </div>
                             <div class="content">
-                                <h3>How do I protect my technology and product?</h3>
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle1',{'placeholder':'How do I protect my technology and product?'}) }}</h3>
                                 <div class="content-des">
-                                    <ul>
-                                        <li>
-                                            <p>Should I get a patent?</p>
-                                        </li>
-                                        <li>
-                                            <p>What other forms of IA/IP are relevant to me?</p>
-                                        </li>
-                                        <li>
-                                            <p>How do the various IP registration processes work?</p>
-                                        </li>
-                                    </ul>
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent1", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
                                 </div>
                             </div>
                         </div>
@@ -77,23 +62,16 @@
                             <div class="icon market">
                                 <div class="ripple-wrap"><span class="ripple"></span></div>
                                 <div class="icon-inner">
-                                    <img src="/static/static/assets/images/strategy-management/reason-3.svg">
+                                    {{ pimcore_image("imgRipple2") }}
                                 </div>
                             </div>
                             <div class="content">
-                                <h3>Go to market faster</h3>
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle2',{'placeholder':'Go to market faster'}) }}</h3>
                                 <div class="content-des">
-                                    <ul>
-                                        <li>
-                                            <p>What are my key IA/IP?</p>
-                                        </li>
-                                        <li>
-                                            <p>How is IA/IP valuable to my business?</p>
-                                        </li>
-                                        <li>
-                                            <p>How do I value my IA/IP?</p>
-                                        </li>
-                                    </ul>
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent2", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
                                 </div>
                             </div>
                         </div>
@@ -101,59 +79,57 @@
                             <div class="icon partner">
                                 <div class="ripple-wrap"><span class="ripple"></span></div>
                                 <div class="icon-inner">
-                                    <img src="/static/static/assets/images/strategy-management/reason-1.svg">
+                                    {{ pimcore_image("imgRipple3") }}
                                 </div>
                             </div>
                             <div class="content">
-                                <h3>Partner effectively</h3>
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle3',{'placeholder': 'Partner effectively'}) }}</h3>
                                 <div class="content-des">
-                                    <ul>
-                                        <li>
-                                            <p>What form of partnership is more suitable for me?
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>Are the terms of my research collaboration or licensing agreement
-                                                fair?</p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                Will my partner/manufacturer misuse my secrets?</p>
-                                        </li>
-                                    </ul>
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent3", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <p>We've advised over 200 companies on IA and IP issues to date. We intimately understand how
+                    <p>{{ pimcore_input('IPStartAfterImage',{'placeholder': 'We\'ve advised over 200 companies on IA and IP issues to date. We intimately understand how
                             start-ups can navigate these issues. IP Start will give you the head start you need to
-                            manage your IA and IP, navigate obstacles, and prepare you for scaling.</p>
+                            manage your IA and IP, navigate obstacles, and prepare you for scaling.'}) }}</p>
                 </div>
                 <div class="m-b-30">
-                    <h6 class="h6">Here’s what you’ll get for FREE:</h6>
+                    <h6 class="h6">{{ pimcore_input('IPStartBonusTitle',{'placeholder': 'Here\'s what you’ll get for FREE:'}) }}</h6>
                     <div class="m-b-15 m-t-15 point-wrap">
                         <ol>
                             <li>
-                                <div class="d-flex align-items-center"><span class="m-r-20"><img
-                                            src="/static/static/assets/images/strategy-management/gain-6.svg"></span><span>45-min
-                                        consultation on your IA and IP</span></div>
+                                <div class="d-flex align-items-center">
+                                    <span class="m-r-20">
+                                        {{ pimcore_image('IPStartBonus1') }}
+                                    </span>
+                                    <span>{{ pimcore_input('IPStartBonusTitle1',{'placeholder': '45-min consultation on your IA and IP'}) }}</span></div>
                             </li>
                             <li>
-                                <div class="d-flex align-items-center"><span class="m-r-20"><img
-                                            src="/static/static/assets/images/strategy-management/gain-7.svg"></span><span>IP
-                                        Essentials for Business course</span></div>
+                                <div class="d-flex align-items-center">
+                                <span class="m-r-20">
+                                        {{ pimcore_image('IPStartBonus2') }}    
+                                </span>
+                                <span>{{ pimcore_input('IPStartBonusTitle2',{'placeholder': 'IP Essentials for Business course'}) }}</span></div>
                             </li>
                             <li>
-                                <div class="d-flex align-items-center"><span class="m-r-20"><img <img
-                                            src="/static/static/assets/images/strategy-management/gain-8.svg"></span><span>IP
-                                        Playbook for Start-ups</span></div>
+                                <div class="d-flex align-items-center">
+                                <span class="m-r-20">
+                                        {{ pimcore_image('IPStartBonus3') }}    
+                                </span>
+                                <span>{{ pimcore_input('IPStartBonusTitle3',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
                             </li>
                             <li>
-                                <div class="d-flex align-items-center"><span class="m-r-20"><img
-                                            src="/static/static/assets/images/strategy-management/gain-9.svg"></span><span>How-to
-                                        video on applying for patents</span></div>
+                                <div class="d-flex align-items-center">
+                                <span class="m-r-20">
+                                        {{ pimcore_image('IPStartBonus4') }}    
+                                </span>
+                                <span>{{ pimcore_input('IPStartBonusTitle4',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
                             </li>
                         </ol>
                     </div>
@@ -161,14 +137,16 @@
 
                 <div>
                     <div class="divider-content"></div>
-                    <h3>Join our community</h3>
-                    <p>Be a part of our vibrant, growing community of start-ups, accelerators, and incubators today!
-                        This is an invite-only programme for start-ups working with our partner accelerators.</p>
+                    <h3>{{ pimcore_input('IPStartCommunityTitle',{'placeholder': 'Join our community'}) }}</h3>
+                    <p>{{ pimcore_input('IPStartCommunitySubTitle',{'placeholder': '
+                        Be a part of our vibrant, growing community of start-ups, accelerators, and incubators today!
+                        This is an invite-only programme for start-ups working with our partner accelerators.
+                    '}) }}</p>
 
                     <div class="accordion-ipos-wrapper">
                         <div class="accordion-ipos">
                             <div class="accordion-item active">
-                                <div class="accordion-header"><span>Accelerators</span>
+                                <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle1',{'placeholder': 'Accelerators'}) }}</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
@@ -228,8 +206,8 @@
                             </div>
 
                             <div class="accordion-item">
-                                <div class="accordion-header"><span>Incubators</span><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle2',{'placeholder': 'Incubators'}) }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
                                             d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
@@ -245,8 +223,8 @@
                             </div>
 
                             <div class="accordion-item">
-                                <div class="accordion-header"><span>Community Partners</span><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle3',{'placeholder': 'Community Partners'}) }}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
                                             d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
@@ -262,7 +240,7 @@
                             </div>
                         </div>
                         <div class="view-all-partners">
-                            <a href="/">View all partners</a>
+                           {{ pimcore_link('linkUrl')}}
                         </div>
                     </div>
                 </div>
@@ -270,88 +248,94 @@
 
             </div>
 
-            <div class="col-12 d-block d-md-none">
-                </div>
-                <div class="col-lg-4 col-12 detail right-side-contact">
-                    <div class="wrap-right-side-sticky">
-                        <div class="detail_right">
-                            <div class="detail_right_circle">
-                                <div class="circle left"></div>
-                                <div class="circle right"></div>
-                            </div>
-                            <div class="detail_info_content">
-                                <h6 class="m-t-30">Let’s Connect</h6>
-                                <div class="find-out m-b-16">Whether you're an accelerator or need general assistance,
-                                    we’re here to help.
-                                </div>
-                                <a class="btn full-white"
-                                    href="/pdf/-Brochure - Discover Your Intangible Assets.pdf" download>
-                                    For Accelerators
-                                </a>
-                                <a class="btn border-purple"
-                                    href="/pdf/-Brochure - Discover Your Intangible Assets.pdf" download>
-                                    General Enquiries
-                                </a>
-                            </div>
+            <div class="col-12 d-block d-md-none"></div>
+            <div class="col-lg-4 col-12 detail right-side-contact">
+                <div class="wrap-right-side-sticky">
+                    <div class="detail_right">
+                        <div class="detail_right_circle">
+                            <div class="circle left"></div>
+                            <div class="circle right"></div>
                         </div>
+                        <div class="detail_info_content">
+                            <h6 class="m-t-30">{{ pimcore_input('IPStartBannerRight',{'placeholder': 'Let\'s connect!'}) }}</h6>
+                            <div class="find-out m-b-16">{{ pimcore_input('IPStartBannerRightDesc',{'placeholder': 'connect desc!'}) }}
+                            </div>
+                            {% set link1 = pimcore_link('IPStartBannerRightLink1') %}
 
-                        <div class="interest-wrapper">
-                            <div class="share-section">
-                                <div class="share">SHARE</div>
-                                <div class="share-icons">
-                                    <a href="#" title="Share on Facebook">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                    <a href="#" title="Share on LinkedIn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
-                                        </svg>
-                                    </a>
-                                    <a href="#" title="Share on X">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
-                                            <path fill="#470A68" stroke="#470A68" stroke-width=".5"
-                                                d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
-                                        </svg>
-                                    </a>
-                                    <a href="#" title="Share via Email">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
-                                                clip-rule="evenodd" />
-                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5"
-                                                d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
-                                        </svg>
-                                    </a>
-                                </div>
+                            <a class="btn full-white"
+                                href="{{ link1.data.path }}" download>
+                                {{ pimcore_input('link1Text', {'placeholder': 'For Accelerators'}) }}
+                            </a>
+
+                            {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
+                            <a class="btn border-purple"
+                                href="{{ link2.data.path }}" download>
+                                {{ pimcore_input('link2Text', {'placeholder': 'General Enquiries'}) }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="interest-wrapper">
+                        <div class="share-section">
+                            <div class="share">
+                                {{ pimcore_input('shareText', {'placeholder': 'Share'}) }}
+                            </div>
+                            <div class="share-icons">
+                                <a href="#" title="Share on Facebook">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <a href="#" title="Share on LinkedIn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                    </svg>
+                                </a>
+                                <a href="#" title="Share on X">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                        <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                            d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                                    </svg>
+                                </a>
+                                <a href="#" title="Share via Email">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                            clip-rule="evenodd" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
         <div class="divider-content"></div>
         <div class="slider-container">
-            <h3>Hear from start-ups that have been part of IP Start</h3>
+            <h3>
+            {{ pimcore_input('whatIsText', {'placeholder': 'Hear from start-ups that have been part of IP Start'}) }}
+            </h3>
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 <div class="bottom-video-section row">
                     <div class="col-lg-9 col-12 padding-right-30">
@@ -570,14 +554,17 @@
     <div class="right-side-contact mobile">
         <div class="contact-card">
             <div class="contact-box">
-                <h2>Let’s Connect</h2>
-                <p>Whether you're an accelerator or need general assistance, we’re here to help.</p>
-
-                <a class="btn full-white mt-16 cta-button" href="/pdf/-Brochure - Discover Your Intangible Assets.pdf"
+                <h2>
+                {{ pimcore_input('mobileBanner', {'placeholder': 'Let\'s Connect'}) }}
+                </h2>
+                <p>
+                {{ pimcore_input('mobileBannerDesc', {'placeholder': 'Whether you\'re an accelerator or need general assistance, we’re here to help.'}) }}
+                </p>
+                <a class="btn full-white mt-16 cta-button" href="{{ link1.data.path }}"
                     download>
                     For Accelerators
                 </a>
-                <a class="btn border-purple mt-16 cta-button" href="/pdf/-Brochure - Discover Your Intangible Assets.pdf"
+                <a class="btn border-purple mt-16 cta-button" href="{{ link2.data.path }}"
                     download>
                     General Enquiries
                 </a>
