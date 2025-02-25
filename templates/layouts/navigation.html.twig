@@ -90,7 +90,7 @@
                             {% if hasChildren %}
                                 <ul style="height: 300px" id="{{ page.getLabel()|lower }}LinkWrap">
                                     {# <p>{{ page.getLabel() == 'Strategy and Management' }}</p> #}
-                                    {% if page.getLabel() == 'Strategy and Management' %}
+                                    {% if page.getLabel() == 'IP Strategy' %}
                                         {% for child in page.getPages() %}
                                             {% if child.isVisible() and menuRenderer.accept(child) %}
                                                 {% set label = child.getLabel() %}
