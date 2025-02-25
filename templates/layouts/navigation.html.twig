@@ -145,13 +145,13 @@
             })
             $('.menu_inner').css('background-image', 'url("/static/images/academy-bg.png")');
         }
-        if (window.location.href.indexOf('strategy-management') > -1) {
-            $('#ip strategyCatLink').addClass('active');
-            $('#ip strategyLinkWrap').addClass('active');
+        if (window.location.href.indexOf('ip-strategy') > -1) {
+            $('#ip\\ strategyCatLink').addClass('active');
+            $('#ip\\ strategyLinkWrap').addClass('active');
             $('.cat-link').addClass('-fadeout-')
             $('.menu-btn').on('click', function(){
                 const menuItemPos  = $('#ip strategyCatLink').position().top - 104;
-                $('#strategy\\ and\\ managementCatWrap').css('margin-top', menuItemPos);
+                $('#ip\\ strategyLinkWrap').css('margin-top', menuItemPos);
             })
             $('.menu_inner').css('background-image', 'url("/static/images/academy-bg.png")');
         }
@@ -212,15 +212,15 @@
             } //bg 
         })
 
-        $('#ip strategyCatLink').on('click', function() {
+        $('#ip\\ strategyCatLink').on('click', function() {
             $('.menu-categories-listing ul li').removeClass('active');
             $(this).addClass('active');
             $('.menu-pages-listing ul').removeClass('active');
-            $('#ip strategyLinkWrap').addClass('active');
+            $('#ip\\ strategyLinkWrap').addClass('active');
             var menuItemPos = $(this).position().top - 104;
 
             if ($(window).width() > 768) {
-                $('#ip strategyLinkWrap').css('margin-top', menuItemPos);
+                $('#ip\\ strategyLinkWrap').css('margin-top', menuItemPos);
             } //bg 
         })
     })
