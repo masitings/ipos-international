@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="content-container ic-content">
-                    <h3>{{pimcore_input('freeconssub', {'placeholder': 'Free Consultation cover a wide spectrum, from IP such as patents, trade marks and registered
+                    <h3 style="color: #470A68">{{pimcore_input('freeconssub', {'placeholder': 'Free Consultation cover a wide spectrum, from IP such as patents, trade marks and registered
                         designs (that can be registered officially), to copyright, trade secrets, know-how and data
                         (which are typically non-registrable).'})}}</h3>
                     {{  pimcore_wysiwyg("freeConsDesc", {
@@ -54,7 +54,7 @@
                             {% endif %}
                             {% set book = pimcore_link('BookLink1') %}
                             <a class="btn full-white mt-36"
-                                href="{{book.data.path}}" download>
+                                href="{{book.data.path}}">
                                 {{ book.data.text }}
                             </a>
                         </div>
