@@ -143,7 +143,7 @@
                             {% set rightLink = pimcore_link('IPStartBannerRightLink1') %}
 
                             <a class="btn full-white mt-36"
-                                href="{{ rightLink.data.path }}" download>
+                                href="{{ rightLink.data.path }}" target="_blank">
                                 {{ rightLink.data.text }}
                             </a>
                         </div>
@@ -449,7 +449,7 @@
             <div class="contact-box">
                 <h2>Contact Us</h2>
                 <p>For more information on how we can help your organisation:</p>
-                <a href="{{rightLink.data.path}}">
+                <a href="{{rightLink.data.path}}" target="_blank">
                     <button class="cta-button">{{ rightLink.data.text }}</button>
                 </a>
             </div>
