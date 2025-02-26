@@ -137,11 +137,14 @@
                         <div class="detail_info_content">
                             <h6 class="m-t-30">{{ pimcore_input('DetailInfo',{'placeholder': 'Contact Us'}) }}</h6>
                             <div class="find-out m-b-16">{{pimcore_input('detailDesc', {'placeholder': 'For more information on how we can help your organisation'})}}</div>
-                            {% set link1 = pimcore_link('IPStartBannerRightLink1') %}
+                            {% if editmode %}
+                            {{ pimcore_link('IPStartBannerRightLink1') }}
+                            {% endif %}
+                            {% set rightLink = pimcore_link('IPStartBannerRightLink1') %}
 
                             <a class="btn full-white mt-36"
-                                href="{{ link1.data.path }}" download>
-                                {{ pimcore_input('link1Text', {'placeholder': 'Book Free Consultation'}) }}
+                                href="{{ rightLink.data.path }}" download>
+                                {{ rightLink.data.text }}
                             </a>
                         </div>
                     </div>
@@ -446,8 +449,8 @@
             <div class="contact-box">
                 <h2>Contact Us</h2>
                 <p>For more information on how we can help your organisation:</p>
-                <a href="{{book.data.path}}">
-                    <button class="cta-button">{{ book.data.text }}</button>
+                <a href="{{rightLink.data.path}}">
+                    <button class="cta-button">{{ rightLink.data.text }}</button>
                 </a>
             </div>
         </div>
