@@ -154,54 +154,26 @@
                                     </svg>
                                 </div>
                                 <div class="accordion-content">
+                                    {% if editmode %}
+                                        {{ pimcore_relations('accelerator',{
+                                            "types": ["object"],
+                                            "classes" : [
+                                                "Accelerator"
+                                            ]
+                                        }) }}
+                                    {% else %}
+                                    {% set accelerators = pimcore_relations('accelerator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
+                                    {% if accelerators is not empty %}
+                                        {% for accel in accelerators %}
+                                            {% set image = accel.getImage() %}
+                                            {% if image %}
+                                                <img src="{{ image }}">
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
 
@@ -213,12 +185,26 @@
                                             d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
                                     </svg></div>
                                 <div class="accordion-content">
+                                    {% if editmode %}
+                                        {{ pimcore_relations('incubator',{
+                                            "types": ["object"],
+                                            "classes" : [
+                                                "Incubator"
+                                            ]
+                                        }) }}
+                                    {% else %}
+                                    {% set incubators = pimcore_relations('incubator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
+                                    {% if incubators is not empty %}
+                                        {% for incu in incubators %}
+                                            {% set image = incu.getImage() %}
+                                            {% if image %}
+                                                <img src="{{ image }}">
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
 
@@ -230,12 +216,26 @@
                                             d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
                                     </svg></div>
                                 <div class="accordion-content">
+                                    {% if editmode %}
+                                        {{ pimcore_relations('communityPartner',{
+                                            "types": ["object"],
+                                            "classes" : [
+                                                "CommunityPartner"
+                                            ]
+                                        }) }}
+                                    {% else %}
+                                    {% set communityPartners = pimcore_relations('communityPartner', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
-                                        <img
-                                            src="https://s3-alpha-sig.figma.com/img/d811/f7ea/4921b97186bf2eba779eb00d574a2725?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=roTKwQZAMHbSpt79ssGZgwgKj0ZHXmIeArJeIy~kEM33xKRXweoir8w5g-OykaQscuwwnwHdDBTL5rjnnY5c24F3EbnvK6wZDnqdrAN~YsXaI7g1WD3Gi6UPiK~ShCRA-TUEa6DMCWs1XfE-4LaX4WmJPnSKum~XxGQOzyJ9e2OTlpReVpVnzsEru5VOBD2OMmCieuXtuWG48u2VaEMFLX2H8qBp16S-5pZ43jjmYcDbC2GZ5bWFP5KNSJMEtspLULZGfza0EVv2UIeilEWCwdyiujtsBDVUo2rIgM4P-FIaF1oMqF~kqMfSZ~zbvWs0UikZEqj7Ntn~-27qhUSNzg__" />
+                                    {% if communityPartners is not empty %}
+                                        {% for comm in communityPartners %}
+                                            {% set image = comm.getImage() %}
+                                            {% if image %}
+                                                <img src="{{ image }}">
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -260,17 +260,24 @@
                             <h6 class="m-t-30">{{ pimcore_input('IPStartBannerRight',{'placeholder': 'Let\'s connect!'}) }}</h6>
                             <div class="find-out m-b-16">{{ pimcore_input('IPStartBannerRightDesc',{'placeholder': 'connect desc!'}) }}
                             </div>
+                            {% if editmode %}
+                                <div style="width: 100%;">
+                                {{pimcore_link('IPStartBannerRightLink1')}}
+                                </div>
+                                {{pimcore_link('IPStartBannerRightLink2')}}
+                            {% endif %}
                             {% set link1 = pimcore_link('IPStartBannerRightLink1') %}
+                            {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
 
                             <a class="btn full-white"
                                 href="{{ link1.data.path }}" download>
-                                {{ pimcore_input('link1Text', {'placeholder': 'For Accelerators'}) }}
+                                {{ link1.data.text }}
                             </a>
 
                             {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
                             <a class="btn border-purple"
                                 href="{{ link2.data.path }}" download>
-                                {{ pimcore_input('link2Text', {'placeholder': 'General Enquiries'}) }}
+                                {{ link2.data.text }}
                             </a>
                         </div>
                     </div>
@@ -336,79 +343,46 @@
             <h3>
             {{ pimcore_input('whatIsText', {'placeholder': 'Hear from start-ups that have been part of IP Start'}) }}
             </h3>
+            {% if editmode %}
+                {{ pimcore_relations('objectsAll',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPStartMediaCarousel"
+                    ]
+                }) }}
+            {% else %}
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
+                {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                 <div class="bottom-video-section row">
                     <div class="col-lg-9 col-12 padding-right-30">
                         <div class="video-section">
                             <div class="video-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Video Thumbnail">
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
                         </div>
 
                         <div class="thumbnail-carousel-container">
                             <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
-                                <div class="img-slider-container active" data-title="Video 1 Title"
-                                    data-description="Description for Video 1">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 2 Title"
-                                    data-description="Description for Video 2">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 2">
-                                </div>
-                                <div class="img-slider-container" data-title="Youtube video title"
-                                    data-description="Description for Video 2">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="youtube video">
-                                    <iframe class="d-none" width="560" height="315"
-                                        src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen></iframe>
-                                </div>
-                                <div class="img-slider-container" data-title="Video 3 Title"
-                                    data-description="Description for Video 3">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 3">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 4 Title"
-                                    data-description="Description for Video 4">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 4">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 5 Title"
-                                    data-description="Description for Video 5">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 5">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 6 Title"
-                                    data-description="Description for Video 6">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 6">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 7 Title"
-                                    data-description="Description for Video 7">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 7">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 8 Title"
-                                    data-description="Description for Video 8">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 8">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 9 Title"
-                                    data-description="Description for Video 9">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 9">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 10 Title"
-                                    data-description="Description for Video 10">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 10">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 11 Title"
-                                    data-description="Description for Video 11">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 11">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 12 Title"
-                                    data-description="Description for Video 12">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 12">
-                                </div>
+                                {% if list is not empty %}
+                                    {% for carouselItem in list %}
+                                    {% set videoTitle = carouselItem.getMediaTitle() %}
+                                    {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
+                                    {% set videoUrl = carouselItem.getMediaVideo() %}
+                                    {% set videoDescription = carouselItem.getMediaDescription() %}
+                                    {% set mediaLink = carouselItem.getMediaExternalLink() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-link="{{mediaLink.path}}">
+                                        {% if videoThumbnail %}
+                                        <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                        {% endif %}
+                                        {% if videoUrl.getType() == 'youtube' %}
+                                        <iframe class="d-none" width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{ videoUrl.getData() }}" title="{{ videoTitle }}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
 
                             <div class="arrow-right">
@@ -433,89 +407,56 @@
                     </div>
                     <div class="col-lg-3 col-12">
                         <div class="text-container">
-                            <h2>Video 1 Title</h2>
-                            <p>Description for Video 1</p>
+                            <h2>&nbsp;</h2>
+                            <p>&nbsp;</p>
                             <div class="text-container-button">
-                                <a class="button-1" href="">Find out more</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endif %}
 
+            {% if editmode %}
+                {{ pimcore_relations('objectsAll2',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPStartMediaCarousel"
+                    ]
+                }) }}
+            {% else %}
             <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
+                {% set list2 = pimcore_relations('objectsAll2', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                 <div class="bottom-video-section row">
                     <div class="col-md-9 col-12 padding-right-30">
                         <div class="video-section">
                             <div class="video-container">
-                                <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Video Thumbnail">
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
                         </div>
 
                         <div class="thumbnail-carousel-container">
                             <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
-                                <div class="img-slider-container active" data-title="Video 1 Title"
-                                    data-description="Description for Video 1">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 1">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 2 Title"
-                                    data-description="Description for Video 2">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 2">
-                                </div>
-                                <div class="img-slider-container" data-title="Youtube video title"
-                                    data-description="Description for Video 2">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="youtube video">
-                                    <iframe class="d-none" width="560" height="315"
-                                        src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen></iframe>
-                                </div>
-                                <div class="img-slider-container" data-title="Video 3 Title"
-                                    data-description="Description for Video 3">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 3">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 4 Title"
-                                    data-description="Description for Video 4">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 4">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 5 Title"
-                                    data-description="Description for Video 5">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 5">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 6 Title"
-                                    data-description="Description for Video 6">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 6">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 7 Title"
-                                    data-description="Description for Video 7">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 7">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 8 Title"
-                                    data-description="Description for Video 8">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 8">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 9 Title"
-                                    data-description="Description for Video 9">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 9">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 10 Title"
-                                    data-description="Description for Video 10">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Thumbnail 10">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 11 Title"
-                                    data-description="Description for Video 11">
-                                    <img src="/static/static/assets/images/cyclect.5c4798a.jpg" alt="Thumbnail 11">
-                                </div>
-                                <div class="img-slider-container" data-title="Video 12 Title"
-                                    data-description="Description for Video 12">
-                                    <img src="/static/static/assets/images/CPVA.d5ee92d.jpeg" alt="Thumbnail 12">
-                                </div>
+                                {% if list2 is not empty %}
+                                    {% for carouselItemA in list2 %}
+                                    {% set videoTitleA = carouselItemA.getMediaTitle() %}
+                                    {% set videoThumbnailA = carouselItemA.getMediaThumbnail() %}
+                                    {% set videoUrlA = carouselItemA.getMediaVideo() %}
+                                    {% set videoDescriptionA = carouselItemA.getMediaDescription() %}
+                                    {% set mediaLinkA = carouselItemA.getMediaExternalLink() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitleA }}" data-description="{{ videoDescriptionA }}" data-link="{{mediaLinkA.path}}">
+                                        {% if videoThumbnailA %}
+                                        <img src="{{ videoThumbnailA }}" alt="{{ videoTitleA }}">
+                                        {% endif %}
+                                        {% if videoUrlA.getType() == 'youtube' %}
+                                        <iframe class="d-none" width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{ videoUrlA.getData() }}" title="{{ videoTitleA }}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
 
                             <div class="arrow-right">
@@ -540,15 +481,15 @@
                     </div>
                     <div class="col-md-3 col-12">
                         <div class="text-container">
-                            <h2>Video 1 Title</h2>
-                            <p>Description for Video 1</p>
+                            <h2>&nbsp;</h2>
+                            <p>&nbsp;</p>
                             <div class="text-container-button">
-                                <a class="button-1" href="">Find out more</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="right-side-contact mobile">
@@ -562,11 +503,11 @@
                 </p>
                 <a class="btn full-white mt-16 cta-button" href="{{ link1.data.path }}"
                     download>
-                    For Accelerators
+                    {{ link1.data.text }}
                 </a>
                 <a class="btn border-purple mt-16 cta-button" href="{{ link2.data.path }}"
                     download>
-                    General Enquiries
+                    {{ link2.data.text }}
                 </a>
             </div>
         </div>
@@ -730,6 +671,7 @@
             const arrowLeft = $("#main-articles-section-2 .arrow-left");
             const arrowRight = $("#main-articles-section-2 .arrow-right");
             const textContainer = $("#main-articles-section-2 .text-container");
+            const textLinkContainer = $("#main-articles-section-2 .text-container .text-container-button");
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
             let currentSlide = 0;
@@ -754,8 +696,26 @@
                 // Update the text-container content
                 const title = thumbnail.data("title") || "Default Title";
                 const description = thumbnail.data("description") || "Default Description";
+                const link = thumbnail.data("link") || "";
                 textContainer.find("h2").text(title);
                 textContainer.find("p").text(description);
+
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
             };
 
             const updateArrowState = () => {
@@ -800,6 +760,7 @@
             const arrowLeft = $("#main-articles-section-3 .arrow-left");
             const arrowRight = $("#main-articles-section-3 .arrow-right");
             const textContainer = $("#main-articles-section-3 .text-container");
+            const textLinkContainer = $("#main-articles-section-3 .text-container .text-container-button");
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
             let currentSlide = 0;
@@ -824,8 +785,26 @@
                 // Update the text-container content
                 const title = thumbnail.data("title") || "Default Title";
                 const description = thumbnail.data("description") || "Default Description";
+                const link = thumbnail.data("link") || "";
                 textContainer.find("h2").text(title);
                 textContainer.find("p").text(description);
+
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
             };
 
             const updateArrowState = () => {

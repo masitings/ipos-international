@@ -7,12 +7,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class StrategyManagementController extends BaseController
 {
-    public function indexAction(Request $request)
+    public function overviewAction(Request $request)
     {
-        return $this->render('advisory/overview-20230717d.html.twig', [
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // return $this->render('advisory/overview.html.twig');
+        return $this->render('strategyManagement/overview.html.twig', [
+            'template_layout_name' => 'layouts/layout-str-management.html.twig'
         ]);
     }
+
+    public function indexAction(Request $request)
+    {
+        return $this->redirect('ip-strategy/overview');
+    }
+
     public function ipStartAction(Request $request)
     {
         return $this->render('strategyManagement/ip-start.html.twig', [

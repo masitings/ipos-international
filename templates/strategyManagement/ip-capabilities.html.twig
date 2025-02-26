@@ -148,27 +148,34 @@
 
                     <div class="interest-wrapper">
                         <h5>{{ pimcore_input('worthWatching',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
-
-                        <a href="#" class="job-item">
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/0b60/ab77/39f962646604a664f8b1a94f3a3ca189?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ARDCfZlGvTn-Shd0v80goTvwrkSlae7AHsOhTieeQddq97~7c1XFtXj9IRBQqVkNvklHlpCD8MMMsZeQYOKnYoM3sgnji7cOTgvvJNEQOYZfPpR2QVpb5tYh~j~4pio2i9zq1bvOQxFqTDp35mjJ0asbyjvrnXBbzmVoJU8Tc1JegsthD7gzw28GQ06vEFWsXb1qgR7OPmTuLsi~2CUI7z87qzirnbswTQtR9BhT9kbidBK1e8aWIGx6gUeylqrKpy5v2z76sdVPFEtlXGFqyQkyvMKrpPg-2oMJdWKeFDVOrF56hwyBvsYPhU68KsD0dGzKbqgVBRiuBkIpcPpM3Q__">
-                            <div class="right-side">
-                                <div class="job-tag">News & Announcements</div>
-                                <div class="job-title">Assistant Director, IT Business Analyst</div>
-                            </div>
-                        </a>
-
-                        <a href="#" class="job-item">
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/0b60/ab77/39f962646604a664f8b1a94f3a3ca189?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ARDCfZlGvTn-Shd0v80goTvwrkSlae7AHsOhTieeQddq97~7c1XFtXj9IRBQqVkNvklHlpCD8MMMsZeQYOKnYoM3sgnji7cOTgvvJNEQOYZfPpR2QVpb5tYh~j~4pio2i9zq1bvOQxFqTDp35mjJ0asbyjvrnXBbzmVoJU8Tc1JegsthD7gzw28GQ06vEFWsXb1qgR7OPmTuLsi~2CUI7z87qzirnbswTQtR9BhT9kbidBK1e8aWIGx6gUeylqrKpy5v2z76sdVPFEtlXGFqyQkyvMKrpPg-2oMJdWKeFDVOrF56hwyBvsYPhU68KsD0dGzKbqgVBRiuBkIpcPpM3Q__">
-                            <div class="right-side">
-                                <div class="job-tag">Resources</div>
-                                <div class="job-title">How to unlock competitive advantage with trade secrets: An
-                                    SME’s
-                                    guide</div>
-                            </div>
-                        </a>
-
+                        {% if editmode %}
+                        {{ pimcore_relations('worthWatches',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Course", "Events", "News", "Articles", "Business", "CaseStudy", "ParentAnalytic", "WebinarRecordings"
+                            ]
+                        }) }}
+                        {% else %}
+                            {% set worthToWatches = pimcore_relations('worthWatches') %}
+                            {% if worthToWatches is not empty %}
+                                {% for carouselItem in worthToWatches %}
+                                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                                        {% set image = carouselItem.getCoverImage() %}
+                                        {% set properties = carouselItem.getProperties() %}
+                                        {% set name = properties.name %}
+                                        {% if image is not empty %}
+                                        <img src="{{image}}">
+                                        {% endif %}
+                                        <div class="right-side">
+                                            <div class="job-tag">{{carouselItem.className}}</div>
+                                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                            <p>Find More later</p>
+                            {% endif %}
+                        {% endif %}
                         <div class="share-section">
                             <div class="share">SHARE</div>
                             <div class="share-icons">
@@ -245,6 +252,15 @@
                 {{ pimcore_input('WhatTheySay',{'placeholder': 'See What They Say'}) }}
                 </h2>
             </div>
+            {% if editmode %}
+                {{ pimcore_relations('testimonies',{
+                    "types": ["object"],
+                    "classes" : [
+                        "Testimony"
+                    ]
+                }) }}
+            {% else %}
+            {% set listTestimonies = pimcore_relations('testimonies', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
             <div class="slider-wrapper">
                 <div class="navigate-button">
                     <div class="prev">
@@ -266,23 +282,31 @@
                 </div>
                 <div class="testimonial-slider">
                     <div class="testimonial-track">
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-profile">
-                                    <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Profile">
-                                    <div class="profile-info">
-                                        <h3>Benjamin Chua</h3>
-                                        <p>Founder — Spic & Span</p>
+                        {% if listTestimonies is not empty %}
+                            {% for testimony in listTestimonies %}
+                                {% set image = testimony.getProfilePicture() %}
+                                <div class="testimonial-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-profile">
+                                            {% if image %}
+                                                <img src="{{ image }}">
+                                            {% endif %}
+                                            <div class="profile-info">
+                                                <h3>{{ testimony.getName() }}</h3>
+                                                <p>{{ testimony.getTitle() }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            {{ testimony.getTestimonies() }}
+                                        </div>
                                     </div>
                                 </div>
-                                <p class="testimonial-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </section>
 
@@ -293,11 +317,26 @@
             </h3>
 
             <!-- Swiper Container -->
+            {% if editmode %}
+                    {{ pimcore_relations('trustedLogos',{
+                        "types": ["object"],
+                        "classes" : [
+                            "TrustedLogo"
+                        ]
+                    }) }}
+            {% else %}
             <div class="swiper trusted-logo-slider">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/static/static/assets/images/strategy-management/reason-2.svg"></div>
+                    {% set listTrusted = pimcore_relations('trustedLogos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                    {% if listTrusted is not empty %}
+                            {% for trusted in listTrusted %}
+                                {% set image = trusted.getImage() %}
+                                <div class="swiper-slide"><img src="{{ image }}"></div>
+                            {% endfor %}
+                    {% endif %}
                 </div>
             </div>
+            {% endif %}
             <!-- Navigation Buttons -->
             <div class="navigation-button-warp">
                 <div class="swiper-button-prev trusted-logo-prev"></div>
@@ -322,6 +361,9 @@
             </div>
             
             <div class="button-warp">
+                {% if editmode %}
+                    {{pimcore_link('BookLink1')}}
+                {% endif %}
                 {% set book = pimcore_link('BookLink1') %}
                 <a href="{{book.data.path}}">
                     <button class="cta-button">{{ book.data.text }}</button>
@@ -339,24 +381,24 @@
     <div class="right-side-contact mobile">
         <div class="interest-wrapper">
             <h5>{{ pimcore_input('worthWatching2',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
-            <a href="#" class="job-item">
-                <img
-                    src="https://s3-alpha-sig.figma.com/img/0b60/ab77/39f962646604a664f8b1a94f3a3ca189?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ARDCfZlGvTn-Shd0v80goTvwrkSlae7AHsOhTieeQddq97~7c1XFtXj9IRBQqVkNvklHlpCD8MMMsZeQYOKnYoM3sgnji7cOTgvvJNEQOYZfPpR2QVpb5tYh~j~4pio2i9zq1bvOQxFqTDp35mjJ0asbyjvrnXBbzmVoJU8Tc1JegsthD7gzw28GQ06vEFWsXb1qgR7OPmTuLsi~2CUI7z87qzirnbswTQtR9BhT9kbidBK1e8aWIGx6gUeylqrKpy5v2z76sdVPFEtlXGFqyQkyvMKrpPg-2oMJdWKeFDVOrF56hwyBvsYPhU68KsD0dGzKbqgVBRiuBkIpcPpM3Q__">
-                <div class="right-side">
-                    <div class="job-tag">News & Announcements</div>
-                    <div class="job-title">Assistant Director, IT Business Analyst</div>
-                </div>
-            </a>
-
-            <a href="#" class="job-item">
-                <img
-                    src="https://s3-alpha-sig.figma.com/img/0b60/ab77/39f962646604a664f8b1a94f3a3ca189?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ARDCfZlGvTn-Shd0v80goTvwrkSlae7AHsOhTieeQddq97~7c1XFtXj9IRBQqVkNvklHlpCD8MMMsZeQYOKnYoM3sgnji7cOTgvvJNEQOYZfPpR2QVpb5tYh~j~4pio2i9zq1bvOQxFqTDp35mjJ0asbyjvrnXBbzmVoJU8Tc1JegsthD7gzw28GQ06vEFWsXb1qgR7OPmTuLsi~2CUI7z87qzirnbswTQtR9BhT9kbidBK1e8aWIGx6gUeylqrKpy5v2z76sdVPFEtlXGFqyQkyvMKrpPg-2oMJdWKeFDVOrF56hwyBvsYPhU68KsD0dGzKbqgVBRiuBkIpcPpM3Q__">
-                <div class="right-side">
-                    <div class="job-tag">Resources</div>
-                    <div class="job-title">How to unlock competitive advantage with trade secrets: An SME’s
-                        guide</div>
-                </div>
-            </a>
+            {% if worthToWatches is not empty %}
+                {% for carouselItem in worthToWatches %}
+                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                        {% set image = carouselItem.getCoverImage() %}
+                        {% set properties = carouselItem.getProperties() %}
+                        {% set name = properties.name %}
+                        {% if image is not empty %}
+                        <img src="{{image}}">
+                        {% endif %}
+                        <div class="right-side">
+                            <div class="job-tag">{{carouselItem.className}}</div>
+                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+            <p>Find More later</p>
+            {% endif %}
 
             <div class="share-section">
                 <div class="share">SHARE</div>
