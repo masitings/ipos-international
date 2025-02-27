@@ -423,7 +423,13 @@
     text-transform: uppercase;
     margin-bottom: 6px;
   }
-  
+  .str-overview-main-img .pimcore_iframe_mask {
+    display: none;
+  }
+  .strategy_overview_img_card picture img {
+    width: 100%;
+  }
+
   .image-video-slider .bottom-video-section .text-container h2 {
     font-family: Rubik;
     font-size: 24px;

@@ -92,6 +92,40 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="timeline-item">
+                            <div class="icon partner">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple4") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle4',{'placeholder': 'Partner effectively'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent4", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon partner">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple5") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle5',{'placeholder': 'Partner effectively'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent5", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -168,7 +202,7 @@
                                         {% for accel in accelerators %}
                                             {% set image = accel.getImage() %}
                                             {% if image %}
-                                                <img src="{{ image }}">
+                                                <img style="scale: 2" src="{{ image }}">
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}

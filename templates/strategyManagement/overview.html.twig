@@ -18,7 +18,7 @@
                         })
                     }}
                 </div>
-                <div class="col-lg-6 main-image">
+                <div class="col-lg-6 main-image str-overview-main-img">
                     {{  pimcore_wysiwyg("overviewContent2", {
                                     "height": 200,
                                     "placeholder" : "Add video or image"
@@ -87,17 +87,21 @@
                         </ul>
                         <ul class="key-benefit-link">
                             <li>
-                                [1]<a href=""> SIPS 2030 report</a>
+                                [1]{{pimcore_link('keyBenefitLink1')}}
                             </li>
                             <li>
-                                [2]<a href=""> Singapore IP Survey</a>
+                                [2]{{pimcore_link('keyBenefitLink2')}}
                             </li>
                         </ul>
                         <p style="margin-top: 30px">
                             <b>{{ pimcore_input('beforeButtonText', {'placeholder': 'Keen to start your IA/IP journey? Let our IP Strategists help:'}) }}</b>
                         </p>
-                        {% set link = pimcore_link('discoverLink') %}
-                        <a class="discover-text-button" href="{{ link.data.path }}">{{ link.data.text }}</a>
+                        {% if editmode %}
+                            {{ pimcore_link('discoverLink') }}
+                        {% else %}
+                            {% set link = pimcore_link('discoverLink') %}
+                            <a class="discover-text-button" href="{{ link.data.path }}">{{ link.data.text }}</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -316,7 +320,7 @@
                         <!-- Card 1: Our People & Culture -->
                         <div transition: ease-in-out 0.1s all;
                             class="courses_tab_content_item_card col-lg-6">
-                            <div class="card_image">
+                            <div class="card_image strategy_overview_img_card">
                                 {{ pimcore_image("cardImg1", {
                                     "height": 1570,
                                     "width": 2093
@@ -341,7 +345,7 @@
                             </div>
                         </div>
                         <div class="courses_tab_content_item_card col-lg-6">
-                            <div class="card_image">
+                            <div class="card_image strategy_overview_img_card">
                                 {{ pimcore_image("cardImg2", {
                                     "height": 1570,
                                     "width": 2093
@@ -368,7 +372,60 @@
                     </div>
                 </div>
                 <div class="tab-panel" id="accelerators">
-                    empty
+                    <div class="explore-cards row">
+                        <!-- Card 1: Our People & Culture -->
+                        <div transition: ease-in-out 0.1s all;
+                            class="courses_tab_content_item_card col-lg-6">
+                            <div class="card_image strategy_overview_img_cardss">
+                                {{ pimcore_image("cardImg1A", {
+                                    "height": 1570,
+                                    "width": 2093
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    <div class="title">{{pimcore_input('card1A', {'placeholder': 'Build IP Capabilities'})}}</div>
+                                    <div class="description">
+                                        {{  pimcore_wysiwyg("card1Adesc", {
+                                                "height": 200,
+                                                "placeholder" : "Add content..."
+                                            })
+                                        }}
+                                    </div>
+                                </div>
+                                {{ pimcore_link('card1ALink',{
+                                    'noText' : true,
+                                    'class' : 'find-out',
+                                    'textSuffix' : '<span class="find-out">Find out more</span>'
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="courses_tab_content_item_card col-lg-6">
+                            <div class="card_image strategy_overview_img_card">
+                                {{ pimcore_image("cardImg2A", {
+                                    "height": 1570,
+                                    "width": 2093
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    <div class="title">{{pimcore_input('card2', {'placeholder': 'Consultation'})}}</div>
+                                    <div class="description">
+                                        {{  pimcore_wysiwyg("card2Adesc", {
+                                                "height": 200,
+                                                "placeholder" : "Add content..."
+                                            })
+                                        }}
+                                    </div>
+                                </div>
+                                {{ pimcore_link('card2ALink',{
+                                    'noText' : true,
+                                    'class' : 'find-out',
+                                    'textSuffix' : '<span class="find-out">Find out more</span>'
+                                }) }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -389,7 +446,7 @@
                 
 
                 <div transition: ease-in-out 0.1s all; class="courses_tab_content_item_card col-lg-6">
-                    <div class="card_image">
+                    <div class="card_image strategy_overview_img_card">
                         {{ pimcore_image('cardExploreImage1',{
                             "height": 1570,
                             "width": 2093
@@ -411,7 +468,7 @@
                     </div>
                 </div>
                 <div class="courses_tab_content_item_card col-lg-6">
-                    <div class="card_image">
+                    <div class="card_image strategy_overview_img_card">
                         {{ pimcore_image('cardExploreImage2',{
                             "height": 1570,
                             "width": 2093
