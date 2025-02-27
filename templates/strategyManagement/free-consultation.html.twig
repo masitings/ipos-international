@@ -142,20 +142,12 @@
                                     {% for carouselItem in list %}
                                     {% set videoTitle = carouselItem.getMediaTitle() %}
                                     {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
-                                    {% set videoUrl = carouselItem.getMediaVideo() %}
                                     {% set videoDescription = carouselItem.getMediaDescription() %}
                                     {% set videoSubtitle = carouselItem.getMediaSubTitle() %}
                                     {% set mediaLink = carouselItem.getMediaExternalLink() %}
                                     <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-link="{{mediaLink.path}}" data-position="{{videoSubtitle}}">
                                         {% if videoThumbnail %}
                                         <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
-                                        {% endif %}
-                                        {% if videoUrl.getType() == 'youtube' %}
-                                        <iframe class="d-none" width="560" height="315"
-                                            src="https://www.youtube.com/embed/{{ videoUrl.getData() }}" title="{{ videoTitle }}"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
                                         {% endif %}
                                     </div>
                                     {% endfor %}
