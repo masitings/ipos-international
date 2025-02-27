@@ -347,7 +347,7 @@
                 {{ pimcore_relations('objectsAll',{
                     "types": ["object"],
                     "classes" : [
-                        "IPStartMediaCarousel"
+                        "IPStartMediaCarouselImage"
                     ]
                 }) }}
             {% else %}
@@ -366,19 +366,12 @@
                                     {% for carouselItem in list %}
                                     {% set videoTitle = carouselItem.getMediaTitle() %}
                                     {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
-                                    {% set videoUrl = carouselItem.getMediaVideo() %}
                                     {% set videoDescription = carouselItem.getMediaDescription() %}
                                     {% set mediaLink = carouselItem.getMediaExternalLink() %}
-                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-link="{{mediaLink.path}}">
+                                    {% set subTitle = carouselItem.getMediaSubTitle() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
                                         {% if videoThumbnail %}
                                         <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
-                                        {% endif %}
-                                        {% if videoUrl.getType() == 'youtube' %}
-                                        <iframe class="d-none" width="560" height="315"
-                                            src="https://www.youtube.com/embed/{{ videoUrl.getData() }}" title="{{ videoTitle }}"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
                                         {% endif %}
                                     </div>
                                     {% endfor %}
@@ -405,9 +398,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-12">
-                        <div class="text-container">
+                    <div class="col-lg-4 col-xl-3 col-12">
+                        <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
+                            <h4>&nbsp;</h4>
                             <p>&nbsp;</p>
                             <div class="text-container-button">
                             </div>
@@ -479,8 +473,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-12">
-                        <div class="text-container">
+                    <div class="col-lg-4 col-xl-3 col-12">
+                        <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
                             <p>&nbsp;</p>
                             <div class="text-container-button">
@@ -696,8 +690,10 @@
                 // Update the text-container content
                 const title = thumbnail.data("title") || "Default Title";
                 const description = thumbnail.data("description") || "Default Description";
+                const subtitle = thumbnail.data("position") || "";
                 const link = thumbnail.data("link") || "";
                 textContainer.find("h2").text(title);
+                textContainer.find("h4").text(subtitle);
                 textContainer.find("p").text(description);
 
                 // Ensure `textLinkContainer` exists and `link` is not empty

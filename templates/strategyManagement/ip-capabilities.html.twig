@@ -348,6 +348,159 @@
         </div>
     </section>
 
+    <section class="container slider-ip-capabilities">
+        <div class="slider-container">
+            <h3>{{pimcore_input('sliderSectionTitle', {'placeholder': 'Title for this section if any'})}}</h3>
+            {% if editmode %}
+                {{ pimcore_relations('mediaImages',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPCapMediaImage"
+                    ]
+                }) }}
+            {% else %}
+            <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
+                {% set list = pimcore_relations('mediaImages', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                <div class="bottom-video-section row">
+                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
+                        <div class="video-section">
+                            <div class="video-container">
+                            </div>
+                        </div>
+
+                        <div class="thumbnail-carousel-container">
+                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                {% if list is not empty %}
+                                    {% for carouselItem in list %}
+                                    {% set videoTitle = carouselItem.getMediaTitle() %}
+                                    {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
+                                    {% set videoDescription = carouselItem.getMediaDescription() %}
+                                    {% set mediaLink = carouselItem.getMediaExternalLink() %}
+                                    {% set subTitle = carouselItem.getMediaSubTitle() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
+                                        {% if videoThumbnail %}
+                                        <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                            <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xl-3 col-12">
+                        <div class="text-container person-slider">
+                            <h2>&nbsp;</h2>
+                            <h4>&nbsp;</h4>
+                            <p>&nbsp;</p>
+                            <div class="text-container-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if editmode %}
+                {{ pimcore_relations('mediaVideos',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPCapMediaVideo"
+                    ]
+                }) }}
+            {% else %}
+            <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
+                {% set videoList = pimcore_relations('mediaVideos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                <div class="bottom-video-section row">
+                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
+                        <div class="video-section">
+                            <div class="video-container">
+                                <img src="../../assets/images/credential_banner.457068b.png" alt="Video Thumbnail">
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class="thumbnail-carousel-container">
+                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                {% if videoList is not empty %}
+                                    {% for mediaVideo in videoList %}
+                                    {% set mediaVideoTitle = mediaVideo.getMediaTitle() %}
+                                    {% set mediaVideoUrl = mediaVideo.getMediaVideo() %}
+                                    {% set mediaVideoThumbnail = mediaVideo.getMediaThumbnail() %}
+                                    {% set mediaVideoDescription = mediaVideo.getMediaDescription() %}
+                                    {% set mediaVideoExternalLink = mediaVideo.getMediaExternalLink() %}
+                                    <div class="img-slider-container" data-title="{{ mediaVideoTitle }}" data-description="{{ mediaVideoDescription }}" data-link="{{mediaVideoExternalLink.path}}">
+                                        {% if mediaVideoThumbnail %}
+                                        <img src="{{ mediaVideoThumbnail }}" alt="{{ mediaVideoTitle }}">
+                                        {% endif %}
+                                        {% if mediaVideoUrl.getType() == 'youtube' %}
+                                        <iframe class="d-none" width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{ mediaVideoUrl.getData() }}" title="{{ mediaVideoTitle }}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                            <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xl-3 col-12">
+                        <div class="text-container person-slider">
+                            <h2>&nbsp;</h2>
+                            <p>&nbsp;</p>
+                            <div class="text-container-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
     <section class="consultation-section">
         <div class="container">
             <div class="centered">
@@ -560,6 +713,190 @@
             currentTranslate = currentX;
         });
 
+        const handleMainArticlesSection2 = () => {
+            const videoContainer = $("#main-articles-section-2 .video-container");
+            const thumbnails = $("#main-articles-section-2 .img-slider-container");
+            const thumbnailCarousel = $("#main-articles-section-2 .thumbnail-carousel");
+            const arrowLeft = $("#main-articles-section-2 .arrow-left");
+            const arrowRight = $("#main-articles-section-2 .arrow-right");
+            const textContainer = $("#main-articles-section-2 .text-container");
+            const textLinkContainer = $("#main-articles-section-2 .text-container .text-container-button");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+
+                // Update the text-container content
+                const title = thumbnail.data("title") || "Default Title";
+                const description = thumbnail.data("description") || "Default Description";
+                const subtitle = thumbnail.data("position") || "";
+                const link = thumbnail.data("link") || "";
+                textContainer.find("h2").text(title);
+                textContainer.find("h4").text(subtitle);
+                textContainer.find("p").text(description);
+
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                arrowLeft.prop("disabled", currentSlide === 0);
+                arrowRight.prop(
+                    "disabled",
+                    currentSlide >= thumbnails.length - visibleThumbnails
+                );
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            // Trigger click on the first thumbnail to initialize content
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+        const handleMainArticlesSection3 = () => {
+            const videoContainer = $("#main-articles-section-3 .video-container");
+            const thumbnails = $("#main-articles-section-3 .img-slider-container");
+            const thumbnailCarousel = $("#main-articles-section-3 .thumbnail-carousel");
+            const arrowLeft = $("#main-articles-section-3 .arrow-left");
+            const arrowRight = $("#main-articles-section-3 .arrow-right");
+            const textContainer = $("#main-articles-section-3 .text-container");
+            const textLinkContainer = $("#main-articles-section-3 .text-container .text-container-button");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+
+                // Update the text-container content
+                const title = thumbnail.data("title") || "Default Title";
+                const description = thumbnail.data("description") || "Default Description";
+                const link = thumbnail.data("link") || "";
+                textContainer.find("h2").text(title);
+                textContainer.find("p").text(description);
+
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                arrowLeft.prop("disabled", currentSlide === 0);
+                arrowRight.prop(
+                    "disabled",
+                    currentSlide >= thumbnails.length - visibleThumbnails
+                );
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            // Trigger click on the first thumbnail to initialize content
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+
+        // Initialize both sections
+        handleMainArticlesSection3();
+        handleMainArticlesSection2();
         // Initial state update
         updateNavigationState();
     });

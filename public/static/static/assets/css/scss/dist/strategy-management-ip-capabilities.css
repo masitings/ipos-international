@@ -1,6 +1,15 @@
 .articles_details_container.ip-capabilities {
     padding: 0 0;
   }
+  .articles_details_container.ip-capabilities .slider-ip-capabilities h3 {
+    color: #000;
+    font-family: Rubik;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 46.8px;
+    margin-bottom: 36px;
+  }
   @media screen and (max-width: 768px) {
     .articles_details_container.ip-capabilities .resources_public_title_nav {
       padding: 0 30px;
@@ -552,7 +561,7 @@
     border-bottom: 1px solid #DDD;
     text-align: center;
     padding: 50px 0;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     /* Custom navigation buttons */
   }
   @media screen and (max-width: 768px) {
