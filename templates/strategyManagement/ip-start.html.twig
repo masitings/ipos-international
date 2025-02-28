@@ -220,12 +220,14 @@
                                     </svg></div>
                                 <div class="accordion-content">
                                     {% if editmode %}
-                                        {{ pimcore_relations('incubator',{
-                                            "types": ["object"],
-                                            "classes" : [
-                                                "Incubator"
-                                            ]
-                                        }) }}
+                                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                                            {{ pimcore_relations('incubator',{
+                                                "types": ["object"],
+                                                "classes" : [
+                                                    "Incubator"
+                                                ]
+                                            }) }}
+                                        </div>
                                     {% else %}
                                     {% set incubators = pimcore_relations('incubator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
@@ -251,12 +253,14 @@
                                     </svg></div>
                                 <div class="accordion-content">
                                     {% if editmode %}
-                                        {{ pimcore_relations('communityPartner',{
-                                            "types": ["object"],
-                                            "classes" : [
-                                                "CommunityPartner"
-                                            ]
-                                        }) }}
+                                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                                            {{ pimcore_relations('communityPartner',{
+                                                "types": ["object"],
+                                                "classes" : [
+                                                    "CommunityPartner"
+                                                ]
+                                            }) }}
+                                        </div>
                                     {% else %}
                                     {% set communityPartners = pimcore_relations('communityPartner', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
