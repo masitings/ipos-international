@@ -177,6 +177,35 @@
                         This is an invite-only programme for start-ups working with our partner accelerators.
                     '}) }}</p>
 
+                    {% if editmode %}
+                    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                    <p>Accelerators</p>
+                    {{ pimcore_relations('accelerator',{
+                        "types": ["object"],
+                        "classes" : [
+                            "Accelerator"
+                        ]
+                    }) }}
+                    </div>
+                    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                    <p>Incubators</p>
+                    {{ pimcore_relations('incubator',{
+                        "types": ["object"],
+                        "classes" : [
+                            "Incubator"
+                        ]
+                    }) }}
+                    </div>
+                    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                    <p>Community Partners</p>
+                    {{ pimcore_relations('communityPartner',{
+                        "types": ["object"],
+                        "classes" : [
+                            "CommunityPartner"
+                        ]
+                    }) }}
+                    </div>
+                    {% else %}
                     <div class="accordion-ipos-wrapper">
                         <div class="accordion-ipos">
                             <div class="accordion-item active">
@@ -188,14 +217,6 @@
                                     </svg>
                                 </div>
                                 <div class="accordion-content">
-                                    {% if editmode %}
-                                        {{ pimcore_relations('accelerator',{
-                                            "types": ["object"],
-                                            "classes" : [
-                                                "Accelerator"
-                                            ]
-                                        }) }}
-                                    {% else %}
                                     {% set accelerators = pimcore_relations('accelerator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
                                     {% if accelerators is not empty %}
@@ -207,7 +228,6 @@
                                         {% endfor %}
                                     {% endif %}
                                     </div>
-                                    {% endif %}
                                 </div>
                             </div>
 
@@ -219,16 +239,6 @@
                                             d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
                                     </svg></div>
                                 <div class="accordion-content">
-                                    {% if editmode %}
-                                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
-                                            {{ pimcore_relations('incubator',{
-                                                "types": ["object"],
-                                                "classes" : [
-                                                    "Incubator"
-                                                ]
-                                            }) }}
-                                        </div>
-                                    {% else %}
                                     {% set incubators = pimcore_relations('incubator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
                                     {% if incubators is not empty %}
@@ -240,7 +250,6 @@
                                         {% endfor %}
                                     {% endif %}
                                     </div>
-                                    {% endif %}
                                 </div>
                             </div>
 
@@ -252,16 +261,6 @@
                                             d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
                                     </svg></div>
                                 <div class="accordion-content">
-                                    {% if editmode %}
-                                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
-                                            {{ pimcore_relations('communityPartner',{
-                                                "types": ["object"],
-                                                "classes" : [
-                                                    "CommunityPartner"
-                                                ]
-                                            }) }}
-                                        </div>
-                                    {% else %}
                                     {% set communityPartners = pimcore_relations('communityPartner', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                                     <div class="image-group">
                                     {% if communityPartners is not empty %}
@@ -273,7 +272,6 @@
                                         {% endfor %}
                                     {% endif %}
                                     </div>
-                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -281,6 +279,7 @@
                            {{ pimcore_link('linkUrl')}}
                         </div>
                     </div>
+                    {% endif %}
                 </div>
 
 
