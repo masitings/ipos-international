@@ -185,9 +185,10 @@
                         {% else %}
                             {% set worthToWatches = pimcore_relations('worthWatches') %}
                             {% if worthToWatches is not empty %}
-                                {% for carouselItem in worthToWatches %}
-                                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
-                                        {% set image = carouselItem.getCoverImage() %}
+                                <div class="max-height-interest">
+                                    {% for carouselItem in worthToWatches %}
+                                        <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                                            {% set image = carouselItem.getCoverImage() %}
                                         {% set properties = carouselItem.getProperties() %}
                                         {% set name = properties.name %}
                                         {% if image is not empty %}
@@ -197,8 +198,9 @@
                                             <div class="job-tag">{{carouselItem.className}}</div>
                                             <div class="job-title">{{carouselItem.getTitle()}}</div>
                                         </div>
-                                    </a>
-                                {% endfor %}
+                                        </a>
+                                    {% endfor %}
+                                </div>
                             {% else %}
                             <p>Find More later</p>
                             {% endif %}
@@ -434,7 +436,9 @@
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
                             <h4>&nbsp;</h4>
-                            <p>&nbsp;</p>
+                                <div class="max-height-text">
+                                    <p>&nbsp;</p>
+                                </div>
                             <div class="text-container-button">
                             </div>
                         </div>
@@ -508,7 +512,9 @@
                     <div class="col-lg-4 col-xl-3 col-12">
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
-                            <p>&nbsp;</p>
+                            <div class="max-height-text">
+                                <p>&nbsp;</p>
+                            </div>
                             <div class="text-container-button">
                             </div>
                         </div>

@@ -319,6 +319,37 @@
                     </div>
 
                     <div class="interest-wrapper">
+                        <h5>{{ pimcore_input('worthWatching',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
+                        {% if editmode %}
+                        {{ pimcore_relations('worthWatches',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Course", "Events", "News", "Articles", "Business", "CaseStudy", "ParentAnalytic", "WebinarRecordings"
+                            ]
+                        }) }}
+                        {% else %}
+                            {% set worthToWatches = pimcore_relations('worthWatches') %}
+                            {% if worthToWatches is not empty %}
+                                <div class="max-height-interest">
+                                {% for carouselItem in worthToWatches %}
+                                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                                        {% set image = carouselItem.getCoverImage() %}
+                                        {% set properties = carouselItem.getProperties() %}
+                                        {% set name = properties.name %}
+                                        {% if image is not empty %}
+                                        <img src="{{image}}">
+                                        {% endif %}
+                                        <div class="right-side">
+                                            <div class="job-tag">{{carouselItem.className}}</div>
+                                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                            <p>-</p>
+                            {% endif %}
+                        {% endif %}
                         <div class="share-section">
                             <div class="share">
                                 {{ pimcore_input('shareText', {'placeholder': 'Share'}) }}
@@ -438,7 +469,9 @@
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
                             <h4>&nbsp;</h4>
-                            <p>&nbsp;</p>
+                            <div class="max-height-text">
+                                <p>&nbsp;</p>
+                            </div>
                             <div class="text-container-button">
                             </div>
                         </div>
@@ -512,7 +545,9 @@
                     <div class="col-lg-4 col-xl-3 col-12">
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
-                            <p>&nbsp;</p>
+                            <div class="max-height-text">
+                                <p>&nbsp;</p>
+                            </div>
                             <div class="text-container-button">
                             </div>
                         </div>
@@ -543,6 +578,25 @@
         </div>
 
         <div class="interest-wrapper">
+            <h5>{{ pimcore_input('worthWatching2',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
+            {% if worthToWatches is not empty %}
+                {% for carouselItem in worthToWatches %}
+                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                        {% set image = carouselItem.getCoverImage() %}
+                        {% set properties = carouselItem.getProperties() %}
+                        {% set name = properties.name %}
+                        {% if image is not empty %}
+                        <img src="{{image}}">
+                        {% endif %}
+                        <div class="right-side">
+                            <div class="job-tag">{{carouselItem.className}}</div>
+                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+            <p>-</p>
+            {% endif %}
             <div class="share-section">
                 <div class="share">SHARE</div>
                 <div class="share-icons">
