@@ -10,8 +10,11 @@ class StrategyManagementController extends BaseController
     public function overviewAction(Request $request)
     {
         // return $this->render('advisory/overview.html.twig');
+        $shares = DataObject\Shares::getList();
+        $list['shares'] = $shares;
         return $this->render('strategyManagement/overview.html.twig', [
-            'template_layout_name' => 'layouts/layout-str-management.html.twig'
+            'template_layout_name' => 'layouts/layout-str-management.html.twig',
+            'shares' => $list['shares']
         ]);
     }
 
@@ -22,14 +25,20 @@ class StrategyManagementController extends BaseController
 
     public function ipStartAction(Request $request)
     {
+        $shares = DataObject\Shares::getList();
+        $list['shares'] = $shares;
         return $this->render('strategyManagement/ip-start.html.twig', [
-            'template_layout_name' => 'layouts/layout-str-management.html.twig'
+            'template_layout_name' => 'layouts/layout-str-management.html.twig',
+            'shares' => $list['shares']
         ]);
     }
     public function ipCapabilitiesAction(Request $request)
     {
+        $shares = DataObject\Shares::getList();
+        $list['shares'] = $shares;
         return $this->render('strategyManagement/ip-capabilities.html.twig', [
-            'template_layout_name' => 'layouts/layout-str-management.html.twig'
+            'template_layout_name' => 'layouts/layout-str-management.html.twig',
+            'shares' => $list['shares']
         ]);
     }
     public function freeConsultationAction(Request $request)
