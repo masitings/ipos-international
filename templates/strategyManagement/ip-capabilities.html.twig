@@ -222,10 +222,10 @@
                                 {{ pimcore_link('emailShare') }}
                                 </p>
                                 {% else %}
-                                {{ set facebookShare = pimcore_link('facebookShare') }}
-                                {{ set linkedinShare = pimcore_link('linkedinShare') }}
-                                {{ set xShare = pimcore_link('xShare') }}
-                                {{ set emailShare = pimcore_link('emailShare') }}
+                                {% set facebookShare = pimcore_link('facebookShare') %}
+                                {% set linkedinShare = pimcore_link('linkedinShare') %}
+                                {% set xShare = pimcore_link('xShare') %}
+                                {% set emailShare = pimcore_link('emailShare') %}
                                 <a href="{{ facebookShare.data.path }}" title="Share on Facebook">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
