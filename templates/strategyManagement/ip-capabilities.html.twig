@@ -768,10 +768,12 @@
 
         if (sliderContainer) {
             sliderContainer.addEventListener('mouseenter', () => {
+                console.log("SWIPER ENTER", swiper);
                 swiper.autoplay.stop();
             });
 
             sliderContainer.addEventListener('mouseleave', () => {
+                console.log("SWIPER LEAVE", swiper);
                 swiper.autoplay.start();
             });
         }
