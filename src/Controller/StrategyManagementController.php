@@ -36,7 +36,6 @@ class StrategyManagementController extends BaseController
     {
         $shares = DataObject\Shares::getList();
         $list['shares'] = $shares;
-        dd($list['shares']);
         return $this->render('strategyManagement/free-consultation.html.twig', [
             'template_layout_name' => 'layouts/layout-str-management.html.twig',
             'shares' => $list['shares']
