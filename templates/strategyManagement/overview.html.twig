@@ -109,84 +109,87 @@
     </section>
     <!-- Gain and Achieve Section -->
     <section class="gain-achieve-section">
-        <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt=""></div>
-        <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt=""></div>
-        </div>
         <div class="container">
-            <h2>
-                {{ pimcore_input('achieveTitle', {'placeholder': 'Who Will Benefit from IA/IP Management?'}) }}
-            </h2>
-            <div class="description">
-                {{  pimcore_wysiwyg("achieveDescription", {
-                        "height": 200,
-                        "placeholder" : "Add content..."
-                    })
-                }}
+            <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt="">
             </div>
-            <div class="gain-achieve-grid">
-                <!-- Global Exposure -->
-                <div class="gain-item">
-                    {{ pimcore_image("gain1") }}
-                    {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
-                    <div>
-                        <h3>{{ pimcore_input('gain1Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
-                        {{  pimcore_wysiwyg("gain1desc", {
-                                "height": 200,
-                                "placeholder" : "Add content..."
-                            })
-                        }}
-                    </div>
+            <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt=""></div>
+            </div>
+            <div class="container">
+                <h2>
+                    {{ pimcore_input('achieveTitle', {'placeholder': 'Who Will Benefit from IA/IP Management?'}) }}
+                </h2>
+                <div class="description">
+                    {{  pimcore_wysiwyg("achieveDescription", {
+                            "height": 200,
+                            "placeholder" : "Add content..."
+                        })
+                    }}
                 </div>
-                <!-- Career Growth -->
-                <div class="gain-item">
-                    {{ pimcore_image("gain2") }}
-                    {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
-                    <div>
-                        <h3>{{ pimcore_input('gain2Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
-                        {{  pimcore_wysiwyg("gain2desc", {
-                                "height": 200,
-                                "placeholder" : "Add content..."
-                            })
-                        }}
+                <div class="gain-achieve-grid">
+                    <!-- Global Exposure -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain1") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain1Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain1desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
                     </div>
-                </div>
-                <!-- Diverse Career Paths -->
-                <div class="gain-item">
-                    {{ pimcore_image("gain3") }}
-                    {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
-                    <div>
-                        <h3>{{ pimcore_input('gain3Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
-                        {{  pimcore_wysiwyg("gain3desc", {
-                                "height": 200,
-                                "placeholder" : "Add content..."
-                            })
-                        }}
+                    <!-- Career Growth -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain2") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain2Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain2desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
                     </div>
-                </div>
-                <!-- Impactful Work -->
-                <div class="gain-item">
-                    {{ pimcore_image("gain4") }}
-                    {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
-                    <div>
-                        <h3>{{ pimcore_input('gain4Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
-                        {{  pimcore_wysiwyg("gain4desc", {
-                                "height": 200,
-                                "placeholder" : "Add content..."
-                            })
-                        }}
+                    <!-- Diverse Career Paths -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain3") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain3Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain3desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
                     </div>
-                </div>
-                <!-- Innovative Workspace -->
-                <div class="gain-item">
-                    {{ pimcore_image("gain5") }}
-                    {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
-                    <div>
-                        <h3>{{ pimcore_input('gain5Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
-                        {{  pimcore_wysiwyg("gain5desc", {
-                                "height": 200,
-                                "placeholder" : "Add content..."
-                            })
-                        }}
+                    <!-- Impactful Work -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain4") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain4Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain4desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
+                    </div>
+                    <!-- Innovative Workspace -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain5") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain5Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain5desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -275,6 +278,18 @@
                     </div>
                 </div>
                 <div class="testimonial-slider">
+                    <div class="m-arrow">
+                        <div class="prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
+                    </div>
+
                     <div class="testimonial-track">
                         {% if listTestimonies is not empty %}
                             {% for testimony in listTestimonies %}
@@ -297,6 +312,18 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
+                    </div>
+
+                    <div class="m-arrow">
+                        <div class="next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -376,7 +403,7 @@
                         <!-- Card 1: Our People & Culture -->
                         <div transition: ease-in-out 0.1s all;
                             class="courses_tab_content_item_card col-lg-6">
-                            <div class="card_image strategy_overview_img_cardss">
+                            <div class="card_image strategy_overview_img_card">
                                 {{ pimcore_image("cardImg1A", {
                                     "height": 1570,
                                     "width": 2093
@@ -400,7 +427,7 @@
                                 }) }}
                             </div>
                         </div>
-                        <div class="courses_tab_content_item_card col-lg-6">
+                        {# <div class="courses_tab_content_item_card col-lg-6">
                             <div class="card_image strategy_overview_img_card">
                                 {{ pimcore_image("cardImg2A", {
                                     "height": 1570,
@@ -424,7 +451,7 @@
                                     'textSuffix' : '<span class="find-out">Find out more</span>'
                                 }) }}
                             </div>
-                        </div>
+                        </div> #}
                     </div>
                 </div>
             </div>

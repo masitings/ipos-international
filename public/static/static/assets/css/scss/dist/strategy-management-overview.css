@@ -46,6 +46,16 @@
   .strategy-overview .main-image:hover img {
     transform: scale(1.1);
   }
+  .strategy-overview .main-image iframe {
+    margin-top: 112px;
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .main-image iframe {
+      height: 212px;
+      margin-top: 0;
+    }
+  }
   .strategy-overview .main-image img {
     transition: transform 0.5s ease;
     object-fit: cover;
@@ -77,6 +87,10 @@
     justify-content: flex-start;
   }
   .strategy-overview .discover-section .discover-content .key-benefit li svg {
+    margin-right: 12px;
+    min-width: 24px;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit li picture img {
     margin-right: 12px;
     min-width: 24px;
   }
@@ -277,7 +291,7 @@
   }
   @media screen and (min-width: 992px) {
     .strategy-overview .gain-achieve-section .container {
-      max-width: 960px;
+      max-width: 1280px;
     }
   }
   .strategy-overview .gain-achieve-section h2 {
@@ -634,6 +648,10 @@
     padding-bottom: 24px;
     padding-top: 120px;
     margin-bottom: 240px;
+  }
+  .strategy-overview .management-involves h1 {
+    border-bottom: 1px solid #A5ABB3;
+    padding-bottom: 24px;
   }
   @media screen and (max-width: 768px) {
     .strategy-overview .management-involves {

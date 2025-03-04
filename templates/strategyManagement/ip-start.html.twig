@@ -739,6 +739,13 @@
                 updateVideoContent($(this));
             });
 
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+
             arrowLeft.click(function () {
                 if (currentSlide > 0) {
                     currentSlide--;
@@ -771,6 +778,9 @@
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
             let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
 
             const updateVideoContent = (thumbnail) => {
                 const iframe = thumbnail.find("iframe");
@@ -817,11 +827,8 @@
             };
 
             const updateArrowState = () => {
-                arrowLeft.prop("disabled", currentSlide === 0);
-                arrowRight.prop(
-                    "disabled",
-                    currentSlide >= thumbnails.length - visibleThumbnails
-                );
+                arrowLeft.toggle(currentSlide > 0);
+                arrowRight.toggle(currentSlide < thumbnails.length - visibleThumbnails);
             };
 
             thumbnails.click(function () {
@@ -846,7 +853,23 @@
                 }
             });
 
-            // Trigger click on the first thumbnail to initialize content
+            // Dragging functionality
+            thumbnailCarousel.on('mousedown touchstart', (e) => {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+            thumbnailCarousel.on('mousemove touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 2;
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            thumbnailCarousel.on('mouseup touchend', () => {
+                isDragging = false;
+            });
             thumbnails.first().click();
             updateArrowState();
         };
@@ -862,6 +885,9 @@
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
             let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
 
             const updateVideoContent = (thumbnail) => {
                 const iframe = thumbnail.find("iframe");
@@ -906,17 +932,42 @@
             };
 
             const updateArrowState = () => {
-                arrowLeft.prop("disabled", currentSlide === 0);
-                arrowRight.prop(
-                    "disabled",
-                    currentSlide >= thumbnails.length - visibleThumbnails
-                );
+                if (currentSlide === 0) {
+                    arrowLeft.hide();
+                } else {
+                    arrowLeft.show();
+                }
+
+                if (currentSlide >= thumbnails.length - visibleThumbnails) {
+                    arrowRight.hide();
+                } else {
+                    arrowRight.show();
+                }
             };
 
             thumbnails.click(function () {
                 thumbnails.removeClass("active");
                 $(this).addClass("active");
                 updateVideoContent($(this));
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+                thumbnailCarousel.css('cursor', 'grabbing');
+            });
+
+            $(document).on('mousemove touchmove', function (e) {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 1.5; // Speed up the scroll
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            $(document).on('mouseup touchend', function () {
+                isDragging = false;
+                thumbnailCarousel.css('cursor', 'grab');
             });
 
             arrowLeft.click(function () {
