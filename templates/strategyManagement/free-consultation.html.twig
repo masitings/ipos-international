@@ -61,11 +61,11 @@
                     </div>
 
                     <div class="interest-wrapper">
-                        {% if list.shares is not empty %}
+                        {% if shares is not empty %}
                             <div class="share-section">
                                 <span class="share">SHARE</span>
                                 <div class="share-icons">
-                                    {% for share in list.shares %}
+                                    {% for share in shares %}
                                         {% if share.getShare().getClass() == 'share-icon facebook' %}
                                             <a href="{{ share.getShare().getDirect() }}" title="Share on Facebook">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
@@ -285,11 +285,11 @@
         </div>
 
         <div class="interest-wrapper">
-            {% if list.shares is not empty %}
+            {% if shares is not empty %}
                 <div class="share-section">
                     <span class="share">SHARE</span>
                     <div class="share-icons">
-                        {% for share in list.shares %}
+                        {% for share in shares %}
                             {% if share.getShare().getClass() == 'share-icon facebook' %}
                                 <a href="{{ share.getShare().getDirect() }}" title="Share on Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
