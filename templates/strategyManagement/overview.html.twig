@@ -503,8 +503,19 @@
                     {{ pimcore_input('footerSubTitle', {'placeholder': 'Subtitle'}) }}
                 </p>
                 <div class="cta-buttons">
-                    <button class="btn btn-outline">Find Out More</button>
-                    <button class="btn btn-primary">Book Free Consultation</button>
+                    {% if editmode %}
+                        {{ pimcore_link('footersLink1') }}
+                        {{ pimcore_link('footersLink2') }}
+                    {% else %}
+                        {% set linkFooter1 = pimcore_link('footersLink1') %}
+                        {% set linkFooter2 = pimcore_link('footersLink2') %}
+                        <button class="btn btn-outline">
+                            <a href="{{linkFooter1.data.path}}">Find Out More</a>
+                        </button>
+                        <button class="btn btn-primary">
+                            <a href="{{linkFooter2.data.path}}">Book Free Consultation</a>
+                        </button>
+                    {% endif %}
                 </div>
             </div>
         </div>
