@@ -64,7 +64,25 @@
                         <div class="share-section">
                             <div class="share">SHARE</div>
                             <div class="share-icons">
-                                <a href="#" title="Share on Facebook">
+                                {% if editmode %}
+                                <p>
+                                {{ pimcore_link('facebookShare') }}
+                                </p>
+                                <p>
+                                {{ pimcore_link('linkedinShare') }}
+                                </p>
+                                <p>
+                                {{ pimcore_link('xShare') }}
+                                </p>
+                                <p>
+                                {{ pimcore_link('emailShare') }}
+                                </p>
+                                {% else %}
+                                {{ set facebookShare = pimcore_link('facebookShare') }}
+                                {{ set linkedinShare = pimcore_link('linkedinShare') }}
+                                {{ set xShare = pimcore_link('xShare') }}
+                                {{ set emailShare = pimcore_link('emailShare') }}
+                                <a href="{{ facebookShare.data.path }}" title="Share on Facebook">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
@@ -75,7 +93,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </a>
-                                <a href="#" title="Share on LinkedIn">
+                                <a href="{{ linkedinShare.data.path }}" title="Share on LinkedIn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
@@ -85,7 +103,7 @@
                                             d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
                                     </svg>
                                 </a>
-                                <a href="#" title="Share on X">
+                                <a href="{{ xShare.data.path }}" title="Share on X">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
@@ -94,7 +112,7 @@
                                             d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
                                     </svg>
                                 </a>
-                                <a href="#" title="Share via Email">
+                                <a href="{{ emailShare.data.path }}" title="Share via Email">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                         <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="1.5"
@@ -108,6 +126,7 @@
                                             d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
                                     </svg>
                                 </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -278,7 +297,8 @@
             <div class="share-section">
                 <div class="share">SHARE</div>
                 <div class="share-icons">
-                    <a href="#" title="Share on Facebook">
+                    {% if facebookShare is not empty %}
+                    <a href="{{ facebookShare.data.path }}" title="Share on Facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
@@ -287,7 +307,9 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </a>
-                    <a href="#" title="Share on LinkedIn">
+                    {% endif %}
+                    {% if linkedinShare is not empty %}
+                    <a href="{{ linkedinShare.data.path }}" title="Share on LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
@@ -295,7 +317,9 @@
                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
                         </svg>
                     </a>
-                    <a href="#" title="Share on X">
+                    {% endif %}
+                    {% if xShare is not empty %}
+                    <a href="{{ xShare.data.path }}" title="Share on X">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -303,7 +327,9 @@
                                 d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
                         </svg>
                     </a>
-                    <a href="#" title="Share via Email">
+                    {% endif %}
+                    {% if emailShare is not empty %}
+                    <a href="{{ emailShare.data.path }}" title="Share via Email">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -314,6 +340,7 @@
                                 d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
                         </svg>
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
