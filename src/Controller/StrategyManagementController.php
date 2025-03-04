@@ -34,8 +34,12 @@ class StrategyManagementController extends BaseController
     }
     public function freeConsultationAction(Request $request)
     {
+        $shares = DataObject\Shares::getList();
+        $list['shares'] = $shares;
+
         return $this->render('strategyManagement/free-consultation.html.twig', [
-            'template_layout_name' => 'layouts/layout-str-management.html.twig'
+            'template_layout_name' => 'layouts/layout-str-management.html.twig',
+            'shares' => $list['shares']
         ]);
     }
 }
