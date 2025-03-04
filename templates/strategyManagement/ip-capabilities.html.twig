@@ -927,6 +927,10 @@
             loop: true,
             slidesPerView: 6,
             spaceBetween: 50,
+            autoplay: {
+                delay: 1000,
+                disableOnInteraction: false,
+            },
             navigation: {
                 nextEl: '.trusted-logo-next',
                 prevEl: '.trusted-logo-prev',
@@ -940,6 +944,19 @@
                 }
             }
         });
+
+        const sliderContainer = document.querySelector('.trusted-logo-slider');
+
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                swiper.autoplay.stop();
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                swiper.autoplay.start();
+            });
+        }
     });
+
 </script>
 {% endblock %}
