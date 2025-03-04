@@ -763,9 +763,24 @@
                 }
             }
         });
-
+        console.log("Autoplay Running:", swiper.autoplay);
         const sliderContainer = document.querySelector('.trusted-logo-slider');
+        let attempts = 0;  // Track attempts
+        const maxAttempts = 10;  // Max retries
 
+        const checkAutoplay = setInterval(() => {
+            console.log(`Attempt ${attempts + 1}: Autoplay Running -`, swiper.autoplay);
+
+            /*if (!swiper.autoplay.running) {
+                swiper.autoplay.start();
+            }*/
+
+            attempts++;
+            if (swiper.autoplay.running || attempts >= maxAttempts) {
+                clearInterval(checkAutoplay);  // Stop checking after success or 10 attempts
+                console.log("Autoplay started or max attempts reached.");
+            }
+        }, 1000); // Check every second
         /*if (sliderContainer) {
             sliderContainer.addEventListener('mouseenter', () => {
                 swiper.autoplay.stop();
