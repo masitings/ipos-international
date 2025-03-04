@@ -499,7 +499,7 @@
     margin-bottom: 80px;
     /* Custom navigation buttons */
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 821px) {
     .trusted-logo-section {
       margin-top: 170px;
       margin-bottom: 32px;
