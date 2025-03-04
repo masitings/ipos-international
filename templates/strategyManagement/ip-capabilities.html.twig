@@ -923,6 +923,7 @@
     });
 
     document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOMContentLoaded FOR TRUSTED LOGO SLIDER");
         var swiper = new Swiper('.trusted-logo-slider', {
             loop: true,
             slidesPerView: 6,
@@ -949,10 +950,12 @@
 
         if (sliderContainer) {
             sliderContainer.addEventListener('mouseenter', () => {
+                console.log("mouseenter FOR TRUSTED LOGO SLIDER");
                 swiper.autoplay.stop();
             });
 
             sliderContainer.addEventListener('mouseleave', () => {
+                console.log("mouseleave FOR TRUSTED LOGO SLIDER");
                 swiper.autoplay.start();
             });
         }
