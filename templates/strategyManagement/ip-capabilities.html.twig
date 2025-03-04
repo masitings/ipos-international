@@ -747,7 +747,7 @@
             slidesPerView: 6,
             spaceBetween: 50,
             autoplay: {
-                delay: 2000,
+                delay: 3000,
                 disableOnInteraction: false,
             },
             navigation: {
@@ -768,12 +768,11 @@
 
         if (sliderContainer) {
             sliderContainer.addEventListener('mouseenter', () => {
-                console.log("SWIPER ENTER", swiper);
                 swiper.autoplay.stop();
             });
 
             sliderContainer.addEventListener('mouseleave', () => {
-                console.log("SWIPER LEAVE", swiper);
+                console.log("SWIPER LEAVE", swiper,autoplay);
                 swiper.autoplay.start();
             });
         }
