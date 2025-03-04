@@ -45,27 +45,16 @@
                         </div>
                     </div>
 
-                    <div class="video-section">
+                    {# <div class="video-section">
                         <h3>{{ pimcore_input('IPContentWhatTitle', {'placeholder': 'Are you IP Capabilities?'})}}</h3>
                         {{  pimcore_wysiwyg("IPContentWhatIfContent", {
                                 "placeholder" : "edit content 2..."
                             })
                         }}
                         <div class="video-container m-b-40">
-                            <!-- <img src="../assets/images/credential_banner.457068b.png" alt="Video Thumbnail"> -->
-                            {# {% if editmode %} #}
                             {{ pimcore_video("IPContentWhatIfContentVideo", {'height': 315, 'width': 560}) }}
-                            {# {% else %}
-                                {% set contentVideo = pimcore_image("IPContentWhatIfContentVideo") %}
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/lCEesy6yJsQ?si=Q8lPWNahzIQfgoFD"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                                </iframe>
-                            {% endif %} #}
                         </div>
-                    </div>
+                    </div> #}
 
                     <div>
                     <h3>{{ pimcore_input('IPCapQuestionContentTitle2', {'placeholder': 'Are you IP Capabilities?'})}}</h3>
