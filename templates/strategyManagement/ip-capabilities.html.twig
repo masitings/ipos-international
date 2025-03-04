@@ -357,6 +357,10 @@
                                 {% set image = trusted.getImage() %}
                                 <div class="swiper-slide"><img src="{{ image }}"></div>
                             {% endfor %}
+                            {% for trusted in listTrusted %}
+                                {% set image = trusted.getImage() %}
+                                <div class="swiper-slide"><img src="{{ image }}"></div>
+                            {% endfor %}
                     {% endif %}
                 </div>
             </div>
