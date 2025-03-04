@@ -776,7 +776,7 @@
             }*/
 
             attempts++;
-            if (swiper.autoplay.running || attempts >= maxAttempts) {
+            if (attempts >= maxAttempts) {
                 clearInterval(checkAutoplay);  // Stop checking after success or 10 attempts
                 console.log("Autoplay started or max attempts reached.");
             }
