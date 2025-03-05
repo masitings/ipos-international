@@ -430,6 +430,7 @@
     }
   }
   .strategy-overview .explore-section.solutions .tabs .tab-button {
+    color: black;
     background: none;
     border: none;
     position: relative;
