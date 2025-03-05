@@ -47,6 +47,7 @@
                                     "placeholder" : "Add content..."
                             })
                         }}
+                        <p style="margin-bottom: 24px;">&nbsp;</p>
                         <ul class="key-benefit">
                             <li>
                                 {# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" fill="none">
@@ -544,12 +545,8 @@
                     {% else %}
                         {% set linkFooter1 = pimcore_link('footersLink1') %}
                         {% set linkFooter2 = pimcore_link('footersLink2') %}
-                        <button class="btn btn-outline">
-                            <a href="{{linkFooter1.data.path}}">Find Out More</a>
-                        </button>
-                        <button class="btn btn-primary">
-                            <a href="{{linkFooter2.data.path}}">Book Free Consultation</a>
-                        </button>
+                            <a class="btn btn-outline" href="{{linkFooter1.data.path}}">Find Out More</a>
+                            <a  class="btn btn-primary" href="{{linkFooter2.data.path}}">Book Free Consultation</a>
                     {% endif %}
                 </div>
             </div>
