@@ -127,161 +127,159 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <p >{{ pimcore_input('IPStartAfterImage',{'placeholder': 'We\'ve advised over 200 companies on IA and IP issues to date. We intimately understand how
-                            start-ups can navigate these issues. IP Start will give you the head start you need to
-                            manage your IA and IP, navigate obstacles, and prepare you for scaling.'}) }}</p>
-                </div>
-                <div class="m-b-30">
-                    <h6 class="h6">{{ pimcore_input('IPStartBonusTitle',{'placeholder': 'Here\'s what you’ll get for FREE:'}) }}</h6>
-                    <div class="m-b-15 m-t-15 point-wrap">
-                        <ol>
-                            <li>
-                                <div class="d-flex align-items-center">
+                    <div>
+                        <p >{{ pimcore_input('IPStartAfterImage',{'placeholder': 'We\'ve advised over 200 companies on IA and IP issues to date. We intimately understand how
+                                start-ups can navigate these issues. IP Start will give you the head start you need to
+                                manage your IA and IP, navigate obstacles, and prepare you for scaling.'}) }}</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h6 class="h6">{{ pimcore_input('IPStartBonusTitle',{'placeholder': 'Here\'s what you’ll get for FREE:'}) }}</h6>
+                        <div class="m-b-15 m-t-15 point-wrap">
+                            <ol>
+                                <li>
+                                    <div class="d-flex align-items-center">
+                                        <span class="m-r-20">
+                                            {{ pimcore_image('IPStartBonus1') }}
+                                        </span>
+                                        <span>{{ pimcore_input('IPStartBonusTitle1',{'placeholder': '45-min consultation on your IA and IP'}) }}</span></div>
+                                </li>
+                                <li>
+                                    <div class="d-flex align-items-center">
                                     <span class="m-r-20">
-                                        {{ pimcore_image('IPStartBonus1') }}
+                                            {{ pimcore_image('IPStartBonus2') }}    
                                     </span>
-                                    <span>{{ pimcore_input('IPStartBonusTitle1',{'placeholder': '45-min consultation on your IA and IP'}) }}</span></div>
-                            </li>
-                            <li>
-                                <div class="d-flex align-items-center">
-                                <span class="m-r-20">
-                                        {{ pimcore_image('IPStartBonus2') }}    
-                                </span>
-                                <span>{{ pimcore_input('IPStartBonusTitle2',{'placeholder': 'IP Essentials for Business course'}) }}</span></div>
-                            </li>
-                            <li>
-                                <div class="d-flex align-items-center">
-                                <span class="m-r-20">
-                                        {{ pimcore_image('IPStartBonus3') }}    
-                                </span>
-                                <span>{{ pimcore_input('IPStartBonusTitle3',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
-                            </li>
-                            <li>
-                                <div class="d-flex align-items-center">
-                                <span class="m-r-20">
-                                        {{ pimcore_image('IPStartBonus4') }}    
-                                </span>
-                                <span>{{ pimcore_input('IPStartBonusTitle4',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="divider-content"></div>
-                    <h3>{{ pimcore_input('IPStartCommunityTitle',{'placeholder': 'Join our community'}) }}</h3>
-                    <p>{{ pimcore_input('IPStartCommunitySubTitle',{'placeholder': '
-                        Be a part of our vibrant, growing community of start-ups, accelerators, and incubators today!
-                        This is an invite-only programme for start-ups working with our partner accelerators.
-                    '}) }}</p>
-
-                    {% if editmode %}
-                    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
-                    <p><i>Data 1</i></p>
-                    {{ pimcore_relations('accelerator',{
-                        "types": ["object"],
-                        "classes" : [
-                            "Accelerator"
-                        ]
-                    }) }}
-                    </div>
-                    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
-                    <p><i>Data 2</i></p>
-                    {{ pimcore_relations('incubator',{
-                        "types": ["object"],
-                        "classes" : [
-                            "Incubator"
-                        ]
-                    }) }}
-                    </div>
-                    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
-                    <p><i>Data 3</i></p>
-                    {{ pimcore_relations('communityPartner',{
-                        "types": ["object"],
-                        "classes" : [
-                            "CommunityPartner"
-                        ]
-                    }) }}
-                    </div>
-                    {% endif %}
-                    <div class="accordion-ipos-wrapper">
-                        <div class="accordion-ipos">
-                            <div class="accordion-item active">
-                                <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle1',{'placeholder': 'Accelerators'}) }}</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
-                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="1.5"
-                                            d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
-                                    </svg>
-                                </div>
-                                <div class="accordion-content">
-                                    {% set accelerators = pimcore_relations('accelerator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                                    <div class="image-group">
-                                    {% if accelerators is not empty %}
-                                        {% for accel in accelerators %}
-                                            {% set image = accel.getImage() %}
-                                            {% if image %}
-                                                <img style="scale: 2" src="{{ image }}">
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle2',{'placeholder': 'Incubators'}) }}</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
-                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="1.5"
-                                            d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
-                                    </svg></div>
-                                <div class="accordion-content">
-                                    {% set incubators = pimcore_relations('incubator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                                    <div class="image-group">
-                                    {% if incubators is not empty %}
-                                        {% for incu in incubators %}
-                                            {% set image = incu.getImage() %}
-                                            {% if image %}
-                                                <img src="{{ image }}">
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle3',{'placeholder': 'Community Partners'}) }}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
-                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="1.5"
-                                            d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
-                                    </svg></div>
-                                <div class="accordion-content">
-                                    {% set communityPartners = pimcore_relations('communityPartner', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                                    <div class="image-group">
-                                    {% if communityPartners is not empty %}
-                                        {% for comm in communityPartners %}
-                                            {% set image = comm.getImage() %}
-                                            {% if image %}
-                                                <img src="{{ image }}">
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                    </div>
-                                </div>
-                            </div>
+                                    <span>{{ pimcore_input('IPStartBonusTitle2',{'placeholder': 'IP Essentials for Business course'}) }}</span></div>
+                                </li>
+                                <li>
+                                    <div class="d-flex align-items-center">
+                                    <span class="m-r-20">
+                                            {{ pimcore_image('IPStartBonus3') }}    
+                                    </span>
+                                    <span>{{ pimcore_input('IPStartBonusTitle3',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
+                                </li>
+                                <li>
+                                    <div class="d-flex align-items-center">
+                                    <span class="m-r-20">
+                                            {{ pimcore_image('IPStartBonus4') }}    
+                                    </span>
+                                    <span>{{ pimcore_input('IPStartBonusTitle4',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
+                                </li>
+                            </ol>
                         </div>
-                        <div class="view-all-partners">
-                           {{ pimcore_link('linkUrl')}}
+                    </div>
+
+                    <div>
+                        <div class="divider-content"></div>
+                        <h3>{{ pimcore_input('IPStartCommunityTitle',{'placeholder': 'Join our community'}) }}</h3>
+                        <p>{{ pimcore_input('IPStartCommunitySubTitle',{'placeholder': '
+                            Be a part of our vibrant, growing community of start-ups, accelerators, and incubators today!
+                            This is an invite-only programme for start-ups working with our partner accelerators.
+                        '}) }}</p>
+
+                        {% if editmode %}
+                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                        <p><i>Data 1</i></p>
+                        {{ pimcore_relations('accelerator',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Accelerator"
+                            ]
+                        }) }}
+                        </div>
+                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                        <p><i>Data 2</i></p>
+                        {{ pimcore_relations('incubator',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Incubator"
+                            ]
+                        }) }}
+                        </div>
+                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                        <p><i>Data 3</i></p>
+                        {{ pimcore_relations('communityPartner',{
+                            "types": ["object"],
+                            "classes" : [
+                                "CommunityPartner"
+                            ]
+                        }) }}
+                        </div>
+                        {% endif %}
+                        <div class="accordion-ipos-wrapper">
+                            <div class="accordion-ipos">
+                                <div class="accordion-item active">
+                                    <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle1',{'placeholder': 'Accelerators'}) }}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion-content">
+                                        {% set accelerators = pimcore_relations('accelerator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                        <div class="image-group">
+                                        {% if accelerators is not empty %}
+                                            {% for accel in accelerators %}
+                                                {% set image = accel.getImage() %}
+                                                {% if image %}
+                                                    <img style="scale: 2" src="{{ image }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle2',{'placeholder': 'Incubators'}) }}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
+                                        </svg></div>
+                                    <div class="accordion-content">
+                                        {% set incubators = pimcore_relations('incubator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                        <div class="image-group">
+                                        {% if incubators is not empty %}
+                                            {% for incu in incubators %}
+                                                {% set image = incu.getImage() %}
+                                                {% if image %}
+                                                    <img style="scale: 1.7" src="{{ image }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle3',{'placeholder': 'Community Partners'}) }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
+                                        </svg></div>
+                                    <div class="accordion-content">
+                                        {% set communityPartners = pimcore_relations('communityPartner', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                        <div class="image-group">
+                                        {% if communityPartners is not empty %}
+                                            {% for comm in communityPartners %}
+                                                {% set image = comm.getImage() %}
+                                                {% if image %}
+                                                    <img style="scale: 1.7" src="{{ image }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="view-all-partners">
+                            {{ pimcore_link('linkUrl')}}
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="col-12 d-block d-md-none"></div>
@@ -422,7 +420,7 @@
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                 <div class="bottom-video-section row">
-                    <div class="col-lg-9 col-12 padding-right-30">
+                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
                         <div class="video-section">
                             <div class="video-container">
                             </div>
@@ -492,7 +490,7 @@
             <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
                 {% set list2 = pimcore_relations('objectsAll2', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                 <div class="bottom-video-section row">
-                    <div class="col-md-9 col-12 padding-right-30">
+                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
                         <div class="video-section">
                             <div class="video-container">
                             </div>
