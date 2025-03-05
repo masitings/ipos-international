@@ -437,6 +437,7 @@
     max-height: 300px;
     overflow-y: auto;
     margin-bottom: 20px;
+    word-wrap: break-word;
   }
   .image-video-slider .bottom-video-section .text-container .max-height-text::-webkit-scrollbar {
     width: 8px;
