@@ -433,8 +433,8 @@
                                     {% set videoTitle = carouselItem.getMediaTitle() %}
                                     {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
                                     {% set videoDescription = carouselItem.getMediaDescription() %}
+                                    {% set videoDescription1 = carouselItem.getMediaDescription1() %}
                                     {% set videoDescription2 = carouselItem.getMediaDescription2() %}
-                                    {% set videoDescription3 = carouselItem.getMediaDescription2() %}
                                     {% set mediaLink = carouselItem.getMediaExternalLink() %}
                                     {% set subTitle = carouselItem.getMediaSubTitle() %}
                                     <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
@@ -509,7 +509,7 @@
                                     {% set videoDescriptionA1 = carouselItemA.getMediaDescription1() %}
                                     {% set videoDescriptionA2 = carouselItemA.getMediaDescription2() %}
                                     {% set mediaLinkA = carouselItemA.getMediaExternalLink() %}
-                                    <div class="img-slider-container" data-title="{{ videoTitleA }}" data-description="{{ videoDescriptionA }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLinkA.path}}">
+                                    <div class="img-slider-container" data-title="{{ videoTitleA }}" data-description="{{ videoDescriptionA }}" data-description-one="{{ videoDescriptionA1 }}" data-description-two="{{ videoDescriptionA2 }}" data-link="{{mediaLinkA.path}}">
                                         {% if videoThumbnailA %}
                                         <img src="{{ videoThumbnailA }}" alt="{{ videoTitleA }}">
                                         {% endif %}
