@@ -290,10 +290,10 @@ body.classnames {
     transition: transform 0.3s ease-in-out;
     max-height: 308px;
     border-radius: 8px;
-    scrollbar-width: thin;
+    /* scrollbar-width: thin; */
     overflow-y: auto;
     /* For Firefox */
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    /* scrollbar-color: rgba(0, 0, 0, 0.2) transparent; */
   }
   .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar {
     width: 8px;
@@ -308,7 +308,7 @@ body.classnames {
     /* Customize the scrollbar track */
   }
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     .testimonial-section .testimonial-section-wrapper .testimonial-card {
       scrollbar-width: 2;
       -ms-overflow-style: none;
@@ -316,7 +316,7 @@ body.classnames {
     .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar {
       display: none;
     }
-  }
+  } */
   .testimonial-section .testimonial-section-wrapper .testimonial-card .testimonial-profile {
     display: flex;
     align-items: center;
