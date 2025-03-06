@@ -296,18 +296,18 @@ body.classnames {
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
   .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar {
-    width: 6px;
-    /* Width of the scrollbar */
+    width: 8px;
   }
   .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-    /* Scrollbar color */
+    background-color: #c1c1c1;
+    /* Customize the scrollbar thumb */
     border-radius: 10px;
   }
   .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar-track {
-    background: transparent;
-    /* Track color */
+    background-color: transparent;
+    /* Customize the scrollbar track */
   }
+
   @media screen and (min-width: 768px) {
     .testimonial-section .testimonial-section-wrapper .testimonial-card {
       scrollbar-width: 2;
