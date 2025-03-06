@@ -761,3 +761,11 @@ body.classnames {
   color: #777777;
   margin-right: 12px;
 }
+@media (min-width: 992px) {
+  .main-image {
+      padding-left: 30px;
+  }
+  .main-content {
+      padding-right: 0;
+  }
+}
