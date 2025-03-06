@@ -206,6 +206,9 @@
     .articles_details_container.ip-capabilities .container {
       padding: 0 30px;
     }
+    .articles_details_container.ip-capabilities .container.no-padding {
+      padding: 0 0;
+    }
   }
   .articles_details_container.ip-capabilities .container .apply-now-seaction {
     transition: all ease-in-out 0.5s;
@@ -464,7 +467,7 @@
   .articles_details_container.ip-capabilities .testimonial-section .testimonial-section-wrapper .testimonial-header .quote-icon {
     top: -152px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .articles_details_container.ip-capabilities .testimonial-section .testimonial-section-wrapper .testimonial-header .quote-icon {
       top: -131px;
     }
@@ -688,7 +691,7 @@
   }
   .consultation-section .info-box {
     display: flex;
-    width: 748px;
+    width: 900px;
     flex-direction: column;
     align-items: center;
     padding: 24px;

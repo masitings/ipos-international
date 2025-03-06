@@ -1,3 +1,13 @@
+body.classnames {
+  overflow-x: hidden;
+}
+@media screen and (max-width: 1200px) {
+  body.classnames .about_bg_circle {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
     .menu_layer.ipos-new-version-menu .menu_inner .menu-categories-listing .cat-link {
       text-align: right;
@@ -120,13 +130,13 @@
     height: 340px;
     margin-bottom: 120px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section {
       padding: 65px 0;
-      margin-bottom: 90px;
+      margin-bottom: 160px;
     }
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section .container {
       padding-right: 0;
       padding-left: 0;
@@ -141,7 +151,7 @@
     font-weight: 300;
     line-height: 55.2px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section h2 {
       text-align: center;
       font-size: 26px;
@@ -156,7 +166,7 @@
     width: 100%;
     justify-content: space-between;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section .testimonial-section-wrapper {
       display: block;
     }
@@ -172,7 +182,7 @@
     position: absolute;
     top: -72px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section .testimonial-section-wrapper .testimonial-header .quote-icon {
       position: absolute;
       top: -66px;
@@ -194,7 +204,7 @@
   .testimonial-section .testimonial-section-wrapper .slider-wrapper .navigate-button {
     margin-right: 21px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section .testimonial-section-wrapper .slider-wrapper .navigate-button {
       display: none;
     }
@@ -230,7 +240,7 @@
     display: flex;
     transition: transform 0.5s ease-in-out;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section .testimonial-section-wrapper .testimonial-slider .testimonial-track {
       margin-left: 20px;
     }
@@ -242,7 +252,7 @@
     box-sizing: border-box;
     padding: 10px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .testimonial-section .testimonial-section-wrapper .testimonial-slider .testimonial-slide {
       flex: 0 0 340px;
       max-width: 340px;
@@ -280,11 +290,27 @@
     transition: transform 0.3s ease-in-out;
     max-height: 308px;
     border-radius: 8px;
+    scrollbar-width: thin;
     overflow-y: auto;
+    /* For Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+  .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar {
+    width: 6px;
+    /* Width of the scrollbar */
+  }
+  .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Scrollbar color */
+    border-radius: 10px;
+  }
+  .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar-track {
+    background: transparent;
+    /* Track color */
   }
   @media screen and (min-width: 768px) {
     .testimonial-section .testimonial-section-wrapper .testimonial-card {
-      scrollbar-width: none;
+      scrollbar-width: 2;
       -ms-overflow-style: none;
     }
     .testimonial-section .testimonial-section-wrapper .testimonial-card::-webkit-scrollbar {
@@ -384,6 +410,54 @@
   .image-video-slider {
     margin-bottom: 50px;
   }
+  .image-video-slider .bottom-video-section {
+    display: flex;
+    align-items: start;
+    flex-wrap: nowrap;
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section.person {
+      width: 100%;
+    }
+  }
+  .image-video-slider .bottom-video-section.person .left-side {
+    width: 432px;
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section.person .left-side {
+      width: 100%;
+    }
+  }
+  .image-video-slider .bottom-video-section.person .left-side iframe,
+  .image-video-slider .bottom-video-section.person .left-side img {
+    width: 432px;
+    height: 432px;
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section.person .left-side iframe,
+    .image-video-slider .bottom-video-section.person .left-side img {
+      width: 176px;
+      height: 176px;
+    }
+  }
+  .image-video-slider .bottom-video-section .left-side {
+    width: 834px;
+    margin-right: 30px;
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section .left-side {
+      width: 100%;
+    }
+  }
+  .image-video-slider .bottom-video-section .right-side {
+    width: 100%;
+    display: contents;
+  }
   .image-video-slider .bottom-video-section .padding-left-24 {
     padding-left: 24px;
   }
@@ -400,7 +474,7 @@
   }
   .image-video-slider .bottom-video-section .video-container iframe,
   .image-video-slider .bottom-video-section .video-container img {
-    height: 431px;
+    height: 432px;
     object-fit: cover;
     border-radius: 24px;
     width: 100%;
@@ -428,16 +502,23 @@
     justify-content: center;
     border-top: 3px solid #470A68;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     .image-video-slider .bottom-video-section .text-container {
       margin-top: 30px;
     }
   }
   .image-video-slider .bottom-video-section .text-container .max-height-text {
-    max-height: 300px;
+    height: 285px;
     overflow-y: auto;
     margin-bottom: 20px;
     word-wrap: break-word;
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section .text-container .max-height-text {
+      height: auto;
+      max-height: 300px;
+      word-wrap: break-word;
+  }
   }
   .image-video-slider .bottom-video-section .text-container .max-height-text::-webkit-scrollbar {
     width: 8px;

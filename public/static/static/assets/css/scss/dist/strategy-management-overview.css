@@ -411,8 +411,13 @@
     }
   }
   .strategy-overview .explore-section {
-    padding: 120px 0;
+    padding: 80px 0;
     background-color: #fff;
+  }
+  @media screen and (max-width: 1200px) {
+    .strategy-overview .explore-section {
+      padding: 0 0;
+    }
   }
   .strategy-overview .explore-section.solutions {
     padding-bottom: 0;
@@ -759,7 +764,7 @@
     list-style-type: disc;
   }
   .strategy-overview .cta-section {
-    background-color: #4A148C;
+    background-color: #470A68;
     color: #fff;
     text-align: center;
     position: relative;

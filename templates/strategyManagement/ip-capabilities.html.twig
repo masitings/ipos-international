@@ -302,6 +302,17 @@
                     </div>
                 </div>
                 <div class="testimonial-slider">
+                    <div class="m-arrow">
+                        <div class="prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
+                    </div>
                     <div class="testimonial-track">
                         {% if listTestimonies is not empty %}
                             {% for testimony in listTestimonies %}
@@ -324,6 +335,17 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
+                    </div>
+                    <div class="m-arrow">
+                        <div class="next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -383,8 +405,8 @@
             {% else %}
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 {% set list = pimcore_relations('mediaImages', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                <div class="bottom-video-section row">
-                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
+                <div class="bottom-video-section person">
+                    <div class="left-side">
                         <div class="video-section">
                             <div class="video-container">
                             </div>
@@ -428,7 +450,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3 col-12">
+                    <div class="right-side">
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
                             <h4>&nbsp;</h4>
@@ -453,8 +475,8 @@
             {% else %}
             <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
                 {% set videoList = pimcore_relations('mediaVideos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                <div class="bottom-video-section row">
-                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
+                <div class="bottom-video-section">
+                    <div class="left-side">
                         <div class="video-section">
                             <div class="video-container">
                             </div>
@@ -505,7 +527,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3 col-12">
+                    <div class="right-side">
                         <div class="text-container person-slider">
                             <h2 style="margin-bottom: 10px">&nbsp;</h2>
                             <div class="max-height-text">
@@ -837,6 +859,12 @@
                 updateVideoContent($(this));
             });
 
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
             arrowLeft.click(function () {
                 if (currentSlide > 0) {
                     currentSlide--;
@@ -869,6 +897,9 @@
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
             let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
 
             const updateVideoContent = (thumbnail) => {
                 const iframe = thumbnail.find("iframe");
@@ -914,11 +945,8 @@
             };
 
             const updateArrowState = () => {
-                arrowLeft.prop("disabled", currentSlide === 0);
-                arrowRight.prop(
-                    "disabled",
-                    currentSlide >= thumbnails.length - visibleThumbnails
-                );
+                arrowLeft.toggle(currentSlide > 0);
+                arrowRight.toggle(currentSlide < thumbnails.length - visibleThumbnails);
             };
 
             thumbnails.click(function () {
@@ -943,6 +971,23 @@
                 }
             });
 
+            thumbnailCarousel.on('mousedown touchstart', (e) => {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+            thumbnailCarousel.on('mousemove touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 2;
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            thumbnailCarousel.on('mouseup touchend', () => {
+                isDragging = false;
+            });
+
             // Trigger click on the first thumbnail to initialize content
             thumbnails.first().click();
             updateArrowState();
@@ -959,6 +1004,9 @@
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
             let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
 
             const updateVideoContent = (thumbnail) => {
                 const iframe = thumbnail.find("iframe");
@@ -1004,17 +1052,42 @@
             };
 
             const updateArrowState = () => {
-                arrowLeft.prop("disabled", currentSlide === 0);
-                arrowRight.prop(
-                    "disabled",
-                    currentSlide >= thumbnails.length - visibleThumbnails
-                );
+                if (currentSlide === 0) {
+                    arrowLeft.hide();
+                } else {
+                    arrowLeft.show();
+                }
+
+                if (currentSlide >= thumbnails.length - visibleThumbnails) {
+                    arrowRight.hide();
+                } else {
+                    arrowRight.show();
+                }
             };
 
             thumbnails.click(function () {
                 thumbnails.removeClass("active");
                 $(this).addClass("active");
                 updateVideoContent($(this));
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+                thumbnailCarousel.css('cursor', 'grabbing');
+            });
+
+            $(document).on('mousemove touchmove', function (e) {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 1.5; // Speed up the scroll
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            $(document).on('mouseup touchend', function () {
+                isDragging = false;
+                thumbnailCarousel.css('cursor', 'grab');
             });
 
             arrowLeft.click(function () {

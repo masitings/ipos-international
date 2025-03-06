@@ -419,8 +419,8 @@
             {% else %}
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                <div class="bottom-video-section row">
-                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
+                <div class="bottom-video-section person">
+                    <div class="left-side">
                         <div class="video-section">
                             <div class="video-container">
                             </div>
@@ -464,7 +464,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3 col-12">
+                    <div class="right-side">
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
                             <h4>&nbsp;</h4>
@@ -489,8 +489,8 @@
             {% else %}
             <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
                 {% set list2 = pimcore_relations('objectsAll2', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                <div class="bottom-video-section row">
-                    <div class="col-lg-8 col-xl-9 col-12 padding-right-30">
+                <div class="bottom-video-section">
+                    <div class="left-side">
                         <div class="video-section">
                             <div class="video-container">
                             </div>
@@ -541,7 +541,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3 col-12">
+                    <div class="right-side">
                         <div class="text-container person-slider">
                             <h2 style="margin-bottom: 10px">&nbsp;</h2>
                             <div class="max-height-text">

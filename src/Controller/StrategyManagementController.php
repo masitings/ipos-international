@@ -30,8 +30,9 @@ class StrategyManagementController extends BaseController
                 $twitter = $item;
             }
         }
+
         return $this->render('strategyManagement/overview.html.twig', [
-            'template_layout_name' => 'layouts/layout-str-management.html.twig',
+            'template_layout_name' => 'layouts/layout-str-management-overview.html.twig',
             'shares' => $list['shares'],
             'facebook' => $facebook,
             'twitter' => $twitter,
