@@ -419,9 +419,11 @@
                                     {% set videoTitle = carouselItem.getMediaTitle() %}
                                     {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
                                     {% set videoDescription = carouselItem.getMediaDescription() %}
+                                    {% set videoDescription1 = carouselItem.getMediaDescription1() %}
+                                    {% set videoDescription2 = carouselItem.getMediaDescription2() %}
                                     {% set mediaLink = carouselItem.getMediaExternalLink() %}
                                     {% set subTitle = carouselItem.getMediaSubTitle() %}
-                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
                                         {% if videoThumbnail %}
                                         <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
                                         {% endif %}
@@ -454,7 +456,7 @@
                         <div class="text-container person-slider">
                             <h2>&nbsp;</h2>
                             <h4>&nbsp;</h4>
-                                <div class="max-height-text">
+                                <div class="max-height-text text-content">
                                     <p>&nbsp;</p>
                                 </div>
                             <div class="text-container-button">
@@ -490,8 +492,10 @@
                                     {% set mediaVideoUrl = mediaVideo.getMediaVideo() %}
                                     {% set mediaVideoThumbnail = mediaVideo.getMediaThumbnail() %}
                                     {% set mediaVideoDescription = mediaVideo.getMediaDescription() %}
+                                    {% set mediaVideoDescription1 = carouselItem.getMediaDescription1() %}
+                                    {% set mediaVideoDescription2 = carouselItem.getMediaDescription2() %}
                                     {% set mediaVideoExternalLink = mediaVideo.getMediaExternalLink() %}
-                                    <div class="img-slider-container" data-title="{{ mediaVideoTitle }}" data-description="{{ mediaVideoDescription }}" data-link="{{mediaVideoExternalLink.path}}">
+                                    <div class="img-slider-container" data-title="{{ mediaVideoTitle }}" data-description="{{ mediaVideoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaVideoExternalLink.path}}">
                                         {% if mediaVideoThumbnail %}
                                         <img src="{{ mediaVideoThumbnail }}" alt="{{ mediaVideoTitle }}">
                                         {% endif %}
@@ -893,6 +897,7 @@
             const arrowLeft = $("#main-articles-section-2 .arrow-left");
             const arrowRight = $("#main-articles-section-2 .arrow-right");
             const textContainer = $("#main-articles-section-2 .text-container");
+            const textContentWrapper = $("#main-articles-section-2 .text-content");
             const textLinkContainer = $("#main-articles-section-2 .text-container .text-container-button");
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
@@ -922,10 +927,20 @@
                 const title = thumbnail.data("title") || "Default Title";
                 const position = thumbnail.data("position") || "";
                 const description = thumbnail.data("description") || "Default Description";
+                const description1 = thumbnail.data("description-one") || "";
+                const description2 = thumbnail.data("description-two") || "";
                 const link = thumbnail.data("link") || "";
                 textContainer.find("h2").text(title);
                 textContainer.find("h4").text(position);
                 textContainer.find("p").text(description);
+                textContentWrapper.find("p:not(:first)").remove();
+
+                if (description1) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description1}</p>`);
+                }
+                if (description2) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description2}</p>`);
+                }
                 // Ensure `textLinkContainer` exists and `link` is not empty
                 if (link) {
                     // Remove existing link first (to prevent duplicates)
@@ -1000,6 +1015,7 @@
             const arrowLeft = $("#main-articles-section-3 .arrow-left");
             const arrowRight = $("#main-articles-section-3 .arrow-right");
             const textContainer = $("#main-articles-section-3 .text-container");
+            const textContentWrapper = $("#main-articles-section-3 .text-content");
             const textLinkContainer = $("#main-articles-section-3 .text-container .text-container-button");
             const thumbnailWidth = thumbnails.outerWidth(true);
             const visibleThumbnails = 3;
@@ -1029,10 +1045,20 @@
                 const title = thumbnail.data("title") || "Default Title";
                 const position = thumbnail.data("position") || "";
                 const description = thumbnail.data("description") || "Default Description";
+                const description1 = thumbnail.data("description-one") || "";
+                const description2 = thumbnail.data("description-two") || "";
                 const link = thumbnail.data("link") || "";
                 textContainer.find("h2").text(title);
                 textContainer.find("h4").text(position);
                 textContainer.find("p").text(description);
+                textContentWrapper.find("p:not(:first)").remove();
+
+                if (description1) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description1}</p>`);
+                }
+                if (description2) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description2}</p>`);
+                }
                 // Ensure `textLinkContainer` exists and `link` is not empty
                 if (link) {
                     // Remove existing link first (to prevent duplicates)
