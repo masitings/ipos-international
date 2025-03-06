@@ -763,7 +763,7 @@ body.classnames {
 }
 @media (min-width: 992px) {
   .main-image {
-      padding-left: 30px;
+      padding-left: 60px;
   }
   .main-content {
       padding-right: 0;
