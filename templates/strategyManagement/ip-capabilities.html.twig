@@ -492,8 +492,8 @@
                                     {% set mediaVideoUrl = mediaVideo.getMediaVideo() %}
                                     {% set mediaVideoThumbnail = mediaVideo.getMediaThumbnail() %}
                                     {% set mediaVideoDescription = mediaVideo.getMediaDescription() %}
-                                    {% set mediaVideoDescription1 = carouselItem.getMediaDescription1() %}
-                                    {% set mediaVideoDescription2 = carouselItem.getMediaDescription2() %}
+                                    {% set mediaVideoDescription1 = mediaVideo.getMediaDescription1() %}
+                                    {% set mediaVideoDescription2 = mediaVideo.getMediaDescription2() %}
                                     {% set mediaVideoExternalLink = mediaVideo.getMediaExternalLink() %}
                                     <div class="img-slider-container" data-title="{{ mediaVideoTitle }}" data-description="{{ mediaVideoDescription }}" data-description-one="{{ mediaVideoDescription1 }}" data-description-two="{{ mediaVideoDescription2 }}" data-link="{{mediaVideoExternalLink.path}}">
                                         {% if mediaVideoThumbnail %}
