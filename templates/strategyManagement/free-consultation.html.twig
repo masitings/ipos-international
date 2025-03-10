@@ -150,7 +150,7 @@
                                     {% set videoDescription2 = carouselItem.getMediaDescription2() %}
                                     {% set videoSubtitle = carouselItem.getMediaSubTitle() %}
                                     {% set mediaLink = carouselItem.getMediaExternalLink() %}
-                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{videoSubtitle}}">
                                         {% if videoThumbnail %}
                                         <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
                                         {% endif %}
