@@ -1,5 +1,6 @@
-.strategy-overview .about {
+  .strategy-overview .about {
     min-height: 800px;
+    padding-bottom: 40px;
   }
   @media screen and (max-width: 768px) {
     .strategy-overview .about {
@@ -11,7 +12,7 @@
   .strategy-overview .about .about_content h1 {
     font-family: Rubik;
     font-weight: 300;
-    font-size: 40px;
+    font-size: 35px;
     line-height: 50.4px;
     letter-spacing: 0%;
     margin-bottom: 50px;
