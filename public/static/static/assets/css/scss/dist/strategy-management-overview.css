@@ -4,7 +4,7 @@
   @media screen and (max-width: 768px) {
     .strategy-overview .about {
       padding: 25px;
-      padding-bottom: 68px;
+      /* padding-bottom: 68px; */
       min-height: auto;
     }
   }
@@ -255,7 +255,7 @@
   }
   @media screen and (max-width: 768px) {
     .strategy-overview .gain-achieve-section {
-      padding: 120px 20px 60px;
+      padding: 80px 20px 60px;
     }
   }
   .strategy-overview .gain-achieve-section .credential_content_left {
@@ -474,6 +474,9 @@
     .strategy-overview .explore-section {
       padding: 60px 40px;
     }
+    .strategy-overview .non-solution {
+      padding-top: 20px;
+    }
   }
   .strategy-overview .explore-section h2 {
     text-align: left;
@@ -665,7 +668,7 @@
       padding-right: 37px;
       border-bottom: none;
       padding-top: 60px;
-      margin-bottom: 100px;
+      margin-bottom: 70px;
     }
   }
   .strategy-overview .management-involves .steps {
