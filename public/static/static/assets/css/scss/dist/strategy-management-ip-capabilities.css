@@ -199,6 +199,12 @@
     margin-bottom: 0;
     margin-top: 0;
   }
+  @media screen and (min-width: 1024px) and (max-width: 1400px) {
+    .articles_details_container.ip-capabilities .academy_enterprise_detail__page .detail .detail_right .btn.full-white {
+      padding: 16px 0px;
+      font-size: 12px;
+    }
+  }
   .articles_details_container.ip-capabilities .container {
     position: relative;
   }
@@ -479,7 +485,7 @@
   }
   @media screen and (min-width: 768px) and (max-width: 1300px) {
     .padding-right-90 {
-      padding-right: 30px;
+      padding-right: 12px;
     }
   }
   
@@ -732,7 +738,7 @@
     transition: top 0.4s ease-in-out, bottom 0.4s ease-in-out;
     will-change: top;
   }
-  @media screen and (min-width: 1024px) and (max-width: 1400px) {
+  @media screen and (min-width: 1024px) and (max-width: 1200px) {
     .right-side-contact .wrap-right-side-sticky {
       max-width: 300px;
     }
@@ -741,7 +747,7 @@
     margin-top: 16px;
     margin-bottom: 0px !important;
   }
-  @media screen and (max-width: 1020px) {
+  @media screen and (max-width: 1200px) {
     .right-side-contact {
       display: none;
     }
