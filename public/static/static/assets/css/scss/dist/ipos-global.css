@@ -274,6 +274,7 @@ body.classnames {
     color: white;
     border: none;
     border-radius: 5px;
+    z-index: 1;
   }
   .testimonial-section .testimonial-section-wrapper .prev.disabled,
   .testimonial-section .testimonial-section-wrapper .next.disabled {
