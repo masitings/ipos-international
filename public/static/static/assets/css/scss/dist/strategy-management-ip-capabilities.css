@@ -340,6 +340,12 @@
     margin-top: 50px;
     margin-bottom: 150px;
   }
+  @media screen and (max-width: 1024px) {
+    .articles_details_container.ip-capabilities .ic-content {
+      margin-top: 50px;
+      margin-bottom: 70px;
+    }
+  }
   @media screen and (max-width: 768px) {
     .articles_details_container.ip-capabilities .ic-content {
       margin-top: 40px;

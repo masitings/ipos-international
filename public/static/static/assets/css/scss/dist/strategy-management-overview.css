@@ -666,6 +666,11 @@
     border-bottom: 1px solid #A5ABB3;
     padding-bottom: 24px;
   }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .management-involves {
+      margin-bottom: 80px;
+    }
+  }
   @media screen and (max-width: 768px) {
     .strategy-overview .management-involves {
       padding-left: 37px;
