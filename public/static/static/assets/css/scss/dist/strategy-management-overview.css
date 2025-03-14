@@ -416,6 +416,7 @@
   .strategy-overview .explore-section {
     padding: 80px 0;
     background-color: #fff;
+    margin-top: 80px;
   }
   @media screen and (max-width: 1200px) {
     .strategy-overview .explore-section {
@@ -770,6 +771,7 @@
     list-style-type: disc;
   }
   .strategy-overview .cta-section {
+    margin-top: 80px;
     background-color: #470A68;
     color: #fff;
     text-align: center;
