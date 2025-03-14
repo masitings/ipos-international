@@ -428,7 +428,7 @@ body.classnames {
     }
   }
   .image-video-slider .bottom-video-section.person .left-side {
-    width: 432px;
+    width: 276px;
   }
   @media screen and (max-width: 1200px) {
     .image-video-slider .bottom-video-section.person .left-side {
@@ -437,8 +437,8 @@ body.classnames {
   }
   .image-video-slider .bottom-video-section.person .left-side iframe,
   .image-video-slider .bottom-video-section.person .left-side img {
-    width: 432px;
-    height: 432px;
+    width: 276px;
+    height: 276px;
   }
   @media screen and (max-width: 1200px) {
     .image-video-slider .bottom-video-section.person .left-side iframe,
@@ -448,8 +448,22 @@ body.classnames {
     }
   }
   .image-video-slider .bottom-video-section.person .left-side .img-slider-container img {
-    width: 68px !important;
-    height: 68px !important;
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .image-video-slider .bottom-video-section.person .video-section {
+    height: 276px;
+  }
+  @media screen and (max-width: 1200px) {
+    .image-video-slider .bottom-video-section.person .video-section {
+      height: 176px;
+    }
+  }
+  .image-video-slider .bottom-video-section.person .text-container .max-height-text {
+    height: 126px;
+  }
+  .image-video-slider .bottom-video-section.person .right-side .text-container-button {
+    bottom: 82px;
   }
   .image-video-slider .bottom-video-section .left-side {
     width: 834px;

@@ -1,4 +1,7 @@
-  .strategy-overview .about {
+  .strategy-overview {
+    overflow-x: hidden;
+  }
+.strategy-overview .about {
     min-height: 800px;
   }
   @media screen and (max-width: 768px) {

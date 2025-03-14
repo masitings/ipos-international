@@ -1,5 +1,6 @@
 .articles_details_container.ip-capabilities {
     padding: 0 0;
+    overflow-x: hidden;
   }
   .articles_details_container.ip-capabilities .slider-ip-capabilities h3 {
     color: #000;
@@ -504,48 +505,99 @@
   .trusted-logo-section {
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
-    text-align: center;
-    padding: 50px 0;
+    /* text-align: center; */
+    /* padding: 50px 0; */
     margin-bottom: 80px;
     /* Custom navigation buttons */
+    overflow: hidden;
+    white-space: warp;
+    position: relative;
+    padding: 20px 0;
+    margin-top: 160px;
+    background: white;
   }
   @media screen and (max-width: 821px) {
     .trusted-logo-section {
-      margin-top: 170px;
-      margin-bottom: 32px;
+      /* margin-top: 170px;
+      margin-bottom: 32px; */
+      padding: 40px 0;
     }
   }
   .trusted-logo-section h3 {
-    color: #000;
-    text-align: center;
+    /* color: #000; */
+    /* text-align: center; */
     font-family: Poppins;
     font-size: 18px;
-    font-style: normal;
+    /* font-style: normal; */
     font-weight: 400;
+    letter-spacing: 0%;
+    text-align: center;
     line-height: 27px;
     margin-bottom: 30px;
   }
-  .trusted-logo-section .swiper {
+  .trusted-logo-section .container {
+    padding: 30px 0;
+  }
+  @media (max-width: 768px) {
+    .trusted-logo-section .container {
+      padding: 0 !important;
+    }
+  }
+  .logo-marquee {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .logo-track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: max-content;
+    animation: marquee 50s linear infinite;
+  }
+  
+  .logo-track img {
+    width: 150px;
+    /* Adjust as needed */
+    height: auto;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  
+  /* Keyframe Animation */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  /* Pause on Hover */
+  .logo-marquee:hover .logo-track {
+    animation-play-state: paused;
+  }
+  /* .trusted-logo-section .swiper {
     width: 100%;
     overflow: hidden;
-  }
-  .trusted-logo-section .swiper .swiper-wrapper {
+  } */
+  /* .trusted-logo-section .swiper .swiper-wrapper {
     align-items: center;
-  }
-  .trusted-logo-section .swiper-slide {
+  } */
+  /* .trusted-logo-section .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .trusted-logo-section .swiper-slide img {
+  } */
+  /* .trusted-logo-section .swiper-slide img {
     max-width: 150px;
     max-height: 150px;
-  }
-  .trusted-logo-section .navigation-button-warp {
+  } */
+  /* .trusted-logo-section .navigation-button-warp {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Responsive: Move arrows below for mobile */
   }
   .trusted-logo-section .navigation-button-warp .swiper-button-prev,
   .trusted-logo-section .navigation-button-warp .swiper-button-next {
@@ -582,7 +634,7 @@
       position: relative;
       margin-top: 10px;
     }
-  }
+  } */
   
   .consultation-section {
     text-align: center;

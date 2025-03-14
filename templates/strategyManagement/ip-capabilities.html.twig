@@ -368,17 +368,21 @@
                         ]
                     }) }}
             {% else %}
-            <div class="swiper trusted-logo-slider">
-                <div class="swiper-wrapper">
+            <div class="logo-marquee">
+                <div class="logo-track">
                     {% set listTrusted = pimcore_relations('trustedLogos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
                     {% if listTrusted is not empty %}
                             {% for trusted in listTrusted %}
                                 {% set image = trusted.getImage() %}
-                                <div class="swiper-slide"><img src="{{ image }}"></div>
+                                {# <div class="swiper-slide"> #}
+                                <img src="{{ image }}">
+                                {# </div> #}
                             {% endfor %}
                             {% for trusted in listTrusted %}
                                 {% set image = trusted.getImage() %}
-                                <div class="swiper-slide"><img src="{{ image }}"></div>
+                                {# <div class="swiper-slide"> #}
+                                <img src="{{ image }}">
+                                {# </div> #}
                             {% endfor %}
                     {% endif %}
                 </div>
@@ -772,7 +776,7 @@
         updateNavigationState();
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
+    {# document.addEventListener("DOMContentLoaded", function () {
         var swiper = new Swiper('.trusted-logo-slider', {
             loop: true,
             slidesPerView: 6,
@@ -817,7 +821,7 @@
                 swiper.autoplay.start();
             });
         }*/
-    });
+    }); #}
 
     $(document).ready(function () {
         // Handle Section-Image Logic
