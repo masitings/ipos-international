@@ -308,13 +308,13 @@
                             {% set link1 = pimcore_link('IPStartBannerRightLink1') %}
                             {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
 
-                            <a class="btn full-white"
+                            <a target="_blank" class="btn full-white"
                                 href="{{ link1.data.path }}">
                                 {{ link1.data.text }}
                             </a>
 
                             {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
-                            <a class="btn border-purple"
+                            <a target="_blank" class="btn border-purple"
                                 href="{{ link2.data.path }}">
                                 {{ link2.data.text }}
                             </a>
@@ -343,7 +343,11 @@
                                         <img src="{{image}}">
                                         {% endif %}
                                         <div class="right-side">
+                                        {% if carouselItem.className == 'Business' %}
+                                            <div class="job-tag">{{carouselItem.className}} Guides</div>
+                                            {% else %}
                                             <div class="job-tag">{{carouselItem.className}}</div>
+                                            {% endif %}
                                             <div class="job-title">{{carouselItem.getTitle()}}</div>
                                         </div>
                                     </a>
@@ -358,7 +362,7 @@
                                 <span class="share">SHARE</span>
                                 <div class="share-icons">
                                     {% if facebook is not empty %}
-                                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                                        <a target="_blank" href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
@@ -368,7 +372,7 @@
                                         </a>
                                     {% endif %}
                                     {% if linkedin is not empty %}
-                                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                                        <a target="_blank" href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
@@ -379,7 +383,7 @@
                                     {% endif %}
                                     
                                     {% if twitter is not empty %}
-                                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                                        <a target="_blank" href="{{ twitter.getShare().getDirect() }}" title="Share on X">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -390,7 +394,7 @@
                                     {% endif %}
 
                                     {% if email is not empty %}
-                                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                                        <a target="_blank" href="{{ email.getShare().getDirect() }}" title="Share via Email">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -416,7 +420,6 @@
             </h3>
             {% if editmode %}
                 <div class="d-flex gap-2">
-                    <div style="width: 50%;">
                         {{ pimcore_relations('objectsAll',{
                             "types": ["object"],
                             "classes" : [
@@ -431,7 +434,6 @@
                                 "IPStartMediaCarousel"
                             ]
                         }) }}
-                    </div>
                 </div>                
             {% else %}
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
@@ -581,10 +583,10 @@
                 <p>
                 {{ pimcore_input('mobileBannerDesc', {'placeholder': 'Whether you\'re an accelerator or need general assistance, we’re here to help.'}) }}
                 </p>
-                <a class="btn full-white mt-16 cta-button" href="{{ link1.data.path }}">
+                <a class="btn full-white mt-16 cta-button" target="_blank" href="{{ link1.data.path }}">
                     {{ link1.data.text }}
                 </a>
-                <a class="btn border-purple mt-16 cta-button" href="{{ link2.data.path }}">
+                <a class="btn border-purple mt-16 cta-button" target="_blank" href="{{ link2.data.path }}">
                     {{ link2.data.text }}
                 </a>
             </div>
@@ -602,7 +604,11 @@
                         <img src="{{image}}">
                         {% endif %}
                         <div class="right-side">
+                            {% if carouselItem.className == 'Business' %}
+                            <div class="job-tag">{{carouselItem.className}} Guides</div>
+                            {% else %}
                             <div class="job-tag">{{carouselItem.className}}</div>
+                            {% endif %}
                             <div class="job-title">{{carouselItem.getTitle()}}</div>
                         </div>
                     </a>
@@ -614,7 +620,7 @@
                 <span class="share">SHARE</span>
                 <div class="share-icons">
                     {% if facebook is not empty %}
-                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                        <a target="_blank" href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
@@ -624,7 +630,7 @@
                         </a>
                     {% endif %}
                     {% if linkedin is not empty %}
-                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                        <a target="_blank" href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
@@ -635,7 +641,7 @@
                     {% endif %}
                     
                     {% if twitter is not empty %}
-                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                        <a target="_blank" href="{{ twitter.getShare().getDirect() }}" title="Share on X">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -646,7 +652,7 @@
                     {% endif %}
 
                     {% if email is not empty %}
-                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                        <a target="_blank" href="{{ email.getShare().getDirect() }}" title="Share via Email">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -840,6 +846,7 @@
                         $('<a>', {
                             class: "button-1",
                             href: link,
+                            target: '_blank',
                             text: "Find out more"
                         })
                     );
@@ -957,6 +964,7 @@
                         $('<a>', {
                             class: "button-1",
                             href: link,
+                            target: '_blank',
                             text: "Find out more"
                         })
                     );
