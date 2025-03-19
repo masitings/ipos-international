@@ -247,6 +247,7 @@
                                                 {% set image = incu.getImage() %}
                                                 {% if image %}
                                                     <img style="scale: 1.7" src="{{ image }}">
+						    
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
@@ -268,7 +269,9 @@
                                             {% for comm in communityPartners %}
                                                 {% set image = comm.getImage() %}
                                                 {% if image %}
-                                                    <img style="scale: 1.7" src="{{ image }}">
+						    <div style="width: 180px; text-align: center; margin-bottom: 10px">
+                                                    <img style="scale: 1.65" src="{{ image }}">
+						    </div>
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
@@ -420,8 +423,8 @@
                                 "IPStartMediaCarouselImage"
                             ]
                         }) }}
-                    <div>
-                    <div>
+                    </div>
+                    <div style="width: 50%;">
                         {{ pimcore_relations('objectsAll2',{
                             "types": ["object"],
                             "classes" : [
