@@ -101,7 +101,7 @@
                             {{ pimcore_link('discoverLink') }}
                         {% else %}
                             {% set link = pimcore_link('discoverLink') %}
-                            <a class="discover-text-button" href="{{ link.data.path }}">{{ link.data.text }}</a>
+                            <a target="_blank" class="discover-text-button" href="{{ link.data.path }}">{{ link.data.text }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -499,7 +499,7 @@
                             }}
                             </div>
                         </div>
-                        <a href="{{linkExplore1.data.path}}" class="find-out">
+                        <a target="_blank" href="{{linkExplore1.data.path}}" class="find-out">
                             Find out more</a>
                     </div>
                 </div>
@@ -521,7 +521,7 @@
                             }}
                             </div>
                         </div>
-                        <a href="{{linkExplore2.data.path}}" class="find-out">
+                        <a target="_blank" href="{{linkExplore2.data.path}}" class="find-out">
                             Find out more</a>
                     </div>
                 </div>
@@ -545,8 +545,8 @@
                     {% else %}
                         {% set linkFooter1 = pimcore_link('footersLink1') %}
                         {% set linkFooter2 = pimcore_link('footersLink2') %}
-                            <a class="btn btn-outline" href="{{linkFooter1.data.path}}">Find Out More</a>
-                            <a  class="btn btn-primary" href="{{linkFooter2.data.path}}">Book Free Consultation</a>
+                            <a target="_blank" class="btn btn-outline" href="{{linkFooter1.data.path}}">Find Out More</a>
+                            <a target="_blank" class="btn btn-primary" href="{{linkFooter2.data.path}}">Book Free Consultation</a>
                     {% endif %}
                 </div>
             </div>
