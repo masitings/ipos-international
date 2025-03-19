@@ -22,7 +22,7 @@ class CommunityPartner extends Concrete
 {
 public const FIELD_IMAGE = 'image';
 
-protected $classId = "28";
+protected $classId = "29";
 protected $className = "CommunityPartner";
 protected $image;
 

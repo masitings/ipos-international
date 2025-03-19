@@ -6,22 +6,22 @@
  *
  * Fields Summary:
  * - mediaTitle [input]
+ * - mediaSubTitle [input]
  * - mediaDescription [textarea]
- * - mediaThumbnail [image]
- * - mediaVideo [video]
- * - mediaExternalLink [link]
  * - mediaDescription1 [textarea]
  * - mediaDescription2 [textarea]
+ * - mediaThumbnail [image]
+ * - mediaExternalLink [link]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => '30',
-   'name' => 'IPStartMediaCarousel',
+   'id' => '37',
+   'name' => 'FreeConsultationMediaImage',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1741241298,
+   'modificationDate' => 1741247180,
    'userOwner' => 31,
    'userModification' => 31,
    'parentClass' => '',
@@ -95,9 +95,39 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           1 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'name' => 'mediaSubTitle',
+             'title' => 'Media Sub Title',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'width' => '',
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
              'name' => 'mediaDescription',
-             'title' => 'Media Desc',
+             'title' => 'Media Description',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -119,7 +149,57 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'height' => '',
              'width' => '',
           )),
-          2 => 
+          3 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+             'name' => 'mediaDescription1',
+             'title' => 'Media Description 2',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'maxLength' => NULL,
+             'showCharCount' => false,
+             'excludeFromSearchIndex' => false,
+             'height' => '',
+             'width' => '',
+          )),
+          4 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+             'name' => 'mediaDescription2',
+             'title' => 'Media Description 2',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'maxLength' => NULL,
+             'showCharCount' => false,
+             'excludeFromSearchIndex' => false,
+             'height' => '',
+             'width' => '',
+          )),
+          5 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'name' => 'mediaThumbnail',
              'title' => 'Media Thumbnail',
@@ -142,40 +222,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'width' => '',
              'height' => '',
           )),
-          3 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
-             'name' => 'mediaVideo',
-             'title' => 'Media Video',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'uploadPath' => '',
-             'allowedTypes' => 
-            array (
-            ),
-             'supportedTypes' => 
-            array (
-              0 => 'asset',
-              1 => 'youtube',
-              2 => 'vimeo',
-              3 => 'dailymotion',
-            ),
-             'height' => '',
-             'width' => '',
-          )),
-          4 => 
+          6 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
              'name' => 'mediaExternalLink',
              'title' => 'Media External Link',
@@ -203,56 +250,6 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'disabledFields' => 
             array (
             ),
-          )),
-          5 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
-             'name' => 'mediaDescription1',
-             'title' => 'Media Description1',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'maxLength' => NULL,
-             'showCharCount' => false,
-             'excludeFromSearchIndex' => false,
-             'height' => '',
-             'width' => '',
-          )),
-          6 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
-             'name' => 'mediaDescription2',
-             'title' => 'Media Description2',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'maxLength' => NULL,
-             'showCharCount' => false,
-             'excludeFromSearchIndex' => false,
-             'height' => '',
-             'width' => '',
           )),
         ),
          'locked' => false,

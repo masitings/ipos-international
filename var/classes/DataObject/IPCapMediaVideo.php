@@ -6,11 +6,11 @@
  *
  * Fields Summary:
  * - mediaTitle [input]
- * - mediaSubTitle [input]
  * - mediaDescription [textarea]
  * - mediaDescription1 [textarea]
  * - mediaDescription2 [textarea]
  * - mediaThumbnail [image]
+ * - mediaVideo [video]
  * - mediaExternalLink [link]
  */
 
@@ -20,33 +20,32 @@ use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 
 /**
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing getList(array $config = [])
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaSubTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaVideo\Listing getList(array $config = [])
+* @method static \Pimcore\Model\DataObject\IPCapMediaVideo\Listing|\Pimcore\Model\DataObject\IPCapMediaVideo|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaVideo\Listing|\Pimcore\Model\DataObject\IPCapMediaVideo|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaVideo\Listing|\Pimcore\Model\DataObject\IPCapMediaVideo|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaVideo\Listing|\Pimcore\Model\DataObject\IPCapMediaVideo|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaVideo\Listing|\Pimcore\Model\DataObject\IPCapMediaVideo|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 */
 
-class IPStartMediaCarouselImage extends Concrete
+class IPCapMediaVideo extends Concrete
 {
 public const FIELD_MEDIA_TITLE = 'mediaTitle';
-public const FIELD_MEDIA_SUB_TITLE = 'mediaSubTitle';
 public const FIELD_MEDIA_DESCRIPTION = 'mediaDescription';
 public const FIELD_MEDIA_DESCRIPTION1 = 'mediaDescription1';
 public const FIELD_MEDIA_DESCRIPTION2 = 'mediaDescription2';
 public const FIELD_MEDIA_THUMBNAIL = 'mediaThumbnail';
+public const FIELD_MEDIA_VIDEO = 'mediaVideo';
 public const FIELD_MEDIA_EXTERNAL_LINK = 'mediaExternalLink';
 
-protected $classId = "34";
-protected $className = "IPStartMediaCarouselImage";
+protected $classId = "36";
+protected $className = "IPCapMediaVideo";
 protected $mediaTitle;
-protected $mediaSubTitle;
 protected $mediaDescription;
 protected $mediaDescription1;
 protected $mediaDescription2;
 protected $mediaThumbnail;
+protected $mediaVideo;
 protected $mediaExternalLink;
 
 
@@ -93,42 +92,6 @@ public function setMediaTitle(?string $mediaTitle): static
 	$this->markFieldDirty("mediaTitle", true);
 
 	$this->mediaTitle = $mediaTitle;
-
-	return $this;
-}
-
-/**
-* Get mediaSubTitle - Media Sub Title
-* @return string|null
-*/
-public function getMediaSubTitle(): ?string
-{
-	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-		$preValue = $this->preGetValue("mediaSubTitle");
-		if ($preValue !== null) {
-			return $preValue;
-		}
-	}
-
-	$data = $this->mediaSubTitle;
-
-	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-		return $data->getPlain();
-	}
-
-	return $data;
-}
-
-/**
-* Set mediaSubTitle - Media Sub Title
-* @param string|null $mediaSubTitle
-* @return $this
-*/
-public function setMediaSubTitle(?string $mediaSubTitle): static
-{
-	$this->markFieldDirty("mediaSubTitle", true);
-
-	$this->mediaSubTitle = $mediaSubTitle;
 
 	return $this;
 }
@@ -273,6 +236,42 @@ public function setMediaThumbnail(?\Pimcore\Model\Asset\Image $mediaThumbnail): 
 	$this->markFieldDirty("mediaThumbnail", true);
 
 	$this->mediaThumbnail = $mediaThumbnail;
+
+	return $this;
+}
+
+/**
+* Get mediaVideo - Media Video
+* @return \Pimcore\Model\DataObject\Data\Video|null
+*/
+public function getMediaVideo(): ?\Pimcore\Model\DataObject\Data\Video
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("mediaVideo");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->mediaVideo;
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set mediaVideo - Media Video
+* @param \Pimcore\Model\DataObject\Data\Video|null $mediaVideo
+* @return $this
+*/
+public function setMediaVideo(?\Pimcore\Model\DataObject\Data\Video $mediaVideo): static
+{
+	$this->markFieldDirty("mediaVideo", true);
+
+	$this->mediaVideo = $mediaVideo;
 
 	return $this;
 }

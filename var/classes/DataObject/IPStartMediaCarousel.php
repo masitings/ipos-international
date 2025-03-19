@@ -10,6 +10,8 @@
  * - mediaThumbnail [image]
  * - mediaVideo [video]
  * - mediaExternalLink [link]
+ * - mediaDescription1 [textarea]
+ * - mediaDescription2 [textarea]
  */
 
 namespace Pimcore\Model\DataObject;
@@ -22,6 +24,8 @@ use Pimcore\Model\DataObject\PreGetValueHookInterface;
 * @method static \Pimcore\Model\DataObject\IPStartMediaCarousel\Listing|\Pimcore\Model\DataObject\IPStartMediaCarousel|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\IPStartMediaCarousel\Listing|\Pimcore\Model\DataObject\IPStartMediaCarousel|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\IPStartMediaCarousel\Listing|\Pimcore\Model\DataObject\IPStartMediaCarousel|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPStartMediaCarousel\Listing|\Pimcore\Model\DataObject\IPStartMediaCarousel|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPStartMediaCarousel\Listing|\Pimcore\Model\DataObject\IPStartMediaCarousel|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 */
 
 class IPStartMediaCarousel extends Concrete
@@ -31,14 +35,18 @@ public const FIELD_MEDIA_DESCRIPTION = 'mediaDescription';
 public const FIELD_MEDIA_THUMBNAIL = 'mediaThumbnail';
 public const FIELD_MEDIA_VIDEO = 'mediaVideo';
 public const FIELD_MEDIA_EXTERNAL_LINK = 'mediaExternalLink';
+public const FIELD_MEDIA_DESCRIPTION1 = 'mediaDescription1';
+public const FIELD_MEDIA_DESCRIPTION2 = 'mediaDescription2';
 
-protected $classId = "29";
+protected $classId = "30";
 protected $className = "IPStartMediaCarousel";
 protected $mediaTitle;
 protected $mediaDescription;
 protected $mediaThumbnail;
 protected $mediaVideo;
 protected $mediaExternalLink;
+protected $mediaDescription1;
+protected $mediaDescription2;
 
 
 /**
@@ -89,7 +97,7 @@ public function setMediaTitle(?string $mediaTitle): static
 }
 
 /**
-* Get mediaDescription - Media Description
+* Get mediaDescription - Media Desc
 * @return string|null
 */
 public function getMediaDescription(): ?string
@@ -111,7 +119,7 @@ public function getMediaDescription(): ?string
 }
 
 /**
-* Set mediaDescription - Media Description
+* Set mediaDescription - Media Desc
 * @param string|null $mediaDescription
 * @return $this
 */
@@ -228,6 +236,78 @@ public function setMediaExternalLink(?\Pimcore\Model\DataObject\Data\Link $media
 	$this->markFieldDirty("mediaExternalLink", true);
 
 	$this->mediaExternalLink = $mediaExternalLink;
+
+	return $this;
+}
+
+/**
+* Get mediaDescription1 - Media Description1
+* @return string|null
+*/
+public function getMediaDescription1(): ?string
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("mediaDescription1");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->mediaDescription1;
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set mediaDescription1 - Media Description1
+* @param string|null $mediaDescription1
+* @return $this
+*/
+public function setMediaDescription1(?string $mediaDescription1): static
+{
+	$this->markFieldDirty("mediaDescription1", true);
+
+	$this->mediaDescription1 = $mediaDescription1;
+
+	return $this;
+}
+
+/**
+* Get mediaDescription2 - Media Description2
+* @return string|null
+*/
+public function getMediaDescription2(): ?string
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("mediaDescription2");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->mediaDescription2;
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set mediaDescription2 - Media Description2
+* @param string|null $mediaDescription2
+* @return $this
+*/
+public function setMediaDescription2(?string $mediaDescription2): static
+{
+	$this->markFieldDirty("mediaDescription2", true);
+
+	$this->mediaDescription2 = $mediaDescription2;
 
 	return $this;
 }

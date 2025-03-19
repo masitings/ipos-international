@@ -20,16 +20,16 @@ use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 
 /**
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing getList(array $config = [])
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaSubTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing getList(array $config = [])
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing|\Pimcore\Model\DataObject\FreeConsultationMediaImage|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing|\Pimcore\Model\DataObject\FreeConsultationMediaImage|null getByMediaSubTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing|\Pimcore\Model\DataObject\FreeConsultationMediaImage|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing|\Pimcore\Model\DataObject\FreeConsultationMediaImage|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing|\Pimcore\Model\DataObject\FreeConsultationMediaImage|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\FreeConsultationMediaImage\Listing|\Pimcore\Model\DataObject\FreeConsultationMediaImage|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 */
 
-class IPStartMediaCarouselImage extends Concrete
+class FreeConsultationMediaImage extends Concrete
 {
 public const FIELD_MEDIA_TITLE = 'mediaTitle';
 public const FIELD_MEDIA_SUB_TITLE = 'mediaSubTitle';
@@ -39,8 +39,8 @@ public const FIELD_MEDIA_DESCRIPTION2 = 'mediaDescription2';
 public const FIELD_MEDIA_THUMBNAIL = 'mediaThumbnail';
 public const FIELD_MEDIA_EXTERNAL_LINK = 'mediaExternalLink';
 
-protected $classId = "34";
-protected $className = "IPStartMediaCarouselImage";
+protected $classId = "37";
+protected $className = "FreeConsultationMediaImage";
 protected $mediaTitle;
 protected $mediaSubTitle;
 protected $mediaDescription;
@@ -170,7 +170,7 @@ public function setMediaDescription(?string $mediaDescription): static
 }
 
 /**
-* Get mediaDescription1 - Media Description 1
+* Get mediaDescription1 - Media Description 2
 * @return string|null
 */
 public function getMediaDescription1(): ?string
@@ -192,7 +192,7 @@ public function getMediaDescription1(): ?string
 }
 
 /**
-* Set mediaDescription1 - Media Description 1
+* Set mediaDescription1 - Media Description 2
 * @param string|null $mediaDescription1
 * @return $this
 */

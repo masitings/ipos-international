@@ -8,19 +8,19 @@
  * - profilePicture [image]
  * - name [input]
  * - title [input]
- * - testimonies [input]
+ * - testimonies [textarea]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => '25',
+   'id' => '32',
    'name' => 'Testimony',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1740550227,
-   'userOwner' => 3,
-   'userModification' => 3,
+   'modificationDate' => 1740556770,
+   'userOwner' => 31,
+   'userModification' => 31,
    'parentClass' => '',
    'implementsInterfaces' => '',
    'listingParentClass' => '',
@@ -49,7 +49,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
     array (
       0 => 
       \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'name' => 'General',
+         'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
          'title' => '',
@@ -145,7 +145,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           3 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
              'name' => 'testimonies',
              'title' => 'Testimonies',
              'tooltip' => '',
@@ -163,16 +163,11 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
+             'maxLength' => NULL,
              'showCharCount' => false,
+             'excludeFromSearchIndex' => false,
+             'height' => '',
              'width' => '',
-             'defaultValueGenerator' => '',
           )),
         ),
          'locked' => false,

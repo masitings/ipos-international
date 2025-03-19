@@ -22,7 +22,7 @@ class TrustedLogo extends Concrete
 {
 public const FIELD_IMAGE = 'image';
 
-protected $classId = "30";
+protected $classId = "33";
 protected $className = "TrustedLogo";
 protected $image;
 

@@ -20,16 +20,16 @@ use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 
 /**
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing getList(array $config = [])
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaSubTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\IPStartMediaCarouselImage\Listing|\Pimcore\Model\DataObject\IPStartMediaCarouselImage|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing getList(array $config = [])
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing|\Pimcore\Model\DataObject\IPCapMediaImage|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing|\Pimcore\Model\DataObject\IPCapMediaImage|null getByMediaSubTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing|\Pimcore\Model\DataObject\IPCapMediaImage|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing|\Pimcore\Model\DataObject\IPCapMediaImage|null getByMediaDescription1(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing|\Pimcore\Model\DataObject\IPCapMediaImage|null getByMediaDescription2(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\IPCapMediaImage\Listing|\Pimcore\Model\DataObject\IPCapMediaImage|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 */
 
-class IPStartMediaCarouselImage extends Concrete
+class IPCapMediaImage extends Concrete
 {
 public const FIELD_MEDIA_TITLE = 'mediaTitle';
 public const FIELD_MEDIA_SUB_TITLE = 'mediaSubTitle';
@@ -39,8 +39,8 @@ public const FIELD_MEDIA_DESCRIPTION2 = 'mediaDescription2';
 public const FIELD_MEDIA_THUMBNAIL = 'mediaThumbnail';
 public const FIELD_MEDIA_EXTERNAL_LINK = 'mediaExternalLink';
 
-protected $classId = "34";
-protected $className = "IPStartMediaCarouselImage";
+protected $classId = "35";
+protected $className = "IPCapMediaImage";
 protected $mediaTitle;
 protected $mediaSubTitle;
 protected $mediaDescription;

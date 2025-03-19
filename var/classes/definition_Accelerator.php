@@ -10,14 +10,14 @@
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => '26',
+   'id' => '27',
    'name' => 'Accelerator',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1740550697,
-   'userOwner' => 3,
-   'userModification' => 3,
+   'modificationDate' => 1740556945,
+   'userOwner' => 31,
+   'userModification' => 31,
    'parentClass' => '',
    'implementsInterfaces' => '',
    'listingParentClass' => '',

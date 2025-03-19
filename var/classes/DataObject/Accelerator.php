@@ -22,7 +22,7 @@ class Accelerator extends Concrete
 {
 public const FIELD_IMAGE = 'image';
 
-protected $classId = "26";
+protected $classId = "27";
 protected $className = "Accelerator";
 protected $image;
 

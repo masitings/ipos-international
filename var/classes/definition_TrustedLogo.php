@@ -10,14 +10,14 @@
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => '30',
+   'id' => '33',
    'name' => 'TrustedLogo',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1740556266,
-   'userOwner' => 3,
-   'userModification' => 3,
+   'modificationDate' => 1740556721,
+   'userOwner' => 31,
+   'userModification' => 31,
    'parentClass' => '',
    'implementsInterfaces' => '',
    'listingParentClass' => '',

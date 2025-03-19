@@ -8,7 +8,7 @@
  * - profilePicture [image]
  * - name [input]
  * - title [input]
- * - testimonies [input]
+ * - testimonies [textarea]
  */
 
 namespace Pimcore\Model\DataObject;
@@ -31,7 +31,7 @@ public const FIELD_NAME = 'name';
 public const FIELD_TITLE = 'title';
 public const FIELD_TESTIMONIES = 'testimonies';
 
-protected $classId = "25";
+protected $classId = "32";
 protected $className = "Testimony";
 protected $profilePicture;
 protected $name;

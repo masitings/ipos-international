@@ -22,7 +22,7 @@ class Incubator extends Concrete
 {
 public const FIELD_IMAGE = 'image';
 
-protected $classId = "27";
+protected $classId = "28";
 protected $className = "Incubator";
 protected $image;
 
