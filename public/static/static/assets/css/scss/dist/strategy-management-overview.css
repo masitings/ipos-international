@@ -1,0 +1,943 @@
+  .strategy-overview {
+    overflow-x: hidden;
+  }
+.strategy-overview .about {
+    min-height: 800px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .about {
+      padding: 25px;
+      /* padding-bottom: 68px; */
+      min-height: auto;
+    }
+  }
+  .strategy-overview .about .about_content h1 {
+    font-family: Rubik;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 50.4px;
+    letter-spacing: 0%;
+    margin-bottom: 50px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .about .about_content h1 {
+      margin-bottom: 25px;
+    }
+  }
+  .strategy-overview .about .about_content .about-content-button {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #470A68;
+    padding: 16px;
+    display: block;
+    width: fit-content;
+    background: white;
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .about .about_content .about-content-button {
+      margin-bottom: 25px;
+    }
+  }
+  .strategy-overview .main-image {
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+  }
+  .strategy-overview .main-image:hover img {
+    transform: scale(1.1);
+  }
+  .strategy-overview .main-image iframe {
+    margin-top: 112px;
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .main-image iframe {
+      height: 212px;
+      margin-top: 0;
+    }
+  }
+  .strategy-overview .main-image img {
+    transition: transform 0.5s ease;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 112px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .main-image img {
+      width: 100%;
+      height: 212px;
+      margin-top: 0;
+    }
+  }
+  .strategy-overview .discover-section {
+    background: #F6F3F7;
+  }
+  .strategy-overview .discover-section .discover-content {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    align-items: stretch;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit {
+    margin-bottom: 20px;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit li {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit li svg {
+    margin-right: 12px;
+    min-width: 24px;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit li picture img {
+    margin-right: 12px;
+    min-width: 24px;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit-link li {
+    color: #333;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+  }
+  .strategy-overview .discover-section .discover-content .key-benefit-link li a {
+    color: var(--Bright-Orange, #E34A21);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+  }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .discover-section .discover-content {
+      gap: unset;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .discover-section .discover-content {
+      gap: unset;
+      display: block;
+    }
+  }
+  .strategy-overview .discover-section .discover-content .discover-image {
+    flex: 1;
+    width: 50%;
+    overflow: hidden;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .discover-section .discover-content .discover-image {
+      min-width: 100%;
+      width: 100%;
+      min-height: 414px;
+    }
+  }
+  .strategy-overview .discover-section .discover-content .discover-image:hover img {
+    transform: scale(1.1);
+  }
+  .strategy-overview .discover-section .discover-content .discover-image img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .discover-section .discover-content .discover-image img {
+      min-width: 100%;
+      width: 100%;
+      height: 414px;
+    }
+  }
+  .strategy-overview .discover-section .discover-content .discover-text {
+    flex: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 37px;
+    padding-right: 100px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    height: 800px;
+  }
+  .strategy-overview .discover-section .discover-content .discover-text-button {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #FFFFFF;
+    padding: 16px;
+    display: block;
+    width: fit-content;
+    background: #E34A21;
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .discover-section .discover-content .discover-text {
+      padding-right: 36px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .discover-section .discover-content .discover-text {
+      min-width: 100%;
+      width: 100%;
+      height: auto;
+      padding: 36px;
+    }
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper {
+    padding-left: 37px;
+    border-left: 1px solid #ddd;
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+    padding-right: 12px;
+    /* Optional: Ensure the scrollbar always appears on the element */
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: rgba(71, 10, 104, 0.4392156863) #f5f3f7;
+    /* For Webkit-based browsers (Chrome, Safari, Edge) */
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper::before {
+    content: "";
+    height: 80px;
+    position: absolute;
+    left: 0;
+    border: 3px solid #470A68;
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper h2 {
+    font-size: 48px;
+    font-weight: 300;
+    color: #000;
+    margin-bottom: 12px;
+    line-height: 52px;
+  }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper h2 {
+      font-family: Rubik;
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 33.8px;
+    }
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper p {
+    font-size: 18px;
+    color: #555;
+    line-height: 27px;
+    font-weight: 400;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper p {
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper::-webkit-scrollbar-thumb {
+    background-color: #470A68;
+    /* Customize the scrollbar thumb */
+    border-radius: 10px;
+  }
+  .strategy-overview .discover-section .discover-content .discover-text .discover-text-wrapper::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    /* Customize the scrollbar track */
+  }
+  .strategy-overview .gain-achieve-section {
+    position: relative;
+    padding: 120px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #A5ABB3;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section {
+      padding: 80px 20px 60px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .credential_content_left {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .credential_content_left {
+      left: -150px;
+      position: absolute;
+      top: -218px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .credential_content_right {
+    right: 0;
+    position: absolute;
+    bottom: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .credential_content_right {
+      display: none;
+    }
+  }
+  .strategy-overview .gain-achieve-section .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  @media (min-width: 768px) {
+    .strategy-overview .gain-achieve-section .container {
+      max-width: 720px;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .strategy-overview .gain-achieve-section .container {
+      max-width: 1280px;
+    }
+  }
+  .strategy-overview .gain-achieve-section h2 {
+    font-family: Rubik;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 64.4px;
+    margin-bottom: 36px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section h2 {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 35.2px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .description {
+    color: #333;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    margin-bottom: 40px;
+  }
+  .strategy-overview .gain-achieve-section .gain-achieve-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 129px;
+    row-gap: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .gain-achieve-grid {
+      display: block;
+      column-gap: normal;
+    }
+  }
+  .strategy-overview .gain-achieve-section .gain-achieve-grid .gain-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .strategy-overview .gain-achieve-section .gain-achieve-grid .gain-item {
+      gap: unset;
+      display: block;
+    }
+    .strategy-overview .gain-achieve-section .gain-achieve-grid .gain-item img {
+      margin-bottom: 12px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .gain-achieve-grid img {
+    min-width: 118px;
+    width: 118px;
+    height: 118px;
+    margin-right: 36px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .gain-achieve-grid img {
+      width: 100px;
+      min-width: 100px;
+      height: 100px;
+      margin-right: 24px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .gain-achieve-grid h3 {
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 39.6px;
+    color: #000000;
+    margin-bottom: 4px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .gain-achieve-grid h3 {
+      font-family: Rubik;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 31.2px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .gain-achieve-grid p {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .gain-achieve-grid p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  .strategy-overview .gain-achieve-section .proudly {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 92px;
+  }
+  .strategy-overview .gain-achieve-section .proudly img {
+    width: 80px;
+    height: 68.28px;
+  }
+  .strategy-overview .gain-achieve-section .proudly p {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .gain-achieve-section .proudly p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  .strategy-overview .explore-section {
+    padding: 80px 0;
+    background-color: #fff;
+    margin-top: 80px;
+  }
+  @media screen and (max-width: 1200px) {
+    .strategy-overview .explore-section {
+      padding: 0 0;
+    }
+  }
+  .strategy-overview .explore-section.solutions {
+    padding-bottom: 0;
+  }
+  .strategy-overview .explore-section.solutions .tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #DEE2E6;
+    margin-bottom: 30px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section.solutions .tabs {
+      display: block;
+      border-bottom: 1px solid #DEE2E6;
+    }
+  }
+  .strategy-overview .explore-section.solutions .tabs .tab-button {
+    color: black;
+    background: none;
+    border: none;
+    position: relative;
+    width: 50%;
+    font-family: Rubik;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25.2px;
+    padding: 20px 0;
+  }
+  .strategy-overview .explore-section.solutions .tabs .tab-button.active {
+    color: var(--Royal-Purple, #470A68);
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section.solutions .tabs .tab-button {
+      width: 100%;
+    }
+  }
+  .strategy-overview .explore-section.solutions .tabs .tab-button.active::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: #4A148C;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+  }
+  .strategy-overview .explore-section.solutions .tab-content .tab-panel {
+    display: none;
+  }
+  .strategy-overview .explore-section.solutions .tab-content .tab-panel.active {
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section {
+      padding: 60px 40px;
+    }
+    .strategy-overview .non-solution {
+      padding-top: 20px;
+    }
+  }
+  .strategy-overview .explore-section h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-family: Rubik;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section h2 {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 35.2px;
+    }
+  }
+  .strategy-overview .explore-section .explore-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section .explore-cards {
+      display: block;
+      gap: unset;
+    }
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 12px 24px 12px 0;
+    position: relative;
+    flex: 1 1 calc(50% - 15px);
+    box-sizing: border-box;
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section .courses_tab_content_item_card {
+      margin-bottom: 20px;
+    }
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card::after {
+    background: #470a68;
+    content: "";
+    height: 440px;
+    left: 24px;
+    position: absolute;
+    top: -145px;
+    -webkit-transform: matrix(0.87, 0.5, -0.5, 0.87, 0, 0);
+    transform: matrix(0.87, 0.5, -0.5, 0.87, 0, 0);
+    width: 90px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section .courses_tab_content_item_card::after {
+      left: 0;
+    }
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card .card_image {
+    height: 364px;
+    overflow: hidden;
+    width: 100%;
+  }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .explore-section .courses_tab_content_item_card .card_image {
+      height: 196px;
+    }
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card .card_image img {
+    transition: transform 0.5s ease;
+    height: 100%;
+    object-fit: cover;
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card:hover {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 20px 0 #ddd;
+    transition: ease-in-out 0.1s all;
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card:hover .card_image img {
+    transform: scale(1.1);
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card:hover .card_content .find-out {
+    color: #a201d8;
+    transition: ease-in-out 0.1s all;
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card .card_content {
+    padding: 20px 24px;
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card .card_content .title {
+    font-family: Rubik;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 31.2px;
+    margin-bottom: 4px;
+    color: #000000;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section .courses_tab_content_item_card .card_content .title {
+      font-family: Rubik;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 28px;
+    }
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card .card_content .description {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    color: #333333;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section .courses_tab_content_item_card .card_content .description {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+    }
+  }
+  .strategy-overview .explore-section .courses_tab_content_item_card .card_content .find-out {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    color: #E34A21;
+    margin-top: 42px;
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .explore-section .courses_tab_content_item_card .card_content .find-out {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  .strategy-overview .social-media-section {
+    background: #F6F3F7;
+    padding: 30px 0;
+    text-align: center;
+    margin-bottom: 120px;
+  }
+  .strategy-overview .social-media-section .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .social-media-section .social-icons {
+      gap: 40px;
+    }
+  }
+  .strategy-overview .social-media-section .social-icons svg {
+    width: 50px;
+    height: 50px;
+  }
+  .strategy-overview .social-media-section .social-icons a:hover svg path {
+    fill: white;
+    stroke: white;
+  }
+  .strategy-overview .social-media-section .social-icons a:hover svg rect {
+    fill: #470a68;
+    transition: all ease-in-out 0.3s;
+  }
+  .strategy-overview .social-media-section h3 {
+    font-family: Rubik;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 36.4px;
+    color: #000000;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .social-media-section h3 {
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+  .strategy-overview .management-involves {
+    border-bottom: 1px solid #A5ABB3;
+    padding-bottom: 24px;
+    padding-top: 120px;
+    margin-bottom: 240px;
+  }
+  .strategy-overview .management-involves h1 {
+    border-bottom: 1px solid #A5ABB3;
+    padding-bottom: 24px;
+  }
+  @media screen and (max-width: 1024px) {
+    .strategy-overview .management-involves {
+      margin-bottom: 120px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .management-involves {
+      padding-left: 37px;
+      padding-right: 37px;
+      border-bottom: none;
+      padding-top: 60px;
+      margin-bottom: 70px;
+    }
+  }
+  .strategy-overview .management-involves .steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .management-involves .steps {
+      display: block;
+      margin-top: 0;
+    }
+    .strategy-overview .management-involves .steps .step {
+      border-bottom: 1px solid #ddd;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .strategy-overview .management-involves .steps .step:last-child {
+      border-bottom: none;
+    }
+  }
+  .strategy-overview .management-involves .step {
+    flex: 1;
+    padding: 30px;
+    border-left: 1px solid #ddd;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .management-involves .step {
+      border-left: none;
+      padding: 20px;
+    }
+  }
+  .strategy-overview .management-involves .step:first-child {
+    border-left: none;
+  }
+  .strategy-overview .management-involves .number {
+    text-align: center;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: var(--Royal-Purple, #470A68);
+    font-family: Rubik;
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    color: #fff;
+    -webkit-text-stroke: 2px purple;
+    /* Outline */
+    color: transparent;
+    /* Make fill transparent */
+  }
+  .strategy-overview .management-involves .number:hover {
+    color: #470A68;
+    transition: all 0.5s ease-in-out;
+  }
+  .strategy-overview .management-involves h1 {
+    color: #000;
+    font-family: Rubik;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 64.4px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .management-involves h1 {
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 35.2px;
+    }
+  }
+  .strategy-overview .management-involves h3 {
+    color: #000;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 31.2px;
+    margin-bottom: 12px;
+  }
+  .strategy-overview .management-involves p,
+  .strategy-overview .management-involves ul {
+    color: #333;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+  }
+  .strategy-overview .management-involves ul {
+    padding-left: 20px;
+    margin-top: 12px;
+  }
+  .strategy-overview .management-involves li {
+    margin-bottom: 8px;
+    list-style-type: disc;
+  }
+  .strategy-overview .cta-section {
+    margin-top: 80px;
+    background-color: #470A68;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 120px;
+    position: relative;
+    padding: 64px 0;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section {
+      padding-bottom: 157.975px;
+    }
+  }
+  .strategy-overview .cta-section .img-bg {
+    flex-shrink: 0;
+    width: 100%;
+    height: 387.758px;
+    flex-shrink: 0;
+    position: absolute;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section .img-bg {
+      width: 413.911px;
+      height: 128.975px;
+      bottom: 0;
+    }
+  }
+  .strategy-overview .cta-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/images/cta-pattern.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+  }
+  .strategy-overview .cta-section .cta-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section .cta-content-wrapper {
+      padding: 0 37px;
+    }
+  }
+  .strategy-overview .cta-section .cta-content {
+    position: relative;
+    max-width: 700px;
+    z-index: 1;
+  }
+  .strategy-overview .cta-section .cta-content h2 {
+    color: #FFF;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 36.4px;
+    margin-bottom: 6px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section .cta-content h2 {
+      text-align: center;
+      font-family: Rubik;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 28px;
+    }
+  }
+  .strategy-overview .cta-section .cta-content p {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section .cta-content p {
+      color: #FFF;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px;
+    }
+  }
+  .strategy-overview .cta-section .cta-content .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section .cta-content .cta-buttons {
+      display: block;
+      gap: 0;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .strategy-overview .cta-section .cta-content .cta-buttons {
+      gap: 20px;
+    }
+  }
+  .strategy-overview .cta-section .cta-content .cta-buttons .btn {
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 8px 16px;
+  }
+  @media screen and (max-width: 768px) {
+    .strategy-overview .cta-section .cta-content .cta-buttons .btn {
+      width: 260px;
+      padding: 16px 0;
+    }
+    .strategy-overview .cta-section .cta-content .cta-buttons .btn.btn-outline {
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .strategy-overview .cta-section .cta-content .cta-buttons .btn.btn-outline {
+      margin-bottom: 0;
+    }
+  }
+  .strategy-overview .cta-section .cta-content .cta-buttons .btn.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--White, #FFF);
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+  }
+  .strategy-overview .cta-section .cta-content .cta-buttons .btn.btn-outline:hover {
+    background: #fff;
+    color: #4A148C;
+  }
+  .strategy-overview .cta-section .cta-content .cta-buttons .btn.btn-primary {
+    color: var(--Royal-Purple, #470A68);
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    background: var(--White, #FFF);
+    border: 1px solid transparent;
+  }
+  .strategy-overview .cta-section .cta-content .cta-buttons .btn.btn-primary:hover {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }

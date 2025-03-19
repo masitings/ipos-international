@@ -1,0 +1,1040 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<div class="articles_details_container resources_public_container ip-capabilities ip-start">
+    <div class="bg_circle"></div>
+    <div class="resources_public_title_nav container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="d-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container academy_enterprise_detail__page">
+        <div class="row main-articles">
+            <div class="col-xl-8 col-lg-12 col-12 padding-right-90">
+                <div class="header-part">
+                    <h1>{{ pimcore_input('IPStartTitle',{'placeholder':'Welcome to IP Start'}) }}</h1>
+                    <h3 style="
+                        font-family: Rubik;
+                        font-weight: 300;
+                        font-size: 28px;
+                        line-height: 36.4px;
+                    ">{{ pimcore_input('IPStartSubTitle',{'placeholder':'Kick-start your start-up\'s IP journey!'}) }}</h3>
+                </div>
+
+                <div class="content-container ic-content" style="margin-bottom: 0px;">
+                    <h3>{{ pimcore_input('IPStartContentTitle',{'placeholder':'Join our IP Start programme for start-ups'}) }}</h3>
+                    <div>
+                        {{  pimcore_wysiwyg("IPStartContent1", {
+                                "placeholder" : "edit content 1..."
+                            })
+                        }}
+                    </div>
+                    <div class="gap-30"></div>
+                    <h3>{{ pimcore_input('IPStartContentTitle2',{'placeholder':'Get answers to the top 3 IA/IP questions startups ask:'}) }}</h3>
+                    <div>
+                        <p>{{ pimcore_input('IPStartContent2',{'placeholder':'Your innovations fuel your business growth. Harness your innovations fully by managing your
+                            intangible assets (“IA”) and intellectual property (“IP”):'}) }}</p>
+                    </div>
+                    <div class="ipos-timeline ip-questions-wrap">
+                        <div class="timeline-item">
+                            <div class="icon expand">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple1") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle1',{'placeholder':'How do I protect my technology and product?'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent1", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon market">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple2") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle2',{'placeholder':'Go to market faster'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent2", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon partner">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple3") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle3',{'placeholder': 'Partner effectively'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent3", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon partner">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple4") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle4',{'placeholder': 'Partner effectively'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent4", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon partner">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple5") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle5',{'placeholder': 'Partner effectively'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent5", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# <div>
+                        <div>
+                            <p >{{ pimcore_input('IPStartAfterImage',{'placeholder': 'We\'ve advised over 200 companies on IA and IP issues to date. We intimately understand how
+                                    start-ups can navigate these issues. IP Start will give you the head start you need to
+                                    manage your IA and IP, navigate obstacles, and prepare you for scaling.'}) }}</p>
+                        </div>
+                        <div class="m-b-30">
+                            <h6 class="h6">{{ pimcore_input('IPStartBonusTitle',{'placeholder': 'Here\'s what you’ll get for FREE:'}) }}</h6>
+                            <div class="m-b-15 m-t-15 point-wrap">
+                                <ol>
+                                    <li>
+                                        <div class="d-flex align-items-center">
+                                            <span class="m-r-20">
+                                                {{ pimcore_image('IPStartBonus1') }}
+                                            </span>
+                                            <span>{{ pimcore_input('IPStartBonusTitle1',{'placeholder': '45-min consultation on your IA and IP'}) }}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center">
+                                        <span class="m-r-20">
+                                                {{ pimcore_image('IPStartBonus2') }}    
+                                        </span>
+                                        <span>{{ pimcore_input('IPStartBonusTitle2',{'placeholder': 'IP Essentials for Business course'}) }}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center">
+                                        <span class="m-r-20">
+                                                {{ pimcore_image('IPStartBonus3') }}    
+                                        </span>
+                                        <span>{{ pimcore_input('IPStartBonusTitle3',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center">
+                                        <span class="m-r-20">
+                                                {{ pimcore_image('IPStartBonus4') }}    
+                                        </span>
+                                        <span>{{ pimcore_input('IPStartBonusTitle4',{'placeholder': 'IP Playbook for Start-ups'}) }}</span></div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div> #}
+
+                    <div>
+                        <div class="divider-content"></div>
+                        <h3>{{ pimcore_input('IPStartCommunityTitle',{'placeholder': 'Join our community'}) }}</h3>
+                        <p>{{ pimcore_input('IPStartCommunitySubTitle',{'placeholder': '
+                            Be a part of our vibrant, growing community of start-ups, accelerators, and incubators today!
+                            This is an invite-only programme for start-ups working with our partner accelerators.
+                        '}) }}</p>
+
+                        {% if editmode %}
+                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                        <p><i>Data 1</i></p>
+                        {{ pimcore_relations('accelerator',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Accelerator"
+                            ]
+                        }) }}
+                        </div>
+                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                        <p><i>Data 2</i></p>
+                        {{ pimcore_relations('incubator',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Incubator"
+                            ]
+                        }) }}
+                        </div>
+                        <div style="margin-top: 30px; margin-bottom: 30px; width: 100%;">
+                        <p><i>Data 3</i></p>
+                        {{ pimcore_relations('communityPartner',{
+                            "types": ["object"],
+                            "classes" : [
+                                "CommunityPartner"
+                            ]
+                        }) }}
+                        </div>
+                        {% endif %}
+                        <div class="accordion-ipos-wrapper">
+                            <div class="accordion-ipos">
+                                <div class="accordion-item active">
+                                    <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle1',{'placeholder': 'Accelerators'}) }}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
+                                        </svg>
+                                    </div>
+                                    <div class="accordion-content">
+                                        {% set accelerators = pimcore_relations('accelerator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                        <div class="image-group">
+                                        {% if accelerators is not empty %}
+                                            {% for accel in accelerators %}
+                                                {% set image = accel.getImage() %}
+                                                {% if image %}
+                                                    <img style="scale: 2" src="{{ image }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle2',{'placeholder': 'Incubators'}) }}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
+                                        </svg></div>
+                                    <div class="accordion-content">
+                                        {% set incubators = pimcore_relations('incubator', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                        <div class="image-group">
+                                        {% if incubators is not empty %}
+                                            {% for incu in incubators %}
+                                                {% set image = incu.getImage() %}
+                                                {% if image %}
+                                                    <img style="scale: 1.7" src="{{ image }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <div class="accordion-header"><span>{{ pimcore_input('IPStartCommunityTitle3',{'placeholder': 'Community Partners'}) }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="m7.758 7.064 8.485 8.486M16.243 7.064 7.758 15.55" />
+                                        </svg></div>
+                                    <div class="accordion-content">
+                                        {% set communityPartners = pimcore_relations('communityPartner', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                                        <div class="image-group">
+                                        {% if communityPartners is not empty %}
+                                            {% for comm in communityPartners %}
+                                                {% set image = comm.getImage() %}
+                                                {% if image %}
+                                                    <img style="scale: 1.7" src="{{ image }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="view-all-partners">
+                            {{ pimcore_link('linkUrl')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 d-block d-md-none"></div>
+            <div class="col-lg-4 col-12 detail right-side-contact">
+                <div class="wrap-right-side-sticky">
+                    <div class="detail_right">
+                        <div class="detail_right_circle">
+                            <div class="circle left"></div>
+                            <div class="circle right"></div>
+                        </div>
+                        <div class="detail_info_content">
+                            <h6 class="m-t-30">{{ pimcore_input('IPStartBannerRight',{'placeholder': 'Let\'s connect!'}) }}</h6>
+                            <div class="find-out m-b-16">{{ pimcore_input('IPStartBannerRightDesc',{'placeholder': 'connect desc!'}) }}
+                            </div>
+                            {% if editmode %}
+                                <div style="width: 100%;">
+                                {{pimcore_link('IPStartBannerRightLink1')}}
+                                </div>
+                                {{pimcore_link('IPStartBannerRightLink2')}}
+                            {% endif %}
+                            {% set link1 = pimcore_link('IPStartBannerRightLink1') %}
+                            {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
+
+                            <a class="btn full-white"
+                                href="{{ link1.data.path }}">
+                                {{ link1.data.text }}
+                            </a>
+
+                            {% set link2 = pimcore_link('IPStartBannerRightLink2') %}
+                            <a class="btn border-purple"
+                                href="{{ link2.data.path }}">
+                                {{ link2.data.text }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="interest-wrapper">
+                        <h5>{{ pimcore_input('worthWatching',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
+                        {% if editmode %}
+                        {{ pimcore_relations('worthWatches',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Course", "Events", "News", "Articles", "Business", "CaseStudy", "ParentAnalytic", "WebinarRecordings"
+                            ]
+                        }) }}
+                        {% else %}
+                            {% set worthToWatches = pimcore_relations('worthWatches') %}
+                            {% if worthToWatches is not empty %}
+                                <div class="max-height-interest">
+                                {% for carouselItem in worthToWatches %}
+                                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                                        {% set image = carouselItem.getCoverImage() %}
+                                        {% set properties = carouselItem.getProperties() %}
+                                        {% set name = properties.name %}
+                                        {% if image is not empty %}
+                                        <img src="{{image}}">
+                                        {% endif %}
+                                        <div class="right-side">
+                                            <div class="job-tag">{{carouselItem.className}}</div>
+                                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                                </div>
+                            {% else %}
+                            <p>-</p>
+                            {% endif %}
+                        {% endif %}
+                        {% if shares is not empty %}
+                            <div class="share-section">
+                                <span class="share">SHARE</span>
+                                <div class="share-icons">
+                                    {% if facebook is not empty %}
+                                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z" clip-rule="evenodd" />
+                                        </svg>
+                                        </a>
+                                    {% endif %}
+                                    {% if linkedin is not empty %}
+                                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                    
+                                    {% if twitter is not empty %}
+                                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                                <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                                d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+
+                                    {% if email is not empty %}
+                                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                                clip-rule="evenodd" />
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider-content"></div>
+        <div class="slider-container">
+            <h3>
+            {{ pimcore_input('whatIsText', {'placeholder': 'Hear from start-ups that have been part of IP Start'}) }}
+            </h3>
+            {% if editmode %}
+                {{ pimcore_relations('objectsAll',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPStartMediaCarouselImage"
+                    ]
+                }) }}
+            {% else %}
+            <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
+                {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                <div class="bottom-video-section person">
+                    <div class="left-side">
+                        <div class="video-section">
+                            <div class="video-container">
+                            </div>
+                        </div>
+
+                        <div class="thumbnail-carousel-container">
+                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                {% if list is not empty %}
+                                    {% for carouselItem in list %}
+                                    {% set videoTitle = carouselItem.getMediaTitle() %}
+                                    {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
+                                    {% set videoDescription = carouselItem.getMediaDescription() %}
+                                    {% set videoDescription1 = carouselItem.getMediaDescription1() %}
+                                    {% set videoDescription2 = carouselItem.getMediaDescription2() %}
+                                    {% set mediaLink = carouselItem.getMediaExternalLink() %}
+                                    {% set subTitle = carouselItem.getMediaSubTitle() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
+                                        {% if videoThumbnail %}
+                                        <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                            <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="text-container person-slider">
+                            <h2>&nbsp;</h2>
+                            <h4>&nbsp;</h4>
+                            <div class="max-height-text text-content" style="margin-bottom: 27px">
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="text-container-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if editmode %}
+                {{ pimcore_relations('objectsAll2',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPStartMediaCarousel"
+                    ]
+                }) }}
+            {% else %}
+            <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
+                {% set list2 = pimcore_relations('objectsAll2', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                <div class="bottom-video-section">
+                    <div class="left-side">
+                        <div class="video-section">
+                            <div class="video-container">
+                            </div>
+                        </div>
+
+                        <div class="thumbnail-carousel-container">
+                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                {% if list2 is not empty %}
+                                    {% for carouselItemA in list2 %}
+                                    {% set videoTitleA = carouselItemA.getMediaTitle() %}
+                                    {% set videoThumbnailA = carouselItemA.getMediaThumbnail() %}
+                                    {% set videoUrlA = carouselItemA.getMediaVideo() %}
+                                    {% set videoDescriptionA = carouselItemA.getMediaDescription() %}
+                                    {% set videoDescriptionA1 = carouselItemA.getMediaDescription1() %}
+                                    {% set videoDescriptionA2 = carouselItemA.getMediaDescription2() %}
+                                    {% set mediaLinkA = carouselItemA.getMediaExternalLink() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitleA }}" data-description="{{ videoDescriptionA }}" data-description-one="{{ videoDescriptionA1 }}" data-description-two="{{ videoDescriptionA2 }}" data-link="{{mediaLinkA.path}}">
+                                        {% if videoThumbnailA %}
+                                        <img src="{{ videoThumbnailA }}" alt="{{ videoTitleA }}">
+                                        {% endif %}
+                                        {% if videoUrlA.getType() == 'youtube' %}
+                                        <iframe class="d-none" width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{ videoUrlA.getData() }}" title="{{ videoTitleA }}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                            <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="text-container person-slider">
+                            <h2 style="margin-bottom: 10px">&nbsp;</h2>
+                            <div class="max-height-text text-content">
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="text-container-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="right-side-contact mobile">
+        <div class="contact-card">
+            <div class="contact-box">
+                <h2>
+                {{ pimcore_input('mobileBanner', {'placeholder': 'Let\'s Connect'}) }}
+                </h2>
+                <p>
+                {{ pimcore_input('mobileBannerDesc', {'placeholder': 'Whether you\'re an accelerator or need general assistance, we’re here to help.'}) }}
+                </p>
+                <a class="btn full-white mt-16 cta-button" href="{{ link1.data.path }}">
+                    {{ link1.data.text }}
+                </a>
+                <a class="btn border-purple mt-16 cta-button" href="{{ link2.data.path }}">
+                    {{ link2.data.text }}
+                </a>
+            </div>
+        </div>
+
+        <div class="interest-wrapper">
+            <h5>{{ pimcore_input('worthWatching2',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
+            {% if worthToWatches is not empty %}
+                {% for carouselItem in worthToWatches %}
+                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                        {% set image = carouselItem.getCoverImage() %}
+                        {% set properties = carouselItem.getProperties() %}
+                        {% set name = properties.name %}
+                        {% if image is not empty %}
+                        <img src="{{image}}">
+                        {% endif %}
+                        <div class="right-side">
+                            <div class="job-tag">{{carouselItem.className}}</div>
+                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+            <p>-</p>
+            {% endif %}
+            <div class="share-section">
+                <span class="share">SHARE</span>
+                <div class="share-icons">
+                    {% if facebook is not empty %}
+                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
+                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z" clip-rule="evenodd" />
+                        </svg>
+                        </a>
+                    {% endif %}
+                    {% if linkedin is not empty %}
+                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                            </svg>
+                        </a>
+                    {% endif %}
+                    
+                    {% if twitter is not empty %}
+                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                            </svg>
+                        </a>
+                    {% endif %}
+
+                    {% if email is not empty %}
+                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                clip-rule="evenodd" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                            </svg>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector(".wrap-right-side-sticky");
+        const sidebarContainer = document.querySelector(".col-lg-4.col-12.detail.right-side-contact");
+        const mainContainer = document.querySelector(".main-articles");
+
+        if (!sidebar || !sidebarContainer || !mainContainer) return;
+
+        function updateStickySidebar() {
+            const containerRect = sidebarContainer.getBoundingClientRect();
+            const sidebarHeight = sidebar.offsetHeight;
+            const containerHeight = sidebarContainer.offsetHeight;
+
+            const offsetTop = mainContainer.offsetTop; // Top position of main container
+            const stopPoint = offsetTop + containerHeight - sidebarHeight; // Bottom stop position
+
+            if (window.scrollY > offsetTop - 322 && window.scrollY < stopPoint) {
+                // Make sidebar fixed while scrolling
+                sidebar.style.position = "fixed";
+                sidebar.style.top = "280px";
+                sidebar.style.bottom = "auto";
+            } else if (window.scrollY >= stopPoint) {
+                // Lock sidebar at the bottom of its container
+                sidebar.style.position = "absolute";
+                sidebar.style.top = "auto";
+                sidebar.style.bottom = "156px";
+            } else {
+                // Reset when scrolling back up
+                sidebar.style.position = "static";
+                sidebar.style.top = "auto";
+                sidebar.style.bottom = "auto";
+            }
+        }
+
+        window.addEventListener("scroll", updateStickySidebar);
+        window.addEventListener("resize", updateStickySidebar);
+        updateStickySidebar(); // Initial run
+    });
+
+
+
+
+    $(document).ready(function () {
+        // Handle Section-Image Logic
+        const handleSectionImage = () => {
+            const videoContainer = $("#section-image .video-container");
+            const thumbnails = $("#section-image .img-slider-container");
+            const thumbnailCarousel = $("#section-image .thumbnail-carousel");
+            const arrowLeft = $("#section-image .arrow-left");
+            const arrowRight = $("#section-image .arrow-right");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+            };
+
+            function updateArrowState() {
+                arrowLeft.prop("disabled", currentSlide === 0);
+                arrowRight.prop(
+                    "disabled",
+                    currentSlide >= thumbnails.length - visibleThumbnails
+                );
+            }
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+        // Handle Main-Articles Section-2 Logic
+        const handleMainArticlesSection2 = () => {
+            const videoContainer = $("#main-articles-section-2 .video-container");
+            const thumbnails = $("#main-articles-section-2 .img-slider-container");
+            const thumbnailCarousel = $("#main-articles-section-2 .thumbnail-carousel");
+            const arrowLeft = $("#main-articles-section-2 .arrow-left");
+            const arrowRight = $("#main-articles-section-2 .arrow-right");
+            const textContainer = $("#main-articles-section-2 .text-container");
+            const textContentWrapper = $("#main-articles-section-2 .text-content");
+            const textLinkContainer = $("#main-articles-section-2 .text-container .text-container-button");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+
+                // Update the text-container content
+                const title = thumbnail.data("title") || "Default Title";
+                const description = thumbnail.data("description") || "Default Description";
+                const description1 = thumbnail.data("description-one") || "";
+                const description2 = thumbnail.data("description-two") || "";
+                const subtitle = thumbnail.data("position") || "";
+                const link = thumbnail.data("link") || "";
+                textContainer.find("h2").text(title);
+                textContainer.find("h4").text(subtitle);
+                textContainer.find("p").text(description);
+
+                // Clear previous additional descriptions before appending new ones
+                textContentWrapper.find("p:not(:first)").remove();
+
+                if (description1) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description1}</p>`);
+                }
+                if (description2) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description2}</p>`);
+                }
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                arrowLeft.toggle(currentSlide > 0);
+                arrowRight.toggle(currentSlide < thumbnails.length - visibleThumbnails);
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            // Dragging functionality
+            thumbnailCarousel.on('mousedown touchstart', (e) => {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+            thumbnailCarousel.on('mousemove touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 2;
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            thumbnailCarousel.on('mouseup touchend', () => {
+                isDragging = false;
+            });
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+        const handleMainArticlesSection3 = () => {
+            const videoContainer = $("#main-articles-section-3 .video-container");
+            const thumbnails = $("#main-articles-section-3 .img-slider-container");
+            const thumbnailCarousel = $("#main-articles-section-3 .thumbnail-carousel");
+            const arrowLeft = $("#main-articles-section-3 .arrow-left");
+            const arrowRight = $("#main-articles-section-3 .arrow-right");
+            const textContainer = $("#main-articles-section-3 .text-container");
+            const textContentWrapper = $("#main-articles-section-3 .text-content");
+            const textLinkContainer = $("#main-articles-section-3 .text-container .text-container-button");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+
+                // Update the text-container content
+                const title = thumbnail.data("title") || "Default Title";
+                const description = thumbnail.data("description") || "Default Description";
+                const link = thumbnail.data("link") || "";
+                const description1 = thumbnail.data("description-one") || "";
+                const description2 = thumbnail.data("description-two") || "";
+                textContainer.find("h2").text(title);
+                textContainer.find("p").text(description);
+
+                // Clear previous additional descriptions before appending new ones
+                textContentWrapper.find("p:not(:first)").remove();
+
+                if (description1) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description1}</p>`);
+                }
+                if (description2) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description2}</p>`);
+                }
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                if (currentSlide === 0) {
+                    arrowLeft.hide();
+                } else {
+                    arrowLeft.show();
+                }
+
+                if (currentSlide >= thumbnails.length - visibleThumbnails) {
+                    arrowRight.hide();
+                } else {
+                    arrowRight.show();
+                }
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+                thumbnailCarousel.css('cursor', 'grabbing');
+            });
+
+            $(document).on('mousemove touchmove', function (e) {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 1.5; // Speed up the scroll
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            $(document).on('mouseup touchend', function () {
+                isDragging = false;
+                thumbnailCarousel.css('cursor', 'grab');
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            // Trigger click on the first thumbnail to initialize content
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+
+        // Initialize both sections
+        handleMainArticlesSection3();
+        handleMainArticlesSection2();
+    });
+
+
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
+{% endblock %}

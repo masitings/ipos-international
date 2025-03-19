@@ -1,0 +1,30 @@
+@media screen and (max-width: 768px) {
+    .menu_layer.ipos-new-version-menu .menu-categories-listing .cat-link {
+      text-align: right;
+    }
+  }
+  .menu_layer.ipos-new-version-menu .menu-pages-listing ul {
+    height: 280px;
+  }
+  .menu_layer.ipos-new-version-menu .menu-pages-listing ul li {
+    margin-bottom: 20px;
+  }
+  
+  .menu_layer .have-title .title {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    margin-bottom: 4px;
+  }
+  .menu_layer .have-title .title a {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .menu_layer .have-title .have-title-menu a {
+    display: block;
+    padding: 2px 0;
+  }

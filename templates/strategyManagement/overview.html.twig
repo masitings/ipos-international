@@ -1,0 +1,646 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<section class="academy_overview__page strategy-overview">
+    <section class="about" style="min-height: 700px">
+        <div class="about_bg_circle" style="top: -520px"></div>
+        <div class="about_bg_ipos"><img src="/static/static/assets/images/IPOS.d59bcba.svg" alt=""></div>
+        <div class="container about_content">
+            <div class="breadcrumb m-b-80 m-t-40 temporary">
+                {% include('layouts/breadcrumb.html.twig') %}
+            </div>
+            <div class="row">
+                <div class="col-lg-6 main-content">
+                    <h1>{{ pimcore_input('overviewTitle', {'placeholder': 'Strategy and Management'}) }}</h1>
+                    {{  pimcore_wysiwyg("overviewContent", {
+                                    "height": 200,
+                                    "placeholder" : "edit content..."
+                        })
+                    }}
+                </div>
+                <div class="col-lg-6 main-image str-overview-main-img" style="margin-top: 0">
+                    {{  pimcore_wysiwyg("overviewContent2", {
+                                    "height": 200,
+                                    "placeholder" : "Add video or image"
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Discover Section -->
+    <section class="discover-section">
+        <div style="margin: auto;">
+            <div class="discover-content">
+                <!-- Image Section -->
+                <div class="discover-image">
+                    {{ pimcore_image('discoverImage') }}
+                </div>
+                <!-- Text Section -->
+                <div class="discover-text">
+                    <div class="discover-text-wrapper">
+                        <h2>
+                            {{ pimcore_input('discoverTitle', {'placeholder': 'IA/IP Management'}) }}
+                        </h2>
+                        {{  pimcore_wysiwyg("discoverContent", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                            })
+                        }}
+                        <p style="margin-bottom: 24px;"></p>
+                        <ul class="key-benefit">
+                            <li>
+                                {# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" fill="none">
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5"
+                                        d="M8.228 13.222 12.005 17l7.675-7.675C18.1 6.735 15.256 5 12 5a9 9 0 0 0-9 9 9 9 0 0 0 17.941 1" />
+                                </svg>  #}
+                                {{ pimcore_image("benefit1") }}
+                                <span>{{ pimcore_input('benefit1Text', {'placeholder': 'Accelerated business expansion and shortened time to market'}) }}</span>
+                            </li>
+                            <li>
+                                {# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" fill="none">
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5"
+                                        d="M8.228 13.222 12.005 17l7.675-7.675C18.1 6.735 15.256 5 12 5a9 9 0 0 0-9 9 9 9 0 0 0 17.941 1" />
+                                </svg> #}
+                                {{ pimcore_image("benefit2") }}
+                                <span>{{ pimcore_input('benefit2Text', {'placeholder': 'Sharper investment decisions'}) }}</span>
+                            </li>
+                            <li>
+                                {# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" fill="none">
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5"
+                                        d="M8.228 13.222 12.005 17l7.675-7.675C18.1 6.735 15.256 5 12 5a9 9 0 0 0-9 9 9 9 0 0 0 17.941 1" />
+                                </svg>  #}
+                                {{ pimcore_image("benefit3") }}
+                                <span>{{ pimcore_input('benefit3Text', {'placeholder': 'Sustained competitive advantages and business goodwill'}) }}</span>
+                            </li>
+                            <li>
+                                {# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" fill="none">
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5"
+                                        d="M8.228 13.222 12.005 17l7.675-7.675C18.1 6.735 15.256 5 12 5a9 9 0 0 0-9 9 9 9 0 0 0 17.941 1" />
+                                </svg>  #}
+                                {{ pimcore_image("benefit4") }}
+                                <span>{{ pimcore_input('benefit4Text', {'placeholder': 'Mitigation of business risks and protection from competition'}) }}</span>
+                            </li>
+                        </ul>
+                        <ul class="key-benefit-link">
+                            <li>
+                                [1]{{pimcore_link('keyBenefitLink1')}}
+                            </li>
+                            <li>
+                                [2]{{pimcore_link('keyBenefitLink2')}}
+                            </li>
+                        </ul>
+                        <p style="margin-top: 30px">
+                            <b>{{ pimcore_input('beforeButtonText', {'placeholder': 'Keen to start your IA/IP journey? Let our IP Strategists help:'}) }}</b>
+                        </p>
+                        {% if editmode %}
+                            {{ pimcore_link('discoverLink') }}
+                        {% else %}
+                            {% set link = pimcore_link('discoverLink') %}
+                            <a class="discover-text-button" href="{{ link.data.path }}">{{ link.data.text }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gain and Achieve Section -->
+    <section class="gain-achieve-section">
+        <div class="container">
+            <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt="">
+            </div>
+            <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt=""></div>
+            </div>
+            <div class="container">
+                <h2>
+                    {{ pimcore_input('achieveTitle', {'placeholder': 'Who Will Benefit from IA/IP Management?'}) }}
+                </h2>
+                <div class="description">
+                    {{  pimcore_wysiwyg("achieveDescription", {
+                            "height": 200,
+                            "placeholder" : "Add content..."
+                        })
+                    }}
+                </div>
+                <div class="gain-achieve-grid">
+                    <!-- Global Exposure -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain1") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain1Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain1desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
+                    </div>
+                    <!-- Career Growth -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain2") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain2Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain2desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
+                    </div>
+                    <!-- Diverse Career Paths -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain3") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain3Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain3desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
+                    </div>
+                    <!-- Impactful Work -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain4") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain4Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain4desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
+                    </div>
+                    <!-- Innovative Workspace -->
+                    <div class="gain-item">
+                        {{ pimcore_image("gain5") }}
+                        {# <img src="/static/static/assets/images/strategy-management/gain-1.svg" alt="Global Exposure" /> #}
+                        <div>
+                            <h3>{{ pimcore_input('gain5Text', {'placeholder': 'Expand into new geographical markets'}) }}</h3>
+                            {{  pimcore_wysiwyg("gain5desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container management-involves">
+        <h1>{{ pimcore_input('manageInvolve', {'placeholder': 'Effective IA/IP Management Involves:'}) }}</h1>
+        <div class="steps">
+            <div class="step">
+                <h2 class="number">1</h2>
+                <h3>{{ pimcore_input('step1', {'placeholder': 'Understand'}) }}</h3>
+                {{  pimcore_wysiwyg("step1desc", {
+                        "height": 200,
+                        "placeholder" : "Add content..."
+                    })
+                }}
+            </div>
+            <div class="step">
+                <h2 class="number">2</h2>
+                <h3>{{ pimcore_input('step2', {'placeholder': 'Identify'}) }}</h3>
+                {{  pimcore_wysiwyg("step2desc", {
+                        "height": 200,
+                        "placeholder" : "Add content..."
+                    })
+                }}
+            </div>
+            <div class="step">
+                <h2 class="number">3</h2>
+                <h3>{{ pimcore_input('step3', {'placeholder': 'Act'}) }}</h3>
+                {{  pimcore_wysiwyg("step3desc", {
+                        "height": 200,
+                        "placeholder" : "Add content..."
+                    })
+                }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section" style="background: url('/static/static/assets/images/strategy-management/bg-testimony.png') no-repeat; 
+    background-size: cover;">
+        <div class="testimonial-section-wrapper container">
+            <div class="testimonial-header">
+                <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" width="140" height="115" fill="none">
+                    <path stroke="#470A68" stroke-width="2"
+                        d="m48.118 2.06-.316-.114-.32.098c-7.666 2.359-14.903 6.87-21.715 13.487C18.941 22.162 13.4 30.436 9.13 40.33l-.004.009-.003.007C5.038 50.268 3 60.96 3 72.408c0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79C48.134 62.198 42.08 59.6 34.528 59.6c-1.162 0-2.1.024-2.807.075-.077.005-.152.01-.225.017v-2.548c0-7.273 2.235-14.582 6.764-21.94l.006-.01c4.525-7.542 10.556-13.669 18.104-18.386l.47-.294v-.554c0-3.086-.928-5.963-2.755-8.611-1.615-2.617-3.593-4.426-5.967-5.289Zm77.76 0-.315-.114-.321.098c-7.666 2.359-14.903 6.87-21.715 13.487-6.826 6.631-12.368 14.905-16.637 24.8l-.004.009-.003.007c-4.085 9.921-6.123 20.612-6.123 32.061 0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79-4.437-5.244-10.491-7.842-18.043-7.842a41.38 41.38 0 0 0-2.807.075c-.077.005-.152.01-.225.017v-2.548c0-7.273 2.236-14.582 6.764-21.94l.005-.01c4.526-7.542 10.557-13.669 18.105-18.386l.47-.294v-.554c0-3.086-.927-5.963-2.754-8.61-1.616-2.618-3.594-4.427-5.968-5.29Z" />
+                    <g clip-path="url(#a)">
+                        <path stroke="#fff" stroke-width="2"
+                            d="m48.118 2.06-.316-.114-.32.098c-7.666 2.359-14.903 6.87-21.715 13.487C18.941 22.162 13.4 30.436 9.13 40.33l-.004.009-.003.007C5.038 50.268 3 60.96 3 72.408c0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79C48.134 62.198 42.08 59.6 34.528 59.6c-1.162 0-2.1.024-2.807.075-.077.005-.152.01-.225.017v-2.548c0-7.273 2.235-14.582 6.764-21.94l.006-.01c4.525-7.542 10.556-13.669 18.104-18.386l.47-.294v-.554c0-3.086-.928-5.963-2.755-8.611-1.615-2.617-3.593-4.426-5.967-5.289Zm77.76 0-.315-.114-.321.098c-7.666 2.359-14.903 6.87-21.715 13.487-6.826 6.631-12.368 14.905-16.637 24.8l-.004.009-.003.007c-4.085 9.921-6.123 20.612-6.123 32.061 0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79-4.437-5.244-10.491-7.842-18.043-7.842a41.38 41.38 0 0 0-2.807.075c-.077.005-.152.01-.225.017v-2.548c0-7.273 2.236-14.582 6.764-21.94l.005-.01c4.526-7.542 10.557-13.669 18.105-18.386l.47-.294v-.554c0-3.086-.927-5.963-2.754-8.61-1.616-2.618-3.594-4.427-5.968-5.29Z" />
+                    </g>
+                    <defs>
+                        <clipPath id="a">
+                            <path fill="#fff" d="M0 73h140v42H0z" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h2>{{ pimcore_input('see', {'placeholder': 'See What They Say'}) }}</h2>
+            </div>
+            {% if editmode %}
+                {{ pimcore_relations('testimonies',{
+                    "types": ["object"],
+                    "classes" : [
+                        "Testimony"
+                    ]
+                }) }}
+            {% else %}
+            {% set listTestimonies = pimcore_relations('testimonies', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+            <div class="slider-wrapper">
+                <div class="navigate-button">
+                    <div class="prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" fill="none">
+                            <circle cx="23.5" cy="23.5" r="23" stroke="#fff" stroke-opacity=".3"
+                                transform="matrix(-1 0 0 1 47 0)" />
+                            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.5" d="m21.914 18.212 5.25 5.25-5.25 5.25" />
+                        </svg>
+                    </div>
+                    <div class="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" fill="none">
+                            <circle cx="23.5" cy="23.5" r="23" stroke="#fff" stroke-opacity=".3"
+                                transform="matrix(-1 0 0 1 47 0)" />
+                            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.5" d="m21.914 18.212 5.25 5.25-5.25 5.25" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="testimonial-slider">
+                    <div class="m-arrow">
+                        <div class="prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-track">
+                        {% if listTestimonies is not empty %}
+                            {% for testimony in listTestimonies %}
+                                {% set image = testimony.getProfilePicture() %}
+                                <div class="testimonial-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-profile">
+                                            {% if image %}
+                                                <img src="{{ image }}">
+                                            {% endif %}
+                                            <div class="profile-info">
+                                                <h3>{{ testimony.getName() }}</h3>
+                                                <p>{{ testimony.getTitle() }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            {{ testimony.getTestimonies() }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="m-arrow">
+                        <div class="next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="explore-section solutions">
+        <div class="container courses_tab_content_item active">
+            <h2>{{ pimcore_input('solution', {'placeholder': 'Solutions for Every Innovator'}) }}</h2>
+
+            <div class="tabs">
+                <button class="tab-button active" data-tab="enterprises">Enterprises</button>
+                <button class="tab-button" data-tab="accelerators">Accelerators and Incubators</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-panel active" id="enterprises">
+                    <div class="explore-cards row">
+                        <!-- Card 1: Our People & Culture -->
+                        <div transition: ease-in-out 0.1s all;
+                            class="courses_tab_content_item_card col-lg-6">
+                            <div class="card_image strategy_overview_img_card">
+                                {{ pimcore_image("cardImg1", {
+                                    "height": 1570,
+                                    "width": 2093
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    <div class="title">{{pimcore_input('card1', {'placeholder': 'Build IP Capabilities'})}}</div>
+                                    <div class="description">
+                                        {{  pimcore_wysiwyg("card1desc", {
+                                                "height": 200,
+                                                "placeholder" : "Add content..."
+                                            })
+                                        }}
+                                    </div>
+                                </div>
+                                {{ pimcore_link('card1Link',{
+                                    'noText' : true,
+                                    'class' : 'find-out',
+                                    'textSuffix' : '<span class="find-out">Find out more</span>'
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="courses_tab_content_item_card col-lg-6">
+                            <div class="card_image strategy_overview_img_card">
+                                {{ pimcore_image("cardImg2", {
+                                    "height": 1570,
+                                    "width": 2093
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    <div class="title">{{pimcore_input('card2', {'placeholder': 'Consultation'})}}</div>
+                                    <div class="description">
+                                        {{  pimcore_wysiwyg("card2desc", {
+                                                "height": 200,
+                                                "placeholder" : "Add content..."
+                                            })
+                                        }}
+                                    </div>
+                                </div>
+                                {{ pimcore_link('card2Link',{
+                                    'noText' : true,
+                                    'class' : 'find-out',
+                                    'textSuffix' : '<span class="find-out">Find out more</span>'
+                                }) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-panel" id="accelerators">
+                    <div class="explore-cards row">
+                        <!-- Card 1: Our People & Culture -->
+                        <div transition: ease-in-out 0.1s all;
+                            class="courses_tab_content_item_card col-lg-6">
+                            <div class="card_image strategy_overview_img_card">
+                                {{ pimcore_image("cardImg1A", {
+                                    "height": 1570,
+                                    "width": 2093
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    <div class="title">{{pimcore_input('card1A', {'placeholder': 'Build IP Capabilities'})}}</div>
+                                    <div class="description">
+                                        {{  pimcore_wysiwyg("card1Adesc", {
+                                                "height": 200,
+                                                "placeholder" : "Add content..."
+                                            })
+                                        }}
+                                    </div>
+                                </div>
+                                {{ pimcore_link('card1ALink',{
+                                    'noText' : true,
+                                    'class' : 'find-out',
+                                    'textSuffix' : '<span class="find-out">Find out more</span>'
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6" style="
+                            border-radius: 8px;
+                            overflow: hidden;
+                            padding: 12px 24px 12px 0;
+                            position: relative;
+                            flex: 1 1 calc(50% - 15px);
+                            box-sizing: border-box;
+                            display: block;">&nbsp;</div>
+                        {# <div class="courses_tab_content_item_card col-lg-6">
+                            <div class="card_image strategy_overview_img_card">
+                                {{ pimcore_image("cardImg2A", {
+                                    "height": 1570,
+                                    "width": 2093
+                                }) }}
+                            </div>
+                            <div class="card_content">
+                                <div class="card_content_top">
+                                    <div class="title">{{pimcore_input('card2A', {'placeholder': 'Consultation'})}}</div>
+                                    <div class="description">
+                                        {{  pimcore_wysiwyg("card2Adesc", {
+                                                "height": 200,
+                                                "placeholder" : "Add content..."
+                                            })
+                                        }}
+                                    </div>
+                                </div>
+                                {{ pimcore_link('card2ALink',{
+                                    'noText' : true,
+                                    'class' : 'find-out',
+                                    'textSuffix' : '<span class="find-out">Find out more</span>'
+                                }) }}
+                            </div>
+                        </div> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section class="explore-section non-solution">
+        <div class="container courses_tab_content_item active">
+            <h2>{{ pimcore_input('exploremore', {'placeholder': 'Explore'}) }}</h2>
+            <div class="explore-cards row">
+                <!-- Card 1: Our People & Culture -->
+                {% if editmode %}
+                {{ pimcore_link('cardExploreLink1') }}
+                {{ pimcore_link('cardExploreLink2') }}
+                {% endif %}
+                {% set linkExplore1 = pimcore_link('cardExploreLink1') %}
+                {% set linkExplore2 = pimcore_link('cardExploreLink2') %}
+                
+
+                <div transition: ease-in-out 0.1s all; class="courses_tab_content_item_card col-lg-6">
+                    <div class="card_image strategy_overview_img_card">
+                        {{ pimcore_image('cardExploreImage1',{
+                            "height": 1570,
+                            "width": 2093
+                        }) }}
+                    </div>
+                    <div class="card_content">
+                        <div class="card_content_top">
+                            <div class="title">{{ pimcore_input('cardExplore1Title', {'placeholder': 'News & Announcements'}) }}</div>
+                            <div class="description">
+                                {{  pimcore_wysiwyg("cardExplore1Desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                            </div>
+                        </div>
+                        <a href="{{linkExplore1.data.path}}" class="find-out">
+                            Find out more</a>
+                    </div>
+                </div>
+                <div class="courses_tab_content_item_card col-lg-6">
+                    <div class="card_image strategy_overview_img_card">
+                        {{ pimcore_image('cardExploreImage2',{
+                            "height": 1570,
+                            "width": 2093
+                        }) }}
+                    </div>
+                    <div class="card_content">
+                        <div class="card_content_top">
+                            <div class="title">{{ pimcore_input('cardExplore2Title', {'placeholder': 'Resources'}) }}</div>
+                            <div class="description">
+                                {{  pimcore_wysiwyg("cardExplore2Desc", {
+                                    "height": 200,
+                                    "placeholder" : "Add content..."
+                                })
+                            }}
+                            </div>
+                        </div>
+                        <a href="{{linkExplore2.data.path}}" class="find-out">
+                            Find out more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Take Charge -->
+    <section class="cta-section container">
+        <img src="/static/static/assets/images/strategy-management/IPOS.png" class="img-bg">
+        <div class="cta-content-wrapper">
+            <div class="cta-content">
+                <h2>{{ pimcore_input('footerTitle', {'placeholder': 'Take Charge of Your IA/IP Today'}) }}</h2>
+                <p>
+                    {{ pimcore_input('footerSubTitle', {'placeholder': 'Subtitle'}) }}
+                </p>
+                <div class="cta-buttons">
+                    {% if editmode %}
+                        {{ pimcore_link('footersLink1') }}
+                        {{ pimcore_link('footersLink2') }}
+                    {% else %}
+                        {% set linkFooter1 = pimcore_link('footersLink1') %}
+                        {% set linkFooter2 = pimcore_link('footersLink2') %}
+                            <a class="btn btn-outline" href="{{linkFooter1.data.path}}">Find Out More</a>
+                            <a  class="btn btn-primary" href="{{linkFooter2.data.path}}">Book Free Consultation</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const tabPanels = document.querySelectorAll(".tab-panel");
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const target = this.getAttribute("data-tab");
+
+                // Remove active class from all buttons and panels
+                tabButtons.forEach((btn) => btn.classList.remove("active"));
+                tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+                // Add active class to clicked button and corresponding panel
+                this.classList.add("active");
+                document.getElementById(target).classList.add("active");
+            });
+        });
+    });
+
+
+    $(document).ready(function () {
+        let currentIndex = 0;
+        const slides = $(".testimonial-slide");
+        const slideCount = slides.length;
+        const slideWidth = $(".testimonial-slide").outerWidth(true);
+        const visibleSlides = 1.5;
+        const track = $(".testimonial-track");
+        const trackWidth = slideWidth * slideCount;
+        track.css("width", trackWidth + "px");
+
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+
+        function updateSlides() {
+            const offset = -(currentIndex * slideWidth);
+            track.css("transform", `translateX(${offset}px)`);
+            updateNavigationState();
+        }
+
+        function updateNavigationState() {
+            $(".prev").prop("disabled", currentIndex === 0).toggleClass("disabled", currentIndex === 0);
+            $(".next").prop("disabled", currentIndex >= slideCount - visibleSlides).toggleClass("disabled", currentIndex >= slideCount - visibleSlides);
+        }
+
+        $(".next").click(function () {
+            if (currentIndex < slideCount - visibleSlides) {
+                currentIndex++;
+                updateSlides();
+            }
+        });
+
+        $(".prev").click(function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlides();
+            }
+        });
+
+        track.on("mousedown touchstart", function (e) {
+            isDragging = true;
+            startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+        });
+
+        $(document).on("mouseup touchend", function () {
+            if (isDragging) {
+                isDragging = false;
+                const movedBy = currentTranslate - startX;
+                if (movedBy < -50 && currentIndex < slideCount - visibleSlides) {
+                    currentIndex++;
+                } else if (movedBy > 50 && currentIndex > 0) {
+                    currentIndex--;
+                }
+                updateSlides();
+            }
+        });
+
+        $(document).on("mousemove touchmove", function (e) {
+            if (!isDragging) return;
+            const currentX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+            currentTranslate = currentX;
+        });
+
+        // Initial state update
+        updateNavigationState();
+    });
+
+</script>
+{% endblock %}

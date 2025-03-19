@@ -1,0 +1,1150 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<div class="articles_details_container resources_public_container ip-capabilities">
+    <div class="bg_circle"></div>
+    <div class="resources_public_title_nav container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="d-block nav-view" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+                        {% include('layouts/breadcrumb-col-12.html.twig') %}
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container academy_enterprise_detail__page">
+        <div class="row main-articles">
+            <div class="col-xl-8 col-12 padding-right-90">
+                <div class="header-part">
+                    <h1>
+                    {{ pimcore_input('IPCapTitle', {'placeholder': 'Build IP Capabilities'}) }}
+                    </h1>
+                </div>
+
+                <div class="content-container ic-content">
+                    <h3>
+                    {{ pimcore_input('IPCapQuestion', {'placeholder': 'What is IP Capabilities?'}) }}
+                    </h3>
+                    <div>
+                    {{  pimcore_wysiwyg("IPCapQuestionContent", {
+                            "placeholder" : "edit content 1..."
+                        })
+                    }}
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="content_main_img">
+                                {% if editmode %}
+                                    {{ pimcore_image("IPCapContentImage") }}
+                                {% else %}
+                                    {% set thumbnail = pimcore_image("IPCapContentImage") %}
+                                    <img class="content_img" src="{{thumbnail.getSrc()}}">
+                                {% endif %}                                
+                            </div>
+                        </div>
+                    </div>
+
+                    {# <div class="video-section">
+                        <h3>{{ pimcore_input('IPContentWhatTitle', {'placeholder': 'Are you IP Capabilities?'})}}</h3>
+                        {{  pimcore_wysiwyg("IPContentWhatIfContent", {
+                                "placeholder" : "edit content 2..."
+                            })
+                        }}
+                        <div class="video-container m-b-40">
+                            {{ pimcore_video("IPContentWhatIfContentVideo", {'height': 315, 'width': 560}) }}
+                        </div>
+                    </div> #}
+
+                    <div>
+                    <h3>{{ pimcore_input('IPCapQuestionContentTitle2', {'placeholder': 'Are you IP Capabilities?'})}}</h3>
+                    {{  pimcore_wysiwyg("IPCapQuestionContent2", {
+                            "placeholder" : "edit content 2..."
+                        })
+                    }}
+                    </div>
+                    <div class="ipos-timeline ip-questions-wrap">
+                        <div class="timeline-item">
+                            <div class="icon expand">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple1") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle1',{'placeholder':'How do I protect my technology and product?'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent1", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon market">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple2") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle2',{'placeholder':'Go to market faster'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent2", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="icon partner">
+                                <div class="ripple-wrap"><span class="ripple"></span></div>
+                                <div class="icon-inner">
+                                    {{ pimcore_image("imgRipple3") }}
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>{{ pimcore_input('IPStartImgRippleTitle3',{'placeholder': 'Partner effectively'}) }}</h3>
+                                <div class="content-des">
+                                    {{  pimcore_wysiwyg("IPStartImgRippleContent3", {
+                                            "placeholder" : "edit content 1..."
+                                        })
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                    <h3>{{ pimcore_input('IPCapQuestionContentTitle3', {'placeholder': 'Are you IP Capabilities?'})}}</h3>
+                    {{  pimcore_wysiwyg("IPCapQuestionContent3", {
+                            "placeholder" : "edit content 3..."
+                        })
+                    }}
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="content_main_img img-strategy">
+                                {% if editmode %}
+                                    {{ pimcore_image("IPCapContentImageAfter") }}
+                                {% else %}
+                                    {% set thumbnail2 = pimcore_image("IPCapContentImageAfter") %}
+                                    <img class="content_img" src="{{thumbnail2.getSrc()}}">
+                                {% endif %} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-block d-md-none">
+            </div>
+            <div class="col-lg-4 col-12 detail right-side-contact">
+                <div class="wrap-right-side-sticky">
+                    <div class="detail_right">
+                        <div class="detail_right_circle">
+                            <div class="circle left"></div>
+                            <div class="circle right"></div>
+                        </div>
+                        <div class="detail_info_content">
+                            <h6 class="m-t-30">{{ pimcore_input('DetailInfo',{'placeholder': 'Contact Us'}) }}</h6>
+                            <div class="find-out m-b-16">{{pimcore_input('detailDesc', {'placeholder': 'For more information on how we can help your organisation'})}}</div>
+                            {% if editmode %}
+                            {{ pimcore_link('IPStartBannerRightLink1') }}
+                            {% endif %}
+                            {% set rightLink = pimcore_link('IPStartBannerRightLink1') %}
+
+                            <a class="btn full-white mt-36"
+                                href="{{ rightLink.data.path }}" target="_blank">
+                                {{ rightLink.data.text }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="interest-wrapper">
+                        <h5>{{ pimcore_input('worthWatching',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
+                        {% if editmode %}
+                        {{ pimcore_relations('worthWatches',{
+                            "types": ["object"],
+                            "classes" : [
+                                "Course", "Events", "News", "Articles", "Business", "CaseStudy", "ParentAnalytic", "WebinarRecordings"
+                            ]
+                        }) }}
+                        {% else %}
+                            {% set worthToWatches = pimcore_relations('worthWatches') %}
+                            {% if worthToWatches is not empty %}
+                                <div class="max-height-interest">
+                                    {% for carouselItem in worthToWatches %}
+                                        <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                                            {% set image = carouselItem.getCoverImage() %}
+                                        {% set properties = carouselItem.getProperties() %}
+                                        {% set name = properties.name %}
+                                        {% if image is not empty %}
+                                        <img src="{{image}}">
+                                        {% endif %}
+                                        <div class="right-side">
+                                            <div class="job-tag">{{carouselItem.className}}</div>
+                                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                                        </div>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                            <p>Find More later</p>
+                            {% endif %}
+                        {% endif %}
+                        {% if shares is not empty %}
+                            <div class="share-section">
+                                <span class="share">SHARE</span>
+                                <div class="share-icons">
+                                    {% if facebook is not empty %}
+                                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
+                                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z" clip-rule="evenodd" />
+                                        </svg>
+                                        </a>
+                                    {% endif %}
+                                    {% if linkedin is not empty %}
+                                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                    
+                                    {% if twitter is not empty %}
+                                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                                <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                                d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+
+                                    {% if email is not empty %}
+                                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                                clip-rule="evenodd" />
+                                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonial-section" style="background: url('/static/static/assets/images/strategy-management/bg-testimony.png') no-repeat; 
+        background-size: cover;">
+        <div class="testimonial-section-wrapper container no-padding">
+            <div class="testimonial-header">
+                <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" width="140" height="115" fill="none">
+                    <path stroke="#470A68" stroke-width="2"
+                        d="m48.118 2.06-.316-.114-.32.098c-7.666 2.359-14.903 6.87-21.715 13.487C18.941 22.162 13.4 30.436 9.13 40.33l-.004.009-.003.007C5.038 50.268 3 60.96 3 72.408c0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79C48.134 62.198 42.08 59.6 34.528 59.6c-1.162 0-2.1.024-2.807.075-.077.005-.152.01-.225.017v-2.548c0-7.273 2.235-14.582 6.764-21.94l.006-.01c4.525-7.542 10.556-13.669 18.104-18.386l.47-.294v-.554c0-3.086-.928-5.963-2.755-8.611-1.615-2.617-3.593-4.426-5.967-5.289Zm77.76 0-.315-.114-.321.098c-7.666 2.359-14.903 6.87-21.715 13.487-6.826 6.631-12.368 14.905-16.637 24.8l-.004.009-.003.007c-4.085 9.921-6.123 20.612-6.123 32.061 0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79-4.437-5.244-10.491-7.842-18.043-7.842a41.38 41.38 0 0 0-2.807.075c-.077.005-.152.01-.225.017v-2.548c0-7.273 2.236-14.582 6.764-21.94l.005-.01c4.526-7.542 10.557-13.669 18.105-18.386l.47-.294v-.554c0-3.086-.927-5.963-2.754-8.61-1.616-2.618-3.594-4.427-5.968-5.29Z" />
+                    <g clip-path="url(#a)">
+                        <path stroke="#fff" stroke-width="2"
+                            d="m48.118 2.06-.316-.114-.32.098c-7.666 2.359-14.903 6.87-21.715 13.487C18.941 22.162 13.4 30.436 9.13 40.33l-.004.009-.003.007C5.038 50.268 3 60.96 3 72.408c0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79C48.134 62.198 42.08 59.6 34.528 59.6c-1.162 0-2.1.024-2.807.075-.077.005-.152.01-.225.017v-2.548c0-7.273 2.235-14.582 6.764-21.94l.006-.01c4.525-7.542 10.556-13.669 18.104-18.386l.47-.294v-.554c0-3.086-.928-5.963-2.755-8.611-1.615-2.617-3.593-4.426-5.967-5.289Zm77.76 0-.315-.114-.321.098c-7.666 2.359-14.903 6.87-21.715 13.487-6.826 6.631-12.368 14.905-16.637 24.8l-.004.009-.003.007c-4.085 9.921-6.123 20.612-6.123 32.061 0 13.359 2.707 23.606 8.283 30.577 5.567 6.958 12.863 10.455 21.805 10.455 7.71 0 14.027-2.381 18.851-7.205 4.842-4.842 7.205-11.556 7.205-20.003 0-7.319-2.182-13.601-6.573-18.79-4.437-5.244-10.491-7.842-18.043-7.842a41.38 41.38 0 0 0-2.807.075c-.077.005-.152.01-.225.017v-2.548c0-7.273 2.236-14.582 6.764-21.94l.005-.01c4.526-7.542 10.557-13.669 18.105-18.386l.47-.294v-.554c0-3.086-.927-5.963-2.754-8.61-1.616-2.618-3.594-4.427-5.968-5.29Z" />
+                    </g>
+                    <defs>
+                        <clipPath id="a">
+                            <path fill="#fff" d="M0 73h140v42H0z" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h2>
+                {{ pimcore_input('WhatTheySay',{'placeholder': 'See What They Say'}) }}
+                </h2>
+            </div>
+            {% if editmode %}
+                {{ pimcore_relations('testimonies',{
+                    "types": ["object"],
+                    "classes" : [
+                        "Testimony"
+                    ]
+                }) }}
+            {% else %}
+            {% set listTestimonies = pimcore_relations('testimonies', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+            <div class="slider-wrapper">
+                <div class="navigate-button">
+                    <div class="prev" style="z-index: 1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" fill="none">
+                            <circle cx="23.5" cy="23.5" r="23" stroke="#fff" stroke-opacity=".3"
+                                transform="matrix(-1 0 0 1 47 0)" />
+                            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.5" d="m21.914 18.212 5.25 5.25-5.25 5.25" />
+                        </svg>
+                    </div>
+                    <div class="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" fill="none">
+                            <circle cx="23.5" cy="23.5" r="23" stroke="#fff" stroke-opacity=".3"
+                                transform="matrix(-1 0 0 1 47 0)" />
+                            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.5" d="m21.914 18.212 5.25 5.25-5.25 5.25" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="testimonial-slider">
+                    <div class="m-arrow">
+                        <div class="prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="testimonial-track">
+                        {% if listTestimonies is not empty %}
+                            {% for testimony in listTestimonies %}
+                                {% set image = testimony.getProfilePicture() %}
+                                <div class="testimonial-slide">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-profile">
+                                            {% if image %}
+                                                <img src="{{ image }}">
+                                            {% endif %}
+                                            <div class="profile-info">
+                                                <h3>{{ testimony.getName() }}</h3>
+                                                <p>{{ testimony.getTitle() }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-text">
+                                            {{ testimony.getTestimonies() }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="m-arrow">
+                        <div class="next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                <rect width="39" height="39" x=".5" y=".5" fill="#fff" rx="19.5" />
+                                <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="1.5"
+                                    d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="trusted-logo-section">
+        <div class="container">
+            <h3>
+            {{ pimcore_input('trusted',{'placeholder': 'Trusted by leading companies who have benefited from our programmes'}) }}
+            </h3>
+
+            <!-- Swiper Container -->
+            {% if editmode %}
+                    {{ pimcore_relations('trustedLogos',{
+                        "types": ["object"],
+                        "classes" : [
+                            "TrustedLogo"
+                        ]
+                    }) }}
+            {% else %}
+            <div class="logo-marquee">
+                <div class="logo-track">
+                    {% set listTrusted = pimcore_relations('trustedLogos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                    {% if listTrusted is not empty %}
+                            {% for trusted in listTrusted %}
+                                {% set image = trusted.getImage() %}
+                                {# <div class="swiper-slide"> #}
+                                <img src="{{ image }}">
+                                {# </div> #}
+                            {% endfor %}
+                            {% for trusted in listTrusted %}
+                                {% set image = trusted.getImage() %}
+                                {# <div class="swiper-slide"> #}
+                                <img src="{{ image }}">
+                                {# </div> #}
+                            {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            <!-- Navigation Buttons -->
+            {# <div class="navigation-button-warp">
+                <div class="swiper-button-prev trusted-logo-prev"></div>
+                <div class="swiper-button-next trusted-logo-next"></div>
+            </div> #}
+        </div>
+    </section>
+
+    <section class="container slider-ip-capabilities">
+        <div class="slider-container">
+            <h3>{{pimcore_input('sliderSectionTitle', {'placeholder': 'Title for this section if any'})}}</h3>
+            {% if editmode %}
+                {{ pimcore_relations('mediaImages',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPCapMediaImage"
+                    ]
+                }) }}
+            {% else %}
+            <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
+                {% set list = pimcore_relations('mediaImages', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                <div class="bottom-video-section person">
+                    <div class="left-side">
+                        <div class="video-section">
+                            <div class="video-container">
+                            </div>
+                        </div>
+
+                        <div class="thumbnail-carousel-container">
+                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                {% if list is not empty %}
+                                    {% for carouselItem in list %}
+                                    {% set videoTitle = carouselItem.getMediaTitle() %}
+                                    {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
+                                    {% set videoDescription = carouselItem.getMediaDescription() %}
+                                    {% set videoDescription1 = carouselItem.getMediaDescription1() %}
+                                    {% set videoDescription2 = carouselItem.getMediaDescription2() %}
+                                    {% set mediaLink = carouselItem.getMediaExternalLink() %}
+                                    {% set subTitle = carouselItem.getMediaSubTitle() %}
+                                    <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
+                                        {% if videoThumbnail %}
+                                        <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                            <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="text-container person-slider">
+                            <h2>&nbsp;</h2>
+                            <h4>&nbsp;</h4>
+                                <div class="max-height-text text-content">
+                                    <p>&nbsp;</p>
+                                </div>
+                            <div class="text-container-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if editmode %}
+                {{ pimcore_relations('mediaVideos',{
+                    "types": ["object"],
+                    "classes" : [
+                        "IPCapMediaVideo"
+                    ]
+                }) }}
+            {% else %}
+            <div id="main-articles-section-3" class="main-articles section-2 image-video-slider">
+                {% set videoList = pimcore_relations('mediaVideos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                <div class="bottom-video-section">
+                    <div class="left-side">
+                        <div class="video-section">
+                            <div class="video-container">
+                            </div>
+                        </div>
+
+                        <div class="thumbnail-carousel-container">
+                            <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                {% if videoList is not empty %}
+                                    {% for mediaVideo in videoList %}
+                                    {% set mediaVideoTitle = mediaVideo.getMediaTitle() %}
+                                    {% set mediaVideoUrl = mediaVideo.getMediaVideo() %}
+                                    {% set mediaVideoThumbnail = mediaVideo.getMediaThumbnail() %}
+                                    {% set mediaVideoDescription = mediaVideo.getMediaDescription() %}
+                                    {% set mediaVideoDescription1 = mediaVideo.getMediaDescription1() %}
+                                    {% set mediaVideoDescription2 = mediaVideo.getMediaDescription2() %}
+                                    {% set mediaVideoExternalLink = mediaVideo.getMediaExternalLink() %}
+                                    <div class="img-slider-container" data-title="{{ mediaVideoTitle }}" data-description="{{ mediaVideoDescription }}" data-description-one="{{ mediaVideoDescription1 }}" data-description-two="{{ mediaVideoDescription2 }}" data-link="{{mediaVideoExternalLink.path}}">
+                                        {% if mediaVideoThumbnail %}
+                                        <img src="{{ mediaVideoThumbnail }}" alt="{{ mediaVideoTitle }}">
+                                        {% endif %}
+                                        {% if mediaVideoUrl.getType() == 'youtube' %}
+                                        <iframe class="d-none" width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{ mediaVideoUrl.getData() }}" title="{{ mediaVideoTitle }}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="arrow-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                            <div class="arrow-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                    <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                    <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="text-container person-slider">
+                            <h2 style="margin-bottom: 10px">&nbsp;</h2>
+                            <div class="max-height-text text-content">
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="text-container-button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="consultation-section" style="padding-top: 10px">
+        <div class="container">
+            <div class="centered">
+                <div class="line-horizontal"></div>
+            </div>
+            <h2>
+            {{ pimcore_input('ready',{'placeholder': 'Ready to propel your enterprise towards global expansion, innovation, and success?'}) }}
+            </h2>
+            <div>
+            {{  pimcore_wysiwyg("readyContent", {
+                    "placeholder" : "edit content 1..."
+                })
+            }}
+            </div>
+            
+            <div class="button-warp">
+                {% if editmode %}
+                    {{pimcore_link('BookLink1')}}
+                {% endif %}
+                {% set book = pimcore_link('BookLink1') %}
+                <a href="{{book.data.path}}">
+                    <button class="cta-button">{{ book.data.text }}</button>
+                </a>
+            </div>
+            <div class="info-box">
+                {{  pimcore_wysiwyg("infoBox", {
+                    "placeholder" : "edit content 1..."
+                })
+            }}
+            </div>
+        </div>
+    </section>
+
+    <div class="right-side-contact mobile">
+        <div class="interest-wrapper">
+            <h5>{{ pimcore_input('worthWatching2',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
+            {% if worthToWatches is not empty %}
+                {% for carouselItem in worthToWatches %}
+                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                        {% set image = carouselItem.getCoverImage() %}
+                        {% set properties = carouselItem.getProperties() %}
+                        {% set name = properties.name %}
+                        {% if image is not empty %}
+                        <img src="{{image}}">
+                        {% endif %}
+                        <div class="right-side">
+                            <div class="job-tag">{{carouselItem.className}}</div>
+                            <div class="job-title">{{carouselItem.getTitle()}}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+            <p>Find More later</p>
+            {% endif %}
+
+            <div class="share-section">
+                <span class="share">SHARE</span>
+                <div class="share-icons">
+                    {% if facebook is not empty %}
+                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
+                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M16 29.33a13.33 13.33 0 1 0 0-26.66 13.33 13.33 0 0 0 0 26.66Z" clip-rule="evenodd" />
+                        </svg>
+                        </a>
+                    {% endif %}
+                    {% if linkedin is not empty %}
+                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                            </svg>
+                        </a>
+                    {% endif %}
+                    
+                    {% if twitter is not empty %}
+                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                <path fill="#470A68" stroke="#470A68" stroke-width=".5"
+                                d="m17.14 15.1 4.44-5.1H20.5l-3.9 4.44-3-4.44H10l4.68 6.66L10 22h1.08l4.08-4.68L18.4 22H22l-4.86-6.9Zm-1.44 1.62-.48-.66-3.78-5.28h1.62l3.06 4.26.48.66 3.96 5.52h-1.62l-3.24-4.5Z" />
+                            </svg>
+                        </a>
+                    {% endif %}
+
+                    {% if email is not empty %}
+                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="m18.25 16.48 3-2.04c.47-.31.75-.84.75-1.4v0c0-.95-.76-1.7-1.7-1.7H11.7c-.94 0-1.7.75-1.7 1.7v0c0 .56.28 1.09.75 1.4l3 2.04a4 4 0 0 0 4.49 0v0Z"
+                                clip-rule="evenodd" />
+                                <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M10 13.03v6.3c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-6.3" />
+                            </svg>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="contact-card">
+            <div class="contact-box">
+                <h2>Contact Us</h2>
+                <p>For more information on how we can help your organisation:</p>
+                <a class="cta-button-link" href="{{rightLink.data.path}}" target="_blank">
+                    {{ rightLink.data.text }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector(".wrap-right-side-sticky");
+        const sidebarContainer = document.querySelector(".col-lg-4.col-12.detail.right-side-contact");
+        const mainContainer = document.querySelector(".main-articles");
+
+        if (!sidebar || !sidebarContainer || !mainContainer) return;
+
+        function updateStickySidebar() {
+            const containerRect = sidebarContainer.getBoundingClientRect();
+            const sidebarHeight = sidebar.offsetHeight;
+            const containerHeight = sidebarContainer.offsetHeight;
+
+            const offsetTop = mainContainer.offsetTop; // Top position of main container
+            const stopPoint = offsetTop + containerHeight - sidebarHeight; // Bottom stop position
+
+            if (window.scrollY > offsetTop - 322 && window.scrollY < stopPoint) {
+                // Make sidebar fixed while scrolling
+                sidebar.style.position = "fixed";
+                sidebar.style.top = "280px";
+                sidebar.style.bottom = "auto";
+            } else if (window.scrollY >= stopPoint) {
+                // Lock sidebar at the bottom of its container
+                sidebar.style.position = "absolute";
+                sidebar.style.top = "auto";
+                sidebar.style.bottom = "156px";
+            } else {
+                // Reset when scrolling back up
+                sidebar.style.position = "static";
+                sidebar.style.top = "auto";
+                sidebar.style.bottom = "auto";
+            }
+        }
+
+        window.addEventListener("scroll", updateStickySidebar);
+        window.addEventListener("resize", updateStickySidebar);
+        updateStickySidebar(); // Initial run
+    });
+
+
+    $(document).ready(function () {
+        let currentIndex = 0;
+        const slides = $(".testimonial-slide");
+        const slideCount = slides.length;
+        const slideWidth = $(".testimonial-slide").outerWidth(true);
+        const visibleSlides = 1.5;
+        const track = $(".testimonial-track");
+        const trackWidth = slideWidth * slideCount;
+        track.css("width", trackWidth + "px");
+
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+
+        function updateSlides() {
+            const offset = -(currentIndex * slideWidth);
+            track.css("transform", `translateX(${offset}px)`);
+            updateNavigationState();
+        }
+
+        function updateNavigationState() {
+            $(".prev").prop("disabled", currentIndex === 0).toggleClass("disabled", currentIndex === 0);
+            $(".next").prop("disabled", currentIndex >= slideCount - visibleSlides).toggleClass("disabled", currentIndex >= slideCount - visibleSlides);
+        }
+
+        $(".next").click(function () {
+            if (currentIndex < slideCount - visibleSlides) {
+                currentIndex++;
+                updateSlides();
+            }
+        });
+
+        $(".prev").click(function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlides();
+            }
+        });
+
+        track.on("mousedown touchstart", function (e) {
+            isDragging = true;
+            startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+        });
+
+        $(document).on("mouseup touchend", function () {
+            if (isDragging) {
+                isDragging = false;
+                const movedBy = currentTranslate - startX;
+                if (movedBy < -50 && currentIndex < slideCount - visibleSlides) {
+                    currentIndex++;
+                } else if (movedBy > 50 && currentIndex > 0) {
+                    currentIndex--;
+                }
+                updateSlides();
+            }
+        });
+
+        $(document).on("mousemove touchmove", function (e) {
+            if (!isDragging) return;
+            const currentX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+            currentTranslate = currentX;
+        });
+
+        // Initial state update
+        updateNavigationState();
+    });
+
+    {# document.addEventListener("DOMContentLoaded", function () {
+        var swiper = new Swiper('.trusted-logo-slider', {
+            loop: true,
+            slidesPerView: 6,
+            spaceBetween: 50,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.trusted-logo-next',
+                prevEl: '.trusted-logo-prev',
+            },
+            breakpoints: {
+                0: { // Mobile
+                    slidesPerView: 3,
+                },
+                768: { // Desktop
+                    slidesPerView: 6,
+                }
+            }
+        });
+        console.log("Autoplay Running:", swiper.autoplay);
+        const sliderContainer = document.querySelector('.trusted-logo-slider');
+        let attempts = 0;  // Track attempts
+        const maxAttempts = 10;  // Max retries
+
+        const checkAutoplay = setInterval(() => {
+            console.log(`Attempt ${attempts + 1}: Autoplay Running -`, swiper.autoplay);
+            attempts++;
+            if (attempts >= maxAttempts) {
+                clearInterval(checkAutoplay);  // Stop checking after success or 10 attempts
+                console.log("Autoplay started or max attempts reached.");
+            }
+        }, 1000); // Check every second
+        /*if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                swiper.autoplay.stop();
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                console.log("SWIPER LEAVE", swiper.autoplay);
+                swiper.autoplay.start();
+            });
+        }*/
+    }); #}
+
+    $(document).ready(function () {
+        // Handle Section-Image Logic
+        const handleSectionImage = () => {
+            const videoContainer = $("#section-image .video-container");
+            const thumbnails = $("#section-image .img-slider-container");
+            const thumbnailCarousel = $("#section-image .thumbnail-carousel");
+            const arrowLeft = $("#section-image .arrow-left");
+            const arrowRight = $("#section-image .arrow-right");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+            };
+
+            function updateArrowState() {
+                arrowLeft.prop("disabled", currentSlide === 0);
+                arrowRight.prop(
+                    "disabled",
+                    currentSlide >= thumbnails.length - visibleThumbnails
+                );
+            }
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+        // Handle Main-Articles Section-2 Logic
+        const handleMainArticlesSection2 = () => {
+            const videoContainer = $("#main-articles-section-2 .video-container");
+            const thumbnails = $("#main-articles-section-2 .img-slider-container");
+            const thumbnailCarousel = $("#main-articles-section-2 .thumbnail-carousel");
+            const arrowLeft = $("#main-articles-section-2 .arrow-left");
+            const arrowRight = $("#main-articles-section-2 .arrow-right");
+            const textContainer = $("#main-articles-section-2 .text-container");
+            const textContentWrapper = $("#main-articles-section-2 .text-content");
+            const textLinkContainer = $("#main-articles-section-2 .text-container .text-container-button");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+
+                // Update the text-container content
+                const title = thumbnail.data("title") || "Default Title";
+                const position = thumbnail.data("position") || "";
+                const description = thumbnail.data("description") || "Default Description";
+                const description1 = thumbnail.data("description-one") || "";
+                const description2 = thumbnail.data("description-two") || "";
+                const link = thumbnail.data("link") || "";
+                textContainer.find("h2").text(title);
+                textContainer.find("h4").text(position);
+                textContainer.find("p").text(description);
+                textContentWrapper.find("p:not(:first)").remove();
+
+                if (description1) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description1}</p>`);
+                }
+                if (description2) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description2}</p>`);
+                }
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                arrowLeft.toggle(currentSlide > 0);
+                arrowRight.toggle(currentSlide < thumbnails.length - visibleThumbnails);
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', (e) => {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+            thumbnailCarousel.on('mousemove touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 2;
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            thumbnailCarousel.on('mouseup touchend', () => {
+                isDragging = false;
+            });
+
+            // Trigger click on the first thumbnail to initialize content
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+        const handleMainArticlesSection3 = () => {
+            const videoContainer = $("#main-articles-section-3 .video-container");
+            const thumbnails = $("#main-articles-section-3 .img-slider-container");
+            const thumbnailCarousel = $("#main-articles-section-3 .thumbnail-carousel");
+            const arrowLeft = $("#main-articles-section-3 .arrow-left");
+            const arrowRight = $("#main-articles-section-3 .arrow-right");
+            const textContainer = $("#main-articles-section-3 .text-container");
+            const textContentWrapper = $("#main-articles-section-3 .text-content");
+            const textLinkContainer = $("#main-articles-section-3 .text-container .text-container-button");
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find("iframe");
+                const img = thumbnail.find("img");
+
+                // Clear previous content in the video container
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    // If the thumbnail contains an iframe (video)
+                    const clonedIframe = iframe.clone();
+                    clonedIframe.removeClass("d-none"); // Remove the hidden class
+                    videoContainer.append(clonedIframe); // Append the iframe
+                } else if (img.length) {
+                    // If the thumbnail contains an image
+                    videoContainer.append(img.clone());
+                }
+
+                // Update the text-container content
+                const title = thumbnail.data("title") || "Default Title";
+                const position = thumbnail.data("position") || "";
+                const description = thumbnail.data("description") || "Default Description";
+                const description1 = thumbnail.data("description-one") || "";
+                const description2 = thumbnail.data("description-two") || "";
+                const link = thumbnail.data("link") || "";
+                textContainer.find("h2").text(title);
+                textContainer.find("h4").text(position);
+                textContainer.find("p").text(description);
+                textContentWrapper.find("p:not(:first)").remove();
+
+                if (description1) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description1}</p>`);
+                }
+                if (description2) {
+                    textContentWrapper.append(`<p style="margin-top: 10px">${description2}</p>`);
+                }
+                // Ensure `textLinkContainer` exists and `link` is not empty
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                if (currentSlide === 0) {
+                    arrowLeft.hide();
+                } else {
+                    arrowLeft.show();
+                }
+
+                if (currentSlide >= thumbnails.length - visibleThumbnails) {
+                    arrowRight.hide();
+                } else {
+                    arrowRight.show();
+                }
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass("active");
+                $(this).addClass("active");
+                updateVideoContent($(this));
+            });
+
+            thumbnailCarousel.on('mousedown touchstart', function (e) {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+                thumbnailCarousel.css('cursor', 'grabbing');
+            });
+
+            $(document).on('mousemove touchmove', function (e) {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 1.5; // Speed up the scroll
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            $(document).on('mouseup touchend', function () {
+                isDragging = false;
+                thumbnailCarousel.css('cursor', 'grab');
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            // Trigger click on the first thumbnail to initialize content
+            thumbnails.first().click();
+            updateArrowState();
+        };
+
+
+        // Initialize both sections
+        handleMainArticlesSection3();
+        handleMainArticlesSection2();
+    });
+</script>
+{% endblock %}
