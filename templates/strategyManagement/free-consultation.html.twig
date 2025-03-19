@@ -54,6 +54,7 @@
                             {% endif %}
                             {% set book = pimcore_link('BookLink1') %}
                             <a class="btn full-white mt-36"
+                                target="_blank"
                                 href="{{book.data.path}}">
                                 {{ book.data.text }}
                             </a>
@@ -66,7 +67,7 @@
                                 <span class="share">SHARE</span>
                                 <div class="share-icons">
                                     {% if facebook is not empty %}
-                                        <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                                        <a target="_blank" href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                             <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
@@ -76,7 +77,7 @@
                                         </a>
                                     {% endif %}
                                     {% if linkedin is not empty %}
-                                        <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                                        <a target="_blank" href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
@@ -87,7 +88,7 @@
                                     {% endif %}
                                     
                                     {% if twitter is not empty %}
-                                        <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                                        <a target="_blank" href="{{ twitter.getShare().getDirect() }}" title="Share on X">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -98,7 +99,7 @@
                                     {% endif %}
 
                                     {% if email is not empty %}
-                                        <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                                        <a target="_blank" href="{{ email.getShare().getDirect() }}" title="Share via Email">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -278,7 +279,8 @@
             <div class="contact-box">
                 <h2>Contact Us</h2>
                 <p>For more information on how we can help your organisation:</p>
-                <a class="btn full-white mt-36"
+                <a class="btn full-white mt-36" style="width: 100%"
+                    target="_blank"
                     href="{{book.data.path}}" >
                     {{ book.data.text }}
                 </a>
@@ -291,7 +293,7 @@
                     <span class="share">SHARE</span>
                     <div class="share-icons">
                         {% if facebook is not empty %}
-                            <a href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
+                            <a target="_blank" href="{{ facebook.getShare().getDirect() }}" title="Share on Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                 <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M12.91 15.09h6.18M19.09 9.94H18a3.04 3.04 0 0 0-3.04 3.04v9.08" />
@@ -301,7 +303,7 @@
                             </a>
                         {% endif %}
                         {% if linkedin is not empty %}
-                            <a href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
+                            <a target="_blank" href="{{ linkedin.getShare().getDirect() }}" title="Share on LinkedIn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                     <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M11.53 14.1v6.54M15.9 20.64v-3.81c0-1.51 1.21-2.73 2.72-2.73v0c1.5 0 2.73 1.22 2.73 2.73v3.81M11.53 10.14a.27.27 0 1 0 .27.27.27.27 0 0 0-.27-.27" />
@@ -312,7 +314,7 @@
                         {% endif %}
                         
                         {% if twitter is not empty %}
-                            <a href="{{ twitter.getShare().getDirect() }}" title="Share on X">
+                            <a target="_blank" href="{{ twitter.getShare().getDirect() }}" title="Share on X">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                     <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -323,7 +325,7 @@
                         {% endif %}
 
                         {% if email is not empty %}
-                            <a href="{{ email.getShare().getDirect() }}" title="Share via Email">
+                            <a target="_blank" href="{{ email.getShare().getDirect() }}" title="Share via Email">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
                                     <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M25.43 6.57A13.33 13.33 0 1 1 6.57 25.43 13.33 13.33 0 0 1 25.43 6.57" />
@@ -516,6 +518,7 @@
                         $('<a>', {
                             class: "button-1",
                             href: link,
+                            target: '_blank',
                             text: "Find out more"
                         })
                     );
@@ -636,6 +639,7 @@
                         $('<a>', {
                             class: "button-1",
                             href: link,
+                            target: '_blank',
                             text: "Find out more"
                         })
                     );

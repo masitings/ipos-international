@@ -792,6 +792,7 @@
   @media screen and (max-width: 768px) {
     .strategy-overview .cta-section {
       padding-bottom: 157.975px;
+      margin-top: 0;
     }
   }
   .strategy-overview .cta-section .img-bg {
