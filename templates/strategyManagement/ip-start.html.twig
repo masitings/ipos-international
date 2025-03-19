@@ -335,7 +335,7 @@
                             {% if worthToWatches is not empty %}
                                 <div class="max-height-interest">
                                 {% for carouselItem in worthToWatches %}
-                                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                                    <a target="_blank" href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
                                         {% set image = carouselItem.getCoverImage() %}
                                         {% set properties = carouselItem.getProperties() %}
                                         {% set name = properties.name %}
@@ -596,7 +596,7 @@
             <h5>{{ pimcore_input('worthWatching2',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
             {% if worthToWatches is not empty %}
                 {% for carouselItem in worthToWatches %}
-                    <a href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
+                    <a target="_blank" href="{{ carouselItem }}_{{ carouselItem.getId() }}" class="job-item">
                         {% set image = carouselItem.getCoverImage() %}
                         {% set properties = carouselItem.getProperties() %}
                         {% set name = properties.name %}
