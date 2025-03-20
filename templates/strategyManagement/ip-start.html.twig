@@ -288,6 +288,18 @@
             </div>
 
             <div class="col-12 d-block d-md-none"></div>
+            {% if editmode %}
+                <div class="col-12" style="margin-bottom: 20px">
+                    <p>Worth Watch/Read data: </p>
+                    {{ pimcore_relations('worthWatches',{
+                        "types": ["object"],
+                        "classes" : [
+                            "Course", "Events", "News", "Articles", "Business", "CaseStudy", "ParentAnalytic", "WebinarRecordings"
+                        ]
+                    }) }}
+                </div>
+            {% endif %}
+
             <div class="col-lg-4 col-12 detail right-side-contact">
                 <div class="wrap-right-side-sticky">
                     <div class="detail_right">
@@ -324,12 +336,6 @@
                     <div class="interest-wrapper">
                         <h5>{{ pimcore_input('worthWatching',{'placeholder': 'Worth Reading/Watching'}) }}</h5>
                         {% if editmode %}
-                        {{ pimcore_relations('worthWatches',{
-                            "types": ["object"],
-                            "classes" : [
-                                "Course", "Events", "News", "Articles", "Business", "CaseStudy", "ParentAnalytic", "WebinarRecordings"
-                            ]
-                        }) }}
                         {% else %}
                             {% set worthToWatches = pimcore_relations('worthWatches') %}
                             {% if worthToWatches is not empty %}
