@@ -4,12 +4,15 @@
     <section class="sec-banner" style="margin-top: 0">
       <div class="content" style="margin-top: 0">
         {% if editmode %}
+            <div style="margin-top: 30px; margin-left: 20px; margin-right: 20px">
+            <h4>Banner Slider</h4>
             {{ pimcore_relations('objectsAll',{
                 "types": ["object"],
                 "classes" : [
                     "HomeImageSlider"
                 ]
             }) }}
+            </div>
         {% else %}
         <div class="swiper swiper_banner">
           <div class="swiper-wrapper">
