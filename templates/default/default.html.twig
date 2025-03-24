@@ -130,8 +130,9 @@
         <div class="card-div">
           <div class="card-wrap">
             <div class="img">
-                {% set thumbnail1 = pimcore_image("HomeImage1") %}
-                <img class="img-fluid" src="{{thumbnail1.getSrc()}}">
+                {{ pimcore_image("HomeImage1", {
+                    "class": 'img-fluid'
+                }) }}
             </div>
             <div class="card-title">{{ pimcore_input('cardTitle1', {'placeholder': 'Drive Business Growth'}) }}</div>
             <div class="card-desc">{{ pimcore_textarea('cardDesc1', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}</div>
@@ -139,16 +140,18 @@
           </div>
           <div class="card-wrap">
             <div class="img">
-                {% set thumbnail2 = pimcore_image("HomeImage2") %}
-                <img class="img-fluid" src="{{thumbnail2.getSrc()}}">
+                {{ pimcore_image("HomeImage2", {
+                    "class": 'img-fluid'
+                }) }}
             </div>
             <div class="card-title">{{ pimcore_input('cardTitle2', {'placeholder': 'Maximise Value and Profits'}) }}</div>
             <div class="card-desc">{{ pimcore_textarea('cardDesc2', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}</div>
           </div>
           <div class="card-wrap">
             <div class="img">
-                {% set thumbnail3 = pimcore_image("HomeImage3") %}
-                <img class="img-fluid" src="{{thumbnail3.getSrc()}}">
+                {{ pimcore_image("HomeImage3", {
+                    "class": 'img-fluid'
+                }) }}
             </div>
             <div class="card-title">{{ pimcore_input('cardTitle3', {'placeholder': 'Maximise Value and Profits'}) }}</div>
             <div class="card-desc">{{ pimcore_textarea('cardDesc3', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}</div>
