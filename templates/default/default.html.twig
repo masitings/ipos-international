@@ -125,7 +125,11 @@
       {% endif %}
     </section>
     {# <div class="sectionBg"><img class="sectionBg" src="/static/sprint3/images/home_center_bg.3a2c5b3.png" alt=""> #}
+    {% if editmode %}
+      <section class="sec-assets" style="margin-top: 200px">
+    {% else %}
       <section class="sec-assets">
+    {% endif %}
         <div class="tip">{{ pimcore_input('homeQuestion', {'placeholder': 'Why Intangible Assets?'}) }}</div>
         <div class="card-div">
           <div class="card-wrap">
@@ -223,7 +227,7 @@
       </section>
     </div>
     <section class="sec-subscribe">
-      <div class="content"> 
+      <div class="content" style="position: relative; z-index: 2"> 
         <div class="tip1">{{pimcore_input('subscribeTitle', {'placeholder': 'Get the Latest IP Trends & Insights'})}}</div>
         <div class="tip2">{{pimcore_input('subscribeDesc', {'placeholder': 'Stay updated with expert insights, industry trends, and exclusive events to help you navigate the world of intangible assets.'})}}</div>
         {% if editmode %}
@@ -236,7 +240,7 @@
             href="{{ subscLink.data.path }}">
             {{ subscLink.data.text }}
         </a>
-      </div><img class="img-bg" src="/static/sprint3/images/home_subscribe_bg.3729c80.png" alt="">
+      </div><img class="img-bg" style="z-index: 1" src="/static/sprint3/images/home_subscribe_bg.3729c80.png" alt="">
     </section>
     <div class="darkCircle">VIEW</div>
     <div class="test"></div>

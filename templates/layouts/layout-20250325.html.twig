@@ -17,6 +17,8 @@
     {% if document.getTitle() is not empty %}
         <title>{{ document.getTitle() | default("IPOS International") }}</title>
     {% endif %}
+    <link href="/static/css/418.bundle.css?v={{ random() }}" rel="stylesheet">
+    <link href="/static/css/app.bundle.css?v={{ random() }}" rel="stylesheet">
     <link href="/static/sprint3/css/sprint3418.bundle.css?v={{ random() }}" rel="stylesheet">
     <link href="/static/sprint3/css/sprint3app.bundle.css?v={{ random() }}" rel="stylesheet">
    <style>
