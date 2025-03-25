@@ -9,7 +9,7 @@
  * - mediaSubTitle [input]
  * - mediaDescription [textarea]
  * - mediaThumbnail [image]
- * - mediaImage [video]
+ * - mediaVideo [video]
  * - mediaExternalLink [link]
  */
 
@@ -20,7 +20,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1742930861,
+   'modificationDate' => 1742931443,
    'userOwner' => 3,
    'userModification' => 3,
    'parentClass' => '',
@@ -173,8 +173,8 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
           4 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
-             'name' => 'mediaImage',
-             'title' => 'Media Image',
+             'name' => 'mediaVideo',
+             'title' => 'Media Video',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -290,6 +290,39 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
+    0 => 
+    \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
+       'name' => 'mediaImage',
+       'title' => 'Media Image',
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => false,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'fieldtype' => '',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => false,
+       'visibleSearch' => false,
+       'blockedVarsForExport' => 
+      array (
+      ),
+       'uploadPath' => '',
+       'allowedTypes' => 
+      array (
+      ),
+       'supportedTypes' => 
+      array (
+        0 => 'asset',
+        1 => 'youtube',
+        2 => 'vimeo',
+        3 => 'dailymotion',
+      ),
+       'height' => '',
+       'width' => '',
+    )),
   ),
    'blockedVarsForExport' => 
   array (

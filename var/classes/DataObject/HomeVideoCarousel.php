@@ -9,7 +9,7 @@
  * - mediaSubTitle [input]
  * - mediaDescription [textarea]
  * - mediaThumbnail [image]
- * - mediaImage [video]
+ * - mediaVideo [video]
  * - mediaExternalLink [link]
  */
 
@@ -32,7 +32,7 @@ public const FIELD_MEDIA_TITLE = 'mediaTitle';
 public const FIELD_MEDIA_SUB_TITLE = 'mediaSubTitle';
 public const FIELD_MEDIA_DESCRIPTION = 'mediaDescription';
 public const FIELD_MEDIA_THUMBNAIL = 'mediaThumbnail';
-public const FIELD_MEDIA_IMAGE = 'mediaImage';
+public const FIELD_MEDIA_VIDEO = 'mediaVideo';
 public const FIELD_MEDIA_EXTERNAL_LINK = 'mediaExternalLink';
 
 protected $classId = "33";
@@ -41,7 +41,7 @@ protected $mediaTitle;
 protected $mediaSubTitle;
 protected $mediaDescription;
 protected $mediaThumbnail;
-protected $mediaImage;
+protected $mediaVideo;
 protected $mediaExternalLink;
 
 
@@ -201,19 +201,19 @@ public function setMediaThumbnail(?\Pimcore\Model\Asset\Image $mediaThumbnail): 
 }
 
 /**
-* Get mediaImage - Media Image
+* Get mediaVideo - Media Video
 * @return \Pimcore\Model\DataObject\Data\Video|null
 */
-public function getMediaImage(): ?\Pimcore\Model\DataObject\Data\Video
+public function getMediaVideo(): ?\Pimcore\Model\DataObject\Data\Video
 {
 	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-		$preValue = $this->preGetValue("mediaImage");
+		$preValue = $this->preGetValue("mediaVideo");
 		if ($preValue !== null) {
 			return $preValue;
 		}
 	}
 
-	$data = $this->mediaImage;
+	$data = $this->mediaVideo;
 
 	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
 		return $data->getPlain();
@@ -223,15 +223,15 @@ public function getMediaImage(): ?\Pimcore\Model\DataObject\Data\Video
 }
 
 /**
-* Set mediaImage - Media Image
-* @param \Pimcore\Model\DataObject\Data\Video|null $mediaImage
+* Set mediaVideo - Media Video
+* @param \Pimcore\Model\DataObject\Data\Video|null $mediaVideo
 * @return $this
 */
-public function setMediaImage(?\Pimcore\Model\DataObject\Data\Video $mediaImage): static
+public function setMediaVideo(?\Pimcore\Model\DataObject\Data\Video $mediaVideo): static
 {
-	$this->markFieldDirty("mediaImage", true);
+	$this->markFieldDirty("mediaVideo", true);
 
-	$this->mediaImage = $mediaImage;
+	$this->mediaVideo = $mediaVideo;
 
 	return $this;
 }
