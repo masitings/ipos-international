@@ -46,8 +46,8 @@
             <div class="scroll-indicator-border"> </div>
           </div>
         </div>
-        <div class="swiper-banner-button-next"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
-        <div class="swiper-banner-button-prev"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
+        <div class="swiper-button-next"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
+        <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
         {% endif %}
         {# <div class="swiperTxt">
           <div class="bannerTitle">Ideas Today,<br/>Assets Tomorrow.</div>
@@ -92,8 +92,8 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="swiper-logo-pc-button-next"><img src="/static/sprint3/images/icon-arrow-next.e2857c7.png" alt=""></div>
-            <div class="swiper-logo-pc-button-prev"><img src="/static/sprint3/images/icon-arrow-prev.7511e68.png" alt=""></div>
+            <div class="swiper-button-next"><img src="/static/sprint3/images/icon-arrow-next.e2857c7.png" alt=""></div>
+            <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-arrow-prev.7511e68.png" alt=""></div>
         </div>
         <div class="content">
             <div class="swiper swiper_logo">
@@ -119,8 +119,8 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="swiper-logo-button-next"><img src="/static/sprint3/images/icon-arrow-next.e2857c7.png" alt=""></div>
-            <div class="swiper-logo-button-prev"><img src="/static/sprint3/images/icon-arrow-prev.7511e68.png" alt=""></div>
+            <div class="swiper-button-next"><img src="/static/sprint3/images/icon-arrow-next.e2857c7.png" alt=""></div>
+            <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-arrow-prev.7511e68.png" alt=""></div>
         </div>
       {% endif %}
     </section>
@@ -247,122 +247,5 @@
 
   {# <script defer src="/static/sprint3/js/vendor.6410d79.bundle.js"></script>
   <script defer src="/static/sprint3/js/app.bundle.js"></script></body> #}
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const swiper = new Swiper('.swiper_banner', {
-            loop: false,
-            slidesPerView: 1,
-            navigation: {
-                nextEl: '.swiper-banner-button-next',
-                prevEl: '.swiper-banner-button-prev'
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            on: {
-                init: function () {
-                    toggleArrowState(this);
-                },
-                slideChange: function () {
-                    toggleArrowState(this);
-                }
-            }
-        });
-
-        function toggleArrowState(swiper) {
-            const prev = document.querySelector('.swiper-banner-button-prev');
-            const next = document.querySelector('.swiper-banner-button-next');
-
-            if (swiper.isBeginning) {
-                prev.classList.add('swiper-button-disabled');
-            } else {
-                prev.classList.remove('swiper-button-disabled');
-            }
-
-            if (swiper.isEnd) {
-                next.classList.add('swiper-button-disabled');
-            } else {
-                next.classList.remove('swiper-button-disabled');
-            }
-        }
-
-        const swiperLogo = new Swiper('.swiper_logo', {
-            loop: false,
-            slidesPerView: 1,
-            navigation: {
-                nextEl: '.swiper-logo-button-next',
-                prevEl: '.swiper-logo-button-prev'
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            on: {
-                init: function () {
-                    toggleArrowStateLogo(this);
-                },
-                slideChange: function () {
-                    toggleArrowStateLogo(this);
-                }
-            }
-        });
-
-        function toggleArrowStateLogo(swiper) {
-            const prev = document.querySelector('.swiper-logo-button-prev');
-            const next = document.querySelector('.swiper-logo-button-next');
-
-            if (swiper.isBeginning) {
-                prev.classList.add('swiper-button-disabled');
-            } else {
-                prev.classList.remove('swiper-button-disabled');
-            }
-
-            if (swiper.isEnd) {
-                next.classList.add('swiper-button-disabled');
-            } else {
-                next.classList.remove('swiper-button-disabled');
-            }
-        }
-
-        const swiperLogoPC = new Swiper('.swiper_logo_pc', {
-            loop: false,
-            slidesPerView: 1,
-            navigation: {
-                nextEl: '.swiper-logo-pc-button-next',
-                prevEl: '.swiper-logo-pc-button-prev'
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            on: {
-                init: function () {
-                    toggleArrowStateLogo(this);
-                },
-                slideChange: function () {
-                    toggleArrowStateLogo(this);
-                }
-            }
-        });
-
-        function toggleArrowStateLogo(swiper) {
-            const prev = document.querySelector('.swiper-logo-pc-button-prev');
-            const next = document.querySelector('.swiper-logo-pc-button-next');
-
-            if (swiper.isBeginning) {
-                prev.classList.add('swiper-button-disabled');
-            } else {
-                prev.classList.remove('swiper-button-disabled');
-            }
-
-            if (swiper.isEnd) {
-                next.classList.add('swiper-button-disabled');
-            } else {
-                next.classList.remove('swiper-button-disabled');
-            }
-        }
-    });
-  </script>
 {% endblock %}
 
