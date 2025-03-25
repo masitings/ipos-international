@@ -1,0 +1,573 @@
+{% extends template_layout_name %}
+
+{% block content %}
+<section class="academy_overview__page academy-overview">
+    <section class="about">
+        <div class="about_bg_circle"></div>
+        <div class="about_bg_ipos"><img src="/static/static/assets/images/IPOS.d59bcba.svg" alt=""></div>
+        <div class="container about_content">
+            <div class="breadcrumb m-b-80">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li class="active">Academy</li>
+                </ol>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>{{pimcore_input('academyTitle', {'placeholder': 'Featured Programmes'})}}</h1>
+                    <div class="slider-wrapper">
+
+                        <!-- Custom Arrows -->
+                        <div class="swiper-button-prev">
+                            <div class="custom-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"
+                                    style="transform: rotate(180deg)">
+                                    <rect width="39" height="39" x=".5" y=".5" fill="#fff" fill-opacity=".7"
+                                        rx="19.5" />
+                                    <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+                        {% if editmode %}
+                            {{ pimcore_relations('sliderData',{
+                                "types": ["object"],
+                                "classes" : [
+                                    "Course"
+                                ]
+                            }) }}
+                        {% else %}
+                        <div class="swiper mySwiper academy-hero-swiper">
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                {% set sliderData = pimcore_relations('sliderData',{}) %}
+                                {% for course in sliderData %}
+                                    {% set image = course.getCoverImage() %}
+                                    {% set link = course.getInterestedRegister() %}
+                                    {% set topic = course.getTopic() %}
+                                    {% set level = course.getLevel() %}
+                                    {% set eventType = course.getEventType() %}
+                                    <div class="swiper-slide">
+                                        <div class="sead-course-card">
+                                            <div class="sead-left">
+                                                <div class="card-wrapper">
+                                                    <img src="{{image}}"
+                                                        alt="Course Image" />
+                                                </div>
+                                            </div>
+
+                                            <div class="sead-right">
+                                                <div class="tags">
+                                                    <span class="tag">{{topic}}</span>
+                                                    <span class="tag beginner">{{level}}</span>
+                                                    <span class="tag seminar">{{eventType}}</span>
+                                                </div>
+
+                                                <h3 class="title">
+                                                    {{ course.getTitle() }}
+                                                </h3>
+
+                                                <div class="download-link">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                        fill="none">
+                                                        <path stroke="#470A68" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.25"
+                                                            d="M15.345 5.345 12.99 2.988A1.667 1.667 0 0 0 11.81 2.5H5.834c-.921 0-1.667.746-1.667 1.667v11.666c0 .921.746 1.667 1.667 1.667h8.333c.92 0 1.667-.746 1.667-1.667v-9.31c0-.441-.176-.865-.489-1.178v0Z"
+                                                            clip-rule="evenodd" />
+                                                        <path stroke="#470A68" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.25"
+                                                            d="M15.834 6.667H12.5a.834.834 0 0 1-.833-.834V2.5M8.617 13.792h2.767" />
+                                                        <path stroke="#470A68" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.25"
+                                                            d="M9.027 10.626v-.974c0-.268.218-.485.486-.485h.973c.269 0 .486.217.486.485v.974a.486.486 0 0 1-.486.486h-.973a.487.487 0 0 1-.486-.486ZM6.667 14.514v-.973c0-.268.217-.486.486-.486h.973c.268 0 .486.218.486.486v.973a.486.486 0 0 1-.486.486h-.973a.486.486 0 0 1-.486-.486ZM11.39 14.514v-.973c0-.268.217-.486.486-.486h.973c.268 0 .486.218.486.486v.973a.487.487 0 0 1-.487.486h-.973a.486.486 0 0 1-.485-.486h0Z"
+                                                            clip-rule="evenodd" />
+                                                        <path stroke="#470A68" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.25"
+                                                            d="m11.867 13.058-1.259-1.966M8.134 13.058l1.258-1.966" />
+                                                    </svg>
+                                                    {% if link is not empty %}
+                                                        <a href="{{link.path}}" target="{{link.target}}">{{link.text}}</a>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="dates">
+                                                    {% if course.getPlaning() is not empty %}
+                                                        {% for planning in course.getPlaning() %}
+                                                            {% if planning.getTeachingArrangement() is not empty %}
+                                                                {% for arrangement in planning.getTeachingArrangement() %}
+                                                                    <div class="date-block">
+                                                                        {% if planning.getStartDate() and planning.getLastDate() %}
+                                                                            {% if planning.getStartDate() == planning.getLastDate() %}
+                                                                                <p class="date">{{ planning.getStartDate()|date('d M Y') }}</p>
+                                                                            {% else %}
+                                                                                <p class="date">{{ planning.getStartDate()|date('d') }}–{{ planning.getLastDate()|date('d M Y') }}</p>
+                                                                            {% endif %}
+                                                                        {% elseif planning.getStartDate() %}
+                                                                            <p class="date">{{ planning.getStartDate()|date('d M Y') }}</p>
+                                                                        {% endif %}
+                                                                        
+                                                                        {% if arrangement.startTime.getData() and arrangement.lastTime.getData() %}
+                                                                            <p class="time">{{ arrangement.startTime.getData()|date('g:i a') }} – {{ arrangement.lastTime.getData()|date('g:i a') }}</p>
+                                                                        {% endif %}
+                                                                        
+                                                                            <p class="location">
+                                                                                {% if arrangement.venue.getData() %}
+                                                                                {{ arrangement.venue.getData() }}
+                                                                                {% endif %}
+                                                                                {% if arrangement.venueText.getData() %} – {{ arrangement.venueText.getData() }}{% endif %}
+                                                                                {% if arrangement.timePlanning %} – {{ arrangement.timePlanning }}{% endif %}
+                                                                            </p>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <div class="date-block">
+                                                            <p class="date">Date TBA</p>
+                                                            <p class="time">Time TBA</p>
+                                                            <p class="location">Location TBA</p>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+
+                                                <a href="/" class="arrow">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61"
+                                                        fill="none">
+                                                        <path stroke="#470A68" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="1.5"
+                                                            d="M47.5 30.486h-35M35 42.986l12.5-12.5M35 17.986l12.5 12.5" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="swiper-button-next">
+                            <div class="custom-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                                    <rect width="39" height="39" x=".5" y=".5" fill="#fff" fill-opacity=".7"
+                                        rx="19.5" />
+                                    <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                                    <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-miterlimit="10" stroke-width="1.5"
+                                        d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="credential">
+        <div class="credential_image">
+            {{ pimcore_image('credential_banner') }}
+        </div>
+        <div class="credential_content">
+            <div class="credential_content_left"><img src="/assets/images/credential_left.3f3dad0.svg" alt=""></div>
+            <div class="credential_content_right"><img src="/assets/images/credential_right.a13c81c.svg" alt="">
+            </div>
+            <div class="container">
+                <h2>{{ pimcore_input('credentialTitle', {'placeholder': 'Credentials'}) }}</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-6">
+                        <div class="credential_content_item">
+                            <div class="credential_content_item_label">{{pimcore_input('credentialLabel1', {'placeholder': '20'})}}</div>
+                            <p>{{pimcore_input('credentialText1', {'placeholder': 'Years of Education and Training Experience.'})}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-6">
+                        <div class="credential_content_item">
+                            <div class="credential_content_item_label">{{pimcore_input('credentialLabel2', {'placeholder': 'SG\'s'})}}</div>
+                            <p>{{pimcore_input('credentialText2', {'placeholder': 'Only Dedicated Centre for IP Education and Training.'})}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-6">
+                        <div class="credential_content_item">
+                            <div class="credential_content_item_label">{{pimcore_input('credentialLabel3', {'placeholder': '7k<span>+</span>'})}}</div>
+                            <p>{{pimcore_input('credentialText3', {'placeholder': 'Enterprises/Individuals/Professionals Trained Annually.'})}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-6">
+                        <div class="credential_content_item">
+                            <div class="credential_content_item_label">{{pimcore_input('credentialLabel4', {'placeholder': '1000'})}}<span>{{pimcore_input('credentialSpan4', {'placeholder': '+'})}}</span></div>
+                            <p>{{pimcore_input('credentialText4', {'placeholder': 'Overseas Participants Trained Annually.'})}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-6">
+                        <div class="credential_content_item">
+                            <div class="credential_content_item_label">{{pimcore_input('credentialLabel5', {'placeholder': '10'})}}<span>{{pimcore_input('credentialSpan5', {'placeholder': '+'})}}</span></div>
+                            <p>{{pimcore_input('credentialText5', {'placeholder': 'Overseas / Local MOU Partners.'})}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-6">
+                        <div class="credential_content_item">
+                            <div class="credential_content_item_label">{{pimcore_input('credentialLabel6', {'placeholder': 'X'})}}</div>
+                            <p>{{pimcore_input('credentialText6', {'placeholder': 'Copy put here.'})}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="explore-section">
+        <div class="container courses_tab_content_item active">
+            <h2>{{ pimcore_input('exploreTitle', {'placeholder': 'Global Programme Highlights'}) }}</h2>
+            <div class="descriptions">
+                {{ pimcore_input('exploreDescription', {'placeholder': 'Discover standout moments from our international programs, where industry experts and policymakers collaborate to shape the future of intellectual property.'}) }}
+            </div>
+            <div class="explore-cards row">
+                <!-- Card 1: Our People & Culture -->
+                <a href="#" transition: ease-in-out 0.1s all; class="courses_tab_content_item_card col-lg-4">
+                    <div class="card_image">
+                        {{ pimcore_image('exploreCard1', {"class": "cover", "width": 2093, "height": 1570}) }}
+                    </div>
+                    <div class="card_content">
+                        <div class="card_content_top">
+                            <div class="title">{{ pimcore_input('exploreCard1Title', {'placeholder': 'News & Announcements'}) }}</div>
+                            <div class="description">
+                                {{ pimcore_input('exploreCard1Description', {'placeholder': 'Stay updated with the latest news and announcements from IPOS International, featuring key insights, events, and innovations shaping the world of intellectual property and innovation.'}) }}
+                            </div>
+                        </div>
+                        <div class="find-out">
+                            {{ pimcore_link('exploreCard1Link') }}</div>
+                    </div>
+                </a>
+                <a href="" class="courses_tab_content_item_card col-lg-4">
+                    <div class="card_image">
+                        {{ pimcore_image('exploreCard2', {"class": "cover", "width": 2093, "height": 1570}) }}
+                    </div>
+                    <div class="card_content">
+                        <div class="card_content_top">
+                            <div class="title">{{ pimcore_input('exploreCard2Title', {'placeholder': 'Resources'}) }}</div>
+                            <div class="description">
+                                {{ pimcore_input('exploreCard2Description', {'placeholder': 'Access valuable tools, guides, and expert insights to navigate the world of intellectual property and enhance your IA/IP management strategies.'}) }}
+                            </div>
+                        </div>
+                        <div class="find-out">
+                            {{ pimcore_link('exploreCard2Link') }}</div>
+                    </div>
+                </a>
+                <a href="" class="courses_tab_content_item_card col-lg-4">
+                    <div class="card_image">
+                        {{ pimcore_image('exploreCard3', {"class": "cover", "width": 2093, "height": 1570}) }}
+                    </div>
+                    <div class="card_content">
+                        <div class="card_content_top">
+                            <div class="title">{{ pimcore_input('exploreCard3Title', {'placeholder': 'Resources'}) }}</div>
+                            <div class="description">
+                                {{ pimcore_input('exploreCard3Description', {'placeholder': 'Access valuable tools, guides, and expert insights to navigate the world of intellectual property and enhance your IA/IP management strategies.'}) }}
+                            </div>
+                        </div>
+                        <div class="find-out">
+                            {{ pimcore_link('exploreCard3Link') }}</div>
+                    </div>
+                </a>
+            </div>
+            <div class="divider-button">
+                <hr class="line" />
+                {% if editmode %}
+                    {{ pimcore_link('exploreButton', { "class": "action-btn" }) }}
+                {% else %}
+                    {% set exploreLink = pimcore_link('exploreButton') %}
+                    <a href="{{ exploreLink.path }}" target="{{ exploreLink.target }}" class="action-btn">{{ exploreLink.text }} <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="24" fill="none">
+                        <path stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="m10.5 16 4-4-4-4" />
+                    </svg></a>
+                {% endif %}
+                <hr class="line" />
+            </div>
+        </div>
+    </section>
+
+    <section class="container slider-ip-capabilities">
+        <div class="slider-container">
+            <h3>{{ pimcore_input('meetFacultyTitle', {'placeholder': 'Meet Our Faculty'}) }}</h3>
+            <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
+                <div class="bottom-video-section person">
+                    <div class="left-side">
+                        <div class="video-section">
+                            <div class="video-container">
+                                {# <img src="/static/static/assets/images/credential_banner.457068b.png" alt="Video Thumbnail">
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/H8V_nOs55j4?si=dpwzKK6lmZkyVwQV"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> #}
+                            </div>
+                        </div>
+
+                        {% if editmode %}
+                            {{ pimcore_relations('homeVideoCarousel', {
+                                "types": ["object"],
+                                "classes" : [
+                                    "HomeVideoCarousel"
+                                ]
+                            })}}
+                        {% else %}
+                            {% set homeVideoCarousel = pimcore_relations('homeVideoCarousel') %}
+                            {% if homeVideoCarousel is not empty %}
+                            <div class="thumbnail-carousel-container">
+                                <div class="thumbnail-carousel" style="overflow: hidden; white-space: nowrap;">
+                                    {% for item in homeVideoCarousel %}
+                                        {% set mediaTitle = item.getMediaTitle() %}
+                                        {% set mediaDescription = item.getMediaDescription() %}
+                                        {% set mediaThumbnail = item.getMediaThumbnail() %}
+                                        {% set mediaSubTitle = item.getMediaSubTitle() %}
+                                        {% set mediaVideo = item.getMediaVideo() %}
+                                        {% set mediaExternalLink = item.getMediaExternalLink() %}
+                                        <div class="img-slider-container active" data-title="{{ mediaTitle }}"
+                                            data-position="{{ mediaSubTitle }}"
+                                            data-link="{{ mediaExternalLink }}"
+                                            data-description="{{ mediaDescription }}">
+                                            {% if mediaThumbnail %}
+                                                <img src="{{ mediaThumbnail }}" alt="{{ mediaTitle }}">
+                                            {% endif %}
+                                            {% if mediaVideo.getType() == 'youtube' %}
+                                                <iframe class="d-none" width="560" height="315"
+                                                    src="https://www.youtube.com/embed/{{ mediaVideo.getData() }}" title="{{ mediaTitle }}"
+                                                    frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
+                                            {% endif %}
+                                        </div>    
+                                    {% endfor %}
+                                </div>
+
+                                <div class="arrow-right">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                        <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                        <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-miterlimit="10" stroke-width="1.5"
+                                            d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                    </svg>
+                                </div>
+                                <div class="arrow-left">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" fill="none">
+                                        <rect width="27" height="27" x=".5" y=".89" fill="#fff" rx="13.5" />
+                                        <rect width="27" height="27" x=".5" y=".89" stroke="#DDD" rx="13.5" />
+                                        <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-miterlimit="10" stroke-width="1.5"
+                                            d="m11.38 9.14 5.24 5.25-5.25 5.25" />
+                                    </svg>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="right-side">
+                        <div class="text-container person-slider">
+                            <h2>&nbsp;</h2>
+                            <h4>&nbsp;</h4>
+                            <div class="max-height-text">
+                                <p>&nbsp;</p>
+                            </div>
+                            <div class="text-container-button">
+                                <a class="button-1" href="">&nbsp;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container about-academy">
+        <h2>{{ pimcore_input('aboutAcademyTitle', {'placeholder': 'About Our Academy'}) }}</h2>
+        <div class="about-academy-flex">
+            <div class="left">
+                <p class="highlight">
+                    {{ pimcore_input('aboutAcademyDescription', {'placeholder': 'As Singapore\'s only dedicated centre for intellectual property education and training, we help enterprises and industries leverage their intellectual property (IP) and intangible assets (IA) for growth.'}) }}
+                </p>
+                {{ pimcore_image('aboutAcademyImage', {"class": "cover", "width": 2093, "height": 1570}) }}
+            </div>
+
+            <div class="right">
+                {{ pimcore_wysiwyg('aboutAcademyContent', {
+                        "height": 400,
+                        "placeholder" : "Set up your content here ..."
+                    }) 
+                }}
+                {# <p>
+                    Founded in 2003, our academy is a leading hub for IA/IP education and training in Singapore and
+                    the
+                    region.
+                    With a multilingual faculty from academia and industry, we offer executive training and
+                    certification
+                    programmes in IP law, IA/IP management, and value creation.
+                </p>
+                <p>
+                    We collaborate with global institutes and professional associations to enhance our programmes,
+                    seminars,
+                    and roundtables. Our diverse student base fosters knowledge sharing and best practices
+                    worldwide.
+                    Whether you're a business, public agency, or individual looking to strengthen IA/IP
+                    capabilities, we
+                    have a programme for you.
+                </p>
+                <p>
+                    Check out our <a href="#" class="link">IP Training Pathways for Public Officers.</a>
+                </p> #}
+            </div>
+        </div>
+    </section>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper('.mySwiper', {
+            loop: false,
+            slidesPerView: 1,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            on: {
+                init: function () {
+                    toggleArrowState(this);
+                },
+                slideChange: function () {
+                    toggleArrowState(this);
+                }
+            }
+        });
+
+        function toggleArrowState(swiper) {
+            const prev = document.querySelector('.swiper-button-prev');
+            const next = document.querySelector('.swiper-button-next');
+
+            if (swiper.isBeginning) {
+                prev.classList.add('swiper-button-disabled');
+            } else {
+                prev.classList.remove('swiper-button-disabled');
+            }
+
+            if (swiper.isEnd) {
+                next.classList.add('swiper-button-disabled');
+            } else {
+                next.classList.remove('swiper-button-disabled');
+            }
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const handleMainArticlesSection2 = () => {
+            const videoContainer = $('#main-articles-section-2 .video-container');
+            const thumbnails = $('#main-articles-section-2 .img-slider-container');
+            const thumbnailCarousel = $('#main-articles-section-2 .thumbnail-carousel');
+            const arrowLeft = $('#main-articles-section-2 .arrow-left');
+            const arrowRight = $('#main-articles-section-2 .arrow-right');
+            const textContainer = $('#main-articles-section-2 .text-container');
+            const textLinkContainer = $("#main-articles-section-2 .text-container .text-container-button");
+
+            const thumbnailWidth = thumbnails.outerWidth(true);
+            const visibleThumbnails = 3;
+            let currentSlide = 0;
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+
+            const updateVideoContent = (thumbnail) => {
+                const iframe = thumbnail.find('iframe');
+                const img = thumbnail.find('img');
+                videoContainer.empty();
+
+                if (iframe.length) {
+                    const clonedIframe = iframe.clone().removeClass('d-none');
+                    videoContainer.append(clonedIframe);
+                } else if (img.length) {
+                    videoContainer.append(img.clone());
+                }
+
+                const title = thumbnail.data('title') || 'Default Title';
+                const position = thumbnail.data('position') || '';
+                const description = thumbnail.data('description') || 'Default Description';
+                const link = thumbnail.data("link") || "";
+
+                textContainer.find('h2').text(title);
+                textContainer.find('h4').text(position);
+                textContainer.find('p').text(description);
+                if (link) {
+                    // Remove existing link first (to prevent duplicates)
+                    textLinkContainer.find(".button-1").remove();
+
+                    // Append new link
+                    textLinkContainer.append(
+                        $('<a>', {
+                            class: "button-1",
+                            href: link,
+                            target: '_blank',
+                            text: "Find out more"
+                        })
+                    );
+                } else {
+                    textLinkContainer.find(".button-1").remove();
+                }
+            };
+
+            const updateArrowState = () => {
+                arrowLeft.toggle(currentSlide > 0);
+                arrowRight.toggle(currentSlide < thumbnails.length - visibleThumbnails);
+            };
+
+            thumbnails.click(function () {
+                thumbnails.removeClass('active');
+                $(this).addClass('active');
+                updateVideoContent($(this));
+            });
+
+            arrowLeft.click(function () {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            arrowRight.click(function () {
+                if (currentSlide < thumbnails.length - visibleThumbnails) {
+                    currentSlide++;
+                    thumbnailCarousel.animate({ scrollLeft: currentSlide * thumbnailWidth }, 300);
+                    updateArrowState();
+                }
+            });
+
+            // Dragging functionality
+            thumbnailCarousel.on('mousedown touchstart', (e) => {
+                isDragging = true;
+                startX = e.pageX || e.originalEvent.touches[0].pageX;
+                scrollLeft = thumbnailCarousel.scrollLeft();
+            });
+
+            thumbnailCarousel.on('mousemove touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX || e.originalEvent.touches[0].pageX;
+                const walk = (startX - x) * 2;
+                thumbnailCarousel.scrollLeft(scrollLeft + walk);
+            });
+
+            thumbnailCarousel.on('mouseup touchend', () => {
+                isDragging = false;
+            });
+
+            thumbnails.first().click();
+            updateArrowState();
+        };
+        handleMainArticlesSection2();
+    });
+</script>
+{% endblock %}

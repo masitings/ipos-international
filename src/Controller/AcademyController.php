@@ -265,49 +265,49 @@ class AcademyController extends BaseController
      */
     public function overviewAction(Request $request)
     {
-        $courseDemand = new DataObject\Course\Listing();
+        
+        // $courseDemand = new DataObject\Course\Listing();
 
-        $courseDemand->load();
+        // $courseDemand->load();
 
-        $data = [
-            'professionals' => [],
-            'officers' => [],
-            'enterprises' => [],
-            'studies' => [],
-        ];
-        foreach ($courseDemand as $item) {
+        // $data = [
+        //     'professionals' => [],
+        //     'officers' => [],
+        //     'enterprises' => [],
+        //     'studies' => [],
+        // ];
+        // foreach ($courseDemand as $item) {
 
-            if (count($data['professionals']) < 3) {
-                if ($item->getAcademyType() == 'IP Professionals') {
-                    $data['professionals'][] = $item;
-                }
-            }
+        //     if (count($data['professionals']) < 3) {
+        //         if ($item->getAcademyType() == 'IP Professionals') {
+        //             $data['professionals'][] = $item;
+        //         }
+        //     }
 
-            if (count($data['officers']) < 3) {
-                if ($item->getAcademyType() == 'Public Agencies / Officers') {
-                    $data['officers'][] = $item;
-                }
-            }
+        //     if (count($data['officers']) < 3) {
+        //         if ($item->getAcademyType() == 'Public Agencies / Officers') {
+        //             $data['officers'][] = $item;
+        //         }
+        //     }
 
-            if (count($data['enterprises']) < 3) {
-                if ($item->getAcademyType() == 'Enterprises / Individuals') {
-                    $data['enterprises'][] = $item;
-                }
-            }
+        //     if (count($data['enterprises']) < 3) {
+        //         if ($item->getAcademyType() == 'Enterprises / Individuals') {
+        //             $data['enterprises'][] = $item;
+        //         }
+        //     }
 
-            if (count($data['studies']) < 3) {
-                if ($item->getAcademyType() == 'Graduate Studies') {
-                    $data['studies'][] = $item;
-                }
-            }
-        }
+        //     if (count($data['studies']) < 3) {
+        //         if ($item->getAcademyType() == 'Graduate Studies') {
+        //             $data['studies'][] = $item;
+        //         }
+        //     }
+        // }
 
-        // return $this->render('academy/overview.html.twig',[
-        //     'list' => $data
-        // ]);
-        return $this->render('academy/overview-20230731b.html.twig', [
-            'list' => $data,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+        // // return $this->render('academy/overview.html.twig',[
+        // //     'list' => $data
+        // // ]);
+        return $this->render('academy/new/academy-overview.html.twig', [
+            'template_layout_name' => 'academy/new/layouts/layout-20250325.html.twig'
         ]);
     }
 
