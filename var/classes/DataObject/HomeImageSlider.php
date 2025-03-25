@@ -6,10 +6,8 @@
  *
  * Fields Summary:
  * - mediaTitle [input]
- * - mediaSubTitle [input]
  * - mediaDescription [textarea]
  * - mediaThumbnail [image]
- * - mediaVideo [video]
  * - mediaExternalLink [link]
  */
 
@@ -19,29 +17,24 @@ use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 
 /**
-* @method static \Pimcore\Model\DataObject\HomeVideoCarousel\Listing getList(array $config = [])
-* @method static \Pimcore\Model\DataObject\HomeVideoCarousel\Listing|\Pimcore\Model\DataObject\HomeVideoCarousel|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\HomeVideoCarousel\Listing|\Pimcore\Model\DataObject\HomeVideoCarousel|null getByMediaSubTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\HomeVideoCarousel\Listing|\Pimcore\Model\DataObject\HomeVideoCarousel|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
-* @method static \Pimcore\Model\DataObject\HomeVideoCarousel\Listing|\Pimcore\Model\DataObject\HomeVideoCarousel|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\HomeImageSlider\Listing getList(array $config = [])
+* @method static \Pimcore\Model\DataObject\HomeImageSlider\Listing|\Pimcore\Model\DataObject\HomeImageSlider|null getByMediaTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\HomeImageSlider\Listing|\Pimcore\Model\DataObject\HomeImageSlider|null getByMediaDescription(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\HomeImageSlider\Listing|\Pimcore\Model\DataObject\HomeImageSlider|null getByMediaThumbnail(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 */
 
-class HomeVideoCarousel extends Concrete
+class HomeImageSlider extends Concrete
 {
 public const FIELD_MEDIA_TITLE = 'mediaTitle';
-public const FIELD_MEDIA_SUB_TITLE = 'mediaSubTitle';
 public const FIELD_MEDIA_DESCRIPTION = 'mediaDescription';
 public const FIELD_MEDIA_THUMBNAIL = 'mediaThumbnail';
-public const FIELD_MEDIA_VIDEO = 'mediaVideo';
 public const FIELD_MEDIA_EXTERNAL_LINK = 'mediaExternalLink';
 
-protected $classId = "40";
-protected $className = "HomeVideoCarousel";
+protected $classId = "39";
+protected $className = "HomeImageSlider";
 protected $mediaTitle;
-protected $mediaSubTitle;
 protected $mediaDescription;
 protected $mediaThumbnail;
-protected $mediaVideo;
 protected $mediaExternalLink;
 
 
@@ -88,42 +81,6 @@ public function setMediaTitle(?string $mediaTitle): static
 	$this->markFieldDirty("mediaTitle", true);
 
 	$this->mediaTitle = $mediaTitle;
-
-	return $this;
-}
-
-/**
-* Get mediaSubTitle - Media Sub Title
-* @return string|null
-*/
-public function getMediaSubTitle(): ?string
-{
-	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-		$preValue = $this->preGetValue("mediaSubTitle");
-		if ($preValue !== null) {
-			return $preValue;
-		}
-	}
-
-	$data = $this->mediaSubTitle;
-
-	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-		return $data->getPlain();
-	}
-
-	return $data;
-}
-
-/**
-* Set mediaSubTitle - Media Sub Title
-* @param string|null $mediaSubTitle
-* @return $this
-*/
-public function setMediaSubTitle(?string $mediaSubTitle): static
-{
-	$this->markFieldDirty("mediaSubTitle", true);
-
-	$this->mediaSubTitle = $mediaSubTitle;
 
 	return $this;
 }
@@ -196,42 +153,6 @@ public function setMediaThumbnail(?\Pimcore\Model\Asset\Image $mediaThumbnail): 
 	$this->markFieldDirty("mediaThumbnail", true);
 
 	$this->mediaThumbnail = $mediaThumbnail;
-
-	return $this;
-}
-
-/**
-* Get mediaVideo - Media Video
-* @return \Pimcore\Model\DataObject\Data\Video|null
-*/
-public function getMediaVideo(): ?\Pimcore\Model\DataObject\Data\Video
-{
-	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
-		$preValue = $this->preGetValue("mediaVideo");
-		if ($preValue !== null) {
-			return $preValue;
-		}
-	}
-
-	$data = $this->mediaVideo;
-
-	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
-		return $data->getPlain();
-	}
-
-	return $data;
-}
-
-/**
-* Set mediaVideo - Media Video
-* @param \Pimcore\Model\DataObject\Data\Video|null $mediaVideo
-* @return $this
-*/
-public function setMediaVideo(?\Pimcore\Model\DataObject\Data\Video $mediaVideo): static
-{
-	$this->markFieldDirty("mediaVideo", true);
-
-	$this->mediaVideo = $mediaVideo;
 
 	return $this;
 }
