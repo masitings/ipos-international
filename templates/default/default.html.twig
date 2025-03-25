@@ -46,8 +46,8 @@
             <div class="scroll-indicator-border"> </div>
           </div>
         </div>
-        <div class="swiper-button-next"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
-        <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
+        <div class="swiper-banner-button-next"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
+        <div class="swiper-banner-button-prev"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
         {% endif %}
         {# <div class="swiperTxt">
           <div class="bannerTitle">Ideas Today,<br/>Assets Tomorrow.</div>
@@ -247,5 +247,46 @@
 
   {# <script defer src="/static/sprint3/js/vendor.6410d79.bundle.js"></script>
   <script defer src="/static/sprint3/js/app.bundle.js"></script></body> #}
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper('.mySwiper', {
+            loop: false,
+            slidesPerView: 1,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            on: {
+                init: function () {
+                    toggleArrowState(this);
+                },
+                slideChange: function () {
+                    toggleArrowState(this);
+                }
+            }
+        });
+
+        function toggleArrowState(swiper) {
+            const prev = document.querySelector('.swiper-button-prev');
+            const next = document.querySelector('.swiper-button-next');
+
+            if (swiper.isBeginning) {
+                prev.classList.add('swiper-button-disabled');
+            } else {
+                prev.classList.remove('swiper-button-disabled');
+            }
+
+            if (swiper.isEnd) {
+                next.classList.add('swiper-button-disabled');
+            } else {
+                next.classList.remove('swiper-button-disabled');
+            }
+        }
+    });
+  </script>
 {% endblock %}
 
