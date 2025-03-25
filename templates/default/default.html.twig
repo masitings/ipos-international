@@ -28,7 +28,7 @@
                         <img class="img-fluid" src="{{ videoThumbnail }}" alt="" contain>
                         <div class="bannerTxt">
                             <div class="bannerTitle">{{ videoTitle }}</div>
-                            <div class="bannerDesc">{{ videoDescription }}</div>
+                            <div class="bannerDesc" style="text-align: left;">{{ videoDescription }}</div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
         </div>
       {% endif %}
     </section>
-    <div class="sectionBg"><img class="sectionBg" src="/static/sprint3/images/home_center_bg.3a2c5b3.png" alt="">
+    {# <div class="sectionBg"><img class="sectionBg" src="/static/sprint3/images/home_center_bg.3a2c5b3.png" alt=""> #}
       <section class="sec-assets">
         <div class="tip">{{ pimcore_input('homeQuestion', {'placeholder': 'Why Intangible Assets?'}) }}</div>
         <div class="card-div">
@@ -176,7 +176,7 @@
             <div class="card-tip">
                 {{ pimcore_link('cardSolution3Link',{
                     'noText' : true,
-                    'class' : 'find-out',
+                    'class' : 'card-tip',
                     'textSuffix' : '<span>Find out more</span>'
                 }) }}
             </div>
@@ -195,7 +195,7 @@
             <div class="card-tip">
                 {{ pimcore_link('cardSolution1Link',{
                     'noText' : true,
-                    'class' : 'find-out',
+                    'class' : 'card-tip',
                     'textSuffix' : '<span>Find out more</span>'
                 }) }}
             </div>
@@ -214,7 +214,7 @@
             <div class="card-tip">
                 {{ pimcore_link('cardSolution2Link',{
                     'noText' : true,
-                    'class' : 'find-out',
+                    'class' : 'card-tip',
                     'textSuffix' : '<span>Find out more</span>'
                 }) }}
             </div>
