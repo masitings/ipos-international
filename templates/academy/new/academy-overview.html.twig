@@ -279,7 +279,7 @@
                     {{ pimcore_link('exploreButton', { "class": "action-btn" }) }}
                 {% else %}
                     {% set exploreLink = pimcore_link('exploreButton') %}
-                    <a href="{{ exploreLink.path }}" target="{{ exploreLink.target }}" class="action-btn">{{ exploreLink.text }} <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                    <a href="{{ exploreLink.data.path }}" target="{{ exploreLink.data.target }}" class="action-btn">{{ exploreLink.data.text }} <svg xmlns="http://www.w3.org/2000/svg" width="25"
                             height="24" fill="none">
                         <path stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="m10.5 16 4-4-4-4" />
