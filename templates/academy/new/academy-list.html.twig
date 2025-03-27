@@ -31,7 +31,7 @@
               <div class="filter_body">
                 <div class="filter_item search-bar">
                   <div class="search-input-wrapper">
-                    <input type="text" placeholder="Search" class="search-input" />
+                    <input type="text" placeholder="Search" class="search-input" id="course-search" />
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
                       <circle cx="7.215" cy="7.216" r="5.885" stroke="#8C8C8C" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="1.5" />
@@ -121,6 +121,7 @@
                   <span class="tag">{{ course.eventType }}</span>
                   <span class="tag beginner">{{ course.level }}</span>
                   <span class="tag seminar">{{ course.academyType }}</span>
+                  <span class="tag topic">{{ course.topic }}</span>
                 </div>
 
                 <h3 class="title">
@@ -218,7 +219,7 @@
                   {% endif %}
                 </div>
 
-                <a href="{{ course }}_{{ course.getId() }}" class="find-out">
+                <a href="{{ course.baseData }}_{{ course.baseData.getId() }}" class="find-out">
                   Find out more</a>
               </div>
             </div>
@@ -227,13 +228,34 @@
           <div class="pagination-wrapper">
             <hr />
             <div class="pagination">
-              <button class="page-btn">&lt;</button>
-              <button class="page-btn">1</button>
-              <button class="page-btn">2</button>
-              <button class="page-btn active">3</button>
-              <button class="page-btn">4</button>
-              <button class="page-btn">5</button>
-              <button class="page-btn">&gt;</button>
+              {% set currentPage = pagination.currentPage %}
+              {% set totalPages = pagination.totalPages %}
+              
+              {% if currentPage > 1 %}
+                <button class="page-btn" onclick="window.location.href='{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': currentPage - 1})) }}'">&lt;</button>
+              {% else %}
+                <button class="page-btn disabled">&lt;</button>
+              {% endif %}
+              
+              {% set startPage = max(1, currentPage - 2) %}
+              {% set endPage = min(totalPages, startPage + 4) %}
+              {% if endPage - startPage < 4 and totalPages > 5 %}
+                {% set startPage = max(1, endPage - 4) %}
+              {% endif %}
+              
+              {% for i in startPage..endPage %}
+                {% if i == currentPage %}
+                  <button class="page-btn active">{{ i }}</button>
+                {% else %}
+                  <button class="page-btn" onclick="window.location.href='{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': i})) }}'">{{ i }}</button>
+                {% endif %}
+              {% endfor %}
+              
+              {% if currentPage < totalPages %}
+                <button class="page-btn" onclick="window.location.href='{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': currentPage + 1})) }}'">&gt;</button>
+              {% else %}
+                <button class="page-btn disabled">&gt;</button>
+              {% endif %}
             </div>
             <hr />
           </div>
@@ -313,6 +335,83 @@
         }
       }
     })
+
+    // Debounce function to delay search execution
+    function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+      };
+    }
+
+    // Function to perform the search
+    function performSearch() {
+      const searchValue = $('#course-search').val();
+      const programmeValue = $('#programme').val() !== 'default' ? $('#programme').val() : '';
+      const topicValue = $('#topic').val() !== 'default' ? $('#topic').val() : '';
+      const levelValue = $('#level').val() !== 'default' ? $('#level').val() : '';
+      const typeValue = $('#type').val() !== 'default' ? $('#type').val() : '';
+      
+      // Show loading indicator if needed
+      // $('.course_content').addClass('loading');
+      
+      // Build the URL with query parameters
+      let url = window.location.pathname + '?';
+      if (searchValue) url += `search=${encodeURIComponent(searchValue)}&`;
+      if (programmeValue) url += `programme=${encodeURIComponent(programmeValue)}&`;
+      if (topicValue) url += `topic=${encodeURIComponent(topicValue)}&`;
+      if (levelValue) url += `level=${encodeURIComponent(levelValue)}&`;
+      if (typeValue) url += `type=${encodeURIComponent(typeValue)}&`;
+      
+      // Remove trailing & if exists
+      url = url.endsWith('&') ? url.slice(0, -1) : url;
+      
+      // Navigate to the URL
+      window.location.href = url;
+    }
+
+    // Create debounced search function with 1 second delay
+    const debouncedSearch = debounce(performSearch, 1000);
+
+    // Add event listener to search input
+    $('#course-search').on('input', debouncedSearch);
+    
+    // Initialize search input with URL parameter if exists
+    $(document).ready(function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchParam = urlParams.get('search');
+      if (searchParam) {
+        $('#course-search').val(searchParam);
+      }
+      
+      // Set select values from URL parameters
+      const programmeParam = urlParams.get('programme');
+      if (programmeParam) {
+        $('#programme').val(programmeParam).trigger('change');
+      }
+      
+      const topicParam = urlParams.get('topic');
+      if (topicParam) {
+        $('#topic').val(topicParam).trigger('change');
+      }
+      
+      const levelParam = urlParams.get('level');
+      if (levelParam) {
+        $('#level').val(levelParam).trigger('change');
+      }
+      
+      const typeParam = urlParams.get('type');
+      if (typeParam) {
+        $('#type').val(typeParam).trigger('change');
+      }
+    });
+
+    // Make select dropdowns also trigger search after selection
+    $('.js-example-basic-single, .js-search-basic-single.hide-search').on('select2:select', function (e) {
+      performSearch();
+    });
 
   </script>
 {% endblock %}

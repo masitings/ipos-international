@@ -1273,3 +1273,7 @@ body.classnames {
   background-color: #EDE7F0;
   color: #470A68;
 }
+.tags .tag.topic {
+  background-color: #E6F7FF;
+  color: #0066CC;
+}

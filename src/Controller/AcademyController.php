@@ -19,7 +19,7 @@ class AcademyController extends BaseController
     public function listAction(Request $request)
     {
         $page = (int) $request->get('page', 1);
-        $limit = (int) $request->get('limit', 30);
+        $limit = (int) $request->get('limit', 15);
         $search = $request->get('search', '');
         $type = $request->get('type', '');
         $level = $request->get('level', '');
@@ -77,6 +77,7 @@ class AcademyController extends BaseController
                 'coverImage' => $course->getCoverImage() ? $course->getCoverImage()->getThumbnail()->getPath() : '',
                 'viewUrl' => $course->getViewUrl(),
                 'planing' => $course->getPlaning(),
+                'baseData' => $course
                 // Add other fields as needed
             ];
         }
