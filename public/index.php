@@ -28,7 +28,6 @@ Tool::setCurrentRequest($request);
 $kernel = \Pimcore\Bootstrap::kernel();
 // reset current request - will be read from request stack from now on
 Tool::setCurrentRequest(null);
-
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);

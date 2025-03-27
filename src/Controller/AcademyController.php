@@ -16,6 +16,89 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 class AcademyController extends BaseController
 {
+    public function listAction(Request $request)
+    {
+        $page = (int) $request->get('page', 1);
+        $limit = (int) $request->get('limit', 30);
+        $search = $request->get('search', '');
+        $type = $request->get('type', '');
+        $level = $request->get('level', '');
+        $topic = $request->get('topic', '');
+        $programme = $request->get('programme', '');
+        
+        $list = new DataObject\Course\Listing();
+        
+        // Apply search filter (on title and content)
+        if (!empty($search)) {
+            $list->addConditionParam("(title LIKE ? OR Content LIKE ?)", ["%$search%", "%$search%"]);
+        }
+        
+        // Apply other filters
+        if (!empty($type)) {
+            $list->filterByEventType($type);
+        }
+        
+        if (!empty($level)) {
+            $list->filterByLevel($level);
+        }
+        
+        if (!empty($topic)) {
+            $list->filterByTopic($topic);
+        }
+        
+        if (!empty($programme)) {
+            $list->filterByAcademyType($programme);
+        }
+        
+        // Calculate pagination
+        $list->setLimit($limit);
+        $list->setOffset(($page - 1) * $limit);
+        
+        // Get total count before loading data
+        $totalCount = $list->getTotalCount();
+        
+        // Load the data
+        $courses = $list->load();
+        $db = \Pimcore\Db::get();
+        $queryBuilder = $list->getQueryBuilder();
+        $sql = $queryBuilder->getSQL();
+        $params = $queryBuilder->getParameters();
+        // dd($sql);
+        // Format the data for the view
+        $formattedCourses = [];
+        foreach ($courses as $course) {
+            $formattedCourses[] = [
+                'id' => $course->getId(),
+                'title' => $course->getTitle(),
+                'eventType' => $course->getEventType(),
+                'level' => $course->getLevel(),
+                'topic' => $course->getTopic(),
+                'academyType' => $course->getAcademyType(),
+                'coverImage' => $course->getCoverImage() ? $course->getCoverImage()->getThumbnail()->getPath() : '',
+                'viewUrl' => $course->getViewUrl(),
+                'planing' => $course->getPlaning(),
+                // Add other fields as needed
+            ];
+        }
+        
+        return $this->render('academy/new/academy-list.html.twig', [
+            'template_layout_name' => 'academy/new/layouts/layout-20250327.html.twig',
+            'courses' => $formattedCourses,
+            'pagination' => [
+                'currentPage' => $page,
+                'totalPages' => ceil($totalCount / $limit),
+                'totalItems' => $totalCount,
+                'limit' => $limit
+            ],
+            'filters' => [
+                'search' => $search,
+                'type' => $type,
+                'level' => $level,
+                'topic' => $topic,
+                'programme' => $programme
+            ]
+        ]);
+    }
 
     public function planning($obj)
     {
