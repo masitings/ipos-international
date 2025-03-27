@@ -362,7 +362,7 @@
                                         {% set mediaExternalLink = item.getMediaExternalLink() %}
                                         <div class="img-slider-container active" data-title="{{ mediaTitle }}"
                                             data-position="{{ mediaSubTitle }}"
-                                            data-link="{{ mediaExternalLink }}"
+                                            data-link="{{ mediaExternalLink.path }}"
                                             data-description="{{ mediaDescription }}">
                                             {% if mediaThumbnail %}
                                                 <img src="{{ mediaThumbnail }}" alt="{{ mediaTitle }}">
