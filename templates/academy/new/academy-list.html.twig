@@ -24,7 +24,15 @@
                 <div class="filter_head_title">
                   <div class="icon_mobile"><img src="/static//images/filter.cd48788.svg" alt=""></div>
                   <div class="text">Filter</div>
-                  <div class="filter-number">1</div>
+                  <div class="filter-number" id="filter-count">
+                    {% set filterCount = 0 %}
+                    {% if filters.search is defined and filters.search is not empty %}{% set filterCount = filterCount + 1 %}{% endif %}
+                    {% if filters.programme is defined and filters.programme is not empty %}{% set filterCount = filterCount + 1 %}{% endif %}
+                    {% if filters.topic is defined and filters.topic is not empty %}{% set filterCount = filterCount + 1 %}{% endif %}
+                    {% if filters.level is defined and filters.level is not empty %}{% set filterCount = filterCount + 1 %}{% endif %}
+                    {% if filters.type is defined and filters.type is not empty %}{% set filterCount = filterCount + 1 %}{% endif %}
+                    {{ filterCount }}
+                  </div>
                 </div>
                 <div class="filter_head_clear">Clear</div>
               </div>
@@ -42,7 +50,7 @@
                 </div>
                 <div class="filter_item">
                   <select class="js-search-basic-single hide-search" id="programme" name="programme">
-                    <option selected disabled value="default">All Programmes</option>
+                    <option value="default">All Programmes</option>
                     <option value="IP Professionals">IP Professionals</option>
                     <option value="Public Agencies / Officers">Public Agencies / Officers</option>
                     <option value="Enterprise / Individuals">Enterprise / Individuals</option>
@@ -55,7 +63,7 @@
                 </div>
                 <div class="filter_item">
                   <select class="js-example-basic-single js-search-basic-single list-flex" id="topic" name="topic">
-                    <option selected disabled value="default">All Topics</option>
+                    <option value="default">All Topics</option>
                     <option value="Intangible Assets (IA)">Intangible Assets (IA)</option>
                     <option value="Intellectual Property (IP)">Intellectual Property (IP)</option>
                     <option value="IP Management / Strategy">IP Management / Strategy</option>
@@ -69,7 +77,7 @@
                 </div>
                 <div class="filter_item">
                   <select class="js-search-basic-single hide-search" id="level" name="level">
-                    <option selected disabled value="default">All Levels</option>
+                    <option value="default">All Levels</option>
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
                     <option value="professional">Professional</option>
@@ -82,7 +90,7 @@
 
                 <div class="filter_item">
                   <select class="js-search-basic-single hide-search" id="type" name="type">
-                    <option selected disabled value="default">All Format</option>
+                    <option value="default">All Format</option>
                     <option value="Webinar">Webinar</option>
                     <option value="Seminar">Seminar</option>
                     <option value="Course">Course</option>
@@ -106,7 +114,11 @@
           </div>
         </div>
         <div class="col-xl-9 col-12">
-          <div class="course_result">{{ courses|length }} of {{ pagination.totalItems }}<span>courses</span></div>
+          <div class="course_result">
+            {% set currentCount = pagination.currentPage * pagination.limit %}
+            {% set displayCount = currentCount > pagination.totalItems ? pagination.totalItems : currentCount %}
+            {{ displayCount }} of {{ pagination.totalItems }}<span>courses</span>
+          </div>
           <div class="course_content">
             {% for course in courses %}
             <div class="sead-course-card">
@@ -295,20 +307,25 @@
       var windowsize = $(window).width();
       if (windowsize <= 1200) {
         if ($('.filter.mobile .filter-warp').hasClass('hide')) {
+          $('.main-nav').css("z-index", 1);
           $('.filter.mobile .filter-warp').removeClass('hide')
           $('.filter.mobile .filter-warp').addClass('active')
           $('.classnames, .popupcover').addClass('active')
-
+          $('html').css("overflow", "hidden");
         } else {
+          $('.main-nav').css("z-index", 100);
           $('.filter.mobile .filter-warp').removeClass('active').addClass('hide')
           $('.filter.mobile .filter_head').addClass('active')
           $('.classnames, .popupcover').removeClass('active')
+          $('html').css("overflow", "auto");
         }
       }
     })
     $('.filter.filter-menu .btn-cancel, .filter.filter-menu .btn-apply').on('click', function (e) {
       $('.filter.mobile .filter-warp').removeClass('active').addClass('hide')
       $('.classnames, .popupcover').removeClass('active')
+      $('.main-nav').css("z-index", 100);
+      $('html').css("overflow", "auto");
     })
 
     
@@ -318,13 +335,24 @@
       $('.js-search-basic-single.hide-search').val('default')
       $('.js-example-basic-single').trigger('change');
       $('.js-search-basic-single.hide-search').trigger('change');
-
+      
+      // Clear search input
+      $('#course-search').val('');
+      
+      // Redirect to the base URL without any parameters
+      window.location.href = window.location.pathname;
     })
     $('.filter .filter_head .filter_head_clear').on('click', function () {
       $('.js-example-basic-single').val('default')
       $('.js-search-basic-single.hide-search').val('default')
       $('.js-example-basic-single').trigger('change');
       $('.js-search-basic-single.hide-search').trigger('change');
+      
+      // Clear search input
+      $('#course-search').val('');
+      
+      // Redirect to the base URL without any parameters
+      window.location.href = window.location.pathname;
     })
 
     $('.filter.mobile .btn-cancel, .filter.mobile .btn-apply').on('click', function () {

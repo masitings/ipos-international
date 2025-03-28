@@ -19,7 +19,7 @@ class AcademyController extends BaseController
     public function listAction(Request $request)
     {
         $page = (int) $request->get('page', 1);
-        $limit = (int) $request->get('limit', 15);
+        $limit = (int) $request->get('limit', 6);
         $search = $request->get('search', '');
         $type = $request->get('type', '');
         $level = $request->get('level', '');
