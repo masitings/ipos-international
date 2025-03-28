@@ -399,18 +399,21 @@ class AcademyController extends BaseController
 
     public function enterpriseAction(Request $request)
     {
-
-        $academyType = 'Enterprises / Individuals';
-        $result = (new CourseServices())->getCurses($academyType);
-        $result['academyType'] = $academyType;
-        // return $this->render('academy/courses.html.twig',[
-        //     'ret' => $result
-        // ]);
-        return $this->render('academy/courses-20231213.html.twig', [
-            'ret' => $result,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        ]);
+        return $this->redirect('/en/academy/programmes?programme=Enterprise%20%2F%20Individuals');
     }
+    // {
+
+    //     $academyType = 'Enterprises / Individuals';
+    //     $result = (new CourseServices())->getCurses($academyType);
+    //     $result['academyType'] = $academyType;
+    //     // return $this->render('academy/courses.html.twig',[
+    //     //     'ret' => $result
+    //     // ]);
+    //     return $this->render('academy/courses-20231213.html.twig', [
+    //         'ret' => $result,
+    //         'template_layout_name' => 'layouts/layout-20230718.html.twig'
+    //     ]);
+    // }
 
 
     /**
@@ -460,48 +463,57 @@ class AcademyController extends BaseController
 
     public function ipProfessionalAction(Request $request)
     {
-
-        $academyType = 'IP Professionals';
-        $result = (new CourseServices())->getCurses($academyType);
-        $result['academyType'] = $academyType;
-        // return $this->render('academy/courses.html.twig',[
-        //     'ret' => $result
-        // ]);
-        return $this->render('academy/courses-20231213.html.twig', [
-            'ret' => $result,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        ]);
+        return $this->redirect('/en/academy/programmes?programme=IP+Professionals');
     }
+    // {
+
+    //     $academyType = 'IP Professionals';
+    //     $result = (new CourseServices())->getCurses($academyType);
+    //     $result['academyType'] = $academyType;
+    //     // return $this->render('academy/courses.html.twig',[
+    //     //     'ret' => $result
+    //     // ]);
+    //     return $this->render('academy/courses-20231213.html.twig', [
+    //         'ret' => $result,
+    //         'template_layout_name' => 'layouts/layout-20230718.html.twig'
+    //     ]);
+    // }
 
     public function publicAgenciesAction(Request $request)
     {
-
-        $academyType = 'Public Agencies / Officers';
-        $result = (new CourseServices())->getCurses($academyType);
-        $result['academyType'] = $academyType;
-        // return $this->render('academy/courses.html.twig',[
-        //     'ret' => $result
-        // ]);
-        return $this->render('academy/courses-20231213.html.twig', [
-
-            'ret' => $result,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        ]);
+        return $this->redirect('/en/academy/programmes?programme=Public%20Agencies%20%2F%20Officers');
     }
+    // {
+
+    //     $academyType = 'Public Agencies / Officers';
+    //     $result = (new CourseServices())->getCurses($academyType);
+    //     $result['academyType'] = $academyType;
+    //     // return $this->render('academy/courses.html.twig',[
+    //     //     'ret' => $result
+    //     // ]);
+    //     return $this->render('academy/courses-20231213.html.twig', [
+
+    //         'ret' => $result,
+    //         'template_layout_name' => 'layouts/layout-20230718.html.twig'
+    //     ]);
+    // }
 
 
     public function graduateStudiesAction(Request $request)
     {
-
-        $academyType = 'Graduate Studies';
-        $result = (new CourseServices())->getCurses($academyType);
-        $result['academyType'] = $academyType;
-        // return $this->render('academy/courses.html.twig',[
-        //     'ret' => $result
-        // ]);
-        return $this->render('academy/courses-20231213.html.twig', [
-            'ret' => $result,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
-        ]);
+        return $this->redirect('/en/academy/programmes?programme=Graduate%20Studies');
     }
+    // {
+
+    //     $academyType = 'Graduate Studies';
+    //     $result = (new CourseServices())->getCurses($academyType);
+    //     $result['academyType'] = $academyType;
+    //     // return $this->render('academy/courses.html.twig',[
+    //     //     'ret' => $result
+    //     // ]);
+    //     return $this->render('academy/courses-20231213.html.twig', [
+    //         'ret' => $result,
+    //         'template_layout_name' => 'layouts/layout-20230718.html.twig'
+    //     ]);
+    // }
 }
