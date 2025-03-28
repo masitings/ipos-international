@@ -9,7 +9,8 @@
             <div class="breadcrumb m-b-80">
                 <ol>
                     <li><a href="/">Home</a></li>
-                    <li class="active">Academy</li>
+                    <li class="/academy">Academy</li>
+                    <li class="active">Overview</li>
                 </ol>
             </div>
             <div class="row">
@@ -327,6 +328,13 @@
     <section class="container slider-ip-capabilities">
         <div class="slider-container">
             <h3>{{ pimcore_input('meetFacultyTitle', {'placeholder': 'Meet Our Faculty'}) }}</h3>
+            {% if editmode %}
+            {{ pimcore_relations('homeVideoCarousel', {
+                "types": ["object"],
+                "classes" : [
+                    "HomeVideoCarousel"
+                ]
+            })}}
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 <div class="bottom-video-section person">
                     <div class="left-side">
@@ -340,14 +348,6 @@
                                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> #}
                             </div>
                         </div>
-
-                        {% if editmode %}
-                            {{ pimcore_relations('homeVideoCarousel', {
-                                "types": ["object"],
-                                "classes" : [
-                                    "HomeVideoCarousel"
-                                ]
-                            })}}
                         {% else %}
                             {% set homeVideoCarousel = pimcore_relations('homeVideoCarousel') %}
                             {% if homeVideoCarousel is not empty %}
@@ -424,7 +424,7 @@
                 <p class="highlight">
                     {{ pimcore_input('aboutAcademyDescription', {'placeholder': 'As Singapore\'s only dedicated centre for intellectual property education and training, we help enterprises and industries leverage their intellectual property (IP) and intangible assets (IA) for growth.'}) }}
                 </p>
-                {{ pimcore_image('aboutAcademyImage', {"class": "cover", "width": 2093, "height": 1570}) }}
+                {{ pimcore_image('aboutAcademyImage', {"class": "cover", "width": 315, "height": 375}) }}
             </div>
 
             <div class="right">
