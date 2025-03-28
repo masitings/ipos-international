@@ -1,252 +1,300 @@
 {% extends 'layouts/layout-20250325.html.twig' %}
-
+{% block css %}
+    <link href="/static/static/assets/css/scss/dist/homepage-style.css" rel="stylesheet">
+    <link href="/static/static/assets/css/scss/dist/ipos-global.css" rel="stylesheet">
+{% endblock %}
 {% block content %}
-    <section class="sec-banner" style="margin-top: 0">
-      <div class="content" style="margin-top: 0">
-        {% if editmode %}
-            <div style="margin-top: 30px; margin-left: 20px; margin-right: 20px">
-            <h4>Banner Slider</h4>
-            {{ pimcore_relations('objectsAll',{
-                "types": ["object"],
-                "classes" : [
-                    "HomeImageSlider"
-                ]
-            }) }}
-            </div>
-        {% else %}
-        <div class="swiper swiper_banner">
-          <div class="swiper-wrapper">
-            {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-            {% if list is not empty %}
-                {% for carouselItem in list %}
-                {% set videoTitle = carouselItem.getMediaTitle() %}
-                {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
-                {% set videoDescription = carouselItem.getMediaDescription() %}
-                {% set mediaLink = carouselItem.getMediaExternalLink() %}
-                <div class="swiper-slide">
-                    <div class="course_content_item">
-                        <img class="img-fluid" src="{{ videoThumbnail }}" alt="" contain>
-                        <div class="bannerTxt">
-                            <div class="bannerTitle">{{ videoTitle }}</div>
-                            <div class="bannerDesc" style="text-align: left;">{{ videoDescription }}</div>
-                        </div>
+    <section class="academy_overview__page homepage">
+        <section class="main-banner">
+            <div class="scroll-indicator">SCROLL</div>
+            <div class="slider-wrapper">
+                <!-- Custom Arrows -->
+                <div class="swiper-button-prev">
+                    <div class="custom-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"
+                            style="transform: rotate(180deg)">
+                            <rect width="39" height="39" x=".5" y=".5" fill="#fff" fill-opacity=".7" rx="19.5" />
+                            <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                stroke-width="1.5" d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                        </svg>
                     </div>
                 </div>
-                {# <div class="img-slider-container" data-title="{{ videoTitle }}" data-description="{{ videoDescription }}" data-description-one="{{ videoDescription1 }}" data-description-two="{{ videoDescription2 }}" data-link="{{mediaLink.path}}" data-position="{{subTitle}}">
-                    {% if videoThumbnail %}
-                    <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}">
-                    {% endif %}
-                </div> #}
-                {% endfor %}
-            {% endif %}
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="scroll-indicator">
-            <div class="txt">SCROLL</div>
-            <div class="scroll-indicator-border"> </div>
-          </div>
-        </div>
-        <div class="swiper-button-next"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
-        <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-banner-arrow-next.d7b7301.png" alt=""></div>
-        {% endif %}
-        {# <div class="swiperTxt">
-          <div class="bannerTitle">Ideas Today,<br/>Assets Tomorrow.</div>
-          <div class="bannerDesc">Lorem ipsum dolor sit amet consectetur. Amet gravida maecenas augue pulvinar. Amet pretium enim consequat vitae fermentum.</div>
-          <div class="btn">Find out more        </div>
-        </div> #}
-      </div>
-    </section>
-    <section class="sec-logo-loop">
-      <div class="tip">{{ pimcore_input('homeTitle', { 'placeholder': 'Trusted by leading companies who have benefited from our programmes' })}}</div>
-      {% if editmode %}
-        <div style="margin-top: 20px;">
-            {{ pimcore_relations('trustedLogos',{
-                "types": ["object"],
-                "height": 200,
-                "classes" : [
-                    "TrustedLogo"
-                ]
-            }) }}
-        </div>
-        {% else %}
-        <div class="content-pc">
-            <div class="swiper swiper_logo_pc">
-                <div class="swiper-wrapper">
-                    {% set listTrusted = pimcore_relations('trustedLogos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                    {% if listTrusted is not empty %}
-                            {% for trusted in listTrusted %}
-                                {% set image = trusted.getImage() %}
-                                {# <div class="swiper-slide"> #}
-                                <div class="swiper-slide">
-                                    <div class="course_content_item"><img class="img-fluid" src="{{ image }}" alt=""></div>
-                                </div>
-                                {# </div> #}
-                            {% endfor %}
-                            {% for trusted in listTrusted %}
-                                {% set image = trusted.getImage() %}
-                                {# <div class="swiper-slide"> #}
-                                <div class="swiper-slide">
-                                    <div class="course_content_item"><img class="img-fluid" src="{{ image }}" alt=""></div>
-                                </div>
-                                {# </div> #}
-                            {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="swiper-button-next"><img src="/static/sprint3/images/icon-arrow-next.e2857c7.png" alt=""></div>
-            <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-arrow-prev.7511e68.png" alt=""></div>
-        </div>
-        <div class="content">
-            <div class="swiper swiper_logo">
-                <div class="swiper-wrapper">
-                    {% set listTrusted = pimcore_relations('trustedLogos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
-                    {% if listTrusted is not empty %}
-                        {% for trusted in listTrusted %}
-                            {% set image = trusted.getImage() %}
-                            {# <div class="swiper-slide"> #}
-                            <div class="swiper-slide">
-                                <div class="course_content_item"><img class="img-fluid" src="{{ image }}" alt=""></div>
+                <div class="swiper main-banner-swiper academy-hero-swiper">
+                    <div class="swiper-wrapper">
+                        {% if editmode %}
+                            <div style="margin-top: 30px; margin-left: 20px; margin-right: 20px">
+                            <h4>Banner Slider</h4>
+                            {{ pimcore_relations('objectsAll',{
+                                "types": ["object"],
+                                "classes" : [
+                                    "HomeImageSlider"
+                                ]
+                            }) }}
                             </div>
-                            {# </div> #}
-                        {% endfor %}
-                        {% for trusted in listTrusted %}
-                            {% set image = trusted.getImage() %}
-                            {# <div class="swiper-slide"> #}
-                            <div class="swiper-slide">
-                                <div class="course_content_item"><img class="img-fluid" src="{{ image }}" alt=""></div>
-                            </div>
-                            {# </div> #}
-                        {% endfor %}
-                    {% endif %}
+                        {% else %}
+                            {% set list = pimcore_relations('objectsAll', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                            {% if list is not empty %}
+                                {% for carouselItem in list %}
+                                {% set videoTitle = carouselItem.getMediaTitle() %}
+                                {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
+                                {% set videoDescription = carouselItem.getMediaDescription() %}
+                                {% set mediaLink = carouselItem.getMediaExternalLink() %}
+                                <div class="swiper-slide">
+                                    <a href="{{ mediaLink.path|default('/') }}" class="card-wrapper">
+                                        <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}" />
+                                    </a>
+                                    <div class="text-wrapper white">
+                                        <div class="title">
+                                            {{ videoTitle }}
+                                        </div>
+                                        <div class="description">
+                                            {{ videoDescription }}
+                                        </div>
+                                        <a href="{{ mediaLink.path|default('/') }}" class="btn">
+                                            Find Out More
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            <div class="swiper-button-next"><img src="/static/sprint3/images/icon-arrow-next.e2857c7.png" alt=""></div>
-            <div class="swiper-button-prev"><img src="/static/sprint3/images/icon-arrow-prev.7511e68.png" alt=""></div>
-        </div>
-      {% endif %}
-    </section>
-    {# <div class="sectionBg"><img class="sectionBg" src="/static/sprint3/images/home_center_bg.3a2c5b3.png" alt=""> #}
-    {% if editmode %}
-      <section class="sec-assets" style="margin-top: 200px">
-    {% else %}
-      <section class="sec-assets">
-    {% endif %}
-        <div class="tip">{{ pimcore_input('homeQuestion', {'placeholder': 'Why Intangible Assets?'}) }}</div>
-        <div class="card-div">
-          <div class="card-wrap">
-            <div class="img">
-                {{ pimcore_image("HomeImage1", {
-                    "class": 'img-fluid'
-                }) }}
-            </div>
-            <div class="card-title">{{ pimcore_input('cardTitle1', {'placeholder': 'Drive Business Growth'}) }}</div>
-            <div class="card-desc">{{ pimcore_textarea('cardDesc1', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}</div>
-            <div class="card-tip">{{ pimcore_input('cardSubTitle1', {'placeholder': '*Ocean Tomo, LLC Intangible Asset Market Value Study, 2020'}) }}</div>
-          </div>
-          <div class="card-wrap">
-            <div class="img">
-                {{ pimcore_image("HomeImage2", {
-                    "class": 'img-fluid'
-                }) }}
-            </div>
-            <div class="card-title">{{ pimcore_input('cardTitle2', {'placeholder': 'Maximise Value and Profits'}) }}</div>
-            <div class="card-desc">{{ pimcore_textarea('cardDesc2', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}</div>
-          </div>
-          <div class="card-wrap">
-            <div class="img">
-                {{ pimcore_image("HomeImage3", {
-                    "class": 'img-fluid'
-                }) }}
-            </div>
-            <div class="card-title">{{ pimcore_input('cardTitle3', {'placeholder': 'Maximise Value and Profits'}) }}</div>
-            <div class="card-desc">{{ pimcore_textarea('cardDesc3', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}</div>
-          </div>
-        </div>
-      </section>
-      <section class="sec-solutions">
-        <div class="tip">{{pimcore_input('solutionTitle', {'placeholder': 'Comprehensive Solutions for Your Innovation Journey'})}}</div>
-        <div class="tip1">{{pimcore_input('solutionDesc', {'placeholder': 'We provide specialized solutions to help businesses and organizations strategize, develop, and analyze their intellectual property and intangible assets.'})}}</div>
-        <div class="card-div">
-          <div class="card-wrap">
-            <div class="flagImg"> <img class="img-fluid" src="/static/sprint3/images/home_solutions_flag.ffd9802.png" alt=""></div>
-            <div class="img">
-                {{ pimcore_image("cardSolutionImg1", {
-                    "height": 1570,
-                    "width": 2093,
-                    "class": 'img-pic'
-                }) }}
-            </div>
-            <div class="card-title">{{pimcore_input('cardSolutionTitle3', {'placeholder': 'Training & Development'})}}</div>
-            <div class="card-desc">{{pimcore_input('cardSolutionDesc3', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}</div>
-            <div class="card-tip">
-                {{ pimcore_link('cardSolution3Link',{
-                    'noText' : true,
-                    'class' : 'card-tip',
-                    'textSuffix' : '<span>Find out more</span>'
-                }) }}
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="flagImg"> <img class="img-fluid" src="/static/sprint3/images/home_solutions_flag.ffd9802.png" alt=""></div>
-            <div class="img">
-                {{ pimcore_image("cardSolutionImg2", {
-                    "height": 1570,
-                    "width": 2093,
-                    "class": 'img-pic'
-                }) }}
-            </div>
-            <div class="card-title">{{pimcore_input('cardSolutionTitle1', {'placeholder': 'Training & Development'})}}</div>
-            <div class="card-desc">{{pimcore_input('cardSolutionDesc1', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}</div>
-            <div class="card-tip">
-                {{ pimcore_link('cardSolution1Link',{
-                    'noText' : true,
-                    'class' : 'card-tip',
-                    'textSuffix' : '<span>Find out more</span>'
-                }) }}
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="flagImg"> <img class="img-fluid" src="/static/sprint3/images/home_solutions_flag.ffd9802.png" alt=""></div>
-            <div class="img">
-                {{ pimcore_image("cardSolutionImg3", {
-                    "height": 1570,
-                    "width": 2093,
-                    "class": 'img-pic'
-                }) }}
-            </div>
-            <div class="card-title">{{pimcore_input('cardSolutionTitle2', {'placeholder': 'Training & Development'})}}</div>
-            <div class="card-desc">{{pimcore_input('cardSolutionDesc2', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}</div>
-            <div class="card-tip">
-                {{ pimcore_link('cardSolution2Link',{
-                    'noText' : true,
-                    'class' : 'card-tip',
-                    'textSuffix' : '<span>Find out more</span>'
-                }) }}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <section class="sec-subscribe">
-      <div class="content" style="position: relative; z-index: 2"> 
-        <div class="tip1">{{pimcore_input('subscribeTitle', {'placeholder': 'Get the Latest IP Trends & Insights'})}}</div>
-        <div class="tip2">{{pimcore_input('subscribeDesc', {'placeholder': 'Stay updated with expert insights, industry trends, and exclusive events to help you navigate the world of intangible assets.'})}}</div>
-        {% if editmode %}
-            <div style="width: 100%;">
-                {{pimcore_link('subscriberLink1')}}
-            </div>
-        {% endif %}
-        {% set subscLink = pimcore_link('subscriberLink1') %}
-        <a target="_blank" class="btnNow"
-            href="{{ subscLink.data.path }}">
-            {{ subscLink.data.text }}
-        </a>
-      </div><img class="img-bg" style="z-index: 1" src="/static/sprint3/images/home_subscribe_bg.3729c80.png" alt="">
-    </section>
-    <div class="darkCircle">VIEW</div>
-    <div class="test"></div>
+                <div class="swiper-button-next">
+                    <div class="custom-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+                            <rect width="39" height="39" x=".5" y=".5" fill="#fff" fill-opacity=".7" rx="19.5" />
+                            <rect width="39" height="39" x=".5" y=".5" stroke="#DDD" rx="19.5" />
+                            <path stroke="#470A68" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                stroke-width="1.5" d="m17.375 14.75 5.25 5.25-5.25 5.25" />
+                        </svg>
+                    </div>
+                </div>
 
-  {# <script defer src="/static/sprint3/js/vendor.6410d79.bundle.js"></script>
-  <script defer src="/static/sprint3/js/app.bundle.js"></script></body> #}
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="trusted-logo-section">
+            <div class="container">
+                <h3>{{ pimcore_input('homeTitle', { 'placeholder': 'Trusted by leading companies who have benefited from our programmes' })}}</h3>
+
+                <div class="logo-marquee">
+                    <div class="logo-track">
+                        {% if editmode %}
+                            <div style="margin-top: 20px;">
+                                {{ pimcore_relations('trustedLogos',{
+                                    "types": ["object"],
+                                    "height": 200,
+                                    "classes" : [
+                                        "TrustedLogo"
+                                    ]
+                                }) }}
+                            </div>
+                        {% else %}
+                            {% set listTrusted = pimcore_relations('trustedLogos', { 'orderKey': 'releaseDate', 'order': 'desc' }) %}
+                            {% if listTrusted is not empty %}
+                                {% for trusted in listTrusted %}
+                                    {% set image = trusted.getImage() %}
+                                    <img src="{{ image }}" alt="Trusted Logo" />
+                                {% endfor %}
+                                {% for trusted in listTrusted %}
+                                    {% set image = trusted.getImage() %}
+                                    <img src="{{ image }}" alt="Trusted Logo" />
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-intangible-assets">
+            <div class="credential_content_right"><img src="/static/static/assets/images/credential_right.a13c81c.svg" alt="">
+            </div>
+            <div class="container">
+                <h2 class="section-title">{{ pimcore_input('homeQuestion', {'placeholder': 'Why Intangible Assets?'}) }}</h2>
+                <div class="asset-cards">
+                    <div class="item-card">
+                        <div class="icon">
+                            {{ pimcore_image("HomeImage1", {
+                                "class": 'img-fluid'
+                            }) }}
+                        </div>
+                        <h3>{{ pimcore_input('cardTitle1', {'placeholder': 'Drive Business Growth'}) }}</h3>
+                        <p>
+                            {{ pimcore_textarea('cardDesc1', {'nl2br': true, 'placeholder': 'Intangible assets account for 90%* of business value and are the primary drivers of enterprise performance and growth.'}) }}
+                        </p>
+                        <small><em>{{ pimcore_input('cardSubTitle1', {'placeholder': '*Ocean Tomo, LLC Intangible Asset Market Value Study, 2020'}) }}</em></small>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="icon">
+                            {{ pimcore_image("HomeImage2", {
+                                "class": 'img-fluid'
+                            }) }}
+                        </div>
+                        <h3>{{ pimcore_input('cardTitle2', {'placeholder': 'Maximise Value and Profits'}) }}</h3>
+                        <p>
+                            {{ pimcore_textarea('cardDesc2', {'nl2br': true, 'placeholder': 'Intangible assets contain hidden value and risks that can boost profits and maximise returns when strategically managed well.'}) }}
+                        </p>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="icon">
+                            {{ pimcore_image("HomeImage3", {
+                                "class": 'img-fluid'
+                            }) }}
+                        </div>
+                        <h3>{{ pimcore_input('cardTitle3', {'placeholder': 'Maximise Value and Profits'}) }}</h3>
+                        <p>
+                            {{ pimcore_textarea('cardDesc3', {'nl2br': true, 'placeholder': 'Intangible assets allow enterprises to move beyond international borders and scale quickly with the right business and intangible assets strategy.'}) }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="divide"></div>
+            </div>
+        </section>
+        <section class="explore-section">
+            <div class="credential_content_left"><img src="/static/static/assets/images/credential_left.3f3dad0.svg" alt="">
+            </div>
+            <div class="container courses_tab_content_item active">
+                <h2>{{pimcore_input('solutionTitle', {'placeholder': 'Comprehensive Solutions for Your Innovation Journey'})}}</h2>
+                <div class="descriptions">
+                    {{pimcore_input('solutionDesc', {'placeholder': 'We provide specialized solutions to help businesses and organizations strategize, develop, and analyze their intellectual property and intangible assets.'})}}
+                </div>
+                <div class="explore-cards row">
+                    <!-- Card 1 -->
+                    <a href="{{ pimcore_link('cardSolution3Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
+                        <div class="card_image">
+                            {{ pimcore_image("cardSolutionImg1", {
+                                "height": 1570,
+                                "width": 2093,
+                                "class": 'cover'
+                            }) }}
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">{{pimcore_input('cardSolutionTitle3', {'placeholder': 'Training & Development'})}}</div>
+                                <div class="description">
+                                    {{pimcore_input('cardSolutionDesc3', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
+                                </div>
+                            </div>
+                            <div class="find-out">Find out more</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Card 2 -->
+                    <a href="{{ pimcore_link('cardSolution1Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
+                        <div class="card_image">
+                            {{ pimcore_image("cardSolutionImg2", {
+                                "height": 1570,
+                                "width": 2093,
+                                "class": 'cover'
+                            }) }}
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">{{pimcore_input('cardSolutionTitle1', {'placeholder': 'Training & Development'})}}</div>
+                                <div class="description">
+                                    {{pimcore_input('cardSolutionDesc1', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
+                                </div>
+                            </div>
+                            <div class="find-out">Find out more</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Card 3 -->
+                    <a href="{{ pimcore_link('cardSolution2Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
+                        <div class="card_image">
+                            {{ pimcore_image("cardSolutionImg3", {
+                                "height": 1570,
+                                "width": 2093,
+                                "class": 'cover'
+                            }) }}
+                        </div>
+                        <div class="card_content">
+                            <div class="card_content_top">
+                                <div class="title">{{pimcore_input('cardSolutionTitle2', {'placeholder': 'Training & Development'})}}</div>
+                                <div class="description">
+                                    {{pimcore_input('cardSolutionDesc2', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
+                                </div>
+                            </div>
+                            <div class="find-out">Find out more</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section container">
+            <img src="/static/static/assets/images/strategy-management/IPOS.png" class="img-bg">
+            <div class="cta-content-wrapper">
+                <div class="cta-content">
+                    <h2>{{pimcore_input('subscribeTitle', {'placeholder': 'Get the Latest IP Trends & Insights'})}}</h2>
+                    <p>
+                        {{pimcore_input('subscribeDesc', {'placeholder': 'Stay updated with expert insights, industry trends, and exclusive events to help you navigate the world of intangible assets.'})}}
+                    </p>
+                    <div class="cta-buttons">
+                        {% if editmode %}
+                            <div style="width: 100%;">
+                                {{pimcore_link('subscriberLink1')}}
+                            </div>
+                        {% endif %}
+                        {% set subscLink = pimcore_link('subscriberLink1') %}
+                        <a target="_blank" class="btn btn-primary"
+                            href="{{ subscLink.data.path|default('#') }}">
+                            {{ subscLink.data.text|default('Subscribe Now') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const swiper = new Swiper('.main-banner-swiper', {
+                loop: false,
+                slidesPerView: 1,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                on: {
+                    init: function () {
+                        toggleArrowState(this);
+                    },
+                    slideChange: function () {
+                        toggleArrowState(this);
+                    }
+                }
+            });
+
+            function toggleArrowState(swiper) {
+                const prev = document.querySelector('.swiper-button-prev');
+                const next = document.querySelector('.swiper-button-next');
+
+                if (swiper.isBeginning) {
+                    prev.classList.add('swiper-button-disabled');
+                } else {
+                    prev.classList.remove('swiper-button-disabled');
+                }
+
+                if (swiper.isEnd) {
+                    next.classList.add('swiper-button-disabled');
+                } else {
+                    next.classList.remove('swiper-button-disabled');
+                }
+            }
+        });
+    </script>
 {% endblock %}
 

@@ -1277,3 +1277,69 @@ body.classnames {
   background-color: #E6F7FF;
   color: #0066CC;
 }
+.trusted-logo-section {
+  overflow: hidden;
+  white-space: warp;
+  position: relative;
+  padding: 20px 0;
+  background: white;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 80px;
+  margin-top: 160px;
+  /* Keyframe Animation */
+  /* Pause on Hover */
+}
+@media (max-width: 768px) {
+  .trusted-logo-section {
+    padding: 40px 0;
+  }
+}
+.trusted-logo-section h3 {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.trusted-logo-section .container {
+  padding: 30px 0;
+}
+@media (max-width: 768px) {
+  .trusted-logo-section .container {
+    padding: 0 !important;
+  }
+}
+.trusted-logo-section .logo-marquee {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.trusted-logo-section .logo-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+.trusted-logo-section .logo-track img {
+  width: 150px;
+  /* Adjust as needed */
+  height: auto;
+  display: inline-block;
+  flex-shrink: 0;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.trusted-logo-section .logo-marquee:hover .logo-track {
+  animation-play-state: paused;
+}
