@@ -46,14 +46,21 @@ class ContactController extends BaseController
      */
     public function contactAction(Request $request, PersistenceManagerRegistry $doctrine)
     {
+        // Create a logger
+        $logger = new \Psr\Log\NullLogger();
+        if ($this->container->has('logger')) {
+            $logger = $this->container->get('logger');
+        }
+        
+        $logger->info('Contact form submission started');
 
         /** CSRF Security */
         if ($request->get('csrf_token') == "" or $request->get('csrf_token') != "9847h3hchc65rdytegbhcjcccc21") {
-            return "";
+            $logger->warning('CSRF token validation failed');
+            return new JsonResponse(['error' => 'Invalid CSRF token'], 403);
         }
 
         $emailObj = new DataObject\Emails\Listing();
-
         $emailObj->load();
         $sendMail = 'enquiry@iposinternational.com';
         $sendMails = [];
@@ -61,21 +68,12 @@ class ContactController extends BaseController
         foreach ($emailObj as $email) {
             $sendMails[] = $email->getEmail();
         }
+        
+        $logger->info('Recipient emails loaded', ['count' => count($sendMails)]);
 
         $list = new WebsiteSetting\Listing();
-
         $list->setCondition('`name` LIKE ' . $list->quote('%smtp_mail%'));
         $list = $list->load();
-
-        // PREV CONFIG
-        // $mailConfig = [
-        //     'mail_host' => 'smtp.office365.com',
-        //     'mail_name' => 'IPOS International',
-        //     'mail_username' => 'noreply@iposinternational.com',
-        //     'mail_passwd' => $_ENV['MAIL_PASSWORD'],
-        //     'mail_port' => 587,
-        //     'mail_from' => 'noreply@iposinternational.com'
-        // ];
 
         // NEW CONFIG
         $mailConfig = [
@@ -86,18 +84,15 @@ class ContactController extends BaseController
             'mail_port' => 587,
             'mail_from' => 'zhikai2505@gmail.com'
         ];
+        
+        $logger->info('Mail configuration loaded', ['host' => $mailConfig['mail_host'], 'port' => $mailConfig['mail_port']]);
 
+        // Get form data
         $state = $request->get('state');
-
         $firstName = $request->get('firstName');
-
         $lastName = $request->get('lastName');
-
         $company = $request->get('company');
-
         $designation = $request->get('designation');
-
-        // $industry = $request->get('industry');
         $industry = str_replace("/", "", $request->get('industry'));
         $industryOthers = "";
         $industryRecordToDb = $industry;
@@ -120,174 +115,142 @@ class ContactController extends BaseController
         }
 
         $message = $request->get('message');
-
         $companyOverview = $request->get('companyOverview');
-
         $existingIP = $request->get('existingIP');
-
         $overseasExpansion = $request->get('overseasExpansion');
-
         $proprietaryTechnology = $request->get('proprietaryTechnology');
-
         $phone = $request->get('phone');
-
         $c_email = $request->get('email');
         $c_website = $request->get('companyWebsite');
-
         $subemail = $request->get('subsemail') ? 'Yes' : 'No';
 
-        $mail = new PHPMailer(true);
-        $mail->CharSet = "UTF-8";                     //设定邮件编码
-        $mail->SMTPDebug = 0;                        // 调试模式输出
-        $mail->isSMTP();                             // 使用SMTP
-        $mail->SMTPAuth = true;                      // 允许 SMTP 认证
-        $mail->SMTPSecure = 'STARTTLS';                    // 允许 TLS 或者ssl协议
+        $logger->info('Form data received', [
+            'state' => $state,
+            'email' => $c_email,
+            'name' => "$firstName $lastName"
+        ]);
 
-        $mail->Username = $mailConfig['mail_username'];                // SMTP 用户名  即邮箱的用户名
-        $mail->Password = $mailConfig['mail_passwd'];             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
-        $mail->Host = $mailConfig['mail_host'];                // SMTP服务器
-        $mail->Port = $mailConfig['mail_port'];                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
-        
-        // $mail->Host = 'smtp-relay.brevo.com';
-        // $mail->Username = '7b8add001@smtp-brevo.com';
-        // $mail->Password = 'XI8YsTxMqFrzmCh0'; // or App password if 2FA is enabled
-        // $mail->setFrom("arigiwiratama@gmail.com", "Arigi");
+        try {
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = 2; // Enable verbose debug output
+            $mail->Debugoutput = function($str, $level) use ($logger) {
+                $logger->debug("PHPMailer [$level]: $str");
+            };
+            
+            $mail->CharSet = "UTF-8";
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'STARTTLS';
 
+            $mail->Username = $mailConfig['mail_username'];
+            $mail->Password = $mailConfig['mail_passwd'];
+            $mail->Host = $mailConfig['mail_host'];
+            $mail->Port = $mailConfig['mail_port'];
+            
+            $logger->info('SMTP configuration set');
 
-        $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");  //发件人
-        // $mail->setFrom();  //发件人
+            $mail->setFrom($mailConfig['mail_from'], "noreply@iposinternational.com");
 
-        if ($sendMails) {
-            foreach ($sendMails as $email) {
-                $mail->addAddress($email);
-            }
-        } else {
-            if (array_key_exists('ENV_STAGE', $_ENV)) {
-                if ($_ENV['ENV_STAGE'] == 'staging' || $_ENV['ENV_STAGE'] == 'dev') {
-                    $mail->addAddress("arigiwiratama@gmail.com");
-                    $mail->addAddress("zhikai.yap@aikendigital.co");
+            if ($sendMails) {
+                foreach ($sendMails as $email) {
+                    $mail->addAddress($email);
+                    $logger->info('Added recipient', ['email' => $email]);
                 }
             } else {
-                $mail->addAddress($sendMail);
+                if (array_key_exists('ENV_STAGE', $_ENV)) {
+                    if ($_ENV['ENV_STAGE'] == 'staging' || $_ENV['ENV_STAGE'] == 'dev') {
+                        $mail->addAddress("arigiwiratama@gmail.com");
+                        $mail->addAddress("zhikai.yap@aikendigital.co");
+                        $logger->info('Added development recipients');
+                    }
+                } else {
+                    $mail->addAddress($sendMail);
+                    $logger->info('Added default recipient', ['email' => $sendMail]);
+                }
             }
-        }
 
-
-        // //$mail->addAddress('ellen@example.com');  // 可添加多个收件人
-        $mail->addReplyTo($mailConfig['mail_from'], "noreply@iposinternational.com"); //回复的时候回复给哪个邮箱 建议和发件人一致
-
-        /*
-        $mail->isHTML(false);                                  // 是否以HTML文档格式发送  发送后客户端可直接显示对应HTML内容
-
-        $mail->Subject = $state;
-
-        $mail->Body    = 'FirstName : ' . $firstName . "\r\n";
-        $mail->Body .= 'LastName : ' . $lastName . "\r\n";
-
-
-        $mail->Body .= 'Company : ' . $company . "\r\n";
-
-        $mail->Body .= 'Phone : ' . $phone . "\r\n";
-        $mail->Body .= 'Email : ' . $c_email . "\n";
-        
-        $mail->Body .= 'Designation : ' . $designation . "\n";
-        
-        if ($industryOthers !== "") {
-            $mail->Body .= 'Industry : ' . $industry . "\r\n";
-        } else {
-            $mail->Body .= 'Industry : ' . $industry . "\r\n";
-            $mail->Body .= 'Industry : Others - ' . $industryOthers . "\r\n";
-        }
-
-        $mail->Body .= 'Company Website : ' . $c_website . "\n";
-
-        $mail->Body .= 'Message : ' . $message . "\n";
-
-        $mail->Body .= 'Company Overview : ' . $companyOverview . "\n";
-        $mail->Body .= 'Existing IP Portfolio : ' . $existingIP . "\n";
-        $mail->Body .= 'Overseas Expansion : ' . $overseasExpansion . "\n";
-        $mail->Body .= 'Proprietary Technology : ' . $proprietaryTechnology . "\n";
-
-        
-        if ($infoSourceOthers != "") {
-            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
-        } else {
-            $mail->Body .= 'InfoSource : ' . $source . "\r\n";
-            $mail->Body .= 'InfoSourceOthers : ' . $infoSourceOthers . "\r\n";
-        }
-        $mail->Body .= 'Consent Marketing Email : ' . $subemail . "\r\n";
-
-        */
-        $mail->Subject = $state;
-        $mail->isHTML(true); // Set email format to HTML
-        $mail->Body = "
-            <p>FirstName : $firstName</p>
-            <p>LastName : $lastName</p>
-        ";
-
-        if ($company) {
-            $mail->Body .= "<p>Company : $company</p>";
-        }
-
-        $mail->Body .= "
-            <p>Phone : $phone</p>
-            <p>Email : $c_email</p>
-        ";
-
-        if ($designation) {
-            $mail->Body .= "<p>Designation : $designation</p>";
-        }
-
-        if ($industry) {
-            if ($industryOthers !== "") {
-                $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
-            } else {
-                $mail->Body .= "<p>Industry : $industry</p>";
-            }
-        }
-        if ($c_website) {
-            $mail->Body .= "<p>Company Website : $c_website</p>";
-        }
-
-        $mail->Body .= "<p>Message : $message</p>";
-
-        if (!in_array($state, ["Academy programme", "General", "Business"])) {
-            $mail->Body .= "
-                <p>Company Overview : $companyOverview</p>
-                <p>Existing IP Portfolio : $existingIP</p>
-                <p>Overseas Expansion : $overseasExpansion</p>
-                <p>Proprietary Technology : $proprietaryTechnology</p>
+            $mail->addReplyTo($mailConfig['mail_from'], "noreply@iposinternational.com");
+            
+            $mail->Subject = $state;
+            $mail->isHTML(true);
+            
+            // Build email body
+            $mail->Body = "
+                <p>FirstName : $firstName</p>
+                <p>LastName : $lastName</p>
             ";
-        }
 
-
-        if ($infoSourceOthers != "") {
-            $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
-        } else {
-            if ($source == 'EventsTalksWorkshops') {
-                $mail->Body .= "<p>InfoSource : $source - $eventSource</p>";
-            } else {
-                $mail->Body .= "<p>InfoSource : $source</p>";
+            if ($company) {
+                $mail->Body .= "<p>Company : $company</p>";
             }
-        }
 
-        $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";
+            $mail->Body .= "
+                <p>Phone : $phone</p>
+                <p>Email : $c_email</p>
+            ";
 
-        /*$mail->AltBody = '如果邮件客户端不支持HTML则显示此内容';*/
-        try {
+            if ($designation) {
+                $mail->Body .= "<p>Designation : $designation</p>";
+            }
+
+            if ($industry) {
+                if ($industryOthers !== "") {
+                    $mail->Body .= "<p>Industry : $industry – $industryOthers</p>";
+                } else {
+                    $mail->Body .= "<p>Industry : $industry</p>";
+                }
+            }
+            if ($c_website) {
+                $mail->Body .= "<p>Company Website : $c_website</p>";
+            }
+
+            $mail->Body .= "<p>Message : $message</p>";
+
+            if (!in_array($state, ["Academy programme", "General", "Business"])) {
+                $mail->Body .= "
+                    <p>Company Overview : $companyOverview</p>
+                    <p>Existing IP Portfolio : $existingIP</p>
+                    <p>Overseas Expansion : $overseasExpansion</p>
+                    <p>Proprietary Technology : $proprietaryTechnology</p>
+                ";
+            }
+
+            if ($infoSourceOthers != "") {
+                $mail->Body .= "<p>InfoSource : $source</p><p>InfoSourceOthers : $infoSourceOthers</p>";
+            } else {
+                if ($source == 'EventsTalksWorkshops') {
+                    $mail->Body .= "<p>InfoSource : $source - $eventSource</p>";
+                } else {
+                    $mail->Body .= "<p>InfoSource : $source</p>";
+                }
+            }
+
+            $mail->Body .= "<p>Consent Marketing Email : $subemail</p>";
+            
+            $logger->info('Email body prepared');
+
+            // Save to database first
             $date = date('Y-m-d H:i:s', time());
             $conn = $doctrine->getConnection();
 
             $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
-		            email,sendTime,source,companyUrl,industryText,companyOverviewText,existingIaIpProfileText,overseasExpansionText,proprietaryTechnologyText) 
+                    email,sendTime,source,companyUrl,industryText,companyOverviewText,existingIaIpProfileText,overseasExpansionText,proprietaryTechnologyText) 
                     values('" . $firstName . "','" . $lastName . "','" . $company . "','" . $designation . "','" . $subemail . "','" . $message . "','" . $phone . "','" . $c_email . "','" . $date . "','" . $sourceRecordToDb . "','".$c_website."','".$industryRecordToDb."','".$companyOverview."','". $existingIP ."','". $overseasExpansion ."','". $proprietaryTechnology ."')");
+            
+            $logger->info('Contact saved to database');
+            
+            // Send the email
             $mail->send();
-            return new JsonResponse([]);
-            // $conn->executeQuery("insert into contact_history(firstName,lastName,companyName,designationText,receiveEmail,messageText,phoneNumber,
-            //         email,sendTime) values('".$firstName."','".$lastName."','".$company."','".$designation."','".$subemail."','".$message."','".$phone."','".$c_email."','".$date."')");
+            $logger->info('Email sent successfully');
+            
+            return new JsonResponse(['success' => true]);
         } catch (\Exception $e) {
-            return new JsonResponse([$e->getMessage()]);
+            $logger->error('Failed to send email', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            return new JsonResponse(['error' => $e->getMessage()], 500);
         }
     }
+    // ... existing code ...
 }
