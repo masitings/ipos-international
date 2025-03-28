@@ -56,7 +56,7 @@
                 </button>
 
 {#                <form action="" >#}
-                    <input onkeydown="search()" id="search-input" class="search-input" type="text" placeholder="Search" name="search">
+                    <input onkeydown="searchGlobal()" id="search-input" class="search-input" type="text" placeholder="Search" name="search">
 {#                </form>#}
 
             </div>
@@ -125,6 +125,14 @@
 </div>
 
 <script>
+    function searchGlobal(){
+        var thenEvent = window.event || arguments.callee.caller.arguments[0];
+        var key = thenEvent.keyCode;
+
+        if(key == 13){
+            window.location.replace("/api/quicksearch?query="+$("#search-input").val()+"&limit=10&page=1");
+        }
+    }
     $(document).ready(function() {
         function search(){
             var thenEvent = window.event || arguments.callee.caller.arguments[0];
