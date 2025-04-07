@@ -167,7 +167,7 @@
                 </div>
                 <div class="explore-cards row">
                     <!-- Card 1 -->
-                    <a href="{{ pimcore_link('cardSolution3Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
+                    {# <a href="{{ pimcore_link('cardSolution3Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4"> #}
                         <div class="card_image">
                             {{ pimcore_image("cardSolutionImg1", {
                                 "height": 1570,
@@ -189,7 +189,7 @@
                                 <a class="find-out" target="{{ link.data.target|default('_blank') }}" href="{{ link.data.path|default('#') }}">{{ link.data.text|default('Find out more') }}</a>
                             {% endif %}
                         </div>
-                    </a>
+                    {# </a> #}
                     
                     <!-- Card 2 -->
                     <a href="{{ pimcore_link('cardSolution1Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
