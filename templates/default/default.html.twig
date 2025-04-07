@@ -182,7 +182,12 @@
                                     {{pimcore_input('cardSolutionDesc3', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
                                 </div>
                             </div>
-                            <div class="find-out">Find out more</div>
+                            {% if editmode %}
+                                {{ pimcore_link('cardSolution3Link') }}
+                            {% else %}
+                                {% set link = pimcore_link('cardSolution3Link') %}
+                                <a class="find-out" target="{{ link.data.target|default('_blank') }}" href="{{ link.data.path|default('#') }}">{{ link.data.text|default('Find out more') }}</a>
+                            {% endif %}
                         </div>
                     </a>
                     
@@ -202,7 +207,12 @@
                                     {{pimcore_input('cardSolutionDesc1', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
                                 </div>
                             </div>
-                            <div class="find-out">Find out more</div>
+                            {% if editmode %}
+                                {{ pimcore_link('cardSolution1Link') }}
+                            {% else %}
+                                {% set link = pimcore_link('cardSolution1Link') %}
+                                <a class="find-out" target="{{ link.data.target|default('_blank') }}" href="{{ link.data.path|default('#') }}">{{ link.data.text|default('Find out more') }}</a>
+                            {% endif %}
                         </div>
                     </a>
                     
@@ -222,7 +232,12 @@
                                     {{pimcore_input('cardSolutionDesc2', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
                                 </div>
                             </div>
-                            <div class="find-out">Find out more</div>
+                            {% if editmode %}
+                                {{ pimcore_link('cardSolution2Link') }}
+                            {% else %}
+                                {% set link = pimcore_link('cardSolution2Link') %}
+                                <a class="find-out" target="{{ link.data.target|default('_blank') }}" href="{{ link.data.path|default('#') }}">{{ link.data.text|default('Find out more') }}</a>
+                            {% endif %}
                         </div>
                     </a>
                 </div>

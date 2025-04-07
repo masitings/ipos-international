@@ -247,6 +247,8 @@
   height: 230px;
   overflow: hidden;
   width: 100%;
+  position: relative;
+  z-index: 2
 }
 @media screen and (max-width: 1024px) {
   .academy_overview__page.academy-overview .explore-section .courses_tab_content_item_card .card_image {
@@ -257,6 +259,7 @@
   transition: transform 0.5s ease;
   height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 .academy_overview__page.academy-overview .explore-section .courses_tab_content_item_card:hover {
   border: 1px solid transparent;
