@@ -1343,3 +1343,8 @@ body.classnames {
 .trusted-logo-section .logo-marquee:hover .logo-track {
   animation-play-state: paused;
 }
+@media screen and (max-width: 1680px) {
+  .footer-side {
+    width: calc(100vw - 46px) !important;
+  }
+}
