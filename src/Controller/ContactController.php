@@ -80,7 +80,7 @@ class ContactController extends BaseController
             'mail_host' => 'smtp.office365.com',
             'mail_name' => 'IPOS International',
             'mail_username' => 'zhikai2505@gmail.com',
-            'mail_passwd' => 'ssfsprsujomdeipp',
+            'mail_passwd' => 'okikbaqyjnuxqvwn',
             'mail_port' => 587,
             'mail_from' => 'zhikai2505@gmail.com'
         ];
