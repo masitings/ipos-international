@@ -529,11 +529,13 @@
 .academy_overview__page.homepage .main-banner .slider-wrapper .swiper-slide .text-wrapper.white {
   color: white;
 }
-.academy_overview__page.homepage .main-banner .slider-wrapper .swiper-slide .text-wrapper.white .title {
-  color: white !important;
-}
-.academy_overview__page.homepage .main-banner .slider-wrapper .swiper-slide .text-wrapper.white .description {
-  color: white !important;
+@media screen and (max-width: 1200px) {
+  .academy_overview__page.homepage .main-banner .slider-wrapper .swiper-slide .text-wrapper.white .title {
+    color: white !important;
+  }
+  .academy_overview__page.homepage .main-banner .slider-wrapper .swiper-slide .text-wrapper.white .description {
+    color: white !important;
+  }
 }
 .academy_overview__page.homepage .main-banner .slider-wrapper .swiper-slide .text-wrapper .btn {
   background: #E34A21;
