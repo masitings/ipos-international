@@ -45,7 +45,7 @@ class AcademyController extends BaseController
         if (!empty($topic)) {
             $list->filterByTopic($topic);
         }
-        
+        // dd($programme);
         if (!empty($programme)) {
             $list->filterByAcademyType($programme);
         }
@@ -81,7 +81,6 @@ class AcademyController extends BaseController
                 // Add other fields as needed
             ];
         }
-        
         return $this->render('academy/new/academy-list.html.twig', [
             'template_layout_name' => 'academy/new/layouts/layout-20250327.html.twig',
             'courses' => $formattedCourses,
