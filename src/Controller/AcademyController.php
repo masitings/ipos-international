@@ -398,7 +398,7 @@ class AcademyController extends BaseController
 
     public function enterpriseAction(Request $request)
     {
-        return $this->redirect('/en/academy/programmes?programme=Enterprise%20%2F%20Individuals');
+        return $this->redirect('/en/academy/programmes?programme=Enterprises%20%2F%20Individuals');
     }
     // {
 
