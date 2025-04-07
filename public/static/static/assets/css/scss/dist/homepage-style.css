@@ -430,6 +430,7 @@
   .academy_overview__page.homepage .main-banner .swiper-pagination {
     top: 430px;
     margin-bottom: 0;
+    height: 20px;
   }
 }
 .academy_overview__page.homepage .main-banner .swiper-pagination .swiper-pagination-bullet {
