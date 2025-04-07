@@ -168,12 +168,10 @@
                 <div class="explore-cards row">
                     <!-- Card 1 -->
                     {% if editmode %}
-                    <div class="courses_tab_content_item_card col-lg-4">
                         {{ pimcore_link('cardSolution3Link') }}
-                    {% else %}
-                        {% set link3 = pimcore_link('cardSolution3Link') %}
-                        <div href="{{ link3.data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
                     {% endif %}
+                    {% set link3 = pimcore_link('cardSolution3Link') %}
+                    <div class="courses_tab_content_item_card col-lg-4">
                         <div class="card_image">
                             {{ pimcore_image("cardSolutionImg1", {
                                 "height": 1570,
@@ -190,14 +188,14 @@
                             </div>
                             <a class="find-out" target="{{ link3.data.target|default('_blank') }}" href="{{ link3.data.path|default('#') }}">{{ link3.data.text|default('Find out more') }}</a>
                         </div>
-                    {# {% if editmode %} #}
                     </div>
-                    {# {% else %}
-                    </a>
-                    {% endif %} #}
                     
                     <!-- Card 2 -->
-                    <a href="{{ pimcore_link('cardSolution1Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
+                    {% if editmode %}
+                        {{ pimcore_link('cardSolution1Link') }}
+                    {% endif %}
+                    {% set link1 = pimcore_link('cardSolution1Link') %}
+                    <div class="courses_tab_content_item_card col-lg-4">
                         <div class="card_image">
                             {{ pimcore_image("cardSolutionImg2", {
                                 "height": 1570,
@@ -212,17 +210,16 @@
                                     {{pimcore_input('cardSolutionDesc1', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
                                 </div>
                             </div>
-                            {# {% if editmode %}
-                                {{ pimcore_link('cardSolution1Link') }}
-                            {% else %}
-                                {% set link = pimcore_link('cardSolution1Link') %}
-                                <a class="find-out" target="{{ link.data.target|default('_blank') }}" href="{{ link.data.path|default('#') }}">{{ link.data.text|default('Find out more') }}</a>
-                            {% endif %} #}
+                            <a class="find-out" target="{{ link1.data.target|default('_blank') }}" href="{{ link1.data.path|default('#') }}">{{ link1.data.text|default('Find out more') }}</a>
                         </div>
-                    </a>
+                    </div>
                     
                     <!-- Card 3 -->
-                    <a href="{{ pimcore_link('cardSolution2Link').data.path|default('#') }}" class="courses_tab_content_item_card col-lg-4">
+                    {% if editmode %}
+                        {{ pimcore_link('cardSolution2Link') }}
+                    {% endif %}
+                    {% set link2 = pimcore_link('cardSolution2Link') %}
+                    <div class="courses_tab_content_item_card col-lg-4">
                         <div class="card_image">
                             {{ pimcore_image("cardSolutionImg3", {
                                 "height": 1570,
@@ -237,14 +234,9 @@
                                     {{pimcore_input('cardSolutionDesc2', {'placeholder': 'Putting together an IP strategy for the first time can seem an intimidating task - here are three simple steps you can take to start the process!'})}}
                                 </div>
                             </div>
-                            {# {% if editmode %}
-                                {{ pimcore_link('cardSolution2Link') }}
-                            {% else %}
-                                {% set link = pimcore_link('cardSolution2Link') %}
-                                <a class="find-out" target="{{ link.data.target|default('_blank') }}" href="{{ link.data.path|default('#') }}">{{ link.data.text|default('Find out more') }}</a>
-                            {% endif %} #}
+                            <a class="find-out" target="{{ link2.data.target|default('_blank') }}" href="{{ link2.data.path|default('#') }}">{{ link2.data.text|default('Find out more') }}</a>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
