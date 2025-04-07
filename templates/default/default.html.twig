@@ -40,17 +40,31 @@
                                 {% set videoThumbnail = carouselItem.getMediaThumbnail() %}
                                 {% set videoDescription = carouselItem.getMediaDescription() %}
                                 {% set mediaLink = carouselItem.getMediaExternalLink() %}
+                                {% set titleColor = carouselItem.getTitleColor() %}
+                                {% set subTitleColor = carouselItem.getSubTitleColor() %}
                                 <div class="swiper-slide">
                                     <a href="{{ mediaLink.path|default('/') }}" class="card-wrapper">
                                         <img src="{{ videoThumbnail }}" alt="{{ videoTitle }}" />
                                     </a>
                                     <div class="text-wrapper white">
-                                        <div class="title">
-                                            {{ videoTitle }}
-                                        </div>
-                                        <div class="description">
-                                            {{ videoDescription }}
-                                        </div>
+                                        {% if titleColor is not empty %}
+                                            <div class="title" style="color: {{ titleColor }}">
+                                                {{ videoTitle }}
+                                            </div>
+                                        {% else %}
+                                            <div class="title">
+                                                {{ videoTitle }}
+                                            </div>
+                                        {% endif %}
+                                        {% if subTitleColor is not empty %}
+                                            <div class="description" style="color: {{ subTitleColor }}">
+                                                {{ videoDescription }}
+                                            </div>
+                                        {% else %}
+                                            <div class="description">
+                                                {{ videoDescription }}
+                                            </div>
+                                        {% endif %}
                                         <a href="{{ mediaLink.path|default('/') }}" class="btn">
                                             Find Out More
                                         </a>
