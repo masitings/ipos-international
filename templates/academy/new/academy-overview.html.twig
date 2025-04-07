@@ -335,7 +335,7 @@
                     "HomeVideoCarousel"
                 ]
             })}}
-            {% endif %}
+            {% else %}
             <div id="main-articles-section-2" class="main-articles section-2 image-video-slider">
                 <div class="bottom-video-section person">
                     <div class="left-side">
@@ -349,7 +349,6 @@
                                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> #}
                             </div>
                         </div>
-                        {% else %}
                             {% set homeVideoCarousel = pimcore_relations('homeVideoCarousel') %}
                             {% if homeVideoCarousel is not empty %}
                             <div class="thumbnail-carousel-container">
@@ -399,7 +398,6 @@
                                 </div>
                             </div>
                             {% endif %}
-                        {% endif %}
                     </div>
                     <div class="right-side">
                         <div class="text-container person-slider">
@@ -415,6 +413,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </section>
 
