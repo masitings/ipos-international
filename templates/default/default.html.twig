@@ -65,7 +65,7 @@
                                                 {{ videoDescription }}
                                             </div>
                                         {% endif %}
-                                        <a href="{{ mediaLink.path|default('/') }}" class="btn">
+                                        <a href="{{ mediaLink.path|default('/') }}" target="{{ mediaLink.target|default('_blank') }}" class="btn">
                                             Find Out More
                                         </a>
                                     </div>
