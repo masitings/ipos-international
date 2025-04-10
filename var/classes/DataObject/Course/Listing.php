@@ -139,6 +139,18 @@ public function filterByFee ($data, $operator = '='): static
 }
 
 /**
+* Filter by courseFee (Course Fee)
+* @param string|int|float|array|Model\Element\ElementInterface $data  comparison data, can be scalar or array (if operator is e.g. "IN (?)")
+* @param string $operator  SQL comparison operator, e.g. =, <, >= etc. You can use "?" as placeholder, e.g. "IN (?)"
+* @return $this
+*/
+public function filterByCourseFee ($data, $operator = '='): static
+{
+	$this->getClass()->getFieldDefinition("courseFee")->addListingFilter($this, $data, $operator);
+	return $this;
+}
+
+/**
 * Filter by viewUrl (View Course Fee URL)
 * @param string|int|float|array|Model\Element\ElementInterface $data  comparison data, can be scalar or array (if operator is e.g. "IN (?)")
 * @param string $operator  SQL comparison operator, e.g. =, <, >= etc. You can use "?" as placeholder, e.g. "IN (?)"
@@ -171,6 +183,18 @@ public function filterByOtherInfo ($data, $operator = '='): static
 public function filterByVideoTitle ($data, $operator = '='): static
 {
 	$this->getClass()->getFieldDefinition("videoTitle")->addListingFilter($this, $data, $operator);
+	return $this;
+}
+
+/**
+* Filter by testimonies (Testimony)
+* @param mixed $data
+* @param string $operator SQL comparison operator, e.g. =, <, >= etc. You can use "?" as placeholder, e.g. "IN (?)"
+* @return $this
+*/
+public function filterByTestimonies ($data, $operator = '='): static
+{
+	$this->getClass()->getFieldDefinition("testimonies")->addListingFilter($this, $data, $operator);
 	return $this;
 }
 

@@ -16,6 +16,7 @@
  * - venueText [input]
  * - learningType [select]
  * - fee [select]
+ * - courseFee [numeric]
  * - interestedRegister [link]
  * - registerLinks [block]
  * -- registerUrl [link]
@@ -48,6 +49,7 @@
  * -- contactFax [input]
  * -- contactEmail [input]
  * - manual [link]
+ * - manual2 [link]
  * - coverImage [hotspotimage]
  * - backGround [hotspotimage]
  * - videoTitle [input]
@@ -56,6 +58,7 @@
  * -- name [input]
  * -- position [input]
  * -- content [textarea]
+ * - testimonies [manyToManyObjectRelation]
  * - interestedTitle [input]
  * - InterestedList [manyToManyObjectRelation]
  * - seoTitle [input]
@@ -81,9 +84,11 @@ use Pimcore\Model\DataObject\PreGetValueHookInterface;
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByVenueText(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByLearningType(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByFee(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByCourseFee(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByViewUrl(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByOtherInfo(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByVideoTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
+* @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByTestimonies(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByInterestedTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getByInterestedList(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
 * @method static \Pimcore\Model\DataObject\Course\Listing|\Pimcore\Model\DataObject\Course|null getBySeoTitle(mixed $value, ?int $limit = null, int $offset = 0, ?array $objectTypes = null)
@@ -103,6 +108,7 @@ public const FIELD_VENUE = 'venue';
 public const FIELD_VENUE_TEXT = 'venueText';
 public const FIELD_LEARNING_TYPE = 'learningType';
 public const FIELD_FEE = 'fee';
+public const FIELD_COURSE_FEE = 'courseFee';
 public const FIELD_INTERESTED_REGISTER = 'interestedRegister';
 public const FIELD_REGISTER_LINKS = 'registerLinks';
 public const FIELD_LOGOS = 'logos';
@@ -117,11 +123,13 @@ public const FIELD_COURSE_FEES_DATA = 'CourseFeesData';
 public const FIELD_SPEAKER_DATA = 'speakerData';
 public const FIELD_CONTACT = 'Contact';
 public const FIELD_MANUAL = 'manual';
+public const FIELD_MANUAL2 = 'manual2';
 public const FIELD_COVER_IMAGE = 'coverImage';
 public const FIELD_BACK_GROUND = 'backGround';
 public const FIELD_VIDEO_TITLE = 'videoTitle';
 public const FIELD_VIDEO = 'video';
 public const FIELD_COMMENTS = 'Comments';
+public const FIELD_TESTIMONIES = 'testimonies';
 public const FIELD_INTERESTED_TITLE = 'interestedTitle';
 public const FIELD_INTERESTED_LIST = 'InterestedList';
 public const FIELD_SEO_TITLE = 'seoTitle';
@@ -140,6 +148,7 @@ protected $venue;
 protected $venueText;
 protected $learningType;
 protected $fee;
+protected $courseFee;
 protected $interestedRegister;
 protected $registerLinks;
 protected $logos;
@@ -154,11 +163,13 @@ protected $CourseFeesData;
 protected $speakerData;
 protected $Contact;
 protected $manual;
+protected $manual2;
 protected $coverImage;
 protected $backGround;
 protected $videoTitle;
 protected $video;
 protected $Comments;
+protected $testimonies;
 protected $interestedTitle;
 protected $InterestedList;
 protected $seoTitle;
@@ -573,6 +584,41 @@ public function setFee(?string $fee): static
 
 	$this->fee = $fee;
 
+	return $this;
+}
+
+/**
+* Get courseFee - Course Fee
+* @return float|null
+*/
+public function getCourseFee(): ?float
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("courseFee");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->courseFee;
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set courseFee - Course Fee
+* @param float|null $courseFee
+* @return $this
+*/
+public function setCourseFee(?float $courseFee): static
+{
+	/** @var \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric $fd */
+	$fd = $this->getClass()->getFieldDefinition("courseFee");
+	$this->courseFee = $fd->preSetData($this, $courseFee);
 	return $this;
 }
 
@@ -1066,6 +1112,42 @@ public function setManual(?\Pimcore\Model\DataObject\Data\Link $manual): static
 }
 
 /**
+* Get manual2 - IP Training Pathway
+* @return \Pimcore\Model\DataObject\Data\Link|null
+*/
+public function getManual2(): ?\Pimcore\Model\DataObject\Data\Link
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("manual2");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->manual2;
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set manual2 - IP Training Pathway
+* @param \Pimcore\Model\DataObject\Data\Link|null $manual2
+* @return $this
+*/
+public function setManual2(?\Pimcore\Model\DataObject\Data\Link $manual2): static
+{
+	$this->markFieldDirty("manual2", true);
+
+	$this->manual2 = $manual2;
+
+	return $this;
+}
+
+/**
 * Get coverImage - Thumbnail
 * @return \Pimcore\Model\DataObject\Data\Hotspotimage|null
 */
@@ -1241,6 +1323,49 @@ public function setComments(?array $Comments): static
 	/** @var \Pimcore\Model\DataObject\ClassDefinition\Data\Block $fd */
 	$fd = $this->getClass()->getFieldDefinition("Comments");
 	$this->Comments = $fd->preSetData($this, $Comments);
+	return $this;
+}
+
+/**
+* Get testimonies - Testimony
+* @return \Pimcore\Model\DataObject\Testimony[]
+*/
+public function getTestimonies(): array
+{
+	if ($this instanceof PreGetValueHookInterface && !\Pimcore::inAdmin()) {
+		$preValue = $this->preGetValue("testimonies");
+		if ($preValue !== null) {
+			return $preValue;
+		}
+	}
+
+	$data = $this->getClass()->getFieldDefinition("testimonies")->preGetData($this);
+
+	if ($data instanceof \Pimcore\Model\DataObject\Data\EncryptedField) {
+		return $data->getPlain();
+	}
+
+	return $data;
+}
+
+/**
+* Set testimonies - Testimony
+* @param \Pimcore\Model\DataObject\Testimony[] $testimonies
+* @return $this
+*/
+public function setTestimonies(?array $testimonies): static
+{
+	/** @var \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation $fd */
+	$fd = $this->getClass()->getFieldDefinition("testimonies");
+	$hideUnpublished = \Pimcore\Model\DataObject\Concrete::getHideUnpublished();
+	\Pimcore\Model\DataObject\Concrete::setHideUnpublished(false);
+	$currentData = $this->getTestimonies();
+	\Pimcore\Model\DataObject\Concrete::setHideUnpublished($hideUnpublished);
+	$isEqual = $fd->isEqual($currentData, $testimonies);
+	if (!$isEqual) {
+		$this->markFieldDirty("testimonies", true);
+	}
+	$this->testimonies = $fd->preSetData($this, $testimonies);
 	return $this;
 }
 

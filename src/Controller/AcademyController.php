@@ -296,33 +296,38 @@ class AcademyController extends BaseController
             'eventType' => $event->getEventType(),
             'program' => $event->getProgrammeDetails(),
             'courseFee' => $event->getCourseFeesData(),
+            'feeType' => $event->getFee(),
+            'fee' => $event->getCourseFee(),
             'contacts' => $event->getContact(),
-            'objects'  => $event->getLerningObjects(),
-            'crowds'   => $event->getCrowdData(),
-            'manual'   => $event->getManual(),
+            'objects' => $event->getLerningObjects(),
+            'crowds' => $event->getCrowdData(),
+            'manual' => $event->getManual(),
+            'manual2' => $event->getManual2(),
             'comments' => $event->getComments(),
-            'video'    => $event->getVideo(),
+            'video' => $event->getVideo(),
             'videoTitle' => $event->getVideoTitle(),
+            'topic' => $event->getTopic(),
             'register' => $event->getRegisterLinks(),
-            'speaker'  => $event->getSpeakerData(),
+            'speaker' => $event->getSpeakerData(),
             'interestList' => $event->getInterestedList(),
-            'pendant'  => $event->getTextData(),
-            'viewUrl'  => $event->getViewUrl(),
+            'pendant' => $event->getTextData(),
+            'viewUrl' => $event->getViewUrl(),
             'coverImage' => $event->getCoverImage(),/* ? $event->getCoverImage()->getThumbnail(),*/
             'backGround' => $event->getBackground(),/* ? $event->getBackground()->getThumbnail(),*/
             'academyType' => $event->getAcademyType(),
-            'partner'    => $event->getLogos(),
+            'partner' => $event->getLogos(),
             'interestedTitle' => $event->getInterestedTitle(),
             'seoTitle' => !empty($event->getSeoTitle()) ? $event->getSeoTitle() : $event->getTitle(),
             'seoDescription' => $event->getSeoDescription() ?? substr(strip_tags($event->getContent()), 0, 200),
             'tags'  => $event->getTags() ?  implode(',', $event->getTags()) : '',
             'interestedRegister' => $event->getInterestedRegister(),
-            'urlType'    => $menuType,
-            'otherInfo'    => $event->getotherInfo(),
+            'urlType' => $menuType,
+            'otherInfo' => $event->getotherInfo(),
+            'testimonies' => $event->getTestimonies()
             /*'paneList' => $event->get(),
             'interestedList' => $event->getInterestedList(),*/
         ];
-
+        // dd($data['testimonies'][0]->getName());
         if (isset($_GET['debg'])) {
             // var_dump($data);
             echo "<pre>";
@@ -332,13 +337,10 @@ class AcademyController extends BaseController
             // die();
             // return "";
         }
-        // return $this->render('academy/detail.html.twig',[
-        //     'detail' => $data,
-        //     /* 'bread'  => $bread*/
-        // ]);
-        return $this->render('academy/detail-20230918.html.twig', [
+        // dd($data['interestList'][0]->getPlaning());
+        return $this->render('academy/new/academy-detail.html.twig', [
             'detail' => $data,
-            'template_layout_name' => 'layouts/layout-20230718.html.twig'
+            'template_layout_name' => 'academy/new/layouts/layout-20250408.html.twig'
         ]);
     }
 

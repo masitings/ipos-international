@@ -3,6 +3,11 @@
     padding-bottom: 92px;
   }
 }
+@media screen and (max-width: 767px) {
+  .academy_overview__page.academy-overview .trusted-logo-section {
+    margin-top: 100px;
+  }
+}
 .academy_overview__page.academy-overview .about-academy {
   padding: 60px 10px 100px;
 }
@@ -259,7 +264,6 @@
   transition: transform 0.5s ease;
   height: 100%;
   object-fit: cover;
-  width: 100%;
 }
 .academy_overview__page.academy-overview .explore-section .courses_tab_content_item_card:hover {
   border: 1px solid transparent;
@@ -995,11 +999,14 @@
   font-size: 14px;
   line-height: 14px;
   letter-spacing: 0%;
-  color: #470A68;
+  color: #470A68 !important;
   padding: 16px;
   width: 100%;
   margin-bottom: 12px;
   border: none;
+  background-color: white;
+  display: block;
+  text-align: center;
 }
 .articles_details_container.academy-details .programme-card .brochure-dropdown {
   position: relative;
@@ -1052,6 +1059,9 @@
 }
 .articles_details_container.academy-details .programme-card .brochure-button span {
   display: block;
+}
+.articles_details_container.academy-details .programme-card .brochure-button span:first-child {
+  width: 100%;
 }
 .articles_details_container.academy-details .programme-card .brochure-button span:first-child {
   margin-right: 8px;
@@ -1470,6 +1480,36 @@
   height: 60px;
   max-width: 100%;
   object-fit: contain;
+}
+
+.brochure-dropdown {
+  position: relative;
+  width: 100%;
+}
+.brochure-dropdown .dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 8px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  z-index: 10;
+  width: 100%;
+}
+.brochure-dropdown .dropdown-list .dropdown-item {
+  font-family: Poppins;
+  font-size: 16px;
+  color: #333;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.brochure-dropdown .dropdown-list .dropdown-item:hover {
+  color: #470A68;
+}
+.brochure-dropdown.open .dropdown-list {
+  display: block;
 }
 
 .course_content {

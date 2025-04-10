@@ -16,6 +16,7 @@
  * - venueText [input]
  * - learningType [select]
  * - fee [select]
+ * - courseFee [numeric]
  * - interestedRegister [link]
  * - registerLinks [block]
  * -- registerUrl [link]
@@ -48,6 +49,7 @@
  * -- contactFax [input]
  * -- contactEmail [input]
  * - manual [link]
+ * - manual2 [link]
  * - coverImage [hotspotimage]
  * - backGround [hotspotimage]
  * - videoTitle [input]
@@ -56,6 +58,7 @@
  * -- name [input]
  * -- position [input]
  * -- content [textarea]
+ * - testimonies [manyToManyObjectRelation]
  * - interestedTitle [input]
  * - InterestedList [manyToManyObjectRelation]
  * - seoTitle [input]
@@ -70,9 +73,9 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1716993270,
+   'modificationDate' => 1744266176,
    'userOwner' => 2,
-   'userModification' => 59,
+   'userModification' => 3,
    'parentClass' => '',
    'implementsInterfaces' => '',
    'listingParentClass' => '',
@@ -619,6 +622,36 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'optionsProviderData' => '',
                   )),
                   10 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                     'name' => 'courseFee',
+                     'title' => 'Course Fee',
+                     'tooltip' => 'The fee that will be shown in the purple section',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'defaultValue' => NULL,
+                     'integer' => false,
+                     'unsigned' => false,
+                     'minValue' => 0.0,
+                     'maxValue' => 99999.0,
+                     'unique' => false,
+                     'decimalSize' => NULL,
+                     'decimalPrecision' => NULL,
+                     'width' => '',
+                     'defaultValueGenerator' => '',
+                  )),
+                  11 => 
                   \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
                      'name' => 'interestedRegister',
                      'title' => 'Register Now CTA',
@@ -641,7 +674,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'allowedTargets' => NULL,
                      'disabledFields' => NULL,
                   )),
-                  11 => 
+                  12 => 
                   \Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
                      'name' => 'registerLinks',
                      'title' => 'registerLinks',
@@ -1815,9 +1848,47 @@ Etc:
                      'blockedVarsForExport' => 
                     array (
                     ),
-                     'allowedTypes' => NULL,
-                     'allowedTargets' => NULL,
-                     'disabledFields' => NULL,
+                     'allowedTypes' => 
+                    array (
+                      0 => NULL,
+                    ),
+                     'allowedTargets' => 
+                    array (
+                      0 => NULL,
+                    ),
+                     'disabledFields' => 
+                    array (
+                      0 => NULL,
+                    ),
+                  )),
+                  1 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
+                     'name' => 'manual2',
+                     'title' => 'IP Training Pathway',
+                     'tooltip' => 'For "Download Brochure" CTA at the event pendant (top right purple box)',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'allowedTypes' => 
+                    array (
+                    ),
+                     'allowedTargets' => 
+                    array (
+                    ),
+                     'disabledFields' => 
+                    array (
+                    ),
                   )),
                 ),
                  'locked' => false,
@@ -2137,6 +2208,48 @@ Etc:
                 array (
                 ),
                  'fieldDefinitionsCache' => NULL,
+              )),
+              1 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
+                 'name' => 'testimonies',
+                 'title' => 'Testimony',
+                 'tooltip' => 'The testimony for `See what they say` section',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => true,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'classes' => 
+                array (
+                  0 => 
+                  array (
+                    'classes' => 'Testimony',
+                  ),
+                ),
+                 'displayMode' => 'grid',
+                 'pathFormatterClass' => '',
+                 'maxItems' => NULL,
+                 'visibleFields' => 
+                array (
+                ),
+                 'allowToCreateNewObject' => false,
+                 'allowToClearRelation' => true,
+                 'optimizedAdminLoading' => false,
+                 'enableTextSelection' => false,
+                 'visibleFieldDefinitions' => 
+                array (
+                ),
+                 'width' => '',
+                 'height' => '',
               )),
             ),
              'locked' => false,
